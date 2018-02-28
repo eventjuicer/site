@@ -1,0 +1,26 @@
+{
+  "name": "targiehandlu-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "pages/index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/targiehandlu/site.git"
+  },
+  "author": "adam zygadlewicz <adam.zygadlewicz@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/targiehandlu/site/issues"
+  },
+  "homepage": "https://github.com/targiehandlu/site#readme",
+  "dependencies": {
+    "next": "^5.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
+}
