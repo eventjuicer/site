@@ -1,12 +1,29 @@
 
 import MyAppBar from '../components/MyAppBar'
+import withMui from '../withMui'
+import Head from 'next/head'
+import Footer from '../components/Footer'
+import Wrapper from '../components/Wrapper'
 
-export default ({ children }) => (
+
+const Layout = (props) => (
   <div>
 
+    <Head>
+      <title>targiehandlu.pl</title>
+    </Head>
+
+
     <MyAppBar />
-  
-    { children }
+
+    {props.children}
+
+      <Wrapper title="">
+        <Footer  />
+     </Wrapper>
 
   </div>
 )
+
+
+export default withMui(Layout);

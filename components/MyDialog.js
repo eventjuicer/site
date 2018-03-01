@@ -1,16 +1,15 @@
-
+import React from 'react';
+import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
-import TextField from 'material-ui/TextField';
-
 import Dialog, {
   DialogActions,
   DialogContent,
   DialogContentText,
   DialogTitle,
+  withMobileDialog,
 } from 'material-ui/Dialog';
 
-
-class FormDialog extends React.Component {
+class ResponsiveDialog extends React.Component {
   state = {
     open: false,
   };
@@ -24,35 +23,30 @@ class FormDialog extends React.Component {
   };
 
   render() {
+    const { fullScreen } = this.props;
+
     return (
       <div>
-        <Button onClick={this.handleClickOpen}>Open form dialog</Button>
+        <Button onClick={this.handleClickOpen}>Open responsive dialog</Button>
         <Dialog
+          fullScreen={fullScreen}
           open={this.state.open}
           onClose={this.handleClose}
-          aria-labelledby="form-dialog-title"
+          aria-labelledby="responsive-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+          <DialogTitle id="responsive-dialog-title">{"Use Google's location service?"}</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              To subscribe to this website, please enter your email address here. We will send
-              updates occationally.
+              Let Google help apps determine location. This means sending anonymous location data to
+              Google, even when no apps are running.
             </DialogContentText>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Email Address"
-              type="email"
-              fullWidth
-            />
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
-              Cancel
+              Disagree
             </Button>
-            <Button onClick={this.handleClose} color="primary">
-              Subscribe
+            <Button onClick={this.handleClose} color="primary" autoFocus>
+              Agree
             </Button>
           </DialogActions>
         </Dialog>
@@ -61,4 +55,8 @@ class FormDialog extends React.Component {
   }
 }
 
-export default FormDialog;
+ResponsiveDialog.propTypes = {
+  fullScreen: PropTypes.bool.isRequired,
+};
+
+export default withMobileDialog()(ResponsiveDialog);

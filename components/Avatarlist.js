@@ -1,33 +1,31 @@
 
 
 import React from 'react'
-import Link from 'next/link'
+import NextLink from 'next/link'
 import get from 'lodash/get'
 import {slug} from '../helpers'
 import MyCard from './MyCard'
 import Grid from 'material-ui/Grid';
-import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
+import Button from 'material-ui/Button';
 
 
 const styles = {
 
-  title : {
-    fontSize : '2rem',
-    textTransform: 'uppercase',
-    fontWeight : 900
-  },
 
 };
 
 
-const Item = ({data}) => (
-  <li>
-   <Link  as={`/e,${1},${ slug(data.fields.cname2) }`} href={`/exhibitor?id=${ 1 }`}>
-     <a>{data.fields.cname2}</a>
+const Link = ({data}) => (
 
-   </Link>  {get(data.fields, "booth")}
- </li>
+   <NextLink  as={`/e,${1},${ slug(data.fields.cname2) }`} href={`/exhibitor?id=${ 1 }`}>
+
+     <Button size="small" color="primary">
+       WIĘCEJ
+     </Button>
+
+   </NextLink>
+
 )
 
 
@@ -35,30 +33,44 @@ const Item = ({data}) => (
 
 class Avatarlist extends React.Component {
 
+state = {
+
+  showAll : false
+
+}
+
+toggleShowAll = () => {
+
+  this.setState({showAll : !this.state.showAll});
+}
 
 render()
 {
 
   const { data, classes } = this.props;
+  const { showAll } = this.state;
+
+  const _data = data.slice(0, showAll ? data.length : 6 );
 
   return (
-    <section>
 
-      <Typography variant="headline" component="h2" className={classes.title}>Wystawcy</Typography>
+<div>
 
   <Grid container spacing={16}>
 
-    {data && data.map(row =>
+    {data &&  _data.map(row =>
 
        <Grid item xs={12} sm={6} md={4} lg={3} xl={2} >
-         <MyCard title={row.fields.cname2}  />
+         <MyCard title={row.fields.cname2} text={get(row.fields, "booth")} link={ <Link data={row} />} />
        </Grid>
       )}
 
   </Grid>
 
+  <Button variant="raised" onClick={this.toggleShowAll} />
 
-</section>
+</div>
+
 );
 
 }

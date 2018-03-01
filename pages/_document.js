@@ -21,7 +21,7 @@ class MyDocument extends Document {
            rel="shortcut icon"
            href="https://storage.googleapis.com/builderbook/favicon32.png"
          />
-         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
+         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500" />
          <meta charset="utf-8" />
          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
          <meta name="google" content="notranslate" />
@@ -29,11 +29,11 @@ class MyDocument extends Document {
          <style>{`body { margin: 0 } /* custom! */`}</style>
         </Head>
         <body className="custom_class">
-          <h1>test</h1>
+         
           {this.props.customValue}
           <Main />
           <NextScript />
-        </body>
+         </body>
       </html>
     )
   }

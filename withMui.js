@@ -6,7 +6,7 @@ import Reboot from 'material-ui/Reboot';
 import getContext from './context';
 //import Header from '../components/Header';
 
-function withLayout(BaseComponent) {
+function withMui(BaseComponent) {
 
   class App extends React.Component {
     componentWillMount() {
@@ -28,7 +28,6 @@ function withLayout(BaseComponent) {
         >
           <Reboot />
           <div>
-            {/* <Header {...this.props} /> */}
             <BaseComponent {...this.props} />
           </div>
         </MuiThemeProvider>
@@ -55,4 +54,4 @@ function withLayout(BaseComponent) {
   return App;
 }
 
-export default withLayout;
+export default withMui;

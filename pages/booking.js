@@ -1,10 +1,10 @@
 
 
- import Head from 'next/head'
+import React from 'react'
+import Head from 'next/head'
 import Layout from '../layouts/main';
-import Wrapper from '../components/Wrapper'
-
-class Exhibitor extends React.Component {
+ 
+class Booking extends React.Component {
 //
 // static async getInitialProps({req})
 // {
@@ -20,18 +20,16 @@ render()
 {
 
 
-  return (<Layout>
+  return (
+
+    <Layout>
 
     <Head>
-      <title>ID = {this.props.url.query.id}</title>
+
     </Head>
-
-    <Wrapper title="Wystawca">
-
-    </Wrapper>
 
   </Layout>)
 }
 
 }
-export default Exhibitor;
+export default Booking;
