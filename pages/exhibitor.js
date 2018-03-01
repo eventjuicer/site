@@ -2,6 +2,8 @@
 
 import React from 'react'
 import Head from 'next/head'
+import Layout from '../layouts/main';
+import withLayout from '../withLayout';
 
 class Exhibitor extends React.Component {
 //
@@ -19,19 +21,14 @@ render()
 {
 
 
-  return (<div>
+  return (<Layout>
 
     <Head>
       <title>ID = {this.props.url.query.id}</title>
-
     </Head>
 
-
-
-    <div>Welcome to next.js!</div>
-
-  </div>)
+  </Layout>)
 }
 
 }
-export default Exhibitor;
+export default withLayout(Exhibitor);

@@ -6,7 +6,11 @@ import Head from 'next/head'
 import fetch from 'isomorphic-unfetch'
 
 import Avatarlist from '../components/Avatarlist'
+import Bookingmap from '../components/Bookingmap'
+import Hero from '../components/Hero';
 
+import Layout from '../layouts/main';
+import withLayout from '../withLayout';
 
 class Index extends React.Component {
 
@@ -25,20 +29,17 @@ render()
 
   const { exhibitors } = this.props;
 
-  return (<div>
-
+  return (
+    <Layout>
     <Head>
-      <title>co za siarka</title>
-
+      <title>targiehandlu.pl</title>
     </Head>
-
+    <Hero videoSrc="https://s3.eu-central-1.amazonaws.com/eventjuicer-assets/video11_2.mp4" />
+    <Bookingmap />
     <Avatarlist data={exhibitors} />
-
-
-    <div>Welcome to next.js!</div>
-
-  </div>)
+    </Layout>
+  )
 }
 
 }
-export default Index;
+export default withLayout(Index);

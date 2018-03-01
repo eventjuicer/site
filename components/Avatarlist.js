@@ -3,7 +3,23 @@
 import React from 'react'
 import Link from 'next/link'
 import get from 'lodash/get'
-import {slug} from '../helpers';
+import {slug} from '../helpers'
+import MyCard from './MyCard'
+import Grid from 'material-ui/Grid';
+import Typography from 'material-ui/Typography';
+import { withStyles } from 'material-ui/styles';
+
+
+const styles = {
+
+  title : {
+    fontSize : '2rem',
+    textTransform: 'uppercase',
+    fontWeight : 900
+  },
+
+};
+
 
 const Item = ({data}) => (
   <li>
@@ -15,6 +31,7 @@ const Item = ({data}) => (
 )
 
 
+//xs, sm, md, lg, and xl.
 
 class Avatarlist extends React.Component {
 
@@ -22,14 +39,29 @@ class Avatarlist extends React.Component {
 render()
 {
 
-  const { data } = this.props;
+  const { data, classes } = this.props;
 
-  return (<ul>
+  return (
+    <section>
 
-    {data && data.map(row => <Item data={row} />)}
+      <Typography variant="headline" component="h2" className={classes.title}>Wystawcy</Typography>
 
-  </ul>)
+  <Grid container spacing={16}>
+
+    {data && data.map(row =>
+
+       <Grid item xs={12} sm={6} md={4} lg={3} xl={2} >
+         <MyCard title={row.fields.cname2}  />
+       </Grid>
+      )}
+
+  </Grid>
+
+
+</section>
+);
+
 }
 
 }
-export default Avatarlist;
+export default withStyles(styles)(Avatarlist);
