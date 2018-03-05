@@ -1,6 +1,7 @@
 import { withStyles } from 'material-ui/styles';
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
+import {pure, compose} from 'recompose';
 
 const styles = {
   card: {
@@ -18,7 +19,7 @@ function SimpleMediaCard(props) {
       <Card className={classes.card}>
         <CardMedia
           className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
+      //    image="/static/images/cards/contemplative-reptile.jpg"
           title="Contemplative Reptile"
         />
         <CardContent>
@@ -39,8 +40,10 @@ function SimpleMediaCard(props) {
   );
 }
 
+const enhanced = compose(pure, withStyles(styles));
+
 // SimpleMediaCard.propTypes = {
 //   classes: PropTypes.object.isRequired,
 // };
 
-export default withStyles(styles)(SimpleMediaCard);
+export default enhanced(SimpleMediaCard);

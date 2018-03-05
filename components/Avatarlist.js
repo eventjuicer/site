@@ -1,7 +1,7 @@
 
 
 import React from 'react'
-import NextLink from 'next/link'
+import Link from 'next/link'
 import get from 'lodash/get'
 import {slug} from '../helpers'
 import MyCard from './MyCard'
@@ -16,15 +16,15 @@ const styles = {
 };
 
 
-const Link = ({data}) => (
+const LinkToProfile = ({data}) => (
 
-   <NextLink  as={`/e,${1},${ slug(data.fields.cname2) }`} href={`/exhibitor?id=${ 1 }`}>
+   <Link  as={`/e,${1},${ slug(data.fields.cname2) }`} href={`/exhibitor?id=${ 1 }`}>
 
      <Button size="small" color="primary">
        WIĘCEJ
      </Button>
 
-   </NextLink>
+   </Link>
 
 )
 
@@ -50,7 +50,7 @@ render()
   const { data, classes } = this.props;
   const { showAll } = this.state;
 
-  const _data = data.slice(0, showAll ? data.length : 6 );
+  const _data = Array.isArray(data) ? data.slice(0, showAll ? data.length : 6 ) : [];
 
   return (
 
@@ -61,13 +61,13 @@ render()
     {data &&  _data.map(row =>
 
        <Grid item xs={12} sm={6} md={4} lg={3} xl={2} >
-         <MyCard title={row.fields.cname2} text={get(row.fields, "booth")} link={ <Link data={row} />} />
+         <MyCard title={row.fields.cname2} text={get(row.fields, "booth")} link={ <LinkToProfile data={row} />} />
        </Grid>
       )}
 
   </Grid>
 
-  <Button variant="raised" onClick={this.toggleShowAll} />
+  <Button variant="raised" onClick={this.toggleShowAll}>more</Button>
 
 </div>
 

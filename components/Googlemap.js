@@ -28,7 +28,7 @@ const styles = () => ({
 
 })
 
-const AnyReactComponent = ({ text }) => <div style={{width:100, height: 100, backgroundColor : 'red'}}>{text}</div>;
+const AnyReactComponent = ({ text }) => <div style={{width:50, height: 40, backgroundColor : 'blue'}}>{text}</div>;
 
 
 
@@ -81,7 +81,7 @@ class Googlemap extends React.Component {
         <AnyReactComponent
           lat={59.955413}
           lng={30.337844}
-          text={'Kreyser Avrora'}
+          text={'dupa jasiu'}
         />
       </GoogleMapReact>
     </div></div>

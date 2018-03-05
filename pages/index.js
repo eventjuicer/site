@@ -2,39 +2,48 @@
 
 import Head from 'next/head'
 import fetch from 'isomorphic-unfetch'
-
-
+import reduxPage from '../redux/store'
 import Layout from '../layouts/main';
 
-import Wrapper from '../components/Wrapper'
-
-import Avatarlist from '../components/Avatarlist'
-import Bookingmap from '../components/Bookingmap'
-import Hero from '../components/Hero';
-import Googlemap from '../components/Googlemap'
-
-
+import {Wrapper, Avatarlist, Bookingmap, Hero, Googlemap} from '../components'
 
 
 class Index extends React.Component {
 
-  static async getInitialProps({req})
+  static async getInitialProps({store, isServer, pathname, query, asPath, req, res, jsonPageRes, err})
   {
 
-    const res = await fetch('https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/exhibitors')
-    const data = await res.json()
+    const _exhibitors = await fetch('https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/exhibitors')
+    const exhibitors = await _exhibitors.json()
 
-    const res2 = await fetch('https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/bookingmap')
-    const data2 = await res2.json()
+    const _bookingmap = await fetch('https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/bookingmap')
+    const bookingmap = await _bookingmap.json()
+
+    /*
+    if (!store.getState().placeholderData) {
+  store.dispatch(loadData())
+  }
+  */
+
 
     const userAgent = req ? req.headers['user-agent'] : navigator.userAgent
-    return { userAgent : userAgent, exhibitors : data.data, booths : data2.data  }
+    return {   userAgent : userAgent, exhibitors : exhibitors.data, booths : bookingmap.data }
+    //return {};
   }
+
+
+  componentDidMount () {
+   /*
+    this.props.dispatch(startClock())
+  */
+  }
+
 
   render()
   {
 
     const { exhibitors, booths } = this.props;
+
 
     return (
 
@@ -47,14 +56,14 @@ class Index extends React.Component {
       {/* <Hero videoSrc="https://s3.eu-central-1.amazonaws.com/eventjuicer-assets/video11_2.mp4" /> */}
 
       <Wrapper title="Zarezerwuj stoisko!">
-        <Bookingmap data={ booths } />
+        <Bookingmap booths={ booths } />
       </Wrapper>
 
-      {/* <Wrapper title="Wystawcy">
-      <Avatarlist data={ exhibitors } />
-      </Wrapper>
+        <Wrapper title="Wystawcy">
+        <Avatarlist data={ exhibitors } />
+        </Wrapper>
 
-      <Googlemap /> */}
+      {/* <Googlemap /> */}
 
       </Layout>
 
@@ -63,5 +72,4 @@ class Index extends React.Component {
 
 }
 
-
-export default Index;
+export default reduxPage(Index, (state) => ({foo: state.foo}) )

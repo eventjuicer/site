@@ -1,7 +1,7 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 import flush from 'styled-jsx/server'
 import JssProvider from 'react-jss/lib/JssProvider'
-import getContext from '../context';
+import getContext from '../next/context';
 
 
 
@@ -22,14 +22,14 @@ class MyDocument extends Document {
            href="https://storage.googleapis.com/builderbook/favicon32.png"
          />
          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500" />
-         <meta charset="utf-8" />
+         <meta charSet="utf-8" />
          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
          <meta name="google" content="notranslate" />
 
          <style>{`body { margin: 0 } /* custom! */`}</style>
         </Head>
         <body className="custom_class">
-         
+
           {this.props.customValue}
           <Main />
           <NextScript />

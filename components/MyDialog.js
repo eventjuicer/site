@@ -1,5 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import compose from 'recompose/compose'
+import {dialogHide} from '../redux/actions'
+
 import Button from 'material-ui/Button';
 import Dialog, {
   DialogActions,
@@ -9,54 +13,61 @@ import Dialog, {
   withMobileDialog,
 } from 'material-ui/Dialog';
 
-class ResponsiveDialog extends React.Component {
-  state = {
-    open: false,
-  };
 
-  handleClickOpen = () => {
-    this.setState({ open: true });
-  };
-
-  handleClose = () => {
-    this.setState({ open: false });
-  };
+class ResponsiveDialog extends React.PureComponent {
 
   render() {
-    const { fullScreen } = this.props;
 
-    return (
-      <div>
-        <Button onClick={this.handleClickOpen}>Open responsive dialog</Button>
-        <Dialog
+    const { fullScreen, dialog, dialogHide } = this.props;
+
+    const open = dialog && "title" in dialog;
+
+    return open ? (
+
+      <Dialog
           fullScreen={fullScreen}
-          open={this.state.open}
-          onClose={this.handleClose}
+          fullWidth={true}
+          maxWidth="md"
+          open={ open }
+          onClose={dialogHide}
           aria-labelledby="responsive-dialog-title"
         >
-          <DialogTitle id="responsive-dialog-title">{"Use Google's location service?"}</DialogTitle>
+          <DialogTitle id="responsive-dialog-title">{dialog.title}</DialogTitle>
           <DialogContent>
-            <DialogContentText>
-              Let Google help apps determine location. This means sending anonymous location data to
-              Google, even when no apps are running.
+
+
+
+    {dialog.content}
+        <DialogContentText>
+          asd
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
-              Disagree
-            </Button>
-            <Button onClick={this.handleClose} color="primary" autoFocus>
+            <Button onClick={dialogHide} color="primary" autoFocus>
               Agree
+            </Button>
+            <Button onClick={dialogHide} color="secondary">
+              Close
             </Button>
           </DialogActions>
         </Dialog>
-      </div>
-    );
+
+    ) : null;
   }
 }
+
+ResponsiveDialog.defaultProps = {
+  dialog: {},
+};
+
 
 ResponsiveDialog.propTypes = {
   fullScreen: PropTypes.bool.isRequired,
 };
 
-export default withMobileDialog()(ResponsiveDialog);
+const enhance = compose(
+  withMobileDialog(),
+  connect(state => ({dialog : state.dialog}), {dialogHide} )
+);
+
+export default enhance(ResponsiveDialog);

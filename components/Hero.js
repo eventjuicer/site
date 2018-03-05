@@ -164,7 +164,7 @@ class Hero extends React.Component {
 
               <Grid item xs={10} sm={6} md={4} lg={4} xl={4} >
 
-                  <Paper zDepth={5} className={classes.paper}><Gallery /></Paper>
+                  <Paper zdepth={5} className={classes.paper}><Gallery /></Paper>
 
                </Grid>
 

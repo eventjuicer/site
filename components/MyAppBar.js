@@ -1,3 +1,12 @@
+
+
+import Link from 'next/link'
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import compose from 'recompose/compose'
+
+
+
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
@@ -6,13 +15,22 @@ import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 
+import {drawerShow} from '../redux/actions'
+
 const styles = {
   root: {
     flexGrow: 1,
   },
   flex: {
     flex: 1,
+    cursor: 'pointer',
   },
+  title: {
+   cursor: 'pointer',
+ },
+ subtitle: {
+  fontWeight : 300
+},
   menuButton: {
     marginLeft: -12,
     marginRight: 20,
@@ -20,18 +38,26 @@ const styles = {
 };
 
 function ButtonAppBar(props) {
-  const { classes } = props;
+
+  const { classes, drawer, drawerShow } = props;
+
   return (
     <div className={classes.root}>
-      <AppBar position="fixed">
+      <AppBar position="static">
         <Toolbar>
-          {/* <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+
+          {/* <IconButton onClick={drawerShow} className={classes.menuButton} color="inherit" aria-label="Menu">
             <MenuIcon />
           </IconButton> */}
-          <Typography variant="title" color="inherit" className={classes.flex}>
-            XIV Targi eHandlu w Krakowie
+
+          <Link href="/">
+          <Typography component="a" variant="title" color="inherit" className={classes.flex}>
+          Targi eHandlu <span className={classes.subtitle}>Kraków 25 kwietnia 2018</span>
           </Typography>
-          <Button variant="raised" color="inherit">Pobierz bilet</Button>
+          </Link>
+
+
+          <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
     </div>
@@ -42,4 +68,12 @@ function ButtonAppBar(props) {
 //   classes: PropTypes.object.isRequired,
 // };
 
-export default withStyles(styles)(ButtonAppBar);
+
+
+const enhance = compose(
+  connect((state) => ({drawer : state.drawer}), {drawerShow}),
+  withStyles(styles)
+)
+
+
+export default enhance(ButtonAppBar);

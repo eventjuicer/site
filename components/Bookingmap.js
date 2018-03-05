@@ -1,18 +1,41 @@
 
+import dynamic from 'next/dynamic'
 import { withStyles } from 'material-ui/styles';
+import { connect } from 'react-redux';
+import compose from 'recompose/compose'
+
+import find from 'lodash/find';
+
+
+//import {translate} from '../i18n'
+
+
+const BoothInfo = dynamic(import('./BoothInfo'))
+const TicketGroup = dynamic(import('./TicketGroup'))
+
+import Booth from './Booth';
+
+import {dialogShow, resourceFetchRequest} from '../redux/actions'
 
 
 const styles = (theme) => ({
 
+
+  scrollableContainer : {
+
+    overflowX: 'auto',
+    overflowY: 'hidden',
+    height: 600,
+    whiteSpace:'nowrap',
+  },
   container : {
 
-    //  height : '100vh',
     position : 'relative',
     margin: '0px auto',
     padding: 0,
     border: '1px solid rgb(234, 234, 234)',
     width: 1170,
-    height: 600,
+    height: '100%',
     backgroundPosition: 'left top',
     backgroundRepeat: 'no-repeat no-repeat',
 
@@ -25,57 +48,112 @@ const styles = (theme) => ({
     margin:0,
   },
 
-  booth : {
-    position: 'absolute',
-    display: 'block',
-    backgroundColor: 'yellow',
-    border: '1px solid orange',
-    color: 'red',
-    zIndex: 1001,
-    borderRadius: 3,
-    cursor: 'pointer',
-    fontWeight: 'bold',
-    fontSize: 10,
-    padding:0,
-    margin:0,
-    textAlign: 'center',
-  },
-
-  boothText : {
-    display: 'inline-block',
-    verticalAlign: 'middle',
-    lineHeight : 'normal'
-  }
-
 });
 
-const Booth = ({data, classes}) => (
-  <li onClick={() => alert(data.g) } className={classes.booth} style={{ height: data.dh, width: data.dw, top: data.dt, left: data.dl, lineHeight: `${data.dh}px`}}><span className={classes.boothText}>{data.ti}</span></li>
-)
 
-const StyledBooth = withStyles(styles)(Booth);
 
 class Bookingmap extends React.Component {
 
+state = {
+  formdata : [],
+}
 
+componentDidMount()
+{
+  this.props.resourceFetchRequest("formdata");
+}
+
+getStatus(boothId)
+{
+  const { formdata } = this.props;
+  return find(formdata, {id : boothId});
+}
+
+getStatusShort(boothId)
+{
+  const status = this.getStatus(boothId);
+  if(status)
+  {
+    return status.purchase.paid ? "sold" : "hold";
+  }
+  return false;
+}
+
+onBoothClick = (boothId, groupId) => {
+
+    const { dialogShow, boothSelect, boothUnselect } = this.props;
+    const boothIsBlocked = this.getStatusShort(boothId);
+
+    let modalTitle = "";
+    let modalContent = "";
+
+    // console.log( boothId );
+    // console.log( groupId );
+    // console.log( status );
+
+    switch(boothIsBlocked)
+    {
+      case "hold":
+        modalTitle = `Stoisko zarezerwowane`
+        modalContent =  <BoothInfo />
+      break;
+      case "sold":
+        modalTitle = `Stoisko wykupione`
+        modalContent =  <BoothInfo formdata={this.getStatus(boothId)} />
+      break;
+      default:
+        modalTitle = `To stoisko jest wolne`
+        modalContent = <TicketGroup groupId={groupId} boothId={boothId} />
+
+    }
+
+
+
+     dialogShow({title: modalTitle, content : modalContent});
+
+}
+
+isBoothSelected(boothId){
+
+  const { boothsSelected } = this.props;
+  return boothsSelected.indexOf(boothId) > -1;
+
+}
 
 render()
 {
 
-  const { data, classes } = this.props;
+  const { booths, classes } = this.props;
+
+  //console.log(this.props);
 
   return (
-    <div className={classes.container} style={{background : `url(${data.mapsource})`}}>
 
-      <ul className={classes.booths}>
-      {data.booths && data.booths.map(booth => <StyledBooth key={booth.id} data={booth} />)}
-      </ul>
+<div className={classes.scrollableContainer}>
+  {booths && ("mapsource" in booths) &&
+<div className={classes.container} style={{background : `url(${booths.mapsource})`}}>
+<ul className={classes.booths}>
+      {booths.booths && booths.booths.map(booth =>
+        <Booth selected={this.isBoothSelected(booth.id)} onClick={this.onBoothClick} status={this.getStatusShort(booth.id)} key={booth.id} data={booth} />
+      )}
+</ul>
 
-  </div>
+</div>
+}
+</div>
 )
 }
 
 }
 
+const enhance = compose(
+//  translate,
+  withStyles(styles),
+  connect(state => ({
+    boothsSelected : state.boothsSelected,
+    formdata : state.resources.formdata
+  }), {dialogShow, resourceFetchRequest}
+  )
+)
 
-export default withStyles(styles)(Bookingmap);
+export default enhance(Bookingmap);

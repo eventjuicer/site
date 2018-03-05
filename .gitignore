@@ -57,4 +57,4 @@ typings/
 # dotenv environment variables file
 .env
 .next/
-.next/
+.DS_Store
