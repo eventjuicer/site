@@ -3,7 +3,7 @@
 import {
 	SNACKBAR_SHOW,
 	SNACKBAR_HIDE
-} from '../types'
+} from '../../components/redux/types'
 
 
 

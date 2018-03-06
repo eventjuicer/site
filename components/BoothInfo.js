@@ -13,7 +13,7 @@ import SupportPeople from './SupportPeople'
 
 import Card from './MyCardSlim'
 
-import {cartItemAdd, boothSelect, resourceFetchRequest} from '../redux/actions'
+import {cartItemAdd, boothSelect, resourceFetchRequest} from './redux/actions'
 
 
 const styles = (theme) => ({

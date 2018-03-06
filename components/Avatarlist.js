@@ -18,7 +18,7 @@ const styles = {
 
 const LinkToProfile = ({data}) => (
 
-   <Link  as={`/e,${1},${ slug(data.fields.cname2) }`} href={`/exhibitor?id=${ 1 }`}>
+   <Link  as={`/${ slug(data.fields.cname2) },c,${data.company.id}`} href={`/exhibitor?id=${ data.company.id }`}>
 
      <Button size="small" color="primary">
        WIĘCEJ
@@ -58,10 +58,10 @@ render()
 
   <Grid container spacing={16}>
 
-    {data &&  _data.map(row =>
+    {data &&  _data.map((row, idx) =>
 
-       <Grid item xs={12} sm={6} md={4} lg={3} xl={2} >
-         <MyCard title={row.fields.cname2} text={get(row.fields, "booth")} link={ <LinkToProfile data={row} />} />
+       row.company && "id" in row.company && <Grid key={idx} item xs={12} sm={6} md={4} lg={3} xl={2} >
+         <MyCard key={idx} title={row.fields.cname2} text={get(row.fields, "booth")} link={ <LinkToProfile data={row} />} />
        </Grid>
       )}
 

@@ -10,7 +10,7 @@ import {Wrapper, Avatarlist, Bookingmap, Hero, Googlemap} from '../components'
 
 class Index extends React.Component {
 
-  static async getInitialProps({store, isServer, pathname, query, asPath, req, res, jsonPageRes, err})
+  static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
   {
 
     const _exhibitors = await fetch('https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/exhibitors')
@@ -53,7 +53,7 @@ class Index extends React.Component {
         <title>targiehandlu.pl xxx</title>
       </Head>
 
-      {/* <Hero videoSrc="https://s3.eu-central-1.amazonaws.com/eventjuicer-assets/video11_2.mp4" /> */}
+      <Hero videoSrc="https://s3.eu-central-1.amazonaws.com/eventjuicer-assets/video11_2.mp4" />
 
       <Wrapper title="Zarezerwuj stoisko!">
         <Bookingmap booths={ booths } />

@@ -1,7 +1,7 @@
 
 
 import { withStyles } from 'material-ui/styles';
-import Typography from 'material-ui/Typography';
+import * as Typography from './MyTypography';
 
 
 
@@ -62,7 +62,7 @@ const Wrapper = (props) => (
 
     </div> */}
     <div className={props.classes.container}>
-      {props.title && <Typography variant="headline" component="h2" className={props.classes.title}>{props.title}</Typography>}
+      {props.title && <Typography.H1C className={props.classes.title}>{props.title}</Typography.H1C>}
       {props.children}
     </div>
   </section>

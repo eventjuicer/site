@@ -1,7 +1,7 @@
 
 import { connect } from 'react-redux';
 import compose from 'recompose/compose'
-import {snackbarHide} from '../redux/actions'
+import {snackbarHide} from './redux/actions'
 
 
 import Button from 'material-ui/Button';

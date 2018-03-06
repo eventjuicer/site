@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose'
-import {dialogHide} from '../redux/actions'
+import {dialogHide} from './redux/actions'
 
 import Button from 'material-ui/Button';
 import Dialog, {

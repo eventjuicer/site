@@ -15,7 +15,7 @@ import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 
-import {drawerShow} from '../redux/actions'
+import {drawerShow, boothsReset} from './redux/actions'
 
 const styles = {
   root: {
@@ -39,7 +39,7 @@ const styles = {
 
 function ButtonAppBar(props) {
 
-  const { classes, drawer, drawerShow } = props;
+  const { classes, drawer, drawerShow, boothsReset } = props;
 
   return (
     <div className={classes.root}>
@@ -57,7 +57,8 @@ function ButtonAppBar(props) {
           </Link>
 
 
-          <Button color="inherit">Login</Button>
+          <Button onClick={() => boothsReset() } color="inherit">Cart</Button>
+
         </Toolbar>
       </AppBar>
     </div>
@@ -71,7 +72,7 @@ function ButtonAppBar(props) {
 
 
 const enhance = compose(
-  connect((state) => ({drawer : state.drawer}), {drawerShow}),
+  connect((state) => ({drawer : state.drawer}), {drawerShow, boothsReset}),
   withStyles(styles)
 )
 

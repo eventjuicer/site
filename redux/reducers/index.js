@@ -2,11 +2,11 @@
 //we use persistCombineReducers instead
 //import { combineReducers } from 'redux'
 
-import ecommerce from './ecommerce'
 import dialog from './dialog'
 import boothsSelected from './booths'
 import resources from './resources'
 import snackbar from './snackbar'
 import drawer from './drawer'
+import app from './app'
 
-export default { ecommerce, dialog, snackbar, boothsSelected, resources, drawer }
+export default { app, dialog, snackbar, boothsSelected, resources, drawer }

@@ -1,10 +1,12 @@
 
-import Card from './MyCardSlim'
+
 
 import { withStyles } from 'material-ui/styles';
 import IconButton from 'material-ui/IconButton';
 import PlayArrowIcon from 'material-ui-icons/PlayArrow';
 
+
+import Card from './MyCardSlim'
 
 const styles = theme => ({
   icon: {

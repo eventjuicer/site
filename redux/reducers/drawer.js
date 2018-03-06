@@ -3,7 +3,7 @@
 import {
 	DRAWER_SHOW,
 	DRAWER_HIDE
-} from '../types'
+} from '../../components/redux/types'
 
 
 

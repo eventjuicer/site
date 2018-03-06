@@ -1,7 +1,7 @@
 const express = require('express')
 const next = require('next')
 const LRUCache = require('lru-cache')
- 
+
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
@@ -21,7 +21,7 @@ app.prepare().then(() => {
 
 
 
-   server.get('/e,:id,:slug', (req, res) => {
+   server.get('/:slug,c,:id', (req, res) => {
      const queryParams = { id: req.params.id }
     // app.render(req, res, '/exhibitor', queryParams)
      renderAndCache(req, res, '/exhibitor', queryParams)

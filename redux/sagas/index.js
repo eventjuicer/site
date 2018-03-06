@@ -8,9 +8,9 @@ import {
   CART_ITEM_ADD,
   RESOURCE_FETCH_REQUESTED,
 
-} from '../types'
+} from '../../components/redux/types'
 
-import {resourceFetchSuccess, resourceFetchError} from '../actions'
+import {resourceFetchSuccess, resourceFetchError} from '../../components/redux/actions'
 
 
 

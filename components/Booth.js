@@ -14,7 +14,8 @@ const styles = (theme) => ({
     zIndex: 1001,
     borderRadius: 3,
     cursor: 'pointer',
-    fontFamily : 'Roboto, sans-serif',
+
+
     padding:0,
     margin:0,
     textAlign: 'center',
@@ -34,14 +35,16 @@ const styles = (theme) => ({
   boothSelected : {
     backgroundColor: 'red',
     color: 'white',
+    border: '3px solid black',
   },
 
   boothText : {
     display: 'inline-block',
     verticalAlign: 'middle',
     lineHeight : 'normal',
-    fontWeight: 600,
-    fontSize: 10,
+    fontWeight: 700,
+    fontFamily : 'Roboto, arial, sans-serif',
+    fontSize: 9,
   }
 
 });

@@ -15,7 +15,7 @@ const TicketGroup = dynamic(import('./TicketGroup'))
 
 import Booth from './Booth';
 
-import {dialogShow, resourceFetchRequest} from '../redux/actions'
+import {dialogShow, resourceFetchRequest} from './redux/actions'
 
 
 const styles = (theme) => ({
@@ -115,8 +115,8 @@ onBoothClick = (boothId, groupId) => {
 
 isBoothSelected(boothId){
 
-  const { boothsSelected } = this.props;
-  return boothsSelected.indexOf(boothId) > -1;
+  const { boothsSelected, selected } = this.props;
+  return boothsSelected.indexOf(boothId) > -1 || (selected && selected.indexOf(boothId) > -1);
 
 }
 

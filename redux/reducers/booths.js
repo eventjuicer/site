@@ -2,8 +2,9 @@
 
 import {
 	BOOTH_SELECT,
-	BOOTH_UNSELECT
-} from '../types'
+	BOOTH_UNSELECT,
+	BOOTHS_RESET
+} from '../../components/redux/types'
 
 
 
@@ -13,10 +14,14 @@ const reducer = (state = [], action) => {
 
 	switch (action.type) {
 		case BOOTH_SELECT:
-  //    arr.push(action.payload)
 			return [...state, action.payload]
+		break;
 		case BOOTH_UNSELECT:
 			return [...state.filter(item => item !== action.payload)]
+		break;
+		case BOOTHS_RESET:
+				return []
+		break;
 		default:
 			return state
 	}

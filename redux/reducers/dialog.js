@@ -3,7 +3,7 @@
 import {
 	DIALOG_SHOW,
 	DIALOG_HIDE
-} from '../types'
+} from '../../components/redux/types'
 
 
 export const exampleInitialState = {

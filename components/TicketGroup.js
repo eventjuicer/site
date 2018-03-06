@@ -11,7 +11,7 @@ import find from 'lodash/find';
 //import {translate} from '../i18n'
 
 
-import {cartItemAdd, boothSelect, resourceFetchRequest} from '../redux/actions'
+import {cartItemAdd, boothSelect, resourceFetchRequest} from './redux/actions'
 
 
 const styles = (theme) => ({

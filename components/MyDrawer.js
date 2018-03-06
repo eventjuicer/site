@@ -11,7 +11,7 @@ import Button from 'material-ui/Button';
 import List from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 
-import {drawerHide} from '../redux/actions'
+import {drawerHide} from './redux/actions'
 
 
 const styles = {

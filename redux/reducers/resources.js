@@ -2,7 +2,7 @@
 
 import {
 	  RESOURCE_FETCH_SUCCESS
-} from '../types'
+} from '../../components/redux/types'
 
 
 
