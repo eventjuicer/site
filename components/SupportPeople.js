@@ -20,4 +20,4 @@ const Buttons = withStyles(styles)((props) => <IconButton aria-label="Contact">
   <PlayArrowIcon className={props.classes.icon} />
 </IconButton>)
 
-export default () => (<div><Card title="kto pomoze?" text="ja pomoge" link={<Buttons />}/><p>Support People</p></div>)
+export default () => (<div><Card title="kto pomoze?" text="ja pomoge" link={<Buttons />} /></div>)

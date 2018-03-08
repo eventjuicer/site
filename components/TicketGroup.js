@@ -9,7 +9,6 @@ import sortBy from 'lodash/sortBy';
 import {
   FormLabel,
   FormControl,
-  FormGroup,
 } from 'material-ui/Form';
 
 
@@ -25,21 +24,47 @@ const styles = (theme) => ({
 
 
 
-const TicketGroup = ({ group, formdata  }) => {
+class TicketGroup extends React.PureComponent {
 
-  const sorted = sortBy(group.tickets, ["start"]);
+  checkIfHasBookableTickets()
+  {
+      const { group  } = this.props;
+      return group.tickets.filter(ticket => ticket.bookable).length;
+  }
 
-  return (
 
-    <FormControl component="fieldset" fullWidth>
-    <FormLabel component="legend">Stoiska</FormLabel>
-    <FormGroup>
-    {sorted && sorted.map(ticket => <Ticket key={ticket.id} ticket={ticket} formdata={formdata} />)}
-   </FormGroup>
-   </FormControl>
-  )
+  render()
+  {
+
+    const { group, formdata, label, noBookableTickets  } = this.props;
+    const sorted = sortBy(group.tickets, ["start"]);
+
+    return (
+
+      <div>
+      {!this.checkIfHasBookableTickets() ? noBookableTickets : null}
+
+        <FormControl component="fieldset" fullWidth margin="normal">
+
+      <FormLabel component="legend">{label}</FormLabel>
+      
+      {sorted && sorted.map(ticket => <Ticket key={ticket.id} ticket={ticket} formdata={formdata} />)}
+
+     </FormControl>
+
+     </div>
+
+    )
+
+  }
+
 
 }
 
+
+TicketGroup.defaultProps = {
+  label : "Bilety",
+  noBookableTickets : null
+}
 
 export default withStyles(styles)(TicketGroup);

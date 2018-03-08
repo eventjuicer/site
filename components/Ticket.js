@@ -5,6 +5,8 @@ import compose from 'recompose/compose'
 
 import {
   FormControlLabel,
+  FormHelperText,
+  FormGroup,
 } from 'material-ui/Form';
 
 import Checkbox from 'material-ui/Checkbox';
@@ -23,7 +25,7 @@ class Ticket extends React.PureComponent {
 
     if(this.isSelected())
     {
-      cartItemRemove(ticket.id);
+      cartItemRemove(ticket.id, formdata);
     }
     else
     {
@@ -51,18 +53,22 @@ class Ticket extends React.PureComponent {
 
     return (
 
-          <FormControlLabel
+          <FormGroup>
+            <FormControlLabel
             control={
               <Checkbox
-              //  disabled
+                disabled={!ticket.bookable}
+                color="secondary"
                 checked={this.isSelected()}
                 onChange={this.handleChange('_')}
                 value="gilad"
+
               />
             }
             label={this.getTicketName()}
           />
-
+          <FormHelperText>Be careful</FormHelperText>
+          </FormGroup>
     );
   }
 }

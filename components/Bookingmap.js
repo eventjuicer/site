@@ -4,13 +4,13 @@ import { withStyles } from 'material-ui/styles';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose'
 
-import find from 'lodash/find';
 
 
 //import {translate} from '../i18n'
 
 
 const BoothInfo = dynamic(import('./BoothInfo'))
+const SupportPeople = dynamic(import('./SupportPeople'))
 const TicketGroup = dynamic(import('./TicketGroup'))
 
 import Booth from './Booth';
@@ -94,30 +94,37 @@ onBoothClick = (boothId, groupId, label) => {
 
     let modalTitle = "";
     let modalContent = "";
+    let modalButtons = [];
 
     switch(boothIsBlocked)
     {
       case "hold":
         modalTitle = `Stoisko zarezerwowane`
         modalContent =  <BoothInfo />
+
       break;
       case "sold":
         modalTitle = `Stoisko wykupione`
         modalContent =  <BoothInfo formdata={this.getStatus(boothId)} />
+
       break;
       default:
         /* THERE IS NOW FORMDATA FOR UNSOLD BOOTHS!!!! */
         modalTitle = `To stoisko jest wolne`
-        modalContent = <TicketGroup group={this.getTicketsForGroupId(groupId)} formdata={ {id : boothId, ti : label} } />
+        modalContent = <TicketGroup noBookableTickets={<div><h2>Niestety nie poszalejesz</h2><SupportPeople /></div>} label="Pule sprzedaży" group={this.getTicketsForGroupId(groupId)} formdata={ {id : boothId, ti : label} } />
+
     }
 
-     dialogShow({title: modalTitle, content : modalContent});
+    dialogShow({title: modalTitle, content : modalContent, buttons : modalButtons});
 
 }
 
 isBoothSelected(boothId){
 
-  const { boothsSelected, selected } = this.props;
+  const { selected, boothsSelected } = this.props;
+
+  // const boothsSelected = Object.values(cart).filter(item => "formdata" in item && "id" in item.formdata).map(item => item.formdata.id)
+
   return (boothsSelected && boothsSelected.indexOf(boothId) > -1) || (selected && selected.indexOf(boothId) > -1);
 
 }

@@ -36,19 +36,24 @@ class ResponsiveDialog extends React.PureComponent {
           <DialogContent>
 
 
+          {dialog.intro && <DialogContentText>{dialog.intro}</DialogContentText>}
 
-    {dialog.content}
-        <DialogContentText>
-          asd
-            </DialogContentText>
+
+          {dialog.content}
+
           </DialogContent>
           <DialogActions>
-            <Button onClick={dialogHide} color="primary" autoFocus>
-              Agree
-            </Button>
+
+            {
+              dialog.buttons && dialog.buttons.map((item, idx) => <Button key={idx} onClick={item.action} color="primary" autoFocus>
+                {item.label}
+              </Button>)
+            }
+
             <Button onClick={dialogHide} color="secondary">
-              Close
+              Zamknij
             </Button>
+
           </DialogActions>
         </Dialog>
 
@@ -57,12 +62,16 @@ class ResponsiveDialog extends React.PureComponent {
 }
 
 ResponsiveDialog.defaultProps = {
-  dialog: {},
+  dialog: {
+    intro : null,
+    buttons : []
+  },
 };
 
 
 ResponsiveDialog.propTypes = {
   fullScreen: PropTypes.bool.isRequired,
+  name : PropTypes.string.isRequired
 };
 
 const enhance = compose(

@@ -12,11 +12,15 @@ export const RESOURCE_FETCH_ERROR = 'RESOURCE_FETCH_ERROR';
 export const RESOURCE_FETCH_END = 'RESOURCE_FETCH_END';
 
 
+export const CHANGE_LOCALE = 'CHANGE_LOCALE';
+
 export const SNACKBAR_SHOW = 'SNACKBAR_SHOW';
 export const SNACKBAR_HIDE = 'SNACKBAR_HIDE';
 
-export const DIALOG_SHOW = 'DIALOG_SHOW';
-export const DIALOG_HIDE = 'DIALOG_HIDE';
+export const DIALOG_SHOW    = 'DIALOG_SHOW';
+export const DIALOG_HIDE    = 'DIALOG_HIDE';
+export const DIALOG_MODIFY  = 'DIALOG_MODIFY';
+
 
 export const DRAWER_SHOW = 'DRAWER_SHOW';
 export const DRAWER_HIDE = 'DRAWER_HIDE';

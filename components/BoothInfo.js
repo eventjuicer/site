@@ -13,7 +13,7 @@ import SupportPeople from './SupportPeople'
 
 import Card from './MyCardSlim'
 
-import {cartItemAdd, boothSelect, resourceFetchRequest} from './redux/actions'
+import {resourceFetchRequest as resourceFetchRequestAction} from './redux/actions'
 
 
 const styles = (theme) => ({
@@ -33,25 +33,18 @@ class BoothInfo extends React.Component {
     this.props.resourceFetchRequest("tickets");
   }
 
-  addToCart = () =>
-  {
-    const { cartItemAdd, boothSelect, boothId} = this.props;
-    boothSelect(boothId);
-    cartItemAdd(123, 1);
-  }
 
   render()
   {
     const {formdata} = this.props;
 
-
-    return (<div>
+    return (
+      <div>
 
       {formdata && <Card title="nazwa firmy" text="opis" link="link" />}
 
       <SupportPeople />
 
-      <span onClick={this.addToCart}>DODAJ</span> grupa ticketow
     </div>)
   }
 
@@ -62,7 +55,7 @@ const enhance = compose(
   withStyles(styles),
   connect(state => ({
     boothsSelected : state.boothsSelected,
-  }), {cartItemAdd, boothSelect, resourceFetchRequest}
+  }), {resourceFetchRequest : resourceFetchRequestAction}
   )
 )
 

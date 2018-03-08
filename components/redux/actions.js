@@ -87,6 +87,14 @@ export function dialogShow(payload = {})
 	}
 }
 
+export function dialogModify(payload = {})
+{
+  return {
+		type: Types.DIALOG_MODIFY,
+		payload : payload
+	}
+}
+
 export function dialogHide()
 {
   return {
@@ -132,11 +140,12 @@ export function cartItemAdd(ticketId, quantity, formdata = {})
   }
 }
 
-export function cartItemRemove(ticketId)
+export function cartItemRemove(ticketId, formdata)
 {
   return {
     type : Types.CART_ITEM_REMOVE,
-    ticketId : ticketId
+    ticketId : ticketId,
+    formdata : formdata
   }
 }
 

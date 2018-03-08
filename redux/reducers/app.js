@@ -6,13 +6,21 @@ import {
   ROLE_RESET,
 	CART_ITEM_ADD,
 	CART_ITEM_REMOVE,
-	CART_RESET
+	CART_RESET,
+	CHANGE_LOCALE
 } from '../../components/redux/types'
 
-const reducer = (state = {role : "", cart : {}}, action) => {
+
+const allowedLocales = ["pl","en","de"]
+
+const reducer = (state = {role : "", cart : {}, locale : "pl"}, action) => {
 
 	switch (action.type)
 	{
+
+		case CHANGE_LOCALE:
+			return allowedLocales.indexOf(action.locale) > -1 ? {...state, locale : action.locale} : state
+		break
 
 		case ROLE_SELECT:
 			return {...state, role : action.role}

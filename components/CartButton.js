@@ -9,13 +9,17 @@ import Badge from 'material-ui/Badge';
 import Cart from './Cart';
 
 import {
-  dialogShow as dialogShowAction
+  dialogShow as dialogShowAction,
+  cartReset as cartResetAction
 } from './redux/actions'
 
-const CartButton = ({dialogShow, count, label}) => (
+const CartButton = ({dialogShow, cartReset, count, label}) => (
 
   <Badge color="error" badgeContent={count}>
-    <Button variant="raised" onClick={() => dialogShow({title: label, content : <Cart /> }) } color="inherit">{label}</Button>
+    <Button variant="raised" onClick={() => dialogShow({title: label, content : <Cart />, buttons : [
+      {label : "test", action : function(){ alert("asd"); } },
+        {label : "Wyczyść koszyk", action : function(){ cartReset();} }
+    ] }) } color="inherit">{label}</Button>
   </Badge>
 
 )
@@ -27,7 +31,8 @@ CartButton.defaultProps = {
 
 const enhance = compose(
   connect(null, {
-    dialogShow : dialogShowAction
+    dialogShow : dialogShowAction,
+    cartReset : cartResetAction
   }),
 )
 

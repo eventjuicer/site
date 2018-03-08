@@ -1,7 +1,7 @@
 
 
 import {delay} from 'redux-saga'
-import { all, call, put, take, fork, select, takeEvery, takeLatest, throttle} from 'redux-saga/effects';
+import { all, call, put, take, fork, select, cancel, takeEvery, takeLatest, throttle} from 'redux-saga/effects';
 import fetch from 'isomorphic-unfetch'
 
 import _keyBy from 'lodash/keyBy'
@@ -11,6 +11,7 @@ import {
 
   CART_ITEM_ADD,
   CART_ITEM_REMOVE,
+  CART_RESET,
 
   RESOURCE_FETCH_REQUESTED,
 
@@ -26,6 +27,7 @@ import {
 
 } from '../../components/redux/actions'
 
+import * as Selectors from './selectors'
 
 function* handleFetchRequests(actionData) {
 
@@ -51,17 +53,32 @@ function* handleFetchRequests(actionData) {
   }
 }
 
+function* updateDialogForQuickCheckout(actionData)
+{
+  yield cancel()
+}
+
 function* selectBoothWhenCartItemAdded(actionData){
   if("formdata" in actionData && "id" in actionData.formdata)
   {
     yield put(boothSelect(actionData.formdata.id));
   }
+  yield cancel()
 }
 
 function* unSelectBoothWhenCartItemRemoved(actionData){
-  yield put(boothsReset());
+  console.log(actionData)
+  if("formdata" in actionData && "id" in actionData.formdata)
+  {
+    yield put(boothUnselect(actionData.formdata.id));
+  }
+  yield cancel()
 }
 
+function* unSelectAllBooths()
+{
+    yield put(boothsReset());
+}
 
 
 
@@ -69,7 +86,9 @@ const rootSaga = function * root() {
   let sagaIndex = [
          //takeEvery(SNACKBAR_SHOW, handleLogoutFn),
       takeEvery(CART_ITEM_ADD, selectBoothWhenCartItemAdded),
+      takeEvery(CART_ITEM_ADD, updateDialogForQuickCheckout),
       takeEvery(CART_ITEM_REMOVE, unSelectBoothWhenCartItemRemoved),
+      takeEvery(CART_RESET, unSelectAllBooths),
       takeEvery(RESOURCE_FETCH_REQUESTED, handleFetchRequests)
   ];
 

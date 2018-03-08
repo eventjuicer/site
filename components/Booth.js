@@ -73,6 +73,10 @@ const Booth = ({status, data, classes, onClick, selected, styleId}) =>  (
       </li>
 )
 
+Booth.defaultProps = {
+  selected : false
+}
+
 Booth.propTypes = {
   styleId: PropTypes.number.isRequired,
   selected: PropTypes.bool.isRequired,
