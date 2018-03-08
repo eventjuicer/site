@@ -1,23 +1,29 @@
 
-
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import compose from 'recompose/compose'
 
-
-
 import { withStyles } from 'material-ui/styles';
+
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
+
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 
-import {drawerShow, boothsReset} from './redux/actions'
+const Cart = dynamic(import('./CartButton'))
 
-const styles = {
+//import Cart from './CartContainer'
+
+import {
+  drawerShow as drawerShowAction,
+  dialogShow as dialogShowAction
+} from './redux/actions'
+
+const styles = theme => ({
   root: {
     flexGrow: 1,
   },
@@ -28,6 +34,11 @@ const styles = {
   title: {
    cursor: 'pointer',
  },
+
+ badge: {
+  //  margin: theme.spacing.unit * 2,
+  },
+
  subtitle: {
   fontWeight : 300
 },
@@ -35,11 +46,13 @@ const styles = {
     marginLeft: -12,
     marginRight: 20,
   },
-};
+});
 
 function ButtonAppBar(props) {
 
-  const { classes, drawer, drawerShow, boothsReset } = props;
+  const { classes, drawer, drawerShow, dialogShow, cart } = props;
+
+  const noItems = Object.keys(cart).length;
 
   return (
     <div className={classes.root}>
@@ -56,8 +69,11 @@ function ButtonAppBar(props) {
           </Typography>
           </Link>
 
+          {noItems > 0 ?
 
-          <Button onClick={() => boothsReset() } color="inherit">Cart</Button>
+            <Cart count={noItems} />
+
+            : null }
 
         </Toolbar>
       </AppBar>
@@ -72,7 +88,13 @@ function ButtonAppBar(props) {
 
 
 const enhance = compose(
-  connect((state) => ({drawer : state.drawer}), {drawerShow, boothsReset}),
+  connect((state) => ({
+    //drawer : state.drawer,
+    cart : state.app.cart
+  }), {
+    drawerShow : drawerShowAction,
+    dialogShow : dialogShowAction
+  }),
   withStyles(styles)
 )
 

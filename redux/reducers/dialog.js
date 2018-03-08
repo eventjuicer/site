@@ -6,13 +6,8 @@ import {
 } from '../../components/redux/types'
 
 
-export const exampleInitialState = {
 
-}
-
-
-
-const reducer = (state = exampleInitialState, action) => {
+const reducer = (state = {}, action) => {
 
 
 	switch (action.type) {

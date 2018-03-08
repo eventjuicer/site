@@ -1,16 +1,85 @@
+
+
 import {delay} from 'redux-saga'
 import { all, call, put, take, fork, select, takeEvery, takeLatest, throttle} from 'redux-saga/effects';
 import fetch from 'isomorphic-unfetch'
 
+import _keyBy from 'lodash/keyBy'
 
 import {
   SNACKBAR_SHOW,
+
   CART_ITEM_ADD,
+  CART_ITEM_REMOVE,
+
   RESOURCE_FETCH_REQUESTED,
 
 } from '../../components/redux/types'
 
-import {resourceFetchSuccess, resourceFetchError} from '../../components/redux/actions'
+import {
+
+  resourceFetchSuccess,
+  resourceFetchError,
+  boothSelect,
+  boothUnselect,
+  boothsReset
+
+} from '../../components/redux/actions'
+
+
+function* handleFetchRequests(actionData) {
+
+  const url = `https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/${actionData.resource}`;
+  const response = yield call(fetch, url);
+  const data = yield call([response, response.json]);
+
+  if(response.ok && response.status >= 200 && "data" in data)
+  {
+    if(actionData.keyBy)
+    {
+      yield put(resourceFetchSuccess(actionData.resource, _keyBy(data.data, "id")));
+    }
+    else
+    {
+      yield put(resourceFetchSuccess(actionData.resource, data.data));
+    }
+
+  }
+  else
+  {
+    yield put(resourceFetchError(actionData.resource, response.status))
+  }
+}
+
+function* selectBoothWhenCartItemAdded(actionData){
+  if("formdata" in actionData && "id" in actionData.formdata)
+  {
+    yield put(boothSelect(actionData.formdata.id));
+  }
+}
+
+function* unSelectBoothWhenCartItemRemoved(actionData){
+  yield put(boothsReset());
+}
+
+
+
+
+const rootSaga = function * root() {
+  let sagaIndex = [
+         //takeEvery(SNACKBAR_SHOW, handleLogoutFn),
+      takeEvery(CART_ITEM_ADD, selectBoothWhenCartItemAdded),
+      takeEvery(CART_ITEM_REMOVE, unSelectBoothWhenCartItemRemoved),
+      takeEvery(RESOURCE_FETCH_REQUESTED, handleFetchRequests)
+  ];
+
+  yield all(sagaIndex);
+};
+
+export default rootSaga;
+
+
+
 
 
 
@@ -52,37 +121,3 @@ function * rootSaga () {
 
 
 }*/
-
-function* handleFetchRequests(actionData) {
-
-  const url = `https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/formdata`;
-  const response = yield call(fetch, url);
-  const data = yield call([response, response.json]);
-
-  if(response.ok && response.status >= 200 && "data" in data)
-  {
-    yield put(resourceFetchSuccess('formdata', data.data));
-  }
-  else
-  {
-    yield put(resourceFetchError('formdata', ''));
-  }
-}
-
-const handleLogoutFn = function* handleLogout(payload)
-{
-  alert("test");
-}
-
-
-const rootSaga = function * root() {
-  let sagaIndex = [
-         //takeEvery(SNACKBAR_SHOW, handleLogoutFn),
-        takeEvery(CART_ITEM_ADD, handleLogoutFn),
-        takeEvery(RESOURCE_FETCH_REQUESTED, handleFetchRequests)
-  ];
-
-  yield all(sagaIndex);
-};
-
-export default rootSaga;

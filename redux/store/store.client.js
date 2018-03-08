@@ -22,7 +22,7 @@ const sagaMiddleware = createSagaMiddleware()
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['boothsSelected']
+  whitelist: ['boothsSelected','app']
 }
 
 

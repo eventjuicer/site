@@ -5,14 +5,14 @@ import Button from 'material-ui/Button'
 import compose from 'recompose/compose';
 import { withStyles } from 'material-ui/styles';
 
-import {dialogShow} from '../redux/actions'
-import RegisterByRole from '../components/RegisterByRole'
+import {dialogShow} from './redux/actions'
+import RegisterByRole from './RegisterByRole'
 
 
 
 const RegisterButton = ({classes, dialogShow}) => (
 
-  <Button onClick={() => dialogShow({title : "asd", content : <RegisterByRole/>})}></Button>
+  <Button onClick={() => dialogShow({title : "asd", content : <RegisterByRole/>})}>REGISTER </Button>
 
 )
 

@@ -139,6 +139,11 @@ render()
 
     </Wrapper>
 
+    <Wrapper title="">
+      <RegisterButton />
+    </Wrapper>
+
+
     <Wrapper title={`Stoisko ${ selectedBoothNames.join(",") }`}>
       <Bookingmap booths={ booths } selected={selectedBoothIds} />
     </Wrapper>

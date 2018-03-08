@@ -1,3 +1,7 @@
+
+
+
+import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import classNames from 'classnames';
 import {onlyUpdateForKeys, compose} from 'recompose';
@@ -20,6 +24,12 @@ const styles = (theme) => ({
     margin:0,
     textAlign: 'center',
   },
+
+  style1 : {},
+  style2 : {},
+  style3 : {},
+  style4 : {},
+  style5 : {},
 
   boothHold : {
     backgroundColor: 'yellow',
@@ -49,14 +59,10 @@ const styles = (theme) => ({
 
 });
 
-const enhance = compose(
-  onlyUpdateForKeys(['status', 'selected']),
-  withStyles(styles)
-);
 
-const Booth = enhance(
-  ({status, data, classes, onClick, selected}) =>  (
-      <li onClick={() => onClick(data.id, data.g) } className={
+
+const Booth = ({status, data, classes, onClick, selected, styleId}) =>  (
+      <li onClick={() => onClick(data.id, data.g, data.ti) } className={
         classNames({
           [classes.booth] : true,
           [classes.boothSold] : status === "sold",
@@ -64,8 +70,24 @@ const Booth = enhance(
           [classes.boothSelected] : selected
         } )} style={{ height: data.dh, width: data.dw, top: data.dt, left: data.dl, lineHeight: `${data.dh}px`}}>
         <span className={classes.boothText}>{data.ti}</span>
-      </li>)
-  );
+      </li>
+)
 
+Booth.propTypes = {
+  styleId: PropTypes.number.isRequired,
+  selected: PropTypes.bool.isRequired,
+  onClick : PropTypes.func.isRequired,
+  status : PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool
+  ]),
+  data : PropTypes.object.isRequired,
+  classes : PropTypes.object.isRequired
+};
 
-export default Booth;
+const enhance = compose(
+  onlyUpdateForKeys(['status', 'selected']),
+  withStyles(styles)
+);
+
+export default enhance(Booth);

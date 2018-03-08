@@ -1,18 +1,19 @@
 
 
-
 import { withStyles } from 'material-ui/styles';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import compose from 'recompose/compose'
-
-import find from 'lodash/find';
-
-
-//import {translate} from '../i18n'
+import sortBy from 'lodash/sortBy';
 
 
-import {cartItemAdd, boothSelect, resourceFetchRequest} from './redux/actions'
+import {
+  FormLabel,
+  FormControl,
+  FormGroup,
+} from 'material-ui/Form';
 
+
+import Ticket from './Ticket'
 
 const styles = (theme) => ({
 
@@ -24,34 +25,21 @@ const styles = (theme) => ({
 
 
 
-class TicketGroup extends React.Component {
+const TicketGroup = ({ group, formdata  }) => {
 
-  componentDidMount()
-  {
-    this.props.resourceFetchRequest("tickets");
-  }
+  const sorted = sortBy(group.tickets, ["start"]);
 
-  addToCart = () =>
-  {
-    const { cartItemAdd, boothSelect, boothId} = this.props;
-    boothSelect(boothId);
-  }
+  return (
 
-  render()
-  {
-    return (<div><span onClick={this.addToCart}>DODAJ</span> grupa ticketow</div>)
-  }
+    <FormControl component="fieldset" fullWidth>
+    <FormLabel component="legend">Stoiska</FormLabel>
+    <FormGroup>
+    {sorted && sorted.map(ticket => <Ticket key={ticket.id} ticket={ticket} formdata={formdata} />)}
+   </FormGroup>
+   </FormControl>
+  )
 
 }
 
-const enhance = compose(
-//  translate,
-  withStyles(styles),
-  connect(state => ({
-    boothsSelected : state.boothsSelected,
-    formdata : state.resources.formdata
-  }), {cartItemAdd, boothSelect, resourceFetchRequest}
-  )
-)
 
-export default enhance(TicketGroup);
+export default withStyles(styles)(TicketGroup);

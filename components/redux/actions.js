@@ -19,11 +19,12 @@ export function roleReset()
 
 
 
-export function resourceFetchRequest(resource)
+export function resourceFetchRequest(resource, keyBy = false)
 {
   return {
 		type: Types.RESOURCE_FETCH_REQUESTED,
-		resource : resource
+		resource : resource,
+    keyBy : keyBy
 	}
 }
 
@@ -78,7 +79,7 @@ export function drawerHide()
 
 
 
-export function dialogShow(payload)
+export function dialogShow(payload = {})
 {
   return {
 		type: Types.DIALOG_SHOW,
@@ -121,11 +122,27 @@ export function boothsReset()
 }
 
 
-export function cartItemAdd(ticketId, quantity)
+export function cartItemAdd(ticketId, quantity, formdata = {})
 {
   return {
     type : Types.CART_ITEM_ADD,
     ticketId : ticketId,
-    quantity : quantity
+    quantity : quantity,
+    formdata : formdata
+  }
+}
+
+export function cartItemRemove(ticketId)
+{
+  return {
+    type : Types.CART_ITEM_REMOVE,
+    ticketId : ticketId
+  }
+}
+
+export function cartReset()
+{
+  return {
+    type : Types.CART_RESET
   }
 }

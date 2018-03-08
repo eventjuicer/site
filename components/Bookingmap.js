@@ -15,7 +15,10 @@ const TicketGroup = dynamic(import('./TicketGroup'))
 
 import Booth from './Booth';
 
-import {dialogShow, resourceFetchRequest} from './redux/actions'
+import {
+  dialogShow as dialogShowAction,
+  resourceFetchRequest as resourceFetchRequestAction
+} from './redux/actions'
 
 
 const styles = (theme) => ({
@@ -52,21 +55,19 @@ const styles = (theme) => ({
 
 
 
-class Bookingmap extends React.Component {
-
-state = {
-  formdata : [],
-}
+class Bookingmap extends React.PureComponent {
 
 componentDidMount()
 {
-  this.props.resourceFetchRequest("formdata");
+  this.props.resourceFetchRequest("formdata", true);
+  this.props.resourceFetchRequest("ticketgroups", true);
+
 }
 
 getStatus(boothId)
 {
   const { formdata } = this.props;
-  return find(formdata, {id : boothId});
+  return formdata[boothId];
 }
 
 getStatusShort(boothId)
@@ -79,17 +80,20 @@ getStatusShort(boothId)
   return false;
 }
 
-onBoothClick = (boothId, groupId) => {
+getTicketsForGroupId(groupId)
+{
+  const { ticketgroups } = this.props;
+  return ticketgroups[groupId];
+}
 
-    const { dialogShow, boothSelect, boothUnselect } = this.props;
+onBoothClick = (boothId, groupId, label) => {
+
+    const { dialogShow } = this.props;
+
     const boothIsBlocked = this.getStatusShort(boothId);
 
     let modalTitle = "";
     let modalContent = "";
-
-    // console.log( boothId );
-    // console.log( groupId );
-    // console.log( status );
 
     switch(boothIsBlocked)
     {
@@ -102,12 +106,10 @@ onBoothClick = (boothId, groupId) => {
         modalContent =  <BoothInfo formdata={this.getStatus(boothId)} />
       break;
       default:
+        /* THERE IS NOW FORMDATA FOR UNSOLD BOOTHS!!!! */
         modalTitle = `To stoisko jest wolne`
-        modalContent = <TicketGroup groupId={groupId} boothId={boothId} />
-
+        modalContent = <TicketGroup group={this.getTicketsForGroupId(groupId)} formdata={ {id : boothId, ti : label} } />
     }
-
-
 
      dialogShow({title: modalTitle, content : modalContent});
 
@@ -116,17 +118,13 @@ onBoothClick = (boothId, groupId) => {
 isBoothSelected(boothId){
 
   const { boothsSelected, selected } = this.props;
-  return boothsSelected.indexOf(boothId) > -1 || (selected && selected.indexOf(boothId) > -1);
+  return (boothsSelected && boothsSelected.indexOf(boothId) > -1) || (selected && selected.indexOf(boothId) > -1);
 
 }
 
 render()
 {
-
   const { booths, classes } = this.props;
-
-  //console.log(this.props);
-
   return (
 
 <div className={classes.scrollableContainer}>
@@ -134,10 +132,9 @@ render()
 <div className={classes.container} style={{background : `url(${booths.mapsource})`}}>
 <ul className={classes.booths}>
       {booths.booths && booths.booths.map(booth =>
-        <Booth selected={this.isBoothSelected(booth.id)} onClick={this.onBoothClick} status={this.getStatusShort(booth.id)} key={booth.id} data={booth} />
+        <Booth styleId={1} selected={this.isBoothSelected(booth.id)} onClick={this.onBoothClick} status={this.getStatusShort(booth.id)} key={booth.id} data={booth} />
       )}
 </ul>
-
 </div>
 }
 </div>
@@ -151,8 +148,12 @@ const enhance = compose(
   withStyles(styles),
   connect(state => ({
     boothsSelected : state.boothsSelected,
-    formdata : state.resources.formdata
-  }), {dialogShow, resourceFetchRequest}
+    formdata : state.resources.formdata,
+    ticketgroups : state.resources.ticketgroups
+  }), {
+    dialogShow : dialogShowAction ,
+    resourceFetchRequest : resourceFetchRequestAction
+  }
   )
 )
 

@@ -12,8 +12,14 @@ const reducer = (state = [], action) => {
 
 //  const arr = state
 
-	switch (action.type) {
+	switch (action.type){
+
+		/*prevent double select*/
 		case BOOTH_SELECT:
+			if(state.indexOf(action.payload) > -1)
+			{
+				return state;
+			}
 			return [...state, action.payload]
 		break;
 		case BOOTH_UNSELECT:
