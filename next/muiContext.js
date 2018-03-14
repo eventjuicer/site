@@ -1,11 +1,19 @@
 import { SheetsRegistry } from 'react-jss';
 import { createMuiTheme, createGenerateClassName } from 'material-ui/styles';
-import blue from 'material-ui/colors/blue';
+import red from 'material-ui/colors/red';
 import grey from 'material-ui/colors/grey';
 
+
 const theme = createMuiTheme({
+
+  typography : {
+    fontFamily: "'Lato', 'Helvetica', 'Arial', sans-serif",
+    button : {
+      fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif"
+    }
+  },
   palette: {
-    primary: { main: blue[700] },
+    primary: { main: red[500] },
     secondary: { main: grey[700] },
   },
 });

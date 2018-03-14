@@ -1,5 +1,5 @@
 
-
+import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import fetch from 'isomorphic-unfetch'
 import reduxPage from '../redux/store'
@@ -7,6 +7,8 @@ import Layout from '../layouts/main';
 
 import {Wrapper, Avatarlist, Bookingmap, Hero, Googlemap} from '../components'
 
+//const Gallery = dynamic(import('../components/GalleryQuoted'))
+import Gallery from '../components/GalleryQuoted'
 
 class Index extends React.Component {
 
@@ -58,11 +60,13 @@ class Index extends React.Component {
       <Wrapper title="Zarezerwuj stoisko!">
         <Bookingmap booths={ booths } />
       </Wrapper>
-   
 
-        {/* <Wrapper title="Wystawcy">
+
+        <Wrapper title="Wystawcy">
         <Avatarlist data={ exhibitors } />
-        </Wrapper> */}
+        </Wrapper>
+
+        <Gallery />
 
       {/* <Googlemap /> */}
 

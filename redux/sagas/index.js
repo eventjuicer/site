@@ -7,6 +7,7 @@ import fetch from 'isomorphic-unfetch'
 import _keyBy from 'lodash/keyBy'
 
 import {
+
   SNACKBAR_SHOW,
 
   CART_ITEM_ADD,
@@ -14,6 +15,7 @@ import {
   CART_RESET,
 
   RESOURCE_FETCH_REQUESTED,
+  RESOURCE_FETCH_ERROR
 
 } from '../../components/redux/types'
 
@@ -23,7 +25,8 @@ import {
   resourceFetchError,
   boothSelect,
   boothUnselect,
-  boothsReset
+  boothsReset,
+  snackbarShow
 
 } from '../../components/redux/actions'
 
@@ -80,6 +83,10 @@ function* unSelectAllBooths()
     yield put(boothsReset());
 }
 
+function* handleFetchErrors(actionData)
+{
+  yield put(snackbarShow(actionData.payload));
+}
 
 
 const rootSaga = function * root() {
@@ -89,7 +96,8 @@ const rootSaga = function * root() {
       takeEvery(CART_ITEM_ADD, updateDialogForQuickCheckout),
       takeEvery(CART_ITEM_REMOVE, unSelectBoothWhenCartItemRemoved),
       takeEvery(CART_RESET, unSelectAllBooths),
-      takeEvery(RESOURCE_FETCH_REQUESTED, handleFetchRequests)
+      takeEvery(RESOURCE_FETCH_REQUESTED, handleFetchRequests),
+      takeEvery(RESOURCE_FETCH_ERROR, handleFetchErrors)
   ];
 
   yield all(sagaIndex);

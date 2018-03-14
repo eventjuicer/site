@@ -8,7 +8,9 @@ import {
 
 export const initialState = {
 	formdata : [],
-	ticketgroups : []
+	ticketgroups : [],
+	tickets : [],
+	photos : []
 }
 
 const reducer = (state = initialState, action) => {

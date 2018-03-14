@@ -12,6 +12,8 @@ import compose from 'recompose/compose'
 const BoothInfo = dynamic(import('./BoothInfo'))
 const SupportPeople = dynamic(import('./SupportPeople'))
 const TicketGroup = dynamic(import('./TicketGroup'))
+const TicketGroupsInfo = dynamic(import('./TicketGroupsInfo'))
+
 
 import Booth from './Booth';
 
@@ -31,17 +33,30 @@ const styles = (theme) => ({
     height: 600,
     whiteSpace:'nowrap',
   },
+
+
   container : {
 
     position : 'relative',
     margin: '0px auto',
     padding: 0,
-    border: '1px solid rgb(234, 234, 234)',
+    // border: '1px solid rgb(234, 234, 234)',
+    width: 1170,
+    height: '100%',
+
+
+  },
+
+  bg : {
+    position: 'absolute',
+    filter : 'grayscale(90%)',
+    top: 0,
+    left: 0,
     width: 1170,
     height: '100%',
     backgroundPosition: 'left top',
     backgroundRepeat: 'no-repeat no-repeat',
-
+    zIndex : 1000,
   },
 
   booths : {
@@ -49,6 +64,7 @@ const styles = (theme) => ({
     listStyleType : 'none',
     padding:0,
     margin:0,
+    zIndex : 1001,
   },
 
 });
@@ -115,7 +131,11 @@ onBoothClick = (boothId, groupId, label) => {
 
     }
 
-    dialogShow({title: modalTitle, content : modalContent, buttons : modalButtons});
+    dialogShow({
+      title: modalTitle,
+      content : modalContent,
+      buttons : modalButtons
+    });
 
 }
 
@@ -135,8 +155,9 @@ render()
   return (
 
 <div className={classes.scrollableContainer}>
-  {booths && ("mapsource" in booths) &&
-<div className={classes.container} style={{background : `url(${booths.mapsource})`}}>
+{booths && ("mapsource" in booths) &&
+<div className={classes.container}>
+<div className={classes.bg} style={{background : `url(${booths.mapsource})`}}></div>
 <ul className={classes.booths}>
       {booths.booths && booths.booths.map(booth =>
         <Booth styleId={1} selected={this.isBoothSelected(booth.id)} onClick={this.onBoothClick} status={this.getStatusShort(booth.id)} key={booth.id} data={booth} />
@@ -144,6 +165,7 @@ render()
 </ul>
 </div>
 }
+<TicketGroupsInfo />
 </div>
 )
 }

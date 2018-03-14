@@ -15,7 +15,7 @@ import {
 
 const CartButton = ({dialogShow, cartReset, count, label}) => (
 
-  <Badge color="error" badgeContent={count}>
+  <Badge color="secondary" badgeContent={count}>
     <Button variant="raised" onClick={() => dialogShow({title: label, content : <Cart />, buttons : [
       {label : "test", action : function(){ alert("asd"); } },
         {label : "Wyczyść koszyk", action : function(){ cartReset();} }

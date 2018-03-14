@@ -2,6 +2,9 @@
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import GridList, { GridListTile } from 'material-ui/GridList';
+import withWidth from 'material-ui/utils/withWidth';
+import compose from 'recompose/compose'
+
 
 const styles = theme => ({
   root: {
@@ -13,12 +16,55 @@ const styles = theme => ({
   },
   gridList: {
     // width: 500,
-     height: 450,
+     height: 600,
   },
   subheader: {
     width: '100%',
   },
+
+  quote : {
+
+  }
 });
+
+
+/*
+
+#container {
+    	height: 200px;
+    	width: 800px;
+    	border: 1px solid #333;
+    	overflow: hidden;
+    	margin: 25px auto;
+    }
+
+    #box {
+    	background: orange;
+    	height: 180px;
+    	width: 400px;
+    	margin: 10px -400px;
+    	-webkit-animation-name: move;
+    	-webkit-animation-duration: 4s;
+    	-webkit-animation-iteration-count: infinite;
+    	-webkit-animation-direction: right;
+    	-webkit-animation-timing-function: linear;
+    }
+
+    #box:hover {
+    	-webkit-animation-play-state: paused;
+    }
+
+    @-webkit-keyframes move {
+    	0% {
+    		margin-left: -400px;
+    	}
+    	100% {
+    		margin-left: 800px;
+    	}
+    }
+
+*/
+
 
 const tileData = [
 
@@ -43,7 +89,7 @@ const tileData = [
       img: "https://scontent-waw1-1.xx.fbcdn.net/v/t31.0-8/23668996_2008366882506641_675688552415028094_o.jpg?oh=ab6c4cf1823fea24221fe03484512163&oe=5B115474",
       title: 'Image',
       author: 'author',
-      cols: 1,
+      cols: 2,
     },
 
     {
@@ -67,7 +113,7 @@ const tileData = [
       img: "https://scontent-waw1-1.xx.fbcdn.net/v/t31.0-8/23669145_2008368925839770_6215038177022110504_o.jpg?oh=aff0ee07d193af7986b4bb72fade7ce0&oe=5B4E52CC",
       title: 'Image',
       author: 'author',
-      cols: 1,
+      cols: 2,
     },
 
     {
@@ -89,16 +135,44 @@ const tileData = [
  ];
 
 
-function ImageGridList(props) {
+ const isBigScreen = (width) => {
+   return width === "lg" || width === "xl"
+ }
 
-  const { classes } = props;
+const Quote = (props) => (
+  <div className="quote">
+
+  <p><em> ale fajne targi! </em> </p>
+
+<style jsx>{`
+  .quote {
+  background : black
+   padding: 3em
+   width: 100%
+   height: 100%
+  }
+
+  p {
+     color: white
+     fontSize: 2em
+  }
+
+  em {
+      fontStyle: italic
+  }
+`}</style>
+</div>)
+
+const Gallery = ({ classes, width }) => {
+
+  console.log(width)
 
   return (
     <div className={classes.root}>
-      <GridList cellHeight={160} className={classes.gridList} cols={3}>
-        {tileData.map(tile => (
+      <GridList cellHeight={400} className={classes.gridList} cols={isBigScreen(width) ? 6 : 3}>
+        {tileData.map((tile, idx) => (
           <GridListTile key={tile.id} cols={tile.cols || 1}>
-            <img src={tile.img} alt={tile.title} />
+            {idx % 2 ==0 ? <img src={tile.img} alt={tile.title} /> : <Quote />}
           </GridListTile>
         ))}
       </GridList>
@@ -106,8 +180,14 @@ function ImageGridList(props) {
   );
 }
 
-ImageGridList.propTypes = {
+Gallery.propTypes = {
   classes: PropTypes.object.isRequired,
+  width : PropTypes.string.isRequired
 };
 
-export default withStyles(styles)(ImageGridList);
+const enhance = compose(
+  withWidth(),
+  withStyles(styles)
+)
+
+export default enhance(Gallery);

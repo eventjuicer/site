@@ -1,9 +1,9 @@
-import React from 'react';
+
 import PropTypes from 'prop-types';
 import { MuiThemeProvider } from 'material-ui/styles';
 import Reboot from 'material-ui/Reboot';
 
-import getContext from './context';
+import getContext from './muiContext';
 //import Header from '../components/Header';
 
 function withMui(BaseComponent) {
@@ -27,9 +27,8 @@ function withMui(BaseComponent) {
           sheetsManager={this.pageContext.sheetsManager}
         >
           <Reboot />
-          <div>
-            <BaseComponent {...this.props} />
-          </div>
+          <BaseComponent {...this.props} />
+
         </MuiThemeProvider>
       );
     }

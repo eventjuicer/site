@@ -4,6 +4,7 @@
 import { withStyles } from 'material-ui/styles';
 import IconButton from 'material-ui/IconButton';
 import PlayArrowIcon from 'material-ui-icons/PlayArrow';
+import Button from 'material-ui/Button';
 
 
 import Card from './MyCardSlim'
@@ -20,4 +21,6 @@ const Buttons = withStyles(styles)((props) => <IconButton aria-label="Contact">
   <PlayArrowIcon className={props.classes.icon} />
 </IconButton>)
 
-export default () => (<div><Card title="kto pomoze?" text="ja pomoge" link={<Buttons />} /></div>)
+export default () => (<div>
+  <Card title="Bartek Meller" text="Być może jestem w stanie coś doradzić?" link={<Button variant="raised" color="primary">Chat</Button>} />
+</div>)

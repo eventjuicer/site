@@ -1,5 +1,9 @@
 import { withStyles } from 'material-ui/styles';
-import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
+import Card, {
+  CardActions,
+//  CardContent,
+  CardMedia
+} from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import {pure, compose} from 'recompose';
 
@@ -7,22 +11,28 @@ const styles = {
   card: {
   //  maxWidth: 345,
   },
-  media: {
-    height: 200,
-  },
+
+  centered : {
+  //  textAlign : 'center'
+  }
 };
 
+
+
 function SimpleMediaCard(props) {
-  const { classes, link, title, text } = props;
+  const { classes, media, src, name, id } = props;
   return (
-    <div>
-      <Card className={classes.card}>
+
+      <Card elevation={0} raised={false} className={classes.card}>
+
         <CardMedia
-          className={classes.media}
-      //    image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
+          component={media}
+          name={name}
+          id={id}
+          src={src}
+          dupa={src}
         />
-        <CardContent>
+        {/* <CardContent>
           <Typography variant="headline" component="h2">
             {title}
           </Typography>
@@ -31,16 +41,18 @@ function SimpleMediaCard(props) {
             Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
             across all continents except Antarctica
           </Typography>
-        </CardContent>
-        <CardActions>
+        </CardContent> */}
+        {/* <CardActions className={classes.centered}>
           {link}
-        </CardActions>
+        </CardActions> */}
       </Card>
-    </div>
+
   );
 }
 
-const enhanced = compose(pure, withStyles(styles));
+const enhanced = compose(
+  withStyles(styles)
+);
 
 // SimpleMediaCard.propTypes = {
 //   classes: PropTypes.object.isRequired,

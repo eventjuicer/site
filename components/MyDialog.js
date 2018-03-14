@@ -71,7 +71,7 @@ ResponsiveDialog.defaultProps = {
 
 ResponsiveDialog.propTypes = {
   fullScreen: PropTypes.bool.isRequired,
-  name : PropTypes.string.isRequired
+//  name : PropTypes.string.isRequired
 };
 
 const enhance = compose(

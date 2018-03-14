@@ -1,9 +1,8 @@
+
 import Document, { Head, Main, NextScript } from 'next/document'
 import flush from 'styled-jsx/server'
 import JssProvider from 'react-jss/lib/JssProvider'
-import getContext from '../next/context';
-
-
+import getContext from '../next/muiContext';
 
 class MyDocument extends Document {
 
@@ -15,26 +14,25 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <html lang="en">
-        <Head>
-          <link
-           rel="shortcut icon"
-           href="https://storage.googleapis.com/builderbook/favicon32.png"
-         />
-         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500" />
-         <meta charSet="utf-8" />
-         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-         <meta name="google" content="notranslate" />
-         <script src="https://use.fontawesome.com/6de33398df.js"></script>
-         <style>{`body { margin: 0 } /* custom! */`}</style>
-        </Head>
-        <body className="custom_class">
+    <html lang="en">
+      <Head>
+        <link
+        rel="shortcut icon"
+        href="https://storage.googleapis.com/builderbook/favicon32.png"
+        />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,500" />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="google" content="notranslate" />
+        <script src="https://use.fontawesome.com/6de33398df.js"></script>
+      </Head>
 
-          {this.props.customValue}
-          <Main />
-          <NextScript />
-         </body>
-      </html>
+      <body className="eventjuicer_site">
+        {this.props.customValue}
+        <Main />
+        <NextScript />
+      </body>
+    </html>
     )
   }
 }

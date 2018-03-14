@@ -57,7 +57,7 @@ render()
   const data = filterCompanyInstances(company.instances, eventId);
   const selectedBoothIds = _map(data, 'formdata.id');
   const selectedBoothNames = _map(data, 'formdata.ti');
-  const {company_description, test} = company.fields;
+
 
 //  console.log(company);
 
@@ -86,16 +86,7 @@ render()
 
           <div>
 
-
-
-
-
-            {test && <div>test OK</div>}
-
             <Typography.H1>  {_get(company, "fields.cname2")} </Typography.H1>
-
-
-
 
 
             <Typography.Section>

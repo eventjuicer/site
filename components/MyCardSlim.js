@@ -40,7 +40,7 @@ function MediaControlCard(props) {
 
         <CardMedia
           className={classes.cover}
-          image="https://material-ui-next.com/static/images/cards/live-from-space.jpg"
+          image="/static/support.jpg"
           title="speak english"
         />
 

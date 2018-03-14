@@ -87,7 +87,7 @@ export function dialogShow(payload = {})
 	}
 }
 
-export function dialogModify(payload = {})
+export function dialogModify(name, value)
 {
   return {
 		type: Types.DIALOG_MODIFY,

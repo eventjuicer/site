@@ -8,5 +8,5 @@ import resources from './resources'
 import snackbar from './snackbar'
 import drawer from './drawer'
 import app from './app'
-
-export default { app, dialog, snackbar, boothsSelected, resources, drawer }
+import services from './services'
+export default { app, dialog, snackbar, services, boothsSelected, resources, drawer }

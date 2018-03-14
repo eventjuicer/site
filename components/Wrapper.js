@@ -14,7 +14,7 @@ const styles = () => ({
     title : {
       fontSize : '3rem',
       textTransform: 'uppercase',
-      fontWeight : 100,
+      fontWeight : 500,
       marginBottom: '2rem',
       textAlign: 'center'
     },

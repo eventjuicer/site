@@ -51,6 +51,11 @@ class Ticket extends React.PureComponent {
 
     const {ticket} = this.props;
 
+    if(!ticket)
+    {
+      return null;
+    }
+
     return (
 
           <FormGroup>

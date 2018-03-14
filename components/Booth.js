@@ -52,8 +52,8 @@ const styles = (theme) => ({
     display: 'inline-block',
     verticalAlign: 'middle',
     lineHeight : 'normal',
-    fontWeight: 700,
-    fontFamily : 'Roboto, arial, sans-serif',
+    fontWeight: 600,
+    fontFamily : "verdana, arial, sans-serif",
     fontSize: 9,
   }
 

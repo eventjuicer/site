@@ -29,7 +29,7 @@ class TicketGroup extends React.PureComponent {
   checkIfHasBookableTickets()
   {
       const { group  } = this.props;
-      return group.tickets.filter(ticket => ticket.bookable).length;
+      return (group.tickets || []).filter(ticket => ticket && ticket.bookable).length;
   }
 
 
@@ -47,7 +47,7 @@ class TicketGroup extends React.PureComponent {
         <FormControl component="fieldset" fullWidth margin="normal">
 
       <FormLabel component="legend">{label}</FormLabel>
-      
+
       {sorted && sorted.map(ticket => <Ticket key={ticket.id} ticket={ticket} formdata={formdata} />)}
 
      </FormControl>

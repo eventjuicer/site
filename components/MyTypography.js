@@ -5,10 +5,17 @@ import classNames from 'classnames'
 const styles = theme  => ({
 
 
+  bigListItem : {
+
+  },
+
+
+
+
   h2 : {
     fontSize : '3rem',
     textTransform: 'uppercase',
-    fontWeight : 100,
+    fontWeight : 300,
     marginBottom: '2rem',
   //  textAlign: 'center'
   },
@@ -26,6 +33,8 @@ const styles = theme  => ({
 
 });
 
+
+export const BigListItem = withStyles(styles)((props) => (<Typography gutterBottom variant="subheading" component="h3" color="error" className={props.classes.bigListItem}>{props.children}</Typography>))
 
 export const H1C = withStyles(styles)((props) => (<Typography variant="headline" component="h2" className={classNames(props.classes.h2, props.classes.centered)}>{props.children}</Typography>))
 
