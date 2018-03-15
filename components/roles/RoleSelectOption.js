@@ -10,7 +10,7 @@ import InboxIcon from 'material-ui-icons/MoveToInbox';
 
 
 
-import {roleSelect} from '../redux/actions'
+import {dialogShow, roleSelect} from '../redux/actions'
 
 
 
@@ -36,20 +36,27 @@ const styles = theme => ({
 
 
 
-const RoleSelectOption = ({role, roleSelect, classes, text}) => (
+const RoleSelectOption = ({role, dialogShow, roleSelect, classes}) => {
 
-  <MenuItem onClick={() => roleSelect(role) } className={classes.menuItem}>
-    <ListItemIcon className={classes.icon}>
-        <InboxIcon />
-      </ListItemIcon>
-      <ListItemText classes={{ primary: classes.primary }} inset primary={text} />
-  </MenuItem>
+  const Component = role.component;
 
-)
+  return (
+    <MenuItem onClick={() => roleSelect(role.role) && dialogShow({title: "test", content : <Component />}) } className={classes.menuItem}>
+      <ListItemIcon className={classes.icon}>
+          <InboxIcon />
+        </ListItemIcon>
+        <ListItemText classes={{ primary: classes.primary }} inset primary={role.text} />
+    </MenuItem>
+  )
+}
+
+
+
+
 
 
 const enhance = compose(
-  connect(null, {roleSelect}),
+  connect(null, {dialogShow, roleSelect}),
   withStyles(styles)
 )
 

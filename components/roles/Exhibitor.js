@@ -2,7 +2,7 @@ import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
 
-import Wrapper from './Wrapper'
+//import Wrapper from './Wrapper'
 import SupportPeople from '../SupportPeople'
 
 const styles = theme => ({
@@ -19,7 +19,7 @@ const styles = theme => ({
 
 const Exhibitor = (props) => (
 
-  <Wrapper>
+  // <Wrapper>
 
     <Grid container spacing={8} justify="space-around">
 
@@ -43,7 +43,7 @@ const Exhibitor = (props) => (
 
     </Grid>
 
-  </Wrapper>
+  // </Wrapper>
 
 )
 

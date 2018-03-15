@@ -1,6 +1,6 @@
 
 import { withStyles } from 'material-ui/styles';
-import Wrapper from './Wrapper'
+//import Wrapper from './Wrapper'
 
 
 import Grid from 'material-ui/Grid';
@@ -21,7 +21,7 @@ const styles = theme => ({
 
 const Visitor = (props) => (
 
-  <Wrapper>
+
 
   <Grid container spacing={8} justify="space-around">
 
@@ -44,7 +44,7 @@ const Visitor = (props) => (
 
   </Grid>
 
-    </Wrapper>
+
 
 )
 

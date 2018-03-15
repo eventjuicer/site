@@ -1,6 +1,11 @@
 import { withStyles } from 'material-ui/styles';
 //import withWidth from 'material-ui/utils/withWidth';
-import Roles from './roles'
+import RoleSelect from './roles'
+import dynamic from 'next/dynamic'
+
+
+const Visitor = dynamic(import("./roles/Visitor"))
+const Exhibitor = dynamic(import("./roles/Exhibitor"))
 
 const styles = theme => ({
 
@@ -42,7 +47,15 @@ const Hero = ({videoSrc, classes}) => (
       <source src={videoSrc} type="video/mp4" />
     </video>
     <div className={classes.overlay}>
-      <Roles />
+
+      <RoleSelect
+        
+        roles={[
+          {role: "exhibitor", text : "Chcę zostać wystawcą", component : Exhibitor},
+          {role : "visitor", text : "Chcę zwiedzać targi", component : Visitor}
+      ]}
+      />
+
     </div>
   </section>
 
