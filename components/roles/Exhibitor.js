@@ -2,8 +2,7 @@ import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
 
-import Gallery from './Gallery'
-import Layout from './WelcomeWrapper'
+import Wrapper from './Wrapper'
 
 
 const styles = theme => ({
@@ -20,14 +19,15 @@ const styles = theme => ({
 
 const Exhibitor = (props) => (
 
-  <Layout>
+  <Wrapper>
 
     <Grid container spacing={8} justify="space-around">
 
          <Grid item xs={10} sm={6} md={4} lg={4} xl={4} >
 
            <Paper zdepth={2}>
-               <Gallery />
+
+            
            </Paper>
          </Grid>
 
@@ -35,20 +35,16 @@ const Exhibitor = (props) => (
 
 
           <Paper zdepth={2}>
-            <Gallery />
+
           </Paper>
 
          </Grid>
 
     </Grid>
 
-  </Layout>
+  </Wrapper>
 
 )
-
-
-
-
 
 
 

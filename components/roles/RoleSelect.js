@@ -1,86 +1,30 @@
 
 
-import { connect } from 'react-redux';
-import compose from 'recompose/compose'
-
-
 import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import Slide from 'material-ui/transitions/Slide';
-import { MenuItem, MenuList } from 'material-ui/Menu';
-import { ListItemIcon, ListItemText } from 'material-ui/List';
-import InboxIcon from 'material-ui-icons/MoveToInbox';
-
-import {roleSelect} from './redux/actions'
+import { MenuList } from 'material-ui/Menu';
+import RoleSelectOption from './RoleSelectOption'
 
 const styles = theme => ({
-
-
   list: {
      width: '50%',
   // maxWidth: 360,
      backgroundColor: theme.palette.background.paper,
      opacity: 0.9
    },
-
   h1 : {
-    fontSize : '6vh',
+    fontSize : '5rem',
     textTransform: 'uppercase',
     fontWeight : 900,
     color: 'white'
   },
-
   texts : {
-
     marginTop: '10vh'
-
   },
-
-  headingSmaller : {
-    // fontSize : '5vh',
-    // textTransform: 'uppercase',
-    // fontWeight : 900,
-    // color: 'white'
-  },
-
-  menuItem: {
-    '&:focus': {
-      backgroundColor: theme.palette.primary.main,
-      '& $primary, & $icon': {
-        color: theme.palette.common.white,
-      },
-    },
-  },
-  primary: {},
-  icon: {},
-
-  icon : {}
-
 });
 
-
-
-
-const Option = compose(
-  connect(null, {roleSelect}),
-  withStyles(styles)
-)(
-  ({role, roleSelect, classes, text}) => (
-
-  <MenuItem onClick={() => roleSelect(role) } className={classes.itemClass}>
-
-    <ListItemIcon className={classes.icon}>
-        <InboxIcon />
-      </ListItemIcon>
-      <ListItemText classes={{ primary: classes.primary }} inset primary={text} />
-
-  </MenuItem>
-
-))
-
-
-
-class Welcome extends React.Component {
+class RoleSelect extends React.Component {
 
 
   state = {
@@ -94,7 +38,7 @@ class Welcome extends React.Component {
   runNext()
   {
 
-  this.setState({second : true})  
+  this.setState({second : true})
   }
 
   showOptions(){
@@ -135,7 +79,7 @@ class Welcome extends React.Component {
 
       <Slide in={true} style={{ transitionDelay:  1000 }}>
           <MenuList className={classes.list}>
-        {items && items.map((item, idx) => <Option key={idx} role={item.role} text={item.text} /> )}
+        {items && items.map((item, idx) => <RoleSelectOption key={idx} role={item.role} text={item.text} /> )}
       </MenuList>
       </Slide>
    }
@@ -150,4 +94,4 @@ class Welcome extends React.Component {
 
 
 
-export default withStyles(styles)(Welcome)
+export default withStyles(styles)(RoleSelect)

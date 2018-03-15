@@ -89,6 +89,15 @@ class Company extends React.Component {
     this.setState({ tabContent });
   }
 
+  renderTabs()
+  {
+
+  }
+
+  renderTabContent()
+  {
+
+  }
 
   render()
   {
@@ -113,7 +122,7 @@ class Company extends React.Component {
           scrollButtons="auto"
       >
       {
-        Object.keys(tabContent).map(name => <Tab value={name} label={name} />)
+        Object.keys(tabContent).map((name, idx) => <Tab key={idx} value={name} label={name} />)
       }
 
         <Tab value="contact" label="Kontakt" />

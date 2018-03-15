@@ -1,7 +1,6 @@
 
-import Gallery from './Gallery'
 import { withStyles } from 'material-ui/styles';
-import Layout from './WelcomeWrapper'
+import Wrapper from './Wrapper'
 
 
 import Grid from 'material-ui/Grid';
@@ -20,9 +19,9 @@ const styles = theme => ({
 
 
 
-const Exhibitor = (props) => (
+const Visitor = (props) => (
 
-  <Layout>
+  <Wrapper>
 
   <Grid container spacing={8} justify="space-around">
 
@@ -38,7 +37,6 @@ const Exhibitor = (props) => (
 
         <Paper zdepth={2}>
 
-          <Gallery />
 
         </Paper>
 
@@ -46,7 +44,7 @@ const Exhibitor = (props) => (
 
   </Grid>
 
-    </Layout>
+    </Wrapper>
 
 )
 
@@ -56,4 +54,4 @@ const Exhibitor = (props) => (
 
 
 
-export default withStyles(styles)(Exhibitor)
+export default withStyles(styles)(Visitor)
