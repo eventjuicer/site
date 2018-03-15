@@ -30,7 +30,7 @@ const styles = theme => ({
     top: 0,
     left: 0,
     right: 0,
-    padding: '5vh'
+    padding: '1rem'
   },
 
 });

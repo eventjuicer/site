@@ -10,8 +10,8 @@ import {roleReset} from '../redux/actions'
 const styles = theme => ({
   paper : {
     height : '80vh',
-    marginTop : '10vh',
-    padding: 30
+    marginTop : 0,
+    padding: '3rem'
   },
 });
 

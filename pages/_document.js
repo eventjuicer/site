@@ -20,7 +20,7 @@ class MyDocument extends Document {
         rel="shortcut icon"
         href="https://storage.googleapis.com/builderbook/favicon32.png"
         />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,500" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,500,700" />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="google" content="notranslate" />

@@ -56,7 +56,7 @@ function ButtonAppBar(props) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position={noItems ? 'fixed' : 'static' }>
         <Toolbar>
 
           {/* <IconButton onClick={drawerShow} className={classes.menuButton} color="inherit" aria-label="Menu">

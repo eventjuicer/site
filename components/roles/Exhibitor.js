@@ -3,7 +3,7 @@ import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
 
 import Wrapper from './Wrapper'
-
+import SupportPeople from '../SupportPeople'
 
 const styles = theme => ({
 
@@ -25,10 +25,11 @@ const Exhibitor = (props) => (
 
          <Grid item xs={10} sm={6} md={4} lg={4} xl={4} >
 
-           <Paper zdepth={2}>
+           {/* <Paper zdepth={2}> */}
 
-            
-           </Paper>
+             <SupportPeople />
+
+           {/* </Paper> */}
          </Grid>
 
         <Grid item xs={10} sm={6} md={4} lg={4} xl={4} >
