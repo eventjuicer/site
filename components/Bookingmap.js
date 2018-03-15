@@ -121,7 +121,7 @@ onBoothClick = (boothId, groupId, label) => {
       break;
       case "sold":
         modalTitle = `Stoisko wykupione`
-        modalContent =  <BoothInfo formdata={this.getStatus(boothId)} />
+        modalContent =  <BoothInfo formdata={ this.getStatus(boothId) } />
 
       break;
       default:

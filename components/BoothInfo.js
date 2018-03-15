@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import compose from 'recompose/compose'
 
 import find from 'lodash/find';
+import _get from 'lodash/get';
 
 
 //import {translate} from '../i18n'
@@ -28,20 +29,26 @@ const styles = (theme) => ({
 
 class BoothInfo extends React.Component {
 
-  componentDidMount()
-  {
-    this.props.resourceFetchRequest("tickets");
-  }
+  // componentDidMount()
+  // {
+  //   this.props.resourceFetchRequest("tickets");
+  // }
 
 
   render()
   {
     const {formdata} = this.props;
 
+    console.log(formdata);
+
     return (
       <div>
 
-      {formdata && <Card title="nazwa firmy" text="opis" link="link" />}
+      {formdata && <Card primary={false}
+        title={_get(formdata, "company.profile.name")}
+        text={_get(formdata, "company.profile.about")}
+        image={_get(formdata, "company.profile.logotype")}
+     />}
 
       <SupportPeople />
 

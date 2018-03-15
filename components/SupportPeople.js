@@ -22,5 +22,5 @@ const Buttons = withStyles(styles)((props) => <IconButton aria-label="Contact">
 </IconButton>)
 
 export default () => (<div>
-  <Card title="Bartek Meller" text="Być może jestem w stanie coś doradzić?" link={<Button variant="raised" color="primary">Chat</Button>} />
+  <Card primary={true} title="Dzień dobry!" text="Tutaj Bartek Meller. Być może jestem w stanie coś doradzić?" image="/static/support.jpg" link={<Button variant="raised" color="primary">Chat</Button>} />
 </div>)

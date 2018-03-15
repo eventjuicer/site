@@ -27,18 +27,21 @@ const styles = {
 };
 
 
+const SubPageLink = ({name, subpage, id, className}) => (
+  <Link as={`/${ slug(name) },${ subpage.charAt(0) },${ id }`} href={`/${ subpage }?id=${ id }`}>
+    <a className={className}>{name}</a>
+  </Link>
+)
 
-const SubpageItem = (props) => {
+const SubPageItem = (props) => {
 
-  const {classes, src, name, id, namespace} = props;
+  const {classes, src, name, id, subpage} = props;
 
   if(!src)
   {
     return (
       <BigListItem>
-      <Link as={`/${ slug(name) },${ namespace },${ id }`} href={`/exhibitor?id=${ id }`}>
-      <a className={classes.textLink}>{name}</a>
-      </Link>
+        <SubPageLink {...props} className={classes.textLink} />
       </BigListItem>
     )
   }
@@ -46,14 +49,10 @@ const SubpageItem = (props) => {
   return (
 
     <h3 className={classes.tile} style={ {backgroundImage: `url(${src})`} }>
-      <Link as={`/${ slug(name) },${ namespace },${ id }`} href={`/exhibitor?id=${ id }`}>
-        <a className={classes.media}>
-        {name}
-        </a>
-      </Link>
+        <SubPageLink {...props} className={classes.media} />
     </h3>
 
   )
 }
 
-export default withStyles(styles)(SubpageItem)
+export default withStyles(styles)(SubPageItem)

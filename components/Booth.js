@@ -23,6 +23,7 @@ const styles = (theme) => ({
     padding:0,
     margin:0,
     textAlign: 'center',
+    boxShadow : '1px 1px #555555'
   },
 
   style1 : {},
@@ -34,18 +35,21 @@ const styles = (theme) => ({
   boothHold : {
     backgroundColor: 'yellow',
     color: 'red',
+
   },
 
   boothSold : {
     backgroundColor: '#D3D3D3',
     borderColor: '#999',
     color: '#666',
+
   },
 
   boothSelected : {
     backgroundColor: 'red',
     color: 'white',
     border: '3px solid black',
+
   },
 
   boothText : {

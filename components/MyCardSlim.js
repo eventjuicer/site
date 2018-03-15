@@ -22,6 +22,9 @@ const styles = theme => ({
   cover: {
     width: 151,
     height: 151,
+    backgroundSize : '85%',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition : 'center 15px'
   },
   controls: {
     display: 'flex',
@@ -32,15 +35,15 @@ const styles = theme => ({
 });
 
 function MediaControlCard(props) {
-  const { classes, link , title, text} = props;
+  const { classes, link , title, text, image, primary} = props;
 
   return (
     <div>
-      <Card className={classes.card}>
+      <Card elevation={primary ? 2 : 0} raised={primary}  className={classes.card}>
 
         <CardMedia
           className={classes.cover}
-          image="/static/support.jpg"
+          image={image}
           title="speak english"
         />
 

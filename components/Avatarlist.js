@@ -10,7 +10,7 @@ import Button from 'material-ui/Button';
 import withWidth from 'material-ui/utils/withWidth';
 
 
-import SubpageItem from './SubpageItem';
+import SubPageItem from './SubPageItem';
 
 
 
@@ -25,7 +25,7 @@ renderFeatured()
 
   return featured.map((company, i) =>
     <Grid key={i} item xs={6} sm={6} md={4} lg={3} xl={2}>
-      <SubpageItem namespace="c" name={ _get(company, "slug") } id={ company.id } src="/static/logotype.gif" />
+      <SubPageItem subpage="company" name={ _get(company, "profile.name") } id={ company.id } src={_get(company, "profile.logotype")} />
     </Grid>
   )
 }
@@ -38,7 +38,7 @@ renderAll()
   return _data.map((chunk, i) =>
     <Grid key={i} item xs={6} sm={6} md={4} lg={3} xl={2}>
 
-      {chunk.map((company,j) => <SubpageItem namespace="c" key={j} name={ _get(company, "slug") } id={ company.id }  />
+      {chunk.map((company,j) => <SubPageItem subpage="company" key={j} name={ _get(company, "profile.name") } id={ company.id }  />
 )}
     </Grid>
   )
@@ -56,7 +56,7 @@ render()
     {this.renderFeatured()}
   </Grid>
 
-  <Grid container spacing={24} justify="center">
+  <Grid container spacing={24}>
     {this.renderAll()}
   </Grid>
 

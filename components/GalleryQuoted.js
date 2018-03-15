@@ -38,7 +38,7 @@ const styles = theme => ({
 
   img : {
 
-      filter : 'grayscale(100%)',
+    //  filter : 'grayscale(100%)',
   },
 
   quote : {

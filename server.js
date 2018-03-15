@@ -19,19 +19,15 @@ app.prepare().then(() => {
 
   const server = express()
 
-
-
    server.get('/:slug,c,:id', (req, res) => {
      const queryParams = { id: req.params.id }
     // app.render(req, res, '/exhibitor', queryParams)
-     renderAndCache(req, res, '/exhibitor', queryParams)
+     renderAndCache(req, res, '/company', queryParams)
    })
 
    server.get('/', (req, res) => {
     renderAndCache(req, res, '/')
   })
-
-
 
   server.get('*', (req, res) => {
     return handle(req, res)

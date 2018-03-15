@@ -77,7 +77,7 @@ render()
         left={<Centered>
 
           <div>
-            <img src='https://buyersguide.caranddriver.com/media/assets/submodel/280_8119.jpg' />
+            <img src={_get(company, "profile.logotype")} alt="" style={{maxWidth: 300, maxHeight: 200}} />
           </div>
 
 
@@ -86,37 +86,45 @@ render()
 
           <div>
 
-            <Typography.H1>  {_get(company, "fields.cname2")} </Typography.H1>
-
-
             <Typography.Section>
 
-            <Typography.H2>O firmie</Typography.H2>
-
-            <Typography.P1>{_get(company, "fields.company_description")}</Typography.P1>
+            <Typography.P1>{_get(company, "profile.about")}</Typography.P1>
 
             </Typography.Section>
 
             <Typography.Section>
 
-            <Typography.H2>test</Typography.H2>
-
-            <Typography.P1>{_get(company, "fields.company_description")}</Typography.P1>
+            <Typography.P1>{_get(company, "profile.products")}</Typography.P1>
 
             </Typography.Section>
 
+            <ul>
 
-                 <Button variant="flat" color="default" size="medium">
-                   <span style={{width: 20}} className="fa fa-facebook"></span>{' '}facebook
-                 </Button>
+              <li>
+                <Button href={_get(company, "profile.website")} variant="flat" color="default" size="medium">
+                  <span style={{width: 20}} className="fa fa-facebook"></span>{' '}www
+                </Button>
+              </li>
 
-                 <Button variant="flat" color="default" size="medium">
-                   <span style={{width: 20}} className="fa fa-twitter"></span>{' '}twitter
-                 </Button>
+                 <li>
+                   <Button href={_get(company, "profile.facebook")} variant="flat" color="default" size="medium">
+                     <span style={{width: 20}} className="fa fa-facebook"></span>{' '}facebook
+                   </Button>
+                 </li>
+                 <li>
+                   <Button href={_get(company, "profile.twitter")} variant="flat" color="default" size="medium">
+                     <span style={{width: 20}} className="fa fa-twitter"></span>{' '}twitter
+                   </Button>
+                 </li>
+                 <li>
+                   <Button href={_get(company, "profile.linkedin")} variant="flat" color="default" size="medium">
+                     <span style={{width: 20}} className="fa fa-linkedin"></span>{' '}linkedin
+                   </Button>
+                 </li>
+            </ul>
 
-                 <Button variant="flat" color="default" size="medium">
-                   <span style={{width: 20}} className="fa fa-linkedin"></span>{' '}linkedin
-                 </Button>
+
+
 
 
 
