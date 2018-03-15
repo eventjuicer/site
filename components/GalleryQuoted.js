@@ -27,9 +27,8 @@ const styles = theme => ({
   },
   gridList: {
     // width: 500,
-    height: '100vh',
-
-    width: '90%',
+    height: '100%',
+    width: '100%',
     margin: '0 auto'
   },
   subheader: {

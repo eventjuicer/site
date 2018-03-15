@@ -4,6 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import {slug} from '../helpers'
 import classNames from 'classnames'
 import {BigListItem} from './MyTypography';
+import PropTypes from 'prop-types';
 
 const styles = {
 
@@ -27,11 +28,25 @@ const styles = {
 };
 
 
-const SubPageLink = ({name, subpage, id, className}) => (
-  <Link as={`/${ slug(name) },${ subpage.charAt(0) },${ id }`} href={`/${ subpage }?id=${ id }`}>
-    <a className={className}>{name}</a>
-  </Link>
-)
+const SubPageLink = ({name, subpage, id, className}) =>
+{
+  if(!name) return null;
+
+  return (
+    <Link as={`/${ slug(name) },${ subpage.charAt(0) },${ id }`} href={`/${ subpage }?id=${ id }`}>
+      <a className={className}>{name}</a>
+    </Link>
+  )
+}
+
+SubPageLink.propTypes = {
+    id : PropTypes.number.isRequired,
+    subpage : PropTypes.string.isRequired,
+    name : PropTypes.string.isRequired,
+    className : PropTypes.string
+}
+
+
 
 const SubPageItem = (props) => {
 

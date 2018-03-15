@@ -55,7 +55,7 @@ class Index extends React.Component {
         <title>targiehandlu.pl xxx</title>
       </Head>
 
-        {/* <Hero videoSrc="https://s3.eu-central-1.amazonaws.com/eventjuicer-assets/video11_2.mp4" /> */}
+        <Hero videoSrc="https://s3.eu-central-1.amazonaws.com/eventjuicer-assets/video11_2.mp4" />
 
       <Wrapper title="Zarezerwuj stoisko!">
         <Bookingmap booths={ booths } />

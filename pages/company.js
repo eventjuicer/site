@@ -15,10 +15,10 @@ import Layout from '../layouts/main';
 import Wrapper from '../components/Wrapper'
 import Bookingmap from '../components/Bookingmap'
 
-import Button from 'material-ui/Button'
-
 
 import RegisterButton from '../components/RegisterButton'
+
+import CompanyProfile from '../components/Company'
 
 const filterCompanyInstances = (company, eventId) => _filter(company, function(i){
   if(i.event_id != eventId || ! "id" in i.formdata)
@@ -30,7 +30,14 @@ const filterCompanyInstances = (company, eventId) => _filter(company, function(i
 });
 
 
-class Exhibitor extends React.Component {
+
+
+// TabContainer.propTypes = {
+// //  children: PropTypes.node.isRequired,
+// };
+
+class Company extends React.Component {
+
 
 static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
 {
@@ -52,8 +59,7 @@ static async getInitialProps({err, req, res, pathname, query, asPath, isServer, 
 render()
 {
 
-  const { company, booths, url , eventId} = this.props;
-
+  const { company, booths, url , eventId, classes} = this.props;
   const data = filterCompanyInstances(company.instances, eventId);
   const selectedBoothIds = _map(data, 'formdata.id');
   const selectedBoothNames = _map(data, 'formdata.ti');
@@ -70,10 +76,9 @@ render()
 
     <Wrapper title="">
 
-
-
       <PageLayout
 
+        leftSize={5}
         left={<Centered>
 
           <div>
@@ -83,64 +88,15 @@ render()
 
         </Centered>}
         right={
-
-          <div>
-
-            <Typography.Section>
-
-            <Typography.P1>{_get(company, "profile.about")}</Typography.P1>
-
-            </Typography.Section>
-
-            <Typography.Section>
-
-            <Typography.P1>{_get(company, "profile.products")}</Typography.P1>
-
-            </Typography.Section>
-
-            <ul>
-
-              <li>
-                <Button href={_get(company, "profile.website")} variant="flat" color="default" size="medium">
-                  <span style={{width: 20}} className="fa fa-facebook"></span>{' '}www
-                </Button>
-              </li>
-
-                 <li>
-                   <Button href={_get(company, "profile.facebook")} variant="flat" color="default" size="medium">
-                     <span style={{width: 20}} className="fa fa-facebook"></span>{' '}facebook
-                   </Button>
-                 </li>
-                 <li>
-                   <Button href={_get(company, "profile.twitter")} variant="flat" color="default" size="medium">
-                     <span style={{width: 20}} className="fa fa-twitter"></span>{' '}twitter
-                   </Button>
-                 </li>
-                 <li>
-                   <Button href={_get(company, "profile.linkedin")} variant="flat" color="default" size="medium">
-                     <span style={{width: 20}} className="fa fa-linkedin"></span>{' '}linkedin
-                   </Button>
-                 </li>
-            </ul>
-
-
-
-
-
-
-
-
-            {/* <RegisterByRole role="visitor" /> */}
-
-          </div>
+          <CompanyProfile company={company} />
         } />
 
 
     </Wrapper>
 
-    <Wrapper title="">
+    {/* <Wrapper title="">
       <RegisterButton />
-    </Wrapper>
+    </Wrapper> */}
 
 
     <Wrapper title={`Stoisko ${ selectedBoothNames.join(",") }`}>
@@ -153,4 +109,4 @@ render()
 }
 
 
-export default reduxPage(Exhibitor, (state) => ({foo: state.foo}) )
+export default reduxPage(Company, (state) => ({foo: state.foo}) )

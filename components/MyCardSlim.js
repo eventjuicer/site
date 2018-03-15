@@ -43,8 +43,7 @@ function MediaControlCard(props) {
 
         <CardMedia
           className={classes.cover}
-          image={image}
-          title="speak english"
+          src={image}
         />
 
         <div className={classes.details}>

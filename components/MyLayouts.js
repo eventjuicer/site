@@ -15,19 +15,28 @@ const styles = theme => ({
 })
 
 export const Centered = withStyles(styles)((props) => (
- 
+
   <div className={props.classes.middle}>{props.children}</div>
 
 ))
 
-export const TwoColsLayout = (props) =>  (
-<Grid container spacing={16}>
-    <Grid item xs={12} sm={6} md={6} lg={6} xl={6} >
-      {props.left}
+
+export const TwoColsLayout = ({left, right, leftSize}) =>  {
+
+  const ls = parseInt(leftSize) ? leftSize : 6;
+  const rs = 12 - ls;
+
+  return (
+
+    <Grid container spacing={16}>
+        <Grid item xs={12} sm={ls} md={ls} lg={ls} xl={ls} >
+          {left}
+        </Grid>
+
+        <Grid item xs={12} sm={rs} md={rs} lg={rs} xl={rs} >
+          {right}
+        </Grid>
     </Grid>
 
-    <Grid item xs={12} sm={6} md={6} lg={6} xl={6} >
-      {props.right}
-    </Grid>
-</Grid>
-)
+  )
+}
