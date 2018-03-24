@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { MuiThemeProvider } from 'material-ui/styles';
 import Reboot from 'material-ui/Reboot';
 
-import getContext from './muiContext';
+import getContext from '../material-ui/muiContext';
 //import Header from '../components/Header';
 
 function withMui(BaseComponent) {

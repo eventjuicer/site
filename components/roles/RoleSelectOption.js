@@ -7,10 +7,11 @@ import { MenuItem, MenuList } from 'material-ui/Menu';
 import { ListItemIcon, ListItemText } from 'material-ui/List';
 import InboxIcon from 'material-ui-icons/MoveToInbox';
 
+import {translate} from '../../i18n'
 
 
 
-import {dialogShow, roleSelect} from '../redux/actions'
+import {roleSelect} from '../redux/actions'
 
 
 
@@ -18,6 +19,7 @@ const styles = theme => ({
 
 
   menuItem: {
+
     '&:focus': {
       backgroundColor: theme.palette.primary.main,
       '& $primary, & $icon': {
@@ -36,16 +38,14 @@ const styles = theme => ({
 
 
 
-const RoleSelectOption = ({role, dialogShow, roleSelect, classes}) => {
-
-  const Component = role.component;
+const RoleSelectOption = ({role, dialogShow, roleSelect, classes, translate}) => {
 
   return (
-    <MenuItem onClick={() => roleSelect(role.role) && dialogShow({title: "test", content : <Component />}) } className={classes.menuItem}>
+    <MenuItem className={classes.menuItem} onClick={ () => roleSelect(role) } className={classes.menuItem}>
       <ListItemIcon className={classes.icon}>
           <InboxIcon />
         </ListItemIcon>
-        <ListItemText classes={{ primary: classes.primary }} inset primary={role.text} />
+        <ListItemText classes={{ primary: classes.primary }} inset primary={translate(`${role}`)} />
     </MenuItem>
   )
 }
@@ -56,8 +56,9 @@ const RoleSelectOption = ({role, dialogShow, roleSelect, classes}) => {
 
 
 const enhance = compose(
-  connect(null, {dialogShow, roleSelect}),
-  withStyles(styles)
+  connect(null, {roleSelect}),
+  withStyles(styles),
+  translate
 )
 
 export default enhance(RoleSelectOption)

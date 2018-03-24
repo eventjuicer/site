@@ -13,10 +13,11 @@ import Typography from 'material-ui/Typography';
 
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
+import classNames from 'classnames';
 
-const Cart = dynamic(import('./CartButton'))
+//const Cart = dynamic(import('./CartButton'))
 
-//import Cart from './CartContainer'
+import Cart from './CartButton'
 
 import {
   drawerShow as drawerShowAction,
@@ -26,6 +27,9 @@ import {
 const styles = theme => ({
   root: {
     flexGrow: 1,
+  },
+  spaced : {
+    marginBottom: 65
   },
   flex: {
     flex: 1,
@@ -50,13 +54,15 @@ const styles = theme => ({
 
 function ButtonAppBar(props) {
 
-  const { classes, drawer, drawerShow, dialogShow, cart } = props;
+  const { classes, drawer, drawerShow, dialogShow, cart, position } = props;
 
   const noItems = Object.keys(cart).length;
 
   return (
-    <div className={classes.root}>
-      <AppBar position={noItems ? 'fixed' : 'static' }>
+    <div className={classNames(classes.root, {
+      [classes.spaced] : noItems
+    })}>
+      <AppBar position={ position === "fixed" || noItems ? 'fixed' : 'static' }>
         <Toolbar>
 
           {/* <IconButton onClick={drawerShow} className={classes.menuButton} color="inherit" aria-label="Menu">
@@ -79,6 +85,10 @@ function ButtonAppBar(props) {
       </AppBar>
     </div>
   );
+}
+
+ButtonAppBar.defaultProps = {
+  position : ''
 }
 
 // ButtonAppBar.propTypes = {

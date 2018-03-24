@@ -10,7 +10,8 @@ export const initialState = {
 	formdata : [],
 	ticketgroups : [],
 	tickets : [],
-	photos : []
+	photos : [],
+	bookingmap :[]
 }
 
 const reducer = (state = initialState, action) => {

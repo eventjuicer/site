@@ -56,7 +56,7 @@ const styles = (theme) => ({
     height: '100%',
     backgroundPosition: 'left top',
     backgroundRepeat: 'no-repeat no-repeat',
-    zIndex : 1000,
+    zIndex : 2,
   },
 
   booths : {
@@ -64,7 +64,7 @@ const styles = (theme) => ({
     listStyleType : 'none',
     padding:0,
     margin:0,
-    zIndex : 1001,
+    zIndex : 3,
   },
 
 });
@@ -178,7 +178,8 @@ const enhance = compose(
   connect(state => ({
     boothsSelected : state.boothsSelected,
     formdata : state.resources.formdata,
-    ticketgroups : state.resources.ticketgroups
+    ticketgroups : state.resources.ticketgroups,
+    booths : state.resources.bookingmap
   }), {
     dialogShow : dialogShowAction ,
     resourceFetchRequest : resourceFetchRequestAction

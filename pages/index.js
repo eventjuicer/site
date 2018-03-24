@@ -5,10 +5,14 @@ import fetch from 'isomorphic-unfetch'
 import reduxPage from '../redux/store'
 import Layout from '../layouts/main';
 
-import {Wrapper, Avatarlist, Bookingmap, Hero, Googlemap} from '../components'
+import {Wrapper, Avatarlist, Bookingmap , Googlemap} from '../components'
+import Hero from '../components/roles/HeroWithSelectors'
 
 //const Gallery = dynamic(import('../components/GalleryQuoted'))
 import Gallery from '../components/GalleryQuoted'
+
+import {resourceFetchSuccess} from '../components/redux/actions'
+import MyTypography from '../components/MyTypography'
 
 class Index extends React.Component {
 
@@ -23,13 +27,23 @@ class Index extends React.Component {
 
     /*
     if (!store.getState().placeholderData) {
-  store.dispatch(loadData())
-  }
+      store.dispatch(resourceFetchSuccess())
+    }
   */
 
+  // store.dispatch(
+  //   resourceFetchSuccess("exhibitors", exhibitors.data)
+  // )
+
+
+    store.dispatch(
+      resourceFetchSuccess("bookingmap", bookingmap.data)
+    )
+
+    //booths : bookingmap.data
 
     const userAgent = req ? req.headers['user-agent'] : navigator.userAgent
-    return {   userAgent : userAgent, exhibitors : exhibitors.data, booths : bookingmap.data }
+    return {   userAgent : userAgent, exhibitors : exhibitors.data }
     //return {};
   }
 
@@ -55,14 +69,20 @@ class Index extends React.Component {
         <title>targiehandlu.pl xxx</title>
       </Head>
 
-        <Hero videoSrc="https://s3.eu-central-1.amazonaws.com/eventjuicer-assets/video11_2.mp4" />
+      <MyTypography>{(name) => <div>{name}</div>}</MyTypography>
 
-      <Wrapper title="Zarezerwuj stoisko!">
-        <Bookingmap booths={ booths } />
+
+        <Hero
+          videoSrc="https://s3.eu-central-1.amazonaws.com/eventjuicer-assets/video11_2.mp4"
+
+         />
+
+      <Wrapper label="bookingmap.title">
+        <Bookingmap  /> {/*booths*/}
       </Wrapper>
 
 
-        <Wrapper title="Wystawcy">
+        <Wrapper title="exhibitors.title">
         <Avatarlist data={ exhibitors } />
         </Wrapper>
 

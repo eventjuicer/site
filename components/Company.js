@@ -13,6 +13,9 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 3,
     backgroundColor: theme.palette.background.paper,
   },
+  htmlContainer : {
+    fontFamily : "'Lato', 'Helvetica', sans-serif"
+  }
 });
 
 function Contacts({profile})
@@ -46,12 +49,12 @@ function Contacts({profile})
 }
 
 
-function TabContainer({children, html}) {
+function TabContainer({children, html, classes}) {
 
   if(html)
   {
     return (
-      <div dangerouslySetInnerHTML={{__html: html}}></div>
+      <div className={classes.htmlContainer} dangerouslySetInnerHTML={{__html: html}}></div>
     );
   }
   return (
@@ -60,6 +63,8 @@ function TabContainer({children, html}) {
     </div>
   );
 }
+
+const StyledTabContainer = withStyles(styles)(TabContainer);
 
 class Company extends React.Component {
 
@@ -128,9 +133,9 @@ class Company extends React.Component {
         <Tab value="contact" label="Kontakt" />
       </Tabs>
 
-    {tab === 'about' && <TabContainer html={about} />}
-    {tab === 'products' && <TabContainer html={products} />}
-    {tab === 'contact' && <TabContainer><Contacts profile={profile} /></TabContainer>}
+    {tab === 'about' && <StyledTabContainer html={about} />}
+    {tab === 'products' && <StyledTabContainer html={products} />}
+    {tab === 'contact' && <StyledTabContainer><Contacts profile={profile} /></StyledTabContainer>}
 
     </div>
 

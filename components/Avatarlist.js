@@ -36,7 +36,7 @@ renderAll()
   const _data  = Array.isArray(data) ? _chunk(data, Math.round(data.length / 4) ) : [];
 
   return _data.map((chunk, i) =>
-    <Grid key={i} item xs={6} sm={6} md={4} lg={3} xl={2}>
+    <Grid key={i} item xs={6} sm={6} md={4} lg={3} xl={3}>
 
       {chunk.map((company,j) => <SubPageItem subpage="company" key={j} name={ _get(company, "profile.name") } id={ company.id }  />
 )}

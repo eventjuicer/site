@@ -19,9 +19,14 @@ import Bookingmap from '../components/Bookingmap'
 import RegisterButton from '../components/RegisterButton'
 
 import CompanyProfile from '../components/Company'
+import RoleSelector from '../components/roles/RoleSelector'
+import Roles from '../components/roles/Roles'
+
+import {resourceFetchSuccess} from '../components/redux/actions'
+
 
 const filterCompanyInstances = (company, eventId) => _filter(company, function(i){
-  if(i.event_id != eventId || ! "id" in i.formdata)
+  if(i.event_id != eventId || (i.formdata && ! "id" in i.formdata))
   {
     return false;
   }
@@ -46,12 +51,16 @@ static async getInitialProps({err, req, res, pathname, query, asPath, isServer, 
   const company = await _company.json()
 
   const _booths = await fetch('https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/bookingmap')
-  const booths = await _booths.json()
+  const bookingmap = await _booths.json()
+
+
+  store.dispatch(
+    resourceFetchSuccess("bookingmap", bookingmap.data)
+  )
 
   return {
     company : company.data,
-    eventId: _get(company, "meta.active_event_id"),
-    booths : booths.data
+    eventId: _get(company, "meta.active_event_id")
   }
 
 }
@@ -74,7 +83,7 @@ render()
 
 
 
-    <Wrapper title="">
+    <Wrapper label="">
 
       <PageLayout
 
@@ -94,13 +103,20 @@ render()
 
     </Wrapper>
 
+
+
+    <Wrapper label="registration.roles.select">
+      <RoleSelector roles={["exhibitor", "visitor"]} />
+      <Roles />
+    </Wrapper>
+
     {/* <Wrapper title="">
       <RegisterButton />
     </Wrapper> */}
 
 
     <Wrapper title={`Stoisko ${ selectedBoothNames.join(",") }`}>
-      <Bookingmap booths={ booths } selected={selectedBoothIds} />
+      <Bookingmap selected={selectedBoothIds} />
     </Wrapper>
 
   </Layout>)

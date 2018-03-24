@@ -2,7 +2,7 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 import flush from 'styled-jsx/server'
 import JssProvider from 'react-jss/lib/JssProvider'
-import getContext from '../next/muiContext';
+import getContext from '../material-ui/muiContext';
 
 class MyDocument extends Document {
 
@@ -29,7 +29,11 @@ class MyDocument extends Document {
 
       <body className="eventjuicer_site">
         {this.props.customValue}
+
+
         <Main />
+
+
         <NextScript />
       </body>
     </html>
@@ -41,12 +45,14 @@ class MyDocument extends Document {
 MyDocument.getInitialProps = ({ renderPage }) => {
   const pageContext = getContext();
   const page = renderPage(Component => props => (
+
     <JssProvider
       registry={pageContext.sheetsRegistry}
       generateClassName={pageContext.generateClassName}
     >
       <Component pageContext={pageContext} {...props} />
     </JssProvider>
+
   ));
 
   return {

@@ -1,11 +1,5 @@
 import { withStyles } from 'material-ui/styles';
 //import withWidth from 'material-ui/utils/withWidth';
-import RoleSelect from './roles'
-import dynamic from 'next/dynamic'
-
-
-const Visitor = dynamic(import("./roles/Visitor"))
-const Exhibitor = dynamic(import("./roles/Exhibitor"))
 
 const styles = theme => ({
 
@@ -15,32 +9,38 @@ const styles = theme => ({
     backgroundSize: 'cover',
     backgroundAttachment: 'fixed',
     height: "100vh",
+    width: '100%',
     position: 'relative',
-    overflow: "hidden"
+    overflow: "hidden",
+
   },
 
   video : {
-    right: 0,
+    zIndex: -1,
     bottom: 0,
+    right: 0,
     minWidth: "100%",
     minHeight: "100%",
     width: "auto",
     height: "auto",
-    zIndex: -1000,
+
     overflow: "hidden",
+
   },
+
   overlay : {
-    flexGrow: 1,
+    zIndex: 10,
     position: 'absolute',
-    top: 0,
-    left: 0,
+    bottom: 0,
     right: 0,
-    padding: '1rem'
+    width: "100%",
+    height: "100vh",
+
   },
 
 });
 
-const Hero = ({videoSrc, classes}) => (
+const Hero = ({videoSrc, classes, children}) => (
 
   <section className={classes.container}>
     <video autoPlay muted loop className={classes.video}>
@@ -48,13 +48,7 @@ const Hero = ({videoSrc, classes}) => (
     </video>
     <div className={classes.overlay}>
 
-      <RoleSelect
-        
-        roles={[
-          {role: "exhibitor", text : "Chcę zostać wystawcą", component : Exhibitor},
-          {role : "visitor", text : "Chcę zwiedzać targi", component : Visitor}
-      ]}
-      />
+      {children}
 
     </div>
   </section>

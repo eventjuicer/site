@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { withStyles } from 'material-ui/styles';
 import {slug} from '../helpers'
 import classNames from 'classnames'
-import {BigListItem} from './MyTypography';
+import MyTypography from './MyTypography';
 import PropTypes from 'prop-types';
 
 const styles = {
@@ -55,9 +55,9 @@ const SubPageItem = (props) => {
   if(!src)
   {
     return (
-      <BigListItem>
+      <MyTypography template="LIH3" >
         <SubPageLink {...props} className={classes.textLink} />
-      </BigListItem>
+      </MyTypography>
     )
   }
 

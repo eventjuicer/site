@@ -18,14 +18,14 @@ class ResponsiveDialog extends React.PureComponent {
 
   render() {
 
-    const { fullScreen, dialog, dialogHide } = this.props;
+    const { fullScreen, forcefs, dialog, dialogHide } = this.props;
 
     const open = dialog && "title" in dialog;
 
     return open ? (
 
       <Dialog
-          fullScreen={fullScreen}
+          fullScreen={fullScreen || dialog.forcefs}
           fullWidth={true}
           maxWidth="md"
           open={ open }
@@ -64,7 +64,8 @@ class ResponsiveDialog extends React.PureComponent {
 ResponsiveDialog.defaultProps = {
   dialog: {
     intro : null,
-    buttons : []
+    buttons : [],
+    forcefs : false
   },
 };
 

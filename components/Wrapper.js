@@ -1,10 +1,7 @@
 
 
 import { withStyles } from 'material-ui/styles';
-import * as Typography from './MyTypography';
-
-
-
+import MyTypography from './MyTypography';
 
 
 
@@ -55,15 +52,17 @@ const styles = () => ({
 
 
 
-const Wrapper = (props) => (
+const Wrapper = ({translate, classes, label, children}) => (
 
-  <section className={props.classes.section}>
+  <section className={classes.section}>
     {/* <div className={props.classes.overlay}>
 
     </div> */}
-    <div className={props.classes.container}>
-      {props.title && <Typography.H1C className={props.classes.title}>{props.title}</Typography.H1C>}
-      {props.children}
+
+
+    <div className={classes.container}>
+      {label && <MyTypography label={label} template="H2C" /> }
+      {children}
     </div>
   </section>
 
@@ -72,9 +71,8 @@ const Wrapper = (props) => (
 
 
 Wrapper.defaultProps = {
-  title : "no title set!"
+  label : null
 }
-
 
 
 export default withStyles(styles)(Wrapper);

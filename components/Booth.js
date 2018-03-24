@@ -67,8 +67,7 @@ const styles = (theme) => ({
 
 const Booth = ({status, data, classes, onClick, selected, styleId}) =>  (
       <li onClick={() => onClick(data.id, data.g, data.ti) } className={
-        classNames({
-          [classes.booth] : true,
+        classNames(classes.booth, {
           [classes.boothSold] : status === "sold",
           [classes.boothHold] : status === "hold",
           [classes.boothSelected] : selected

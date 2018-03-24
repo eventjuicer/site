@@ -4,23 +4,24 @@ import compose from 'recompose/compose'
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import withWidth from 'material-ui/utils/withWidth';
-import Animate from '../AnimateSlide'
-import {isBigScreen} from '../../helpers'
+import Animate from './AnimateSlide'
+import {isBigScreen} from '../helpers'
 
 const styles = theme => ({
 
   bigScreen : {
-    fontSize : '5rem',
+    fontSize : '10rem',
     textTransform: 'uppercase',
-    fontWeight : 900,
+    fontWeight : 500,
     color: 'white'
   },
 
   smallScreen : {
     fontSize : '3rem',
     textTransform: 'uppercase',
-    fontWeight : 900,
-    color: 'white'
+    fontWeight : 700,
+    color: 'white',
+
   }
 
 });
