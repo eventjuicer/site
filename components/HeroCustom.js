@@ -39,11 +39,11 @@ const HeroCustom = ({videoSrc, classes}) => (
   <Hero videoSrc={videoSrc}>
 
     <div className={classes.container}>
-      <WhoIsGonnaBeThere />
+      {/* <WhoIsGonnaBeThere /> */}
 
-      {/* <div className={classes.overlay}>
+      <div className={classes.overlay}>
           <HeroTexts />
-      </div> */}
+      </div>
     </div>
 
   </Hero>

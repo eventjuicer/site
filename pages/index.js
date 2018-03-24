@@ -72,7 +72,7 @@ class Index extends React.Component {
 
       <Hero />
 
-      <Wrapper label="visitors.register" links={[
+      <Wrapper label="visitors.register" color="#fafafa" links={[
         <Link href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
       ]}>
       <Visitor  />
@@ -85,11 +85,12 @@ class Index extends React.Component {
 
 
       <Wrapper label="exhibitors.map.title">
+        <h1>SCROLL </h1>
         <Bookingmap  />
       </Wrapper>
 
 
-      <Wrapper label="visitors.register_alt"  links={[
+      <Wrapper label="visitors.register_alt" color="#fafafa" links={[
           <Link href="/visit" label="visitors.more_info" variant="flat" />
       ]}>
         <Visitor />

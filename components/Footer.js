@@ -15,10 +15,16 @@ import EventInfo from './EventInfo'
 import SupportPeople from './SupportPeople'
 import Typography from './MyTypography'
 
+import Wrapper from './Wrapper'
 
 
 
 const styles = theme => ({
+
+  container : {
+
+    borderTop : '1px solid #cccccc'
+  },
 
   paper : {
     padding: 30
@@ -35,6 +41,9 @@ const styles = theme => ({
 
 const Footer = ({links, classes, width}) => (
 
+  <div className={classes.container}>
+
+  <Wrapper dense={true} color="#fafafa">
 
    <Grid container spacing={8} justify="space-around" alignItems="center">
 
@@ -122,8 +131,8 @@ const Footer = ({links, classes, width}) => (
 
   </Grid>
 
-
-
+</Wrapper>
+</div>
 
 )
 

@@ -7,7 +7,6 @@ import {TranslationProvider} from '../i18n'
 
 import MyAppBar from '../components/MyAppBar'
 import Footer from '../components/Footer'
-import Wrapper from '../components/Wrapper'
 
 
 const Dialog = dynamic(import('../components/MyDialog'))
@@ -28,9 +27,9 @@ const Layout = (props) => (
 
       {props.children}
 
-    <Wrapper>
+
       <Footer  />
-    </Wrapper>
+
 
     <Dialog />
     <Snackbar />

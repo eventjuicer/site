@@ -95,7 +95,7 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
   },
   gridList: {
-    
+
     flexWrap: 'nowrap',
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: 'translateZ(0)',
@@ -138,6 +138,23 @@ class Gallery extends React.PureComponent {
     this.props.resourceFetchRequest("photos");
   }
 
+  setCols()
+  {
+    const { width } = this.props;
+
+    if(width === "xs" || width === "sm")
+    {
+      return 1.5
+    }
+
+    if(width === "md")
+    {
+      return 2.5
+    }
+
+    return 3.5
+  }
+
   render()
   {
     const { photos, classes, label, title, width } = this.props;
@@ -149,7 +166,7 @@ class Gallery extends React.PureComponent {
         {label && <MyTypography label={label} template="H2C" /> }
         {title && <MyTypography template="H2C">{title}</MyTypography> }
 
-        <GridList className={classes.gridList} cols={3.5} cellHeight={800}>
+        <GridList className={classes.gridList} cols={this.setCols()} cellHeight={800}>
           {photos.map(tile => (
             <GridListTile key={tile.id} cols={1} rows={1}>
               <img src={tile.src} alt={tile.id} className={classes.deSaturated} />
