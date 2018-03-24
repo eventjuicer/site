@@ -1,10 +1,90 @@
-
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import GridList, { GridListTile } from 'material-ui/GridList';
-import withWidth from 'material-ui/utils/withWidth';
+import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList';
+import IconButton from 'material-ui/IconButton';
+import StarBorderIcon from 'material-ui-icons/StarBorder';
+import MyTypography from './MyTypography';
 import compose from 'recompose/compose'
+import withWidth from 'material-ui/utils/withWidth';
+import { connect } from 'react-redux';
 
+
+
+import {
+  // dialogShow as dialogShowAction,
+  resourceFetchRequest as resourceFetchRequestAction
+} from './redux/actions'
+
+
+
+const tileData = [
+  {
+    img: '/static/images/grid-list/breakfast.jpg',
+    title: 'Breakfast',
+    author: 'jill111',
+    cols: 2,
+    featured: true,
+  },
+  {
+    img: '/static/images/grid-list/burgers.jpg',
+    title: 'Tasty burger',
+    author: 'director90',
+  },
+  {
+    img: '/static/images/grid-list/camera.jpg',
+    title: 'Camera',
+    author: 'Danson67',
+  },
+  {
+    img: '/static/images/grid-list/morning.jpg',
+    title: 'Morning',
+    author: 'fancycrave1',
+    featured: true,
+  },
+  {
+    img: '/static/images/grid-list/hats.jpg',
+    title: 'Hats',
+    author: 'Hans',
+  },
+  {
+    img: '/static/images/grid-list/honey.jpg',
+    title: 'Honey',
+    author: 'fancycravel',
+  },
+  {
+    img: '/static/images/grid-list/vegetables.jpg',
+    title: 'Vegetables',
+    author: 'jill111',
+    cols: 2,
+  },
+  {
+    img: '/static/images/grid-list/plant.jpg',
+    title: 'Water plant',
+    author: 'BkrmadtyaKarki',
+  },
+  {
+    img: '/static/images/grid-list/mushroom.jpg',
+    title: 'Mushrooms',
+    author: 'PublicDomainPictures',
+  },
+  {
+    img: '/static/images/grid-list/olive.jpg',
+    title: 'Olive oil',
+    author: 'congerdesign',
+  },
+  {
+    img: '/static/images/grid-list/star.jpg',
+    title: 'Sea star',
+    cols: 2,
+    author: '821292',
+  },
+  {
+    img: '/static/images/grid-list/bike.jpg',
+    title: 'Bike',
+    author: 'danfador',
+  },
+];
 
 const styles = theme => ({
   root: {
@@ -12,182 +92,103 @@ const styles = theme => ({
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
-//    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.paper,
   },
   gridList: {
-    // width: 500,
-     height: 600,
+    
+    flexWrap: 'nowrap',
+    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+    transform: 'translateZ(0)',
   },
-  subheader: {
-    width: '100%',
+  title: {
+    color: theme.palette.primary.light,
+  },
+  titleBar: {
+    background:
+      'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
   },
 
-  quote : {
-
+  deSaturated : {
+     filter: 'grayscale(100%)'
   }
 });
 
-
-/*
-
-#container {
-    	height: 200px;
-    	width: 800px;
-    	border: 1px solid #333;
-    	overflow: hidden;
-    	margin: 25px auto;
-    }
-
-    #box {
-    	background: orange;
-    	height: 180px;
-    	width: 400px;
-    	margin: 10px -400px;
-    	-webkit-animation-name: move;
-    	-webkit-animation-duration: 4s;
-    	-webkit-animation-iteration-count: infinite;
-    	-webkit-animation-direction: right;
-    	-webkit-animation-timing-function: linear;
-    }
-
-    #box:hover {
-    	-webkit-animation-play-state: paused;
-    }
-
-    @-webkit-keyframes move {
-    	0% {
-    		margin-left: -400px;
-    	}
-    	100% {
-    		margin-left: 800px;
-    	}
-    }
-
-*/
+/**
+ * The example data is structured as follows:
+ *
+ * import image from 'path/to/image.jpg';
+ * [etc...]
+ *
+ * const tileData = [
+ *   {
+ *     img: image,
+ *     title: 'Image',
+ *     author: 'author',
+ *   },
+ *   {
+ *     [etc...]
+ *   },
+ * ];
+ */
+class Gallery extends React.PureComponent {
 
 
-const tileData = [
-
-    {
-      id : 1,
-      img: "https://scontent-waw1-1.xx.fbcdn.net/v/t31.0-8/23737928_2008366889173307_6272820656702188270_o.jpg?oh=093989e9bde97a4cbeedd0e67ae262cb&oe=5B4257C8",
-      title: 'Image',
-      author: 'author',
-      cols: 1,
-    },
-
-    {
-        id : 2,
-      img: "https://scontent-waw1-1.xx.fbcdn.net/v/t31.0-8/23669145_2008368925839770_6215038177022110504_o.jpg?oh=aff0ee07d193af7986b4bb72fade7ce0&oe=5B4E52CC",
-      title: 'Image',
-      author: 'author',
-      cols: 1,
-    },
-
-    {
-        id : 3,
-      img: "https://scontent-waw1-1.xx.fbcdn.net/v/t31.0-8/23668996_2008366882506641_675688552415028094_o.jpg?oh=ab6c4cf1823fea24221fe03484512163&oe=5B115474",
-      title: 'Image',
-      author: 'author',
-      cols: 2,
-    },
-
-    {
-        id : 4,
-      img: "https://scontent-waw1-1.xx.fbcdn.net/v/t31.0-8/23736326_2008367955839867_1399555142944053959_o.jpg?oh=11e127bebd9b136eed0d6a93038095ce&oe=5B126CE6",
-      title: 'Image',
-      author: 'author',
-      cols: 1,
-    },
-
-    {
-        id : 5,
-      img: "https://scontent-waw1-1.xx.fbcdn.net/v/t31.0-8/23737928_2008366889173307_6272820656702188270_o.jpg?oh=093989e9bde97a4cbeedd0e67ae262cb&oe=5B4257C8",
-      title: 'Image',
-      author: 'author',
-      cols: 1,
-    },
-
-    {
-        id : 6,
-      img: "https://scontent-waw1-1.xx.fbcdn.net/v/t31.0-8/23669145_2008368925839770_6215038177022110504_o.jpg?oh=aff0ee07d193af7986b4bb72fade7ce0&oe=5B4E52CC",
-      title: 'Image',
-      author: 'author',
-      cols: 2,
-    },
-
-    {
-        id : 7,
-      img: "https://scontent-waw1-1.xx.fbcdn.net/v/t31.0-8/23668996_2008366882506641_675688552415028094_o.jpg?oh=ab6c4cf1823fea24221fe03484512163&oe=5B115474",
-      title: 'Image',
-      author: 'author',
-      cols: 1,
-    },
-
-    {
-        id : 8,
-      img: "https://scontent-waw1-1.xx.fbcdn.net/v/t31.0-8/23736326_2008367955839867_1399555142944053959_o.jpg?oh=11e127bebd9b136eed0d6a93038095ce&oe=5B126CE6",
-      title: 'Image',
-      author: 'author',
-      cols: 1,
-    },
-
- ];
-
-
- const isBigScreen = (width) => {
-   return width === "lg" || width === "xl"
- }
-
-const Quote = (props) => (
-  <div className="quote">
-
-  <p><em> ale fajne targi! </em> </p>
-
-<style jsx>{`
-  .quote {
-  background : black
-   padding: 3em
-   width: 100%
-   height: 100%
+  componentDidMount()
+  {
+    this.props.resourceFetchRequest("photos");
   }
 
-  p {
-     color: white
-     fontSize: 2em
+  render()
+  {
+    const { photos, classes, label, title, width } = this.props;
+
+    return (
+      <div className={classes.root}>
+
+
+        {label && <MyTypography label={label} template="H2C" /> }
+        {title && <MyTypography template="H2C">{title}</MyTypography> }
+
+        <GridList className={classes.gridList} cols={3.5} cellHeight={800}>
+          {photos.map(tile => (
+            <GridListTile key={tile.id} cols={1} rows={1}>
+              <img src={tile.src} alt={tile.id} className={classes.deSaturated} />
+
+              <GridListTileBar
+                title={tile.id}
+                subtitle={<span>by: {tile.id}</span>}
+                classes={{
+                  root: classes.titleBar,
+                  title: classes.title,
+                }}
+                actionIcon={
+                  <IconButton>
+                    <StarBorderIcon className={classes.title} />
+                  </IconButton>
+                }
+              />
+            </GridListTile>
+          ))}
+        </GridList>
+      </div>
+    );
   }
 
-  em {
-      fontStyle: italic
-  }
-`}</style>
-</div>)
 
-const Gallery = ({ classes, width }) => {
+}
 
-  console.log(width)
-
-  return (
-    <div className={classes.root}>
-      <GridList cellHeight={400} className={classes.gridList} cols={isBigScreen(width) ? 6 : 3}>
-        {tileData.map((tile, idx) => (
-          <GridListTile key={tile.id} cols={tile.cols || 1}>
-            {idx % 2 ==0 ? <img src={tile.img} alt={tile.title} /> : <Quote />}
-          </GridListTile>
-        ))}
-      </GridList>
-    </div>
-  );
+Gallery.defaultProps = {
+  photos : []
 }
 
 Gallery.propTypes = {
   classes: PropTypes.object.isRequired,
-  width : PropTypes.string.isRequired
 };
 
 const enhance = compose(
+  withStyles(styles),
   withWidth(),
-  withStyles(styles)
+  connect((state) => ({photos : state.resources.photos}), {resourceFetchRequest : resourceFetchRequestAction})
 )
 
 export default enhance(Gallery);

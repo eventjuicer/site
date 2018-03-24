@@ -79,7 +79,7 @@ const styles = {
 const templates = {
 
   default : {
-    variant : "body", component : "p", classNames : ["default"]
+    variant : "body1", component : "p", classNames : ["default"]
   },
 
   H2C : {

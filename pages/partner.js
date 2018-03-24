@@ -10,7 +10,7 @@ import Layout from '../layouts/main';
 import Visitor from '../components/roles/Visitor'
 
 
-class Visit extends React.Component {
+class Partner extends React.Component {
 
 
 static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
@@ -73,4 +73,4 @@ render()
 }
 
 
-export default reduxPage(Visit, (state) => ({foo: state.foo}) )
+export default reduxPage(Partner, (state) => ({foo: state.foo}) )

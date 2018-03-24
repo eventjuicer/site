@@ -13,7 +13,16 @@ export default {
 
     location : "Lokalizacja",
 
-    hours : "Czas trwania"
+    hours : "Czas trwania",
+
+    organizer : {
+
+
+      name : "Organizator",
+      address : "Adres prawny",
+      registration : "NIP"
+
+    }
 
   },
 

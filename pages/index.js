@@ -6,8 +6,7 @@ import fetch from 'isomorphic-unfetch'
 
 import reduxPage from '../redux/store'
 import Layout from '../layouts/main';
-import {Wrapper, Avatarlist, ColumnList, Bookingmap , Googlemap} from '../components'
-import {Typography, GalleryQuoted as Gallery} from '../components'
+import {Wrapper, Avatarlist, ColumnList, Bookingmap, Typography,  Gallery} from '../components'
 import Hero from '../components/HeroCustom'
 
 //const Gallery = dynamic(import('../components/GalleryQuoted'))
@@ -76,34 +75,35 @@ class Index extends React.Component {
       <Wrapper label="visitors.register" links={[
         <Link href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
       ]}>
-
-        <Visitor  />
-
+      <Visitor  />
       </Wrapper>
+
+
+      <Wrapper label="exhibitors.featured"  dense={true}>
+        <Avatarlist filter={function(item){ return item.featured; }} data={ exhibitors } />
+      </Wrapper>
+
 
       <Wrapper label="exhibitors.map.title">
         <Bookingmap  />
       </Wrapper>
 
 
-      <Wrapper label="exhibitors.featured" color="#ffffff">
-        <Avatarlist filter="featured" data={ exhibitors } />
+      <Wrapper label="visitors.register_alt"  links={[
+          <Link href="/visit" label="visitors.more_info" variant="flat" />
+      ]}>
+        <Visitor />
       </Wrapper>
+
+
+      <Gallery label="event.gallery" />
 
       <Wrapper label="exhibitors.title" color="#ffffff">
         <ColumnList data={ exhibitors } />
       </Wrapper>
 
 
-      <Wrapper label="visitors.register_alt" color="#ffe0b2" links={[
-          <Link href="/visit" label="visitors.more_info" variant="flat" />
-      ]}>
-        <Visitor />
-      </Wrapper>
 
-      <Gallery />
-
-      {/* <Googlemap /> */}
 
       </Layout>
 

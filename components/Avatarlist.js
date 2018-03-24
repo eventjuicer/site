@@ -18,60 +18,20 @@ import SubPageItem from './SubPageItem';
 
 class Avatarlist extends React.Component {
 
-renderFeatured()
-{
-  const { data }  = this.props;
-  const featured  = Array.isArray(data) ? data.slice(0, 4) : [];
-
-  return featured.map((company, i) =>
-    <Grid key={i} item xs={6} sm={6} md={4} lg={3} xl={2}>
-      <SubPageItem subpage="company" name={ _get(company, "profile.name") } id={ company.id } src={_get(company, "profile.logotype")} />
-    </Grid>
-  )
-}
-
-renderAll()
-{
-  const { data, width, filter }  = this.props;
-
-  const _data  = Array.isArray(data) ? _chunk(data, Math.round(data.length / 4) ) : [];
-
-  return _data.map((chunk, i) =>
-    <Grid key={i} item xs={6} sm={6} md={4} lg={3} xl={3}>
-
-      {chunk.map((company,j) => <SubPageItem subpage="company" key={j} name={ _get(company, "profile.name") } id={ company.id }  />
-)}
-    </Grid>
-  )
-
-}
-
-
 render()
 {
 
-    const { filter }  = this.props;
+    const { filter, data }  = this.props;
 
-    if(filter && filter === "featured")
-    {
-      return <Grid container spacing={24}> {this.renderFeatured()} </Grid>
-    }
+    const featured  = Array.isArray(data) ? data.slice(0, 4) : [];
 
-  return (
 
-<div>
 
-  <Grid container spacing={24}>
-    {this.renderFeatured()}
-  </Grid>
-
-  <Grid container spacing={24}>
-    {this.renderAll()}
-  </Grid>
-
-</div>
-
-);
+    return   <Grid container spacing={24}>{featured.map((company, i) =>
+      <Grid key={i} item xs={6} sm={6} md={4} lg={3} xl={2}>
+        <SubPageItem subpage="company" name={ _get(company, "profile.name") } id={ company.id } src={_get(company, "profile.logotype")} />
+      </Grid>
+    )}</Grid>
 
 }
 

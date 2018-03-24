@@ -28,7 +28,7 @@ const EventInfo = ({classes, items, translate, orientation}) => (
 
           return (
             <ListItem key={i}>
-              <ListItemIcon>{icon}</ListItemIcon>
+              {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
               <ListItemText primary={ text }  secondary={translate(label)} />
             </ListItem>
           )

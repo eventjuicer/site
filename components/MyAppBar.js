@@ -71,7 +71,7 @@ function ButtonAppBar(props) {
 
           <Link href="/">
           <Typography component="a" variant="title" color="inherit" className={classes.flex}>
-          Targi eHandlu <span className={classes.subtitle}>Kraków 25 kwietnia 2018</span>
+          Targi eHandlu <span className={classes.subtitle}>edycja Kraków</span>
           </Typography>
           </Link>
 

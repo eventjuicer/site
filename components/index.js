@@ -10,7 +10,10 @@ import {default as Googlemap} from './Googlemap'
 import {default as Typography} from './MyTypography'
 import {default as WhoIsGonnaBeThere} from './WhoIsGonnaBeThere'
 import {default as Gallery} from './Gallery'
-import {default as GalleryQuoted} from './GalleryQuoted'
+import {default as EventInfo} from './EventInfo'
+import {default as Benefits} from './Benefits'
+import {default as SupportPeople} from './SupportPeople'
+
 
 export {
   Wrapper,
@@ -23,5 +26,8 @@ export {
   Typography,
   WhoIsGonnaBeThere,
   Gallery,
-  GalleryQuoted
+  EventInfo,
+  Benefits,
+  SupportPeople
+
 }

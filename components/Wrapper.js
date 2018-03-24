@@ -2,7 +2,7 @@
 
 import { withStyles } from 'material-ui/styles';
 import MyTypography from './MyTypography';
-
+import classNames  from 'classnames';
 
 
 const styles = () => ({
@@ -23,9 +23,15 @@ const styles = () => ({
         backgroundColor: '#fff',
         paddingBottom: '5rem',
         paddingTop: '5rem',
-        overflow: 'hidden',
+
         position: 'relative',
 
+    },
+
+    dense : {
+
+      paddingBottom: '1rem',
+      paddingTop: '1rem',
     },
 
     overlay : {
@@ -59,13 +65,14 @@ const styles = () => ({
 
 
 
-const Wrapper = ({translate, classes, label, title, children, color, links}) => (
+const Wrapper = ({translate, classes, label, title, children, color, links, dense}) => (
 
-  <section className={classes.section} style={{backgroundColor : color}}>
+  <section className={classNames(classes.section, {
+    [classes.dense] : dense
+  })} style={{backgroundColor : color}}>
     {/* <div className={props.classes.overlay}>
 
     </div> */}
-
 
     <div className={classes.container}>
       {label && <MyTypography label={label} template="H2C" /> }
@@ -90,7 +97,8 @@ const Wrapper = ({translate, classes, label, title, children, color, links}) => 
 Wrapper.defaultProps = {
   label : null,
   color : '#ffffff',
-  links : []
+  links : [],
+  dense : false
 }
 
 

@@ -34,8 +34,10 @@ const styles = theme => ({
   },
 });
 
-function MediaControlCard(props) {
+function MyCardSlim(props) {
   const { classes, link , title, text, image, primary} = props;
+
+  console.log(props);
 
   return (
     <div>
@@ -63,8 +65,8 @@ function MediaControlCard(props) {
   );
 }
 
-MediaControlCard.propTypes = {
+MyCardSlim.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(MediaControlCard);
+export default withStyles(styles)(MyCardSlim);
