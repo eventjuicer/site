@@ -1,19 +1,28 @@
-import Typography from 'material-ui/Typography';
-import { withStyles } from 'material-ui/styles';
-import _classNames from 'classnames'
+
+
 import compose from 'recompose/compose'
 import PropTypes from 'prop-types';
+import classNamesHelper from 'classnames'
+
+
+import Typography from 'material-ui/Typography';
+import { withStyles } from 'material-ui/styles';
+import withWidth from 'material-ui/utils/withWidth';
+
 import {translate} from '../i18n'
+
+
+
 
 const styles = {
 
+  default : {
+
+  },
 
   bigListItem : {
 
   },
-
-
-
 
   h2 : {
     fontSize : '3rem',
@@ -32,49 +41,85 @@ const styles = {
     marginTop : '1rem',
     marginBottom : '1rem'
 
+  },
+
+  mobile : {
+
+  },
+
+  visitor : {
+
+    width: 'auto',
+    height : 10,
+    margin : 10,
   }
 
 };
 
+
+/*
+
+  VARIANTS
+
+  'display4',
+  'display3',
+  'display2',
+  'display1',
+  'headline',
+  'title',
+  'subheading',
+  'body2',
+  'body1',
+  'caption',
+  'button'
+
+*/
+
+
 const templates = {
+
+  default : {
+    variant : "body", component : "p", classNames : ["default"]
+  },
 
   H2C : {
     variant : "headline", component : "h2", classNames : ["h2", "centered"]
   },
   LIH3 : {
       variant : "subheading", component : "h3", classNames : ["bigListItem"]
+  },
+  visitor : {
+      variant : "body2", component : "p", classNames : ["visitor"]
   }
-
 }
 
 
 
 const MyTypography = (props) => {
 
-  const _props = props.template  ? {...props, ...templates[props.template]} : props;
+  const {variant, component, label, translate, children, classNames, classes, width} = {...props, ...templates[props.template]};
 
-  const classNames = _classNames(_props.classNames.map(className => className in props.classes ? props.classes[className] : false))
+  const cn = classNamesHelper(classNames.map(className => className in classes ? classes[className] : false), {
+
+  })
 
   return (
-    <Typography variant={_props.variant} component={_props.component} className={classNames}>{props.label ? props.translate(props.label) : props.children}</Typography>
+    <Typography variant={variant} component={component} className={cn}>{label ? translate(label) : children}</Typography>
   )
 }
 
 
 MyTypography.defaultProps = {
+  template : "default",
   label : null,
   classNames : [],
-  className : null,
-  variant : 'headline',
-  component : 'h2'
 }
-
 
 const enhance = compose(
   withStyles(styles),
-  translate
+  translate,
+  withWidth()
 )
-
 
 export default enhance(MyTypography);
 

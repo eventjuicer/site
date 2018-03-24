@@ -14,9 +14,10 @@ const Dialog = dynamic(import('../components/MyDialog'))
 const Snackbar = dynamic(import('../components/MySnackbar'))
 const Drawer = dynamic(import('../components/MyDrawer'))
 
+import {customMessages} from '../i18n'
 
 const Layout = (props) => (
-  <TranslationProvider locale="pl">
+  <TranslationProvider locale="pl" messages={customMessages}>
   <div>
 
     <Head>
@@ -25,16 +26,11 @@ const Layout = (props) => (
 
     <MyAppBar />
 
-
-
       {props.children}
 
-
-    <Wrapper label="">
+    <Wrapper>
       <Footer  />
     </Wrapper>
-
-
 
     <Dialog />
     <Snackbar />

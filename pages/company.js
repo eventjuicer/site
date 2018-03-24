@@ -8,7 +8,7 @@ import _filter from 'lodash/filter';
 import _map from 'lodash/map'
 
 
-import * as Typography from '../components/MyTypography';
+import Typography from '../components/MyTypography';
 import {TwoColsLayout as PageLayout, Centered} from '../components/MyLayouts'
 
 import Layout from '../layouts/main';
@@ -106,7 +106,7 @@ render()
 
 
     <Wrapper label="registration.roles.select">
-      <RoleSelector roles={["exhibitor", "visitor"]} />
+      <RoleSelector roles={["visitor", "exhibitor"]} orientation="h" />
       <Roles />
     </Wrapper>
 

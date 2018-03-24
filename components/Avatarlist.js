@@ -32,7 +32,8 @@ renderFeatured()
 
 renderAll()
 {
-  const { data, width }  = this.props;
+  const { data, width, filter }  = this.props;
+
   const _data  = Array.isArray(data) ? _chunk(data, Math.round(data.length / 4) ) : [];
 
   return _data.map((chunk, i) =>
@@ -48,6 +49,14 @@ renderAll()
 
 render()
 {
+
+    const { filter }  = this.props;
+
+    if(filter && filter === "featured")
+    {
+      return <Grid container spacing={24}> {this.renderFeatured()} </Grid>
+    }
+
   return (
 
 <div>
@@ -68,6 +77,8 @@ render()
 
 }
 
-
+Avatarlist.defaultProps = {
+  filter : null
+}
 
 export default withWidth()(Avatarlist);

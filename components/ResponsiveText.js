@@ -10,9 +10,9 @@ import {isBigScreen} from '../helpers'
 const styles = theme => ({
 
   bigScreen : {
-    fontSize : '10rem',
-    textTransform: 'uppercase',
-    fontWeight : 500,
+    fontSize : '20vh',
+    // textTransform: 'uppercase',
+    fontWeight : 700,
     color: 'white'
   },
 

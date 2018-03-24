@@ -24,7 +24,7 @@ class MyDocument extends Document {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="google" content="notranslate" />
-        <script src="https://use.fontawesome.com/6de33398df.js"></script>
+        {/* <script src="https://use.fontawesome.com/6de33398df.js"></script> */}
       </Head>
 
       <body className="eventjuicer_site">

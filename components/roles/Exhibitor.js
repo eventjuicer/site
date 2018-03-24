@@ -3,7 +3,6 @@ import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
 
 
-import RoleWrapper from './RoleWrapper'
 
 import SupportPeople from '../SupportPeople'
 import Benefits from '../Benefits'
@@ -23,23 +22,17 @@ const styles = theme => ({
 
 const Exhibitor = (props) => (
 
-  <RoleWrapper>
+
   <div>
 
     <Grid container spacing={8} justify="space-around" alignItems="center">
 
          <Grid item xs={10} sm={6} md={6} lg={6} xl={6} >
-
-           {/* <Paper zdepth={2}> */}
-
              <SupportPeople />
 
-           {/* </Paper> */}
          </Grid>
 
         <Grid item xs={10} sm={6} md={6} lg={6} xl={6} >
-
-
 
           <Benefits items={[
             "Przestrzeń wystawiennicza",
@@ -55,8 +48,7 @@ const Exhibitor = (props) => (
     <Bookingmap />
 
   </div>
-
-  </RoleWrapper>
+ 
 
 )
 

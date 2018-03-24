@@ -36,6 +36,11 @@ const styles = theme => ({
     width: "100%",
     height: "100vh",
 
+    display : 'flex',
+    justifyContent : 'center',
+    alignItems : 'center',
+
+
   },
 
 });
@@ -43,12 +48,15 @@ const styles = theme => ({
 const Hero = ({videoSrc, classes, children}) => (
 
   <section className={classes.container}>
-    <video autoPlay muted loop className={classes.video}>
-      <source src={videoSrc} type="video/mp4" />
-    </video>
+
+    {videoSrc && <video autoPlay muted loop className={classes.video}>
+        <source src={videoSrc} type="video/mp4" />
+      </video>
+    }
+
     <div className={classes.overlay}>
 
-      {children}
+    {children}
 
     </div>
   </section>

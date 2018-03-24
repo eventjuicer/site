@@ -3,10 +3,14 @@ export const DEFAULT_LOCALE = 'en';
 
 
 import resolveBrowserLocale from './TranslationUtils';
-import englishMessages from './messages';
+
 import translate from './translate';
 import TranslationProvider from './TranslationProvider';
 import withPolyglot from './withPolyglot'
 
 
-export {resolveBrowserLocale, englishMessages, translate, TranslationProvider, withPolyglot}
+import defaultMessages from './messages';
+import customMessages from './translations'
+
+
+export {resolveBrowserLocale, translate, TranslationProvider, withPolyglot, defaultMessages, customMessages}

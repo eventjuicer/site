@@ -2,17 +2,19 @@
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import fetch from 'isomorphic-unfetch'
+
+
 import reduxPage from '../redux/store'
 import Layout from '../layouts/main';
-
-import {Wrapper, Avatarlist, Bookingmap , Googlemap} from '../components'
-import Hero from '../components/roles/HeroWithSelectors'
+import {Wrapper, Avatarlist, ColumnList, Bookingmap , Googlemap} from '../components'
+import {Typography, GalleryQuoted as Gallery} from '../components'
+import Hero from '../components/HeroCustom'
 
 //const Gallery = dynamic(import('../components/GalleryQuoted'))
-import Gallery from '../components/GalleryQuoted'
-
 import {resourceFetchSuccess} from '../components/redux/actions'
-import MyTypography from '../components/MyTypography'
+import Visitor from '../components/roles/Visitor'
+
+import Link from '../next/MyLink'
 
 class Index extends React.Component {
 
@@ -69,24 +71,37 @@ class Index extends React.Component {
         <title>targiehandlu.pl xxx</title>
       </Head>
 
-      <MyTypography>{(name) => <div>{name}</div>}</MyTypography>
+      <Hero />
 
+      <Wrapper label="visitors.register" links={[
+        <Link href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
+      ]}>
 
-        <Hero
-          videoSrc="https://s3.eu-central-1.amazonaws.com/eventjuicer-assets/video11_2.mp4"
+        <Visitor  />
 
-         />
+      </Wrapper>
 
-      <Wrapper label="bookingmap.title">
-        <Bookingmap  /> {/*booths*/}
+      <Wrapper label="exhibitors.map.title">
+        <Bookingmap  />
       </Wrapper>
 
 
-        <Wrapper title="exhibitors.title">
-        <Avatarlist data={ exhibitors } />
-        </Wrapper>
+      <Wrapper label="exhibitors.featured" color="#ffffff">
+        <Avatarlist filter="featured" data={ exhibitors } />
+      </Wrapper>
 
-        <Gallery />
+      <Wrapper label="exhibitors.title" color="#ffffff">
+        <ColumnList data={ exhibitors } />
+      </Wrapper>
+
+
+      <Wrapper label="visitors.register_alt" color="#ffe0b2" links={[
+          <Link href="/visit" label="visitors.more_info" variant="flat" />
+      ]}>
+        <Visitor />
+      </Wrapper>
+
+      <Gallery />
 
       {/* <Googlemap /> */}
 

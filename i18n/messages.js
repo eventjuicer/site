@@ -1,22 +1,12 @@
-const messages = {
+export default {
 
-  visitor : "VISSSITORR",
-  exhibitor : "EXHIIIBIITORT",
 
-  registration : {
+  common : {
 
-    roles : {
-      select : "Spotkamy się na Targach?"
-    }
+    from : 'from'
 
   },
-  
-  pl : {
 
-    visitor : "plVISSSITORR",
-    exhibitor : "plEXHIIIBIITORT"
 
-  }
+
 }
-
-export default messages;

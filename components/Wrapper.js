@@ -45,6 +45,13 @@ const styles = () => ({
       maxWidth : 1600,
       margin : '0 auto',
       zIndex: 111,
+    },
+
+    centered : {
+      display : 'flex',
+      // alignItems : 'flex-end',
+      justifyContent : 'flex-end',
+      marginTop : '2rem'
     }
 
 })
@@ -52,9 +59,9 @@ const styles = () => ({
 
 
 
-const Wrapper = ({translate, classes, label, children}) => (
+const Wrapper = ({translate, classes, label, title, children, color, links}) => (
 
-  <section className={classes.section}>
+  <section className={classes.section} style={{backgroundColor : color}}>
     {/* <div className={props.classes.overlay}>
 
     </div> */}
@@ -62,8 +69,18 @@ const Wrapper = ({translate, classes, label, children}) => (
 
     <div className={classes.container}>
       {label && <MyTypography label={label} template="H2C" /> }
+      {title && <MyTypography template="H2C">{title}</MyTypography> }
       {children}
+
+      {links.length ? <div className={classes.centered}>
+        {links.map(link => link)}
+      </div> : null}
+
     </div>
+
+
+
+
   </section>
 
 
@@ -71,7 +88,9 @@ const Wrapper = ({translate, classes, label, children}) => (
 
 
 Wrapper.defaultProps = {
-  label : null
+  label : null,
+  color : '#ffffff',
+  links : []
 }
 
 

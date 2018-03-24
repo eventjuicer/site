@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 import { connect } from 'react-redux';
 
 
+import RoleWrapper from './RoleWrapper'
 
 
 const Visitor = dynamic(import("./Visitor"))
@@ -17,10 +18,10 @@ const Roles = ({role, classes}) => {
   switch(role)
   {
     case "exhibitor":
-      return  <Exhibitor />
+      return  <RoleWrapper><Exhibitor /></RoleWrapper>
 
     case "visitor":
-      return <Visitor />
+      return <RoleWrapper><Visitor /></RoleWrapper>
   }
 
   return null;

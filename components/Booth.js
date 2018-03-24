@@ -6,7 +6,6 @@ import { withStyles } from 'material-ui/styles';
 import classNames from 'classnames';
 import {onlyUpdateForKeys, compose} from 'recompose';
 
-
 const styles = (theme) => ({
 
   booth : {
@@ -15,7 +14,7 @@ const styles = (theme) => ({
     backgroundColor: 'lightgreen',
     border: '1px solid orange',
     color: 'red',
-    zIndex: 1001,
+    zIndex: 20,
     borderRadius: 3,
     cursor: 'pointer',
 
@@ -24,6 +23,10 @@ const styles = (theme) => ({
     margin:0,
     textAlign: 'center',
     boxShadow : '1px 1px #555555'
+  },
+
+  tooltip : {
+    zIndex : 25,
   },
 
   style1 : {},
@@ -72,7 +75,9 @@ const Booth = ({status, data, classes, onClick, selected, styleId}) =>  (
           [classes.boothHold] : status === "hold",
           [classes.boothSelected] : selected
         } )} style={{ height: data.dh, width: data.dw, top: data.dt, left: data.dl, lineHeight: `${data.dh}px`}}>
+
         <span className={classes.boothText}>{data.ti}</span>
+     
       </li>
 )
 
