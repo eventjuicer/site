@@ -11,6 +11,7 @@ import Typography from 'material-ui/Typography';
 const styles = theme => ({
   card: {
     display: 'flex',
+    backgroundColor : 'transparent'
   },
   details: {
     display: 'flex',
@@ -20,9 +21,9 @@ const styles = theme => ({
     flex: '1 0 auto',
   },
   cover: {
-    width: 151,
-    height: 151,
-    backgroundSize : '85%',
+    width: 200,
+    height: 200,
+    backgroundSize : 'contain',
     backgroundRepeat: 'no-repeat',
     backgroundPosition : 'center 15px'
   },
@@ -34,10 +35,9 @@ const styles = theme => ({
   },
 });
 
-function MyCardSlim(props) {
-  const { classes, link , title, text, image, primary} = props;
-
-  console.log(props);
+function MyCardSlim(props)
+{
+  const { classes, link , title, text, imageSrc, primary} = props;
 
   return (
     <div>
@@ -45,7 +45,7 @@ function MyCardSlim(props) {
 
         <CardMedia
           className={classes.cover}
-          src={image}
+          image={imageSrc}
         />
 
         <div className={classes.details}>
@@ -63,6 +63,10 @@ function MyCardSlim(props) {
       </Card>
     </div>
   );
+}
+
+MyCardSlim.defaultProps = {
+
 }
 
 MyCardSlim.propTypes = {

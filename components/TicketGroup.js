@@ -5,22 +5,38 @@ import { withStyles } from 'material-ui/styles';
 import compose from 'recompose/compose'
 import sortBy from 'lodash/sortBy';
 
+import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 
-import {
-  FormLabel,
-  FormControl,
-} from 'material-ui/Form';
-
+import _get from 'lodash/get'
 
 import Ticket from './Ticket'
+import BoothInfoHeader from './BoothInfoHeader'
 
 const styles = (theme) => ({
 
   root : {
 
   },
+  table: {
+//    minWidth: 700,
+    marginBottom : 30,
+  },
+
 
 });
+
+
+
+const CustomTableCell = withStyles(theme => ({
+  // typeHead: {
+  //   backgroundColor: theme.palette.common.black,
+  //   color: theme.palette.common.white,
+  // },
+  typeBody: {
+    fontSize: 16,
+  },
+}))(TableCell);
+
 
 
 
@@ -36,21 +52,32 @@ class TicketGroup extends React.PureComponent {
   render()
   {
 
-    const { group, formdata, label, noBookableTickets  } = this.props;
+    const { group, formdata, label, noBookableTickets, classes  } = this.props;
     const sorted = sortBy(group.tickets, ["start"]);
 
     return (
 
       <div>
+
       {!this.checkIfHasBookableTickets() ? noBookableTickets : null}
 
-        <FormControl component="fieldset" fullWidth margin="normal">
+      <BoothInfoHeader formdata={formdata} group={group} />
 
-      <FormLabel component="legend">{label}</FormLabel>
+      <Table className={classes.table}>
+          <TableHead>
+                <TableRow>
+                  <CustomTableCell>start sprzedaży</CustomTableCell>
+                  <CustomTableCell>nazwa puli</CustomTableCell>
+                  <CustomTableCell numeric>cena netto</CustomTableCell>
+                </TableRow>
+          </TableHead>
+              <TableBody>
 
-      {sorted && sorted.map(ticket => <Ticket key={ticket.id} ticket={ticket} formdata={formdata} />)}
+              {sorted && sorted.map(ticket => <Ticket key={ticket.id} ticket={ticket} formdata={formdata} />)}
 
-     </FormControl>
+              </TableBody>
+            </Table>
+
 
      </div>
 

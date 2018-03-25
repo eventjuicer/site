@@ -2,10 +2,10 @@
 
 
 import { withStyles } from 'material-ui/styles';
-import IconButton from 'material-ui/IconButton';
-// import PlayArrowIcon from 'material-ui-icons/PlayArrow';
+ // import PlayArrowIcon from 'material-ui-icons/PlayArrow';
 import Button from 'material-ui/Button';
-
+import compose from 'recompose/compose'
+import {translate} from '../i18n'
 
 import Card from './MyCardSlim'
 
@@ -21,14 +21,36 @@ const styles = theme => ({
 });
 
 
-// const Buttons = withStyles(styles)((props) => <IconButton aria-label="Contact">
-//   <PlayArrowIcon className={props.classes.icon} />
-// </IconButton>)
 
-const Person = ({classes}) => (
+const Person = ({classes, translate, title, text, name, avatar, phone, email}) => (
+
   <div className={classes.container}>
-  <Card primary={false} title="Dzień dobry!" text="Tutaj Bartek Meller. Być może jestem w stanie coś doradzić?" image="/static/support.jpg" link={<Button variant="raised" color="primary">Chat</Button>} />
+  <Card
+    primary={false}
+    title={translate(title)}
+    text={
+      <div>
+      {translate(text, {person : name})}
+      <p>{phone} <br/>{email}</p>
+      </div>}
+    imageSrc={avatar}
+    link={<Button variant="raised" color="primary">{translate("common.chat")}</Button>}
+   />
 </div>)
 
+Person.defaultProps = {
+    title : "event.support.hello",
+    text : "event.support.description",
+    name : "Bartek Meller",
+    avatar : "/static/support.jpg",
+    phone : "+48 721 945 134",
+    email : "hello@targiehandlu.pl"
+}
 
-export default withStyles(styles)(Person)
+
+const enhance = compose(
+  withStyles(styles),
+  translate
+)
+
+export default enhance(Person)

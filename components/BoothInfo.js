@@ -38,17 +38,16 @@ class BoothInfo extends React.Component {
   render()
   {
     const {formdata} = this.props;
-
-
+    const cname2 = _get(formdata, "company.profile.name");
 
     return (
       <div>
 
-      {formdata && <Card primary={false}
-        title={_get(formdata, "company.profile.name")}
+      {cname2 ? <Card primary={false}
+        title={cname2}
         text={_get(formdata, "company.profile.about")}
-        image={_get(formdata, "company.profile.logotype")}
-     />}
+        imageSrc={_get(formdata, "company.profile.logotype")}
+     /> : null}
 
       <Person />
 

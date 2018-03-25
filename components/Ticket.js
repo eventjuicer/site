@@ -2,14 +2,12 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose'
+import {translate} from '../i18n'
+import _get from 'lodash/get'
 
-import {
-  FormControlLabel,
-  FormHelperText,
-  FormGroup,
-} from 'material-ui/Form';
+import { TableCell, TableRow } from 'material-ui/Table';
 
-import Checkbox from 'material-ui/Checkbox';
+//import Checkbox from 'material-ui/Checkbox';
 
 import {
   cartItemAdd as cartItemAddAction,
@@ -42,14 +40,23 @@ class Ticket extends React.PureComponent {
 
   getTicketName()
   {
-    const {ticket} = this.props;
-    //handle LOCALE!!!!!!!
-    return ticket.names.pl;
+    const {ticket, locale} = this.props;
+
+    return _get(ticket, `names.${locale}`);
+  }
+
+  getTicketPrice()
+  {
+    const {ticket, locale, translate} = this.props;
+
+    return `${_get(ticket, `price.${locale}`)} ${translate("common.currencies.default")}`;
   }
 
   render() {
 
-    const {ticket} = this.props;
+    const {ticket, formdata} = this.props;
+
+    console.log(ticket);
 
     if(!ticket)
     {
@@ -58,28 +65,40 @@ class Ticket extends React.PureComponent {
 
     return (
 
-          <FormGroup>
-            <FormControlLabel
-            control={
-              <Checkbox
-                disabled={!ticket.bookable}
-                color="secondary"
-                checked={this.isSelected()}
-                onChange={this.handleChange('_')}
-                value="gilad"
 
-              />
-            }
-            label={this.getTicketName()}
-          />
-          <FormHelperText>Be careful</FormHelperText>
-          </FormGroup>
+      <TableRow selected={ticket.bookable ? true : false}>
+        <TableCell>
+          {ticket.start.substring(0,10)}
+        </TableCell>
+        <TableCell>{this.getTicketName()}</TableCell>
+        <TableCell numeric>{this.getTicketPrice()}</TableCell>
+      </TableRow>
+
+          //
+          // <FormGroup>
+          //   <FormLabel></FormLabel>
+          //   <FormControlLabel
+          //   control={
+          //     <Checkbox
+          //       disabled={!ticket.bookable}
+          //       color="secondary"
+          //       checked={this.isSelected()}
+          //       onChange={this.handleChange('_')}
+          //       value="gilad"
+          //
+          //     />
+          //   }
+          //   label={this.getTicketName()}
+          // />
+          // <FormHelperText>Be careful</FormHelperText>
+          // </FormGroup>
     );
   }
 }
 
 Ticket.propTypes = {
   ticket : PropTypes.object.isRequired,
+  formdata : PropTypes.object.isRequired,
 };
 
 Ticket.defaultProps = {
@@ -87,7 +106,7 @@ Ticket.defaultProps = {
 };
 
 const enhance = compose(
-  //translate,
+  translate,
   //withStyles(styles),
   connect(state => ({
     cart : state.app.cart,
