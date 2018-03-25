@@ -35,9 +35,9 @@ class MyDrawer extends React.PureComponent {
 
     const sideList = (
       <div className={classes.list}>
-        <List>asd</List>
+        <List></List>
         <Divider />
-        <List>dsa</List>
+        <List></List>
       </div>
     );
 

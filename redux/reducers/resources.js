@@ -20,7 +20,7 @@ const reducer = (state = initialState, action) => {
 	switch (type) {
 		case  RESOURCE_FETCH_SUCCESS:
 			return {...state, [resource] : data}
-
+		break;
 		default:
 			return state
 	}

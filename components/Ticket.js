@@ -14,6 +14,52 @@ import {
   cartItemRemove as cartItemRemoveAction
 } from './redux/actions'
 
+/*
+
+agg :
+{customers: 6, sold: 6}
+bookable
+:
+0
+end
+:
+"2017-11-26 23:59:59"
+errors
+:
+["overdue"]
+group_id
+:
+248
+id
+:
+1258
+in_dates
+:
+0
+limit
+:
+7
+max_quantity
+:
+1
+names
+:
+{pl: "Przestrzeń 3x2 / Strefa STANDARD / Early Bird", en: "", de: ""}
+price
+:
+{pl: 2899, en: 709, de: 0}
+remaining
+:
+1
+role
+:
+"exhibitor"
+start
+:
+"2017-11-24 12:00:00"
+
+*/
+
 
 class Ticket extends React.PureComponent {
 
@@ -55,8 +101,6 @@ class Ticket extends React.PureComponent {
   render() {
 
     const {ticket, formdata} = this.props;
-
-    console.log(ticket);
 
     if(!ticket)
     {

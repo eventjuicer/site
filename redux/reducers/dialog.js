@@ -13,8 +13,10 @@ const reducer = (state = {}, action) => {
 	switch (action.type) {
 		case DIALOG_SHOW:
 			return action.payload
+		break
 		case DIALOG_HIDE:
 			return {}
+		break
 		default:
 			return state
 	}
