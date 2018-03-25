@@ -13,7 +13,7 @@ const styles = {
 
   container : {
     maxWidth : '100%',
-    marginTop: 30
+  //  marginTop: 30
   },
   flexList : {
       display: 'flex',

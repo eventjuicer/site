@@ -12,7 +12,7 @@ const styles = {
 
   container : {
     maxWidth : 400,
-    marginTop: 30
+  //  marginTop: 30
   },
 
 }

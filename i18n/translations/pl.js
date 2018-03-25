@@ -35,12 +35,13 @@ export default {
 
       free_presentations_entry : "Bezpłatny udział w prezentacjach",
       free_expo_entry : "Bezpłatne zwiedzanie stoisk",
-      free_presentations_access : "Bezpłatny dostęp do prezentacji w PDF"
+      free_presentations_access : "Bezpłatny dostęp do prezentacji w PDF",
 
     },
 
     form : {
       register : "Zarejestruj mnie",
+      intro : "Bilet otrzymasz na podany adres e-mail na kilka dni przed wydarzeniem",
     },
 
     fields : {
@@ -62,7 +63,7 @@ export default {
 
     more_info : "więcej informacji",
 
-    attendees : "Zobacz kto będzie"
+    attendees : "Zobacz kto będzie",
 
   },
 
@@ -75,7 +76,7 @@ export default {
     list_all : "Wszyscy Wystawcy",
 
     map : {
-      title : "Plan Targów"
+      title : "Plan Targów",
     },
 
   },

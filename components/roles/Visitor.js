@@ -14,34 +14,24 @@ import red from 'material-ui/colors/red';
 import EventInfo from '../EventInfo'
 import Benefits from '../Benefits'
 import VisitorForm from './VisitorForm'
+import VisitorRegistrationSuccess from './VisitorRegistrationSuccess'
 
-
-
-
-
-const styles = theme => ({
-
-  paper : {
-    padding: 30
-  },
-
+const styles = {
   redIcon : {
     color : red[500],
     height : 30,
     width : 30
   }
-
-});
+}
 
 
 const Visitor = ({links, classes, width}) => (
-
 
    <Grid container spacing={8} justify="space-between">
 
        <Grid item xs={12} sm={12} md={6} lg={5} xl={5} >
 
-         <VisitorForm user={{}} />
+         <VisitorForm user={{}} success={VisitorRegistrationSuccess} />
 
        </Grid>
 
@@ -89,9 +79,6 @@ const Visitor = ({links, classes, width}) => (
           ]}
             orientation={width === "md" ? "h" : "v"}
          />
-
-
-
 
 
        </Grid>

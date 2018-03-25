@@ -50,7 +50,7 @@ const FormButton = (props) => {
   return (
     <div style={{textAlign: 'right'}}>
       <Button
-        variant={isValid ? 'raised' : 'flat'}
+        variant={isValid ? 'raised' : 'raised'}
         color={isValid ? 'primary' : 'secondary'}
         disabled={isSubmitting}
         onClick={handleSubmit}

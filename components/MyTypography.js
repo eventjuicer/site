@@ -52,6 +52,11 @@ const styles = {
     width: 'auto',
     height : 10,
     margin : 10,
+  },
+
+  legend : {
+    marginTop : 25,
+    color : 'rgba(0, 0, 0, 0.54)'
   }
 
 };
@@ -90,6 +95,10 @@ const templates = {
   },
   visitor : {
       variant : "body2", component : "p", classNames : ["visitor"]
+  },
+
+  legend : {
+      variant : "subheading", component : "legend", classNames : ["legend"]
   }
 }
 

@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import TextInput from '../../formik/TextInput'
 import FormButton from '../../formik/FormButton'
 import formik from '../../formik/formik'
-
+import Typography from '../MyTypography'
 
 
 
@@ -65,7 +65,7 @@ const MyForm = (props) => {
     <form onSubmit={handleSubmit}>
 
 
-      <legend>asd</legend>
+      <Typography template="legend" label="visitors.form.intro" />
 
       <TextInput
         id="email"

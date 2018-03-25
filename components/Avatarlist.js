@@ -27,9 +27,14 @@ class Avatarlist extends React.PureComponent {
 render()
 {
 
-    const { filter, data, resource, classes, width }  = this.props;
+    const { filter, data, resource, classes, width, mobile }  = this.props;
 
-    const featured  = filter ? data.filter(item => filter(item)) : data;
+    let featured  = filter ? data.filter(item => filter(item)) : data;
+
+    if(width === "xs" && mobile && featured.length > mobile)
+    {
+      featured = featured.slice(0, mobile)
+    }
 
     return  (
         <Grid container spacing={24}>
@@ -47,7 +52,8 @@ render()
 
 Avatarlist.defaultProps = {
   filter : null,
-  resource : ""
+  resource : "",
+  mobile : 6
 }
 
 const enhance = compose(

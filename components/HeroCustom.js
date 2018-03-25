@@ -42,7 +42,7 @@ const HeroCustom = ({videoSrc, classes}) => (
       {/* <WhoIsGonnaBeThere /> */}
 
       <div className={classes.overlay}>
-          <HeroTexts />
+          {/* <HeroTexts /> */}
       </div>
     </div>
 

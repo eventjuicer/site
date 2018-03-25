@@ -27,7 +27,7 @@ const styles = theme => ({
     justifyContent: 'space-around',
     overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
-    minHeight : '50vh'
+    paddingTop: 50
   },
   gridList: {
 
