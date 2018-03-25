@@ -51,6 +51,7 @@ const styles = () => ({
       width: '90%',
       maxWidth : 1600,
       margin : '0 auto',
+      marginTop : '2rem',
       zIndex: 111,
     },
 

@@ -4,7 +4,7 @@ import Paper from 'material-ui/Paper';
 
 
 
-import SupportPeople from '../SupportPeople'
+import Person from '../Person'
 import Benefits from '../Benefits'
 import Bookingmap from '../Bookingmap'
 
@@ -28,7 +28,7 @@ const Exhibitor = (props) => (
     <Grid container spacing={8} justify="space-around" alignItems="center">
 
          <Grid item xs={10} sm={6} md={6} lg={6} xl={6} >
-             <SupportPeople />
+             <Person />
 
          </Grid>
 
@@ -48,7 +48,7 @@ const Exhibitor = (props) => (
     <Bookingmap />
 
   </div>
- 
+
 
 )
 

@@ -32,7 +32,9 @@ const styles = {
     width: 100,
     height : 100,
     display : 'inline-block',
-    position : 'relative'
+    position : 'relative',
+    top: 30,
+    color : 'rgb(255,255,255,0.6)',
 
   },
 

@@ -12,7 +12,7 @@ import red from 'material-ui/colors/red';
 
 
 import EventInfo from './EventInfo'
-import SupportPeople from './SupportPeople'
+import Person from './Person'
 import Typography from './MyTypography'
 
 import Wrapper from './Wrapper'
@@ -51,7 +51,7 @@ const Footer = ({links, classes, width}) => (
            <Grid item xs={12} sm={12} md={12} lg={5} xl={5} >
 
 
-             <SupportPeople />
+             <Person />
 
 
             </Grid>

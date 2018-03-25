@@ -10,7 +10,7 @@ import compose from 'recompose/compose'
 
 
 const BoothInfo = dynamic(import('./BoothInfo'))
-const SupportPeople = dynamic(import('./SupportPeople'))
+const SupportPerson = dynamic(import('./Person'))
 const TicketGroup = dynamic(import('./TicketGroup'))
 const TicketGroupsInfo = dynamic(import('./TicketGroupsInfo'))
 
@@ -128,7 +128,7 @@ onBoothClick = (boothId, groupId, label) => {
       default:
         /* THERE IS NOW FORMDATA FOR UNSOLD BOOTHS!!!! */
         modalTitle = `To stoisko jest wolne`
-        modalContent = <TicketGroup noBookableTickets={<div><h2>Niestety nie poszalejesz</h2><SupportPeople /></div>} label="Pule sprzedaży" group={this.getTicketsForGroupId(groupId)} formdata={ {id : boothId, ti : label} } />
+        modalContent = <TicketGroup noBookableTickets={<div><h2>Brak otwartej sprzedaży</h2><SupportPerson /></div>} label="Pule sprzedaży" group={this.getTicketsForGroupId(groupId)} formdata={ {id : boothId, ti : label} } />
 
     }
 

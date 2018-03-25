@@ -10,7 +10,7 @@ import _get from 'lodash/get';
 
 
 //import {translate} from '../i18n'
-import SupportPeople from './SupportPeople'
+import Person from './Person'
 
 import Card from './MyCardSlim'
 
@@ -39,7 +39,7 @@ class BoothInfo extends React.Component {
   {
     const {formdata} = this.props;
 
-    console.log(formdata);
+
 
     return (
       <div>
@@ -50,7 +50,7 @@ class BoothInfo extends React.Component {
         image={_get(formdata, "company.profile.logotype")}
      />}
 
-      <SupportPeople />
+      <Person />
 
     </div>)
   }

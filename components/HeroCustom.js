@@ -35,13 +35,13 @@ const HeroCustom = ({videoSrc, classes}) => (
 
         <Grid container spacing={8} justify="space-between">
 
-            <Grid item xs={12} sm={12} md={12} lg={5} xl={5} >
+            <Grid item xs={12} sm={12} md={12} lg={12} xl={5} >
 
               <Reviews  />
 
             </Grid>
 
-            <Grid item xs={12} sm={12} md={6} lg={5} xl={5} >
+            <Grid item xs={12} sm={12} md={6} lg={12} xl={5} >
 
 
 

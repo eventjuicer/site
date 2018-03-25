@@ -43,7 +43,7 @@ const SubPageLink = ({name, subpage, id, classes, src}) =>
 
 SubPageLink.defaultProps = {
     src : "",
-    name : null,
+    name : "",
     id : 0
 }
 

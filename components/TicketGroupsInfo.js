@@ -9,8 +9,8 @@ import compose from 'recompose/compose'
 //import {translate} from '../i18n'
 
 
-const BoothInfo = dynamic(import('./BoothInfo'))
-const SupportPeople = dynamic(import('./SupportPeople'))
+//const BoothInfo = dynamic(import('./BoothInfo'))
+//const Person = dynamic(import('./Person'))
 const TicketGroup = dynamic(import('./TicketGroup'))
 
 import Booth from './Booth';
@@ -43,7 +43,7 @@ renderTicketGroups()
 {
   const {ticketgroups} = this.props;
 
-  return Object.values(ticketgroups).map(tg => <div key={tg.id}>asd</div>) ;
+  return Object.values(ticketgroups).map(tg => <div key={tg.id}></div>) ;
 }
 
 
