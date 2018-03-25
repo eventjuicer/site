@@ -71,7 +71,7 @@ export default {
 
     list_featured : "Wystawiają się m.in.",
 
-    booth_location : "Stoisko %{names} |||| Stoiska %{names}",
+    booth_location : "Lokalizacja %{cname2}: %{loc} |||| Lokalizacja %{cname2}: %{loc}",
 
     list_all : "Wszyscy Wystawcy",
 

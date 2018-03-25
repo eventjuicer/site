@@ -75,6 +75,7 @@ class Bookingmap extends React.PureComponent {
 
 componentDidMount()
 {
+  this.props.resourceFetchRequest("bookingmap", false);
   this.props.resourceFetchRequest("formdata", true);
   this.props.resourceFetchRequest("ticketgroups", true);
 
@@ -155,7 +156,7 @@ render()
   return (
 
 <div className={classes.scrollableContainer}>
-{booths && ("mapsource" in booths) &&
+{booths && ("mapsource" in booths) ?
 <div className={classes.container}>
 <div className={classes.bg} style={{background : `url(${booths.mapsource})`}}></div>
 <ul className={classes.booths}>
@@ -163,7 +164,7 @@ render()
         <Booth styleId={1} selected={this.isBoothSelected(booth.id)} onClick={this.onBoothClick} status={this.getStatusShort(booth.id)} key={booth.id} data={booth} />
       )}
 </ul>
-</div>
+</div> : <div>...loading</div>
 }
 <TicketGroupsInfo />
 </div>

@@ -28,12 +28,16 @@ const styles = {
     fontSize : '3rem',
     textTransform: 'uppercase',
     fontWeight : 300,
-    marginBottom: '2rem',
+    marginBottom: '4rem',
   //  textAlign: 'center'
   },
 
   centered : {
     textAlign: 'center'
+  },
+
+  bold : {
+    fontWeight : 500,
   },
 
   section : {
@@ -57,7 +61,16 @@ const styles = {
   legend : {
     marginTop : 25,
     color : 'rgba(0, 0, 0, 0.54)'
-  }
+  },
+
+  hero : {
+      fontSize : '2rem',
+      color : 'rgb(255,255,255,0.8)',
+      fontStyle: 'italic',
+      fontWeight : 900,
+
+  },
+
 
 };
 
@@ -90,6 +103,11 @@ const templates = {
   H2C : {
     variant : "headline", component : "h2", classNames : ["h2", "centered"]
   },
+
+  H2CB : {
+    variant : "headline", component : "h2", classNames : ["h2", "centered", "bold"]
+  },
+
   LIH3 : {
       variant : "subheading", component : "h3", classNames : ["bigListItem"]
   },
@@ -99,14 +117,19 @@ const templates = {
 
   legend : {
       variant : "subheading", component : "legend", classNames : ["legend"]
+  },
+
+  heroOpinion : {
+      variant : "headline", component : "h2", classNames : ["hero"]
   }
+
 }
 
 
 
 const MyTypography = (props) => {
 
-  const {variant, component, label, translate, children, classNames, classes, width} = {...props, ...templates[props.template]};
+  const {variant, component, label, translate, children, classNames, classes, width, icon, iconAfter} = {...props, ...templates[props.template]};
 
   const cn = classNamesHelper(classNames.map(className => className in classes ? classes[className] : false), {
 
@@ -122,7 +145,11 @@ const MyTypography = (props) => {
   }
 
   return (
-    <Typography variant={variant} component={component} className={cn}>{label ? translate(_label, _label_params) : children}</Typography>
+    <Typography variant={variant} component={component} className={cn}>
+      {icon}
+      {label ? translate(_label, _label_params) : children}
+      {iconAfter}
+    </Typography>
   )
 }
 
@@ -131,6 +158,8 @@ MyTypography.defaultProps = {
   template : "default",
   label : null,
   classNames : [],
+  icon : null,
+  iconAfter : null
 }
 
 const enhance = compose(

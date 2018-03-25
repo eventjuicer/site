@@ -40,8 +40,8 @@ const styles = theme => ({
     color: theme.palette.primary.light,
   },
   titleBar: {
-    background:
-      'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+    // background:
+    //   'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
   },
 
   deSaturated : {
@@ -115,19 +115,19 @@ class Gallery extends React.PureComponent {
           {_shuffle(photos).map((tile, idx) => (
             <GridListTile key={tile.id}>
               <img src={tile.src} alt="" className={classes.deSaturated} />
-              <GridListTileBar
-            //    title={tile.id}
-            //    subtitle={<span>by: {tile.id}</span>}
+              {/* <GridListTileBar
+               title={tile.id}
+               subtitle={<span>by: {tile.id}</span>}
                 classes={{
                   root: classes.titleBar,
                   title: classes.title,
                 }}
-                // actionIcon={
-                //   <IconButton>
-                //     <StarBorderIcon className={classes.title} />
-                //   </IconButton>
-                // }
-              />
+                actionIcon={
+                  <IconButton>
+                    <StarBorderIcon className={classes.title} />
+                  </IconButton>
+                }
+              /> */}
             </GridListTile>
           ))}
         </GridList>

@@ -26,6 +26,7 @@ const styles = () => ({
 
         position: 'relative',
 
+
     },
 
     dense : {
@@ -65,7 +66,7 @@ const styles = () => ({
 
 
 
-const Wrapper = ({translate, classes, label, title, children, color, links, dense}) => (
+const Wrapper = ({translate, classes, label, typography, title, children, color, links, dense}) => (
 
   <section className={classNames(classes.section, {
     [classes.dense] : dense
@@ -75,8 +76,8 @@ const Wrapper = ({translate, classes, label, title, children, color, links, dens
     </div> */}
 
     <div className={classes.container}>
-      {label && <MyTypography label={label} template="H2C" /> }
-      {title && <MyTypography template="H2C">{title}</MyTypography> }
+      {label && <MyTypography label={label} template={typography} /> }
+      {title && <MyTypography template={typography}>{title}</MyTypography> }
       {children}
 
       {links.length ? <div className={classes.centered}>
@@ -98,7 +99,8 @@ Wrapper.defaultProps = {
   label : null,
   color : '#ffffff',
   links : [],
-  dense : false
+  dense : false,
+  typography : "H2C"
 }
 
 

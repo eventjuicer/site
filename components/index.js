@@ -13,6 +13,7 @@ import {default as Gallery} from './Gallery'
 import {default as EventInfo} from './EventInfo'
 import {default as Benefits} from './Benefits'
 import {default as SupportPeople} from './SupportPeople'
+import {default as WidthAwareInfo} from './WidthAwareInfo'
 
 
 export {
@@ -28,6 +29,7 @@ export {
   Gallery,
   EventInfo,
   Benefits,
-  SupportPeople
+  SupportPeople,
+  WidthAwareInfo
 
 }

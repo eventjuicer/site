@@ -52,13 +52,10 @@ static async getInitialProps({err, req, res, pathname, query, asPath, isServer, 
   const _company = await fetch(`https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/companies/${query.id}`)
   const company = await _company.json()
 
-  const _booths = await fetch('https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/bookingmap')
-  const bookingmap = await _booths.json()
 
-
-  store.dispatch(
-    resourceFetchSuccess("bookingmap", bookingmap.data)
-  )
+  // store.dispatch(
+  //   resourceFetchSuccess("bookingmap", bookingmap.data)
+  // )
 
   return {
     company : company.data,
@@ -102,9 +99,6 @@ render()
 
     </Wrapper>
 
-    <Wrapper label={["exhibitors.booth_location", {names : selectedBoothNames.join(","), smart_count : selectedBoothNames.length  }]}>
-      <Bookingmap selected={selectedBoothIds} />
-    </Wrapper>
 
 
     <Wrapper label="visitors.register" color="#fafafa" links={[
@@ -112,6 +106,17 @@ render()
     ]}>
     <Visitor  />
     </Wrapper>
+
+
+    <Wrapper label={["exhibitors.booth_location", {
+        cname2 : _get(company, "profile.name"),
+        loc : selectedBoothNames.join(","),
+        smart_count : selectedBoothNames.length
+      }]}>
+      <Bookingmap selected={selectedBoothIds} />
+    </Wrapper>
+
+
 
 
 

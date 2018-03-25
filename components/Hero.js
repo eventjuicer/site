@@ -45,7 +45,7 @@ const styles = theme => ({
 
 });
 
-const Hero = ({videoSrc, classes, children}) => (
+const Hero = ({videoSrc, background, classes, children}) => (
 
   <section className={classes.container}>
 
@@ -62,6 +62,7 @@ const Hero = ({videoSrc, classes, children}) => (
   </section>
 
 )
+
 
 
 export default withStyles(styles)(Hero);

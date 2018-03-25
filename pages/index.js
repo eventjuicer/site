@@ -6,14 +6,26 @@ import fetch from 'isomorphic-unfetch'
 
 import reduxPage from '../redux/store'
 import Layout from '../layouts/main';
-import {Wrapper, Avatarlist, ColumnList, Bookingmap, Typography,  Gallery} from '../components'
+
+
+import {
+  Wrapper,
+  Avatarlist,
+  ColumnList,
+  Bookingmap,
+  Typography,
+  Gallery,
+  WidthAwareInfo
+} from '../components'
+
 import Hero from '../components/HeroCustom'
 
 //const Gallery = dynamic(import('../components/GalleryQuoted'))
+
 import {resourceFetchSuccess} from '../components/redux/actions'
 import Visitor from '../components/roles/Visitor'
-
 import Link from '../next/MyLink'
+
 
 class Index extends React.Component {
 
@@ -23,22 +35,22 @@ class Index extends React.Component {
     const _exhibitors = await fetch('https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/exhibitors')
     const exhibitors = await _exhibitors.json()
 
-    const _bookingmap = await fetch('https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/bookingmap')
-    const bookingmap = await _bookingmap.json()
-
-    /*
-    if (!store.getState().placeholderData) {
-      store.dispatch(resourceFetchSuccess())
-    }
-  */
-
+  //   const _bookingmap = await fetch('https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/bookingmap')
+  //   const bookingmap = await _bookingmap.json()
+  //
+  //   /*
+  //   if (!store.getState().placeholderData) {
+  //     store.dispatch(resourceFetchSuccess())
+  //   }
+  // */
+  //
   // store.dispatch(
   //   resourceFetchSuccess("exhibitors", exhibitors.data)
   // )
-
-
+  //
+  //
     store.dispatch(
-      resourceFetchSuccess("bookingmap", bookingmap.data)
+      resourceFetchSuccess("exhibitors", exhibitors.data)
     )
 
     //booths : bookingmap.data
@@ -72,7 +84,7 @@ class Index extends React.Component {
 
       <Hero />
 
-      <Wrapper label="visitors.register" color="#fafafa" links={[
+      <Wrapper label="visitors.register"  color="#fafafa" links={[
         <Link href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
       ]}>
       <Visitor  />
@@ -85,12 +97,12 @@ class Index extends React.Component {
 
 
       <Wrapper label="exhibitors.map.title">
-        <h1>SCROLL </h1>
+        <WidthAwareInfo />
         <Bookingmap  />
       </Wrapper>
 
 
-      <Wrapper label="visitors.register_alt" color="#fafafa" links={[
+      <Wrapper label="visitors.register_alt"  color="#fafafa" links={[
           <Link href="/visit" label="visitors.more_info" variant="flat" />
       ]}>
         <Visitor />
