@@ -103,8 +103,17 @@ const MyTypography = (props) => {
 
   })
 
+  let _label = label;
+  let _label_params = {};
+
+  if(label && Array.isArray(label) && label.length)
+  {
+    _label = label[0];
+    _label_params = label[1];
+  }
+
   return (
-    <Typography variant={variant} component={component} className={cn}>{label ? translate(label) : children}</Typography>
+    <Typography variant={variant} component={component} className={cn}>{label ? translate(_label, _label_params) : children}</Typography>
   )
 }
 

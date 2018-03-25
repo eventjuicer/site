@@ -16,11 +16,13 @@ import Wrapper from '../components/Wrapper'
 import Bookingmap from '../components/Bookingmap'
 
 
-import RegisterButton from '../components/RegisterButton'
-
 import CompanyProfile from '../components/Company'
-import RoleSelector from '../components/roles/RoleSelector'
-import Roles from '../components/roles/Roles'
+
+/*USER REGISTRATION*/
+import Visitor from '../components/roles/Visitor'
+import Link from '../next/MyLink'
+/*USER REGISTRATION*/
+
 
 import {resourceFetchSuccess} from '../components/redux/actions'
 
@@ -81,8 +83,6 @@ render()
 
     <Head />
 
-
-
     <Wrapper label="">
 
       <PageLayout
@@ -100,24 +100,21 @@ render()
           <CompanyProfile company={company} />
         } />
 
-
     </Wrapper>
 
-
-
-    <Wrapper label="registration.roles.select">
-      <RoleSelector roles={["visitor", "exhibitor"]} orientation="h" />
-      <Roles />
-    </Wrapper>
-
-    {/* <Wrapper title="">
-      <RegisterButton />
-    </Wrapper> */}
-
-
-    <Wrapper title={`Stoisko ${ selectedBoothNames.join(",") }`}>
+    <Wrapper label={["exhibitors.booth_location", {names : selectedBoothNames.join(","), smart_count : selectedBoothNames.length  }]}>
       <Bookingmap selected={selectedBoothIds} />
     </Wrapper>
+
+
+    <Wrapper label="visitors.register" color="#fafafa" links={[
+      <Link href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
+    ]}>
+    <Visitor  />
+    </Wrapper>
+
+
+
 
   </Layout>)
 }

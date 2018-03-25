@@ -68,6 +68,8 @@ export default {
 
     featured : "Wystawiają się m.in.",
 
+    booth_location : "Stoisko %{names} |||| Stoiska %{names}",
+
     title : "Wszyscy Wystawcy",
 
     map : {
