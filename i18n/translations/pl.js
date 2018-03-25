@@ -15,6 +15,8 @@ export default {
 
     hours : "Czas trwania",
 
+    gallery : "Targi od środka",
+
     organizer : {
 
 
@@ -66,11 +68,11 @@ export default {
 
   exhibitors : {
 
-    featured : "Wystawiają się m.in.",
+    list_featured : "Wystawiają się m.in.",
 
     booth_location : "Stoisko %{names} |||| Stoiska %{names}",
 
-    title : "Wszyscy Wystawcy",
+    list_all : "Wszyscy Wystawcy",
 
     map : {
       title : "Plan Targów"

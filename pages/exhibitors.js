@@ -7,7 +7,6 @@ import fetch from 'isomorphic-unfetch'
 import reduxPage from '../redux/store'
 import Layout from '../layouts/main';
 import {Wrapper, Avatarlist, ColumnList, Bookingmap, Typography,  Gallery} from '../components'
-import Hero from '../components/HeroCustom'
 
 //const Gallery = dynamic(import('../components/GalleryQuoted'))
 import {resourceFetchSuccess} from '../components/redux/actions'
@@ -70,17 +69,16 @@ class Index extends React.Component {
         <title>targiehandlu.pl xxx</title>
       </Head>
 
-      <Hero />
+
+      <Wrapper label="exhibitors.list_all"  dense={true}>
+        <Avatarlist data={ exhibitors } />
+      </Wrapper>
+
 
       <Wrapper label="visitors.register" color="#fafafa" links={[
         <Link href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
       ]}>
       <Visitor  />
-      </Wrapper>
-
-
-      <Wrapper label="exhibitors.list_featured"  dense={true}>
-        <Avatarlist filter={function(item){ return item.featured; }} data={ exhibitors } />
       </Wrapper>
 
 
@@ -90,20 +88,16 @@ class Index extends React.Component {
       </Wrapper>
 
 
-      <Wrapper label="visitors.register_alt" color="#fafafa" links={[
-          <Link href="/visit" label="visitors.more_info" variant="flat" />
-      ]}>
-        <Visitor />
-      </Wrapper>
 
 
       <Gallery label="event.gallery" />
 
-      <Wrapper label="exhibitors.list_all" color="#ffffff">
-        <ColumnList data={ exhibitors } />
-      </Wrapper>
 
-
+    <Wrapper label="visitors.register_alt" color="#fafafa" links={[
+        <Link href="/visit" label="visitors.more_info" variant="flat" />
+    ]}>
+      <Visitor />
+    </Wrapper>
 
 
       </Layout>

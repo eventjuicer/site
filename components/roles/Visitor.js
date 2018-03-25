@@ -13,7 +13,7 @@ import red from 'material-ui/colors/red';
 
 import EventInfo from '../EventInfo'
 import Benefits from '../Benefits'
-import VisitorForm from '../../formik/Visitor'
+import VisitorForm from './VisitorForm'
 
 
 
@@ -91,7 +91,7 @@ const Visitor = ({links, classes, width}) => (
          />
 
 
-      
+
 
 
        </Grid>

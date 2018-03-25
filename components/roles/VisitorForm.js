@@ -2,9 +2,9 @@
 
 
 import classnames from 'classnames';
-import TextInput from './TextInput'
-import FormButton from './FormButton'
-import formik from './formik'
+import TextInput from '../../formik/TextInput'
+import FormButton from '../../formik/FormButton'
+import formik from '../../formik/formik'
 
 
 
@@ -58,31 +58,14 @@ const MyForm = (props) => {
     isSubmitting,
 
   } = props;
+
+  const started = Object.keys(touched).length;
+
   return (
     <form onSubmit={handleSubmit}>
 
-      <TextInput
-        id="fname"
-        label="visitors.fields.fname"
-        placeholder="visitors.fields.fname"
-        autocomplete='given-name'
-        {...props}
-      />
 
-      <TextInput
-        id="lname"
-        label="visitors.fields.lname"
-        placeholder="visitors.fields.lname"
-        autocomplete='family-name'
-        {...props}
-      />
-
-      <TextInput
-        id="cname2"
-        label="visitors.fields.cname2"
-        placeholder="visitors.fields.cname2"
-        {...props}
-      />
+      <legend>asd</legend>
 
       <TextInput
         id="email"
@@ -90,8 +73,56 @@ const MyForm = (props) => {
         label="visitors.fields.email"
         placeholder="visitors.fields.email"
         autocomplete="email"
+        required
         {...props}
       />
+
+      <TextInput
+        id="fname"
+        label="visitors.fields.fname"
+        placeholder="visitors.fields.fname"
+        autocomplete='given-name'
+        required
+        {...props}
+      />
+
+    {
+      started ?
+
+      <div>
+      <TextInput
+          id="lname"
+          label="visitors.fields.lname"
+          placeholder="visitors.fields.lname"
+          autocomplete='family-name'
+          required
+          {...props}
+        />
+
+        <TextInput
+          id="cname2"
+          label="visitors.fields.cname2"
+          placeholder="visitors.fields.cname2"
+          autocomplete='org'
+          required
+          {...props}
+        />
+
+
+        <TextInput
+          id="phone"
+          type="tel"
+          label="visitors.fields.phone"
+          placeholder="visitors.fields.phone"
+          autocomplete="tel"
+          required
+          {...props}
+        />
+
+        </div>
+
+        : null
+    }
 
       <FormButton label="visitors.form.register" {...props} />
 

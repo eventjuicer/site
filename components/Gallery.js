@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import compose from 'recompose/compose'
 import { connect } from 'react-redux';
+import _shuffle from 'lodash/shuffle'
 
 import withWidth from 'material-ui/utils/withWidth';
 import { withStyles } from 'material-ui/styles';
@@ -44,7 +45,7 @@ const styles = theme => ({
   },
 
   deSaturated : {
-     filter: 'saturate(30%) contrast(120%)'
+     filter: 'saturate(30%) contrast(115%)',
   }
 });
 
@@ -101,8 +102,6 @@ class Gallery extends React.PureComponent {
   {
     const { photos, classes, label, title, width } = this.props;
 
-
-
     return (
       <div className={classes.root}>
 
@@ -113,7 +112,7 @@ class Gallery extends React.PureComponent {
         {/* <WidthAwareInfo /> */}
 
         <GridList className={classes.gridList} cols={this.getSize("c")}  cellHeight={this.getSize("h")} >
-          {photos.map((tile, idx) => (
+          {_shuffle(photos).map((tile, idx) => (
             <GridListTile key={tile.id}>
               <img src={tile.src} alt="" className={classes.deSaturated} />
               <GridListTileBar
