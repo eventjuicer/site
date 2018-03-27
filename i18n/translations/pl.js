@@ -30,6 +30,14 @@ export default {
 
         title : "%{name} zaprasza do spotkania na Targach eHandlu",
         description : "%{description}"
+    },
+
+    profile : {
+
+      about : "O firmie",
+      products : "Kluczowe produkty",
+      contact : "Kontakt",
+
     }
 
   },

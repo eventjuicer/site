@@ -54,6 +54,7 @@ render()
 ColumnList.defaultProps = {
   linked : true,
   data : [],
+  width : "md",
   filter : null,
   limit : false
 }

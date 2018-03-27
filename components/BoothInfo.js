@@ -45,7 +45,7 @@ class BoothInfo extends React.Component {
 
       {cname2 ? <Card primary={false}
         title={cname2}
-        text={_get(formdata, "company.profile.about")}
+        text={<div dangerouslySetInnerHTML={{__html:  _get(formdata, "company.profile.about")}}></div>}
         imageSrc={_get(formdata, "company.profile.logotype")}
      /> : null}
 
