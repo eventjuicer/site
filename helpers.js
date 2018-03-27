@@ -1,6 +1,7 @@
 import slugify from 'slugify'
 import _chunk from 'lodash/chunk'
 import _shuffle from 'lodash/shuffle'
+import _filter from 'lodash/filter';
 
 export const slug = (str = "") => slugify(str, {
     replacement: '-',
@@ -25,15 +26,17 @@ export const processArrayData = (data = [], {filter = null, limit = null, random
     data = data.filter(row => filter(row));
   }
 
-  if(random)
-  {
-    data = _shuffle(data);
-  }
 
   if(limit && data.length > limit)
   {
     data = data.slice(0, limit);
   }
+
+  if(random)
+  {
+    data = _shuffle(data);
+  }
+
 
   return data;
 }
@@ -76,4 +79,43 @@ export const chunkArrayData = (data = [], width = "md", params) => {
 
   return data;
 
+}
+
+
+export const filterCompanyInstances = (company, eventId) => _filter(company, function(i){
+  if(i.event_id == eventId && i.formdata &&  "id" in i.formdata && i.sold)
+  {
+    return true;
+  }
+
+  return false;
+});
+
+export const prepareForTranslate = (src) => {
+
+  let str = src
+  let params = {}
+
+  if(Array.isArray(src) && src.length)
+  {
+      str = src[0]
+
+      if (typeof src[1] !== 'undefined')
+      {
+        params = src[1]
+      }
+  }
+
+  return {str, params}
+}
+
+export const fullUrl = (subpage) => {
+
+  const prefix = 'https://targiehandlu.pl';
+  if (subpage.substr(0, prefix.length) !== prefix)
+  {
+    return prefix + subpage;
+  }
+
+  return subpage;
 }

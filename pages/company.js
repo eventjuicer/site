@@ -4,12 +4,11 @@ import reduxPage from '../redux/store'
 
 
 import _get from 'lodash/get'
-import _filter from 'lodash/filter';
 import _map from 'lodash/map'
 
 
 import Typography from '../components/MyTypography';
-import {TwoColsLayout as PageLayout, Centered} from '../components/MyLayouts'
+import {TwoColsLayout as Section} from '../components/MyLayouts'
 
 import Layout from '../layouts/main';
 import Wrapper from '../components/Wrapper'
@@ -26,15 +25,7 @@ import Link from '../next/MyLink'
 
 import {resourceFetchSuccess} from '../components/redux/actions'
 
-
-const filterCompanyInstances = (company, eventId) => _filter(company, function(i){
-  if(i.event_id != eventId || (i.formdata && ! "id" in i.formdata))
-  {
-    return false;
-  }
-
-  return true;
-});
+import {filterCompanyInstances} from '../helpers'
 
 
 
@@ -67,49 +58,51 @@ static async getInitialProps({err, req, res, pathname, query, asPath, isServer, 
 render()
 {
 
-  const { company, booths, url , eventId, classes} = this.props;
+  const { company, booths, url , eventId} = this.props;
+
   const data = filterCompanyInstances(company.instances, eventId);
   const selectedBoothIds = _map(data, 'formdata.id');
   const selectedBoothNames = _map(data, 'formdata.ti');
-
-
-//  console.log(company);
-
+  const logotype = _get(company, "profile.logotype")
+  const name = _get(company, "profile.name");
 
   return (<Layout>
 
-    <Head />
+    <Head
+      image={ logotype }
+      url={ url.asPath }
+      title={["companies.opengraph.title", {name : name}]}
+    />
 
     <Wrapper label="">
 
-      <PageLayout
+      <Section
 
         leftSize={5}
-        left={<Centered>
+        left={
 
           <div>
-            <img src={_get(company, "profile.logotype")} alt="" style={{maxWidth: 300, maxHeight: 200}} />
+            <img src={logotype} alt="" style={{maxWidth: 300, maxHeight: 200}} />
           </div>
 
-
-        </Centered>}
-        right={
+         }
+         leftCentered={true}
+         right={
           <CompanyProfile company={company} />
         } />
 
     </Wrapper>
 
 
-
     <Wrapper label="visitors.register" color="#fafafa" links={[
       <Link href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
     ]}>
-    <Visitor  />
+      <Visitor  />
     </Wrapper>
 
 
     <Wrapper label={["exhibitors.booth_location", {
-        cname2 : _get(company, "profile.name"),
+        cname2 : name,
         loc : selectedBoothNames.join(","),
         smart_count : selectedBoothNames.length
       }]}>

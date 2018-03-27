@@ -10,7 +10,7 @@ export default {
       prices : {
         net : 'netto',
         gross : 'brutto'
-      }
+      },
   },
 
   services : {
@@ -23,6 +23,16 @@ export default {
 
   },
 
+
+  companies : {
+
+    opengraph : {
+
+        title : "%{name} zaprasza do spotkania na Targach eHandlu",
+        description : "%{description}"
+    }
+
+  },
 
   event : {
 

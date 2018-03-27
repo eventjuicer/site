@@ -14,14 +14,14 @@ const styles = theme => ({
 
 })
 
-export const Centered = withStyles(styles)((props) => (
+const Centered = withStyles(styles)((props) => (
 
   <div className={props.classes.middle}>{props.children}</div>
 
 ))
 
 
-export const TwoColsLayout = ({left, right, leftSize}) =>  {
+const TwoColsLayout = ({left, right, leftCentered, rightCentered, leftSize}) =>  {
 
   const ls = parseInt(leftSize) ? leftSize : 6;
   const rs = 12 - ls;
@@ -30,13 +30,22 @@ export const TwoColsLayout = ({left, right, leftSize}) =>  {
 
     <Grid container spacing={16}>
         <Grid item xs={12} sm={ls} md={ls} lg={ls} xl={ls} >
-          {left}
+          {leftCentered ? <Centered>{left}</Centered> : left }
         </Grid>
 
         <Grid item xs={12} sm={rs} md={rs} lg={rs} xl={rs} >
-          {right}
+          {rightCentered ? <Centered>{right}</Centered> : right}
         </Grid>
     </Grid>
 
   )
 }
+
+
+TwoColsLayout.defaultProps = {
+  leftCentered : false,
+  rightCentered : false
+}
+
+
+export {TwoColsLayout, Centered}

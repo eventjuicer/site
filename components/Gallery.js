@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import compose from 'recompose/compose'
 import { connect } from 'react-redux';
-import _shuffle from 'lodash/shuffle'
 
 import withWidth from 'material-ui/utils/withWidth';
 import { withStyles } from 'material-ui/styles';
@@ -12,7 +11,7 @@ import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList';
 
 import MyTypography from './MyTypography';
 // import WidthAwareInfo from './WidthAwareInfo'
-
+import {processArrayData} from '../helpers'
 import {
   // dialogShow as dialogShowAction,
   resourceFetchRequest as resourceFetchRequestAction
@@ -100,7 +99,9 @@ class Gallery extends React.PureComponent {
 
   render()
   {
-    const { photos, classes, label, title, width } = this.props;
+    const { photos, classes, label, title, width, random, limit } = this.props;
+
+    let data = processArrayData(photos, {random, limit})
 
     return (
       <div className={classes.root}>
@@ -112,7 +113,7 @@ class Gallery extends React.PureComponent {
         {/* <WidthAwareInfo /> */}
 
         <GridList className={classes.gridList} cols={this.getSize("c")}  cellHeight={this.getSize("h")} >
-          {_shuffle(photos).map((tile, idx) => (
+          {data.map((tile, idx) => (
             <GridListTile key={tile.id}>
               <img src={tile.src} alt="" className={classes.deSaturated} />
               {/* <GridListTileBar
@@ -139,7 +140,9 @@ class Gallery extends React.PureComponent {
 }
 
 Gallery.defaultProps = {
-  photos : []
+  photos : [],
+  limit : 10,
+  random : true
 }
 
 Gallery.propTypes = {
