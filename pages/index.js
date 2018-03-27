@@ -120,7 +120,7 @@ class Index extends React.Component {
         label="exhibitors.map.title"
         secondaryTitle="Chcesz się wystawić? Zostało tylko kilka stoisk!"
         >
-        <WidthAwareInfo />
+        {/* <WidthAwareInfo /> */}
         <Bookingmap  />
       </Wrapper>
 

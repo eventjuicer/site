@@ -68,25 +68,37 @@ const styles = (theme) => ({
 
 
 
-const Booth = ({status, data, classes, onClick, selected, styleId}) =>  (
-      <li onClick={() => onClick(data.id, data.g, data.ti) } className={
+const Booth = ({status, data, classes, onClick, selected, styleId, zoom}) =>  (
+      <li
+        onClick={() => onClick(data.id, data.g, data.ti) }
+        className={
         classNames(classes.booth, {
           [classes.boothSold] : status === "sold",
           [classes.boothHold] : status === "hold",
           [classes.boothSelected] : selected
-        } )} style={{ height: data.dh, width: data.dw, top: data.dt, left: data.dl, lineHeight: `${data.dh}px`}}>
+        })}
+        style={{
+          height: data.dh * zoom,
+          width: data.dw * zoom,
+          top: data.dt * zoom,
+          left: data.dl * zoom,
+          lineHeight: `${data.dh}px`
+        }}
+        >
 
         <span className={classes.boothText}>{data.ti}</span>
-     
+
       </li>
 )
 
 Booth.defaultProps = {
-  selected : false
+  selected : false,
+  zoom : 1
 }
 
 Booth.propTypes = {
   styleId: PropTypes.number.isRequired,
+  zoom : PropTypes.number,
   selected: PropTypes.bool.isRequired,
   onClick : PropTypes.func.isRequired,
   status : PropTypes.oneOfType([

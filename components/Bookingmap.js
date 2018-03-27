@@ -27,9 +27,8 @@ const styles = (theme) => ({
 
 
   scrollableContainer : {
-
     overflowX: 'auto',
-    overflowY: 'hidden',
+    overflowY: 'visible',
     height: 600,
     whiteSpace:'nowrap',
   },
@@ -40,11 +39,8 @@ const styles = (theme) => ({
     position : 'relative',
     margin: '0px auto',
     padding: 0,
-    // border: '1px solid rgb(234, 234, 234)',
     width: 1170,
     height: '100%',
-
-
   },
 
   bg : {
@@ -52,10 +48,8 @@ const styles = (theme) => ({
     filter : 'grayscale(90%)',
     top: 0,
     left: 0,
-    width: 1170,
-    height: '100%',
-    backgroundPosition: 'left top',
-    backgroundRepeat: 'no-repeat no-repeat',
+    width: '100%',
+    height: 'auto',
     zIndex : 2,
   },
 
@@ -159,16 +153,33 @@ isBoothSelected(boothId){
 
 render()
 {
-  const { booths, classes } = this.props;
+  const { booths, classes, zoom, height } = this.props;
   return (
 
-<div className={classes.scrollableContainer}>
+<div
+  className={classes.scrollableContainer}
+  style={{
+    height : height  * zoom
+  }}
+  >
 {booths && ("mapsource" in booths) ?
-<div className={classes.container}>
-<div className={classes.bg} style={{background : `url(${booths.mapsource})`}}></div>
+<div
+  className={classes.container}
+  style={{
+    width : 1170 * zoom,
+  }}
+  >
+
+<img src={booths.mapsource}
+  className={classes.bg}
+
+ />
+
+{/* <div className={classes.bg} style={{backgroundImage : `xurl(${booths.mapsource})`}}></div> */}
+
 <ul className={classes.booths}>
       {booths.booths && booths.booths.map(booth =>
-        <Booth styleId={1} selected={this.isBoothSelected(booth.id)} onClick={this.onBoothClick} status={this.getStatusShort(booth.id)} key={booth.id} data={booth} />
+        <Booth styleId={1} zoom={zoom} selected={this.isBoothSelected(booth.id)} onClick={this.onBoothClick} status={this.getStatusShort(booth.id)} key={booth.id} data={booth} />
       )}
 </ul>
 </div> : <div>...loading</div>
@@ -178,6 +189,11 @@ render()
 )
 }
 
+}
+
+Bookingmap.defaultProps = {
+  zoom : 1,
+  height : 600,
 }
 
 const enhance = compose(

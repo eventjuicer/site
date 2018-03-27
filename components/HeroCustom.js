@@ -8,18 +8,18 @@ import { withStyles } from 'material-ui/styles';
 import Hero from './Hero'
 //import HeroTexts from './HeroTexts'
 import Reviews from './Reviews'
-import Video from './Video'
+// import Video from './Video'
 
 
 
 const styles = {
 
   container : {
-    width: '100%',
-    display : 'flex',
-    flexDirection : 'column',
-    justifyContent : 'center',
-    alignItems : 'center'
+    // width: '100%',
+    // display : 'flex',
+    // flexDirection : 'column',
+    // justifyContent : 'center',
+    // alignItems : 'center'
   },
 
 
@@ -34,7 +34,7 @@ const HeroCustom = ({videoSrc, classes}) => (
 
       <Reviews  />
 
-      <Video />
+      {/* <Video /> */}
 
     </div>
 
