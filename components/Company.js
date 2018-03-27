@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
 import Tabs, { Tab } from 'material-ui/Tabs'
 import _get from 'lodash/get'
-import Button from 'material-ui/Button'
 
+import Contacts from './Contacts'
 
 const styles = theme => ({
   root: {
@@ -18,35 +18,6 @@ const styles = theme => ({
   }
 });
 
-function Contacts({profile})
-{
-    return (
-      <ul>
-
-        <li>
-          <Button href={_get(profile, "website")} variant="flat" color="default" size="medium">
-            <span style={{width: 20}} className="fa fa-facebook"></span>{' '}www
-          </Button>
-        </li>
-
-           <li>
-             <Button href={_get(profile, "facebook")} variant="flat" color="default" size="medium">
-               <span style={{width: 20}} className="fa fa-facebook"></span>{' '}facebook
-             </Button>
-           </li>
-           <li>
-             <Button href={_get(profile, "twitter")} variant="flat" color="default" size="medium">
-               <span style={{width: 20}} className="fa fa-twitter"></span>{' '}twitter
-             </Button>
-           </li>
-           <li>
-             <Button href={_get(profile, "linkedin")} variant="flat" color="default" size="medium">
-               <span style={{width: 20}} className="fa fa-linkedin"></span>{' '}linkedin
-             </Button>
-           </li>
-      </ul>
-    )
-}
 
 
 function TabContainer({children, html, classes}) {

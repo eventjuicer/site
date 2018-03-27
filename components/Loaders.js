@@ -4,6 +4,8 @@
 import ContentLoader from "react-content-loader"
 
 
+//https://github.com/danilowoz/react-content-loader
+
 
 export const Logotype = () => (
 	<ContentLoader
