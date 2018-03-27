@@ -1,22 +1,25 @@
 
 
 import { withStyles } from 'material-ui/styles';
+//import Grid from 'material-ui/Grid';
+
+
 
 import Hero from './Hero'
-import HeroTexts from './HeroTexts'
+//import HeroTexts from './HeroTexts'
 import Reviews from './Reviews'
-import Grid from 'material-ui/Grid';
+import Video from './Video'
+
+
 
 const styles = {
+
   container : {
-
-    width: '80%'
-
-    // flexDirection : 'column-reverse',
-    // display : 'block',
-    // position : 'relative',
-    // width: '100%',
-    // height : '100vh'
+    width: '100%',
+    display : 'flex',
+    flexDirection : 'column',
+    justifyContent : 'center',
+    alignItems : 'center'
   },
 
 
@@ -29,28 +32,11 @@ const HeroCustom = ({videoSrc, classes}) => (
 
     <div className={classes.container}>
 
+      <Reviews  />
 
+      <Video />
 
-
-
-        <Grid container spacing={8} justify="space-between">
-
-            <Grid item xs={12} sm={12} md={12} lg={12} xl={5} >
-
-              <Reviews  />
-
-            </Grid>
-
-            <Grid item xs={12} sm={12} md={6} lg={12} xl={5} >
-
-
-
-            </Grid>
-
-          </Grid>
-
-      </div>
-
+    </div>
 
   </Hero>
 

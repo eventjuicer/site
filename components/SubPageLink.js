@@ -1,10 +1,10 @@
-
-import PropTypes from 'prop-types';
-import {slug} from '../helpers'
 import Link from 'next/link'
+import PropTypes from 'prop-types';
+import compose from 'recompose/compose'
 import classNames from 'classnames'
 import { withStyles } from 'material-ui/styles';
-
+import withWidth from 'material-ui/utils/withWidth';
+import {slug} from '../helpers'
 
 const styles = {
 
@@ -23,9 +23,13 @@ const styles = {
   //  filter : 'grayscale(100%)'
   },
 
+  tileMobile : {
+      maxHeight: 100,
+      backgroundSize: 'contain',
+  }
 }
 
-const SubPageLink = ({name, subpage, id, classes, src}) =>
+const SubPageLink = ({name, subpage, id, classes, src, width}) =>
 {
   if(!name) return null;
 
@@ -35,7 +39,8 @@ const SubPageLink = ({name, subpage, id, classes, src}) =>
     <Link as={`/${ slug(name) },${ subpage.charAt(0) },${ id }`} href={`/${ subpage }?id=${ id }`}>
       <a className={classNames({
         [classes.tile] : src,
-        [classes.textLink] : !src
+        [classes.textLink] : !src,
+        [classes.tileMobile] : src && width === "xs"
       })} style={style}>{name}</a>
     </Link>
   )
@@ -54,5 +59,9 @@ SubPageLink.propTypes = {
     src : PropTypes.string
 }
 
+const enhance = compose(
+  withStyles(styles),
+  withWidth()
+)
 
-export default withStyles(styles)(SubPageLink);
+export default enhance(SubPageLink);

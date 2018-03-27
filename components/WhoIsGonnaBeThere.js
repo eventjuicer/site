@@ -1,11 +1,18 @@
 
 
-import { withStyles } from 'material-ui/styles';
+
 import { connect } from 'react-redux';
 import compose from 'recompose/compose'
-import {translate} from '../i18n'
-import withWidth from 'material-ui/utils/withWidth';
 import classNames from 'classnames';
+import _get from 'lodash/get'
+
+import Grid from 'material-ui/Grid';
+import { withStyles } from 'material-ui/styles';
+import withWidth from 'material-ui/utils/withWidth';
+
+import {chunkArrayData} from '../helpers'
+import {translate} from '../i18n'
+import Typography from './MyTypography'
 
 import {
   resourceFetchRequest as resourceFetchRequestAction
@@ -55,17 +62,22 @@ const styles = theme => ({
 });
 
 
+const Person = ({translate, person}) => (
+  <Typography template="visitor">
+  { _get(person, "fname") }
+  {` ${ translate("common.from") } `}
+  <span>{ _get(person, "cname2") }</span>
+  </Typography>
+)
 
-const Mktg = [
-
-  "1000 Wystawców",
-  "3000 Zwiedzających"
-
-]
+const TranslatedPerson = translate(Person);
 
 
 class WhoIsGonnaBeThere extends React.PureComponent {
 
+state = {
+  page : 1
+}
 componentDidMount()
 {
   this.fetchCurrentPage();
@@ -76,38 +88,30 @@ fetchCurrentPage()
   this.props.resourceFetchRequest("visitors", false);
 }
 
-renderVisitors()
-{
-  const {classes, translate, visitors, width} = this.props;
-
-  return visitors.map(({fname, cname2}, idx) => {
-
-    if(idx%10 === 0)
-    {
-      return <p key={idx} className={classes.itemHuge}>A Ty?</p>
-    }
-
-    return (
-      <p key={idx} className={classes.item}>{fname}{` ${translate('common.from')} `}<span className={classes.strong}>{cname2}</span></p>
-    )
-  }
-  )
-
-}
 
 render()
 {
-  const { classes, visitors } = this.props;
 
-  return (
+    const { visitors, width, filter, limit, random }  = this.props;
+    const _data = chunkArrayData(visitors, width, {filter, limit, random});
 
-    <div className={classes.container}>
+    return (
 
-      {visitors.length && this.renderVisitors() }
+    <Grid container spacing={24}>
 
+      {_data.map((chunk, i) =>
 
+        <Grid key={i} item xs={12} sm={6} md={4} lg={3} xl={3}>
 
-    </div>
+          {chunk.map((person,j) => <TranslatedPerson person={person} />
+
+        )}
+
+        </Grid>
+
+        )}
+
+    </Grid>
 
   )
 }
@@ -117,11 +121,13 @@ render()
 
 WhoIsGonnaBeThere.defaultProps = {
   visitors : [],
-  page : 1
+  page : 1,
+  filter : null,
+  limit : 100,
+  random : true,
 }
 
 const enhance = compose(
-  translate,
   withWidth(),
   withStyles(styles),
   connect(state => ({

@@ -5,7 +5,14 @@ import reduxPage from '../redux/store'
 
 
 
-import {Typography, Wrapper, WhoIsGonnaBeThere, Googlemap} from '../components';
+import {
+  Typography,
+  Wrapper,
+  WhoIsGonnaBeThere,
+//  Googlemap,
+  People
+} from '../components';
+
 import Layout from '../layouts/main';
 import Visitor from '../components/roles/Visitor'
 
@@ -44,15 +51,30 @@ render()
     <Head />
 
 
-    <Wrapper label="visitors.attendees">
-      <WhoIsGonnaBeThere />
+    <Wrapper label="presenters.list_featured">
+      <People filter={function(item){ return item.featured; }} />
     </Wrapper>
 
 
     <Wrapper label="visitors.register_alt">
-          <Visitor />
+
+      <Visitor />
+
     </Wrapper>
 
+
+    <Wrapper label="visitors.attendees">
+
+      <WhoIsGonnaBeThere />
+
+    </Wrapper>
+
+
+    <Wrapper>
+
+      <Visitor />
+
+    </Wrapper>
 
 
     {/* <Googlemap /> */}

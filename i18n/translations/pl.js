@@ -41,6 +41,13 @@ export default {
     }
   },
 
+  presenters : {
+
+    list_featured : "3 sceny, 24 wystąpienia",
+    list_full : "Agenda",
+
+
+  },
 
   visitors : {
 
@@ -72,9 +79,9 @@ export default {
   },
 
   exhibitors : {
-    list_featured : "Wystawiają się m.in.",
+    list_featured : "Spotkasz ich na Expo",
     booth_location : "Lokalizacja %{cname2}: %{loc} |||| Lokalizacja %{cname2}: %{loc}",
-    list_all : "Wszyscy Wystawcy",
+    list_full : "Wszyscy Wystawcy",
     map : {
       title : "Plan Targów",
     },

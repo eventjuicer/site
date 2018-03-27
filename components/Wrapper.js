@@ -16,20 +16,21 @@ const styles = () => ({
       textAlign: 'center'
     },
 
-    section : {
+    root : {
 
         display: 'block',
         minHeight: 350,
         backgroundColor: '#fff',
-        paddingBottom: '5rem',
-        paddingTop: '5rem',
+        
+        paddingBottom: '3rem',
+        paddingTop: '3rem',
 
         position: 'relative',
 
 
     },
 
-    dense : {
+    rootDense : {
 
       paddingBottom: '1rem',
       paddingTop: '1rem',
@@ -67,18 +68,42 @@ const styles = () => ({
 
 
 
-const Wrapper = ({translate, classes, label, typography, title, children, color, links, dense}) => (
+const Wrapper = ({
 
-  <section className={classNames(classes.section, {
-    [classes.dense] : dense
+  translate,
+  classes,
+
+  label,
+  title,
+  typography,
+
+  secondaryLabel,
+  secondaryTitle,
+  secondaryTypography,
+
+  children,
+
+  color,
+  links,
+  dense}) => (
+
+  <section className={classNames(classes.root, {
+    [classes.rootDense] : dense
   })} style={{backgroundColor : color}}>
     {/* <div className={props.classes.overlay}>
 
     </div> */}
 
     <div className={classes.container}>
+
+
       {label && <MyTypography label={label} template={typography} /> }
       {title && <MyTypography template={typography}>{title}</MyTypography> }
+
+      {secondaryLabel && <MyTypography label={secondaryLabel} template={secondaryTypography} highlight={true} /> }
+      {secondaryTitle && <MyTypography template={secondaryTypography} highlight={true}>{secondaryTitle}</MyTypography> }
+
+
       {children}
 
       {links.length ? <div className={classes.centered}>
@@ -98,6 +123,10 @@ const Wrapper = ({translate, classes, label, typography, title, children, color,
 
 Wrapper.defaultProps = {
   label : null,
+  title : null,
+  secondaryLabel : null,
+  secondaryTitle : null,
+  secondaryTypography : 'SUBH2CH',
   color : '#ffffff',
   links : [],
   dense : false,

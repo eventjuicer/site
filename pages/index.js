@@ -15,7 +15,8 @@ import {
   Bookingmap,
   Typography,
   Gallery,
-  WidthAwareInfo
+  WidthAwareInfo,
+  People
 } from '../components'
 
 import Hero from '../components/HeroCustom'
@@ -84,34 +85,59 @@ class Index extends React.Component {
 
       <Hero />
 
-      <Wrapper label="visitors.register"  color="#fafafa" links={[
+      <Wrapper
+        label="visitors.register"
+        secondaryTitle="Spotkamy się w gronie ponad 3000 osób!"
+        links={[
         <Link href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
-      ]}>
+      ]}
+      >
       <Visitor  />
       </Wrapper>
 
 
-      <Wrapper label="exhibitors.list_featured"  dense={true}>
+      <Wrapper
+        label="presenters.list_featured"
+        secondaryTitle="pełna agenda już wkrótce"
+        // links={[
+        //   <Link href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
+        // ]}
+      >
+        <People filter={function(item){ return [71460, 71462, 71461, 71463].indexOf(item.id) > -1; }}  />
+      </Wrapper>
+
+
+      <Wrapper
+        label="exhibitors.list_featured"
+        secondaryTitle="i ponad 120 innych Wystawców"
+      //  dense={true}
+      >
         <Avatarlist filter={function(item){ return item.featured; }} data={ exhibitors } />
       </Wrapper>
 
 
-      <Wrapper label="exhibitors.map.title">
+      <Wrapper
+        label="exhibitors.map.title"
+        secondaryTitle="Chcesz się wystawić? Zostało tylko kilka stoisk!"
+        >
         <WidthAwareInfo />
         <Bookingmap  />
       </Wrapper>
 
 
-      <Wrapper label="visitors.register_alt"  color="#fafafa" links={[
+      <Wrapper label="visitors.register_alt"
+
+         links={[
           <Link href="/visit" label="visitors.more_info" variant="flat" />
-      ]}>
+        ]}
+      >
         <Visitor />
       </Wrapper>
 
 
       <Gallery label="event.gallery" />
 
-      <Wrapper label="exhibitors.list_all" color="#ffffff">
+      <Wrapper label="exhibitors.list_full" color="#ffffff">
         <ColumnList data={ exhibitors } />
       </Wrapper>
 

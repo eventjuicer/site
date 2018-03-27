@@ -28,7 +28,7 @@ const styles = {
     fontSize : '3rem',
     textTransform: 'uppercase',
     fontWeight : 300,
-    marginBottom: '4rem',
+    marginBottom: '3rem',
   //  textAlign: 'center'
   },
 
@@ -54,8 +54,13 @@ const styles = {
   visitor : {
 
     width: 'auto',
-    height : 10,
+    minHeight : 10,
     margin : 10,
+
+    "& span": {
+      fontWeight : 700
+    }
+
   },
 
   legend : {
@@ -65,11 +70,27 @@ const styles = {
 
   hero : {
       fontSize : '2rem',
-      color : 'rgb(255,255,255,0.8)',
+      color : '#ffffff',
       fontStyle: 'italic',
       fontWeight : 900,
-
   },
+
+  info : {
+      fontSize : '1.2rem',
+      color : '#000000',
+      fontWeight : 400,
+      marginTop: '-1.5rem',
+      marginBottom: '1.5rem',
+  },
+
+  highlighted : {
+
+    fontStyle: 'normal',
+    borderRadius: '1em 0 1em 0',
+    textShadow: '1px 1px 1px #fff',
+    backgroundImage : ['linear-gradient(-100deg, rgba(255,250,150,0.15), rgba(255,250,150,0.8) 100%, rgba(255,250,150,0.25))']
+
+  }
 
 
 };
@@ -121,7 +142,20 @@ const templates = {
 
   heroOpinion : {
       variant : "headline", component : "h2", classNames : ["hero"]
-  }
+  },
+
+  SUBH2CH : {
+    variant : "body2", component : "p", classNames : ["info", "centered"]
+  },
+
+
+}
+
+const hl = (highlight, text, className) => {
+
+  if(!highlight) return text
+
+  return <span className={className}>{text}</span>
 
 }
 
@@ -129,7 +163,7 @@ const templates = {
 
 const MyTypography = (props) => {
 
-  const {variant, component, label, translate, children, classNames, classes, width, icon, iconAfter} = {...props, ...templates[props.template]};
+  const {variant, component, label, translate, children, classNames, classes, width, icon, iconAfter, highlight} = {...props, ...templates[props.template]};
 
   const cn = classNamesHelper(classNames.map(className => className in classes ? classes[className] : false), {
 
@@ -146,9 +180,13 @@ const MyTypography = (props) => {
 
   return (
     <Typography variant={variant} component={component} className={cn}>
+
       {icon}
-      {label ? translate(_label, _label_params) : children}
+
+      {hl(highlight,  label ? translate(_label, _label_params) : children, classes.highlighted ) }
+
       {iconAfter}
+
     </Typography>
   )
 }
@@ -159,7 +197,8 @@ MyTypography.defaultProps = {
   label : null,
   classNames : [],
   icon : null,
-  iconAfter : null
+  iconAfter : null,
+  highlight : false
 }
 
 const enhance = compose(

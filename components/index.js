@@ -14,6 +14,7 @@ import {default as EventInfo} from './EventInfo'
 import {default as Benefits} from './Benefits'
 import {default as Person} from './Person'
 import {default as WidthAwareInfo} from './WidthAwareInfo'
+import {default as People} from './People'
 
 
 export {
@@ -30,6 +31,7 @@ export {
   EventInfo,
   Benefits,
   Person,
-  WidthAwareInfo
+  WidthAwareInfo,
+  People
 
 }

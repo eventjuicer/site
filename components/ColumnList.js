@@ -2,7 +2,7 @@
 
 
 
-import _chunk from 'lodash/chunk'
+
 import _get from 'lodash/get'
 
 import Grid from 'material-ui/Grid';
@@ -12,54 +12,19 @@ import SubPageItem from './SubPageItem';
 
 //xs, sm, md, lg, and xl.
 
+import {chunkArrayData} from '../helpers'
+
+
 class ColumnList extends React.PureComponent {
 
-
-getSizes(what)
-{
-
-  const { width }  = this.props;
-
-  let ch = 2;
-
-  switch(width)
-  {
-      case "xs":
-        ch = 1
-      break
-
-      case "sm":
-        ch = 2
-      break
-
-      case "md":
-        ch = 3
-      break
-
-      case "lg":
-        ch = 4
-      break
-
-      case "xl":
-        ch = 4
-      break
-
-  }
-
-  const sizes = {ch}
-
-  return sizes[what]
-
-}
 
 
 render()
 {
 
-  const { data, width, filter }  = this.props;
+  const { data, width, filter, limit, linked }  = this.props;
 
-  const _data  = Array.isArray(data) ? _chunk(data, Math.round(data.length / this.getSizes("ch")) ) : [];
-
+  let _data = chunkArrayData(data, width, {filter, limit});
 
   return (
 
@@ -87,7 +52,10 @@ render()
 }
 
 ColumnList.defaultProps = {
-  filter : null
+  linked : true,
+  data : [],
+  filter : null,
+  limit : false
 }
 
 export default withWidth()(ColumnList);
