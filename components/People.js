@@ -62,6 +62,10 @@ const styles = {
   media: {
     height: 200,
   },
+
+  bio : {
+    marginTop : 10
+  }
 };
 
 class People extends React.PureComponent {
@@ -116,12 +120,23 @@ class People extends React.PureComponent {
      />
 
       <CardContent>
+
         <Typography gutterBottom variant="headline" component="h2">
           {`${ _get(presenter, "fname") } ${ _get(presenter, "lname") }`}
         </Typography>
+
         <Typography component="p">
-          {`${ _get(presenter, "position") } ${ _get(presenter, "cname2") }`}
+          { _get(presenter, "position") }
+          {` @ `}
+          <strong>{ _get(presenter, "cname2") }</strong>
         </Typography>
+
+        <Typography component="p" className={classes.bio}>
+          { _get(presenter, "bio") }
+        </Typography>
+
+
+
       </CardContent>
       {/* <CardActions>
         <Button size="small" color="primary">
