@@ -13,6 +13,17 @@ export default {
       }
   },
 
+  services : {
+
+    chatlio : {
+
+      hello : "Dzień dobry! :)"
+
+    }
+
+  },
+
+
   event : {
 
     date : "Data wydarzenia",

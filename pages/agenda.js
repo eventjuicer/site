@@ -51,8 +51,14 @@ render()
     <Head />
 
 
-    <Wrapper label="presenters.list_featured">
-      <People filter={function(item){ return item.featured; }} />
+    <Wrapper
+      label="presenters.list_full"
+    //  secondaryTitle="pełna agenda już wkrótce"
+      // links={[
+      //   <Link href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
+      // ]}
+    >
+      <People   />
     </Wrapper>
 
 

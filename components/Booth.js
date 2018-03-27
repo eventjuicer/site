@@ -21,7 +21,8 @@ const styles = (theme) => ({
     margin:0,
     textAlign: 'center',
     boxShadow : '1px 1px #555555',
-    overflow: 'hidden'
+    overflow: 'hidden',
+    whiteSpace : 'wrap'
   },
 
   style1 : {},
@@ -57,6 +58,14 @@ const styles = (theme) => ({
     fontWeight: 600,
     fontFamily : "verdana, arial, sans-serif",
     fontSize: 9,
+  },
+
+  boothLogotype : {
+
+  },
+
+  cname : {
+    display : 'block'
   }
 
 });
@@ -81,7 +90,14 @@ const Booth = ({status, data, classes, onClick, selected, styleId, zoom, buyer})
         }}
         >
 
-        <span className={classes.boothText}>{buyer && "cname2" in buyer && zoom > 1 ? buyer.cname2 : data.ti}</span>
+        <span className={classNames(classes.boothText, {
+          [classes.boothLogotype] : buyer && "logotype" in buyer && buyer.logotype
+        })}
+        >
+          {data.ti}
+          
+          {buyer && "cname2" in buyer && zoom > 1 ? <span className={classes.cname}>{buyer.cname2}</span> : null}
+        </span>
 
       </li>
 )

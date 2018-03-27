@@ -98,7 +98,7 @@ class Index extends React.Component {
 
       <Wrapper
         label="presenters.list_featured"
-        secondaryTitle="pełna agenda już wkrótce"
+        secondaryTitle="Udział bezpłatny. Pełna agenda już wkrótce..."
         // links={[
         //   <Link href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
         // ]}

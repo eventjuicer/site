@@ -1,23 +1,54 @@
 
+import {translate} from '../i18n'
+import Button from 'material-ui/Button';
 
-class Chatlio extends React.Component {
-  componentDidMount() {
-    document.addEventListener(
-      'chatlio.firstMessageSent',
-      this.handleChatlioFirstMessage
-    );
-    document.addEventListener('chatlio.ready', this.handleChatlioFirstMessage);
+//https://chatlio.com/docs/api-v1/
+
+
+class Chatlio extends React.PureComponent {
+
+  componentDidMount(){
+
+    if(window.__CHATLIO_CUSTOM_EVENT_SET__)
+    {
+      return;
+    }
+
+    document.addEventListener( 'chatlio.firstMessageSent', this.handleChatlioFirstMessage );
+    document.addEventListener( 'chatlio.ready', this.handleChatlioFirstMessage );
+
+    window.__CHATLIO_CUSTOM_EVENT_SET__ = true;
+
   }
 
   componentWillUnmount() {
-    document.removeEventListener(
-      'chatlio.firstMessageSent',
-      this.handleChatlioFirstMessage
-    );
-    document.removeEventListener(
-      'chatlio.ready',
-      this.handleChatlioFirstMessage
-    );
+
+    if(!window.__CHATLIO_CUSTOM_EVENT_SET__)
+    {
+      return;
+    }
+
+    document.removeEventListener( 'chatlio.firstMessageSent', this.handleChatlioFirstMessage );
+    document.removeEventListener( 'chatlio.ready', this.handleChatlioFirstMessage );
+  }
+
+  chatlioShow = () => {
+
+    const {hello, translate} = this.props;
+
+    if(!window._chatlio)
+    {
+      return;
+    }
+
+    // window._chatlio.fullScreen();
+    window._chatlio.show({expanded: true});
+
+    if(hello)
+    {
+      window._chatlio.send(translate(hello));
+    }
+
   }
 
   handleChatlioFirstMessage = event => {
@@ -31,8 +62,21 @@ class Chatlio extends React.Component {
   };
 
   render() {
-    return null;
+
+    const {button, translate} = this.props;
+
+    if(!button)
+    {
+      return null;
+    }
+
+    return <Button variant="raised" onClick={() => this.chatlioShow()} color="primary">{translate("common.chat")}</Button>;
   }
 }
 
-export default Chatlio;
+Chatlio.defaultProps = {
+  hello : "services.chatlio.hello",
+  button : true
+}
+
+export default translate(Chatlio);

@@ -3,11 +3,14 @@
 
 import { withStyles } from 'material-ui/styles';
  // import PlayArrowIcon from 'material-ui-icons/PlayArrow';
-import Button from 'material-ui/Button';
+
 import compose from 'recompose/compose'
 import {translate} from '../i18n'
 
 import Card from './MyCardSlim'
+
+
+import Chatlio from '../services/Chatlio'
 
 const styles = theme => ({
 
@@ -34,7 +37,7 @@ const Person = ({classes, translate, title, text, name, avatar, phone, email}) =
       <p>{phone} <br/>{email}</p>
       </div>}
     imageSrc={avatar}
-    link={<Button variant="raised" color="primary">{translate("common.chat")}</Button>}
+    link={ <Chatlio /> }
    />
 </div>)
 

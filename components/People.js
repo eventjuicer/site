@@ -14,6 +14,11 @@ import Card, { CardContent, CardHeader } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import Avatar from 'material-ui/Avatar'
 
+
+
+
+
+
 import {processArrayData} from '../helpers'
 
 import {
@@ -28,7 +33,8 @@ const styles = {
   container : {
     display: 'flex',
     justifyContent : 'center',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    alignItems : 'baseline'
 
   },
 
@@ -52,7 +58,7 @@ const styles = {
   },
 
   card: {
-    maxWidth: 345,
+    width: 315,
   },
 
   cardMobile : {

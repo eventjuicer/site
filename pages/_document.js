@@ -4,6 +4,9 @@ import flush from 'styled-jsx/server'
 import JssProvider from 'react-jss/lib/JssProvider'
 import getContext from '../material-ui/muiContext';
 
+const GTM = "GTM-MRFVC8"
+ 
+
 class MyDocument extends Document {
 
   // static getInitialProps({ renderPage }) {
@@ -16,6 +19,18 @@ class MyDocument extends Document {
     return (
     <html lang="en">
       <Head>
+
+        <script async src={`https://www.googletagmanager.com/gtm.js?id=${GTM}`} />
+
+        <script  dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments)};
+                gtag('js', new Date());
+                gtag('config', '${GTM}');
+              `
+        }} />
+
         <link
         rel="shortcut icon"
         href="https://storage.googleapis.com/builderbook/favicon32.png"
@@ -28,6 +43,9 @@ class MyDocument extends Document {
       </Head>
 
       <body className="eventjuicer_site">
+
+
+
         {this.props.customValue}
 
 
