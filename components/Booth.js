@@ -17,16 +17,11 @@ const styles = (theme) => ({
     zIndex: 20,
     borderRadius: 3,
     cursor: 'pointer',
-
-
     padding:0,
     margin:0,
     textAlign: 'center',
-    boxShadow : '1px 1px #555555'
-  },
-
-  tooltip : {
-    zIndex : 25,
+    boxShadow : '1px 1px #555555',
+    overflow: 'hidden'
   },
 
   style1 : {},
@@ -68,7 +63,7 @@ const styles = (theme) => ({
 
 
 
-const Booth = ({status, data, classes, onClick, selected, styleId, zoom}) =>  (
+const Booth = ({status, data, classes, onClick, selected, styleId, zoom, buyer}) =>  (
       <li
         onClick={() => onClick(data.id, data.g, data.ti) }
         className={
@@ -86,7 +81,7 @@ const Booth = ({status, data, classes, onClick, selected, styleId, zoom}) =>  (
         }}
         >
 
-        <span className={classes.boothText}>{data.ti}</span>
+        <span className={classes.boothText}>{buyer && "cname2" in buyer && zoom > 1 ? buyer.cname2 : data.ti}</span>
 
       </li>
 )

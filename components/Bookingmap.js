@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic'
 import { withStyles } from 'material-ui/styles';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose'
-
+import _get from 'lodash/get'
 
 
 //import {translate} from '../i18n'
@@ -91,6 +91,19 @@ getStatusShort(boothId)
   return false;
 }
 
+getBuyerInfo(boothId)
+{
+  const status = this.getStatus(boothId);
+  if(status && "company" in status)
+  {
+    const cname2 =  _get(status, "company.profile.name", _get(status, "company.slug", ""));
+    const logotype = _get(status, "company.logotype", "");
+
+    return {cname2, logotype};
+  }
+  return false;
+}
+
 getTicketsForGroupId(groupId)
 {
   const { ticketgroups } = this.props;
@@ -170,16 +183,23 @@ render()
   }}
   >
 
-<img src={booths.mapsource}
+<img
+  src={booths.mapsource}
   className={classes.bg}
-
  />
-
-{/* <div className={classes.bg} style={{backgroundImage : `xurl(${booths.mapsource})`}}></div> */}
 
 <ul className={classes.booths}>
       {booths.booths && booths.booths.map(booth =>
-        <Booth styleId={1} zoom={zoom} selected={this.isBoothSelected(booth.id)} onClick={this.onBoothClick} status={this.getStatusShort(booth.id)} key={booth.id} data={booth} />
+        <Booth
+          styleId={1}
+          zoom={zoom}
+          selected={this.isBoothSelected(booth.id)}
+          onClick={this.onBoothClick}
+          status={this.getStatusShort(booth.id)}
+          key={booth.id}
+          buyer={this.getBuyerInfo(booth.id)}
+          data={booth}
+        />
       )}
 </ul>
 </div> : <div>...loading</div>
