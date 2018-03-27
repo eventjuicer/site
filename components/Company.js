@@ -18,31 +18,32 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 3,
     backgroundColor: theme.palette.background.paper,
   },
-  htmlContainer : {
-    fontFamily : "'Lato', 'Helvetica', sans-serif",
+  profile : {
     minHeight : 200,
     maxHeight : 400,
     overflow : 'auto',
     padding : 30,
     marginBottom: 30
+  },
+  htmlContainer : {
+    fontFamily : "'Lato', 'Helvetica', sans-serif",
+
   }
 });
 
 
 
-function TabContainer({children, html, classes}) {
+function TabContainer({children, data, classes}) {
 
-  if(html)
+  if(new Object(data) === data )
   {
-    return (
-      <div className={classes.htmlContainer} dangerouslySetInnerHTML={{__html: html}}></div>
-    );
+    return <div className={classes.htmlContainer} ><Contacts profile={ data } /></div>
   }
+
   return (
-    <div>
-      {children}
-    </div>
+    <div className={classes.htmlContainer} dangerouslySetInnerHTML={{__html: data}}></div>
   );
+
 }
 
 const StyledTabContainer = withStyles(styles)(TabContainer);
@@ -56,13 +57,23 @@ const MyTab = translate(Tab);
 class Company extends React.Component {
 
   state = {
-    tab: 'about',
-    tabs : {}
+    tab: '',
+    execTabs : {}
   };
 
   componentDidMount()
   {
-  //  this.selectTabForNonEmptyContent();
+    const { company, tabs } = this.props
+    const profile = _get(company, "profile")
+
+    const execTabs = _pickBy(
+      _mapValues(tabs, (value) => value(profile) ),
+      (value, key) => value
+    )
+
+    this.setState({execTabs})
+
+
   }
 
   handleChange = (event, tab) => {
@@ -85,16 +96,11 @@ class Company extends React.Component {
   render()
   {
 
-    const { company, classes, tabs } = this.props
-    const { tab } = this.state;
-    const profile = _get(company, "profile")
-
-    const execTabs = _pickBy(
-      _mapValues(tabs, (value) => value(profile) ),
-      (value, key) => value
-    )
+    const { classes, tabs } = this.props
+    const { execTabs, tab} = this.state;
 
     const filteredTabs = Object.keys(execTabs);
+
 
     return (
 
@@ -109,15 +115,14 @@ class Company extends React.Component {
           scrollable
           scrollButtons="auto"
       >
+
       {
         filteredTabs.map((name, idx) => <Tab key={idx} value={name} label={`companies.profile.${name}`} />)
       }
 
       </Tabs>
 
-    {tab === 'about' && <StyledTabContainer html={ execTabs["about"] } />}
-    {tab === 'products' && <StyledTabContainer html={ execTabs["products"] } />}
-    {tab === 'contact' && <StyledTabContainer><Contacts profile={ execTabs["contact"] } /></StyledTabContainer>}
+      {filteredTabs.map((name, idx) => tab === name && <div className={classes.profile}><StyledTabContainer data={ execTabs[name] } /></div> )}
 
     </div>
 
@@ -128,8 +133,9 @@ class Company extends React.Component {
 Company.defaultProps = {
   tabs : {
     about :     profile => _get(profile, "about"),
+    expo :      profile => _get(profile, "expo"),
     products :  profile => _get(profile, "products"),
-    contact :   company => ({facebook : company.facebook, linkedin : company.linkedin, twitter : company.twitter})
+    contact :   company => company
   }
 }
 

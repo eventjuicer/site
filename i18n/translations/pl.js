@@ -37,6 +37,7 @@ export default {
       about : "O firmie",
       products : "Kluczowe produkty",
       contact : "Kontakt",
+      expo : "Oferta targowa",
 
     }
 
