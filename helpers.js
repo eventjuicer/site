@@ -22,7 +22,6 @@ export const processArrayData = (data = [], {filter = null, limit = null, random
 
   if(!Array.isArray(data) || !data.length)
   {
-      console.log("provided data is not an array or array is empty")
       return [];
   }
 

@@ -11,14 +11,14 @@ const Head = ({title, description, url, image, translate}) => {
   const titleParams = prepareForTranslate(title)
   const descParams = prepareForTranslate(description)
 
-  const tTitle = translate(titleParams.str, titleParams.params)
+  const tTitle = titleParams.str ? translate(titleParams.str, titleParams.params) : ''
   const tDescription = description ? translate(descParams.str, descParams.params) : description
 
   const prefixedUrl = fullUrl(url)
 
   return (
     <NextHead>
-      <meta charSet="UTF-8" />
+      {/* <meta charSet="UTF-8" /> */}
       <title>{ tTitle }</title>
       <meta name="description" content={ tDescription } />
       <meta name="viewport" content="width=device-width, initial-scale=1" />

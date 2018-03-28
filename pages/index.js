@@ -1,6 +1,6 @@
 
 import dynamic from 'next/dynamic'
-import Head from 'next/head'
+import Head from '../next/MyHead'
 import fetch from 'isomorphic-unfetch'
 
 
@@ -28,7 +28,7 @@ import Visitor from '../components/roles/Visitor'
 import Link from '../next/MyLink'
 
 
-class Index extends React.Component {
+class PageIndex extends React.Component {
 
   static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
   {
@@ -72,16 +72,13 @@ class Index extends React.Component {
   render()
   {
 
-    const { exhibitors, booths } = this.props;
-
+    const { exhibitors, booths, url, userAgent } = this.props;
 
     return (
 
      <Layout>
 
-      <Head>
-        <title>targiehandlu.pl</title>
-      </Head>
+      <Head />
 
       <Hero />
 
@@ -89,7 +86,7 @@ class Index extends React.Component {
         label="visitors.register"
         secondaryTitle="Spotkamy się w gronie ponad 3000 osób!"
         links={[
-        <Link href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
+        <Link key="more" href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
       ]}
       >
       <Visitor  />
@@ -103,7 +100,7 @@ class Index extends React.Component {
         //   <Link href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
         // ]}
       >
-        <People filter={function(item){ return [71460, 71462, 71461, 71463].indexOf(item.id) > -1; }}  />
+        <People limit={4} random={true} filter={function(item){ return [71460, 71462, 71461, 71463, 71703, 71707, 71708, 71709].indexOf(item.id) > -1; }}  />
       </Wrapper>
 
 
@@ -128,7 +125,7 @@ class Index extends React.Component {
       <Wrapper label="visitors.register_alt"
 
          links={[
-          <Link href="/visit" label="visitors.more_info" variant="flat" />
+          <Link key="more" href="/visit" label="visitors.more_info" variant="flat" />
         ]}
       >
         <Visitor />
@@ -151,4 +148,4 @@ class Index extends React.Component {
 
 }
 
-export default reduxPage(Index, (state) => ({foo: state.foo}) )
+export default reduxPage( PageIndex )

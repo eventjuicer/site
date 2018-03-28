@@ -18,7 +18,7 @@ const ssrCache = new LRUCache({
 app.prepare().then(() => {
 
   const server = express()
-
+  
    server.get('/:slug,c,:id', (req, res) => {
      const queryParams = { id: req.params.id }
     // app.render(req, res, '/exhibitor', queryParams)

@@ -5,6 +5,7 @@ import FormButton from '../../formik/FormButton'
 import formik from '../../formik/formik'
 import Typography from '../MyTypography'
 
+import VisitorRegistrationSuccess from './VisitorRegistrationSuccess'
 
 
 /*
@@ -63,7 +64,7 @@ const MyForm = (props) => {
 
   if(status && status === "ok")
   {
-    return success;
+    return <VisitorRegistrationSuccess />;
   }
 
   return (
@@ -76,18 +77,12 @@ const MyForm = (props) => {
         id="email"
         type="email"
         label="visitors.fields.email"
-        placeholder="visitors.fields.email"
-        autocomplete="email"
-        required
         {...props}
       />
 
       <TextInput
         id="fname"
         label="visitors.fields.fname"
-        placeholder="visitors.fields.fname"
-        autocomplete='given-name'
-        required
         {...props}
       />
 
@@ -99,27 +94,18 @@ const MyForm = (props) => {
       <TextInput
           id="lname"
           label="visitors.fields.lname"
-          placeholder="visitors.fields.lname"
-          autocomplete='family-name'
-          required
           {...props}
         />
 
         <TextInput
           id="cname2"
           label="visitors.fields.cname2"
-          placeholder="visitors.fields.cname2"
-          autocomplete='org'
-          required
           {...props}
         />
 
         <TextInput
           id="position"
           label="visitors.fields.position"
-          placeholder="visitors.fields.position"
-          autocomplete='organization-title'
-          required
           {...props}
         />
 
@@ -127,9 +113,6 @@ const MyForm = (props) => {
           id="phone"
           type="tel"
           label="visitors.fields.phone"
-          placeholder="visitors.fields.phone"
-          autocomplete="tel"
-          required
           {...props}
         />
 

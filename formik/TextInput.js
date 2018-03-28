@@ -40,15 +40,29 @@ validateOnChange : true
 values : {}
 */
 
+
+export const autoCompleteMappings = {
+
+  email : "email",
+  fname : "given-name",
+  lname : "family-name",
+  cname2 : "org",
+  position : "organization-title",
+  phone : "tel-national"
+
+}
+
+
 const TextInput = (props) => {
 
-  const {type, id, label, placeholder, autocomplete, classes, values, touched, errors, handleChange, handleBlur, translate} = props;
+  const {type, id, label, placeholder, classes, values, touched, errors, handleChange, handleBlur, translate} = props;
 
   const renderError = id in errors
+  const translatedLabel = translate(label);
 
   return ( <TextField
           id={id}
-          label={translate(label)}
+          label={translatedLabel}
           //className={classes.XXXX}
           value={id in values ? values[id] : ""}
           onChange={handleChange}
@@ -56,9 +70,8 @@ const TextInput = (props) => {
           margin="normal"
           error={renderError}
           helperText={renderError ? errors[id] : ""}
-          placeholder={translate(placeholder)}
-          autoComplete={autocomplete}
-      //    autoComplete="family-name"
+          placeholder={placeholder ? translate(placeholder) : translatedLabel}
+          autoComplete={id in autoCompleteMappings ? autoCompleteMappings[id] : ""}
           fullWidth
         />
 
@@ -67,8 +80,7 @@ const TextInput = (props) => {
 }
 
 TextInput.defaultProps = {
-  type : "text",
-  autocomplete : ""
+  type : "text"
 }
 
 export default translate(TextInput);

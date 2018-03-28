@@ -11,6 +11,8 @@ const validations = {
 }
 
 
+const apiUrl = "https://api.eventjuicer.com.local/v1/public/hosts/targiehandlu.pl.local/register"
+
 export default (
 
   (params) => {
@@ -46,7 +48,7 @@ export default (
 
         setSubmitting(true);
 
-        fetch(props.url, {
+        fetch(apiUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -55,13 +57,13 @@ export default (
             fields : payload,
             tickets : {1070 : 1}
           })
-        }).then( r => {
+        }).then( response => {
 
-          if(status !== 200)
+          if(response.status !== 200)
           {
 
           }
-          return r.json();
+          return response.json();
         }).then( data => {
 
         if("data" in data && "token" in data.data)

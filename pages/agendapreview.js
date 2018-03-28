@@ -53,12 +53,12 @@ render()
 
     <Wrapper
       label="presenters.list_full"
-      secondaryTitle="pełna agenda już wkrótce"
+    //  secondaryTitle="pełna agenda już wkrótce"
       // links={[
       //   <Link href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
       // ]}
     >
-      <People random={true} filter={function(item){ return item.bio && item.bio.length >5; }}   />
+      <People   />
     </Wrapper>
 
 

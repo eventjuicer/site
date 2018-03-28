@@ -31,7 +31,6 @@ const styles = {
 
 const SubPageLink = ({name, subpage, id, classes, src, width}) =>
 {
-  if(!name) return null;
 
   const style = src ? {backgroundImage : `url(${src})`} : {}
 

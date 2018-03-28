@@ -21,7 +21,7 @@ const styles = () => ({
         display: 'block',
         minHeight: 350,
         backgroundColor: '#fff',
-        
+
         paddingBottom: '3rem',
         paddingTop: '3rem',
 
@@ -106,9 +106,9 @@ const Wrapper = ({
 
       {children}
 
-      {links.length ? <div className={classes.centered}>
-        {links.map(link => link)}
-      </div> : null}
+      {links && <div className={classes.centered}>
+        {links}
+      </div>}
 
     </div>
 

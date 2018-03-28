@@ -1,6 +1,15 @@
 export default {
 
 
+  api : {
+    errors : {
+      registration : {
+        not_enough_data : "błąd",
+        bad_ticket_ids : "błąd"
+      }
+    }
+  },
+
   common : {
       from : 'z',
       chat : 'Czat online',
@@ -91,7 +100,7 @@ export default {
     invite : {
 
         title : "%{name} z %{cname} wybiera się na Targi eHandlu",
-        will_you_join : "",
+        will_you_join : "Dołączysz?",
         description : "%{description}"
     },
 

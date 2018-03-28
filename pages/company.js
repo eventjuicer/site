@@ -95,7 +95,7 @@ render()
 
 
     <Wrapper label="visitors.register" color="#fafafa" links={[
-      <Link href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
+       <Link key="more" href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
     ]}>
       <Visitor  />
     </Wrapper>
@@ -120,4 +120,4 @@ render()
 }
 
 
-export default reduxPage(Company, (state) => ({foo: state.foo}) )
+export default reduxPage(Company )

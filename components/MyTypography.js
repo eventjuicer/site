@@ -40,6 +40,14 @@ const styles = {
   //  textAlign: 'center'
   },
 
+  fatSubtitle : {
+    fontSize : '5rem',
+    textTransform: 'uppercase',
+    fontWeight : 900,
+    marginBottom: '3rem',
+  //  textAlign: 'center'
+  },
+
   centered : {
     textAlign: 'center'
   },
@@ -81,6 +89,11 @@ const styles = {
       color : '#ffffff',
       fontStyle: 'italic',
       fontWeight : 900,
+  },
+
+  italic : {
+
+        fontStyle: 'italic',
   },
 
   info : {
@@ -159,6 +172,12 @@ const templates = {
   visitor_invite : {
     variant : "headline", component : "h2", classNames : ["h2fat", "centered"]
   },
+
+  visitor_invite_join : {
+    variant : "headline", component : "h3", classNames : ["fatSubtitle", "centered"]
+  },
+
+
 
 }
 

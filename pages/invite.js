@@ -56,7 +56,11 @@ render()
     />
 
     <Wrapper>
-      <Typography template="visitor_invite" label={["visitors.invite.title", { name, cname }]} />
+
+        <Typography template="visitor_invite" label={["visitors.invite.title", { name, cname }]} />
+
+        <Typography template="visitor_invite_join" label={["visitors.invite.will_you_join", { name, cname }]} />
+
     </Wrapper>
 
 
@@ -68,7 +72,7 @@ render()
       //   <Link href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
       // ]}
     >
-      <People filter={function(item){ return [71460, 71462, 71461, 71463].indexOf(item.id) > -1; }}  />
+      <People limit={4} random={true} filter={function(item){ return [71460, 71462, 71461, 71463, 71703, 71707, 71708, 71709].indexOf(item.id) > -1; }}  />
     </Wrapper>
 
 
@@ -81,7 +85,7 @@ render()
 
 
     <Gallery label="event.gallery" />
-      
+
 
     <Wrapper
       label="exhibitors.list_featured"
