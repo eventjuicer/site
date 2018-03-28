@@ -4,7 +4,7 @@ import Paper from 'material-ui/Paper';
 
 
 
-import Person from '../Person'
+import Person from '../PersonSlim'
 import Benefits from '../Benefits'
 import Bookingmap from '../Bookingmap'
 

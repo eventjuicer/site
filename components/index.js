@@ -12,7 +12,7 @@ import {default as WhoIsGonnaBeThere} from './WhoIsGonnaBeThere'
 import {default as Gallery} from './Gallery'
 import {default as EventInfo} from './EventInfo'
 import {default as Benefits} from './Benefits'
-import {default as Person} from './Person'
+import {default as PersonSlim} from './PersonSlim'
 import {default as WidthAwareInfo} from './WidthAwareInfo'
 import {default as People} from './People'
 
@@ -30,7 +30,7 @@ export {
   Gallery,
   EventInfo,
   Benefits,
-  Person,
+  PersonSlim,
   WidthAwareInfo,
   People
 

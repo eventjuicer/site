@@ -1,59 +1,147 @@
 
-
-
+import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
- // import PlayArrowIcon from 'material-ui-icons/PlayArrow';
-
 import compose from 'recompose/compose'
-import {translate} from '../i18n'
+import classNames from 'classnames'
+import withWidth from 'material-ui/utils/withWidth';
 
-import Card from './MyCardSlim'
+
+import Card, { CardContent, CardHeader } from 'material-ui/Card';
+//import Button from 'material-ui/Button';
+import Typography from 'material-ui/Typography';
+import Avatar from 'material-ui/Avatar'
 
 
-import Chatlio from '../services/Chatlio'
 
-const styles = theme => ({
+const styles = {
 
- container : {
-   // maxWidth : 700
- },
-  icon: {
-    height: 38,
-    width: 38,
+  avatarContainer : {
+   display: 'flex',
+   justifyContent : 'center'
   },
-});
+
+  avatar : {
+    width: 200,
+    height: 200,
+
+  },
+
+  avatarMobile : {
+    width: 100,
+    height: 100,
+  },
+
+  avatarImg : {
+     filter: 'grayscale(100%) contrast(115%)',
+  },
+
+  card: {
+    width: '100%',
+    maxWidth : 400
+  },
+
+  // media: {
+  //   height: 200,
+  // },
+
+  bio : {
+    marginTop : 10
+  }
+};
+
+class Person extends React.PureComponent {
 
 
+  isMobile()
+  {
+    const { width } = this.props;
+    return width === "xs"
+  }
 
-const Person = ({classes, translate, title, text, name, avatar, phone, email}) => (
+  render()
+  {
+    const { classes, avatar, title, subtitle, text } = this.props;
 
-  <div className={classes.container}>
-  <Card
-    primary={false}
-    title={translate(title)}
-    text={
-      <div>
-      {translate(text, {person : name})}
-      <p>{phone} <br/>{email}</p>
-      </div>}
-    imageSrc={avatar}
-    link={ <Chatlio /> }
-   />
-</div>)
+    return (
 
-Person.defaultProps = {
-    title : "event.support.hello",
-    text : "event.support.description",
-    name : "Bartek Meller",
-    avatar : "/static/support.jpg",
-    phone : "+48 721 945 134",
-    email : "hello@targiehandlu.pl"
+      <Card className={classNames(classes.card, {
+        [classes.cardMobile] : this.isMobile()
+      }
+      )} elevation={0}>
+
+      {/* <CardMedia
+        className={classes.media}
+        image="https://material-ui-next.com/static/images/cards/contemplative-reptile.jpg"
+        title="Contemplative Reptile"
+      /> */}
+
+      <CardHeader
+
+        avatar={
+        <Avatar
+          alt=""
+          src={avatar}
+          classes={{
+            root : classNames(classes.avatar,{
+              [classes.avatarMobile] : this.isMobile()
+            }),
+            img : classes.avatarImg
+          }}
+        />}
+        // title="test"
+        // subheader="srest"
+        className={classes.avatarContainer}
+     />
+
+      <CardContent>
+
+        <Typography gutterBottom variant="headline" component="h2">
+          {title}
+        </Typography>
+
+        {subtitle && <Typography component="p">
+          {subtitle}
+        </Typography>}
+
+        {text && <Typography component="p" className={classes.bio}>
+          { text }
+        </Typography> }
+
+      </CardContent>
+      {/* <CardActions>
+        <Button size="small" color="primary">
+          Share
+        </Button>
+        <Button size="small" color="primary">
+          Learn More
+        </Button>
+      </CardActions> */}
+    </Card>
+
+
+    );
+
+
+  }
+
+
 }
 
+Person.defaultProps = {
+  width : "md"
+}
+
+Person.propTypes = {
+  classes: PropTypes.object.isRequired,
+  avatar : PropTypes.string.isRequired,
+  title : PropTypes.node,
+  subtitle : PropTypes.node,
+  text : PropTypes.node,
+};
 
 const enhance = compose(
   withStyles(styles),
-  translate
+  withWidth()
 )
 
-export default enhance(Person)
+export default enhance(Person);

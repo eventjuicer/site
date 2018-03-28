@@ -12,7 +12,7 @@ import red from 'material-ui/colors/red';
 
 
 import EventInfo from './EventInfo'
-import Person from './Person'
+import Person from './PersonSlim'
 import Typography from './MyTypography'
 
 import Wrapper from './Wrapper'

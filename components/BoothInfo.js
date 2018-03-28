@@ -10,7 +10,7 @@ import _get from 'lodash/get';
 
 
 //import {translate} from '../i18n'
-import Person from './Person'
+import Person from './PersonSlim'
 
 import Card from './MyCardSlim'
 

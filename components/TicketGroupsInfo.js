@@ -10,7 +10,7 @@ import compose from 'recompose/compose'
 
 
 //const BoothInfo = dynamic(import('./BoothInfo'))
-//const Person = dynamic(import('./Person'))
+//const Person = dynamic(import('./PersonSlim'))
 const TicketGroup = dynamic(import('./TicketGroup'))
 
 import Booth from './Booth';

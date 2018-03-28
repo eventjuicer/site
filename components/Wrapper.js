@@ -26,7 +26,8 @@ const styles = () => ({
         paddingTop: '3rem',
 
         position: 'relative',
-
+        overflow: 'hidden',
+    //    textAlign: 'center'
 
     },
 
@@ -37,15 +38,14 @@ const styles = () => ({
     },
 
     overlay : {
-    //   background: '#25201f',
-    //    opacity: '.8',
+       //background: '#25201f',
+        opacity: '.8',
         position: 'absolute',
         zIndex: 0,
         top: 0,
         left: 0,
         bottom: 0,
         right: 0
-
     },
 
     container : {
@@ -53,7 +53,8 @@ const styles = () => ({
       maxWidth : 1600,
       margin : '0 auto',
       marginTop : '2rem',
-      zIndex: 111,
+      zIndex: 123,
+      position : 'relative'
     },
 
     centered : {
@@ -90,9 +91,10 @@ const Wrapper = ({
   <section className={classNames(classes.root, {
     [classes.rootDense] : dense
   })} style={{backgroundColor : color}}>
-    {/* <div className={props.classes.overlay}>
 
-    </div> */}
+    <div className={classes.overlay}>
+
+    </div>
 
     <div className={classes.container}>
 
