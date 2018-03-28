@@ -1,3 +1,7 @@
 
+const VisitorRegistrationSuccess = (props) => (
+  <div>Udalo sie!</div>
+)
 
-export default <div>Udalo sie!</div>;
+
+export default VisitorRegistrationSuccess;

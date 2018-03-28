@@ -15,6 +15,10 @@ import {
 } from './redux/actions'
 
 
+const FullJobInfo = ({company, job}) => (
+    <span>{job} @ <strong>{company}</strong></span>
+)
+
 class People extends React.PureComponent {
 
   componentDidMount()
@@ -35,7 +39,7 @@ class People extends React.PureComponent {
                   <Person
                     avatar={_get(item, "avatar")}
                     title={`${_get(item, "fname")} ${_get(item, "lname")}`}
-                    subtitle={`${_get(item, "position")} @ ${_get(item, "cname2")}`}
+                    subtitle={<FullJobInfo company={_get(item, "cname2")} job={_get(item, "position")}  />}
                     text={_get(item, "bio")}
                   />
                 </Grid>

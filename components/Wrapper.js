@@ -8,22 +8,14 @@ import classNames  from 'classnames';
 const styles = () => ({
 
 
-    title : {
-      fontSize : '3rem',
-      textTransform: 'uppercase',
-      fontWeight : 500,
-      marginBottom: '2rem',
-      textAlign: 'center'
-    },
-
     root : {
 
         display: 'block',
         minHeight: 350,
         backgroundColor: '#fff',
 
-        paddingBottom: '3rem',
-        paddingTop: '3rem',
+        paddingBottom: '2rem',
+        paddingTop: '2rem',
 
         position: 'relative',
         overflow: 'hidden',
@@ -57,7 +49,7 @@ const styles = () => ({
       position : 'relative'
     },
 
-    centered : {
+    related : {
       display : 'flex',
       // alignItems : 'flex-end',
       justifyContent : 'flex-end',
@@ -108,7 +100,7 @@ const Wrapper = ({
 
       {children}
 
-      {links && <div className={classes.centered}>
+      {links && <div className={classes.related}>
         {links}
       </div>}
 

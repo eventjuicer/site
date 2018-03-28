@@ -2,9 +2,8 @@
 
 import TextInput from '../../formik/TextInput'
 import FormButton from '../../formik/FormButton'
-import formik from '../../formik/formik'
+import formik, {filterFields} from '../../formik/formik'
 import Typography from '../MyTypography'
-
 import VisitorRegistrationSuccess from './VisitorRegistrationSuccess'
 
 
@@ -57,69 +56,43 @@ const MyForm = (props) => {
     handleReset,
     isSubmitting,
     success,
-
+    fields,
+    start
   } = props;
 
   const started = Object.keys(touched).length;
-
   if(status && status === "ok")
   {
     return <VisitorRegistrationSuccess />;
   }
+  const filteredFields = filterFields(fields, start);
 
   return (
     <form onSubmit={handleSubmit}>
 
-
       <Typography template="legend" label="visitors.form.intro" />
 
-      <TextInput
-        id="email"
-        type="email"
-        label="visitors.fields.email"
-        {...props}
-      />
+      {
+        start ? start.map((name, idx) =>
+            <TextInput
+              key={idx}
+              id={name}
+              label={`visitors.fields.${name}`}
+              {...props}
+            />
+        ) : null
+      }
 
-      <TextInput
-        id="fname"
-        label="visitors.fields.fname"
-        {...props}
-      />
-
-    {
-      started ?
-
-      <div>
-
-      <TextInput
-          id="lname"
-          label="visitors.fields.lname"
-          {...props}
-        />
-
-        <TextInput
-          id="cname2"
-          label="visitors.fields.cname2"
-          {...props}
-        />
-
-        <TextInput
-          id="position"
-          label="visitors.fields.position"
-          {...props}
-        />
-
-        <TextInput
-          id="phone"
-          type="tel"
-          label="visitors.fields.phone"
-          {...props}
-        />
-
-        </div>
-
-        : null
-    }
+      {
+        (started || !start) && filteredFields.length ? filteredFields.map((name, idx) =>
+            <TextInput
+              key={idx}
+              id={name}
+              label={`visitors.fields.${name}`}
+              {...props}
+            />
+        ) : null
+      }
 
       <FormButton
         label="visitors.form.register" {...props}
@@ -131,7 +104,7 @@ const MyForm = (props) => {
 
 
 MyForm.defaultProps = {
-    url : "https://api.eventjuicer.com.local/v1/public/hosts/targiehandlu.pl.local/register"
+    url : "https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/register"
 }
 
-export default formik({})(MyForm);
+export default formik(MyForm);
