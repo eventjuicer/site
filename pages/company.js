@@ -82,13 +82,25 @@ render()
         left={
 
           <div>
+            
             <img src={logotype} alt="" style={{maxWidth: 300, maxHeight: 200}} />
+
+            {/* <Typography label={["exhibitors.booth_location", {
+                cname2 : name,
+                loc : selectedBoothNames.join(","),
+                smart_count : selectedBoothNames.length
+              }]} /> */}
+
           </div>
 
          }
          leftCentered={true}
          right={
+           <div>
+
+
           <CompanyProfile company={company} />
+          </div>
         } />
 
     </Wrapper>
@@ -101,7 +113,7 @@ render()
     </Wrapper>
 
 
-    <Wrapper label={["exhibitors.booth_location", {
+    <Wrapper label={["exhibitors.booth_location_full", {
         cname2 : name,
         loc : selectedBoothNames.join(","),
         smart_count : selectedBoothNames.length

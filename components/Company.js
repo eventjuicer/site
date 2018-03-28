@@ -57,7 +57,7 @@ const MyTab = translate(Tab);
 class Company extends React.Component {
 
   state = {
-    tab: '',
+    tab: null,
     execTabs : {}
   };
 
@@ -68,11 +68,20 @@ class Company extends React.Component {
 
     const execTabs = _pickBy(
       _mapValues(tabs, (value) => value(profile) ),
-      (value, key) => value
+      function(value, key)
+      {
+        if(new Object(value)===value)
+        {
+          return Object.values(value).some(arrval => arrval)
+        }
+        return value
+      }
     )
 
-    this.setState({execTabs})
+    const names = Object.keys(execTabs)
+    const tab = names.length ? names[0] : null
 
+    this.setState({tab, execTabs})
 
   }
 
@@ -80,23 +89,10 @@ class Company extends React.Component {
     this.setState({ tab });
   };
 
-  // selectTabForNonEmptyContent()
-  // {
-  //   const {company} = this.props
-  //
-  //   const tabContent = {
-  //     about : _get(company, "profile.about"),
-  //     products : _get(company, "profile.products")
-  //   };
-  //
-  //   this.setState({ tabContent });
-  // }
-
-
   render()
   {
 
-    const { classes, tabs } = this.props
+    const { classes } = this.props
     const { execTabs, tab} = this.state;
 
     const filteredTabs = Object.keys(execTabs);
@@ -135,7 +131,12 @@ Company.defaultProps = {
     about :     profile => _get(profile, "about"),
     expo :      profile => _get(profile, "expo"),
     products :  profile => _get(profile, "products"),
-    contact :   company => company
+    contact :   company => ({
+                          website : _get(company, "website"),
+                          twitter : _get(company, "twitter"),
+                          linkedin : _get(company, "linkedin"),
+                          facebook : _get(company, "facebook")
+                          })
   }
 }
 

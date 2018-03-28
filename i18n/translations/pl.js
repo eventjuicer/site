@@ -134,7 +134,8 @@ export default {
 
   exhibitors : {
     list_featured : "Spotkasz ich na Expo",
-    booth_location : "Lokalizacja %{cname2}: %{loc} |||| Lokalizacja %{cname2}: %{loc}",
+    booth_location : "Stoisko %{loc} |||| Stoiska %{loc}",
+    booth_location_full : "Lokalizacja %{cname2}: %{loc} |||| Lokalizacja %{cname2}: %{loc}",
     list_full : "Wszyscy Wystawcy",
     map : {
       title : "Plan Targów",
