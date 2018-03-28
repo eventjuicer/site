@@ -1,7 +1,5 @@
 
 
-
-import classnames from 'classnames';
 import TextInput from '../../formik/TextInput'
 import FormButton from '../../formik/FormButton'
 import formik from '../../formik/formik'
@@ -50,16 +48,23 @@ const MyForm = (props) => {
     touched,
     errors,
     dirty,
+    status,
     isValid,
     handleChange,
     handleBlur,
     handleSubmit,
     handleReset,
     isSubmitting,
+    success,
 
   } = props;
 
   const started = Object.keys(touched).length;
+
+  if(status && status === "ok")
+  {
+    return success;
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -90,6 +95,7 @@ const MyForm = (props) => {
       started ?
 
       <div>
+
       <TextInput
           id="lname"
           label="visitors.fields.lname"
@@ -108,6 +114,14 @@ const MyForm = (props) => {
           {...props}
         />
 
+        <TextInput
+          id="position"
+          label="visitors.fields.position"
+          placeholder="visitors.fields.position"
+          autocomplete='organization-title'
+          required
+          {...props}
+        />
 
         <TextInput
           id="phone"
@@ -124,17 +138,17 @@ const MyForm = (props) => {
         : null
     }
 
-      <FormButton label="visitors.form.register" {...props} />
+      <FormButton
+        label="visitors.form.register" {...props}
+      />
 
     </form>
   );
 };
 
 
+MyForm.defaultProps = {
+    url : "https://api.eventjuicer.com.local/v1/public/hosts/targiehandlu.pl.local/register"
+}
 
-export default formik({
-
-  required : ["fname", "lname", "cname2", "phone"],
-  apiUrl : ""
-
-})(MyForm);
+export default formik({})(MyForm);

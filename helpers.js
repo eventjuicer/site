@@ -31,16 +31,18 @@ export const processArrayData = (data = [], {filter = null, limit = null, random
     data = data.filter(row => filter(row));
   }
 
+  if(random)
+  {
+    data = _shuffle(data);
+  }
+
+
 
   if(limit && data.length > limit)
   {
     data = data.slice(0, limit);
   }
 
-  if(random)
-  {
-    data = _shuffle(data);
-  }
 
 
   return data;

@@ -80,7 +80,7 @@ class Index extends React.Component {
      <Layout>
 
       <Head>
-        <title>targiehandlu.pl xxx</title>
+        <title>targiehandlu.pl</title>
       </Head>
 
       <Hero />

@@ -1,3 +1,3 @@
 
 
-export default null;
+export default <div>Udalo sie!</div>;

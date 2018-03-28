@@ -81,6 +81,20 @@ export default {
 
   visitors : {
 
+
+    opengraph : {
+
+        title : "%{name} wybiera się Targi eHandlu | %{location}, %{date}",
+        description : "%{description}"
+    },
+
+    invite : {
+
+        title : "%{name} z %{cname} wybiera się na Targi eHandlu",
+        will_you_join : "",
+        description : "%{description}"
+    },
+
     benefits : {
       free_presentations_entry : "Bezpłatny udział w prezentacjach",
       free_expo_entry : "Bezpłatne zwiedzanie stoisk",
@@ -96,6 +110,7 @@ export default {
       fname : "Podaj swoje Imię",
       lname : "Podaj swoje Nazwisko",
       cname2 : "Nazwa Twojej firmy",
+      position : "Stanowisko w firmie",
       phone : "Numer telefonu",
       email : "Adres e-mail",
     },

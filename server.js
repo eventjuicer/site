@@ -25,6 +25,19 @@ app.prepare().then(() => {
      renderAndCache(req, res, '/company', queryParams)
    })
 
+   server.get('/thankyou,:hash', (req, res) => {
+     const queryParams = { hash: req.params.hash }
+    // app.render(req, res, '/exhibitor', queryParams)
+     renderAndCache(req, res, '/thankyou', queryParams)
+   })
+
+   server.get('/invite,:hash', (req, res) => {
+     const queryParams = { hash: req.params.hash }
+    // app.render(req, res, '/exhibitor', queryParams)
+     renderAndCache(req, res, '/invite', queryParams)
+   })
+
+
    server.get('/', (req, res) => {
     renderAndCache(req, res, '/')
   })

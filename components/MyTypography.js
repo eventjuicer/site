@@ -32,6 +32,14 @@ const styles = {
   //  textAlign: 'center'
   },
 
+  h2fat : {
+    fontSize : '4rem',
+    textTransform: 'uppercase',
+    fontWeight : 500,
+    marginBottom: '3rem',
+  //  textAlign: 'center'
+  },
+
   centered : {
     textAlign: 'center'
   },
@@ -148,6 +156,9 @@ const templates = {
     variant : "body2", component : "p", classNames : ["info", "centered"]
   },
 
+  visitor_invite : {
+    variant : "headline", component : "h2", classNames : ["h2fat", "centered"]
+  },
 
 }
 
