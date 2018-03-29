@@ -85,9 +85,9 @@ class PageIndex extends React.Component {
       <Wrapper
         label="visitors.register"
         secondaryTitle="Spotkamy się w gronie ponad 3000 osób!"
-        links={[
-        <Link key="more" href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
-      ]}
+      //   links={[
+      //   <Link key="more" href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
+      // ]}
       >
       <Visitor  />
       </Wrapper>
@@ -96,9 +96,9 @@ class PageIndex extends React.Component {
       <Wrapper
         label="presenters.list_featured"
         secondaryTitle="Udział bezpłatny. Pełna agenda już wkrótce..."
-        // links={[
-        //   <Link href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
-        // ]}
+        links={[
+          <Link key="more" href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
+        ]}
       >
         <People limit={4} random={true} filter={function(item){ return [71460, 71462, 71461, 71463, 71703, 71707, 71708, 71709].indexOf(item.id) > -1; }}  />
       </Wrapper>
@@ -124,9 +124,9 @@ class PageIndex extends React.Component {
 
       <Wrapper label="visitors.register_alt"
 
-         links={[
-          <Link key="more" href="/visit" label="visitors.more_info" variant="flat" />
-        ]}
+        //  links={[
+        //   <Link key="more" href="/visit" label="visitors.more_info" variant="flat" />
+        // ]}
       >
         <Visitor />
       </Wrapper>

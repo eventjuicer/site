@@ -54,6 +54,13 @@ export default {
 
   event : {
 
+    opengraph : {
+
+      name : "XIV Targi eHandlu | Kraków | 25/04/2018",
+      description : "Cały eHandel w jednym miejscu"
+
+    },
+
     date : "Data wydarzenia",
     location : "Lokalizacja",
     hours : "Czas trwania",
