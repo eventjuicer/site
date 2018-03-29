@@ -40,10 +40,10 @@ const Head = ({title, description, url, image, translate}) => {
 }
 
 Head.defaultProps = {
-  title: "",
-  description: "",
-  image: "",
-  url : ""
+  title: "XIV Targi eHandlu | Kraków | 25/04/2018",
+  description: "Cały eHandel w jednym miejscu",
+  image: fullUrl("/static/og_teh_default.png"),
+  url : fullUrl("/")
 }
 
 

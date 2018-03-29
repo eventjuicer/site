@@ -1,6 +1,10 @@
 
+
+import Typography from '../MyTypography'
+
+
 const VisitorRegistrationSuccess = (props) => (
-  <div>Udalo sie!</div>
+  <Typography component="h3">Udalo sie!</Typography>
 )
 
 

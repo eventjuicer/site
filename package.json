@@ -13,7 +13,7 @@
     "url": "git+https://github.com/targiehandlu/site.git"
   },
   "now": {
-    "alias": "next.targiehandlu.pl",
+    "alias": "targiehandlu.pl",
     "type": "npm",
     "public": true
   },

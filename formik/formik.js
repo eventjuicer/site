@@ -76,7 +76,7 @@ export default withFormik({
           {
             setStatus("error")
           }
-          console.log(data)
+      
           setSubmitting(false);
        })
       },
