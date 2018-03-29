@@ -1,4 +1,5 @@
 
+import dynamic from 'next/dynamic'
 import Head from '../next/MyHead'
 import reduxPage from '../redux/store'
 
@@ -12,8 +13,8 @@ import {TwoColsLayout as Section} from '../components/MyLayouts'
 
 import Layout from '../layouts/main';
 import Wrapper from '../components/Wrapper'
-import Bookingmap from '../components/Bookingmap'
 
+const Bookingmap = dynamic(import('../components/Bookingmap'))
 
 import CompanyProfile from '../components/Company'
 
@@ -69,7 +70,7 @@ render()
   const selectedBoothNames = _map(data, 'formdata.ti');
   const logotype = _get(company, "profile.logotype")
   const name = _get(company, "profile.name");
-            
+
 
   return (<Layout>
 

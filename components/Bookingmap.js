@@ -9,11 +9,17 @@ import _get from 'lodash/get'
 //import {translate} from '../i18n'
 
 
-const BoothInfo = dynamic(import('./BoothInfo'))
-const Person = dynamic(import('./PersonSlim'))
-const TicketGroup = dynamic(import('./TicketGroup'))
-const TicketGroupsInfo = dynamic(import('./TicketGroupsInfo'))
+// const BoothInfo = dynamic(import('./BoothInfo'))
+// const Person = dynamic(import('./PersonSlim'))
+// const TicketGroup = dynamic(import('./TicketGroup'))
+// const TicketGroupsInfo = dynamic(import('./TicketGroupsInfo'))
 
+
+
+import BoothInfo from './BoothInfo'
+import Person from './PersonSlim'
+import TicketGroup from './TicketGroup'
+import TicketGroupsInfo from './TicketGroupsInfo'
 
 import Booth from './Booth';
 

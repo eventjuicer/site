@@ -12,7 +12,7 @@ import {
   Wrapper,
   Avatarlist,
   ColumnList,
-  Bookingmap,
+//  Bookingmap,
   Typography,
   Gallery,
   WidthAwareInfo,
@@ -26,6 +26,9 @@ import Hero from '../components/HeroCustom'
 import {resourceFetchSuccess} from '../components/redux/actions'
 import Visitor from '../components/roles/Visitor'
 import Link from '../next/MyLink'
+
+
+const Bookingmap = dynamic(import("../components/Bookingmap"))
 
 
 class PageIndex extends React.Component {
