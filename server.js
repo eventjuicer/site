@@ -18,12 +18,17 @@ const ssrCache = new LRUCache({
 app.prepare().then(() => {
 
   const server = express()
-  
-   server.get('/:slug,c,:id', (req, res) => {
-     const queryParams = { id: req.params.id }
-    // app.render(req, res, '/exhibitor', queryParams)
-     renderAndCache(req, res, '/company', queryParams)
-   })
+
+
+ //  server.get('/c,:id', (req, res) => {
+ //    const queryParams = { id: req.params.id }
+ //    res.redirect('/agenda?utm_content=')
+ //
+ //   // app.render(req, res, '/exhibitor', queryParams)
+ // //  REDIRECT
+ //    //renderAndCache(req, res, '/company', queryParams)
+ //  })
+
 
    server.get('/thankyou,:hash', (req, res) => {
      const queryParams = { hash: req.params.hash }
@@ -31,11 +36,18 @@ app.prepare().then(() => {
      renderAndCache(req, res, '/thankyou', queryParams)
    })
 
-   server.get('/invite,:hash', (req, res) => {
-     const queryParams = { hash: req.params.hash }
+   server.get('/invite,:id', (req, res) => {
+     const queryParams = { id: req.params.id }
     // app.render(req, res, '/exhibitor', queryParams)
      renderAndCache(req, res, '/invite', queryParams)
    })
+
+   server.get('/:slug,c,:id', (req, res) => {
+     const queryParams = { id: req.params.id }
+    // app.render(req, res, '/exhibitor', queryParams)
+     renderAndCache(req, res, '/company', queryParams)
+   })
+
 
 
    server.get('/', (req, res) => {
@@ -69,7 +81,13 @@ function getCacheKey (req) {
 }
 
 async function renderAndCache (req, res, pagePath, queryParams) {
+
   const key = getCacheKey(req)
+
+  if("purge" in req.query)
+  {
+    ssrCache.del(key)
+  }
 
   // If we have a page in the cache, let's serve it
   if (ssrCache.has(key)) {
