@@ -38,7 +38,7 @@ export default {
     opengraph : {
 
         title : "%{name} zaprasza do spotkania na Targach eHandlu",
-        description : "%{description}"
+        description : "%{about}"
     },
 
     profile : {
@@ -120,6 +120,7 @@ export default {
     form : {
       register : "Zarejestruj mnie",
       intro : "Bilet otrzymasz na podany adres e-mail na kilka dni przed wydarzeniem",
+      success : "Udało się! Sprawdź e-mail!"
     },
 
     fields : {

@@ -111,6 +111,18 @@ const styles = {
     textShadow: '1px 1px 1px #fff',
     backgroundImage : ['linear-gradient(-100deg, rgba(255,250,150,0.15), rgba(255,250,150,0.8) 100%, rgba(255,250,150,0.25))']
 
+  },
+
+  alert : {
+
+    border: '1px solid #666666',
+    backgroundColor : '#eaeaea',
+    fontSize : '2rem',
+    textTransform: 'uppercase',
+    fontWeight : 400,
+    padding: '1.5rem',
+    margin: '3rem 1.5rem'
+
   }
 
 
@@ -177,6 +189,9 @@ const templates = {
     variant : "headline", component : "h3", classNames : ["fatSubtitle", "centered"]
   },
 
+  alert : {
+    variant : "headline", component : "h4", classNames : ["alert", "centered"]
+  },
 
 
 }

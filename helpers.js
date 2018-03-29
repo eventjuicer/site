@@ -3,6 +3,48 @@ import _chunk from 'lodash/chunk'
 import _shuffle from 'lodash/shuffle'
 import _filter from 'lodash/filter';
 
+
+export const escapeHtml = (text) => {
+  var map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+
+  return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+}
+
+export const stripTags = (html) => {
+
+  var html = "<p>Some HTML</p>";
+  var div = document.createElement("div");
+  div.innerHTML = html;
+  return div.textContent || div.innerText || "";
+
+}
+
+
+export const validateToken = token => {
+  return /^[a-z0-9]{32,40}$/.test(token);
+};
+
+export const lsGet = key => JSON.parse(localStorage.getItem(key))
+
+export const lsSet = (key, value) => localStorage.setItem(key, JSON.stringify(value))
+
+export const addToken = (token) => {
+
+  const tokens = lsGet("tokens") || []
+
+  if(tokens.indexOf(token) === -1)
+  {
+    tokens.push(token)
+    lsSet("tokens", tokens)
+  }
+}
+
 export const slug = (str = "") => slugify(str, {
     replacement: '-',
     remove: null,

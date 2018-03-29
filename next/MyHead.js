@@ -35,6 +35,11 @@ const Head = ({title, description, url, image, translate}) => {
       <meta property="og:image" content={ image } />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
+
+      <meta property="og:type" content="website" />
+      {/* <meta property="fb:app_id" content="" /> */}
+
+
     </NextHead>
   );
 }

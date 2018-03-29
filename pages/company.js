@@ -25,9 +25,13 @@ import Link from '../next/MyLink'
 
 import {resourceFetchSuccess} from '../components/redux/actions'
 
-import {filterCompanyInstances} from '../helpers'
 
 
+import {
+  filterCompanyInstances,
+  stripTags,
+  escapeHtml
+} from '../helpers'
 
 
 // TabContainer.propTypes = {
@@ -65,6 +69,7 @@ render()
   const selectedBoothNames = _map(data, 'formdata.ti');
   const logotype = _get(company, "profile.logotype")
   const name = _get(company, "profile.name");
+            
 
   return (<Layout>
 
@@ -82,7 +87,7 @@ render()
         left={
 
           <div>
-            
+
             <img src={logotype} alt="" style={{maxWidth: 300, maxHeight: 200}} />
 
             {/* <Typography label={["exhibitors.booth_location", {

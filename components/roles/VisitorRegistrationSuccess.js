@@ -4,7 +4,7 @@ import Typography from '../MyTypography'
 
 
 const VisitorRegistrationSuccess = (props) => (
-  <Typography component="h3">Udalo sie!</Typography>
+  <Typography label="visitors.form.success" template="alert" />
 )
 
 

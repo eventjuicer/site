@@ -2,7 +2,7 @@ import { withFormik } from 'formik';
 import Yup from 'yup';
 import fetch from 'isomorphic-unfetch'
 import _pick from 'lodash/pick'
-import _pickBy from 'lodash/pickBy'
+import {addToken} from '../helpers'
 
 export const filterFields = (fields, start) => {
   const all = Object.keys(fields)
@@ -67,17 +67,21 @@ export default withFormik({
           }
           return response.json();
         }).then( data => {
+
+          setSubmitting(false);
+
           if("data" in data && "token" in data.data)
           {
+             addToken(data.data.token)
              setStatus("ok")
           }
+
           //error?
           if("error" in data)
           {
             setStatus("error")
           }
-      
-          setSubmitting(false);
+
        })
       },
       displayName: 'MyForm',
