@@ -146,7 +146,7 @@ export default {
     booth_location_full : "Lokalizacja %{cname2}: %{loc} |||| Lokalizacja %{cname2}: %{loc}",
     list_full : "Wszyscy Wystawcy",
     map : {
-      title : "Plan Targów",
+      title : "Zostało tylko kilka stoisk!",
     },
   },
 
