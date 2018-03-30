@@ -44,7 +44,7 @@ const bindMiddleware = (middleware) => {
 */
 
 
-function store(initialState, options){
+export function store(initialState = {}, options = {}){
 
   const {isServer} = options;
 
