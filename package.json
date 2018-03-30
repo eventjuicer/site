@@ -15,7 +15,7 @@
   "now": {
     "alias": "targiehandlu.pl",
     "type": "npm",
-    "public": true
+    "public": false
   },
   "author": "adam zygadlewicz <adam.zygadlewicz@gmail.com>",
   "license": "MIT",
@@ -54,7 +54,8 @@
     "redux-saga": "^0.16.0",
     "reselect": "^3.0.1",
     "slugify": "^1.2.9",
-    "yup": "^0.24.1"
+    "yup": "^0.24.1",
+    "eventjuicer-site-translations": "file:../site-translations/"
   },
   "devDependencies": {}
 }

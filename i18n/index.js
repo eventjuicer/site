@@ -10,7 +10,7 @@ import withPolyglot from './withPolyglot'
 
 
 import defaultMessages from './messages';
-import customMessages from './translations'
+import customMessages from 'eventjuicer-site-translations'
 
 
 export {resolveBrowserLocale, translate, TranslationProvider, withPolyglot, defaultMessages, customMessages}
