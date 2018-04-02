@@ -1,24 +1,25 @@
 
-
-import Head from 'next/head'
 import dynamic from 'next/dynamic'
+import Head from 'next/head'
 
 import withMui from '../next/withMui'
+
 
 import Chatlio from '../services/Chatlio'
 
 import {TranslationProvider} from '../i18n'
 
-import MyAppBar from '../components/MyAppBar'
-import Footer from '../components/Footer'
+import {
+  MyAppBar,
+  Footer
+} from '../components'
 
 
 const Dialog = dynamic(import('../components/MyDialog'))
 const Snackbar = dynamic(import('../components/MySnackbar'))
 const Drawer = dynamic(import('../components/MyDrawer'))
 
-import {customMessages} from '../i18n'
-
+import customMessages from 'eventjuicer-site-translations'
 
 import Router from 'next/router'
 
@@ -36,10 +37,10 @@ Router.onRouteChangeComplete = () => {
 const Layout = (props) => (
   <TranslationProvider locale="pl" messages={customMessages}>
   <div>
-
+{/*
     <Head>
-    <title>targiehandlu.pl</title>
-    </Head>
+      <title>use MyHead!</title>
+    </Head> */}
 
     <MyAppBar />
 

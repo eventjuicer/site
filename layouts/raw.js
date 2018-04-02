@@ -1,13 +1,14 @@
 
-
-import Head from 'next/head'
-import withMui from '../next/withMui'
-import {TranslationProvider} from '../i18n'
-import {customMessages} from '../i18n'
 import Router from 'next/router'
 
+import {
+  MyHead as Head,
+  withMui
+} from '../next'
 
+import {TranslationProvider} from '../i18n'
 
+import customMessages from 'eventjuicer-site-translations'
 
 Router.onRouteChangeComplete = () => {
   if (window.gtag){
@@ -25,9 +26,7 @@ const Layout= (props) => (
 
   <TranslationProvider locale="pl" messages={customMessages}>
   <div>
-  <Head>
-  <title></title>
-  </Head>
+  <Head />
   {props.children}
   </div>
   </TranslationProvider>

@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import { MuiThemeProvider } from 'material-ui/styles';
 import CssBaseline from 'material-ui/CssBaseline';
 
-import getContext from '../material-ui/muiContext';
+import {getMuiContext} from '../material-ui';
+
 //import Header from '../components/Header';
 
 function withMui(BaseComponent) {
 
   class App extends React.Component {
     componentWillMount() {
-      this.pageContext = this.props.pageContext || getContext();
+      this.pageContext = this.props.pageContext || getMuiContext();
     }
 
     componentDidMount() {

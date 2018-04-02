@@ -1,20 +1,29 @@
 
 import dynamic from 'next/dynamic'
-import Head from 'next/head'
+import {
+  MyHead as Head,
+  MyLink as Link
+} from '../next'
 import fetch from 'isomorphic-unfetch'
 
 
-import reduxPage from '../redux/store'
+import reduxPage from '../redux'
 import Layout from '../layouts/main';
-import {Wrapper, Avatarlist, ColumnList, Bookingmap, Typography,  Gallery} from '../components'
+import {
+  Wrapper,
+  Avatarlist,
+  ColumnList,
+  Bookingmap,
+  Typography,
+  Gallery,
+  resourceFetchSuccess
+} from '../components'
 
 //const Gallery = dynamic(import('../components/GalleryQuoted'))
-import {resourceFetchSuccess} from '../components/redux/actions'
-import Visitor from '../components/roles/Visitor'
+import Visitor from '../roles/Visitor'
 
-import Link from '../next/MyLink'
 
-class Index extends React.Component {
+class PageExhibitors extends React.Component {
 
   static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
   {
@@ -65,9 +74,7 @@ class Index extends React.Component {
 
      <Layout>
 
-      <Head>
-        <title>targiehandlu.pl xxx</title>
-      </Head>
+      <Head />
 
 
       <Wrapper label="exhibitors.list_all"  dense={true}>
@@ -107,4 +114,4 @@ class Index extends React.Component {
 
 }
 
-export default reduxPage(Index, (state) => ({foo: state.foo}) )
+export default reduxPage(PageExhibitors, (state) => ({foo: state.foo}) )

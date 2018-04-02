@@ -1,16 +1,23 @@
 
-import Head from '../next/MyHead'
-import reduxPage from '../redux/store'
-
 
 import _get from 'lodash/get'
 
-import {Typography, Wrapper, WhoIsGonnaBeThere, Gallery, People, Avatarlist} from '../components';
+import {MyHead as Head} from '../next'
+import reduxPage from '../redux'
+import {
+  Typography,
+  Wrapper,
+  WhoIsGonnaBeThere,
+  Gallery,
+  People,
+  Avatarlist
+} from '../components';
+
 import Layout from '../layouts/main';
-import Visitor from '../components/roles/Visitor'
+import Visitor from '../roles/Visitor'
 
 
-class Invite extends React.Component {
+class PageInvite extends React.Component {
 
 
 static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
@@ -115,33 +122,4 @@ render()
 }
 
 
-export default reduxPage(Invite, (state) => ({foo: state.foo}) )
-
-
-/*
-asPath
-:
-"/invite,123"
-back
-:
-ƒ back()
-pathname
-:
-"/invite"
-push
-:
-ƒ push(url, as)
-pushTo
-:
-ƒ pushTo(href, as)
-query
-:
-{id: "123"}
-replace
-:
-ƒ replace(url, as)
-replaceTo
-:
-ƒ replaceTo(href, as)
-
-*/
+export default reduxPage(PageInvite, (state) => ({foo: state.foo}) )

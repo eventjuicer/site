@@ -52,7 +52,7 @@ const styles = theme => ({
   },
 });
 
-function ButtonAppBar(props) {
+function MyAppBar(props) {
 
   const { classes, drawer, drawerShow, dialogShow, cart, position } = props;
 
@@ -87,7 +87,7 @@ function ButtonAppBar(props) {
   );
 }
 
-ButtonAppBar.defaultProps = {
+MyAppBar.defaultProps = {
   position : ''
 }
 
@@ -109,4 +109,4 @@ const enhance = compose(
 )
 
 
-export default enhance(ButtonAppBar);
+export default enhance(MyAppBar);

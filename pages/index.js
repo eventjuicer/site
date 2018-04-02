@@ -1,10 +1,10 @@
 
 import dynamic from 'next/dynamic'
-import Head from '../next/MyHead'
 import fetch from 'isomorphic-unfetch'
 
 
-import reduxPage from '../redux/store'
+
+import reduxPage from '../redux'
 import Layout from '../layouts/main';
 
 
@@ -16,17 +16,18 @@ import {
   Typography,
   Gallery,
   WidthAwareInfo,
-  People
+  People,
+  HeroCustom as Hero,
+  resourceFetchSuccess
 } from '../components'
 
-import Hero from '../components/HeroCustom'
+import {
+  MyHead as Head,
+  MyLink as Link
+} from '../next'
 
-//const Gallery = dynamic(import('../components/GalleryQuoted'))
 
-import {resourceFetchSuccess} from '../components/redux/actions'
-import Visitor from '../components/roles/Visitor'
-import Link from '../next/MyLink'
-
+import Visitor from '../roles/Visitor'
 
 const Bookingmap = dynamic(import("../components/Bookingmap"))
 

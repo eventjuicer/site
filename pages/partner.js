@@ -1,17 +1,19 @@
 
-import Head from '../next/MyHead'
-import reduxPage from '../redux/store'
+import {MyHead as Head} from '../next'
+import reduxPage from '../redux'
 
+import {
+  Typography,
+  Wrapper,
+  WhoIsGonnaBeThere,
+  Googlemap
+} from '../components';
 
-
-
-import {Typography, Wrapper, WhoIsGonnaBeThere, Googlemap} from '../components';
 import Layout from '../layouts/main';
-import Visitor from '../components/roles/Visitor'
+import Visitor from '../roles/Visitor'
 
 
 class Partner extends React.Component {
-
 
 static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
 {

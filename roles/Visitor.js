@@ -11,9 +11,11 @@ import IconAlarm from 'material-ui-icons/Alarm';
 import red from 'material-ui/colors/red';
 
 
-import EventInfo from '../EventInfo'
-import Benefits from '../Benefits'
-import VisitorForm from './VisitorForm'
+import {
+  EventInfo,
+  Benefits
+} from '../components'
+import {StepForm} from '../formik'
 
 const styles = {
   redIcon : {
@@ -30,7 +32,7 @@ const Visitor = ({links, classes, width}) => (
 
        <Grid item xs={12} sm={12} md={6} lg={5} xl={5} >
 
-         <VisitorForm
+         <StepForm
 
            data={{}}
            ticketId={1256}
@@ -56,7 +58,7 @@ const Visitor = ({links, classes, width}) => (
            {
              icon : <IconLocation className={classes.redIcon} />,
              label : "event.location",
-             text : "Kraków"
+             text : "EXPO Kraków, Galicyjska 9"
            },
 
            {

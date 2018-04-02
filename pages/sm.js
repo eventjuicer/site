@@ -1,6 +1,6 @@
 
 import Head from '../next/MyHead'
-import reduxPage from '../redux/store'
+import reduxPage from '../redux'
 
 import {
   Typography,

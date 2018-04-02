@@ -6,7 +6,7 @@ import { translate } from '../i18n'
 import { fullUrl, prepareForTranslate } from '../helpers'
 
 
-const Head = ({title, description, url, image, translate}) => {
+const MyHead = ({title, description, url, image, translate, children}) => {
 
   const titleParams = prepareForTranslate(title)
   const descParams = prepareForTranslate(description)
@@ -39,12 +39,13 @@ const Head = ({title, description, url, image, translate}) => {
       <meta property="og:type" content="website" />
       {/* <meta property="fb:app_id" content="" /> */}
 
+      {children}
 
     </NextHead>
   );
 }
 
-Head.defaultProps = {
+MyHead.defaultProps = {
 
   title: "event.opengraph.name",
   description: "event.opengraph.description",
@@ -55,11 +56,11 @@ Head.defaultProps = {
 }
 
 
-Head.propTypes = {
+MyHead.propTypes = {
 //  title: string,
   description: string,
   url: string,
   image: string,
 };
 
-export default translate(Head);
+export default translate(MyHead);

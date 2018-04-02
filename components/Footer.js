@@ -67,7 +67,7 @@ const Footer = ({links, classes, width}) => (
            {
              icon : <IconLocation className={classes.redIcon} />,
              label : "event.location",
-             text : "Kraków"
+             text : "EXPO Kraków, Galicyjska 9"
            },
 
            {

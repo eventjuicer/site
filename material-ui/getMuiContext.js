@@ -27,7 +27,7 @@ function createPageContext() {
   };
 }
 
-export default function getContext() {
+function getMuiContext() {
   if (!process.browser) {
     return createPageContext();
   }
@@ -38,3 +38,6 @@ export default function getContext() {
 
   return global.INIT_MATERIAL_UI;
 }
+
+
+export default getMuiContext

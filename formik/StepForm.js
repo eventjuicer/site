@@ -1,10 +1,13 @@
 
 
-import TextInput from '../../formik/TextInput'
-import FormButton from '../../formik/FormButton'
-import formik, {filterFields} from '../../formik/formik'
-import Typography from '../MyTypography'
-import VisitorRegistrationSuccess from './VisitorRegistrationSuccess'
+import TextInput from './TextInput'
+import FormButton from './FormButton'
+import withFormik, {filterFields} from './formik'
+
+
+import {MyTypography as Typography} from '../components'
+
+import FormSuccess from './FormSuccess'
 
 
 /*
@@ -41,7 +44,7 @@ values : {}
 
 
 
-const MyForm = (props) => {
+const StepForm = (props) => {
 
   const {
     values,
@@ -61,10 +64,12 @@ const MyForm = (props) => {
   } = props;
 
   const started = Object.keys(touched).length;
+
   if(status && status === "ok")
   {
-    return <VisitorRegistrationSuccess />;
+    return <FormSuccess />;
   }
+
   const filteredFields = filterFields(fields, start);
 
   return (
@@ -103,8 +108,8 @@ const MyForm = (props) => {
 };
 
 
-MyForm.defaultProps = {
+StepForm.defaultProps = {
     url : "https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/register"
 }
 
-export default formik(MyForm);
+export default withFormik(StepForm);

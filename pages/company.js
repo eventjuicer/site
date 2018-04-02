@@ -1,31 +1,36 @@
 
+
 import dynamic from 'next/dynamic'
-import Head from '../next/MyHead'
-import reduxPage from '../redux/store'
+
+import {
+  MyHead as Head,
+  MyLink as Link
+} from '../next'
+
+import reduxPage from '../redux'
 
 
 import _get from 'lodash/get'
 import _map from 'lodash/map'
 
 
-import Typography from '../components/MyTypography';
-import {TwoColsLayout as Section} from '../components/MyLayouts'
+import {
+  MyTypography as Typography,
+  TwoColsLayout as Section,
+  Wrapper,
+  Company as CompanyProfile,
+  resourceFetchSuccess
+} from '../components';
+
 
 import Layout from '../layouts/main';
-import Wrapper from '../components/Wrapper'
 
 const Bookingmap = dynamic(import('../components/Bookingmap'))
 
-import CompanyProfile from '../components/Company'
 
 /*USER REGISTRATION*/
-import Visitor from '../components/roles/Visitor'
-import Link from '../next/MyLink'
+import Visitor from '../roles/Visitor'
 /*USER REGISTRATION*/
-
-
-import {resourceFetchSuccess} from '../components/redux/actions'
-
 
 
 import {

@@ -1,6 +1,6 @@
 
-import Head from '../next/MyHead'
-import reduxPage from '../redux/store'
+import {MyHead as Head} from '../next'
+import reduxPage from '../redux'
 
 
 
@@ -14,10 +14,10 @@ import {
 } from '../components';
 
 import Layout from '../layouts/main';
-import Visitor from '../components/roles/Visitor'
+import Visitor from '../roles/Visitor'
 
 
-class Visit extends React.Component {
+class PageAgendaPreview extends React.Component {
 
 
 static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
@@ -92,4 +92,4 @@ render()
 }
 
 
-export default reduxPage(Visit, (state) => ({foo: state.foo}) )
+export default reduxPage(PageAgendaPreview, (state) => ({foo: state.foo}) )

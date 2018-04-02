@@ -1,9 +1,8 @@
 
 
-import React from 'react'
-import Head from 'next/head'
+import {MyHead as Head} from '../next'
 import Layout from '../layouts/main';
- 
+
 class Booking extends React.Component {
 //
 // static async getInitialProps({req})

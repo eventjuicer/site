@@ -4,19 +4,19 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 
-
 import withPolyglot from './withPolyglot'
 
 const TranslationProvider = ({ children }) => Children.only(children);
 
 TranslationProvider.propTypes = {
     locale: PropTypes.string.isRequired,
-    messages: PropTypes.object,
+    messages: PropTypes.object.isRequired,
     children: PropTypes.element,
 };
 
-const mapStateToProps = state => ({ locale: state.app.locale });
+const enhance = compose(
+  connect(state => ({ locale: state.app.locale })),
+  withPolyglot
+)
 
-export default compose(connect(mapStateToProps), withPolyglot)(
-    TranslationProvider
-);
+export default enhance(TranslationProvider);
