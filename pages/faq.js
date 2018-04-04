@@ -24,14 +24,21 @@ render()
 
   const { url  } = this.props;
 
+
   return (
     <Layout>
 
       <Wrapper title="FAQ">
 
 
-      <Faq baseLabel="exhibitors.faq.before_event" items={[
-          {label : "representatives"},
+      <Faq url={url.asPath} baseLabel="exhibitors.faq.before_event" items={[
+          {
+            label : "representatives",
+            important : true,
+            buttons : [
+
+            ]
+          },
           {label : "additional_paid_services"},
           {label : "shipping_of_materials"},
           {label : "standard_offering"},
@@ -39,7 +46,7 @@ render()
           {label : "public_profile"},
       ]} />
 
-      <Faq baseLabel="exhibitors.faq.event" items={[
+      <Faq url={url.asPath} baseLabel="exhibitors.faq.event" items={[
           {label : "after_party"},
           {label : "catering"},
           {label : "badges"},
@@ -50,7 +57,7 @@ render()
           {label : "badge_scanner"},
       ]} />
 
-      <Faq baseLabel="exhibitors.faq.after_event" items={[
+      <Faq url={url.asPath}  baseLabel="exhibitors.faq.after_event" items={[
           {label : "badge_scanner_contacts"},
           {label : "next_booth_sales"}
       ]} />

@@ -6,51 +6,67 @@ import { withStyles } from 'material-ui/styles';
 import ExpansionPanel, {
   ExpansionPanelSummary,
   ExpansionPanelDetails,
+  ExpansionPanelActions
 } from 'material-ui/ExpansionPanel';
 
 import Typography from 'material-ui/Typography';
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 
+import {MyLink as Link} from '../next'
 import {translate} from '../i18n'
-
 
 const styles = theme => ({
 
 
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
+  default: {
+    fontSize: theme.typography.pxToRem(17),
     fontWeight: theme.typography.fontWeightRegular,
+    fontFamily : theme.typography.fontFamily
   },
+  expanded : {
+    fontWeight : 900,
+  }
 
 });
 
-function FaqItem(props) {
-  const { baseLabel, item, classes, translate, locale } = props;
-  return (
+const FaqItem = ({ baseLabel, baseUrl, label, open, important, buttons, classes, translate, locale }) => (
 
-      <ExpansionPanel>
-        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography className={classes.heading}>
-           {translate(`${baseLabel}.${item.label}.q`)}
-          </Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-           {translate(`${baseLabel}.${item.label}.a`)}
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
+       <ExpansionPanel defaultExpanded={ open }>
+         <ExpansionPanelSummary
+           classes={{
+             root : classes.default,
+             expanded : classes.expanded,
+           }}
+           expandIcon={<ExpandMoreIcon
+           />}>
+            {translate(`${baseLabel}.${label}.q`)}
+         </ExpansionPanelSummary>
+         <ExpansionPanelDetails>
 
-  );
-}
+           <Typography>
+            {translate(`${baseLabel}.${label}.a`)}
+           </Typography>
+
+         </ExpansionPanelDetails>
+         <ExpansionPanelActions>
+          <Link label="common.link" prefetch={false} href={`${baseUrl}?${label}`} />
+        </ExpansionPanelActions>
+       </ExpansionPanel>
+
+);
 
 
 FaqItem.defaultProps = {
-
+  label : "",
+  important : false,
+  baseUrl : "",
+  buttons : [],
+  open : false
 }
 
 FaqItem.propTypes = {
   classes: PropTypes.object.isRequired,
+  buttons : PropTypes.array
 };
 
 const enhance = compose(
