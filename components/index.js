@@ -20,6 +20,7 @@ export {default as People} from './People'
 export {default as Footer} from './Footer'
 export {default as MyAppBar} from './MyAppBar'
 export {default as MyTypography} from './MyTypography'
+export {default as Faq} from './Faq'
 
 export * from './MyLayouts'
 

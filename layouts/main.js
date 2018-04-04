@@ -1,9 +1,8 @@
 
 import dynamic from 'next/dynamic'
-import Head from 'next/head'
+
 
 import withMui from '../next/withMui'
-
 
 import Chatlio from '../services/Chatlio'
 
@@ -13,6 +12,8 @@ import {
   MyAppBar,
   Footer
 } from '../components'
+
+import {MyHead as Head} from '../next'
 
 
 const Dialog = dynamic(import('../components/MyDialog'))
@@ -37,10 +38,9 @@ Router.onRouteChangeComplete = () => {
 const Layout = (props) => (
   <TranslationProvider locale="pl" messages={customMessages}>
   <div>
-{/*
-    <Head>
-      <title>use MyHead!</title>
-    </Head> */}
+
+    <Head />
+
 
     <MyAppBar />
 
