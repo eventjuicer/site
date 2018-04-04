@@ -13,9 +13,17 @@
     "url": "git+https://github.com/targiehandlu/site.git"
   },
   "now": {
+    "name" : "eventjuicer-site",
     "alias": "targiehandlu.pl",
     "type": "npm",
-    "public": false
+    "public": false,
+    "scale": {
+      "bru1": {
+        "min": 3,
+        "max": 3
+      }
+    },
+    "dotenv" : true
   },
   "author": "adam zygadlewicz <adam.zygadlewicz@gmail.com>",
   "license": "MIT",

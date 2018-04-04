@@ -22,17 +22,19 @@ const styles = {
 };
 
 
-const MyLink = ({name, label, href, classes, translate, variant, color, icon}) =>
+const MyLink = ({name, label, href, prefetch, classes, translate, variant, color, icon}) =>
 {
 
+
   return (
-    <Link href={href} prefetch>
+    <Link href={href} prefetch={prefetch}>
       <Button variant={variant} color={color}>{label ? translate(label) : name}</Button>
     </Link>
   )
 }
 
 MyLink.defaultProps = {
+  prefetch : true,
   name : "Link",
   variant : "flat",
   color : "default",
