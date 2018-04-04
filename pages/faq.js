@@ -45,14 +45,21 @@ render()
           {label : "shipping_of_materials"},
           {label : "standard_offering"},
           {label : "how_to_promote"},
+          {label : "promo_benefits"},
           {label : "public_profile"},
       ]} />
 
       <Faq url={url} baseLabel="exhibitors.faq.event" items={[
-          {label : "after_party"},
-          {label : "catering"},
+          {label : "hours"},
+          {label : "welcoming"},
           {label : "badges"},
+
           {label : "parking_setupday"},
+
+          {label : "assembly_caution"},
+          {label : "catering"},
+          {label : "after_party"},
+
           {label : "parking_eventday"},
           {label : "problems_equipment"},
           {label : "problems_services"},
@@ -60,7 +67,7 @@ render()
       ]} />
 
       <Faq url={url}  baseLabel="exhibitors.faq.after_event" items={[
-          {label : "badge_scanner_contacts"},
+          {label : "scans"},
           {label : "next_booth_sales"}
       ]} />
 
