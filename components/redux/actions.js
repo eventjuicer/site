@@ -17,7 +17,14 @@ export function roleReset()
   }
 }
 
-
+export function faqToggle(label, state)
+{
+  return {
+		type: Types.FAQ_TOGGLE,
+		label : label,
+    state : state
+	}
+}
 
 export function resourceFetchRequest(resource, keyBy = false)
 {

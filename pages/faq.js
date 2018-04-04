@@ -7,6 +7,7 @@ import reduxPage from '../redux'
 import {
   Typography,
   Faq,
+  FaqLink,
   Wrapper
 } from '../components';
 
@@ -30,8 +31,9 @@ render()
 
       <Wrapper title="FAQ">
 
+      <FaqLink url={url} />
 
-      <Faq url={url.asPath} baseLabel="exhibitors.faq.before_event" items={[
+      <Faq url={url} baseLabel="exhibitors.faq.before_event" items={[
           {
             label : "representatives",
             important : true,
@@ -46,7 +48,7 @@ render()
           {label : "public_profile"},
       ]} />
 
-      <Faq url={url.asPath} baseLabel="exhibitors.faq.event" items={[
+      <Faq url={url} baseLabel="exhibitors.faq.event" items={[
           {label : "after_party"},
           {label : "catering"},
           {label : "badges"},
@@ -57,7 +59,7 @@ render()
           {label : "badge_scanner"},
       ]} />
 
-      <Faq url={url.asPath}  baseLabel="exhibitors.faq.after_event" items={[
+      <Faq url={url}  baseLabel="exhibitors.faq.after_event" items={[
           {label : "badge_scanner_contacts"},
           {label : "next_booth_sales"}
       ]} />

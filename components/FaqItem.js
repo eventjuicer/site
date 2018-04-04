@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import compose from 'recompose/compose'
+import { connect } from 'react-redux';
 
 import { withStyles } from 'material-ui/styles';
 
@@ -12,8 +13,8 @@ import ExpansionPanel, {
 import Typography from 'material-ui/Typography';
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 
-import {MyLink as Link} from '../next'
 import {translate} from '../i18n'
+import {faqToggle} from './redux'
 
 const styles = theme => ({
 
@@ -29,16 +30,18 @@ const styles = theme => ({
 
 });
 
-const FaqItem = ({ baseLabel, baseUrl, label, open, important, buttons, classes, translate, locale }) => (
 
-       <ExpansionPanel defaultExpanded={ open }>
+
+const FaqItem = ({ faqToggle, selected, baseLabel, url, label, important, buttons, classes, translate }) => (
+
+       <ExpansionPanel onChange={(event, state) => faqToggle(label, state)} defaultExpanded={ url.asPath.indexOf(label)>0 }>
          <ExpansionPanelSummary
            classes={{
              root : classes.default,
              expanded : classes.expanded,
            }}
-           expandIcon={<ExpandMoreIcon
-           />}>
+           expandIcon={<ExpandMoreIcon />}
+           >
             {translate(`${baseLabel}.${label}.q`)}
          </ExpansionPanelSummary>
          <ExpansionPanelDetails>
@@ -48,9 +51,9 @@ const FaqItem = ({ baseLabel, baseUrl, label, open, important, buttons, classes,
            </Typography>
 
          </ExpansionPanelDetails>
-         <ExpansionPanelActions>
-          <Link label="common.link" prefetch={false} href={`${baseUrl}?${label}`} />
-        </ExpansionPanelActions>
+         {/* <ExpansionPanelActions>
+
+        </ExpansionPanelActions> */}
        </ExpansionPanel>
 
 );
@@ -59,9 +62,8 @@ const FaqItem = ({ baseLabel, baseUrl, label, open, important, buttons, classes,
 FaqItem.defaultProps = {
   label : "",
   important : false,
-  baseUrl : "",
   buttons : [],
-  open : false
+  url : {}
 }
 
 FaqItem.propTypes = {
@@ -71,6 +73,7 @@ FaqItem.propTypes = {
 
 const enhance = compose(
   translate,
+  connect(null, {faqToggle}),
   withStyles(styles)
 )
 
