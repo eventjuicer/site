@@ -1,34 +1,127 @@
 
+import dynamic from 'next/dynamic'
+import fetch from 'isomorphic-unfetch'
 
-import {MyHead as Head} from '../next'
+
+
+import reduxPage from '../redux'
 import Layout from '../layouts/main';
 
-class Booking extends React.Component {
-//
-// static async getInitialProps({req})
-// {
-//
-//   const res = await fetch('https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/exhibitors')
-//   const data = await res.json()
-//
-//   const userAgent = req ? req.headers['user-agent'] : navigator.userAgent
-//   return { userAgent : userAgent, exhibitors : data.data  }
-// }
 
-render()
-{
+import {
+  Wrapper,
+  Avatarlist,
+  ColumnList,
+//  Bookingmap,
+  Typography,
+  Gallery,
+  WidthAwareInfo,
+  People,
+  HeroCustom as Hero,
+  resourceFetchSuccess
+} from '../components'
+
+import {
+  MyHead as Head,
+  MyLink as Link
+} from '../next'
 
 
-  return (
+import Visitor from '../roles/Visitor'
 
-    <Layout>
+const Bookingmap = dynamic(import("../components/Bookingmap"))
 
-    <Head>
 
-    </Head>
+class PageIndex extends React.Component {
 
-  </Layout>)
+  static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
+  {
+
+    const _exhibitors = await fetch('https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/exhibitors')
+    const exhibitors = await _exhibitors.json()
+
+  //   const _bookingmap = await fetch('https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/bookingmap')
+  //   const bookingmap = await _bookingmap.json()
+  //
+  //   /*
+  //   if (!store.getState().placeholderData) {
+  //     store.dispatch(resourceFetchSuccess())
+  //   }
+  // */
+  //
+  // store.dispatch(
+  //   resourceFetchSuccess("exhibitors", exhibitors.data)
+  // )
+  //
+  //
+    store.dispatch(
+      resourceFetchSuccess("exhibitors", exhibitors.data)
+    )
+
+    //booths : bookingmap.data
+
+    const userAgent = req ? req.headers['user-agent'] : navigator.userAgent
+    return {   userAgent : userAgent, exhibitors : exhibitors.data }
+    //return {};
+  }
+
+
+  componentDidMount () {
+   /*
+    this.props.dispatch(startClock())
+  */
+  }
+
+
+  render()
+  {
+
+    const { exhibitors, booths, url, userAgent } = this.props;
+
+    return (
+
+     <Layout>
+
+      <Head />
+
+      <Wrapper
+        label="exhibitors.map.title"
+        secondaryTitle="Chcesz się wystawić? Zostało tylko kilka stoisk!"
+        >
+        {/* <WidthAwareInfo /> */}
+        <Bookingmap  />
+      </Wrapper>
+
+
+      <Wrapper
+        label="exhibitors.list_full"
+      
+      //  dense={true}
+      >
+        <Avatarlist  data={ exhibitors } limit={null} />
+      </Wrapper>
+
+
+      <Gallery label="event.gallery" />
+
+
+      <Wrapper
+        label="visitors.register"
+        secondaryTitle="Spotkamy się w gronie ponad 3000 osób!"
+      //   links={[
+      //   <Link key="more" href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
+      // ]}
+      >
+      <Visitor  />
+      </Wrapper>
+
+
+
+      </Layout>
+
+    )
+  }
+
 }
 
-}
-export default Booking;
+export default reduxPage( PageIndex )
