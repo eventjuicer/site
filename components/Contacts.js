@@ -30,6 +30,13 @@ const styles = theme => ({
    iconSmall: {
      fontSize: 20,
    },
+   listContainer : {
+     display: 'flex',
+     justifyContent : 'center'
+   },
+   contactList : {
+     width: 'auto'
+   }
 })
 
 
@@ -49,6 +56,7 @@ const Contact = ({name, link, classes, translate}) =>
         className={classes.button}
         variant="flat"
         href={link}
+        target="_blank"
         >
          <IconComponent className={classNames(classes.leftIcon, classes.iconSmall)} />
          {translate(name)}
@@ -64,14 +72,17 @@ const enhance = compose(
 
 const StyledContact = enhance(Contact)
 
-function Contacts({profile, allowed})
+function Contacts({profile, allowed, classes})
 {
     const socials = Object.keys(profile).filter(item => allowed.indexOf(item) > -1)
 
     return (
-        <List component="ul">
-        {socials.map((name, idx) => <StyledContact key={idx} name={name} link={socials[name]} />)}
-        </List>)
+        <div className={classes.listContainer}>
+        <List component="ul" className={classes.contactList}>
+        {socials.map((name, idx) => <StyledContact key={idx} name={name} link={profile[name]} />)}
+        </List>
+        </div>
+    )
 }
 
 Contacts.defaultProps = {
