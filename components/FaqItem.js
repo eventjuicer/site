@@ -31,12 +31,12 @@ function FaqItem(props) {
       <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
           <Typography className={classes.heading}>
-           {translate(`${baseLabel}.${item.label}`)}
+           {translate(`${baseLabel}.${item.label}.q`)}
           </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography>
-           {translate(`${baseLabel}.${item.label}`)}
+           {translate(`${baseLabel}.${item.label}.a`)}
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
