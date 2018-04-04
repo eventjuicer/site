@@ -71,7 +71,7 @@ function MyAppBar(props) {
 
           <Link href="/">
           <Typography component="a" variant="title" color="inherit" className={classes.flex}>
-          Targi eHandlu <span className={classes.subtitle}>edycja Kraków</span>
+          Targi eHandlu <span className={classes.subtitle}>Kraków 25/04/2018</span>
           </Typography>
           </Link>
 
