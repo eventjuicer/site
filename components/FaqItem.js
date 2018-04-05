@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 import compose from 'recompose/compose'
 import { connect } from 'react-redux';
+import classNames from 'classnames'
 
 import { withStyles } from 'material-ui/styles';
+import color from 'material-ui/colors/amber';
 
 import ExpansionPanel, {
   ExpansionPanelSummary,
-  ExpansionPanelDetails,
-  ExpansionPanelActions
+  ExpansionPanelDetails
 } from 'material-ui/ExpansionPanel';
 
-import Typography from 'material-ui/Typography';
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 
 import {translate} from '../i18n'
@@ -25,35 +25,40 @@ const styles = theme => ({
     fontFamily : theme.typography.fontFamily
   },
   expanded : {
+      backgroundColor : color[100]
+  },
+  expandedTitle : {
     fontWeight : 900,
+
+  },
+  content : {
+
   }
 
 });
 
 
 
-const FaqItem = ({ faqToggle, selected, baseLabel, url, label, important, buttons, classes, translate }) => (
+const FaqItem = ({ faqToggle, selected, baseLabel, label, important, buttons, classes, translate }) => (
 
-       <ExpansionPanel onChange={(event, state) => faqToggle(label, state)} defaultExpanded={ url.asPath.indexOf(label)>0 }>
+       <ExpansionPanel
+         classes={{expanded : classes.expanded}}
+         onChange={(event, state) => faqToggle([label], state)}
+         expanded={selected.indexOf(label)>-1}
+         >
+
          <ExpansionPanelSummary
            classes={{
              root : classes.default,
-             expanded : classes.expanded,
+             expanded : classes.expandedTitle,
            }}
            expandIcon={<ExpandMoreIcon />}
            >
             {translate(`${baseLabel}.${label}.q`)}
          </ExpansionPanelSummary>
-         <ExpansionPanelDetails>
-
-           <Typography>
-            {translate(`${baseLabel}.${label}.a`)}
-           </Typography>
-
+         <ExpansionPanelDetails classes={{root : classNames(classes.default, classes.content)}}>
+          {translate(`${baseLabel}.${label}.a`)}
          </ExpansionPanelDetails>
-         {/* <ExpansionPanelActions>
-
-        </ExpansionPanelActions> */}
        </ExpansionPanel>
 
 );
@@ -63,7 +68,6 @@ FaqItem.defaultProps = {
   label : "",
   important : false,
   buttons : [],
-  url : {}
 }
 
 FaqItem.propTypes = {
@@ -73,7 +77,7 @@ FaqItem.propTypes = {
 
 const enhance = compose(
   translate,
-  connect(null, {faqToggle}),
+  connect(state => ({selected : state.visuals.faqs}), {faqToggle} ),
   withStyles(styles)
 )
 

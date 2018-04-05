@@ -22,6 +22,7 @@ export const DIALOG_HIDE    = 'DIALOG_HIDE';
 export const DIALOG_MODIFY  = 'DIALOG_MODIFY';
 
 export const FAQ_TOGGLE = 'FAQ_TOGGLE';
+export const FAQ_URL = 'FAQ_URL';
 
 export const DRAWER_SHOW = 'DRAWER_SHOW';
 export const DRAWER_HIDE = 'DRAWER_HIDE';

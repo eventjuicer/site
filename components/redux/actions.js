@@ -1,6 +1,7 @@
 
 import * as Types from './types'
 
+import {parseUrlVals} from '../../helpers'
 
 export function roleSelect(role)
 {
@@ -17,12 +18,18 @@ export function roleReset()
   }
 }
 
-export function faqToggle(label, state)
-{
+export function faqToggle(labels = [], state = false) {
   return {
 		type: Types.FAQ_TOGGLE,
-		label : label,
+		labels : labels,
     state : state
+	}
+}
+
+export function faqUrl(url) {
+  return {
+		type: Types.FAQ_URL,
+		labels : parseUrlVals(url)
 	}
 }
 

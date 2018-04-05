@@ -8,25 +8,15 @@ import {
 	CART_ITEM_REMOVE,
 	CART_RESET,
 	CHANGE_LOCALE,
-	FAQ_TOGGLE
 } from '../../components/redux/types'
 
 
 const allowedLocales = ["pl","en","de"]
 
-const reducer = (state = {role : "", cart : {}, locale : "pl", faqs : []}, action) => {
+const reducer = (state = {role : "", cart : {}, locale : "pl"}, action) => {
 
 	switch (action.type)
 	{
-
-		case FAQ_TOGGLE:
-			const contains = state.faqs.indexOf(action.label);
-			return {...state,
-				faqs : contains > -1 ?
-				state.faqs.filter(item => item !== action.label) :
-			 	[...state.faqs, action.label]
-			}
-		break
 
 		case CHANGE_LOCALE:
 			return allowedLocales.indexOf(action.locale) > -1 ? {...state, locale : action.locale} : state

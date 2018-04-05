@@ -2,7 +2,10 @@ import slugify from 'slugify'
 import _chunk from 'lodash/chunk'
 import _shuffle from 'lodash/shuffle'
 import _filter from 'lodash/filter';
+import _uniqBy from 'lodash/uniqBy'
 
+
+export const parseUrlVals = (url) =>  _uniqBy(url.split(",")).filter(x => x)
 
 export const escapeHtml = (text) => {
   var map = {

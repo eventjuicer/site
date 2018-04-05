@@ -6,6 +6,9 @@ import fetch from 'isomorphic-unfetch'
 
 import _keyBy from 'lodash/keyBy'
 
+import Router from 'next/router'
+
+
 import {
 
   SNACKBAR_SHOW,
@@ -15,7 +18,9 @@ import {
   CART_RESET,
 
   RESOURCE_FETCH_REQUESTED,
-  RESOURCE_FETCH_ERROR
+  RESOURCE_FETCH_ERROR,
+
+  FAQ_TOGGLE
 
 } from '../../components/redux/types'
 
@@ -31,6 +36,17 @@ import {
 } from '../../components/redux/actions'
 
 import * as Selectors from './selectors'
+
+
+function* changeUrlWhenFaqsSelected(actionData){
+
+  const faqs = yield select(Selectors.getFaqs)
+  
+  yield call(Router.push, `${Router.pathname}?q=${faqs.join(",")}`, undefined, { shallow: true })
+
+}
+
+
 
 function* handleFetchRequests(actionData) {
 
@@ -92,6 +108,7 @@ function* handleFetchErrors(actionData)
 const rootSaga = function * root() {
   let sagaIndex = [
          //takeEvery(SNACKBAR_SHOW, handleLogoutFn),
+      takeEvery(FAQ_TOGGLE, changeUrlWhenFaqsSelected),
       takeEvery(CART_ITEM_ADD, selectBoothWhenCartItemAdded),
       takeEvery(CART_ITEM_ADD, updateDialogForQuickCheckout),
       takeEvery(CART_ITEM_REMOVE, unSelectBoothWhenCartItemRemoved),

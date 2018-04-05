@@ -31,7 +31,7 @@ render()
 
       <Wrapper title="FAQ">
 
-      <FaqLink url={url} />
+    
 
       <Faq url={url} baseLabel="exhibitors.faq.before_event" items={[
           {

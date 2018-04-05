@@ -1,36 +1,46 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
+import { withRouter } from 'next/router'
+import compose from 'recompose/compose'
 import { withStyles } from 'material-ui/styles';
 
 import MyTypography from './MyTypography'
 import FaqItem from './FaqItem'
 
+import {faqUrl} from './redux'
 
-function isSelected(){
+class Faq extends React.Component {
 
+  componentDidMount()
+  {
+    //parse URL and dispatch actions!
+    const {url, faqUrl, selected} = this.props
+
+    if(url && "q" in url.query)
+    {
+        faqUrl(url.query.q)
+    }
+  }
+
+  render(){
+
+    const { classes, items, baseLabel, translate, url } = this.props;
+
+    return (
+      <div style={{flexGrow : 1, marginTop: 20, marginBottom: 20, paddingBottom : 20}}>
+        <MyTypography label={`${baseLabel}.name`} template="SUBH2CH" />
+
+        {items.map((item, idx) => <FaqItem
+          key={idx}
+          {...item}
+          baseLabel={baseLabel}
+         />)}
+      </div>
+    );
+
+  }
 }
-
-function Faq(props) {
-  const { selected, classes, items, baseLabel, baseUrl, translate, url } = props;
-  return (
-    <div style={{flexGrow : 1, marginTop: 20, marginBottom: 20, paddingBottom : 20}}>
-      <MyTypography label={`${baseLabel}.name`} template="SUBH2CH" />
-
-  
-
-      {items.map((item, idx) => <FaqItem
-        url={ url }
-      //  selected={}
-        key={idx}
-        {...item}
-        baseLabel={baseLabel}
-       />)}
-    </div>
-  );
-}
-
 
 Faq.defaultProps = {
   items : [],
@@ -43,4 +53,9 @@ Faq.propTypes = {
   //classes: PropTypes.object.isRequired,
 };
 
-export default connect(state => ({selected : state.app.faqs}))(Faq)
+const enhance = compose(
+  withRouter,
+  connect(state => ({selected : state.visuals.faqs}),  {faqUrl} )
+)
+
+export default enhance(Faq)
