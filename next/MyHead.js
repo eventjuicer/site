@@ -18,7 +18,7 @@ const MyHead = ({title, description, url, image, translate, children}) => {
 
   return (
     <NextHead>
-      {/* <meta charSet="UTF-8" /> */}
+      <meta charSet="UTF-8" />
       <title>{ tTitle }</title>
       <meta name="description" content={ tDescription } />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -33,11 +33,12 @@ const MyHead = ({title, description, url, image, translate, children}) => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:image" content={ image } />
       <meta property="og:image" content={ image } />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
+
+      {/* <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" /> */}
 
       <meta property="og:type" content="website" />
-      {/* <meta property="fb:app_id" content="" /> */}
+      <meta property="fb:app_id" content="222959121587772" />
 
       {children}
 
