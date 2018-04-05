@@ -12,6 +12,10 @@ import _pickBy from 'lodash/pickBy'
 import Contacts from './Contacts'
 
 const styles = theme => ({
+
+  container : {
+      minHeight : 300,
+  },
   root: {
     flexGrow: 1,
     width: '100%',
@@ -27,7 +31,6 @@ const styles = theme => ({
   },
   htmlContainer : {
     fontFamily : "'Lato', 'Helvetica', sans-serif",
-
   }
 });
 
@@ -100,7 +103,7 @@ class Company extends React.Component {
 
     return (
 
-      <div>
+      <div className={classes.container}>
 
       <Tabs
           value={tab}
