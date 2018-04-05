@@ -243,7 +243,8 @@ MyTypography.defaultProps = {
   classNames : [],
   icon : null,
   iconAfter : null,
-  highlight : false
+  highlight : false,
+  width : "xs"
 }
 
 const enhance = compose(
