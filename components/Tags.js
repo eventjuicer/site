@@ -13,7 +13,7 @@ const styles = theme => ({
       flexWrap: 'wrap',
       justifyContent : 'center',
       alignItems : 'center',
-      marginTop : 10,
+      marginTop : 20,
       marginBottom : 25
   },
   chip : {

@@ -29,7 +29,10 @@ const styles = theme => ({
     marginBottom: 30
   },
   tabsContainer : {
-    marginBottom : 10
+
+    margin : '0 auto',
+    marginBottom : 10,
+
   },
   htmlContainer : {
 
@@ -45,6 +48,17 @@ const styles = theme => ({
       marginLeft : 0,
       paddingLeft : 20
     },
+
+    "& li:before" : {
+      content: " ",
+      backgroundSize: 'cover',
+      backgroundImage: 'url("/static/check.png")',
+      width: theme.typography.pxToRem(15),
+      height: theme.typography.pxToRem(15),
+      position: 'absolute',
+      left: '-2rem'
+    },
+
     "& blockquote" : {
       borderLeft : '10px solid #e0e0e0',
       color : 'rgba(0, 0, 0, 0.77)',
@@ -136,8 +150,9 @@ class Company extends React.Component {
           onChange={this.handleChange}
           indicatorColor="primary"
           textColor="primary"
-          fullWidth
-          scrollable
+          fullWidth={true}
+          centered={true}
+          scrollable={true}
           scrollButtons="auto"
       >
 
