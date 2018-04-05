@@ -1,7 +1,51 @@
 
-import Head from 'next/head'
+
+import _get from 'lodash/get'
+
+import {MyHead as Head} from '../next'
+import reduxPage from '../redux'
+import {
+  Typography,
+  Faq,
+  FaqLink,
+  Wrapper
+} from '../components';
+
 import Layout from '../layouts/main';
-import Wrapper from '../components/Wrapper'
+
+class PageFaq extends React.Component {
+
+static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
+{
+  return {}
+}
+
+render()
+{
+
+  const { url  } = this.props;
 
 
-export default () => <Layout><Wrapper title="Regulamin"><div>sss to next.js!</div></Wrapper></Layout>
+  return (
+    <Layout>
+
+      <Wrapper label="exhibitors.agreement">
+
+      {/* <FaqLink url={url} /> */}
+
+      {/* <Faq url={url} baseLabel="exhibitors.faq.agreement" items={[
+
+          {label : "payment"},
+          {label : "resignation"},
+          {label : "standard_offering"},
+      ]} /> */}
+
+    </Wrapper>
+
+  </Layout>)
+}
+
+}
+
+
+export default reduxPage(PageFaq, (state) => ({foo: state.foo}) )
