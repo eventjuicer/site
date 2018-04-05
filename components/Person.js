@@ -40,6 +40,10 @@ const styles = {
     maxWidth : 400
   },
 
+  cardMobile : {
+
+  },
+
   // media: {
   //   height: 200,
   // },
@@ -52,20 +56,20 @@ const styles = {
 class Person extends React.PureComponent {
 
 
-  isMobile()
-  {
-    const { width } = this.props;
-    return width === "xs"
-  }
+  // isMobile()
+  // {
+  //   const { width } = this.props;
+  //   return width === "xs"
+  // }
 
   render()
   {
-    const { classes, avatar, title, subtitle, text } = this.props;
+    const { classes, avatar, title, subtitle, text, minimal } = this.props;
 
     return (
 
       <Card className={classNames(classes.card, {
-        [classes.cardMobile] : this.isMobile()
+        [classes.cardMobile] : minimal
       }
       )} elevation={0}>
 
@@ -83,7 +87,7 @@ class Person extends React.PureComponent {
           src={avatar}
           classes={{
             root : classNames(classes.avatar,{
-              [classes.avatarMobile] : this.isMobile()
+              [classes.avatarMobile] : minimal
             }),
             img : classes.avatarImg
           }}
@@ -103,9 +107,9 @@ class Person extends React.PureComponent {
           {subtitle}
         </Typography>}
 
-        {text && <Typography component="p" className={classes.bio}>
+        {!minimal && text ? <Typography component="p" className={classes.bio}>
           { text }
-        </Typography> }
+        </Typography> : null }
 
       </CardContent>
       {/* <CardActions>
@@ -128,7 +132,8 @@ class Person extends React.PureComponent {
 }
 
 Person.defaultProps = {
-  width : "md"
+  width : "md",
+  minimal : true
 }
 
 Person.propTypes = {
@@ -141,7 +146,7 @@ Person.propTypes = {
 
 const enhance = compose(
   withStyles(styles),
-  withWidth()
+//  withWidth()
 )
 
 export default enhance(Person);

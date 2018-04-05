@@ -25,6 +25,19 @@ export const stripTags = (html) => {
 
 }
 
+export const changeLimitForScreen = (maxLimit, width = null, gridData = {}) =>
+{
+  if(!width){
+    return maxLimit
+  }
+  const defaultGgridData = {xs : 6, sm : 6, md : 4, lg : 3, xl : 3}
+  const grid = {...defaultGgridData, ...gridData}
+  if(!width in grid){
+    return maxLimit
+  }
+  const current = 12/grid[width]
+  return maxLimit % current === 0 ? maxLimit : Math.floor( maxLimit / current ) * current
+}
 
 export const validateToken = token => {
   return /^[a-z0-9]{32,40}$/.test(token);

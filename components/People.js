@@ -4,10 +4,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose'
 import Grid from 'material-ui/Grid';
+import withWidth from 'material-ui/utils/withWidth';
+
 import _get from 'lodash/get'
 import Person from './Person'
 
-import {processArrayData} from '../helpers'
+import {
+  processArrayData,
+  changeLimitForScreen
+} from '../helpers'
 
 import {
   // dialogShow as dialogShowAction,
@@ -26,21 +31,33 @@ class People extends React.PureComponent {
     this.props.resourceFetchRequest("presenters", false)
   }
 
+  isMobile(w){
+    return w === "xs" || w === "sm"
+  }
+
   render()
   {
-    const { classes, presenters, filter, limit, random } = this.props;
-    const data = processArrayData(presenters, {filter, limit, random})
+
+    const { classes, presenters, filter, limit, random, width } = this.props;
+    const data = processArrayData(presenters, {
+        filter,
+        limit : changeLimitForScreen(limit, width),
+        random
+    })
+
+    const gridData = {xs : 6, sm : 6, md : 4, lg : 3, xl : 3}
 
     return (
 
         <Grid container spacing={24}>
             {data.map((item, i) =>
-                <Grid key={i} item xs={12} sm={6} md={4} lg={3} xl={3}>
+                <Grid key={i} item {...gridData}>
                   <Person
                     avatar={_get(item, "avatar")}
                     title={`${_get(item, "fname")} ${_get(item, "lname")}`}
                     subtitle={<FullJobInfo company={_get(item, "cname2")} job={_get(item, "position")}  />}
                     text={_get(item, "bio")}
+                    minimal={ this.isMobile(width) }
                   />
                 </Grid>
               )}
@@ -58,7 +75,8 @@ People.defaultProps = {
   presenters : [],
   filter : null,
   limit : false,
-  random : false
+  random : false,
+  width : "sm"
 }
 
 
@@ -67,14 +85,13 @@ People.propTypes = {
 };
 
 const enhance = compose(
+  withWidth(),
   connect(state => ({
     presenters : state.resources.presenters,
   }), {
   //  dialogShow : dialogShowAction ,
     resourceFetchRequest : resourceFetchRequestAction
-  }
-  )
-
+  })
 )
 
 
