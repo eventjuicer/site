@@ -5,7 +5,6 @@ import Tabs, { Tab } from './MyTabs'
 import _get from 'lodash/get'
 import { translate } from '../i18n'
 
-
 import _mapValues from 'lodash/mapValues'
 import _pickBy from 'lodash/pickBy'
 
@@ -25,12 +24,37 @@ const styles = theme => ({
   profile : {
     minHeight : 200,
     maxHeight : 400,
-    overflow : 'auto',
+    overflowY : 'scroll',
     padding : 30,
     marginBottom: 30
   },
+  tabsContainer : {
+    marginBottom : 10
+  },
   htmlContainer : {
-    fontFamily : "'Lato', 'Helvetica', sans-serif",
+
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
+    fontFamily : theme.typography.fontFamily,
+    lineHeight : theme.typography.pxToRem(23),
+
+    "& p" : {
+
+    },
+    "& ul" : {
+      marginLeft : 0,
+      paddingLeft : 20
+    },
+    "& blockquote" : {
+      borderLeft : '10px solid #e0e0e0',
+      color : 'rgba(0, 0, 0, 0.77)',
+      fontStyle : 'italic',
+      marginLeft : 10,
+      paddingLeft : 10
+    }
+  },
+  chip : {
+
   }
 });
 
@@ -98,6 +122,7 @@ class Company extends React.Component {
     const { classes } = this.props
     const { execTabs, tab} = this.state;
 
+
     const filteredTabs = Object.keys(execTabs);
 
 
@@ -105,6 +130,7 @@ class Company extends React.Component {
 
       <div className={classes.container}>
 
+      <div className={classes.tabsContainer}>
       <Tabs
           value={tab}
           onChange={this.handleChange}
@@ -120,8 +146,9 @@ class Company extends React.Component {
       }
 
       </Tabs>
+      </div>
 
-      {filteredTabs.map((name, idx) => tab === name && <div className={classes.profile}><StyledTabContainer data={ execTabs[name] } /></div> )}
+      {filteredTabs.map((name, idx) => tab === name && <div key={idx} className={classes.profile}><StyledTabContainer data={ execTabs[name] } /></div> )}
 
     </div>
 
