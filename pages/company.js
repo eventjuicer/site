@@ -19,7 +19,8 @@ import {
   TwoColsLayout as Section,
   Wrapper,
   Company as CompanyProfile,
-  resourceFetchSuccess
+  resourceFetchSuccess,
+  Tags
 } from '../components';
 
 
@@ -70,11 +71,15 @@ render()
 
   const { company, booths, url , eventId} = this.props;
 
-  const data = filterCompanyInstances(company.instances, eventId);
+  const purchases = _get(company, "instances");
+  const data = filterCompanyInstances(purchases, eventId);
   const selectedBoothIds = _map(data, 'formdata.id');
   const selectedBoothNames = _map(data, 'formdata.ti');
-  const logotype = _get(company, "profile.logotype")
+
   const name = _get(company, "profile.name");
+
+  //check for custom OG image!!!
+  const logotype = _get(company, "profile.logotype")
 
 
   return (<Layout>
@@ -109,6 +114,7 @@ render()
          right={
            <div>
 
+          <Tags tags={_get(company.profile, "keywords")} />
 
           <CompanyProfile company={company} />
           </div>
