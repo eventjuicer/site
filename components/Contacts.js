@@ -30,12 +30,19 @@ const styles = theme => ({
    iconSmall: {
      fontSize: 20,
    },
+
    listContainer : {
-     display: 'flex',
-     justifyContent : 'center'
+
    },
    contactList : {
-     width: 'auto'
+     display: 'flex',
+     minHeight : 100,
+     flexDirection : 'row',
+     alignItems : 'center',
+     justifyContent : 'center'
+   },
+   contactListItem : {
+
    }
 })
 
@@ -50,7 +57,7 @@ const Contact = ({name, link, classes, translate}) =>
   const IconComponent = icons[capitalizeFirstLetter(name)]
 
   return (
-    <li>
+    <li className={classes.contactListItem}>
       <Button
         disabled={!link || !link.length}
         className={classes.button}
