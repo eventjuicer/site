@@ -29,11 +29,11 @@ const TwoColsLayout = ({left, right, leftCentered, rightCentered, leftSize}) => 
   return (
 
     <Grid container spacing={16}>
-        <Grid item xs={12} sm={ls} md={ls} lg={ls} xl={ls} >
+        <Grid item xs={12} sm={12} md={ls} lg={ls} xl={ls} >
           {leftCentered ? <Centered>{left}</Centered> : left }
         </Grid>
 
-        <Grid item xs={12} sm={rs} md={rs} lg={rs} xl={rs} >
+        <Grid item xs={12} sm={12} md={rs} lg={rs} xl={rs} >
           {rightCentered ? <Centered>{right}</Centered> : right}
         </Grid>
     </Grid>
