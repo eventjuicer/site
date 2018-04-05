@@ -151,7 +151,6 @@ class Company extends React.Component {
           indicatorColor="primary"
           textColor="primary"
           fullWidth={true}
-          centered={true}
           scrollable={true}
           scrollButtons="auto"
       >
