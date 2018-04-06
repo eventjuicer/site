@@ -43,6 +43,7 @@ const TwoColsLayout = ({left, right, leftCentered, rightCentered, leftSize}) => 
 
 
 TwoColsLayout.defaultProps = {
+  spacing : false,
   leftCentered : false,
   rightCentered : false
 }
