@@ -3,7 +3,18 @@ import _chunk from 'lodash/chunk'
 import _shuffle from 'lodash/shuffle'
 import _filter from 'lodash/filter';
 import _uniqBy from 'lodash/uniqBy'
+import _get from 'lodash/get'
 
+
+export const getCompanyProfileInfo = (company, key) => _get(company, `profile.${key}`, "")
+
+export const getCompanyLogotype = (company) => {
+  const cdn = getCompanyProfileInfo(company, "logotype_cdn")
+  if(cdn && /^https/.test(cdn)) return cdn
+  const original = getCompanyProfileInfo(company, "logotype")
+  if(original && /^http/.test(original)) return original
+  return "/static/logo-placeholder.jpg"
+}
 
 export const parseUrlVals = (url) =>  _uniqBy(url.split(",")).filter(x => x)
 

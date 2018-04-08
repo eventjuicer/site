@@ -10,7 +10,7 @@ import Grid from 'material-ui/Grid';
 
 import SubPageItem from './SubPageItem';
 import {Logotype} from './Loaders'
-import {processArrayData} from '../helpers'
+import {processArrayData, getCompanyLogotype} from '../helpers'
 
 const styles = {
 
@@ -22,7 +22,7 @@ const styles = {
 
 const GridCellContent = ({company}) => (
 
-  <SubPageItem subpage="company" name={ _get(company, "profile.name") } id={ company.id } src={_get(company, "profile.logotype")} />
+  <SubPageItem subpage="company" name={ _get(company, "profile.name") } id={ company.id } src={getCompanyLogotype(company)} />
 
 )
 

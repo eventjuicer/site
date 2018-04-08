@@ -37,7 +37,8 @@ import Visitor from '../roles/Visitor'
 import {
   filterCompanyInstances,
   stripTags,
-  escapeHtml
+  escapeHtml,
+  getCompanyLogotype
 } from '../helpers'
 
 
@@ -79,7 +80,7 @@ render()
   const name = _get(company, "profile.name");
 
   //check for custom OG image!!!
-  const logotype = _get(company, "profile.logotype")
+  const logotype = getCompanyLogotype(company)
 
 
   return (<Layout>
