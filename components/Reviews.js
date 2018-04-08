@@ -89,7 +89,7 @@ A tak na serio - Targi eHandlu to świetna okazja do skonfrontowania swojego biz
 },
 
 {
-  text : `Z Targami e-Handul jestem od pierwszej edycji, kiedy to siedzieliśmy przy okrągłych stolikach w Iglicy MTP w Poznaniu.
+  text : `Z Targami e-Handlu jestem od pierwszej edycji, kiedy to siedzieliśmy przy okrągłych stolikach w Iglicy MTP w Poznaniu.
   Od tamtej pory każda kolejna edycja jest bardziej dojrzała, a co najważniejsze poza samymi targami jest również potężna dawka merytorycznej wiedzy podczas prezentacji.`,
   mobileText : `...każda kolejna edycja jest bardziej dojrzała`,
   person : "Błażej Abel, Landingi",
