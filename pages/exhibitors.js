@@ -77,8 +77,8 @@ class PageExhibitors extends React.Component {
       <Head />
 
 
-      <Wrapper label="exhibitors.list_all"  dense={true}>
-        <Avatarlist data={ exhibitors } />
+      <Wrapper label="exhibitors.list_full"  dense={true}>
+        <Avatarlist data={ exhibitors } limit="200" />
       </Wrapper>
 
 
@@ -90,7 +90,7 @@ class PageExhibitors extends React.Component {
 
 
       <Wrapper label="exhibitors.map.title">
-        <h1>SCROLL </h1>
+        {/* <h1>SCROLL </h1> */}
         <Bookingmap  />
       </Wrapper>
 

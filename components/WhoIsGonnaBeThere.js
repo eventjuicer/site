@@ -103,7 +103,7 @@ render()
 
         <Grid key={i} item xs={12} sm={6} md={4} lg={3} xl={3}>
 
-          {chunk.map((person,j) => <TranslatedPerson person={person} />
+          {chunk.map((person,j) => <TranslatedPerson key={j} person={person} />
 
         )}
 
