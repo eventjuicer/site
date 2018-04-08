@@ -6,20 +6,37 @@ import {
   ROLE_RESET,
 	CART_ITEM_ADD,
 	CART_ITEM_REMOVE,
-	CART_RESET,
-	CHANGE_LOCALE,
-} from '../../components/redux/types'
+	CART_RESET
+} from '../../components/redux'
 
 
-const allowedLocales = ["pl","en","de"]
+import {
+	CHANGE_LOCALE
+} from '../../i18n'
 
-const reducer = (state = {role : "", cart : {}, locale : "pl"}, action) => {
+const defaultState = {
+	role : 		"",
+	cart : 		{},
+	locale :	"pl",
+	width : 	"sm",
+	filterParams : {
+		presenters : {},
+	}
+}
+
+
+
+const reducer = (state = defaultState, action) => {
 
 	switch (action.type)
 	{
 
+		case "SCREEN_SIZE_CHANGED":
+			return {...state, width : action.width}
+		break
+
 		case CHANGE_LOCALE:
-			return allowedLocales.indexOf(action.locale) > -1 ? {...state, locale : action.locale} : state
+			return {...state, locale : action.locale}
 		break
 
 		case ROLE_SELECT:
