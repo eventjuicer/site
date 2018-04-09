@@ -58,7 +58,7 @@ render()
       //   <Link href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
       // ]}
     >
-      <People   />
+      <People  link={true} />
     </Wrapper>
 
 

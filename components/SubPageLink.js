@@ -4,7 +4,7 @@ import compose from 'recompose/compose'
 import classNames from 'classnames'
 import { withStyles } from 'material-ui/styles';
 import withWidth from 'material-ui/utils/withWidth';
-import {slug} from '../helpers'
+import {generateLinkParams} from '../helpers'
 
 const styles = {
 
@@ -33,9 +33,9 @@ const SubPageLink = ({name, subpage, id, classes, src, width}) =>
 {
 
   const style = src ? {backgroundImage : `url(${src})`} : {}
-
+  const params = generateLinkParams(name, subpage, id);
   return (
-    <Link as={`/${ slug(name) },${ subpage.charAt(0) },${ id }`} href={`/${ subpage }?id=${ id }`}>
+    <Link {...params}>
       <a className={classNames({
         [classes.tile] : src,
         [classes.textLink] : !src,

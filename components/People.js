@@ -37,7 +37,7 @@ class People extends React.PureComponent {
   render()
   {
 
-    const { classes, presenters, filter, limit, random, width } = this.props;
+    const { classes, presenters, filter, limit, random, width, link } = this.props;
     const data = processArrayData(presenters, {
         filter,
         limit : changeLimitForScreen(limit, width),
@@ -52,11 +52,13 @@ class People extends React.PureComponent {
             {data.map((item, i) =>
                 <Grid key={i} item {...gridData}>
                   <Person
+                    id={_get(item, "id")}
                     avatar={_get(item, "avatar")}
                     title={`${_get(item, "fname")} ${_get(item, "lname")}`}
                     subtitle={<FullJobInfo company={_get(item, "cname2")} job={_get(item, "position")}  />}
                     text={_get(item, "bio")}
                     minimal={ this.isMobile(width) }
+                    link={link}
                   />
                 </Grid>
               )}
@@ -75,7 +77,8 @@ People.defaultProps = {
   filter : null,
   limit : false,
   random : false,
-  width : "sm"
+  width : "sm",
+  link : false
 }
 
 

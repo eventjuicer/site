@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import compose from 'recompose/compose'
 import classNames from 'classnames'
-import withWidth from 'material-ui/utils/withWidth';
 
 
-import Card, { CardContent, CardHeader } from 'material-ui/Card';
+import Card, { CardContent, CardHeader, CardActions } from 'material-ui/Card';
 //import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Avatar from './MyAvatar'
+import {MyLink} from '../next'
 
-
+import {generateLinkParams} from '../helpers'
 
 const styles = {
 
@@ -50,7 +50,8 @@ class Person extends React.PureComponent {
 
   render()
   {
-    const { classes, avatar, title, subtitle, text, minimal } = this.props;
+    const { classes, avatar, title, subtitle, text, minimal, link, id } = this.props;
+    const linkParams = generateLinkParams(title, "speaker", id);
 
     return (
 
@@ -93,14 +94,12 @@ class Person extends React.PureComponent {
         </Typography> : null }
 
       </CardContent>
-      {/* <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions> */}
+
+    {link &&  <CardActions>
+        <MyLink {...linkParams} label="common.more" />
+      </CardActions>}
+
+
     </Card>
 
 
@@ -114,7 +113,8 @@ class Person extends React.PureComponent {
 
 Person.defaultProps = {
   width : "md",
-  minimal : true
+  minimal : true,
+  link : false
 }
 
 Person.propTypes = {
