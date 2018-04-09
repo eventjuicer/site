@@ -38,7 +38,8 @@ import {
   filterCompanyInstances,
   stripTags,
   escapeHtml,
-  getCompanyLogotype
+  getCompanyLogotype,
+  getCompanyOgImage
 } from '../helpers'
 
 
@@ -81,12 +82,12 @@ render()
 
   //check for custom OG image!!!
   const logotype = getCompanyLogotype(company)
-
+  const ogimage = getCompanyOgImage(company)
 
   return (<Layout>
 
     <Head
-      image={ logotype }
+      image={ ogimage }
       url={ url.asPath }
       title={["companies.opengraph.title", {name : name}]}
     />
