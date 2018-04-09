@@ -1,45 +1,11 @@
-import slugify from 'slugify'
 import _chunk from 'lodash/chunk'
 import _shuffle from 'lodash/shuffle'
 import _filter from 'lodash/filter';
 import _uniqBy from 'lodash/uniqBy'
-import _get from 'lodash/get'
 
-
-export const getCompanyProfileInfo = (company, key) => _get(company, `profile.${key}`, "")
-
-export const getCompanyLogotype = (company) => {
-  const cdn = getCompanyProfileInfo(company, "logotype_cdn")
-  if(cdn && /cloudinary/.test(cdn)){
-    return cdn.replace(/v[0-9]+/, "w_600,c_limit");
-  }
-  const original = getCompanyProfileInfo(company, "logotype")
-  if(original && /^http/.test(original)) return original
-  return "/static/logo-placeholder.jpg"
-}
 
 export const parseUrlVals = (url) =>  _uniqBy(url.split(",")).filter(x => x)
 
-export const escapeHtml = (text) => {
-  var map = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#039;'
-  };
-
-  return text.replace(/[&<>"']/g, function(m) { return map[m]; });
-}
-
-export const stripTags = (html) => {
-
-  var html = "<p>Some HTML</p>";
-  var div = document.createElement("div");
-  div.innerHTML = html;
-  return div.textContent || div.innerText || "";
-
-}
 
 export const changeLimitForScreen = (maxLimit, width = null, gridData = {}) =>
 {
@@ -54,6 +20,12 @@ export const changeLimitForScreen = (maxLimit, width = null, gridData = {}) =>
   const current = 12/grid[width]
   return maxLimit % current === 0 ? maxLimit : Math.floor( maxLimit / current ) * current
 }
+
+
+
+
+
+
 
 export const validateToken = token => {
   return /^[a-z0-9]{32,40}$/.test(token);
@@ -74,20 +46,11 @@ export const addToken = (token) => {
   }
 }
 
-export const slug = (str = "") => slugify(str, {
-    replacement: '-',
-    remove: null,
-    lower: true
-  })
-
-export const capitalizeFirstLetter = (string) => {
-      return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 
 export const isBigScreen = (width) => {
   return width === "xl" || width === "lg"
 }
+
 
 export const processArrayData = (data = [], {filter = null, limit = null, random = null}) => {
 
@@ -156,43 +119,4 @@ export const chunkArrayData = (data = [], width = "md", params) => {
 
   return data;
 
-}
-
-
-export const filterCompanyInstances = (company, eventId) => _filter(company, function(i){
-  if(i.event_id == eventId && i.formdata &&  "id" in i.formdata && i.sold)
-  {
-    return true;
-  }
-
-  return false;
-});
-
-export const prepareForTranslate = (src) => {
-
-  let str = src
-  let params = {}
-
-  if(Array.isArray(src) && src.length)
-  {
-      str = src[0]
-
-      if (typeof src[1] !== 'undefined')
-      {
-        params = src[1]
-      }
-  }
-
-  return {str, params}
-}
-
-export const fullUrl = (subpage) => {
-
-  const prefix = 'https://targiehandlu.pl';
-  if (subpage.substr(0, prefix.length) !== prefix)
-  {
-    return prefix + subpage;
-  }
-
-  return subpage;
 }
