@@ -1,13 +1,16 @@
 const express = require('express')
 const next = require('next')
 const LRUCache = require('lru-cache')
-
+const querystring = require('querystring')
+const fetch = require('isomorphic-unfetch')
+const _keyBy = require('lodash/keyBy')
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dir: '.', dev })
 const handle = app.getRequestHandler()
 
+const apiUrl = 'https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/'
 
 const ssrCache = new LRUCache({
   max: 100,
@@ -20,8 +23,8 @@ app.prepare().then(() => {
   const server = express()
 
 
- //  server.get('/c,:id', (req, res) => {
- //    const queryParams = { id: req.params.id }
+ //  server.get('/c,:id,:creative', (req, res) => {
+ //    const queryParams = { id: req.params.id, creative : req.params.creative }
  //    res.redirect('/agenda?utm_content=')
  //
  //   // app.render(req, res, '/exhibitor', queryParams)
@@ -40,6 +43,12 @@ app.prepare().then(() => {
      const queryParams = { id: req.params.id }
     // app.render(req, res, '/exhibitor', queryParams)
      renderAndCache(req, res, '/invite', queryParams)
+   })
+
+   server.get('/:slug,s,:id', (req, res) => {
+     const queryParams = { id: req.params.id }
+    // app.render(req, res, '/exhibitor', queryParams)
+     renderAndCache(req, res, '/speaker', queryParams)
    })
 
    server.get('/:slug,c,:id', (req, res) => {
@@ -70,6 +79,26 @@ app.prepare().then(() => {
   process.exit(1)
 })
 
+
+
+async function fetchFromApiEndpoint (endpoint) {
+  const _res = await fetch(`${apiUrl}${endpoint}`)
+  const res = await _res.json()
+  return res;
+}
+
+function cacheApiResult (endpoint) {
+
+    if (ssrCache.has(endpoint)) {
+      res.setHeader('x-api-cache', 'HIT')
+      res.send(ssrCache.get(key))
+      return
+    }
+
+    // fetchFromApiEndpoint(endpoint).
+    // then(data => data.data).
+    // then()
+}
 
 
 /*

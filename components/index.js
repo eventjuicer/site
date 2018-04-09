@@ -23,6 +23,7 @@ export {default as MyTypography} from './MyTypography'
 export {default as Faq} from './Faq'
 export {default as FaqLink} from './FaqLink'
 export {default as Tags} from './Tags'
+export {default as MyAvatar} from './MyAvatar'
 
 export * from './MyLayouts'
 
