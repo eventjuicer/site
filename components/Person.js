@@ -9,7 +9,7 @@ import withWidth from 'material-ui/utils/withWidth';
 import Card, { CardContent, CardHeader } from 'material-ui/Card';
 //import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
-import Avatar from 'material-ui/Avatar'
+import Avatar from './MyAvatar'
 
 
 
@@ -20,20 +20,6 @@ const styles = {
    justifyContent : 'center'
   },
 
-  avatar : {
-    width: 200,
-    height: 200,
-
-  },
-
-  avatarMobile : {
-    width: 100,
-    height: 100,
-  },
-
-  avatarImg : {
-     filter: 'grayscale(100%) contrast(115%)',
-  },
 
   card: {
     width: '100%',
@@ -85,12 +71,7 @@ class Person extends React.PureComponent {
         <Avatar
           alt=""
           src={avatar}
-          classes={{
-            root : classNames(classes.avatar,{
-              [classes.avatarMobile] : minimal
-            }),
-            img : classes.avatarImg
-          }}
+          minimal={minimal}
         />}
         // title="test"
         // subheader="srest"
@@ -103,7 +84,7 @@ class Person extends React.PureComponent {
           {title}
         </Typography>
 
-        {subtitle && <Typography component="p">
+        {subtitle && <Typography color="error" component="p">
           {subtitle}
         </Typography>}
 
