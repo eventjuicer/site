@@ -38,7 +38,7 @@ export const getCompanyLogotype = (company, scale = true) => {
 }
 
 export const wrapImage = (overlayImage, baseImage) => {
-  return `http://res.cloudinary.com/eventjuicer/image/upload/c_fit,g_center,h_300,w_800,l_${overlayImage},y_60/${baseImage}.png`
+  return `https://res.cloudinary.com/eventjuicer/image/upload/c_fit,g_center,h_250,w_700,x_-100,y_30,l_${overlayImage}/${baseImage}.png`
 
 }
 
@@ -53,10 +53,10 @@ export const getCompanyOgImage = (company) => {
 
   if(getCompanyProfileInfo("countries") !== "national")
   {
-    return wrapImage(`c_${company.id}_logotype`, "template_1_en")
+    return wrapImage(`c_${company.id}_logotype`, "template_2_en")
   }
 
-  return wrapImage(`c_${company.id}_logotype`, "template_1_pl")
+  return wrapImage(`c_${company.id}_logotype`, "template_2_pl")
 
 }
 

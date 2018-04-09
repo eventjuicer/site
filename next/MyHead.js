@@ -93,7 +93,7 @@ MyHead.defaultProps = {
   titleLabel : "event.opengraph.name",
 
   width : 960,
-  height : 720,
+  height : 504,
   fb_appid : "222959121587772",
 
   description: "",
