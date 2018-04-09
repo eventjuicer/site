@@ -2,8 +2,8 @@
 
 import compose from 'recompose/compose'
 import _get from 'lodash/get'
+import { connect } from 'react-redux';
 
-import withWidth from 'material-ui/utils/withWidth';
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 
@@ -66,7 +66,7 @@ Avatarlist.defaultProps = {
 }
 
 const enhance = compose(
-  withWidth(),
+  connect((state) => ({width : state.app.width})),
   withStyles(styles)
 )
 

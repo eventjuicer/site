@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose'
 import Grid from 'material-ui/Grid';
-import withWidth from 'material-ui/utils/withWidth';
 
 import _get from 'lodash/get'
 import Person from './Person'
@@ -85,9 +84,9 @@ People.propTypes = {
 };
 
 const enhance = compose(
-  withWidth(),
   connect(state => ({
     presenters : state.resources.presenters,
+    width : state.app.width
   }), {
   //  dialogShow : dialogShowAction ,
     resourceFetchRequest : resourceFetchRequestAction

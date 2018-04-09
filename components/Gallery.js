@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import compose from 'recompose/compose'
 import { connect } from 'react-redux';
 
-import withWidth from 'material-ui/utils/withWidth';
 import { withStyles } from 'material-ui/styles';
 import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList';
 // import IconButton from 'material-ui/IconButton';
@@ -151,8 +150,10 @@ Gallery.propTypes = {
 
 const enhance = compose(
   withStyles(styles),
-  withWidth(),
-  connect((state) => ({photos : state.resources.photos}), {resourceFetchRequest : resourceFetchRequestAction})
+  connect((state) => ({
+    width : state.app.width,
+    photos : state.resources.photos
+  }), {resourceFetchRequest : resourceFetchRequestAction})
 )
 
 export default enhance(Gallery);

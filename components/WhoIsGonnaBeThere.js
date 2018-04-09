@@ -8,8 +8,7 @@ import _get from 'lodash/get'
 
 import Grid from 'material-ui/Grid';
 import { withStyles } from 'material-ui/styles';
-import withWidth from 'material-ui/utils/withWidth';
-
+ 
 import {chunkArrayData} from '../helpers'
 import {translate} from '../i18n'
 import Typography from './MyTypography'
@@ -128,9 +127,9 @@ WhoIsGonnaBeThere.defaultProps = {
 }
 
 const enhance = compose(
-  withWidth(),
   withStyles(styles),
   connect(state => ({
+    width : state.app.width,
     visitors : state.resources.visitors
   }), {
     resourceFetchRequest : resourceFetchRequestAction
