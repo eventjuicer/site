@@ -89,7 +89,7 @@ render()
     <Head
       image={ ogimage }
       url={ url.asPath }
-      title={["companies.opengraph.title", {name : name}]}
+      titleLabel={["companies.opengraph.title", {name : name}]}
     />
 
     <Wrapper label="">

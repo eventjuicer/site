@@ -59,7 +59,7 @@ render()
 
     <Head
       url={ url.asPath }
-      title={["visitors.opengraph.title", {name : name, cname : cname, location : 'Kraków', date : '25 kwietnia 2018'}]}
+      titleLabel={["visitors.opengraph.title", {name : name, cname : cname, location : 'Kraków', date : '25 kwietnia 2018'}]}
     />
 
     <Wrapper>

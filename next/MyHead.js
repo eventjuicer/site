@@ -8,13 +8,13 @@ import { fullUrl, prepareForTranslate } from '../helpers'
 const GTM = "GTM-MRFVC8"
 
 
-const MyHead = ({title, description, url, image, translate, children}) => {
+const MyHead = ({title, titleLabel, description, descriptionLabel, url, image, width, height, fb_appid, translate, children}) => {
 
-  const titleParams = prepareForTranslate(title)
-  const descParams = prepareForTranslate(description)
+  const titleLabelParams = prepareForTranslate(titleLabel)
+  const descriptionLabelParams = prepareForTranslate(descriptionLabel)
 
-  const tTitle = titleParams.str ? translate(titleParams.str, titleParams.params) : ''
-  const tDescription = description ? translate(descParams.str, descParams.params) : description
+  const tTitle = titleLabel && titleLabelParams.str ? translate(titleLabelParams.str, titleLabelParams.params) : title
+  const tDescription = descriptionLabel && descriptionLabelParams ? translate(descriptionLabelParams.str, descriptionLabelParams.params) : description
 
   const prefixedUrl = fullUrl(url)
 
@@ -49,12 +49,11 @@ const MyHead = ({title, description, url, image, translate, children}) => {
       <meta name="twitter:image" content={ image } />
       <meta property="og:image" content={ image } />
 
-      {/* <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" /> */}
+      <meta property="og:image:width" content={ width } />
+      <meta property="og:image:height" content={ height } />
 
       <meta property="og:type" content="website" />
-      <meta property="fb:app_id" content="222959121587772" />
-
+      <meta property="fb:app_id" content={fb_appid} />
 
       <link rel="apple-touch-icon" sizes="57x57" href="/static/apple-icon-57x57.png" />
       <link rel="apple-touch-icon" sizes="60x60" href="/static/apple-icon-60x60.png" />
@@ -90,8 +89,15 @@ const MyHead = ({title, description, url, image, translate, children}) => {
 
 MyHead.defaultProps = {
 
-  title: "event.opengraph.name",
-  description: "event.opengraph.description",
+  title: "",
+  titleLabel : "event.opengraph.name",
+
+  width : 960,
+  height : 720,
+  fb_appid : "222959121587772",
+
+  description: "",
+  descriptionLabel : "event.opengraph.description",
 
   image: fullUrl("/static/og_teh_default.png"),
   url : fullUrl("/")

@@ -21,6 +21,10 @@
       "bru1": {
         "min": 3,
         "max": 3
+      },
+      "sfo1": {
+        "min": 1,
+        "max": 1
       }
     },
     "dotenv": true
@@ -34,14 +38,14 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "dotenv": "^5.0.1",
-    "eventjuicer-site-translations": "latest",
+    "eventjuicer-site-translations": "0.0.7",
     "express": "^4.16.3",
     "formik": "^0.11.11",
     "google-map-react": "^0.32.0",
     "isomorphic-unfetch": "^2.0.0",
     "lodash": "^4.17.5",
     "lru-cache": "^4.1.2",
-    "material-ui": "^1.0.0-beta.40",
+    "material-ui": "^1.0.0-beta.41",
     "material-ui-icons": "^1.0.0-beta.36",
     "mdi-material-ui": "^3.2.0",
     "next": "^5.1.0",
