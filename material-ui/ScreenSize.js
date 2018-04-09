@@ -4,32 +4,21 @@ import compose from 'recompose/compose'
 import withWidth from 'material-ui/utils/withWidth';
 
 
-import {
-  resourceFetchRequest as resourceFetchRequestAction
-} from './redux/actions'
-
-
-function screenSizeChanged(width) {
-  return {
-		type: "SCREEN_SIZE_CHANGED",
-    width : width
-	}
-}
-
-
-const ScreenSize = ({oldWidth, width, screenSizeChanged}) => {
+const ScreenSize = ({oldWidth, width, screenSizeChanged, dispatch}) => {
 
   if(width && oldWidth !== width)
   {
-    screenSizeChanged(width);
+    dispatch({
+  		type: "SCREEN_SIZE_CHANGED",
+      width : width
+  	});
   }
   return null;
 }
 
 const enhance = compose(
   withWidth(),
-  connect(state => ({oldWidth : state.app.width}), {screenSizeChanged}
-  )
+  connect(state => ({oldWidth : state.app.width}) )
 )
 
 export default enhance(ScreenSize);

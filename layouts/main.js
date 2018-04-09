@@ -1,11 +1,11 @@
 
 import dynamic from 'next/dynamic'
-
-
+import Router from 'next/router'
 import withMui from '../next/withMui'
 
-import Chatlio from '../services/Chatlio'
+import {MyHead as Head} from '../next'
 
+import Chatlio from '../services/Chatlio'
 import {TranslationProvider} from '../i18n'
 
 import {
@@ -13,16 +13,13 @@ import {
   Footer
 } from '../components'
 
-import {MyHead as Head} from '../next'
-
-
 const Dialog = dynamic(import('../components/MyDialog'))
 const Snackbar = dynamic(import('../components/MySnackbar'))
 const Drawer = dynamic(import('../components/MyDrawer'))
 
+import ScreenSize from '../material-ui/ScreenSize'
 import customMessages from 'eventjuicer-site-translations'
 
-import Router from 'next/router'
 
 Router.onRouteChangeComplete = () => {
   if (window.gtag){
@@ -38,6 +35,8 @@ Router.onRouteChangeComplete = () => {
 const Layout = (props) => (
   <TranslationProvider locale="pl" messages={customMessages}>
   <div>
+
+    <ScreenSize />
 
     <Head />
 
