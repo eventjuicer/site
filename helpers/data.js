@@ -37,6 +37,10 @@ export const getCompanyLogotype = (company, scale = true) => {
   return "/static/logo-placeholder.jpg"
 }
 
+export const wrapImage = (overlayImage, baseImage) => {
+  return `http://res.cloudinary.com/eventjuicer/image/upload/c_fit,g_center,h_300,w_800,l_${overlayImage},y_60/${baseImage}.png`
+
+}
 
 export const getCompanyOgImage = (company) => {
 
@@ -47,7 +51,12 @@ export const getCompanyOgImage = (company) => {
     return getCompanyLogotype(company, true)
   }
 
-  return `http://res.cloudinary.com/eventjuicer/image/upload/c_scale,g_center,h_300,l_c_${company.id}_logotype,y_60/template_1_en.png`
+  if(getCompanyProfileInfo("countries") !== "national")
+  {
+    return wrapImage(`c_${company.id}_logotype`, "template_1_en")
+  }
+
+  return wrapImage(`c_${company.id}_logotype`, "template_1_pl")
 
 }
 
