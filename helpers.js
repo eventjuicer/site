@@ -10,7 +10,9 @@ export const getCompanyProfileInfo = (company, key) => _get(company, `profile.${
 
 export const getCompanyLogotype = (company) => {
   const cdn = getCompanyProfileInfo(company, "logotype_cdn")
-  if(cdn && /^https/.test(cdn)) return cdn
+  if(cdn && /cloudinary/.test(cdn)){
+    return cdn.replace(/v[0-9]+/, "w_600,c_limit");
+  }
   const original = getCompanyProfileInfo(company, "logotype")
   if(original && /^http/.test(original)) return original
   return "/static/logo-placeholder.jpg"
