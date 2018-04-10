@@ -20,7 +20,10 @@ import {
   Wrapper,
   Company as CompanyProfile,
   resourceFetchSuccess,
-  Tags
+  Tags,
+  Gallery,
+  People,
+  ColumnList
 } from '../components';
 
 
@@ -53,9 +56,12 @@ class Company extends React.Component {
 static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
 {
 
-  const _company = await fetch(`https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/companies/${query.id}`)
-  const company = await _company.json()
+  const urls = [`companies/${query.id}`, 'exhibitors'];
 
+  const [company, exhibitors] = await Promise.all(
+    urls.map(url => fetch(`https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/${url}`).
+    then(resp => resp.json())
+  ))
 
   // store.dispatch(
   //   resourceFetchSuccess("bookingmap", bookingmap.data)
@@ -63,6 +69,7 @@ static async getInitialProps({err, req, res, pathname, query, asPath, isServer, 
 
   return {
     company : company.data,
+    exhibitors : exhibitors.data,
     eventId: _get(company, "meta.active_event_id")
   }
 
@@ -71,7 +78,7 @@ static async getInitialProps({err, req, res, pathname, query, asPath, isServer, 
 render()
 {
 
-  const { company, booths, url , eventId} = this.props;
+  const { company, exhibitors, url , eventId} = this.props;
 
   const purchases = _get(company, "instances");
   const data = filterCompanyInstances(purchases, eventId);
@@ -125,11 +132,17 @@ render()
     </Wrapper>
 
 
-    <Wrapper label="visitors.register" color="#fafafa" links={[
-       <Link key="more" href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
-    ]}>
-      <Visitor  />
-    </Wrapper>
+
+
+
+        <Wrapper label="visitors.register" color="#fafafa" links={[
+           <Link key="more" href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
+        ]}>
+          <Visitor  />
+        </Wrapper>
+
+
+
 
 
     <Wrapper label={["exhibitors.booth_location_full", {
@@ -140,6 +153,35 @@ render()
       <Bookingmap selected={selectedBoothIds} />
     </Wrapper>
 
+
+
+    <Wrapper
+      label="presenters.list_featured"
+      secondaryTitle="Udział bezpłatny. Pełna agenda już wkrótce..."
+      links={[
+        <Link key="more" href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
+      ]}
+    >
+      <People limit={8} random={true} filter={function(item){ return [71460, 71462, 71461, 71463, 71703, 71707, 71708, 71709].indexOf(item.id) > -1; }}  />
+    </Wrapper>
+
+
+
+    <Gallery label="event.gallery" />
+
+
+
+        <Wrapper label="visitors.register_alt" color="#ffffff" links={[
+           <Link key="more" href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
+        ]}>
+          <Visitor  />
+        </Wrapper>
+
+
+
+    <Wrapper label="exhibitors.list_full" color="#ffffff">
+      <ColumnList data={ exhibitors } />
+    </Wrapper>
 
 
 

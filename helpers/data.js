@@ -10,7 +10,7 @@ export const getCompanyProfileInfo = (company, key) => _get(company, `profile.${
 export const getCdnResource = (company, key, scale = true) => {
   const cdn = getCompanyProfileInfo(company, `${key}_cdn`)
   if(cdn && /cloudinary/.test(cdn)){
-    return !scale ? cdn : cdn.replace(/v[0-9]+/, "w_600,c_limit");
+    return !scale ? cdn : cdn.replace(/v[0-9]+/, "w_600,h_600,c_fit");
   }
   return false
 }
@@ -21,12 +21,13 @@ export const getCompanyAltOgImage = (company, url) => {
 
   if("utm_content" in params && params.utm_content !== "logotype") {
     const cdn = getCdnResource(company, params.utm_content, false)
-    if(cdn) return cdn
+    if(cdn){
+      return wrapImage(`c_${company.id}_${params.utm_content}`, "template_raw", "h_504,w_960")
+    }
   }
 
   return getCompanyOgImage(company)
 }
-
 
 export const getCompanyLogotype = (company, scale = true) => {
 
@@ -40,8 +41,8 @@ export const getCompanyLogotype = (company, scale = true) => {
   return "/static/logo-placeholder.jpg"
 }
 
-export const wrapImage = (overlayImage, baseImage) => {
-  return `https://res.cloudinary.com/eventjuicer/image/upload/c_fit,g_center,h_220,w_600,y_30,l_${overlayImage}/${baseImage}.png`
+export const wrapImage = (overlayImage, baseImage, params = `h_220,w_600,y_30`) => {
+  return `https://res.cloudinary.com/eventjuicer/image/upload/c_fit,l_${overlayImage},${params}/${baseImage}.png`
 
 }
 
