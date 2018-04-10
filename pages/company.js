@@ -39,7 +39,7 @@ import {
   stripTags,
   escapeHtml,
   getCompanyLogotype,
-  getCompanyOgImage
+  getCompanyAltOgImage
 } from '../helpers'
 
 
@@ -82,7 +82,7 @@ render()
 
   //check for custom OG image!!!
   const logotype = getCompanyLogotype(company)
-  const ogimage = getCompanyOgImage(company)
+  const ogimage = getCompanyAltOgImage(company, url.asPath)
 
   return (<Layout>
 

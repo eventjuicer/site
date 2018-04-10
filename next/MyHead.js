@@ -1,9 +1,11 @@
 
 
 import NextHead from 'next/head';
+
+
 import { string } from 'prop-types';
 import { translate } from '../i18n'
-import { fullUrl, prepareForTranslate } from '../helpers'
+import { fullUrl, prepareForTranslate, canonical } from '../helpers'
 
 const GTM = "GTM-MRFVC8"
 
@@ -73,15 +75,14 @@ const MyHead = ({title, titleLabel, description, descriptionLabel, url, image, w
       <meta name="msapplication-TileImage" content="/static/ms-icon-144x144.png" />
       <meta name="theme-color" content="#ffffff" />
 
+      <link rel="canonical" href={ canonical(prefixedUrl) } />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,500,700" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google" content="notranslate" />
-    {/* <script src="https://use.fontawesome.com/6de33398df.js"></script> */}
 
-
-      {children}
+    {children}
 
     </NextHead>
   );

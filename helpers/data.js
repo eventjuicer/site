@@ -1,17 +1,7 @@
 
 import _get from 'lodash/get'
 import _filter from 'lodash/filter'
-
-export const fullUrl = (subpage) => {
-
-  const prefix = 'https://targiehandlu.pl';
-  if (subpage.substr(0, prefix.length) !== prefix)
-  {
-    return prefix + subpage;
-  }
-
-  return subpage;
-}
+import { getUrlParams } from './links'
 
 
 export const getCompanyProfileInfo = (company, key) => _get(company, `profile.${key}`, "")
@@ -24,6 +14,19 @@ export const getCdnResource = (company, key, scale = true) => {
   }
   return false
 }
+
+export const getCompanyAltOgImage = (company, url) => {
+
+  const params = getUrlParams(url)
+
+  if("utm_content" in params && params.utm_content !== "logotype") {
+    const cdn = getCdnResource(company, params.utm_content, false)
+    if(cdn) return cdn
+  }
+
+  return getCompanyOgImage(company)
+}
+
 
 export const getCompanyLogotype = (company, scale = true) => {
 

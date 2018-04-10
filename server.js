@@ -1,7 +1,7 @@
 const express = require('express')
 const next = require('next')
 const LRUCache = require('lru-cache')
-const querystring = require('querystring')
+const querystring = require('query-string')
 const fetch = require('isomorphic-unfetch')
 const _keyBy = require('lodash/keyBy')
 
