@@ -29,7 +29,7 @@ const styles = {
     maxWidth : 800,
     padding: 30,
     backgroundColor : 'transparent',
-    opacity : 0.9
+
   },
 
   icon : {
