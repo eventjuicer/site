@@ -1,8 +1,8 @@
 import slugify from 'slugify'
 
 
-export const slug = (str = "") => slugify(str, {
-    replacement: '-',
+export const slug = (str = "", replacement = "-") => slugify(str, {
+    replacement: replacement,
     remove: null,
     lower: true
   })

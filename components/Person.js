@@ -7,8 +7,10 @@ import classNames from 'classnames'
 
 import Card, { CardContent, CardHeader, CardActions } from 'material-ui/Card';
 //import Button from 'material-ui/Button';
-import Typography from 'material-ui/Typography';
+
 import Avatar from './MyAvatar'
+import Typography from './MyTypography'
+
 import {MyLink} from '../next'
 
 import {generateLinkParams} from '../helpers'
@@ -81,15 +83,15 @@ class Person extends React.PureComponent {
 
       <CardContent>
 
-        <Typography gutterBottom variant="headline" component="h2">
+        <Typography template="presenter1">
           {title}
         </Typography>
 
-        {subtitle && <Typography color="error" component="p">
+        {subtitle && <Typography template="presenter2">
           {subtitle}
         </Typography>}
 
-        {!minimal && text ? <Typography component="p" className={classes.bio}>
+        {!minimal && text ? <Typography template="presenterText">
           { text }
         </Typography> : null }
 

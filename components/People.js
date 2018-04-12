@@ -27,7 +27,12 @@ class People extends React.PureComponent {
 
   componentDidMount()
   {
-    this.props.resourceFetchRequest("presenters", false)
+
+    if(! this.props.presenters.length)
+    {
+      this.props.resourceFetchRequest("presenters", false)
+    }
+
   }
 
   isMobile(w){

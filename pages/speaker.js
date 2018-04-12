@@ -12,7 +12,6 @@ import reduxPage from '../redux'
 
 import _keyBy from 'lodash/keyBy'
 import _get from 'lodash/get'
-import _map from 'lodash/map'
 
 import {
   MyTypography as Typography,
@@ -20,31 +19,21 @@ import {
   Wrapper,
   Presentation,
   resourceFetchSuccess,
-  Tags,
   MyAvatar as Avatar
 } from '../components';
 
 
 import Layout from '../layouts/main';
-
-
-
-/*USER REGISTRATION*/
 import Visitor from '../roles/Visitor'
-/*USER REGISTRATION*/
-
 
 import {
-  stripTags,
-  escapeHtml,
-  getCompanyLogotype,
-  getCompanyOgImage
+  getPresenterOgImage,
 } from '../helpers'
 
 
-// TabContainer.propTypes = {
-// //  children: PropTypes.node.isRequired,
-// };
+const People = dynamic(import("../components/People"))
+const Avatarlist = dynamic(import("../components/Avatarlist"))
+
 
 class PageSpeaker extends React.Component {
 
@@ -52,15 +41,25 @@ class PageSpeaker extends React.Component {
 static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
 {
 
-  const _speakers = await fetch(`https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/presenters`)
-  const speakers = await _speakers.json()
 
-  store.dispatch(
-    resourceFetchSuccess("presenters", speakers.data)
-  )
+    const urls = [`presenters`, 'exhibitors'];
+
+    const [presenters, exhibitors] = await Promise.all(
+      urls.map(url => fetch(`https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/${url}`).
+      then(resp => resp.json())
+    ))
+
+    store.dispatch(
+      resourceFetchSuccess("presenters", presenters.data)
+    )
+
+    store.dispatch(
+      resourceFetchSuccess("exhibitors", exhibitors.data)
+    )
 
   return {
-    speakers : speakers.data,
+    speakers : presenters.data,
+    exhibitors : exhibitors.data,
     speakerId : query.id,
     // eventId: _get(company, "meta.active_event_id")
   }
@@ -70,13 +69,12 @@ static async getInitialProps({err, req, res, pathname, query, asPath, isServer, 
 render()
 {
 
-  const { speakers, speakerId, url} = this.props;
-
+  const { exhibitors, speakers, speakerId, url} = this.props;
   const keyedSpeakers = _keyBy(speakers, "id");
   const speaker = speakerId in keyedSpeakers ? keyedSpeakers[speakerId] : null
-
   const name = `${_get(speaker, "fname")} ${_get(speaker, "lname")}`
   const image = _get(speaker, "avatar")
+  const logotype = _get(speaker, "logotype")
 
   if(!speaker)
   {
@@ -86,9 +84,14 @@ render()
   return (<Layout>
 
     <Head
-      image={ image }
+      image={ getPresenterOgImage(speaker) }
       url={ url.asPath }
       titleLabel={["speakers.opengraph.title", {name}]}
+      descriptionLabel={["speakers.opengraph.description", {
+        fname: _get(speaker, "fname"),
+        cname2 : _get(speaker, 'cname2'),
+        presentation_title : _get(speaker, 'presentation_title'),
+      }]}
     />
 
     <Wrapper label="">
@@ -99,12 +102,14 @@ render()
         leftSize={5}
         left={
 
-          <div>
+          <div style={{display : 'flex', flexDirection : 'column', alignItems : 'center', marginTop : 30}}>
 
             <Avatar
               src={image}
               minimal={false}
             />
+
+            <img src={logotype} alt="" style={{maxWidth : 300, maxHeight : 200, marginTop: 30}} />
 
           </div>
 
@@ -127,6 +132,34 @@ render()
     ]}>
       <Visitor  />
     </Wrapper>
+
+
+    <Wrapper
+      label="presenters.list_full"
+      secondaryTitle="pełna agenda już wkrótce"
+      // links={[
+      //   <Link href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
+      // ]}
+    >
+      <People random={true} filter={function(item){ return item.bio && item.bio.length >5; }}   />
+    </Wrapper>
+
+
+
+      <Wrapper
+        label="exhibitors.list_featured"
+        secondaryTitle="i ponad 120 innych Wystawców"
+      //  dense={true}
+      >
+        <Avatarlist filter={function(item){ return item.featured; }} data={ exhibitors } />
+      </Wrapper>
+
+
+      <Wrapper label="visitors.register_alt" color="#fafafa" links={[
+         <Link key="more" href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
+      ]}>
+        <Visitor  />
+      </Wrapper>
 
 
 

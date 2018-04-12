@@ -15,6 +15,16 @@ export const getCdnResource = (company, key, scale = true) => {
   return false
 }
 
+
+export const getPresenterOgImage = (participant) => {
+
+  const avatarTrans = `g_west,x_150,y_25,w_220,h_220,l_p_${participant.id}_avatar,c_fit,r_max`
+  const logotypeTrans = `g_east,x_150,y_25,w_220,h_220,l_p_${participant.id}_logotype,c_fit`
+
+  return `http://res.cloudinary.com/eventjuicer/image/upload/${avatarTrans}/${logotypeTrans}/template_speaker.png`
+
+}
+
 export const getCompanyAltOgImage = (company, url) => {
 
   const params = getUrlParams(url)

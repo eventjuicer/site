@@ -4,7 +4,8 @@ import { withStyles } from 'material-ui/styles'
 import _get from 'lodash/get'
 import { translate } from '../i18n'
 import compose from 'recompose/compose'
-
+import classNames from 'classnames'
+import {slug} from '../helpers'
 
 const styles = theme => ({
 
@@ -18,19 +19,30 @@ const styles = theme => ({
   },
   chip : {
      margin: theme.spacing.unit,
-  }
+  },
+  chipAlt : {
+
+  },
+
 })
 
 
-const Tags = ({tags, classes, translate, style}) => {
+const Tags = ({tags, altTags, raw, classes, translate, style, baseLabel}) => {
 
   if(!tags.length) return null
 
-  return <div className={classes.container}>{tags.map((chip, idx) => <Chip key={idx} label={translate(`common.tags.${chip}`)} className={classes.chip} />)}</div>
+  return <div className={classes.container}>
+    {tags.map((chip, idx) => <Chip key={idx} label={translate(`${baseLabel}.${slug(chip,"_")}`)} classes={{root : classes.chip}} />)}
+    {raw.map((chip, idx) => <Chip key={idx} label={chip} classes={{root : classes.chip}} />)}
+    {altTags.map((chip, idx) => <Chip key={idx} label={translate(`${baseLabel}.${slug(chip,"_")}`)} classes={{root : classNames(classes.chip, classes.chipAlt ) }} />)}
+  </div>
 }
 
 Tags.defaultProps = {
   tags : [],
+  altTags : [],
+  raw : [],
+  baseLabel : "common.tags",
   style : {}
 }
 

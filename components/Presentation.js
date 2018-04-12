@@ -8,6 +8,7 @@ import { withStyles } from 'material-ui/styles';
 import compose from 'recompose/compose'
 import classNames from 'classnames'
 
+import Divider from 'material-ui/Divider'
 
 import Typography from './MyTypography'
 import Tags from './Tags'
@@ -59,23 +60,25 @@ const Presentation = ({data}) => {
 
 <div>
 
-    {presentation_venue && <Tags tags={[presentation_venue]} />}
+    {presentation_venue && <Tags tags={[presentation_venue]} baseLabel="common.tags.stages" />}
 
-    <div>
+    <div style={{marginBottom : 30}}>
 
-      <Typography>{presentation_title}</Typography>
+      <Typography template="presenter2">{presentation_title}</Typography>
 
-      <Typography>{presentation_description}</Typography>
+      <Typography template="presenterText">{presentation_description}</Typography>
 
     </div>
 
-    <div>
+    <Divider />
 
-      <Typography>{`${fname} ${lname}`}</Typography>
+    <div style={{marginTop: 30}}>
 
-      <Typography>{`${position} ${cname2}`}</Typography>
+      <Typography template="presenter1">{`${fname} ${lname}`}</Typography>
 
-      <Typography>{bio}</Typography>
+      <Typography template="presenter2">{`${position} ${cname2}`}</Typography>
+
+      <Typography template="presenterText">{bio}</Typography>
 
     </div>
 

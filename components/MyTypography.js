@@ -27,7 +27,7 @@ const styles = {
   h2 : {
     fontSize : '3rem',
     textTransform: 'uppercase',
-    fontWeight : 300,
+    fontWeight : 400,
     marginBottom: '3rem',
   //  textAlign: 'center'
   },
@@ -123,7 +123,41 @@ const styles = {
     padding: '1.5rem',
     margin: '3rem 1.5rem'
 
-  }
+  },
+
+
+  presenterBase: {
+
+    color : 'rgba(0, 0, 0, 0.84)',
+    fontSize: '0.875rem',
+    fontWeight: 400,
+    fontFamily: "'Lato', 'Helvetica', 'Arial', sans-serif",
+    lineHeight: '1.4rem'
+  },
+
+
+  presenter1: {
+    fontSize: '1.1rem',
+    lineHeight: '1.6rem'
+  },
+
+  presenterImportant: {
+    color: '#f44336',
+    fontSize: '1.3rem',
+    lineHeight: '1.7rem'
+  },
+
+  presenterText: {
+    marginTop : 10,
+  },
+
+  presentationTitle : {
+
+  },
+
+  presentationDescription : {
+
+  },
 
 
 };
@@ -193,6 +227,17 @@ const templates = {
     variant : "headline", component : "h4", classNames : ["alert", "centered"]
   },
 
+  presenter1 : {
+    variant : "subheading", component : "h3", classNames : ["presenterBase","presenter1"]
+  },
+
+  presenter2 : {
+    variant : "body1", component : "p", classNames : ["presenterBase", "presenterImportant"]
+  },
+
+  presenterText : {
+    variant : "body1", component : "p", classNames : ["presenterBase", "presenterText"]
+  }
 
 }
 
