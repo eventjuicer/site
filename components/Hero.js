@@ -1,11 +1,17 @@
+//import PropTypes from 'prop-types';
+
 import { withStyles } from 'material-ui/styles';
-//import withWidth from 'material-ui/utils/withWidth';
+import { connect } from 'react-redux';
+import compose from 'recompose/compose'
+
+
+import {isBigScreen} from '../helpers'
 
 const styles = theme => ({
 
   container : {
 
-    //background: 'url(../img/header-bg.jpg) center center no-repeat',
+    background: `url('https://res.cloudinary.com/eventjuicer/image/upload/v1523564269/welcome1.jpg') center center no-repeat`,
     backgroundSize: 'cover',
     backgroundAttachment: 'fixed',
     height: "100vh",
@@ -45,13 +51,16 @@ const styles = theme => ({
 
 });
 
-const Hero = ({videoSrc, background, classes, children}) => (
+
+
+
+const Hero = ({width, videoSrc, background, classes, children}) => (
 
   <section className={classes.container}>
 
-    {videoSrc && <video autoPlay muted loop className={classes.video}>
+    {isBigScreen(width) && videoSrc ? <video autoPlay muted loop className={classes.video}>
         <source src={videoSrc} type="video/mp4" />
-      </video>
+      </video> : null
     }
 
     <div className={classes.overlay}>
@@ -63,6 +72,15 @@ const Hero = ({videoSrc, background, classes, children}) => (
 
 )
 
+Hero.defaultProps = {
+  width : "xs",
+  videoSrc : null
+}
+
+const enhance = compose(
+  connect( (state) => ({width : state.app.width}) ),
+  withStyles(styles)
+)
 
 
-export default withStyles(styles)(Hero);
+export default enhance(Hero);
