@@ -102,7 +102,7 @@ render()
         leftSize={5}
         left={
 
-          <div style={{display : 'flex', flexDirection : 'column', alignItems : 'center', marginTop : 30}}>
+          <div style={{display : 'flex', flexDirection : 'column', alignItems : 'center', marginTop : 20, marginBottom: 20}}>
 
             <Avatar
               src={image}
