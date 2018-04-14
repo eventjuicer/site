@@ -10,7 +10,7 @@ import { withStyles } from 'material-ui/styles';
 import {translate} from '../i18n'
 
 
-const styles = {
+const styles = theme => ({
 
   default : {
 
@@ -25,6 +25,12 @@ const styles = {
     textTransform: 'uppercase',
     fontWeight : 400,
     marginBottom: '3rem',
+
+    [theme.breakpoints.down('sm')]: {
+       fontSize : '1.7rem',
+       fontWeight : 600,
+    },
+
   //  textAlign: 'center'
   },
 
@@ -33,6 +39,12 @@ const styles = {
     textTransform: 'uppercase',
     fontWeight : 500,
     marginBottom: '3rem',
+
+    [theme.breakpoints.down('sm')]: {
+       fontSize : '1.7rem',
+       fontWeight : 600,
+    },
+
   //  textAlign: 'center'
   },
 
@@ -139,8 +151,15 @@ const styles = {
 
   presenterImportant: {
     color: '#f44336',
-    fontSize: '1.3rem',
-    lineHeight: '1.7rem'
+    fontSize: '1.1rem',
+    lineHeight: '1.4rem',
+
+    [theme.breakpoints.up('sm')]: {
+       fontSize : '1.3rem',
+      lineHeight: '1.7rem',
+    },
+
+
   },
 
   presenterText: {
@@ -156,7 +175,7 @@ const styles = {
   },
 
 
-};
+});
 
 
 /*
@@ -289,7 +308,7 @@ MyTypography.defaultProps = {
 }
 
 const enhance = compose(
-  withStyles(styles),
+  withStyles(styles, {withTheme : true}),
   translate
 )
 

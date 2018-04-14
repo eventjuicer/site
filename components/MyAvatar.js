@@ -3,29 +3,30 @@ import React from 'react';
 
 //import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import classNames from 'classnames'
-//import withWidth from 'material-ui/utils/withWidth';
 
 import Avatar from 'material-ui/Avatar'
 
-const styles = {
+
+
+
+const styles = theme => ({
 
   avatar : {
-    width: 200,
-    height: 200,
 
-  },
-
-  avatarMobile : {
     width: 100,
     height: 100,
+
+    [theme.breakpoints.up('sm')]: {
+      width: 250,
+      height: 250,
+    },
   },
 
-  avatarImg : {
+  image : {
      filter: 'grayscale(100%) contrast(115%)',
   },
 
-};
+});
 
 
 const MyAvatar = ({classes, src, minimal}) => (
@@ -34,10 +35,8 @@ const MyAvatar = ({classes, src, minimal}) => (
     alt=""
     src={src}
     classes={{
-      root : classNames(classes.avatar,{
-        [classes.avatarMobile] : minimal
-      }),
-      img : classes.avatarImg
+      root : classes.avatar,
+      img : classes.image
     }}
   />
 
@@ -50,4 +49,4 @@ MyAvatar.defaultProps = {
 }
 
 
-export default withStyles(styles)(MyAvatar)
+export default withStyles(styles, {withTheme : true})(MyAvatar)
