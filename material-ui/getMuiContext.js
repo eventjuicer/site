@@ -32,11 +32,11 @@ function getMuiContext() {
     return createPageContext();
   }
 
-  if (!global.INIT_MATERIAL_UI) {
-    global.INIT_MATERIAL_UI = createPageContext();
+  if (!global.__INIT_MATERIAL_UI__) {
+    global.__INIT_MATERIAL_UI__ = createPageContext();
   }
 
-  return global.INIT_MATERIAL_UI;
+  return global.__INIT_MATERIAL_UI__;
 }
 
 

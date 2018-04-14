@@ -1,18 +1,25 @@
-
+import React from 'react';
 import PropTypes from 'prop-types';
 import { MuiThemeProvider } from 'material-ui/styles';
 import CssBaseline from 'material-ui/CssBaseline';
-
 import {getMuiContext} from '../material-ui';
 
 //import Header from '../components/Header';
 
 function withMui(BaseComponent) {
 
-  class App extends React.Component {
-    componentWillMount() {
+  class WithMui extends React.Component {
+
+    constructor(props, context) {
+
+      super(props, context);
+
       this.pageContext = this.props.pageContext || getMuiContext();
     }
+
+    // componentWillMount() {
+    //   this.pageContext = this.props.pageContext || getMuiContext();
+    // }
 
     componentDidMount() {
       const jssStyles = document.querySelector('#jss-server-side');
@@ -20,6 +27,8 @@ function withMui(BaseComponent) {
         jssStyles.parentNode.removeChild(jssStyles);
       }
     }
+
+    pageContext = null;
 
     render() {
       return (
@@ -35,15 +44,15 @@ function withMui(BaseComponent) {
     }
   }
 
-  App.propTypes = {
+  WithMui.propTypes = {
     pageContext: PropTypes.object, // eslint-disable-line
   };
 
-  App.defaultProps = {
-    pageContext: null,
-  };
+  // WithMui.defaultProps = {
+  //   pageContext: null,
+  // };
 
-  App.getInitialProps = (ctx) => {
+  WithMui.getInitialProps = (ctx) => {
     if (BaseComponent.getInitialProps) {
       return BaseComponent.getInitialProps(ctx);
     }
@@ -51,7 +60,7 @@ function withMui(BaseComponent) {
     return {};
   };
 
-  return App;
+  return WithMui;
 }
 
 export default withMui;

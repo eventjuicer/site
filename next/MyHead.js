@@ -38,7 +38,7 @@ const MyHead = ({title, titleLabel, description, descriptionLabel, url, image, w
 
       <title>{ tTitle }</title>
       <meta name="description" content={ tDescription } />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
+
       {/* <link rel="icon" sizes="192x192" href="/static/touch-icon.png" />
       <link rel="apple-touch-icon" href="/static/touch-icon.png" />
       <link rel="mask-icon" href="/static/favicon-mask.svg" color="#49B882" />
@@ -73,14 +73,12 @@ const MyHead = ({title, titleLabel, description, descriptionLabel, url, image, w
       <link rel="manifest" href="/static/manifest.json" />
       <meta name="msapplication-TileColor" content="#ffffff" />
       <meta name="msapplication-TileImage" content="/static/ms-icon-144x144.png" />
-      <meta name="theme-color" content="#ffffff" />
-
+ 
       <link rel="canonical" href={ canonical(prefixedUrl) } />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,500,700" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="google" content="notranslate" />
+     <meta name="google" content="notranslate" />
 
     {children}
 
