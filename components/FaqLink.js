@@ -1,4 +1,4 @@
-
+import React from 'react';
 import { connect } from 'react-redux';
 import {MyLink as Link} from '../next'
 import MyTypography from './MyTypography'

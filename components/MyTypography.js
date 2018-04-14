@@ -1,17 +1,13 @@
 
-
+import React from 'react';
 import compose from 'recompose/compose'
 import PropTypes from 'prop-types';
 import classNamesHelper from 'classnames'
 
-
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
-import withWidth from 'material-ui/utils/withWidth';
 
 import {translate} from '../i18n'
-
-
 
 
 const styles = {
@@ -253,7 +249,7 @@ const hl = (highlight, text, className) => {
 
 const MyTypography = (props) => {
 
-  const {variant, component, label, translate, children, classNames, classes, width, icon, iconAfter, highlight} = {...props, ...templates[props.template]};
+  const {variant, component, label, translate, children, classNames, classes, icon, iconAfter, highlight} = {...props, ...templates[props.template]};
 
   const cn = classNamesHelper(classNames.map(className => className in classes ? classes[className] : false), {
 
@@ -294,8 +290,7 @@ MyTypography.defaultProps = {
 
 const enhance = compose(
   withStyles(styles),
-  translate,
-  withWidth()
+  translate
 )
 
 export default enhance(MyTypography);

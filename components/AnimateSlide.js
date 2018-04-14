@@ -1,5 +1,5 @@
 
-
+import React from 'react';
 import Slide from 'material-ui/transitions/Slide';
 import withWidth from 'material-ui/utils/withWidth';
 import {isBigScreen} from '../helpers'

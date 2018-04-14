@@ -1,3 +1,5 @@
+
+import React from 'react';
 import Button from 'material-ui/Button';
 import {translate} from '../i18n'
 

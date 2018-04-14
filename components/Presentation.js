@@ -1,7 +1,7 @@
 
  // <Tags tags={_get(company.profile, "keywords")} />
 
-
+import React from 'react';
 
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';

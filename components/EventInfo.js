@@ -1,4 +1,4 @@
-
+import React from 'react';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import { withStyles } from 'material-ui/styles';
 import {translate} from '../i18n'

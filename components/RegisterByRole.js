@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 //import MenuItem from 'material-ui/Menu/MenuItem';
@@ -40,7 +41,7 @@ class TextFields extends React.Component {
 
     return (
       <form className={classes.container} noValidate autoComplete="off">
-    
+
         {/* <TextField
           id="select-currency-native"
           select

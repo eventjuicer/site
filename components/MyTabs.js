@@ -7,7 +7,7 @@
 
 
 
-
+import React from 'react';
 
 import Tabs, { Tab as MuiTab  } from 'material-ui/Tabs'
 import { translate } from '../i18n'

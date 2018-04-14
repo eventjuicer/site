@@ -1,4 +1,4 @@
-
+import React from 'react';
 import compose from 'recompose/compose'
 import classNames from 'classnames'
 import { withStyles } from 'material-ui/styles';

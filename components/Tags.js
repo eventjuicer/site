@@ -1,3 +1,5 @@
+
+import React from 'react';
 import Chip from 'material-ui/Chip'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'

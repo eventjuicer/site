@@ -1,4 +1,4 @@
-
+import React from 'react';
 import dynamic from 'next/dynamic'
 import { withStyles } from 'material-ui/styles';
 import { connect } from 'react-redux';

@@ -1,6 +1,6 @@
 
 
-
+import React from 'react';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose'
 import classNames from 'classnames';
@@ -8,7 +8,7 @@ import _get from 'lodash/get'
 
 import Grid from 'material-ui/Grid';
 import { withStyles } from 'material-ui/styles';
- 
+
 import {chunkArrayData} from '../helpers'
 import {translate} from '../i18n'
 import Typography from './MyTypography'

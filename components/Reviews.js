@@ -1,4 +1,4 @@
-
+import React from 'react';
 import PropTypes from 'prop-types';
 import _sample from 'lodash/sample'
 import _random from 'lodash/random'

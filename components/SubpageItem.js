@@ -1,5 +1,5 @@
 
-
+import React from 'react';
 import MyTypography from './MyTypography';
 import SubPageLink from './SubPageLink'
 

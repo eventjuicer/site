@@ -1,6 +1,6 @@
 
 
-
+import React from 'react';
 import { withStyles } from 'material-ui/styles';
  // import PlayArrowIcon from 'material-ui-icons/PlayArrow';
 

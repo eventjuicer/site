@@ -1,5 +1,5 @@
 
-
+import React from 'react';
 import compose from 'recompose/compose'
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';

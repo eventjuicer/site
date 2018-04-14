@@ -1,6 +1,6 @@
 
 
-
+import React from 'react';
 import { withStyles } from 'material-ui/styles';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose'

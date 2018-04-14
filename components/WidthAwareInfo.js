@@ -1,3 +1,4 @@
+import React from 'react';
 import compose from 'recompose/compose'
 import withWidth from 'material-ui/utils/withWidth';
 import { withStyles } from 'material-ui/styles';

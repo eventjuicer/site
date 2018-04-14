@@ -1,5 +1,5 @@
 
-
+import React from 'react';
 import compose from 'recompose/compose'
 import { connect } from 'react-redux';
 

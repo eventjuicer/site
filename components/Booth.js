@@ -1,6 +1,6 @@
 
 
-
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import classNames from 'classnames';
@@ -95,7 +95,7 @@ const Booth = ({status, data, classes, onClick, selected, styleId, zoom, buyer})
         })}
         >
           {data.ti}
-          
+
           {buyer && "cname2" in buyer && zoom > 1 ? <span className={classes.cname}>{buyer.cname2}</span> : null}
         </span>
 
