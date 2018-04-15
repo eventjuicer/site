@@ -49,7 +49,7 @@ class PageExhibit extends React.Component {
       <Head />
 
       <Wrapper
-        fisrt
+        first
         label="exhibitors.map.title"
         secondaryTitle="Chcesz się wystawić? Zostało tylko kilka stoisk!"
         >
