@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 import {
   MyHead as Head
 } from '../next'
@@ -10,33 +9,32 @@ import reduxPage from '../redux'
 import {
   Typography,
   Wrapper,
-//  WhoIsGonnaBeThere,
-//  Googlemap,
   People,
-
-  TwoColsLayout as Section,
-
+  HeroCustom as Hero,
+  ColumnList
 } from '../components';
 
-import {EmoticonDevil} from 'mdi-material-ui'
-
+import {fetcher} from '../helpers'
 
 import Layout from '../layouts/main';
-
 import Visitor from '../roles/Visitor'
+
 
 class PageError extends React.Component {
 
-  static getInitialProps({ res, err }) {
+  static async getInitialProps({ res, err, store }) {
+
+    const results = await fetcher({exhibitors : false}, store);
 
     const statusCode = res ? res.statusCode : err ? err.statusCode : null;
-    return { statusCode }
+
+    return { statusCode, exhibitors : results.getData("exhibitors")  }
 
   }
 
   render() {
 
-    const {statusCode} = this.props;
+    const {statusCode, exhibitors} = this.props;
 
     return (
 
@@ -44,49 +42,13 @@ class PageError extends React.Component {
 
         <Head />
 
-
-        <Wrapper label="common.errors.http404">
-
-
-          <Section
-
-            leftSize={5}
-            left={
-
-              <div>
-
-                <EmoticonDevil style={{width: 300, height: 300, color : "#666666"}} />
-
-              </div>
-
-             }
-             leftCentered={true}
-             right={
-               <div>
-
-
-
-                 {/* <p>
-                   {statusCode
-                     ? `An error ${statusCode} occurred on server`
-                     : 'An error occurred on client'}
-                 </p> */}
-
-
-
-              </div>
-            } />
-
-        </Wrapper>
-
-
+        <Hero />
 
         <Wrapper label="visitors.register">
 
           <Visitor />
 
         </Wrapper>
-
 
 
         <Wrapper
@@ -97,6 +59,12 @@ class PageError extends React.Component {
               // ]}
             >
               <People random={true} filter={function(item){ return item.bio && item.bio.length >5; }}   />
+        </Wrapper>
+
+
+
+        <Wrapper label="exhibitors.list_full" color="#ffffff">
+          <ColumnList data={ exhibitors } />
         </Wrapper>
 
 

@@ -1,37 +1,25 @@
 
+
 import {MyHead as Head} from '../next'
 import reduxPage from '../redux'
+import {
+  Wrapper,
+  WhoIsGonnaBeThere,
+  People,
+  //Googlemap,
+  Gallery
+} from '../components';
 
-
-
-
-import {Typography, Wrapper, WhoIsGonnaBeThere, Googlemap} from '../components';
 import Layout from '../layouts/main';
 import Visitor from '../roles/Visitor'
 
 
-class Visit extends React.Component {
+class PageVisit extends React.Component {
 
 
 static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
 {
-
-  // const _company = await fetch(`https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/companies/${query.id}`)
-  // const company = await _company.json()
-  //
-  // const _booths = await fetch('https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/bookingmap')
-  // const bookingmap = await _booths.json()
-  //
-  //
-  // store.dispatch(
-  //   resourceFetchSuccess("bookingmap", bookingmap.data)
-  // )
-  //
-  // return {
-  //   company : company.data,
-  //   eventId: _get(company, "meta.active_event_id")
-  // }
-
+  return {}
 }
 
 render()
@@ -43,17 +31,28 @@ render()
 
     <Head />
 
-
-    <Wrapper label="visitors.attendees">
-      <WhoIsGonnaBeThere />
-    </Wrapper>
-
-
-    <Wrapper label="visitors.register_alt">
+    <Wrapper label="visitors.register_alt" first>
           <Visitor />
     </Wrapper>
 
 
+    <Wrapper
+      label="visitors.attendees"
+      secondaryTitle="oraz 3000 innych osób"
+      >
+      <WhoIsGonnaBeThere />
+    </Wrapper>
+
+
+    <Wrapper
+      label="presenters.list_featured"
+      secondaryTitle="22 Prezentacje, 2 panele dyskusyjne! Udział bezpłatny."
+    >
+      <People limit={16} random={true} filter={function(item){ return item.bio.length > 10 }}  />
+    </Wrapper>
+
+
+    <Gallery />
 
     {/* <Googlemap /> */}
 
@@ -64,4 +63,4 @@ render()
 }
 
 
-export default reduxPage(Visit, (state) => ({foo: state.foo}) )
+export default reduxPage( PageVisit )

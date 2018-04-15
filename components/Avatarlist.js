@@ -36,7 +36,7 @@ render()
 
     let featured = processArrayData(data, {filter, random, limit})
 
-    if(width === "xs" && mobile && featured.length > mobile)
+    if(width === "xs" && parseInt(mobile) && featured.length > mobile)
     {
       featured = featured.slice(0, mobile)
     }

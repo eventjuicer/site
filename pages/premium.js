@@ -39,7 +39,7 @@ render()
     <Layout>
 
 
-      <Wrapper label="exhibitors.premium.title">
+      <Wrapper first label="exhibitors.premium.title">
 
 
         <Typography template="SUBH2CH" label="exhibitors.premium.networking.name" />

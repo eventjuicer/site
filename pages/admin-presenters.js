@@ -1,4 +1,8 @@
 
+
+import _get from 'lodash/get'
+import Divider from 'material-ui/Divider'
+
 import {
   MyHead as Head,
   MyLink as Link
@@ -6,25 +10,18 @@ import {
 
 import reduxPage from '../redux'
 
-import _get from 'lodash/get'
-import _keyBy from 'lodash/keyBy'
-
 import {
   MyTypography as Typography,
   TwoColsLayout as Section,
-  Wrapper,
-  Presentation,
-  resourceFetchSuccess
+  Wrapper
 } from '../components';
 
-import Divider from 'material-ui/Divider'
-
 import Layout from '../layouts/main';
-import Visitor from '../roles/Visitor'
 
 import {
   getPresenterOgImage,
-  generateLinkParams
+  generateLinkParams,
+  fetcher
 } from '../helpers'
 
 
@@ -34,21 +31,10 @@ class PageSpeakerSocial extends React.Component {
 static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
 {
 
-
-    const urls = [`presenters`];
-
-    const [presenters] = await Promise.all(
-      urls.map(url => fetch(`https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/${url}`).
-      then(resp => resp.json())
-    ))
-
-    store.dispatch(
-      resourceFetchSuccess("presenters", presenters.data)
-    )
+  const results = await fetcher({presenters : false}, store);
 
   return {
-    presenters : presenters.data,
-    // eventId: _get(company, "meta.active_event_id")
+    presenters : results.getData("presenters"),
   }
 
 }
@@ -65,7 +51,7 @@ render()
       url={ url.asPath }
     />
 
-    <Wrapper label="">
+    <Wrapper first label="">
 
       {
 
@@ -84,7 +70,7 @@ render()
 
           <Section
 
-
+            key={idx}
             leftSize={4}
             left={
 
@@ -118,7 +104,7 @@ render()
              leftCentered={false}
              right={
 
-               <img src={ ogImage } alt="" style={{marginTop: 10}} />
+               <img src={ ogImage } alt="" style={{marginTop: 10, marginLeft: 20, maxWidth : 770}} />
              }
 
           />

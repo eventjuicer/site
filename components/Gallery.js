@@ -44,6 +44,30 @@ const styles = theme => ({
 
   deSaturated : {
      filter: 'saturate(30%) contrast(115%)',
+  },
+
+  gridListTile : {
+
+    [theme.breakpoints.only('xs')]: {
+        height : 300,
+    },
+
+    [theme.breakpoints.only('sm')]: {
+        height : 450,
+    },
+
+    [theme.breakpoints.only('md')]: {
+        height : 550,
+    },
+
+    [theme.breakpoints.only('lg')]: {
+        height : 700,
+    },
+
+    [theme.breakpoints.only('xl')]: {
+        height : 800,
+    },
+
   }
 });
 
@@ -113,7 +137,7 @@ class Gallery extends React.PureComponent {
 
         <GridList className={classes.gridList} cols={this.getSize("c")}  cellHeight={this.getSize("h")} >
           {data.map((tile, idx) => (
-            <GridListTile key={tile.id}>
+            <GridListTile key={tile.id} classes={{root : classes.gridListTile}}>
               <img src={tile.src} alt="" className={classes.deSaturated} />
               {/* <GridListTileBar
                title={tile.id}
@@ -149,7 +173,7 @@ Gallery.propTypes = {
 };
 
 const enhance = compose(
-  withStyles(styles),
+  withStyles(styles, {name : "Gallery"}),
   connect((state) => ({
     width : state.app.width,
     photos : state.resources.photos

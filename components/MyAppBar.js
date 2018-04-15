@@ -43,13 +43,11 @@ const styles = theme => ({
   //  margin: theme.spacing.unit * 2,
   },
 
- subtitle: {
-  fontWeight : 300
-},
   menuButton: {
     marginLeft: -12,
     marginRight: 20,
   },
+
 });
 
 function MyAppBar(props) {
@@ -62,16 +60,16 @@ function MyAppBar(props) {
     <div className={classNames(classes.root, {
       [classes.spaced] : noItems
     })}>
-      <AppBar position={ position === "fixed" || noItems ? 'fixed' : 'static' }>
+      <AppBar position="fixed">
         <Toolbar>
 
-          {/* <IconButton onClick={drawerShow} className={classes.menuButton} color="inherit" aria-label="Menu">
+          <IconButton onClick={drawerShow} className={classes.menuButton} color="inherit" aria-label="Menu">
             <MenuIcon />
-          </IconButton> */}
+          </IconButton>
 
           <Link href="/">
           <Typography component="a" variant="title" color="inherit" className={classes.flex}>
-          Targi eHandlu <span className={classes.subtitle}>Kraków 25/04/2018</span>
+          Targi eHandlu
           </Typography>
           </Link>
 

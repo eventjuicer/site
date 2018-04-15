@@ -10,12 +10,14 @@ import {
   WhoIsGonnaBeThere,
   Gallery,
   People,
-  Avatarlist
+  Avatarlist,
+  Hero
 } from '../components';
 
 import Layout from '../layouts/main';
 import Visitor from '../roles/Visitor'
 
+import {fetcher} from '../helpers'
 
 class PageInvite extends React.Component {
 
@@ -23,27 +25,16 @@ class PageInvite extends React.Component {
 static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
 {
 
-  const _person = await fetch(`https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/code/${query.hash}`)
-  const person = await _person.json()
+  const person = `code/${query.id}`
 
+  const results =  await fetcher({[person] : false, exhibitors : false}, store )
 
-  const _exhibitors = await fetch('https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/exhibitors')
-  const exhibitors = await _exhibitors.json()
-
-  //
-  // const _booths = await fetch('https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/bookingmap')
-  // const bookingmap = await _booths.json()
-  //
-  //
-  // store.dispatch(
-  //   resourceFetchSuccess("bookingmap", bookingmap.data)
-  // )
-  //
   return {
-    person : person.data,
-    exhibitors : exhibitors.data,
-    eventId: _get(person, "meta.active_event_id", 0)
+    person : results.getData(person),
+    exhibitors : results.getData("exhibitors"),
+    eventId: _get(results.getMeta(person), "active_event_id", 0)
   }
+
 
 }
 
@@ -62,13 +53,14 @@ render()
       titleLabel={["visitors.opengraph.title", {name : name, cname : cname, location : 'Kraków', date : '25 kwietnia 2018'}]}
     />
 
-    <Wrapper>
 
-        <Typography template="visitor_invite" label={["visitors.invite.title", { name, cname }]} />
+    <Hero>
 
-        <Typography template="visitor_invite_join" label={["visitors.invite.will_you_join", { name, cname }]} />
+      <Typography template="visitor_invite" label={["visitors.invite.title", { name, cname }]} /><br/>
 
-    </Wrapper>
+      <Typography template="visitor_invite_join" label={["visitors.invite.will_you_join", { name, cname }]} />
+
+    </Hero>
 
 
 
@@ -122,4 +114,4 @@ render()
 }
 
 
-export default reduxPage(PageInvite, (state) => ({foo: state.foo}) )
+export default reduxPage( PageInvite  )

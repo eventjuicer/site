@@ -34,34 +34,18 @@ import {
 const People = dynamic(import("../components/People"))
 const Avatarlist = dynamic(import("../components/Avatarlist"))
 
+import {fetcher} from '../helpers'
 
 class PageSpeaker extends React.Component {
 
-
 static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
 {
-
-
-    const urls = [`presenters`, 'exhibitors'];
-
-    const [presenters, exhibitors] = await Promise.all(
-      urls.map(url => fetch(`https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/${url}`).
-      then(resp => resp.json())
-    ))
-
-    store.dispatch(
-      resourceFetchSuccess("presenters", presenters.data)
-    )
-
-    store.dispatch(
-      resourceFetchSuccess("exhibitors", exhibitors.data)
-    )
+  const results = await fetcher({presenters : false, exhibitors : false}, store)
 
   return {
-    speakers : presenters.data,
-    exhibitors : exhibitors.data,
+    speakers : results.getData("presenters"),
+    exhibitors : results.getData("exhibitors"),
     speakerId : query.id,
-    // eventId: _get(company, "meta.active_event_id")
   }
 
 }
@@ -86,16 +70,15 @@ render()
     <Head
       image={ getPresenterOgImage(speaker) }
       url={ url.asPath }
-      titleLabel={["speakers.opengraph.title", {name}]}
-      descriptionLabel={["speakers.opengraph.description", {
+      titleLabel={["presenters.opengraph.title", {name}]}
+      descriptionLabel={["presenters.opengraph.description", {
         fname: _get(speaker, "fname"),
         cname2 : _get(speaker, 'cname2'),
         presentation_title : _get(speaker, 'presentation_title'),
       }]}
     />
 
-    <Wrapper label="">
-
+    <Wrapper first label="">
 
       <Section
 

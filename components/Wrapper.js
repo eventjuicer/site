@@ -23,10 +23,13 @@ const styles = () => ({
 
     },
 
-    rootDense : {
-
+    dense : {
       paddingBottom: '1rem',
       paddingTop: '1rem',
+    },
+
+    first : {
+      marginTop: 40,
     },
 
     overlay : {
@@ -78,10 +81,12 @@ const Wrapper = ({
 
   color,
   links,
-  dense}) => (
+  dense,
+  first}) => (
 
   <section className={classNames(classes.root, {
-    [classes.rootDense] : dense
+    [classes.dense] : dense,
+    [classes.first] : first
   })} style={{backgroundColor : color}}>
 
     <div className={classes.overlay}>

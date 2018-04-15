@@ -5,10 +5,6 @@ import Grid from 'material-ui/Grid';
 import withWidth from 'material-ui/utils/withWidth';
 import { withStyles } from 'material-ui/styles';
 
-import IconDate from 'material-ui-icons/DateRange';
-import IconLocation from 'material-ui-icons/LocationOn';
-import IconAlarm from 'material-ui-icons/Alarm';
-import red from 'material-ui/colors/red';
 
 
 import EventInfo from './EventInfo'
@@ -29,12 +25,6 @@ const styles = theme => ({
   paper : {
     padding: 30
   },
-
-  redIcon : {
-    color : red[500],
-    height : 30,
-    width : 30
-  }
 
 });
 
@@ -65,19 +55,19 @@ const Footer = ({links, classes, width}) => (
            items={[
 
            {
-             icon : <IconLocation className={classes.redIcon} />,
+             icon : "location",
              label : "event.location",
              text : "EXPO Kraków, Galicyjska 9"
            },
 
            {
-             icon : <IconDate className={classes.redIcon}  />,
+             icon : "date",
              label : "event.date",
              text : "25 kwietnia 2018"
            },
 
            {
-             icon : <IconAlarm className={classes.redIcon}  />,
+             icon : "alarm",
              label : "event.hours",
              text : "10:00-17:00"
            },

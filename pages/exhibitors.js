@@ -4,8 +4,6 @@ import {
   MyHead as Head,
   MyLink as Link
 } from '../next'
-import fetch from 'isomorphic-unfetch'
-
 
 import reduxPage from '../redux'
 import Layout from '../layouts/main';
@@ -22,45 +20,14 @@ import {
 //const Gallery = dynamic(import('../components/GalleryQuoted'))
 import Visitor from '../roles/Visitor'
 
+import {fetcher} from '../helpers'
 
 class PageExhibitors extends React.Component {
 
   static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
   {
-
-    const _exhibitors = await fetch('https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/exhibitors')
-    const exhibitors = await _exhibitors.json()
-
-    const _bookingmap = await fetch('https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/bookingmap')
-    const bookingmap = await _bookingmap.json()
-
-    /*
-    if (!store.getState().placeholderData) {
-      store.dispatch(resourceFetchSuccess())
-    }
-  */
-
-  // store.dispatch(
-  //   resourceFetchSuccess("exhibitors", exhibitors.data)
-  // )
-
-
-    store.dispatch(
-      resourceFetchSuccess("bookingmap", bookingmap.data)
-    )
-
-    //booths : bookingmap.data
-
-    const userAgent = req ? req.headers['user-agent'] : navigator.userAgent
-    return {   userAgent : userAgent, exhibitors : exhibitors.data }
-    //return {};
-  }
-
-
-  componentDidMount () {
-   /*
-    this.props.dispatch(startClock())
-  */
+    const results = await fetcher({exhibitors : false, bookingmap : false}, store)
+    return { exhibitors : results.getData("exhibitors") }
   }
 
 
@@ -77,8 +44,8 @@ class PageExhibitors extends React.Component {
       <Head />
 
 
-      <Wrapper label="exhibitors.list_full"  dense={true}>
-        <Avatarlist data={ exhibitors } limit="200" />
+      <Wrapper label="exhibitors.list_full" first>
+        <Avatarlist data={ exhibitors } limit="200" mobile={false} />
       </Wrapper>
 
 
@@ -94,17 +61,6 @@ class PageExhibitors extends React.Component {
         <Bookingmap  />
       </Wrapper>
 
-
-
-
-      <Gallery label="event.gallery" />
-
-
-    <Wrapper label="visitors.register_alt" color="#fafafa" links={[
-        <Link href="/visit" label="visitors.more_info" variant="flat" />
-    ]}>
-      <Visitor />
-    </Wrapper>
 
 
       </Layout>

@@ -3,72 +3,58 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import compose from 'recompose/compose'
 
+import {translate} from '../i18n'
 
-
+import List, {ListSubheader} from 'material-ui/List';
 import { withStyles } from 'material-ui/styles';
 import Drawer from 'material-ui/Drawer';
-import Button from 'material-ui/Button';
-import List from 'material-ui/List';
-import Divider from 'material-ui/Divider';
+//import Divider from 'material-ui/Divider';
 
 import {drawerHide} from './redux/actions'
-
+import MenuItemLink from './MenuItemLink'
 
 const styles = {
   list: {
-    width: 250,
-  },
-  fullList: {
-    width: 'auto',
+    width: '100%',
+    maxWidth: 360,
   },
 };
 
-class MyDrawer extends React.PureComponent {
+const Section = translate(
+  ({label, translate}) => (
+  <ListSubheader component="div">{ translate(`common.menu.${label}.title`) }</ListSubheader>
+))
 
-  handleClose = () => {
+const MyDrawer = ( { items, classes, drawer, drawerHide } ) => (
 
-  }
-
-  render() {
-
-    const { classes, drawer, drawerHide } = this.props;
-
-    const sideList = (
-      <div className={classes.list}>
-        <List>ssss</List>
-        <Divider />
-        <List>sss</List>
+  <Drawer open={drawer} onClose={drawerHide}>
+    <div
+      tabIndex={0}
+      role="button"
+      onClick={drawerHide }
+      onKeyDown={drawerHide }
+    >
+      <div className={classes.list}>{
+          items.map((section, i) => <List
+            key={i}
+            subheader={<Section
+              label={section.name}
+            />}
+            >{section.items.map((item, j) => <MenuItemLink
+              key={j}
+              to={ item.to }
+              baseLabel={ section.name }
+              label={ item.name }
+              icon={item.icon}
+            />)}</List>)}
       </div>
-    );
-
-    const fullList = (
-      <div className={classes.fullList}>
-        <List>asd</List>
-        <Divider />
-        <List>dss</List>
-      </div>
-    );
-
-    return (
-
-        <Drawer open={drawer} onClose={drawerHide}>
-          <div
-            tabIndex={0}
-            role="button"
-            onClick={drawerHide }
-            onKeyDown={drawerHide }
-          >
-            {sideList}
-          </div>
-        </Drawer>
-
-
-    );
-  }
-}
+    </div>
+  </Drawer>
+)
 
 MyDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
+  items : PropTypes.array.isRequired
 };
 
 const enhance = compose(

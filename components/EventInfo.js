@@ -3,45 +3,74 @@ import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import { withStyles } from 'material-ui/styles';
 import {translate} from '../i18n'
 import compose from 'recompose/compose'
+import classNames from 'classnames'
 
-
-
+import Icon from './Icon'
 
 
 const styles = {
 
-  container : {
-    maxWidth : 400,
-  //  marginTop: 30
+  h : {
+    display : 'flex',
+    flexDirection : 'row'
+  },
+
+  v : {
+      maxWidth : 400,
+  },
+
+  pr_black : {
+
+  },
+
+  sec_black : {
+
+  },
+
+  pr_white : {
+    color : '#ffffff',
+    fontSize : '2rem'
+  },
+
+  sec_white : {
+    color : '#ffffff',
+    fontSize : '1.5rem'
   },
 
 }
 
 
 
-const EventInfo = ({classes, items, translate, orientation}) => (
+const EventInfo = ({classes, items, translate, orientation, color}) => (
 
-  <div className={ classes.container }>
-    <List component="ul">
+    <List component="ul" className={classes[orientation]}>
       {items.map(({label, icon, text}, i) =>
         {
 
           return (
             <ListItem key={i}>
-              {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
-              <ListItemText primary={ text }  secondary={translate(label)} />
+              {icon ? <ListItemIcon><Icon name={icon} variant="red" /></ListItemIcon> : null}
+              <ListItemText
+                  primary={ text }
+                  secondary={translate(label)}
+                  classes={{
+                    primary : classes["pr_" + color],
+                    secondary: classes["sec_" + color]
+                  }}
+              />
             </ListItem>
           )
         }
      )}
 
     </List>
-  </div>
+
 )
 
 EventInfo.defaultProps = {
   items : [],
-  orientation : "v"
+  orientation : "v",
+  color : "black"
 }
 
 const enhance = compose(

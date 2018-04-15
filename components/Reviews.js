@@ -2,11 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import _sample from 'lodash/sample'
 import _random from 'lodash/random'
-
+import { connect } from 'react-redux';
 import compose from 'recompose/compose'
 import classNames from 'classnames'
 import { withStyles } from 'material-ui/styles';
-import withWidth from 'material-ui/utils/withWidth';
 
 
 import Avatar from 'material-ui/Avatar';
@@ -91,7 +90,7 @@ A tak na serio - Targi eHandlu to świetna okazja do skonfrontowania swojego biz
 {
   text : `Z Targami e-Handlu jestem od pierwszej edycji, kiedy to siedzieliśmy przy okrągłych stolikach w Iglicy MTP w Poznaniu.
   Od tamtej pory każda kolejna edycja jest bardziej dojrzała, a co najważniejsze poza samymi targami jest również potężna dawka merytorycznej wiedzy podczas prezentacji.`,
-  mobileText : `...każda kolejna edycja jest bardziej dojrzała`,
+  mobileText : `...potężna dawka merytorycznej wiedzy podczas prezentacji.`,
   person : "Błażej Abel, Landingi",
   avatar : "https://d3vv6lp55qjaqc.cloudfront.net/items/2R2T2f0U231X213j3v3g/ba.jpg"
 }
@@ -181,7 +180,7 @@ Reviews.propTypes = {
 
 const enhance = compose(
   withStyles(styles),
-  withWidth()
+  connect((state) => ({width : state.app.width}))
 )
 
 export default enhance(Reviews);

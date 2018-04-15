@@ -1,20 +1,36 @@
-
+import React from 'react'
 import { connect } from 'react-redux';
 import compose from 'recompose/compose'
 import withWidth from 'material-ui/utils/withWidth';
 
+class ScreenSize extends React.Component {
 
-const ScreenSize = ({oldWidth, width, screenSizeChanged, dispatch}) => {
-
-  if(width && oldWidth !== width)
-  {
-    dispatch({
-  		type: "SCREEN_SIZE_CHANGED",
-      width : width
-  	});
+  constructor(props){
+    super(props)
   }
-  return null;
+
+  shouldComponentUpdate(nextProps, prevState) {
+
+    const { width } = nextProps;
+    const { oldWidth, dispatch } = this.props;
+
+    if(width && oldWidth !== width)
+    {
+      dispatch({
+        type: "SCREEN_SIZE_CHANGED",
+        width : width
+      });
+    }
+
+    return false
+
+  }
+
+  render(){
+    return null
+  }
 }
+
 
 const enhance = compose(
   withWidth(),

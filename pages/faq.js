@@ -29,9 +29,7 @@ render()
   return (
     <Layout>
 
-      <Wrapper title="FAQ">
-
-    
+      <Wrapper title="FAQ" first>
 
       <Faq url={url} baseLabel="exhibitors.faq.before_event" items={[
           {

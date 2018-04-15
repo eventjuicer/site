@@ -1,25 +1,8 @@
 
 import dynamic from 'next/dynamic'
-import fetch from 'isomorphic-unfetch'
-
-
-
 import reduxPage from '../redux'
 import Layout from '../layouts/main';
 
-
-import {
-  Wrapper,
-  Avatarlist,
-  ColumnList,
-//  Bookingmap,
-  Typography,
-  Gallery,
-  WidthAwareInfo,
-  People,
-  HeroCustom as Hero,
-  resourceFetchSuccess
-} from '../components'
 
 import {
   MyHead as Head,
@@ -27,9 +10,24 @@ import {
 } from '../next'
 
 
-import Visitor from '../roles/Visitor'
+import {
+  Wrapper,
+  Avatarlist,
+  ColumnList,
+//  Bookingmap,
+  Gallery,
+//  WidthAwareInfo,
+  People,
+  HeroCustom as Hero,
+//  Reviews
+} from '../components'
+
 
 const Bookingmap = dynamic(import("../components/Bookingmap"))
+
+
+import Visitor from '../roles/Visitor'
+import {fetcher} from '../helpers'
 
 
 class PageIndex extends React.Component {
@@ -37,46 +35,15 @@ class PageIndex extends React.Component {
   static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
   {
 
-    const _exhibitors = await fetch('https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/exhibitors')
-    const exhibitors = await _exhibitors.json()
+    const results = await fetcher({exhibitors : false}, store);
+    return { exhibitors : results.getData("exhibitors") }
 
-  //   const _bookingmap = await fetch('https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/bookingmap')
-  //   const bookingmap = await _bookingmap.json()
-  //
-  //   /*
-  //   if (!store.getState().placeholderData) {
-  //     store.dispatch(resourceFetchSuccess())
-  //   }
-  // */
-  //
-  // store.dispatch(
-  //   resourceFetchSuccess("exhibitors", exhibitors.data)
-  // )
-  //
-  //
-    store.dispatch(
-      resourceFetchSuccess("exhibitors", exhibitors.data)
-    )
-
-    //booths : bookingmap.data
-
-    const userAgent = req ? req.headers['user-agent'] : navigator.userAgent
-    return {   userAgent : userAgent, exhibitors : exhibitors.data }
-    //return {};
   }
-
-
-  componentDidMount () {
-   /*
-    this.props.dispatch(startClock())
-  */
-  }
-
 
   render()
   {
 
-    const { exhibitors, booths, url, userAgent } = this.props;
+    const { exhibitors, url } = this.props;
 
     return (
 
@@ -142,6 +109,14 @@ class PageIndex extends React.Component {
 
 
       <Gallery label="event.gallery" />
+
+
+{/*
+      <Wrapper text="Opinie o Targach Ehandlu">
+        <Reviews />
+      </Wrapper>
+
+ */}
 
       <Wrapper label="exhibitors.list_full" color="#ffffff">
         <ColumnList data={ exhibitors } />

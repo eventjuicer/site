@@ -10,36 +10,28 @@ import {
   Typography,
   Wrapper,
   WhoIsGonnaBeThere,
+  MyTypography,
   Googlemap
 } from '../components';
 
 import Layout from '../layouts/main';
 import Visitor from '../roles/Visitor'
+import {fetcher} from '../helpers'
+
 
 class ThankyouPage extends React.Component {
+
 
 static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
 {
 
-  const _person = await fetch(`https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/code/${query.hash}`)
-  const person = await _person.json()
+  const person = `code/${query.hash}`
 
+  const results =  await fetcher({[person] : false, exhibitors : false})
 
-  const _exhibitors = await fetch('https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/exhibitors')
-  const exhibitors = await _exhibitors.json()
-
-  //
-  // const _booths = await fetch('https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/bookingmap')
-  // const bookingmap = await _booths.json()
-  //
-  //
-  // store.dispatch(
-  //   resourceFetchSuccess("bookingmap", bookingmap.data)
-  // )
-  //
   return {
-    person : person.data,
-    eventId: _get(person, "meta.active_event_id", 0)
+    person : results.getData(person),
+    eventId: _get(results.getMeta(person), "active_event_id", 0)
   }
 
 }
@@ -55,8 +47,17 @@ render()
 
     <Head
       url={ url.asPath }
-      titleLabel={["visitors.opengraph.title", {name : name, location : 'Kraków', date : '25 kwietnia 2018'}]}
+      titleLabel={["visitors.opengraph.title", {
+          name : name,
+          location : 'Kraków', date : '25 kwietnia 2018'}]}
     />
+
+
+    <Wrapper first label={["visitors.thankyou", { name : _get(person, "fname", "") }]}>
+
+
+    </Wrapper>
+
 
     <Wrapper label="visitors.attendees">
       <WhoIsGonnaBeThere />
@@ -68,7 +69,6 @@ render()
     </Wrapper>
 
 
-
     {/* <Googlemap /> */}
 
 
@@ -78,4 +78,4 @@ render()
 }
 
 
-export default reduxPage(ThankyouPage, (state) => ({foo: state.foo}) )
+export default reduxPage( ThankyouPage )

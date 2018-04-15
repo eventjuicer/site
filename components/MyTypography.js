@@ -29,6 +29,7 @@ const styles = theme => ({
     [theme.breakpoints.down('sm')]: {
        fontSize : '1.7rem',
        fontWeight : 600,
+       marginBottom: '2rem',
     },
 
   //  textAlign: 'center'
@@ -43,6 +44,7 @@ const styles = theme => ({
     [theme.breakpoints.down('sm')]: {
        fontSize : '1.7rem',
        fontWeight : 600,
+       marginBottom: '2rem',
     },
 
   //  textAlign: 'center'
@@ -93,10 +95,21 @@ const styles = theme => ({
   },
 
   hero : {
-      fontSize : '2rem',
+
+      textAlign : 'center',
+      fontSize : '3rem',
       color : '#ffffff',
-      fontStyle: 'italic',
+
       fontWeight : 900,
+      textTransform : 'uppercase',
+
+      [theme.breakpoints.only('md')]: {
+         fontSize : '5rem',
+      },
+
+      [theme.breakpoints.up('lg')]: {
+         fontSize : '6rem',
+      },
   },
 
   italic : {
@@ -222,7 +235,7 @@ const templates = {
       variant : "subheading", component : "legend", classNames : ["legend"]
   },
 
-  heroOpinion : {
+  hero : {
       variant : "headline", component : "h2", classNames : ["hero"]
   },
 

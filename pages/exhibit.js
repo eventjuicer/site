@@ -7,9 +7,12 @@ import Layout from '../layouts/main';
 
 import {
   Wrapper,
-  ColumnList,
-//  Bookingmap,
+  Avatarlist,
+  Typography,
   Gallery,
+  WidthAwareInfo,
+  People,
+  HeroCustom as Hero
 } from '../components'
 
 import {
@@ -24,13 +27,11 @@ import {fetcher} from '../helpers'
 
 const Bookingmap = dynamic(import("../components/Bookingmap"))
 
-
-class PageSpecials extends React.Component {
+class PageExhibit extends React.Component {
 
   static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
   {
-
-    const results = await fetchers({exhibitors : false}, store)
+    const results = await fetcher({exhibitors : false}, store)
 
     return {  exhibitors : results.getData("exhibitors") }
   }
@@ -39,7 +40,7 @@ class PageSpecials extends React.Component {
   render()
   {
 
-    const { exhibitors, booths, url, userAgent } = this.props;
+    const { exhibitors, url } = this.props;
 
     return (
 
@@ -48,19 +49,25 @@ class PageSpecials extends React.Component {
       <Head />
 
       <Wrapper
-        first
-        label="visitors.register"
-        secondaryTitle="Spotkamy się w gronie ponad 3000 osób!"
-      //   links={[
-      //   <Link key="more" href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
-      // ]}
-      >
-      <Visitor  />
+        fisrt
+        label="exhibitors.map.title"
+        secondaryTitle="Chcesz się wystawić? Zostało tylko kilka stoisk!"
+        >
+        {/* <WidthAwareInfo /> */}
+        <Bookingmap  />
       </Wrapper>
 
-      <Wrapper label="exhibitors.list_full" color="#ffffff">
-        <ColumnList data={ exhibitors } />
+
+      <Wrapper
+        label="exhibitors.list_full"
+
+      //  dense={true}
+      >
+        <Avatarlist  data={ exhibitors } limit={null} />
       </Wrapper>
+
+
+      <Gallery label="event.gallery" />
 
       </Layout>
 
@@ -69,4 +76,4 @@ class PageSpecials extends React.Component {
 
 }
 
-export default reduxPage( PageSpecials )
+export default reduxPage( PageExhibit )

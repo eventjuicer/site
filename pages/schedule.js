@@ -10,7 +10,7 @@ import {
   Wrapper,
   WhoIsGonnaBeThere,
 //  Googlemap,
-  People
+  Schedule
 } from '../components';
 
 import Layout from '../layouts/main';
@@ -18,12 +18,13 @@ import Layout from '../layouts/main';
 import Visitor from '../roles/Visitor'
 
 
-class Visit extends React.Component {
+class PageSchedule extends React.Component {
 
 
 static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
 {
-  return {}
+   return {}
+
 }
 
 render()
@@ -35,17 +36,17 @@ render()
 
     <Head />
 
-
-    <Wrapper first
-      label="presenters.list_full"
-      secondaryTitle="pełna agenda już wkrótce"
+    <Wrapper
+      first
+      label="presenters.schedule"
+      secondaryTitle="godziny prezentacji zostaną podane wkrótce"
       // links={[
       //   <Link href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
       // ]}
     >
-      <People random={true} filter={function(item){ return item.bio && item.bio.length >5; }}   />
-    </Wrapper>
+      <Schedule stages={3} random={true} filter={function(item){ return item.bio && item.bio.length >5; }}   />
 
+    </Wrapper>
 
     <Wrapper label="visitors.register_alt">
 
@@ -53,23 +54,17 @@ render()
 
     </Wrapper>
 
-
     <Wrapper label="visitors.attendees">
 
       <WhoIsGonnaBeThere />
 
     </Wrapper>
 
-
     <Wrapper>
-
       <Visitor />
-
     </Wrapper>
 
-
     {/* <Googlemap /> */}
-
 
   </Layout>)
 }
@@ -77,4 +72,4 @@ render()
 }
 
 
-export default reduxPage( Visit )
+export default reduxPage(PageSchedule )

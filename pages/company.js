@@ -9,27 +9,23 @@ import {
 
 import reduxPage from '../redux'
 
-
-import _get from 'lodash/get'
-import _map from 'lodash/map'
+import {get} from 'lodash'
 
 
 import {
   MyTypography as Typography,
-  TwoColsLayout as Section,
   Wrapper,
-  Company as CompanyProfile,
+  Company,
   resourceFetchSuccess,
-  Tags,
   Gallery,
-  People,
   ColumnList
 } from '../components';
 
 
 import Layout from '../layouts/main';
 
-const Bookingmap = dynamic(import('../components/Bookingmap'))
+const CompanyBookingmap = dynamic(import('../components/CompanyBookingmap'))
+const People = dynamic(import('../components/People'))
 
 
 /*USER REGISTRATION*/
@@ -38,19 +34,12 @@ import Visitor from '../roles/Visitor'
 
 
 import {
-  filterCompanyInstances,
-  stripTags,
-  escapeHtml,
-  getCompanyLogotype,
-  getCompanyAltOgImage
+  getCompanyAltOgImage,
+  getCompanyProfileInfo
 } from '../helpers'
 
 
-// TabContainer.propTypes = {
-// //  children: PropTypes.node.isRequired,
-// };
-
-class Company extends React.Component {
+class PageCompany extends React.Component {
 
 
 static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
@@ -70,7 +59,7 @@ static async getInitialProps({err, req, res, pathname, query, asPath, isServer, 
   return {
     company : company.data,
     exhibitors : exhibitors.data,
-    eventId: _get(company, "meta.active_event_id")
+    eventId: get(company, "meta.active_event_id")
   }
 
 }
@@ -80,79 +69,26 @@ render()
 
   const { company, exhibitors, url , eventId} = this.props;
 
-  const purchases = _get(company, "instances");
-  const data = filterCompanyInstances(purchases, eventId);
-  const selectedBoothIds = _map(data, 'formdata.id');
-  const selectedBoothNames = _map(data, 'formdata.ti');
-
-  const name = _get(company, "profile.name");
-
-  //check for custom OG image!!!
-  const logotype = getCompanyLogotype(company)
-  const ogimage = getCompanyAltOgImage(company, url.asPath)
-
   return (<Layout>
 
     <Head
-      image={ ogimage }
+      image={ getCompanyAltOgImage(company, url.asPath)  }
       url={ url.asPath }
-      titleLabel={["companies.opengraph.title", {name : name}]}
+      titleLabel={["companies.opengraph.title", {name : getCompanyProfileInfo(company, "name") }]}
     />
 
     <Wrapper label="">
+        <Company company={company} />
+    </Wrapper>
 
-      <Section
-
-        leftSize={5}
-        left={
-
-          <div>
-
-            <img src={logotype} alt="" style={{maxWidth: 300, maxHeight: 200}} />
-
-            {/* <Typography label={["exhibitors.booth_location", {
-                cname2 : name,
-                loc : selectedBoothNames.join(","),
-                smart_count : selectedBoothNames.length
-              }]} /> */}
-
-          </div>
-
-         }
-         leftCentered={true}
-         right={
-           <div>
-
-          <Tags tags={_get(company.profile, "keywords")} />
-
-          <CompanyProfile company={company} />
-          </div>
-        } />
-
+    <Wrapper label="visitors.register" color="#fafafa" links={[
+         <Link key="more" href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
+      ]}>
+      <Visitor  />
     </Wrapper>
 
 
-
-
-
-        <Wrapper label="visitors.register" color="#fafafa" links={[
-           <Link key="more" href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
-        ]}>
-          <Visitor  />
-        </Wrapper>
-
-
-
-
-
-    <Wrapper label={["exhibitors.booth_location_full", {
-        cname2 : name,
-        loc : selectedBoothNames.join(","),
-        smart_count : selectedBoothNames.length
-      }]}>
-      <Bookingmap selected={selectedBoothIds} />
-    </Wrapper>
-
+    <CompanyBookingmap company={company} eventId={eventId} />
 
 
     <Wrapper
@@ -171,11 +107,11 @@ render()
 
 
 
-        <Wrapper label="visitors.register_alt" color="#ffffff" links={[
-           <Link key="more" href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
-        ]}>
-          <Visitor  />
-        </Wrapper>
+  <Wrapper label="visitors.register_alt" color="#ffffff" links={[
+     <Link key="more" href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
+  ]}>
+    <Visitor  />
+  </Wrapper>
 
 
 
@@ -185,12 +121,10 @@ render()
 
 
 
-
-
   </Layout>)
 }
 
 }
 
 
-export default reduxPage(Company )
+export default reduxPage( PageCompany )

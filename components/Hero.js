@@ -1,24 +1,25 @@
 //import PropTypes from 'prop-types';
+
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose'
-
-
 import {isBigScreen} from '../helpers'
+
+
 
 const styles = theme => ({
 
   container : {
 
-    background: `url('https://res.cloudinary.com/eventjuicer/image/upload/v1523564269/welcome1.jpg') center center no-repeat`,
+    backgroundRepeat: 'no-repeat no-repeat',
+    backgroundPosition: 'center center',
     backgroundSize: 'cover',
     backgroundAttachment: 'fixed',
     height: "100vh",
     width: '100%',
     position: 'relative',
     overflow: "hidden",
-
   },
 
   video : {
@@ -29,9 +30,7 @@ const styles = theme => ({
     minHeight: "100%",
     width: "auto",
     height: "auto",
-
     overflow: "hidden",
-
   },
 
   overlay : {
@@ -41,13 +40,16 @@ const styles = theme => ({
     right: 0,
     width: "100%",
     height: "100vh",
-
     display : 'flex',
     justifyContent : 'center',
     alignItems : 'center',
-
-
+    paddingLeft : 10,
+    paddingRight : 10
   },
+
+  h1 : {
+
+  }
 
 });
 
@@ -56,7 +58,7 @@ const styles = theme => ({
 
 const Hero = ({width, videoSrc, background, classes, children}) => (
 
-  <section className={classes.container}>
+  <section className={classes.container} style={{backgroundImage : `url(${background})`}}>
 
     {isBigScreen(width) && videoSrc ? <video autoPlay muted loop className={classes.video}>
         <source src={videoSrc} type="video/mp4" />
@@ -64,22 +66,24 @@ const Hero = ({width, videoSrc, background, classes, children}) => (
     }
 
     <div className={classes.overlay}>
-
-    {children}
-
+      {children}
     </div>
+
   </section>
 
 )
 
 Hero.defaultProps = {
   width : "xs",
-  videoSrc : null
+  background : "https://res.cloudinary.com/eventjuicer/image/upload/v1523564269/welcome1.jpg",
+  videoSrc : "https://s3.eu-central-1.amazonaws.com/eventjuicer-assets/video11_2.mp4",
+  label : null,
+  text : ""
 }
 
 const enhance = compose(
   connect( (state) => ({width : state.app.width}) ),
-  withStyles(styles)
+  withStyles(styles),
 )
 
 

@@ -19,7 +19,7 @@ const Drawer = dynamic(import('../components/MyDrawer'))
 
 import ScreenSize from '../material-ui/ScreenSize'
 import customMessages from 'eventjuicer-site-translations'
-
+import menuItems from '../components/menuItems'
 
 Router.onRouteChangeComplete = () => {
   if (window.gtag){
@@ -51,7 +51,7 @@ const Layout = (props) => (
 
     <Dialog />
     <Snackbar />
-    <Drawer />
+    <Drawer items={ menuItems } />
 
     <Chatlio button={false} />
 
