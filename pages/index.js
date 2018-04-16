@@ -68,10 +68,11 @@ class PageIndex extends React.Component {
         label="presenters.list_featured"
         secondaryTitle="Udział bezpłatny. Pełna agenda już wkrótce..."
         links={[
-          <Link key="more" href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
+          <Link key="all" href="/presenters" label="common.menu.visitors.presenters" variant="flat" color="secondary" />,
+          <Link key="subjects" href="/schedule" label="common.menu.visitors.schedule" variant="flat" color="secondary" />
         ]}
       >
-        <People limit={16} random={true} filter={function(item){ return item.bio.length > 10 }}  />
+        <People limit={8} random={true} filter={function(item){ return item.bio.length > 10 }}  />
       </Wrapper>
 
 
@@ -91,7 +92,9 @@ class PageIndex extends React.Component {
       <Wrapper
         label="exhibitors.list_featured"
         secondaryTitle="i ponad 120 innych Wystawców"
-      //  dense={true}
+        links={[
+          <Link key="all" href="/exhibitors" label="common.menu.visitors.exhibitors" variant="flat" color="secondary" />,
+        ]}
       >
         <Avatarlist filter={function(item){ return item.featured; }} data={ exhibitors } />
       </Wrapper>
