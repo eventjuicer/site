@@ -49,8 +49,11 @@ const HeroCustom = ({classes, width}) => (
         },
 
       ]}
+
       orientation={width === "xs" || width === "sm" ? "v" : "h"}
-      color="white"
+      size="big"
+      invert={true}
+
     />
 
 

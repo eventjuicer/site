@@ -8,7 +8,7 @@ import classNames from 'classnames'
 import Icon from './Icon'
 
 
-const styles = {
+const styles = theme => ({
 
   h : {
     display : 'flex',
@@ -19,43 +19,65 @@ const styles = {
       maxWidth : 400,
   },
 
-  pr_black : {
+  small : {
 
   },
 
-  sec_black : {
+  medium : {
 
   },
 
-  pr_white : {
-    color : '#ffffff',
-    fontSize : '2rem'
+  primaryBig : {
+
+    fontSize : '3rem',
+
+    [theme.breakpoints.down('md')]: {
+       fontSize : '2rem',
+       fontWeight : 900
+    },
+
   },
 
-  sec_white : {
-    color : '#ffffff',
-    fontSize : '1.5rem'
+  secondaryBig : {
+
+    fontSize : '2rem',
+
+    [theme.breakpoints.down('md')]: {
+       fontSize : '1.2rem',
+
+    },
+
   },
 
-}
+  invert : {
+      color : '#ffffff',
+  },
+
+})
 
 
-
-const EventInfo = ({classes, items, translate, orientation, color}) => (
+const EventInfo = ({classes, items, translate, orientation, size, invert}) => (
 
     <List component="ul" className={classes[orientation]}>
       {items.map(({label, icon, text}, i) =>
         {
-
           return (
             <ListItem key={i}>
-              {icon ? <ListItemIcon><Icon name={icon} variant="red" /></ListItemIcon> : null}
+              {icon ? <ListItemIcon>
+                        <Icon name={icon} variant="red" />
+                      </ListItemIcon>: null}
               <ListItemText
                   primary={ text }
-                  secondary={translate(label)}
+                  secondary={ translate(label) }
                   classes={{
-                    primary : classes["pr_" + color],
-                    secondary: classes["sec_" + color]
+                    primary : classNames({
+                      [classes.primaryBig] : size === "big",
+                      [classes.invert] : invert
+                    }),
+                    secondary: classNames({
+                      [classes.secondaryBig] : size === "big",
+                      [classes.invert ]: invert
+                    })
                   }}
               />
             </ListItem>
@@ -70,7 +92,8 @@ const EventInfo = ({classes, items, translate, orientation, color}) => (
 EventInfo.defaultProps = {
   items : [],
   orientation : "v",
-  color : "black"
+  size : "small",
+  invert : false
 }
 
 const enhance = compose(

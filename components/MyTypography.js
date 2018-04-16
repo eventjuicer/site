@@ -97,7 +97,7 @@ const styles = theme => ({
   hero : {
 
       textAlign : 'center',
-      fontSize : '3rem',
+      fontSize : '2.3rem',
       color : '#ffffff',
 
       fontWeight : 900,
