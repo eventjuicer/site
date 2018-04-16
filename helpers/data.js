@@ -10,7 +10,8 @@ export const getCompanyProfileInfo = (company, key) => _get(company, `profile.${
 export const getCdnResource = (company, key, scale = true) => {
   const cdn = getCompanyProfileInfo(company, `${key}_cdn`)
   if(cdn && /cloudinary/.test(cdn)){
-    return !scale ? cdn : cdn.replace(/v[0-9]+/, "w_600,h_600,c_fit/$&");
+    const noSvg = cdn.replace(/\.svg/i, ".png")
+    return !scale ? noSvg : noSvg.replace(/v[0-9]+/, "w_600,h_600,c_fit/$&");
   }
   return false
 }
@@ -29,7 +30,7 @@ export const getCompanyAltOgImage = (company, url) => {
 
   const params = getUrlParams(url)
 
-  if("utm_content" in params && params.utm_content !== "logotype") {
+  if("utm_content" in params && params.utm_content.indexOf("logotype") > -1){
     const cdn = getCdnResource(company, params.utm_content, false)
     if(cdn){
       return wrapImage(`c_${company.id}_${params.utm_content}`, "template_raw", "h_504,w_960")
