@@ -20,7 +20,9 @@ const styles = {
   },
 }
 
-const HeroCustom = ({classes, width}) => (
+
+
+const HeroCustom = ({classes}) => (
 
 
   <Hero>
@@ -50,7 +52,7 @@ const HeroCustom = ({classes, width}) => (
 
       ]}
 
-      orientation={width === "xs" || width === "sm" ? "v" : "h"}
+      orientation="h"
       size="big"
       invert={true}
 
@@ -68,9 +70,5 @@ const HeroCustom = ({classes, width}) => (
 
 )
 
-const enhance = compose(
-  withStyles(styles),
-  connect((state) => ({width : state.app.width}))
-)
 
-export default enhance(HeroCustom);
+export default withStyles(styles)(HeroCustom);

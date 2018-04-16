@@ -12,7 +12,12 @@ const styles = theme => ({
 
   h : {
     display : 'flex',
-    flexDirection : 'row'
+    flexDirection : 'row',
+
+    [theme.breakpoints.down('md')]: {
+        flexDirection : 'column'
+    },
+
   },
 
   v : {
