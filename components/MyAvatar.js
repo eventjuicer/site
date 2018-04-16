@@ -32,7 +32,7 @@ const styles = theme => ({
 });
 
 
-const MyAvatar = ({classes, src, minimal, link, router}) => (
+const MyAvatar = ({classes, src, link}) => (
 
   <Avatar
     alt=""
@@ -43,17 +43,16 @@ const MyAvatar = ({classes, src, minimal, link, router}) => (
         [classes.linked] : link
       })
     }}
-    onClick={ (e) => link ? Router.push(link) : e.preventDefault() }
+    imgProps={{onClick : () =>  Router.push(link) }}
   />
 
 )
 
 
 MyAvatar.defaultProps = {
-  minimal : true,
   src : "",
-  link : null
+  link : "/presenters"
 }
 
 
-export default withStyles(styles, {name : "MyAvatar"})(MyAvatar)
+export default withStyles( styles )(MyAvatar)

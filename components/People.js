@@ -62,7 +62,6 @@ class People extends React.PureComponent {
                     title={`${_get(item, "fname")} ${_get(item, "lname")}`}
                     subtitle={<FullJobInfo company={_get(item, "cname2")} job={_get(item, "position")}  />}
                     text={_get(item, "bio")}
-                    minimal={ this.isMobile(width) }
                     link={link}
                   />
                 </Grid>

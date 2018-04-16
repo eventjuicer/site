@@ -1,7 +1,8 @@
+
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import compose from 'recompose/compose'
 import classNames from 'classnames'
 
 
@@ -12,6 +13,8 @@ import Avatar from './MyAvatar'
 import Typography from './MyTypography'
 
 import {MyLink} from '../next'
+import Hidden from 'material-ui/Hidden'
+
 import {generateLinkParams} from '../helpers'
 
 const styles = {
@@ -43,78 +46,57 @@ const styles = {
 
 
 
-class Person extends React.PureComponent {
+const Person = ( { classes, avatar, title, subtitle, text, minimal, link, id } ) => {
 
+  const linkParams = generateLinkParams(title, "speaker", id)
 
-  // isMobile()
-  // {
-  //   const { width } = this.props;
-  //   return width === "xs"
-  // }
+  return (
 
-  render()
-  {
-    const { classes, avatar, title, subtitle, text, minimal, link, id } = this.props;
-    const linkParams = generateLinkParams(title, "speaker", id);
+    <Card
+      className={classes.card}
+      elevation={0}>
 
-    return (
+    <CardHeader
+      avatar={
+          <Avatar
+              alt=""
+              src={avatar}
+              link={linkParams.as}
+            />
+    }
+      // title="test"
+      // subheader="srest"
+      className={classes.avatarContainer}
+   />
 
-      <Card className={classNames(classes.card, {
-        [classes.cardMobile] : minimal
-      }
-      )} elevation={0}>
+    <CardContent>
 
-      {/* <CardMedia
-        className={classes.media}
-        image="https://material-ui-next.com/static/images/cards/contemplative-reptile.jpg"
-        title="Contemplative Reptile"
-      /> */}
+      <Typography template="presenter1">
+        {title}
+      </Typography>
 
-      <CardHeader
+      {subtitle && <Typography template="presenter2">
+        {subtitle}
+      </Typography>}
 
-        avatar={
-      <Avatar
-          alt=""
-          src={avatar}
-          minimal={minimal}
-          link={linkParams.as}
-        />}
-        // title="test"
-        // subheader="srest"
-        className={classes.avatarContainer}
-     />
-
-      <CardContent>
-
-        <Typography template="presenter1">
-          {title}
-        </Typography>
-
-        {subtitle && <Typography template="presenter2">
-          {subtitle}
-        </Typography>}
-
-        {!minimal && text ? <Typography template="presenterText">
+      <Hidden smDown implementation="css">
+        {text && <Typography template="presenterText">
           { text }
-        </Typography> : null }
+        </Typography>}
+       </Hidden>
 
-      </CardContent>
+    </CardContent>
 
-    {link &&  <CardActions>
-        <MyLink {...linkParams} label="common.more" />
-      </CardActions>}
-
-
-    </Card>
+    {link && <CardActions>
+      <MyLink {...linkParams} label="common.more" />
+    </CardActions>}
 
 
-    );
+  </Card>
 
-
-  }
-
-
+  )
 }
+
 
 Person.defaultProps = {
   width : "md",
@@ -130,9 +112,4 @@ Person.propTypes = {
   text : PropTypes.node,
 };
 
-const enhance = compose(
-  withStyles(styles),
-//  withWidth()
-)
-
-export default enhance(Person);
+export default withStyles(styles)(Person);
