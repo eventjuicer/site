@@ -7,7 +7,6 @@ import React from 'react';
 import { withStyles } from 'material-ui/styles';
 //import classNames from 'classnames'
 
-import Divider from 'material-ui/Divider'
 
 import Typography from './MyTypography'
 import Tags from './Tags'

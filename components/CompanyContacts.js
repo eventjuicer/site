@@ -17,12 +17,17 @@ const styles = theme => ({
      flexDirection : 'row',
      alignItems : 'center',
      justifyContent : 'center',
+     flexWrap : 'wrap',
 
      [theme.breakpoints.down('md')]: {
        flexDirection : 'column',
      },
 
    },
+
+   contactListItem : {
+
+   }
 
 })
 
@@ -34,7 +39,9 @@ function CompanyContacts({profile, allowed, classes})
     return (
         <div className={classes.listContainer}>
         <List component="ul" className={classes.contactList}>
-        {socials.map((name, idx) => <CompanyContactItem key={idx} name={name} link={profile[name]} />)}
+        {socials.map((name, idx) => <li key={idx} className={classes.contactListItem}>
+                <CompanyContactItem baseLabel="companies.profile"  name={name} link={profile[name]} />
+                </li>)}
         </List>
         </div>
     )

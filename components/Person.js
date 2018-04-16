@@ -12,7 +12,6 @@ import Avatar from './MyAvatar'
 import Typography from './MyTypography'
 
 import {MyLink} from '../next'
-
 import {generateLinkParams} from '../helpers'
 
 const styles = {
@@ -40,6 +39,9 @@ const styles = {
     marginTop : 10
   }
 };
+
+
+
 
 class Person extends React.PureComponent {
 
@@ -71,10 +73,11 @@ class Person extends React.PureComponent {
       <CardHeader
 
         avatar={
-        <Avatar
+      <Avatar
           alt=""
           src={avatar}
           minimal={minimal}
+          link={linkParams.as}
         />}
         // title="test"
         // subheader="srest"

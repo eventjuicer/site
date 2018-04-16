@@ -1,7 +1,7 @@
 
 
 import dynamic from 'next/dynamic'
-import Error from 'next/error'
+import Error from './_error'
 
 import {
   MyHead as Head,
@@ -13,11 +13,16 @@ import reduxPage from '../redux'
 import _keyBy from 'lodash/keyBy'
 import _get from 'lodash/get'
 
+import Divider from 'material-ui/Divider'
+
+
 import {
   MyTypography as Typography,
   TwoColsLayout as Section,
   Wrapper,
   Presentation,
+  Presenter,
+  Sharer,
   resourceFetchSuccess,
   MyAvatar as Avatar
 } from '../components';
@@ -103,6 +108,12 @@ render()
            <div>
 
              <Presentation data={speaker} />
+
+             <Divider />
+
+             <Presenter data={speaker} />
+
+             <Sharer url={ url.asPath  } />
 
           </div>
         } />
