@@ -10,7 +10,7 @@ export const getCompanyProfileInfo = (company, key) => _get(company, `profile.${
 export const getCdnResource = (company, key, scale = true) => {
   const cdn = getCompanyProfileInfo(company, `${key}_cdn`)
   if(cdn && /cloudinary/.test(cdn)){
-    return !scale ? cdn : cdn.replace(/v[0-9]+/, "w_600,h_600,c_fit");
+    return !scale ? cdn : cdn.replace(/v[0-9]+/, "w_600,h_600,c_fit/$&");
   }
   return false
 }
