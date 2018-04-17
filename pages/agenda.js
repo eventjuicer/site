@@ -43,7 +43,7 @@ render()
       //   <Link href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
       // ]}
     >
-      <People random={true} filter={function(item){ return item.bio && item.bio.length >5; }}   />
+      <People random={true}  link={true}  filter={function(item){ return item.bio && item.bio.length >5; }}   />
     </Wrapper>
 
 

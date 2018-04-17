@@ -48,7 +48,7 @@ render()
       label="presenters.list_featured"
       secondaryTitle="22 Prezentacje, 2 panele dyskusyjne! Udział bezpłatny."
     >
-      <People limit={16} random={true} filter={function(item){ return item.bio.length > 10 }}  />
+      <People limit={16} link={true} random={true} filter={function(item){ return item.bio.length > 10 }}  />
     </Wrapper>
 
 

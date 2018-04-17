@@ -72,7 +72,7 @@ class PageIndex extends React.Component {
           <Link key="subjects" href="/schedule" label="common.menu.visitors.schedule" variant="flat" color="secondary" />
         ]}
       >
-        <People limit={8} random={true} filter={function(item){ return item.bio.length > 10 }}  />
+        <People limit={8} random={true}  link={true}  filter={function(item){ return item.bio.length > 10 }}  />
       </Wrapper>
 
 

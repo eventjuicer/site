@@ -1,12 +1,7 @@
 
 import React from 'react';
-
-//import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles'
-import Router from 'next/router'
-
 import Avatar from 'material-ui/Avatar'
-import classNames from 'classnames'
 
 const styles = theme => ({
 
@@ -25,10 +20,6 @@ const styles = theme => ({
      filter: 'grayscale(100%) contrast(115%)',
   },
 
-  linked : {
-    cursor : 'pointer'
-  }
-
 });
 
 
@@ -39,20 +30,14 @@ const MyAvatar = ({classes, src, link}) => (
     src={src}
     classes={{
       root : classes.avatar,
-      img : classNames(classes.image, {
-        [classes.linked] : link
-      })
+      img : classes.image
     }}
-    imgProps={{onClick : () =>  Router.push(link) }}
   />
 
 )
 
-
 MyAvatar.defaultProps = {
   src : "",
-  link : "/presenters"
 }
-
 
 export default withStyles( styles )(MyAvatar)
