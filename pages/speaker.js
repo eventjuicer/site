@@ -73,7 +73,7 @@ render()
   return (<Layout>
 
     <Head
-      image={ getPresenterOgImage(speaker) }
+      image={ getPresenterOgImage(speaker, "template_speaker2") }
       url={ url.asPath }
       titleLabel={["presenters.opengraph.title", {name}]}
       descriptionLabel={["presenters.opengraph.description", {

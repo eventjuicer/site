@@ -63,11 +63,12 @@ render()
           const title = `${_get(presenter, "presentation_title")}`
           const description = `${_get(presenter, "presentation_description")}`
 
-          const ogImage = getPresenterOgImage(presenter);
+          const ogImage = getPresenterOgImage(presenter, "template_speaker2");
           const linkParams = generateLinkParams(name, "speaker", presenter.id);
 
         return (
 
+          <div>
           <Section
 
             key={idx}
@@ -108,6 +109,9 @@ render()
              }
 
           />
+
+           <Divider />
+         </div>
 
           )
 
