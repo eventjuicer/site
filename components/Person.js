@@ -17,6 +17,9 @@ import Hidden from 'material-ui/Hidden'
 
 import {generateLinkParams} from '../helpers'
 
+import onlyUpdateForKeys from 'recompose/onlyUpdateForKeys'
+import compose from 'recompose/compose'
+
 const styles = {
 
   avatarContainer : {
@@ -112,4 +115,10 @@ Person.propTypes = {
   text : PropTypes.node,
 };
 
-export default withStyles(styles)(Person);
+
+const enhance = compose(
+  onlyUpdateForKeys(["id"]),
+  withStyles(styles)
+)
+
+export default enhance(Person)
