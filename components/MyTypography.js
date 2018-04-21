@@ -179,6 +179,24 @@ const styles = theme => ({
     marginTop : 10,
   },
 
+  presenterFade : {
+
+    position : 'relative',
+    height : 200,
+
+    '&:before' : {
+
+      content : '',
+      width : '100%',
+      height : '100%',
+      position : 'absolute',
+      left : 0,
+      top : 0,
+      backgroundImage : ['linear-gradient(transparent 150px, #ffffff)']
+    }
+
+  },
+
   presentationTitle : {
 
   },
@@ -265,7 +283,12 @@ const templates = {
 
   presenterText : {
     variant : "body1", component : "p", classNames : ["presenterBase", "presenterText"]
-  }
+  },
+
+  presenterTextFade : {
+    variant : "body1", component : "p", classNames : ["presenterBase", "presenterText", "presenterFade"]
+  },
+
 
 }
 

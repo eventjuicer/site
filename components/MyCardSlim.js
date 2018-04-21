@@ -55,9 +55,9 @@ function MyCardSlim(props)
               {text}
             </Typography>
           </CardContent>
-          <div className={classes.controls}>
+          {link && <div className={classes.controls}>
               {link}
-          </div>
+          </div>}
         </div>
 
       </Card>
@@ -66,7 +66,11 @@ function MyCardSlim(props)
 }
 
 MyCardSlim.defaultProps = {
-
+  link : null,
+  title : "title",
+  text : "",
+  primary : false,
+  imageSrc : ''
 }
 
 MyCardSlim.propTypes = {
