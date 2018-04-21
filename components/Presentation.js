@@ -4,17 +4,33 @@ import React from 'react';
 //import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Typography from './MyTypography'
-
 // <Tags tags={_get(company.profile, "keywords")} />
 
-const styles = {
+const styles = theme => ({
+
   root : {
     marginBottom : 10
   },
 
-}
+  description : {
 
-const Presentation = ({classes, title, description, compact}) => {
+    [theme.breakpoints.down('sm')]: {
+      overflow : 'hidden',
+      height : 50,
+      textOverflow : '...',
+    },
+
+    [theme.breakpoints.only('md')]: {
+      overflow : 'hidden',
+      height : 100,
+      textOverflow : '...',
+    },
+
+  }
+
+})
+
+const Presentation = ({classes, title, description, hideDescriptionOnMobile}) => {
 
   return (
 
@@ -22,7 +38,9 @@ const Presentation = ({classes, title, description, compact}) => {
 
       <Typography template="presenter2">{title}</Typography>
 
-      <Typography template="presenterText">{description}</Typography>
+      <div className={hideDescriptionOnMobile ? classes.description : ""}>
+        <Typography template="presenterText">{description}</Typography>
+      </div>
 
     </div>
 
@@ -33,7 +51,7 @@ const Presentation = ({classes, title, description, compact}) => {
 Presentation.defaultProps = {
   title : "",
   description : "",
-  compact : false
+  hideDescriptionOnMobile : false
 }
 
 

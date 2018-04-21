@@ -32,7 +32,7 @@ class Schedule extends React.PureComponent {
 
   findPresentations(search, first = false) {
     const { presenters, selected } = this.props;
-    return _filter(presenters, search).map(item => <ScheduleItem key={item.id} selected={item.id == selected} first={first} data={item} />)
+    return _filter(presenters, search).map((item, i) => <ScheduleItem key={item.id} selected={item.id == selected} first={i === 0} data={item} />)
   }
 
   render() {
@@ -44,7 +44,7 @@ class Schedule extends React.PureComponent {
 
       <div>
 
-          <Grid container spacing={16}>
+          <Grid container spacing={40} hidden={{implementation : "css", smDown : true}}>
 
           {Object.keys(venues).map(venue => <Grid key={venue} item {...gridData}>
 
@@ -59,7 +59,7 @@ class Schedule extends React.PureComponent {
 
           {
 
-            times.map((presentation_time, i) => (<Grid key={i} container spacing={16}>
+            times.map((presentation_time, i) => (<Grid key={i} container spacing={40}>
 
                       {Object.keys(venues).map((presentation_venue, j) => <Grid key={`${i}${j}`} item {...gridData}>
 
