@@ -71,7 +71,7 @@ render()
       //   <Link href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
       // ]}
     >
-      <People limit={4} link={true} random={true} filter={function(item){ return [71460, 71462, 71461, 71463, 71703, 71707, 71708, 71709].indexOf(item.id) > -1; }}  />
+      <People limit={4} link={true} random={false} filter={function(item){ return [71460, 71462, 71461, 71463, 71703, 71707, 71708, 71709].indexOf(item.id) > -1; }}  />
     </Wrapper>
 
 

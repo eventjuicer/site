@@ -9,6 +9,7 @@ import {
   Typography,
   Wrapper,
   WhoIsGonnaBeThere,
+  Schedule,
 //  Googlemap,
   People
 } from '../components';
@@ -18,12 +19,22 @@ import Layout from '../layouts/main';
 import Visitor from '../roles/Visitor'
 
 
-class Visit extends React.Component {
+import {
+  fetcher
+} from '../helpers'
 
+
+class PageAgenda extends React.Component {
 
 static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
 {
-  return {}
+
+  const results = await fetcher({exhibitors : false, presenters : false}, store);
+
+  return {
+    
+  }
+
 }
 
 render()
@@ -31,50 +42,51 @@ render()
 
   const { url } = this.props;
 
-  return (<Layout>
-
-    <Head />
+  return (
 
 
-    <Wrapper first
-      label="presenters.list_full"
-      secondaryTitle="pełna agenda już wkrótce"
-      // links={[
-      //   <Link href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
-      // ]}
-    >
-      <People random={true}  link={true}  filter={function(item){ return item.bio && item.bio.length >5; }}   />
-    </Wrapper>
+      <Layout>
 
+        <Head />
 
-    <Wrapper label="visitors.register_alt">
+        <Wrapper
+          label="presenters.schedule"
+          secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
+          first
+        >
+          <Schedule  />
+        </Wrapper>
 
-      <Visitor />
+        <Wrapper label="visitors.register_alt">
+          <Visitor />
+        </Wrapper>
 
-    </Wrapper>
+        <Wrapper first
+          label="presenters.list_full"
+          secondaryTitle="Czołowi Eksperci Handlu Online"
+        // links={[
+        //   <Link href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
+        // ]}
+        >
+          <People random={false}  link={true}  filter={function(item){ return item.bio && item.bio.length >5; }}   />
+        </Wrapper>
 
+        <Wrapper label="visitors.attendees">
+          <WhoIsGonnaBeThere />
+        </Wrapper>
 
-    <Wrapper label="visitors.attendees">
+        <Wrapper>
+          <Visitor />
+        </Wrapper>
 
-      <WhoIsGonnaBeThere />
+        {/* <Googlemap /> */}
 
-    </Wrapper>
+      </Layout>
 
-
-    <Wrapper>
-
-      <Visitor />
-
-    </Wrapper>
-
-
-    {/* <Googlemap /> */}
-
-
-  </Layout>)
+)
 }
 
 }
 
 
-export default reduxPage( Visit )
+export default reduxPage( PageAgenda )

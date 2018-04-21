@@ -39,12 +39,9 @@ render()
     <Wrapper
       first
       label="presenters.schedule"
-      secondaryTitle="godziny prezentacji zostaną podane wkrótce"
-      // links={[
-      //   <Link href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
-      // ]}
+      secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
     >
-      <Schedule stages={3} random={true} filter={function(item){ return item.bio && item.bio.length >5; }}   />
+      <Schedule  />
 
     </Wrapper>
 

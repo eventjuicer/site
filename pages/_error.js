@@ -9,7 +9,7 @@ import reduxPage from '../redux'
 import {
   Typography,
   Wrapper,
-  People,
+  Schedule,
   HeroCustom as Hero,
   ColumnList
 } from '../components';
@@ -24,7 +24,7 @@ class PageError extends React.Component {
 
   static async getInitialProps({ res, err, store }) {
 
-    const results = await fetcher({exhibitors : false}, store);
+    const results = await fetcher({exhibitors : false, presenters : false}, store);
 
     const statusCode = res ? res.statusCode : err ? err.statusCode : null;
 
@@ -52,13 +52,14 @@ class PageError extends React.Component {
 
 
         <Wrapper
-              label="presenters.list_full"
-              secondaryTitle="pełna agenda już wkrótce"
+              label="presenters.schedule"
+              secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
+
               // links={[
               //   <Link href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
               // ]}
             >
-              <People link={true} random={true} filter={function(item){ return item.bio && item.bio.length >5; }}   />
+              <Schedule    />
         </Wrapper>
 
 

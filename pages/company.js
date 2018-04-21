@@ -26,6 +26,7 @@ import Layout from '../layouts/main';
 
 const CompanyBookingmap = dynamic(import('../components/CompanyBookingmap'))
 const People = dynamic(import('../components/People'))
+const Schedule = dynamic(import('../components/Schedule'))
 
 
 /*USER REGISTRATION*/
@@ -35,7 +36,8 @@ import Visitor from '../roles/Visitor'
 
 import {
   getCompanyAltOgImage,
-  getCompanyProfileInfo
+  getCompanyProfileInfo,
+  fetcher
 } from '../helpers'
 
 
@@ -45,21 +47,13 @@ class PageCompany extends React.Component {
 static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
 {
 
-  const urls = [`companies/${query.id}`, 'exhibitors'];
-
-  const [company, exhibitors] = await Promise.all(
-    urls.map(url => fetch(`https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/${url}`).
-    then(resp => resp.json())
-  ))
-
-  // store.dispatch(
-  //   resourceFetchSuccess("bookingmap", bookingmap.data)
-  // )
+  const company = `companies/${query.id}`
+  const results = await fetcher({[company] : false, exhibitors : false}, store);
 
   return {
-    company : company.data,
-    exhibitors : exhibitors.data,
-    eventId: get(company, "meta.active_event_id")
+    company : results.getData(company),
+    exhibitors : results.getData("exhibitors"),
+    eventId: get(results.getMeta(company), "active_event_id")
   }
 
 }
@@ -92,13 +86,22 @@ render()
 
 
     <Wrapper
+      label="presenters.schedule"
+      secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
+      first
+    >
+      <Schedule  />
+    </Wrapper>
+
+
+    <Wrapper
       label="presenters.list_featured"
       secondaryTitle="Udział bezpłatny. Pełna agenda już wkrótce..."
       links={[
         <Link key="more" href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
       ]}
     >
-      <People link={true} limit={8} random={true} filter={function(item){ return [71460, 71462, 71461, 71463, 71703, 71707, 71708, 71709].indexOf(item.id) > -1; }}  />
+      <People link={true} limit={8} random={false} filter={function(item){ return [71460, 71462, 71461, 71463, 71703, 71707, 71708, 71709].indexOf(item.id) > -1; }}  />
     </Wrapper>
 
 

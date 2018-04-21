@@ -31,48 +31,43 @@ render()
 
   const { url } = this.props;
 
-  return (<Layout>
+  return (
 
-    <Head />
+    <Layout>
 
+      <Head />
 
-    <Wrapper
-      first
-      label="presenters.list_full"
-      secondaryTitle="pełna agenda już wkrótce"
+      <Wrapper
+        first
+        label="presenters.list_full"
+        secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
       // links={[
       //   <Link href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
       // ]}
-    >
-      <People link={true} random={true} filter={function(item){ return item.bio && item.bio.length >5; }}   />
-    </Wrapper>
+      >
+        <People link={true} random={false} filter={function(item){ return item.bio && item.bio.length >5; }}   />
+      </Wrapper>
 
 
-    <Wrapper label="visitors.register_alt">
-
-      <Visitor />
-
-    </Wrapper>
+      <Wrapper label="visitors.register_alt">
+        <Visitor />
+      </Wrapper>
 
 
-    <Wrapper label="visitors.attendees">
-
-      <WhoIsGonnaBeThere />
-
-    </Wrapper>
+      <Wrapper label="visitors.attendees">
+        <WhoIsGonnaBeThere />
+      </Wrapper>
 
 
-    <Wrapper>
+      <Wrapper label="visitors.register">
+        <Visitor />
+      </Wrapper>
 
-      <Visitor />
+      {/* <Googlemap /> */}
 
-    </Wrapper>
+    </Layout>
 
-
-    {/* <Googlemap /> */}
-
-
-  </Layout>)
+)
 }
 
 }

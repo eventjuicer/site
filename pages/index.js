@@ -17,7 +17,8 @@ import {
 //  Bookingmap,
   Gallery,
 //  WidthAwareInfo,
-  People,
+
+  Schedule,
   HeroCustom as Hero,
 //  Reviews
 } from '../components'
@@ -38,7 +39,21 @@ class PageIndex extends React.Component {
     const results = await fetcher({exhibitors : false}, store);
     return { exhibitors : results.getData("exhibitors") }
 
+    // const results = await fetcher({exhibitors : false, presenters : false}, store);
+    //
+    // return {
+    //   exhibitors : results.getData("exhibitors"),
+    //   presenters : results.getData("presenters")
+    // }
+
+
   }
+
+
+
+
+
+
 
   render()
   {
@@ -55,39 +70,28 @@ class PageIndex extends React.Component {
 
       <Wrapper
         label="visitors.register"
-        secondaryTitle="Spotkamy się w gronie ponad 3000 osób!"
-      //   links={[
-      //   <Link key="more" href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
-      // ]}
+        secondaryTitle="22 Prezentacje, 130 Wystawców i prawdziwy networking!"
       >
       <Visitor  />
       </Wrapper>
 
 
       <Wrapper
-        label="presenters.list_featured"
-        secondaryTitle="Udział bezpłatny. Pełna agenda już wkrótce..."
+        label="presenters.schedule"
+        secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
         links={[
           <Link key="all" href="/presenters" label="common.menu.visitors.presenters" variant="flat" color="secondary" />,
-          <Link key="subjects" href="/schedule" label="common.menu.visitors.schedule" variant="flat" color="secondary" />
+          // <Link key="subjects" href="/schedule" label="common.menu.visitors.schedule" variant="flat" color="secondary" />
         ]}
       >
-        <People limit={8} random={true}  link={true}  filter={function(item){ return item.bio.length > 10 }}  />
+        <Schedule />
+        {/* <People limit={8} random={false} link={true}  filter={function(item){ return item.bio.length > 10 }}  /> */}
       </Wrapper>
 
 
-
-      <Wrapper label="visitors.register_alt"
-
-        //  links={[
-        //   <Link key="more" href="/visit" label="visitors.more_info" variant="flat" />
-        // ]}
-      >
+      <Wrapper label="visitors.register_alt">
         <Visitor />
       </Wrapper>
-
-
-
 
       <Wrapper
         label="exhibitors.list_featured"
@@ -108,24 +112,13 @@ class PageIndex extends React.Component {
         <Bookingmap  />
       </Wrapper>
 
-
-
-
       <Gallery label="event.gallery" />
 
-
-{/*
-      <Wrapper text="Opinie o Targach Ehandlu">
-        <Reviews />
-      </Wrapper>
-
- */}
 
       <Wrapper label="exhibitors.list_full" color="#ffffff">
         <ColumnList data={ exhibitors } />
       </Wrapper>
-
-
+      
 
       <Wrapper
         label="visitors.register"

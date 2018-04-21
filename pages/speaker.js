@@ -38,6 +38,7 @@ import {
 
 const People = dynamic(import("../components/People"))
 const Avatarlist = dynamic(import("../components/Avatarlist"))
+const Schedule = dynamic(import("../components/Schedule"))
 
 import {fetcher} from '../helpers'
 
@@ -107,7 +108,7 @@ render()
 
            <div>
 
-             <Presentation data={speaker} />
+             <Presentation title={speaker.presentation_title} description={speaker.presentation_description} />
 
              <Divider />
 
@@ -121,23 +122,29 @@ render()
     </Wrapper>
 
 
+
     <Wrapper label="visitors.register" color="#fafafa" links={[
        <Link key="more" href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
     ]}>
       <Visitor  />
     </Wrapper>
 
+    <Wrapper
+      label="presenters.schedule"
+      secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
+      first
+    >
+      <Schedule selected={speaker.id} />
+    </Wrapper>
+
+
 
     <Wrapper
       label="presenters.list_full"
-      secondaryTitle="pełna agenda już wkrótce"
-      // links={[
-      //   <Link href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
-      // ]}
+      secondaryTitle="100% eksperckiej wiedzy jak skutecznie sprzedawać online"
     >
-      <People link={true} random={true} filter={function(item){ return item.bio && item.bio.length >5; }}   />
+      <People link={true} random={false} limit={22} filter={function(item){ return item.bio && item.bio.length >5; }}   />
     </Wrapper>
-
 
 
       <Wrapper
