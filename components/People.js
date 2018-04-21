@@ -57,6 +57,7 @@ class People extends React.PureComponent {
             {data.map((item, i) =>
                 <Grid key={_get(item, "id")} item {...gridData}>
                   <Person
+                    key={_get(item, "id")}
                     id={_get(item, "id")}
                     avatar={_get(item, "avatar")}
                     title={`${_get(item, "fname")} ${_get(item, "lname")}`}

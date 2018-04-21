@@ -19,6 +19,10 @@ export const getCdnResource = (company, key, scale = true) => {
 }
 
 
+export const getParticipantCdn = (participant_id, what = "avatar", size = 200) => {
+  return `http://res.cloudinary.com/eventjuicer/image/upload/w_${size},h_${size},c_fit,e_grayscale/p_${participant_id}_${what}.jpg`
+}
+
 export const getPresenterOgImage = (participant, template = "template_speaker") => {
 
   const avatarTrans = `g_west,x_150,y_25,w_220,h_220,l_p_${participant.id}_avatar,c_fit,r_max`

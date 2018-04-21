@@ -1,104 +1,111 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-//import { withStyles } from 'material-ui/styles';
 import { connect } from 'react-redux';
-import compose from 'recompose/compose'
 import Grid from 'material-ui/Grid';
 
+import _filter from 'lodash/filter'
+import _find from 'lodash/find'
 import _get from 'lodash/get'
-import Person from './Person'
 
+import ScheduleItem from './ScheduleItem'
+import ScheduleVenue from './ScheduleVenue'
 
-import Presentation from './Presentation'
+import { resourceFetchRequest } from './redux/actions'
+import { presenterSelector } from '../redux/reselect'
 
-import {
-  processArrayData,
-  changeLimitForScreen
-} from '../helpers'
-
-import {
-  // dialogShow as dialogShowAction,
-  resourceFetchRequest as resourceFetchRequestAction
-} from './redux/actions'
-
-
-const FullJobInfo = ({company, job}) => (
-    <span>{job} @ <strong>{company}</strong></span>
-)
 
 class Schedule extends React.PureComponent {
 
-  componentDidMount()
-  {
+  componentDidMount(){
 
-    if(! this.props.presenters.length)
-    {
-      this.props.resourceFetchRequest("presenters", false)
+    if(! this.props.presenters.length){
+        this.props.resourceFetchRequest("presenters", false)
+    }
+    if(! this.props.exhibitors.length){
+        this.props.resourceFetchRequest("exhibitors", false)
     }
 
   }
 
-  isMobile(w){
-    return w === "xs" || w === "sm"
+  getCompany(id){
+      return _find(this.props.exhibitors, {id}, {})
   }
 
-  render()
-  {
+  findPresentations(search, first = false) {
+    const { presenters, selected } = this.props;
+    return _filter(presenters, search).map(item => <ScheduleItem key={item.id} selected={item.id == selected} first={first} data={item} />)
+  }
 
-    const { classes, presenters, filter, limit, random, width, link } = this.props;
-    const data = processArrayData(presenters, {
-        filter,
-        limit : changeLimitForScreen(limit, width),
-        random
-    })
+  render() {
 
+    const { presenters, venues, times} = this.props;
     const gridData = {xs : 12, sm : 12, md : 4, lg : 4, xl : 4}
 
     return (
 
-        <Grid container spacing={24}>
-            {data.map((item, i) =>
-                <Grid key={i} item {...gridData}>
+      <div>
 
-                   <Presentation data={item} addPresenterInfo={true} />
+          <Grid container spacing={16}>
 
-                </Grid>
-              )}
+          {Object.keys(venues).map(venue => <Grid key={venue} item {...gridData}>
+
+               <ScheduleVenue
+                 name={venue}
+                 company={ this.getCompany( _get(venues[venue], "company_id", 0) ) }
+               />
+
+          </Grid>)}
+
           </Grid>
 
-    );
+          {
 
+            times.map((presentation_time, i) => (<Grid key={i} container spacing={16}>
+
+                      {Object.keys(venues).map((presentation_venue, j) => <Grid key={`${i}${j}`} item {...gridData}>
+
+                          {this.findPresentations({
+                              presentation_venue, presentation_time
+                          }, j === 0 )}
+
+                        </Grid>)}
+
+                    </Grid>)
+            )
+
+          }
+
+      </div>
+    )
 
   }
 
-
 }
-
-
 
 Schedule.defaultProps = {
+  selected : 0,
   presenters : [],
-  filter : null,
-  limit : false,
-  random : false,
-  width : "sm",
-  link : false
+  exhibitors : [],
+  times : [
+    "11:15",
+    "11:50",
+    "12:40",
+    "13:15",
+    "14:05",
+    "14:40",
+    "15:30",
+    "16:05"
+  ],
+  venues : {
+    "A" : {company_id : 1175},
+    "B" : {company_id : 1158},
+    "C" : {company_id : 1194}
+  }
 }
 
 
-Schedule.propTypes = {
+export default connect(state => ({
 
-};
+  presenters : presenterSelector(state),
+  exhibitors : state.resources.exhibitors
 
-const enhance = compose(
-  connect(state => ({
-    presenters : state.resources.presenters,
-    width : state.app.width
-  }), {
-  //  dialogShow : dialogShowAction ,
-    resourceFetchRequest : resourceFetchRequestAction
-  })
-)
-
-
-export default enhance(Schedule);
+}), {resourceFetchRequest })(Schedule);

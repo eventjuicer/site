@@ -1,27 +1,21 @@
 
- // <Tags tags={_get(company.profile, "keywords")} />
 
 import React from 'react';
-
 //import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 //import classNames from 'classnames'
 
-
 import Typography from './MyTypography'
 import Tags from './Tags'
 
-
-
-import Card, { CardContent, CardHeader } from 'material-ui/Card';
-//import Button from 'material-ui/Button';
+// <Tags tags={_get(company.profile, "keywords")} />
 
 
 const styles = {
 
 }
 
-const Presenter = ({data}) => {
+const Presenter = ({showBio, data}) => {
 
   const {
     bio,
@@ -43,7 +37,7 @@ const Presenter = ({data}) => {
 
       <Typography template="presenter2">{`${position} ${cname2}`}</Typography>
 
-      <Typography template="presenterText">{bio}</Typography>
+      {showBio && <Typography template="presenterText">{bio}</Typography>}
 
     </div>
 )
@@ -51,7 +45,8 @@ const Presenter = ({data}) => {
 
 
 Presenter.defaultProps = {
-  data : {}
+  data : {},
+  showBio : true
 }
 
 
