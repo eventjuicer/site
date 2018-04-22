@@ -63,7 +63,7 @@ render()
     <Head
 
       url={ `/invite,${ _get(person, "id", 0) }` }
-      image={ getInviteOgImage( `Będę! Pozdrawiam, ${ _get(person, "fname", "") }` )  }
+      image={ getInviteOgImage( `Będę. ${ _get(person, "fname", "") } z ${ _get(person, "cname2") }.` )  }
       titleLabel={["visitors.opengraph.title", {name : name, location : 'Kraków', date : '25 kwietnia 2018'}]}
 
     />

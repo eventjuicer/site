@@ -49,13 +49,13 @@ render()
   const { url, person, exhibitors } = this.props;
 
   const name = `${_get(person, "fname", "")} ${_get(person, "lname", "")}`;
-  const cname = `${_get(person, "cname2", "tajna firma")}`;
+  const cname = `${_get(person, "cname2", "")}`;
 
   return (<Layout>
 
     <Head
       url={ url.asPath }
-      image={ getInviteOgImage( `Będę! Pozdrawiam, ${ _get(person, "fname", "") }` )  }
+      image={ getInviteOgImage( `Będę. ${ _get(person, "fname", "") } z ${ _get(person, "cname2") }` )  }
       titleLabel={["visitors.opengraph.title", {name : name, cname : cname, location : 'Kraków', date : '25 kwietnia 2018'}]}
     />
 
