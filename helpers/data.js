@@ -24,7 +24,10 @@ export const getParticipantCdn = (participant_id, what = "avatar", size = 200) =
 }
 
 export const getInviteOgImage = (text = "") => {
+
   text = text.replace(","," ")
+  text = text.replace("/"," ")
+
   return `https://res.cloudinary.com/eventjuicer/image/upload/w_0.9,c_scale,fl_relative,l_text:Helvetica_300_bold:${ encodeURIComponent(text) },g_north,y_40,co_rgb:FFFF00/v1524410443/template_visitor.jpg`
 
 }
