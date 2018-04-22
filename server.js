@@ -33,7 +33,7 @@ app.prepare().then(() => {
  //  })
 
 
-   server.get('/ticket/:hash', (req, res) => {
+   server.get('/ticket,:hash', (req, res) => {
      const queryParams = { hash: req.params.hash }
     // app.render(req, res, '/exhibitor', queryParams)
      renderAndCache(req, res, '/ticket', queryParams)
