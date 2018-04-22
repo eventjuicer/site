@@ -23,7 +23,12 @@ import {
 
 import Layout from '../layouts/main';
 import Visitor from '../roles/Visitor'
-import {fetcher} from '../helpers'
+
+import {
+  fetcher,
+  getInviteOgImage
+} from '../helpers'
+
 const Bookingmap = dynamic(import("../components/Bookingmap"))
 
 
@@ -58,10 +63,9 @@ render()
     <Head
 
       url={ `/invite,${ _get(person, "id", 0) }` }
+      image={ getInviteOgImage( `Będę! Pozdrawiam, ${ _get(person, "fname", "") }` )  }
+      titleLabel={["visitors.opengraph.title", {name : name, location : 'Kraków', date : '25 kwietnia 2018'}]}
 
-      titleLabel={["visitors.opengraph.title", {
-          name : name,
-          location : 'Kraków', date : '25 kwietnia 2018'}]}
     />
 
 
