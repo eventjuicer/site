@@ -20,7 +20,7 @@ export const getCdnResource = (company, key, scale = true) => {
 
 
 export const getParticipantCdn = (participant_id, what = "avatar", size = 200) => {
-  return `http://res.cloudinary.com/eventjuicer/image/upload/c_fit,e_grayscale,w_${size},h_${size}/p_${participant_id}_${what}.jpg`
+  return `https://res.cloudinary.com/eventjuicer/image/upload/c_fit,e_grayscale,w_${size},h_${size}/p_${participant_id}_${what}.jpg`
 }
 
 export const getPresenterOgImage = (participant, template = "template_speaker") => {
@@ -28,7 +28,7 @@ export const getPresenterOgImage = (participant, template = "template_speaker") 
   const avatarTrans = `g_west,x_150,y_25,w_220,h_220,l_p_${participant.id}_avatar,c_fit,r_max`
   const logotypeTrans = `g_east,x_150,y_25,w_220,h_220,l_p_${participant.id}_logotype,c_fit`
 
-  return `http://res.cloudinary.com/eventjuicer/image/upload/${avatarTrans}/${logotypeTrans}/${template}.png`
+  return `https://res.cloudinary.com/eventjuicer/image/upload/${avatarTrans}/${logotypeTrans}/${template}.png`
 
 }
 
