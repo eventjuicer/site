@@ -9,15 +9,20 @@ import {
   Wrapper,
   WhoIsGonnaBeThere,
   Gallery,
-  People,
+  Schedule,
   Avatarlist,
-  Hero
+  EventInfo
 } from '../components';
 
 import Layout from '../layouts/main';
 import Visitor from '../roles/Visitor'
 
-import {fetcher} from '../helpers'
+import {
+
+  fetcher,
+  getInviteOgImage
+
+} from '../helpers'
 
 class PageInvite extends React.Component {
 
@@ -50,30 +55,61 @@ render()
 
     <Head
       url={ url.asPath }
+      image={ getInviteOgImage( `Będę! Pozdrawiam, ${ _get(person, "fname", "") }` )  }
       titleLabel={["visitors.opengraph.title", {name : name, cname : cname, location : 'Kraków', date : '25 kwietnia 2018'}]}
     />
 
 
-    <Hero>
 
-      <Typography template="visitor_invite" label={["visitors.invite.title", { name, cname }]} /><br/>
+    <Wrapper
+      first
+      label={["visitors.invite.title", { name, cname }]}
+      secondaryTitle="22 Prezentacje, 130 Wystawców i prawdziwy networking!"
+      >
 
-      <Typography template="visitor_invite_join" label={["visitors.invite.will_you_join", { name, cname }]} />
+        <Typography template="visitor_invite_join" label={["visitors.invite.will_you_join", { name, cname }]} />
 
-    </Hero>
 
+        <EventInfo
+            items={[
+
+            {
+            icon : "location",
+            label : "event.location",
+            text : "EXPO Kraków, Galicyjska 9"
+            },
+
+            {
+            icon : "date",
+            label : "event.date",
+            text : "25 kwietnia 2018"
+            },
+
+            {
+            icon : "alarm",
+            label : "event.hours",
+            text : "10:00-17:00"
+            },
+
+            ]}
+            orientation="h"
+            style={{marginTop: 50}}
+        />
+
+
+
+
+    </Wrapper>
 
 
     <Wrapper
-      label="presenters.list_featured"
-      secondaryTitle="Udział bezpłatny (rejestracja poniżej). Cała agenda już wkrótce..."
-      // links={[
-      //   <Link href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
-      // ]}
+      first
+      label="presenters.schedule"
+      secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
     >
-      <People limit={4} link={true} random={false} filter={function(item){ return [71460, 71462, 71461, 71463, 71703, 71707, 71708, 71709].indexOf(item.id) > -1; }}  />
-    </Wrapper>
+      <Schedule  />
 
+    </Wrapper>
 
     <Wrapper
       label="visitors.register"

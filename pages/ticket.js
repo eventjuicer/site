@@ -16,7 +16,9 @@ import {
   ColumnList,
   MyTypography,
   Schedule,
-  Googlemap
+  Googlemap,
+  EventInfo,
+  Invite
 } from '../components';
 
 import Layout from '../layouts/main';
@@ -49,24 +51,52 @@ render()
 
   const { url, code, person, exhibitors } = this.props;
 
-  console.log(person)
-
   const name = `${_get(person, "fname", "")} ${_get(person, "lname", "")}`;
 
   return (<Layout>
 
     <Head
-      url={ url.asPath }
+
+      url={ `/invite,${ _get(person, "id", 0) }` }
+
       titleLabel={["visitors.opengraph.title", {
           name : name,
           location : 'Kraków', date : '25 kwietnia 2018'}]}
     />
 
 
-
     <Wrapper first label={["visitors.thankyou", { name : _get(person, "fname", "") }]}>
 
-      <TicketDownload code={code} />
+        <TicketDownload code={code} />
+
+        <EventInfo
+            items={[
+
+            {
+            icon : "location",
+            label : "event.location",
+            text : "EXPO Kraków, Galicyjska 9"
+            },
+
+            {
+            icon : "date",
+            label : "event.date",
+            text : "25 kwietnia 2018"
+            },
+
+            {
+            icon : "alarm",
+            label : "event.hours",
+            text : "10:00-17:00"
+            },
+
+            ]}
+            orientation="h"
+            style={{marginTop: 50}}
+        />
+
+
+        <Invite person={ person } />
 
     </Wrapper>
 

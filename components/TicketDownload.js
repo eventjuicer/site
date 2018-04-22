@@ -11,14 +11,21 @@ const styles = theme => ({
     display: 'flex',
     alignItems : 'center',
     justifyContent : 'center',
+    marginTop: 20,
+    marginBottom : 20
   },
 
   button : {
-    fontSize: theme.typography.pxToRem(25),
+
+    [theme.breakpoints.up('sm')]: {
+        fontSize: theme.typography.pxToRem(25),
+        padding: '12px 34px',
+    },
+
     // fontWeight: theme.typography.fontWeightRegular,
     // fontFamily : theme.typography.fontFamily,
     // lineHeight : theme.typography.pxToRem(23),
-    padding: '12px 34px',
+
   }
 
 })

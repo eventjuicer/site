@@ -23,6 +23,13 @@ export const getParticipantCdn = (participant_id, what = "avatar", size = 200) =
   return `https://res.cloudinary.com/eventjuicer/image/upload/c_fit,e_grayscale,w_${size},h_${size}/p_${participant_id}_${what}.jpg`
 }
 
+export const getInviteOgImage = (text = "") => {
+
+  return `https://res.cloudinary.com/eventjuicer/image/upload/w_0.9,c_scale,fl_relative,l_text:Lato_70_bold:${ encodeURIComponent(text) },g_north,y_40,co_rgb:FFFF00/v1524410443/template_visitor.jpg`
+
+}
+
+
 export const getPresenterOgImage = (participant, template = "template_speaker") => {
 
   const avatarTrans = `g_west,x_150,y_25,w_220,h_220,l_p_${participant.id}_avatar,c_fit,r_max`

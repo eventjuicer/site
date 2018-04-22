@@ -38,23 +38,48 @@ const styles = theme => ({
   h2fat : {
     fontSize : '4rem',
     textTransform: 'uppercase',
-    fontWeight : 500,
+    fontWeight : 300,
     marginBottom: '3rem',
 
     [theme.breakpoints.down('sm')]: {
        fontSize : '1.7rem',
-       fontWeight : 600,
+       fontWeight : 400,
        marginBottom: '2rem',
     },
 
   //  textAlign: 'center'
   },
 
+
+  h3 : {
+    fontSize : '1.8rem',
+
+    fontWeight : 400,
+    marginBottom: '2rem',
+
+    [theme.breakpoints.down('sm')]: {
+       fontSize : '1.2rem',
+       fontWeight : 600,
+       marginBottom: '1rem',
+    },
+
+  //  textAlign: 'center'
+  },
+
+
+
+
   fatSubtitle : {
     fontSize : '5rem',
     textTransform: 'uppercase',
     fontWeight : 900,
     marginBottom: '3rem',
+
+    [theme.breakpoints.down('sm')]: {
+       fontSize : '3rem',
+       marginBottom: '2rem',
+    },
+
   //  textAlign: 'center'
   },
 
@@ -236,6 +261,10 @@ const templates = {
 
   H2C : {
     variant : "headline", component : "h2", classNames : ["h2", "centered"]
+  },
+
+  subtitle : {
+    variant : "subheading", component : "h3", classNames : ["h3"]
   },
 
   H2CB : {

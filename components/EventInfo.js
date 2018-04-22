@@ -11,10 +11,12 @@ import Icon from './Icon'
 const styles = theme => ({
 
   h : {
+
     display : 'flex',
     flexDirection : 'row',
+    alignItems : 'center',
 
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
         flexDirection : 'column'
     },
 
@@ -61,9 +63,10 @@ const styles = theme => ({
 })
 
 
-const EventInfo = ({classes, items, translate, orientation, size, invert}) => (
+const EventInfo = ({classes, items, translate, orientation, style, size, invert}) => (
 
-    <List component="ul" className={classes[orientation]}>
+    <div style={{...style}}>
+      <List component="ul" className={classes[orientation]}>
       {items.map(({label, icon, text}, i) =>
         {
           return (
@@ -91,6 +94,7 @@ const EventInfo = ({classes, items, translate, orientation, size, invert}) => (
      )}
 
     </List>
+    </div>
 
 )
 
@@ -98,7 +102,8 @@ EventInfo.defaultProps = {
   items : [],
   orientation : "v",
   size : "small",
-  invert : false
+  invert : false,
+  style : {}
 }
 
 const enhance = compose(

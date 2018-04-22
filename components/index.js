@@ -45,6 +45,7 @@ export {default as FaqLink} from './FaqLink'
 export {default as MyAvatar} from './MyAvatar'
 
 export {default as TicketDownload} from './TicketDownload'
+export {default as Invite} from './Invite'
 
 
 export {default as Tags} from './Tags'
