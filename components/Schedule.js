@@ -8,6 +8,7 @@ import _get from 'lodash/get'
 
 import ScheduleItem from './ScheduleItem'
 import ScheduleVenue from './ScheduleVenue'
+import ScheduleBreak from './ScheduleBreak'
 
 import { resourceFetchRequest } from './redux/actions'
 import { presenterSelector } from '../redux/reselect'
@@ -35,6 +36,26 @@ class Schedule extends React.PureComponent {
     return _filter(presenters, search).map((item, i) => <ScheduleItem key={item.id} selected={item.id == selected} first={i === 0} data={item} />)
   }
 
+  renderBreak(label){
+    return ( <Grid item xs={12}><ScheduleBreak label={label} /></Grid>)
+  }
+
+  renderVenues(){
+
+    const { venues} = this.props;
+    const gridData = {xs : 12, sm : 12, md : 4, lg : 4, xl : 4}
+
+    return Object.keys(venues).map(venue => <Grid key={venue} item {...gridData}>
+
+         <ScheduleVenue
+           name={venue}
+           company={ this.getCompany( _get(venues[venue], "company_id", 0) ) }
+         />
+
+    </Grid>)
+
+  }
+
   render() {
 
     const { presenters, venues, times} = this.props;
@@ -46,33 +67,26 @@ class Schedule extends React.PureComponent {
 
           <Grid container spacing={40} hidden={{implementation : "css", smDown : true}}>
 
-          {Object.keys(venues).map(venue => <Grid key={venue} item {...gridData}>
-
-               <ScheduleVenue
-                 name={venue}
-                 company={ this.getCompany( _get(venues[venue], "company_id", 0) ) }
-               />
-
-          </Grid>)}
+          { this.renderVenues() }
 
           </Grid>
 
-          {
+          {Object.keys(times).map((time, i) => (
+              <Grid key={i} container spacing={40}>
 
-            times.map((presentation_time, i) => (<Grid key={i} container spacing={40}>
+                      {
+                        times[time] !== "presentation" && this.renderBreak(times[time])
+                      }
 
-                      {Object.keys(venues).map((presentation_venue, j) => <Grid key={`${i}${j}`} item {...gridData}>
+                      { times[time] === "presentation" && Object.keys(venues).map((venue, j) => <Grid key={`${i}${j}`} item {...gridData}>
 
                           {this.findPresentations({
-                              presentation_venue, presentation_time
+                              presentation_venue : venue, presentation_time : time
                           }, j === 0 )}
 
-                        </Grid>)}
+                        </Grid>) }
 
-                    </Grid>)
-            )
-
-          }
+              </Grid>))}
 
       </div>
     )
@@ -85,16 +99,19 @@ Schedule.defaultProps = {
   selected : 0,
   presenters : [],
   exhibitors : [],
-  times : [
-    "11:15",
-    "11:50",
-    "12:40",
-    "13:15",
-    "14:05",
-    "14:40",
-    "15:30",
-    "16:05"
-  ],
+  times : {
+    "11:15" : "presentation",
+    "11:50" : "presentation",
+    "12:10" : "break_30",
+    "12:40" : "presentation",
+    "13:15" : "presentation",
+    "13:35" : "break_30",
+    "14:05" : "presentation",
+    "14:40" : "presentation",
+    "15:00" : "break_30",
+    "15:30" : "presentation",
+    "16:05" : "presentation"
+  },
   venues : {
     "A" : {company_id : 1175},
     "B" : {company_id : 1158},

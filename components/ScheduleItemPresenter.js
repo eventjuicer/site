@@ -6,6 +6,7 @@ import Card, { CardHeader, CardActions } from 'material-ui/Card';
 import Avatar from 'material-ui/Avatar';
 import IconButton from 'material-ui/IconButton';
 import red from 'material-ui/colors/red';
+import {DotsVertical} from 'mdi-material-ui'
 
 //
 // import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -47,11 +48,11 @@ const ScheduleItemPresenter = ({classes, title, text, imageSrc, raised}) => {
             avatar={
               <Avatar aria-label="Recipe" className={classes.avatar} src={imageSrc} />
             }
-            action={
-              <IconButton>
-                {/* <MoreVertIcon /> */}
-              </IconButton>
-            }
+            // action={
+            //   <IconButton>
+            //     <DotsVertical />
+            //   </IconButton>
+            // }
             title={title}
             subheader={text}
           />
