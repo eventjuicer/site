@@ -66,7 +66,7 @@ const Invite = ({person, classes}) => {
 
           <Grid item md={7} sm={6} xs={12}>
 
-            <img src={ getInviteOgImage(`Będę! Pozdrawiam%E2%80%9A ${ _get(person, "fname") }`) } alt="" className={classes.image} />
+            <img src={ getInviteOgImage( `Będę. ${ _get(person, "fname", "") } z ${ _get(person, "cname2") }.` )  } alt="" className={classes.image} />
 
           </Grid>
 
