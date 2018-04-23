@@ -28,7 +28,7 @@ export const getInviteOgImage = (text = "") => {
   text = text.replace(","," ")
   text = text.replace("/"," ")
 
-  return `https://res.cloudinary.com/eventjuicer/image/upload/w_0.9,c_scale,fl_relative,l_text:Helvetica_300_bold:${ encodeURIComponent(text) },g_north,y_40,co_rgb:FFFF00/v1524410443/template_visitor.jpg`
+  return `https://res.cloudinary.com/eventjuicer/image/upload/w_0.9,c_scale,fl_relative,l_text:Helvetica_300_bold:${ encodeURIComponent(text) },g_north,y_40,co_rgb:FFFF00/v1524447135/template_visitor2.jpg`
 
 }
 
@@ -38,7 +38,7 @@ export const getPresenterOgImage = (participant, template = "template_speaker") 
   const avatarTrans = `g_west,x_150,y_25,w_220,h_220,l_p_${participant.id}_avatar,c_fit,r_max`
   const logotypeTrans = `g_east,x_150,y_25,w_220,h_220,l_p_${participant.id}_logotype,c_fit`
 
-  return `https://res.cloudinary.com/eventjuicer/image/upload/${avatarTrans}/${logotypeTrans}/${template}.png`
+  return `https://res.cloudinary.com/eventjuicer/image/upload/${avatarTrans}/${logotypeTrans}/${template}.jpg`
 
 }
 
@@ -72,7 +72,7 @@ export const getCompanyLogotype = (company, scale = true) => {
 }
 
 export const wrapImage = (overlayImage, baseImage, params = `h_220,w_600,y_30`) => {
-  return `https://res.cloudinary.com/eventjuicer/image/upload/c_fit,l_${overlayImage},${params}/${baseImage}.png`
+  return `https://res.cloudinary.com/eventjuicer/image/upload/c_fit,l_${overlayImage},${params}/${baseImage}.jpg`
 
 }
 
