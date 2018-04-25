@@ -66,16 +66,6 @@ class PageIndex extends React.Component {
 
       <Head />
 
-      <Hero />
-
-      <Wrapper
-        label="visitors.register"
-        secondaryTitle="22 Prezentacje, 130 Wystawców i prawdziwy networking!"
-      >
-      <Visitor  />
-      </Wrapper>
-
-
       <Wrapper
         label="presenters.schedule"
         secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
@@ -89,9 +79,36 @@ class PageIndex extends React.Component {
       </Wrapper>
 
 
-      <Wrapper label="visitors.register_alt">
-        <Visitor />
+      <Wrapper label="exhibitors.list_full" color="#ffffff">
+        <ColumnList data={ exhibitors } />
       </Wrapper>
+
+      <Wrapper
+        label="exhibitors.map.title"
+      //  secondaryTitle="Chcesz się wystawić? Zostało tylko kilka stoisk!"
+        >
+        {/* <WidthAwareInfo /> */}
+        <Bookingmap  />
+      </Wrapper>
+
+
+
+
+      {/* <Hero /> */}
+
+      <Wrapper
+        label="visitors.register"
+        secondaryTitle="22 Prezentacje, 130 Wystawców i prawdziwy networking!"
+      >
+      <Visitor  />
+      </Wrapper>
+
+
+
+
+      {/* <Wrapper label="visitors.register_alt">
+        <Visitor />
+      </Wrapper> */}
 
       <Wrapper
         label="exhibitors.list_featured"
@@ -104,23 +121,16 @@ class PageIndex extends React.Component {
       </Wrapper>
 
 
-      <Wrapper
-        label="exhibitors.map.title"
-        secondaryTitle="Chcesz się wystawić? Zostało tylko kilka stoisk!"
-        >
-        {/* <WidthAwareInfo /> */}
-        <Bookingmap  />
-      </Wrapper>
+
+
 
       <Gallery label="event.gallery" />
 
 
-      <Wrapper label="exhibitors.list_full" color="#ffffff">
-        <ColumnList data={ exhibitors } />
-      </Wrapper>
-      
 
-      <Wrapper
+
+
+      {/* <Wrapper
         label="visitors.register"
         secondaryTitle="Spotkamy się w gronie ponad 3000 osób!"
       //   links={[
@@ -128,7 +138,7 @@ class PageIndex extends React.Component {
       // ]}
       >
       <Visitor  />
-      </Wrapper>
+      </Wrapper> */}
 
 
 

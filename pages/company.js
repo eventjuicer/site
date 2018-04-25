@@ -75,6 +75,8 @@ render()
         <Company company={company} />
     </Wrapper>
 
+    <CompanyBookingmap company={company} eventId={eventId} />
+
     <Wrapper label="visitors.register" color="#fafafa" links={[
          <Link key="more" href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
       ]}>
@@ -82,7 +84,6 @@ render()
     </Wrapper>
 
 
-    <CompanyBookingmap company={company} eventId={eventId} />
 
 
     <Wrapper

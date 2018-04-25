@@ -33,6 +33,12 @@ app.prepare().then(() => {
  //  })
 
 
+   server.get('/stage,:stage', (req, res) => {
+     const queryParams = { stage: req.params.stage }
+    // app.render(req, res, '/exhibitor', queryParams)
+     renderAndCache(req, res, '/stage', queryParams)
+   })
+
    server.get('/ticket,:hash', (req, res) => {
      const queryParams = { hash: req.params.hash }
     // app.render(req, res, '/exhibitor', queryParams)

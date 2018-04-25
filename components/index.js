@@ -35,6 +35,8 @@ export {default as WidthAwareInfo} from './WidthAwareInfo'
 
 export {default as People} from './People'
 export {default as Schedule} from './Schedule'
+export {default as Stage} from './Stage'
+
 export {default as Presentation} from './Presentation'
 export {default as Presenter} from './Presenter'
 
