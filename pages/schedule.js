@@ -36,14 +36,14 @@ render()
 
     <Head />
 
-    <Wrapper
+    {/* <Wrapper
       first
       label="presenters.schedule"
       secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
     >
       <Schedule  />
 
-    </Wrapper>
+    </Wrapper> */}
 
     <Wrapper label="visitors.register_alt">
 
@@ -51,11 +51,11 @@ render()
 
     </Wrapper>
 
-    <Wrapper label="visitors.attendees">
+    {/* <Wrapper label="visitors.attendees">
 
       <WhoIsGonnaBeThere />
 
-    </Wrapper>
+    </Wrapper> */}
 
     <Wrapper>
       <Visitor />

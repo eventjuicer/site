@@ -56,7 +56,7 @@ render()
     <Head
       url={ url.asPath }
       image={ getInviteOgImage( `Będę. ${ _get(person, "fname", "") } z ${ _get(person, "cname2") }` )  }
-      titleLabel={["visitors.opengraph.title", {name : name, cname : cname, location : 'Kraków', date : '25 kwietnia 2018'}]}
+      titleLabel={["visitors.opengraph.title", {name : name, cname : cname, location : 'Warszawa', date : '7 listopada 2018'}]}
     />
 
 
@@ -76,13 +76,13 @@ render()
             {
             icon : "location",
             label : "event.location",
-            text : "EXPO Kraków, Galicyjska 9"
+            text : "EXPO XXI Warszawa, Prądzyńskiego 12/14"
             },
 
             {
             icon : "date",
             label : "event.date",
-            text : "25 kwietnia 2018"
+            text : "7 listopada 2018"
             },
 
             {

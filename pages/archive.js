@@ -25,22 +25,21 @@ import Visitor from '../roles/Visitor'
 
 import {fetcher} from '../helpers'
 
-const Bookingmap = dynamic(import("../components/Bookingmap"))
 
 class PageExhibit extends React.Component {
 
   static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
   {
-    const results = await fetcher({exhibitors : false}, store)
+    const results = await fetcher({events : false}, store)
 
-    return {  exhibitors : results.getData("exhibitors") }
+    return {  events : results.getData("events") }
   }
 
 
   render()
   {
 
-    const { exhibitors, url } = this.props;
+    const { events, url } = this.props;
 
     return (
 
@@ -53,18 +52,10 @@ class PageExhibit extends React.Component {
         label="exhibitors.map.title"
         secondaryTitle="Oficjalny start publicznej sprzedaży wkrótce."
         >
-        {/* <WidthAwareInfo /> */}
-        <Bookingmap  />
+
+
       </Wrapper>
 
-
-      {/* <Wrapper
-        label="exhibitors.list_full"
-
-      //  dense={true}
-      >
-        <Avatarlist  data={ exhibitors } limit={null} />
-      </Wrapper> */}
 
 
       <Gallery label="event.gallery" />

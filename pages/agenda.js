@@ -32,7 +32,7 @@ static async getInitialProps({err, req, res, pathname, query, asPath, isServer, 
   const results = await fetcher({exhibitors : false, presenters : false}, store);
 
   return {
-    
+
   }
 
 }
@@ -49,19 +49,19 @@ render()
 
         <Head />
 
-        <Wrapper
+        {/* <Wrapper
           label="presenters.schedule"
           secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
           first
         >
           <Schedule  />
-        </Wrapper>
+        </Wrapper> */}
 
         <Wrapper label="visitors.register_alt">
           <Visitor />
         </Wrapper>
 
-        <Wrapper first
+        {/* <Wrapper first
           label="presenters.list_full"
           secondaryTitle="Czołowi Eksperci Handlu Online"
         // links={[
@@ -69,15 +69,15 @@ render()
         // ]}
         >
           <People random={false}  link={true}  filter={function(item){ return item.bio && item.bio.length >5; }}   />
-        </Wrapper>
+        </Wrapper> */}
 
-        <Wrapper label="visitors.attendees">
+        {/* <Wrapper label="visitors.attendees">
           <WhoIsGonnaBeThere />
-        </Wrapper>
+        </Wrapper> */}
 
-        <Wrapper>
+        {/* <Wrapper>
           <Visitor />
-        </Wrapper>
+        </Wrapper> */}
 
         {/* <Googlemap /> */}
 

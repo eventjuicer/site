@@ -37,7 +37,7 @@ render()
 
       <Head />
 
-      <Wrapper
+      {/* <Wrapper
         first
         label="presenters.list_full"
         secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
@@ -46,7 +46,7 @@ render()
       // ]}
       >
         <People link={true} random={false} filter={function(item){ return item.bio && item.bio.length >5; }}   />
-      </Wrapper>
+      </Wrapper> */}
 
 
       <Wrapper label="visitors.register_alt">

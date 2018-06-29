@@ -51,7 +51,7 @@ class PageError extends React.Component {
         </Wrapper>
 
 
-        <Wrapper
+        {/* <Wrapper
               label="presenters.schedule"
               secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
 
@@ -60,7 +60,7 @@ class PageError extends React.Component {
               // ]}
             >
               <Schedule    />
-        </Wrapper>
+        </Wrapper> */}
 
 
 

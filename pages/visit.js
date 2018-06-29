@@ -48,24 +48,24 @@ render()
         <Visitor />
       </Wrapper>
 
-      <Wrapper
+      {/* <Wrapper
         label="presenters.schedule"
         secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
         first
       >
 
         <Schedule  />
-      </Wrapper>
+      </Wrapper> */}
 
-      <Wrapper
+      {/* <Wrapper
         label="visitors.attendees"
         secondaryTitle="oraz 3000 innych osób"
       >
         <WhoIsGonnaBeThere />
-      </Wrapper>
+      </Wrapper> */}
 
 
-      <Wrapper label="visitors.register">
+      {/* <Wrapper label="visitors.register">
         <Visitor />
       </Wrapper>
 
@@ -74,7 +74,7 @@ render()
         secondaryTitle="22 Prezentacje, 2 panele dyskusyjne! Udział bezpłatny."
       >
         <People limit={16} link={true} random={false} filter={function(item){ return item.bio.length > 10 }}  />
-      </Wrapper>
+      </Wrapper> */}
 
 
       <Gallery />

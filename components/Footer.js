@@ -57,13 +57,13 @@ const Footer = ({links, classes, width}) => (
            {
              icon : "location",
              label : "event.location",
-             text : "EXPO Kraków, Galicyjska 9"
+             text : "EXPO XXI Warszawa, Prądzyńskiego 12/14"
            },
 
            {
              icon : "date",
              label : "event.date",
-             text : "25 kwietnia 2018"
+             text : "7 listopada 2018"
            },
 
            {
@@ -92,7 +92,7 @@ const Footer = ({links, classes, width}) => (
 
            {
              label : "event.organizer.name",
-             text : "Infoguru Sp. z o.o."
+             text : "Infoguru Sp. z o.o. Sp. k."
            },
 
            {
@@ -102,7 +102,7 @@ const Footer = ({links, classes, width}) => (
 
            {
              label : "event.organizer.registration",
-             text : "EU VAT ID PL7811883511"
+             text : "VAT ID 7811967834"
            },
 
          ]}

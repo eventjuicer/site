@@ -18,7 +18,8 @@ import {
   Company,
   resourceFetchSuccess,
   Gallery,
-  ColumnList
+  ColumnList,
+  Avatarlist
 } from '../components';
 
 
@@ -83,9 +84,20 @@ render()
       <Visitor  />
     </Wrapper>
 
+    <Wrapper
+      label="exhibitors.list_featured"
+      secondaryTitle=""
+      links={[
+        <Link key="all" href="/exhibitors" label="common.menu.visitors.exhibitors" variant="flat" color="secondary" />,
+      ]}
+    >
+      {/* <Avatarlist filter={function(item){ return item.featured; }} data={ exhibitors } /> */}
 
+      <Avatarlist data={ exhibitors } />
 
+    </Wrapper>
 
+{/*
     <Wrapper
       label="presenters.schedule"
       secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
@@ -93,9 +105,9 @@ render()
     >
       <Schedule  />
     </Wrapper>
+ */}
 
-
-    <Wrapper
+    {/* <Wrapper
       label="presenters.list_featured"
       secondaryTitle="Udział bezpłatny. Pełna agenda już wkrótce..."
       links={[
@@ -104,24 +116,24 @@ render()
     >
       <People link={true} limit={8} random={false} filter={function(item){ return [71460, 71462, 71461, 71463, 71703, 71707, 71708, 71709].indexOf(item.id) > -1; }}  />
     </Wrapper>
-
+ */}
 
 
     <Gallery label="event.gallery" />
 
 
-
+{/*
   <Wrapper label="visitors.register_alt" color="#ffffff" links={[
      <Link key="more" href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
   ]}>
     <Visitor  />
   </Wrapper>
+ */}
 
 
-
-    <Wrapper label="exhibitors.list_full" color="#ffffff">
+    {/* <Wrapper label="exhibitors.list_full" color="#ffffff">
       <ColumnList data={ exhibitors } />
-    </Wrapper>
+    </Wrapper> */}
 
 
 

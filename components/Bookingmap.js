@@ -28,7 +28,7 @@ const styles = (theme) => ({
   scrollableContainer : {
     overflowX: 'auto',
     overflowY: 'visible',
-    height: 600,
+    height: 800,
     whiteSpace:'nowrap',
   },
 

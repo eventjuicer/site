@@ -49,7 +49,7 @@ render()
       url={ url.asPath }
       titleLabel={["visitors.opengraph.title", {
           name : name,
-          location : 'Kraków', date : '25 kwietnia 2018'}]}
+          location : 'Warszawa', date : '7 listopada 2018'}]}
     />
 
 

@@ -35,13 +35,13 @@ const HeroCustom = ({classes}) => (
         {
           icon :  "location",
           label : "event.location",
-          text : "EXPO Kraków, Galicyjska 9"
+          text : "EXPO XXI, Prądzyńskiego 12/14"
         },
 
         {
           icon : "date",
           label : "event.date",
-          text : "25 kwietnia 2018"
+          text : "7 listopada 2018"
         },
 
         {

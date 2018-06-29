@@ -66,7 +66,12 @@ class PageIndex extends React.Component {
 
       <Head />
 
-      <Wrapper
+
+
+     <Hero />
+
+
+      {/* <Wrapper
         label="presenters.schedule"
         secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
         links={[
@@ -75,58 +80,59 @@ class PageIndex extends React.Component {
         ]}
       >
         <Schedule />
-        {/* <People limit={8} random={false} link={true}  filter={function(item){ return item.bio.length > 10 }}  /> */}
-      </Wrapper>
+        <People limit={8} random={false} link={true}  filter={function(item){ return item.bio.length > 10 }}  />
+      </Wrapper> */}
 
 
-      <Wrapper label="exhibitors.list_full" color="#ffffff">
-        <ColumnList data={ exhibitors } />
-      </Wrapper>
+
 
       <Wrapper
         label="exhibitors.map.title"
-      //  secondaryTitle="Chcesz się wystawić? Zostało tylko kilka stoisk!"
+        secondaryTitle="Trwa sprzedaż dla Wystawców poprzedniej edycji"
         >
-        {/* <WidthAwareInfo /> */}
+
         <Bookingmap  />
+      </Wrapper>
+
+      <Wrapper
+        label="exhibitors.list_featured"
+        secondaryTitle=""
+        links={[
+          <Link key="all" href="/exhibitors" label="common.menu.visitors.exhibitors" variant="flat" color="secondary" />,
+        ]}
+      >
+        {/* <Avatarlist filter={function(item){ return item.featured; }} data={ exhibitors } /> */}
+
+        <Avatarlist data={ exhibitors } />
+
       </Wrapper>
 
 
 
-
-      {/* <Hero /> */}
-
+{/*
       <Wrapper
         label="visitors.register"
-        secondaryTitle="22 Prezentacje, 130 Wystawców i prawdziwy networking!"
+        secondaryTitle="22 Prezentacje, 150 Wystawców i prawdziwy networking!"
       >
       <Visitor  />
       </Wrapper>
 
 
-
+ */}
 
       {/* <Wrapper label="visitors.register_alt">
         <Visitor />
       </Wrapper> */}
-
-      <Wrapper
-        label="exhibitors.list_featured"
-        secondaryTitle="i ponad 120 innych Wystawców"
-        links={[
-          <Link key="all" href="/exhibitors" label="common.menu.visitors.exhibitors" variant="flat" color="secondary" />,
-        ]}
-      >
-        <Avatarlist filter={function(item){ return item.featured; }} data={ exhibitors } />
-      </Wrapper>
-
-
 
 
 
       <Gallery label="event.gallery" />
 
 
+
+            <Wrapper label="exhibitors.list_full" color="#ffffff">
+              <ColumnList data={ exhibitors } />
+            </Wrapper>
 
 
 
