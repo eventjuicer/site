@@ -1,9 +1,10 @@
 
 import dynamic from 'next/dynamic'
 
-import reduxPage from '../redux'
+import {connect} from "react-redux";
 import Layout from '../layouts/main';
 
+import Table from '../components/MyTable'
 
 import {
   Wrapper,
@@ -30,7 +31,7 @@ class PageExhibit extends React.Component {
 
   static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
   {
-    const results = await fetcher({events : false}, store)
+    const results = await fetcher({events : false})
 
     return {  events : results.getData("events") }
   }
@@ -39,7 +40,7 @@ class PageExhibit extends React.Component {
   render()
   {
 
-    const { events, url } = this.props;
+    const { events } = this.props;
 
     return (
 
@@ -53,9 +54,9 @@ class PageExhibit extends React.Component {
         secondaryTitle="Oficjalny start publicznej sprzedaży wkrótce."
         >
 
+          <Table data={events} cols={{name : {}, loc : {}, starts : {} }} />
 
       </Wrapper>
-
 
 
       <Gallery label="event.gallery" />
@@ -67,4 +68,4 @@ class PageExhibit extends React.Component {
 
 }
 
-export default reduxPage( PageExhibit )
+export default connect()( PageExhibit )

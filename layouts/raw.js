@@ -6,9 +6,7 @@ import {
 } from '../next'
 
 import {TranslationProvider} from '../i18n'
-
-import withMui from '../next/withMui'
-
+import {connect} from 'react-redux'
 import customMessages from 'eventjuicer-site-translations'
 
 
@@ -38,4 +36,4 @@ Layout.defaultProps = {
 }
 
 
-export default withMui(Layout);
+export default connect()(Layout);

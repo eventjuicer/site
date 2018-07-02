@@ -8,7 +8,7 @@ import {
   MyLink as Link
 } from '../next'
 
-import reduxPage from '../redux'
+import {connect} from 'react-redux'
 
 import _keyBy from 'lodash/keyBy'
 import _get from 'lodash/get'
@@ -49,6 +49,7 @@ static async getInitialProps({err, req, res, pathname, query, asPath, isServer, 
   const results = await fetcher({presenters : false, exhibitors : false}, store)
 
   return {
+    asPath : asPath,
     speakers : results.getData("presenters"),
     exhibitors : results.getData("exhibitors"),
     speakerId : query.id,
@@ -59,7 +60,7 @@ static async getInitialProps({err, req, res, pathname, query, asPath, isServer, 
 render()
 {
 
-  const { exhibitors, speakers, speakerId, url} = this.props;
+  const { exhibitors, speakers, speakerId, asPath} = this.props;
   const keyedSpeakers = _keyBy(speakers, "id");
   const speaker = speakerId in keyedSpeakers ? keyedSpeakers[speakerId] : null
   const name = `${_get(speaker, "fname")} ${_get(speaker, "lname")}`
@@ -75,7 +76,7 @@ render()
 
     <Head
       image={ getPresenterOgImage(speaker, "template_speaker2") }
-      url={ url.asPath }
+      url={ asPath }
       titleLabel={["presenters.opengraph.title", {name}]}
       descriptionLabel={["presenters.opengraph.description", {
         fname: _get(speaker, "fname"),
@@ -114,7 +115,7 @@ render()
 
              <Presenter data={speaker} />
 
-             <Sharer url={ url.asPath  } />
+             <Sharer url={ asPath  } />
 
           </div>
         } />
@@ -170,4 +171,4 @@ render()
 }
 
 
-export default reduxPage( PageSpeaker)
+export default connect()( PageSpeaker)

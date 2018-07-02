@@ -1,7 +1,7 @@
 
 import dynamic from 'next/dynamic'
 
-import reduxPage from '../redux'
+import {connect} from 'react-redux'
 import Layout from '../layouts/main';
 
 
@@ -76,4 +76,4 @@ class PageExhibit extends React.Component {
 
 }
 
-export default reduxPage( PageExhibit )
+export default connect()( PageExhibit )

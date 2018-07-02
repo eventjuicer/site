@@ -4,7 +4,7 @@ import {
   MyHead as Head
 } from '../next'
 
-import reduxPage from '../redux'
+import {connect} from "react-redux";
 
 import {
   Typography,
@@ -76,4 +76,4 @@ class PageError extends React.Component {
   }
 }
 
-export default reduxPage(PageError)
+export default connect()(PageError)

@@ -3,7 +3,7 @@ import {
   MyHead as Head
 } from '../next'
 
-import reduxPage from '../redux'
+import {connect} from "react-redux";
 
 import {
   Typography,
@@ -40,7 +40,7 @@ static async getInitialProps({err, req, res, pathname, query, asPath, isServer, 
 render()
 {
 
-  const { url } = this.props;
+  const { router } = this.props;
 
   return (
 
@@ -89,4 +89,4 @@ render()
 }
 
 
-export default reduxPage( PageAgenda )
+export default connect(null,null)( PageAgenda )

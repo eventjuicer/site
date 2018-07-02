@@ -7,9 +7,10 @@ import {
   MyLink as Link
 } from '../next'
 
-import reduxPage from '../redux'
 
 import {get} from 'lodash'
+
+import {connect} from "react-redux";
 
 
 import {
@@ -52,6 +53,7 @@ static async getInitialProps({err, req, res, pathname, query, asPath, isServer, 
   const results = await fetcher({[company] : false, exhibitors : false}, store);
 
   return {
+    asPath : asPath,
     company : results.getData(company),
     exhibitors : results.getData("exhibitors"),
     eventId: get(results.getMeta(company), "active_event_id")
@@ -62,13 +64,16 @@ static async getInitialProps({err, req, res, pathname, query, asPath, isServer, 
 render()
 {
 
-  const { company, exhibitors, url , eventId} = this.props;
+  const { company, exhibitors, eventId, asPath} = this.props;
+
+
+
 
   return (<Layout>
 
     <Head
-      image={ getCompanyAltOgImage(company, url.asPath)  }
-      url={ url.asPath }
+      image={ getCompanyAltOgImage(company, asPath)  }
+      url={ asPath }
       titleLabel={["companies.opengraph.title", {name : getCompanyProfileInfo(company, "name") }]}
     />
 
@@ -143,4 +148,4 @@ render()
 }
 
 
-export default reduxPage( PageCompany )
+export default connect()( PageCompany )

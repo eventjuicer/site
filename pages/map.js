@@ -1,9 +1,6 @@
 
 import {MyHead as Head} from '../next'
-import reduxPage from '../redux'
-
-
-
+import {connect} from 'react-redux'
 
 import {Typography, Wrapper, Bookingmap} from '../components';
 import Layout from '../layouts/main';
@@ -39,4 +36,4 @@ render()
 }
 
 
-export default reduxPage(PageMap, (state) => ({foo: state.foo}) )
+export default connect()(PageMap)

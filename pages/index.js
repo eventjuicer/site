@@ -1,32 +1,28 @@
 
 import dynamic from 'next/dynamic'
-import reduxPage from '../redux'
-import Layout from '../layouts/main';
+import {connect} from "react-redux";
 
+import Layout from '../layouts/main';
 
 import {
   MyHead as Head,
   MyLink as Link
 } from '../next'
 
-
 import {
-  Wrapper,
-  Avatarlist,
-  ColumnList,
-//  Bookingmap,
-  Gallery,
-//  WidthAwareInfo,
-
-  Schedule,
-  HeroCustom as Hero,
-//  Reviews
+      Wrapper,
+      Avatarlist,
+      ColumnList,
+      //  Bookingmap,
+      Gallery,
+      //  WidthAwareInfo
+      Schedule,
+      HeroCustom as Hero,
+      //  Reviews
 } from '../components'
 
 
 const Bookingmap = dynamic(import("../components/Bookingmap"))
-
-
 import Visitor from '../roles/Visitor'
 import {fetcher} from '../helpers'
 
@@ -156,4 +152,4 @@ class PageIndex extends React.Component {
 
 }
 
-export default reduxPage( PageIndex )
+export default connect(null, null)(PageIndex)

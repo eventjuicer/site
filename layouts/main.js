@@ -1,12 +1,15 @@
 
 import dynamic from 'next/dynamic'
 import Router from 'next/router'
-import withMui from '../next/withMui'
 
 import {MyHead as Head} from '../next'
 
 import Chatlio from '../services/Chatlio'
 import {TranslationProvider} from '../i18n'
+
+
+import {connect} from 'react-redux'
+
 
 import {
   MyAppBar,
@@ -50,7 +53,9 @@ const Layout = (props) => (
 
 
     <Dialog />
+
     <Snackbar />
+
     <Drawer items={ menuItems } />
 
     <Chatlio button={false} />
@@ -59,6 +64,4 @@ const Layout = (props) => (
   </TranslationProvider>
 )
 
-
-
-export default withMui(Layout);
+export default connect()(Layout);

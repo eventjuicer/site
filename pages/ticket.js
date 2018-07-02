@@ -7,7 +7,7 @@ import {
   MyHead as Head
 } from '../next'
 
-import reduxPage from '../redux'
+import {connect} from "react-redux";
 
 import {
   TicketDownload,
@@ -143,4 +143,4 @@ render()
 }
 
 
-export default reduxPage( PageTicket )
+export default connect(null,null)( PageTicket )

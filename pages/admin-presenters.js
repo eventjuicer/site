@@ -8,7 +8,6 @@ import {
   MyLink as Link
 } from '../next'
 
-import reduxPage from '../redux'
 
 import {
   MyTypography as Typography,
@@ -25,6 +24,11 @@ import {
 } from '../helpers'
 
 
+
+import {connect} from "react-redux";
+
+
+
 class PageSpeakerSocial extends React.Component {
 
 
@@ -35,6 +39,7 @@ static async getInitialProps({err, req, res, pathname, query, asPath, isServer, 
 
   return {
     presenters : results.getData("presenters"),
+    asPath : asPath
   }
 
 }
@@ -42,13 +47,13 @@ static async getInitialProps({err, req, res, pathname, query, asPath, isServer, 
 render()
 {
 
-  const { presenters, url } = this.props;
+  const { presenters, asPath } = this.props;
 
 
   return (<Layout>
 
     <Head
-      url={ url.asPath }
+      url={ asPath }
     />
 
     <Wrapper first label="">
@@ -129,4 +134,4 @@ render()
 }
 
 
-export default reduxPage( PageSpeakerSocial )
+export default connect(null,null)( PageSpeakerSocial )

@@ -3,7 +3,10 @@
 import _get from 'lodash/get'
 
 import {MyHead as Head} from '../next'
-import reduxPage from '../redux'
+import {connect} from 'react-redux'
+
+
+
 import {
   Typography,
   Faq,
@@ -48,4 +51,4 @@ render()
 }
 
 
-export default reduxPage(PageFaq, (state) => ({foo: state.foo}) )
+export default connect()( PageFaq )

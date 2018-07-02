@@ -1,9 +1,7 @@
 
 import dynamic from 'next/dynamic'
-
-import reduxPage from '../redux'
-import Layout from '../layouts/main';
-
+import {connect} from 'react-redux'
+import Layout from '../layouts/main'
 
 import {
   Wrapper,
@@ -69,4 +67,4 @@ class PageSpecials extends React.Component {
 
 }
 
-export default reduxPage( PageSpecials )
+export default connect()( PageSpecials )

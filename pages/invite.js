@@ -3,7 +3,9 @@
 import _get from 'lodash/get'
 
 import {MyHead as Head} from '../next'
-import reduxPage from '../redux'
+
+import {connect} from 'react-redux'
+
 import {
   Typography,
   Wrapper,
@@ -35,6 +37,7 @@ static async getInitialProps({err, req, res, pathname, query, asPath, isServer, 
   const results =  await fetcher({[person] : false, exhibitors : false}, store )
 
   return {
+    asPath : asPath,
     person : results.getData(person),
     exhibitors : results.getData("exhibitors"),
     eventId: _get(results.getMeta(person), "active_event_id", 0)
@@ -46,7 +49,7 @@ static async getInitialProps({err, req, res, pathname, query, asPath, isServer, 
 render()
 {
 
-  const { url, person, exhibitors } = this.props;
+  const { url, person, exhibitors, asPath } = this.props;
 
   const name = `${_get(person, "fname", "")} ${_get(person, "lname", "")}`;
   const cname = `${_get(person, "cname2", "")}`;
@@ -54,7 +57,7 @@ render()
   return (<Layout>
 
     <Head
-      url={ url.asPath }
+      url={ asPath }
       image={ getInviteOgImage( `Będę. ${ _get(person, "fname", "") } z ${ _get(person, "cname2") }` )  }
       titleLabel={["visitors.opengraph.title", {name : name, cname : cname, location : 'Warszawa', date : '7 listopada 2018'}]}
     />
@@ -150,4 +153,4 @@ render()
 }
 
 
-export default reduxPage( PageInvite  )
+export default connect()( PageInvite  )

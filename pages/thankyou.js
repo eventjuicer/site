@@ -3,7 +3,8 @@ import {
   MyHead as Head
 } from '../next'
 
-import reduxPage from '../redux'
+
+import {connect} from 'react-redux'
 import _get from 'lodash/get'
 
 import {
@@ -30,6 +31,7 @@ static async getInitialProps({err, req, res, pathname, query, asPath, isServer, 
   const results =  await fetcher({[person] : false, exhibitors : false})
 
   return {
+    asPath : asPath,
     person : results.getData(person),
     eventId: _get(results.getMeta(person), "active_event_id", 0)
   }
@@ -39,14 +41,14 @@ static async getInitialProps({err, req, res, pathname, query, asPath, isServer, 
 render()
 {
 
-  const { url, person } = this.props;
+  const { url, person, asPath } = this.props;
 
   const name = `${_get(person, "fname", "")} ${_get(person, "lname", "")}`;
 
   return (<Layout>
 
     <Head
-      url={ url.asPath }
+      url={ asPath }
       titleLabel={["visitors.opengraph.title", {
           name : name,
           location : 'Warszawa', date : '7 listopada 2018'}]}
@@ -78,4 +80,4 @@ render()
 }
 
 
-export default reduxPage( ThankyouPage )
+export default connect()( ThankyouPage )

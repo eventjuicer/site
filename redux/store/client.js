@@ -75,8 +75,6 @@ export function store(initialState = {}, options = {}){
 }
 
 
-const reduxPage = (page, mapStateToProps = null) => withRedux(store, mapStateToProps)(
-  withReduxSaga(page)
-)
+export default store;
 
-export default reduxPage;
+ 

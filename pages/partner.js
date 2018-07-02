@@ -1,6 +1,6 @@
 
 import {MyHead as Head} from '../next'
-import reduxPage from '../redux'
+import {connect} from 'react-redux'
 
 import {
   Typography,
@@ -23,7 +23,6 @@ static async getInitialProps({err, req, res, pathname, query, asPath, isServer, 
 render()
 {
 
-  const { url } = this.props;
 
   return (<Layout>
 
@@ -59,4 +58,4 @@ render()
 }
 
 
-export default reduxPage(Partner, (state) => ({foo: state.foo}) )
+export default connect()( Partner )

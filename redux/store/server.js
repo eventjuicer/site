@@ -31,7 +31,6 @@ export function store(initialState = {}, options = {}){
     applyMiddleware(sagaMiddleware)
   )
 
-
   /**
    * next-redux-saga depends on `runSagaTask` and `sagaTask` being attached to the store.
    *
@@ -43,17 +42,10 @@ export function store(initialState = {}, options = {}){
   _store.runSagaTask = () => {
     _store.sagaTask = sagaMiddleware.run(rootSaga)
   }
-
   // run the rootSaga initially
   _store.runSagaTask()
-
 
   return _store
 }
 
-
-const reduxPage = (page, mapStateToProps = null) => withRedux(store, mapStateToProps)(
-  withReduxSaga(page)
-)
-
-export default reduxPage;
+export default store;

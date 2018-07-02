@@ -4,7 +4,9 @@ import dynamic from 'next/dynamic'
 import _get from 'lodash/get'
 
 import {MyHead as Head} from '../next'
-import reduxPage from '../redux'
+
+import {connect} from 'react-redux'
+
 import {
   Faq,
   FaqLink,
@@ -133,4 +135,4 @@ render()
 }
 
 
-export default reduxPage(PagePremium, (state) => ({foo: state.foo}) )
+export default connect()(PagePremium)

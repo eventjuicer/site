@@ -5,8 +5,10 @@ import {
   MyLink as Link
 } from '../next'
 
-import reduxPage from '../redux'
+import {connect} from 'react-redux'
+
 import Layout from '../layouts/main';
+
 import {
   Wrapper,
   Avatarlist,
@@ -50,7 +52,7 @@ class PageExhibitors extends React.Component {
 
 
       <Wrapper label="visitors.register" color="#fafafa" links={[
-        <Link href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
+        <Link key="visit" href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
       ]}>
       <Visitor  />
       </Wrapper>
@@ -70,4 +72,4 @@ class PageExhibitors extends React.Component {
 
 }
 
-export default reduxPage(PageExhibitors, (state) => ({foo: state.foo}) )
+export default connect()(PageExhibitors)
