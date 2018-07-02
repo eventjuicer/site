@@ -1,8 +1,10 @@
 import { withFormik } from 'formik';
-import Yup from 'yup';
+import * as Yup from "yup";
 import fetch from 'isomorphic-unfetch'
 import _pick from 'lodash/pick'
 import {addToken} from '../helpers'
+
+
 
 export const filterFields = (fields, start) => {
   const all = Object.keys(fields)
