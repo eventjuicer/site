@@ -21,19 +21,17 @@ const Snackbar = dynamic(import('../components/MySnackbar'))
 const Drawer = dynamic(import('../components/MyDrawer'))
 
 import ScreenSize from '../material-ui/ScreenSize'
-import customMessages from 'eventjuicer-site-translations'
 import menuItems from '../components/menuItems'
 
-Router.onRouteChangeComplete = () => {
-  if (window.gtag){
-    window.gtag('config', window.gaTrackingId, {
-      page_location: window.location.href,
-      page_path: window.location.pathname,
-      page_title: window.document.title,
-    });
-  }
-};
+import customMessages from 'eventjuicer-site-translations'
 
+
+
+import * as gtag from '../services/gtag'
+
+Router.onRouteChangeComplete = url => {
+  gtag.pageview(url)
+}
 
 const Layout = (props) => (
   <TranslationProvider locale="pl" messages={customMessages}>

@@ -1,16 +1,15 @@
 
 
 import NextHead from 'next/head';
+import { withRouter } from 'next/router'
 
 
 import { string } from 'prop-types';
 import { translate } from '../i18n'
 import { fullUrl, prepareForTranslate, canonical } from '../helpers'
+import compose from 'recompose/compose'
 
-const GTM = "GTM-MRFVC8"
-
-
-const MyHead = ({title, titleLabel, description, descriptionLabel, url, image, width, height, fb_appid, translate, children}) => {
+const MyHead = ({title, titleLabel, description, descriptionLabel, url, image, width, height, fb_appid, translate, children, router}) => {
 
   const titleLabelParams = prepareForTranslate(titleLabel)
   const descriptionLabelParams = prepareForTranslate(descriptionLabel)
@@ -20,22 +19,14 @@ const MyHead = ({title, titleLabel, description, descriptionLabel, url, image, w
 
   const prefixedUrl = fullUrl(url)
 
+  //console.log(router.asPath);
+
   return (
     <NextHead>
 
       <meta charSet="UTF-8" />
 
-      <script async src={`https://www.googletagmanager.com/gtm.js?id=${GTM}`} />
-
-      <script  dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments)};
-              gtag('js', new Date());
-              gtag('config', '${GTM}');
-            `
-      }} />
-
+  
       <title>{ tTitle }</title>
       <meta name="description" content={ tDescription } />
 
@@ -73,7 +64,7 @@ const MyHead = ({title, titleLabel, description, descriptionLabel, url, image, w
       <link rel="manifest" href="/static/manifest.json" />
       <meta name="msapplication-TileColor" content="#ffffff" />
       <meta name="msapplication-TileImage" content="/static/ms-icon-144x144.png" />
- 
+
       <link rel="canonical" href={ canonical(prefixedUrl) } />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,500,700" />
@@ -111,4 +102,9 @@ MyHead.propTypes = {
   image: string,
 };
 
-export default translate(MyHead);
+const enhance = compose(
+  withRouter,
+  translate
+)
+
+export default enhance(MyHead);

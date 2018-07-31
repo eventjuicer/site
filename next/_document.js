@@ -7,6 +7,7 @@ import {getMuiContext} from '../material-ui';
 
 
 
+import { GA_TRACKING_ID } from '../services/gtag'
 
 
 class MyDocument extends Document {
@@ -25,7 +26,23 @@ class MyDocument extends Document {
     <html lang="en" dir="ltr" amp=''>
       <Head>
 
+        <script
+           async
+           src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+         />
+
+         <script
+           dangerouslySetInnerHTML={{
+             __html: `
+           window.dataLayer = window.dataLayer || [];
+           function gtag(){dataLayer.push(arguments);}
+           gtag('js', new Date());
+           gtag('config', '${GA_TRACKING_ID}');
+         `}}
+         />
+
         <style>{`body { margin: 0 } /* custom! */`}</style>
+
         <meta
                     name="viewport"
                     content={
