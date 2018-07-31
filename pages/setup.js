@@ -1,9 +1,11 @@
 import {Component} from 'react'
-import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
+import {connect} from "react-redux";
 
-export default class extends Component {
+class Api extends Component {
+
   static async getInitialProps ({ req, query }) {
+
     const isServer = !!req
 
     console.log('getInitialProps called:', isServer ? 'server' : 'client')
@@ -12,22 +14,32 @@ export default class extends Component {
       // When being rendered server-side, we have access to our data in query that we put there in routes/item.js,
       // saving us an http call. Note that if we were to try to require('../operations/get-item') here,
       // it would result in a webpack error.
-      return { item: query.itemData }
+      return { texts: query.texts }
     } else {
       // On the client, we should fetch the data remotely
-      const res = await fetch('/_data/item', {headers: {'Accept': 'application/json'}})
+      const res = await fetch('/_data/texts', {headers: {'Accept': 'application/json'}})
       const json = await res.json()
-      return { item: json }
+      return { texts: json }
     }
   }
 
   render () {
+
+    const { texts } = this.props
+
     return (
+
       <div className='item'>
-        <div><Link href='/'><a>Back Home</a></Link></div>
-        <h1>{this.props.item.title}</h1>
-        <h2>{this.props.item.subtitle} - {this.props.item.seller}</h2>
+        {Object.keys(texts).map(lang => <div key={lang}><h1>{lang}</h1>
+
+          {Object.keys(texts[lang]).map(key => <p key={key}>{key}{texts[lang][key]}</p>)}
+
+        </div>)}
       </div>
+
+
     )
   }
 }
+
+export default connect(null, null)(Api)

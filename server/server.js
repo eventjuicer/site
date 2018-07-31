@@ -10,6 +10,8 @@ const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dir: '.', dev })
 const handle = app.getRequestHandler()
 
+const i18n = require('./i18n')
+
 const apiUrl = 'https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/'
 
 const ssrCache = new LRUCache({
@@ -47,27 +49,43 @@ app.prepare().then(() => {
 
    server.get('/thankyou,:hash', (req, res) => {
      const queryParams = { hash: req.params.hash }
-    // app.render(req, res, '/exhibitor', queryParams)
      renderAndCache(req, res, '/thankyou', queryParams)
+   })
+
+   server.get('/archive,:id', (req, res) => {
+     const queryParams = { id: req.params.id }
+     renderAndCache(req, res, '/archive', queryParams)
    })
 
    server.get('/invite,:id', (req, res) => {
      const queryParams = { id: req.params.id }
-    // app.render(req, res, '/exhibitor', queryParams)
      renderAndCache(req, res, '/invite', queryParams)
    })
 
    server.get('/:slug,s,:id', (req, res) => {
      const queryParams = { id: req.params.id }
-    // app.render(req, res, '/exhibitor', queryParams)
      renderAndCache(req, res, '/speaker', queryParams)
    })
 
    server.get('/:slug,c,:id', (req, res) => {
      const queryParams = { id: req.params.id }
-    // app.render(req, res, '/exhibitor', queryParams)
      renderAndCache(req, res, '/company', queryParams)
    })
+
+    // Serve the item webpage with next.js as the renderer
+    server.get('/setup', async (req, res) => {
+      const texts = await i18n.getTexts(ssrCache, "purge" in req.query)
+      app.render(req, res, '/setup', { texts })
+    })
+
+    // When rendering client-side, we will request the same data from this route
+    server.get('/_data/texts', async (req, res) => {
+      const texts = await i18n.getTexts(ssrCache)
+      res.json(texts)
+    })
+
+
+
 
 
 
