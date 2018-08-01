@@ -11,13 +11,14 @@ import {
 
 
 import {
-	CHANGE_LOCALE
+	CHANGE_LOCALE,
+	CHANGE_LOCALE_MSGS
 } from '../../i18n'
 
 const defaultState = {
 	role : 		"",
 	cart : 		{},
-	locale :	"pl",
+	locale :	"en",
 	width : 	"sm",
 	filterParams : {
 		presenters : {},

@@ -1,22 +1,15 @@
-import PropTypes from 'prop-types';
+import {Context} from './TranslationProvider'
 
-const translate = BaseComponent => {
-    class TranslatedComponent extends React.Component {
-        render() {
-            const props = { ...this.context, ...this.props };
-            return <BaseComponent {...props} />;
-        }
-    }
+function enhanceWithTranslate(Component) {
 
-    const { translate, ...defaultProps } = BaseComponent.defaultProps || {};
-    TranslatedComponent.defaultProps = defaultProps;
-    TranslatedComponent.contextTypes = {
-        translate: PropTypes.func.isRequired,
-        locale: PropTypes.string.isRequired,
-    };
-    TranslatedComponent.displayName = `TranslatedComponent(${BaseComponent.displayName})`;
+  return function TranslatedComponent(props) {
 
-    return TranslatedComponent;
-};
+    return (
+      <Context.Consumer>
+        { ({translate, locale}) => <Component {...props} translate={translate} locale={locale} /> }
+      </Context.Consumer>
+    );
+  };
+}
 
-export default translate;
+export default enhanceWithTranslate

@@ -5,10 +5,9 @@ import Router from 'next/router'
 import {MyHead as Head} from '../next'
 
 import Chatlio from '../services/Chatlio'
-import {TranslationProvider} from '../i18n'
 
 
-import {connect} from 'react-redux'
+//import {connect} from 'react-redux'
 
 
 import {
@@ -23,9 +22,7 @@ const Drawer = dynamic(import('../components/MyDrawer'))
 import ScreenSize from '../material-ui/ScreenSize'
 import menuItems from '../components/menuItems'
 
-import customMessages from 'eventjuicer-site-translations'
-
-
+//import customMessages from 'eventjuicer-site-translations'
 
 import * as gtag from '../services/gtag'
 
@@ -33,22 +30,20 @@ Router.onRouteChangeComplete = url => {
   gtag.pageview(url)
 }
 
+
+
 const Layout = (props) => (
-  <TranslationProvider locale="pl" messages={customMessages}>
-  <div>
+  <div id="layout-main">
 
     <ScreenSize />
 
     <Head />
 
-
     <MyAppBar />
 
       {props.children}
 
-
-      <Footer  />
-
+    <Footer  />
 
     <Dialog />
 
@@ -59,7 +54,6 @@ const Layout = (props) => (
     <Chatlio button={false} />
 
   </div>
-  </TranslationProvider>
 )
 
-export default connect()(Layout);
+export default Layout;
