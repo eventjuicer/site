@@ -28,7 +28,7 @@ const TranslationProvider = ({ locale, messages, children }) => {
 
 const mapStateToProps = state => ({
   locale: state.app.locale,
-  messages: state.app.locale_msgs
+  messages: state.resources.texts
 });
 
 export default connect(mapStateToProps)(TranslationProvider);

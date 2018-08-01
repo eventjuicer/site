@@ -8,7 +8,7 @@ import {
   CART_RESET
 } from '../../components/redux';
 
-import { CHANGE_LOCALE, CHANGE_LOCALE_MSGS } from '../../i18n';
+import { CHANGE_LOCALE } from '../../i18n';
 
 const defaultState = {
   role: '',
@@ -29,10 +29,6 @@ const reducer = (state = defaultState, action) => {
 
     case CHANGE_LOCALE:
       return { ...state, locale: action.locale };
-      break;
-
-    case CHANGE_LOCALE_MSGS:
-      return { ...state, locale_msgs: action.messages };
       break;
 
     case ROLE_SELECT:

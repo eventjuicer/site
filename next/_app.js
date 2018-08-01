@@ -4,7 +4,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { getMuiContext } from '../material-ui';
 
-import { TranslationProvider, CHANGE_LOCALE_MSGS } from '../i18n';
+import { TranslationProvider, CHANGE_LOCALE, CHANGE_LOCALE_MSGS } from '../i18n';
 
 import { Provider } from 'react-redux';
 import createStore from '../redux';
@@ -31,10 +31,17 @@ class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
     const { store, isServer, query, res } = ctx;
 
-    let texts;
+    let texts, locale;
 
     if (isServer) {
       texts = 'texts' in res.locals ? res.locals.texts : {};
+
+      //validate locale!
+      if('locale' in res.locals)
+      {
+        store.dispatch({ type: CHANGE_LOCALE, locale: res.locals.locale });
+      }
+
     } else {
       const res = await fetch('/_data/texts', {
         headers: { Accept: 'application/json' }

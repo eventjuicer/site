@@ -18,6 +18,7 @@ import classNames from 'classnames';
 //const Cart = dynamic(import('./CartButton'))
 
 import Cart from './CartButton';
+import LanguageButton from './LanguageButton';
 
 import {
   drawerShow as drawerShowAction,
@@ -81,6 +82,8 @@ function MyAppBar(props) {
               Targi eHandlu
             </Typography>
           </Link>
+
+          <LanguageButton />
 
           {noItems > 0 ? <Cart count={noItems} /> : null}
         </Toolbar>

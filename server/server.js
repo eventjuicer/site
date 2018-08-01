@@ -38,14 +38,16 @@ app
     );
 
     server.use(async function(req, res, next) {
+
+
       const texts = await i18n.getTexts(ssrCache, 'purge' in req.query);
+      const locale = req.session.locale || req.acceptsLanguages('pl','de','en');
 
       res.locals.texts = texts;
+      res.locals.locale = locale
 
-      req.session.views = (req.session.views || 0) + 1;
+      console.log(locale)
 
-      res.locals.counter = req.session.views;
-      res.locals.locale = req.session.locale || '';
 
       next(); // <-- important!
     });
@@ -144,24 +146,19 @@ function cacheApiResult(endpoint) {
  * NB: make sure to modify this to take into account anything that should trigger
  * an immediate page change (e.g a locale stored in req.session)
  */
-function getCacheKey(req) {
-  return `${req.url}`;
+function getCacheKey(req, res) {
+  return `${res.locals.locale || ""}${req.url}`;
 }
 
 async function renderAndCache(req, res, pagePath, queryParams) {
-  const key = getCacheKey(req);
+
+  const key = getCacheKey(req, res);
 
   const purge = 'purge' in req.query;
 
   if (purge) {
     ssrCache.del(key);
   }
-
-  //const texts = await i18n.getTexts(ssrCache)
-  //add (cached) texts...
-
-  //accessing middleware data....
-  queryParams.texts = res.locals.texts;
 
   // If we have a page in the cache, let's serve it
   if (ssrCache.has(key)) {
