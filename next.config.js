@@ -28,7 +28,17 @@ module.exports = (phase, {defaultConfig}) => ({
       return config
   },
 
+  serverRuntimeConfig: { // Will only be available on the server side
+    mySecret: 'secret',
+    // test : process.env.API_HOST
+  },
+  publicRuntimeConfig: { // Will be available on both server and client
+    apiHost: 'targiehandlu.pl',
+
+  }
+
 })
+
 
 
 

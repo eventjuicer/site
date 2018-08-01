@@ -1,7 +1,7 @@
 import { SheetsRegistry } from 'react-jss';
-import { createMuiTheme, createGenerateClassName } from 'material-ui/styles';
-import red from 'material-ui/colors/red';
-import grey from 'material-ui/colors/grey';
+import { createMuiTheme, createGenerateClassName } from '@material-ui/core/styles';
+import red from '@material-ui/core/colors/red';
+import grey from '@material-ui/core/colors/grey';
 
 
 const theme = createMuiTheme({

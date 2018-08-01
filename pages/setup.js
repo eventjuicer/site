@@ -30,11 +30,11 @@ class Api extends Component {
     return (
 
       <div className='item'>
-        {Object.keys(texts).map(lang => <div key={lang}><h1>{lang}</h1>
+        {/* {Object.keys(texts).map(lang => <div key={lang}><h1>{lang}</h1>
 
           {Object.keys(texts[lang]).map(key => <p key={key}>{key}{texts[lang][key]}</p>)}
 
-        </div>)}
+        </div>)} */}
       </div>
 
 

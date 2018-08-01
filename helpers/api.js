@@ -1,11 +1,26 @@
 
+
+
 import fetch from 'isomorphic-unfetch'
 import keyBy from 'lodash/keyBy'
 import get from 'lodash/get'
-
 import { resourceFetchSuccess } from '../components/redux'
 
-export const apiUrl = 'https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/'
+const {API_HOST} = process.env
+
+export const apiUrl = `https://api.eventjuicer.com/v1/public/hosts/${API_HOST}/`
+
+export const checkFetchStatus = (response) =>
+{
+  if (response.ok){
+    return response;
+  } else {
+    const error = new Error(response.statusText)
+    error.response = response;
+    throw error;
+  }
+}
+
 
 export const fetcher = async (endpoints, store = null) => {
 

@@ -27,20 +27,31 @@ import Visitor from '../roles/Visitor'
 import {fetcher} from '../helpers'
 
 
-class PageExhibit extends React.Component {
+class PageArchive extends React.Component {
 
   static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
   {
-    const results = await fetcher({events : false})
 
-    return {  events : results.getData("events") }
+    const presenters = `presenters?event_id=${query.id}`
+
+    const results = await fetcher({
+
+      events : false,
+      [presenters] : false
+    }, store)
+
+    return {
+      events : results.getData("events"),
+      eventId : query.id,
+      presenters : results.getData(presenters)
+    }
   }
 
 
   render()
   {
 
-    const { events } = this.props;
+    const { events, eventId, presenters } = this.props;
 
     return (
 
@@ -48,13 +59,25 @@ class PageExhibit extends React.Component {
 
       <Head />
 
+      {eventId && <Wrapper
+              first
+              label="presenters.archive"
+              secondaryTitle=""
+            // links={[
+            //   <Link href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
+            // ]}
+            >
+              <People link={false} random={false} eventId={eventId} filter={ (n) => n.presentation_time }/>
+
+      </Wrapper> }
+
       <Wrapper
         first
-        label="exhibitors.map.title"
-        secondaryTitle="Oficjalny start publicznej sprzedaży wkrótce."
+        label="archive.events"
+        secondaryTitle=""
         >
 
-          <Table data={events} cols={{name : {}, loc : {}, starts : {} }} />
+          <Table data={events} cols={{name : {}, loc : {}, starts : {transform : (v) => (v) }, show : { button: true, label : "common.details" } }} />
 
       </Wrapper>
 
@@ -68,4 +91,4 @@ class PageExhibit extends React.Component {
 
 }
 
-export default connect()( PageExhibit )
+export default connect()( PageArchive )

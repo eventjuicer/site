@@ -27,10 +27,11 @@ class People extends React.PureComponent {
 
   componentDidMount()
   {
+    const {presenters, resourceFetchRequest, eventId} = this.props;
 
-    if(! this.props.presenters.length)
+    if(! presenters.length)
     {
-      this.props.resourceFetchRequest("presenters", false)
+      resourceFetchRequest("presenters", false)
     }
 
   }
@@ -92,10 +93,17 @@ People.propTypes = {
 };
 
 const enhance = compose(
-  connect(state => ({
-    presenters : state.resources.presenters,
-    width : state.app.width
-  }), {
+
+  connect((state, props) => {
+
+    const resource = props.eventId ? `presenters?event_id=${props.eventId}` : 'presenters'
+
+    return {
+      presenters : state.resources[resource],
+      width : state.app.width
+    }
+
+}, {
   //  dialogShow : dialogShowAction ,
     resourceFetchRequest : resourceFetchRequestAction
   })
