@@ -18,7 +18,8 @@ import {
 const defaultState = {
 	role : 		"",
 	cart : 		{},
-	locale :	"en",
+	locale :	"pl",
+	locale_msgs : {},
 	width : 	"sm",
 	filterParams : {
 		presenters : {},
@@ -38,6 +39,10 @@ const reducer = (state = defaultState, action) => {
 
 		case CHANGE_LOCALE:
 			return {...state, locale : action.locale}
+		break
+
+		case CHANGE_LOCALE_MSGS:
+			return {...state, locale_msgs : action.messages}
 		break
 
 		case ROLE_SELECT:

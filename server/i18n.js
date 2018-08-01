@@ -11,16 +11,13 @@ async function getTexts(cache, purge) {
   if (!cache.has(translationUrl)) {
     const data = await fetch(translationUrl).then(response => response.json())
     cache.set(translationUrl, data)
-    console.log("API/texts fetched & cached!");
+    console.log("API/texts not found! Fetching and caching...");
+    return data
   }else{
     console.log("API/texts resolved from cache!");
+    return cache.get(translationUrl)
   }
 
-  const cachedData = cache.get(translationUrl)
-
-  console.log('API/texts: ', cachedData)
-
-  return cachedData
 }
 
 module.exports = { getTexts }

@@ -5,7 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import JssProvider from 'react-jss/lib/JssProvider';
 import {getMuiContext} from '../material-ui';
 
-import {TranslationProvider} from '../i18n'
+import {TranslationProvider, CHANGE_LOCALE_MSGS} from '../i18n'
 
 import {Provider} from 'react-redux'
 import createStore from '../redux'
@@ -30,42 +30,40 @@ import fetch from 'isomorphic-unfetch'
 
 class MyApp extends App {
 
-
   static async getInitialProps ({ Component, router, ctx}) {
 
-    const isServer = !!ctx.req
+    const {store, isServer, query, res} = ctx
 
-    let texts = {}
+    let texts;
 
-    if (isServer) {
-      texts = "texts" in ctx.query ? ctx.query.texts : {}
-      console.log('texts from server')
-    } else {
-      // On the client, we should fetch the data remotely
+    if(isServer){
+
+      texts = "texts" in res.locals ? res.locals.texts : {}
+
+    }else{
+
       const res = await fetch('/_data/texts', {headers: {'Accept': 'application/json'}})
       texts = await res.json()
-      console.log('texts by client')
     }
 
+    store.dispatch({type : CHANGE_LOCALE_MSGS, messages : texts })
+
+    const componentInitialProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {}
 
     return {
-              texts : texts,
               pageProps: {
                   // Call page-level getInitialProps
-                  ...(Component.getInitialProps ? await Component.getInitialProps(ctx) : {}),
+                  ...componentInitialProps
               }
     };
   }
-
 
   constructor(props) {
     super(props);
     this.pageContext = getMuiContext();
   }
 
-
   pageContext = null;
-
 
   componentDidMount() {
     // Remove the server-side injected CSS.
@@ -77,7 +75,7 @@ class MyApp extends App {
 
   render() {
 
-    const { Component, pageProps, store, texts } = this.props;
+    const { Component, pageProps, store } = this.props;
 
     return (
       <Container>
@@ -99,9 +97,7 @@ class MyApp extends App {
 
                <Provider store={store}>
 
-                 <TranslationProvider messages={texts}>
                    <Component pageContext={this.pageContext} {...pageProps} />
-                 </TranslationProvider>
 
               </Provider>
 

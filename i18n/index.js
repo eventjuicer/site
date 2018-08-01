@@ -2,6 +2,8 @@
 export const availableLocales = ["pl","en"]
 export const DEFAULT_LOCALE = 'en';
 export const CHANGE_LOCALE = 'CHANGE_LOCALE';
+export const CHANGE_LOCALE_MSGS = 'CHANGE_LOCALE_MSGS';
+
 
 export {default as resolveBrowserLocale} from './TranslationUtils';
 export {default as translate} from './translate';

@@ -1,14 +1,9 @@
 
 import dynamic from 'next/dynamic'
 import Router from 'next/router'
-
 import {MyHead as Head} from '../next'
-
 import Chatlio from '../services/Chatlio'
-
-
-//import {connect} from 'react-redux'
-
+import {TranslationProvider} from '../i18n'
 
 import {
   MyAppBar,
@@ -21,39 +16,41 @@ const Drawer = dynamic(import('../components/MyDrawer'))
 
 import ScreenSize from '../material-ui/ScreenSize'
 import menuItems from '../components/menuItems'
-
-//import customMessages from 'eventjuicer-site-translations'
-
 import * as gtag from '../services/gtag'
 
 Router.onRouteChangeComplete = url => {
   gtag.pageview(url)
 }
 
+const Layout = ({children}) => {
 
+  return (
 
-const Layout = (props) => (
-  <div id="layout-main">
+      <TranslationProvider>
 
-    <ScreenSize />
+      <ScreenSize />
 
-    <Head />
+      <Head />
 
-    <MyAppBar />
+      <MyAppBar />
 
-      {props.children}
+        {children}
 
-    <Footer  />
+      <Footer  />
 
-    <Dialog />
+      <Dialog />
 
-    <Snackbar />
+      <Snackbar />
 
-    <Drawer items={ menuItems } />
+      <Drawer items={ menuItems } />
 
-    <Chatlio button={false} />
+      <Chatlio button={false} />
 
-  </div>
-)
+    </TranslationProvider>
+
+  )
+
+}
+
 
 export default Layout;
