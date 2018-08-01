@@ -1,42 +1,41 @@
+import { MyHead as Head } from '../next';
 
-import {
-  MyHead as Head
-} from '../next'
-
-import {connect} from 'react-redux'
+import { connect } from 'react-redux';
 
 import {
   Typography,
   Wrapper,
   WhoIsGonnaBeThere,
-//  Googlemap,
+  //  Googlemap,
   Schedule
 } from '../components';
 
 import Layout from '../layouts/main';
 
-import Visitor from '../roles/Visitor'
-
+import Visitor from '../roles/Visitor';
 
 class PageSchedule extends React.Component {
+  static async getInitialProps({
+    err,
+    req,
+    res,
+    pathname,
+    query,
+    asPath,
+    isServer,
+    store
+  }) {
+    return {};
+  }
 
+  render() {
+    const { url } = this.props;
 
-static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
-{
-   return {}
+    return (
+      <Layout>
+        <Head />
 
-}
-
-render()
-{
-
-  const { url } = this.props;
-
-  return (<Layout>
-
-    <Head />
-
-    {/* <Wrapper
+        {/* <Wrapper
       first
       label="presenters.schedule"
       secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
@@ -45,28 +44,24 @@ render()
 
     </Wrapper> */}
 
-    <Wrapper label="visitors.register_alt">
+        <Wrapper label="visitors.register_alt">
+          <Visitor />
+        </Wrapper>
 
-      <Visitor />
-
-    </Wrapper>
-
-    {/* <Wrapper label="visitors.attendees">
+        {/* <Wrapper label="visitors.attendees">
 
       <WhoIsGonnaBeThere />
 
     </Wrapper> */}
 
-    <Wrapper>
-      <Visitor />
-    </Wrapper>
+        <Wrapper>
+          <Visitor />
+        </Wrapper>
 
-    {/* <Googlemap /> */}
-
-  </Layout>)
+        {/* <Googlemap /> */}
+      </Layout>
+    );
+  }
 }
 
-}
-
-
-export default connect()(PageSchedule )
+export default connect()(PageSchedule);

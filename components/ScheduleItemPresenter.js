@@ -6,7 +6,7 @@ import Card, { CardHeader, CardActions } from 'material-ui/Card';
 import Avatar from 'material-ui/Avatar';
 import IconButton from 'material-ui/IconButton';
 import red from 'material-ui/colors/red';
-import {DotsVertical} from 'mdi-material-ui'
+import { DotsVertical } from 'mdi-material-ui';
 
 //
 // import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -16,11 +16,11 @@ import {DotsVertical} from 'mdi-material-ui'
 
 const styles = theme => ({
   card: {
-  //  maxWidth: 400,
+    //  maxWidth: 400,
   },
 
   actions: {
-    display: 'flex',
+    display: 'flex'
   },
   // expand: {
   //   transform: 'rotate(0deg)',
@@ -34,43 +34,40 @@ const styles = theme => ({
   // },
   avatar: {
     //backgroundColor: red[500],
-    height : 80,
-    width : 80
-  },
+    height: 80,
+    width: 80
+  }
 });
 
-const ScheduleItemPresenter = ({classes, title, text, imageSrc, raised}) => {
-
-    return (
-
-        <Card className={classes.card} raised={raised} elevation={raised ? 1 : 0} >
-          <CardHeader
-            avatar={
-              <Avatar aria-label="Recipe" className={classes.avatar} src={imageSrc} />
-            }
-            // action={
-            //   <IconButton>
-            //     <DotsVertical />
-            //   </IconButton>
-            // }
-            title={title}
-            subheader={text}
+const ScheduleItemPresenter = ({ classes, title, text, imageSrc, raised }) => {
+  return (
+    <Card className={classes.card} raised={raised} elevation={raised ? 1 : 0}>
+      <CardHeader
+        avatar={
+          <Avatar
+            aria-label="Recipe"
+            className={classes.avatar}
+            src={imageSrc}
           />
-
-
-
-        </Card>
-
-    );
-
-}
+        }
+        // action={
+        //   <IconButton>
+        //     <DotsVertical />
+        //   </IconButton>
+        // }
+        title={title}
+        subheader={text}
+      />
+    </Card>
+  );
+};
 
 ScheduleItemPresenter.defaultProps = {
-  raised : false
-}
+  raised: false
+};
 
 ScheduleItemPresenter.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(ScheduleItemPresenter);

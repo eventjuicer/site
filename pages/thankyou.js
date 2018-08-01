@@ -1,11 +1,7 @@
+import { MyHead as Head } from '../next';
 
-import {
-  MyHead as Head
-} from '../next'
-
-
-import {connect} from 'react-redux'
-import _get from 'lodash/get'
+import { connect } from 'react-redux';
+import _get from 'lodash/get';
 
 import {
   Typography,
@@ -16,68 +12,67 @@ import {
 } from '../components';
 
 import Layout from '../layouts/main';
-import Visitor from '../roles/Visitor'
-import {fetcher} from '../helpers'
-
+import Visitor from '../roles/Visitor';
+import { fetcher } from '../helpers';
 
 class ThankyouPage extends React.Component {
+  static async getInitialProps({
+    err,
+    req,
+    res,
+    pathname,
+    query,
+    asPath,
+    isServer,
+    store
+  }) {
+    const person = `code/${query.hash}`;
 
+    const results = await fetcher({ [person]: false, exhibitors: false });
 
-static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
-{
-
-  const person = `code/${query.hash}`
-
-  const results =  await fetcher({[person] : false, exhibitors : false})
-
-  return {
-    asPath : asPath,
-    person : results.getData(person),
-    eventId: _get(results.getMeta(person), "active_event_id", 0)
+    return {
+      asPath: asPath,
+      person: results.getData(person),
+      eventId: _get(results.getMeta(person), 'active_event_id', 0)
+    };
   }
 
-}
+  render() {
+    const { url, person, asPath } = this.props;
 
-render()
-{
+    const name = `${_get(person, 'fname', '')} ${_get(person, 'lname', '')}`;
 
-  const { url, person, asPath } = this.props;
+    return (
+      <Layout>
+        <Head
+          url={asPath}
+          titleLabel={[
+            'visitors.opengraph.title',
+            {
+              name: name,
+              location: 'Warszawa',
+              date: '7 listopada 2018'
+            }
+          ]}
+        />
 
-  const name = `${_get(person, "fname", "")} ${_get(person, "lname", "")}`;
+        <Wrapper
+          first
+          label={['visitors.thankyou', { name: _get(person, 'fname', '') }]}
+        />
 
-  return (<Layout>
+        <Wrapper label="visitors.attendees">
+          <WhoIsGonnaBeThere />
+        </Wrapper>
 
-    <Head
-      url={ asPath }
-      titleLabel={["visitors.opengraph.title", {
-          name : name,
-          location : 'Warszawa', date : '7 listopada 2018'}]}
-    />
-
-
-    <Wrapper first label={["visitors.thankyou", { name : _get(person, "fname", "") }]}>
-
-
-    </Wrapper>
-
-
-    <Wrapper label="visitors.attendees">
-      <WhoIsGonnaBeThere />
-    </Wrapper>
-
-
-    <Wrapper label="visitors.register_alt">
+        <Wrapper label="visitors.register_alt">
           <Visitor />
-    </Wrapper>
+        </Wrapper>
 
-
-    {/* <Googlemap /> */}
-
-
-  </Layout>)
+        {/* <Googlemap /> */}
+      </Layout>
+    );
+  }
 }
 
-}
-
-
-export default connect()( ThankyouPage )
+export default connect()(ThankyouPage);

@@ -1,22 +1,16 @@
-
-
 import React from 'react';
 //import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 //import classNames from 'classnames'
 
-import Typography from './MyTypography'
-import Tags from './Tags'
+import Typography from './MyTypography';
+import Tags from './Tags';
 
 // <Tags tags={_get(company.profile, "keywords")} />
 
+const styles = {};
 
-const styles = {
-
-}
-
-const Presenter = ({showBio, data}) => {
-
+const Presenter = ({ showBio, data }) => {
   const {
     bio,
     cname2,
@@ -30,24 +24,19 @@ const Presenter = ({showBio, data}) => {
   } = data;
 
   return (
-
-    <div style={{marginTop: 30}}>
-
+    <div style={{ marginTop: 30 }}>
       <Typography template="presenter1">{`${fname} ${lname}`}</Typography>
 
       <Typography template="presenter2">{`${position} ${cname2}`}</Typography>
 
       {showBio && <Typography template="presenterText">{bio}</Typography>}
-
     </div>
-)
-}
-
+  );
+};
 
 Presenter.defaultProps = {
-  data : {},
-  showBio : true
-}
+  data: {},
+  showBio: true
+};
 
-
-export default withStyles(styles)(Presenter)
+export default withStyles(styles)(Presenter);

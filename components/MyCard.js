@@ -1,40 +1,29 @@
-
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
 import Card, {
   CardActions,
-//  CardContent,
+  //  CardContent,
   CardMedia
 } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
-import {pure, compose} from 'recompose';
+import { pure, compose } from 'recompose';
 
 const styles = {
   card: {
-  //  maxWidth: 345,
+    //  maxWidth: 345,
   },
 
-  centered : {
-  //  textAlign : 'center'
+  centered: {
+    //  textAlign : 'center'
   }
 };
-
-
 
 function SimpleMediaCard(props) {
   const { classes, media, src, name, id } = props;
   return (
-
-      <Card elevation={0} raised={false} className={classes.card}>
-
-        <CardMedia
-          component={media}
-          name={name}
-          id={id}
-          src={src}
-          dupa={src}
-        />
-        {/* <CardContent>
+    <Card elevation={0} raised={false} className={classes.card}>
+      <CardMedia component={media} name={name} id={id} src={src} dupa={src} />
+      {/* <CardContent>
           <Typography variant="headline" component="h2">
             {title}
           </Typography>
@@ -44,17 +33,14 @@ function SimpleMediaCard(props) {
             across all continents except Antarctica
           </Typography>
         </CardContent> */}
-        {/* <CardActions className={classes.centered}>
+      {/* <CardActions className={classes.centered}>
           {link}
         </CardActions> */}
-      </Card>
-
+    </Card>
   );
 }
 
-const enhanced = compose(
-  withStyles(styles)
-);
+const enhanced = compose(withStyles(styles));
 
 // SimpleMediaCard.propTypes = {
 //   classes: PropTypes.object.isRequired,

@@ -1,36 +1,27 @@
-
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
 
 import { withStyles } from 'material-ui/styles';
 
-
-
 const styles = () => ({
-  wrapper : {
-
+  wrapper: {
     position: 'relative'
-
   },
-  container : {
-
-      position: 'absolute',
-      height: 700,
-      width: '100%',
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0,
-      zIndex: 1
-
+  container: {
+    position: 'absolute',
+    height: 700,
+    width: '100%',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    zIndex: 1
   }
+});
 
-
-})
-
-const AnyReactComponent = ({ text }) => <div style={{width:50, height: 40, backgroundColor : 'blue'}}>{text}</div>;
-
-
+const AnyReactComponent = ({ text }) => (
+  <div style={{ width: 50, height: 40, backgroundColor: 'blue' }}>{text}</div>
+);
 
 function createMapOptions(maps) {
   // next props are exposed at maps
@@ -52,46 +43,43 @@ function createMapOptions(maps) {
     scrollwheel: false,
     panControl: false,
     mapTypeControl: false,
-    streetViewControl: false,
-
+    streetViewControl: false
   };
 }
 
-
 class Googlemap extends React.Component {
-
   static defaultProps = {
-    center: {lat: 59.95, lng: 30.33},
+    center: { lat: 59.95, lng: 30.33 },
     zoom: 11
   };
 
   render() {
-
-    const {center, zoom, classes} = this.props;
+    const { center, zoom, classes } = this.props;
 
     return (
       <div className={classes.wrapper}>
-      <div className={classes.container}>
-      <GoogleMapReact
-        bootstrapURLKeys={{key: 'AIzaSyAd6YeKzDrUfS3IO2KAlxbHGpXAqdfGI3k' }}
-        defaultCenter={ center }
-        defaultZoom={ zoom }
-        options={createMapOptions}
-      >
-        <AnyReactComponent
-          lat={59.955413}
-          lng={30.337844}
-          text={'dupa jasiu'}
-        />
-      </GoogleMapReact>
-    </div></div>
+        <div className={classes.container}>
+          <GoogleMapReact
+            bootstrapURLKeys={{
+              key: 'AIzaSyAd6YeKzDrUfS3IO2KAlxbHGpXAqdfGI3k'
+            }}
+            defaultCenter={center}
+            defaultZoom={zoom}
+            options={createMapOptions}
+          >
+            <AnyReactComponent
+              lat={59.955413}
+              lng={30.337844}
+              text={'dupa jasiu'}
+            />
+          </GoogleMapReact>
+        </div>
+      </div>
     );
   }
 }
 
-
 export default withStyles(styles)(Googlemap);
-
 
 /*
 

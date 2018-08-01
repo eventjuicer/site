@@ -1,25 +1,26 @@
-
 import React from 'react';
 import { connect } from 'react-redux';
-import Button from 'material-ui/Button'
+import Button from 'material-ui/Button';
 import compose from 'recompose/compose';
 import { withStyles } from 'material-ui/styles';
 
-import {dialogShow} from './redux/actions'
-import RegisterByRole from './RegisterByRole'
+import { dialogShow } from './redux/actions';
+import RegisterByRole from './RegisterByRole';
 
-
-
-const RegisterButton = ({classes, dialogShow}) => (
-
-  <Button onClick={() => dialogShow({title : "asd", content : <RegisterByRole/>})}>REGISTER </Button>
-
-)
-
+const RegisterButton = ({ classes, dialogShow }) => (
+  <Button
+    onClick={() => dialogShow({ title: 'asd', content: <RegisterByRole /> })}
+  >
+    REGISTER{' '}
+  </Button>
+);
 
 const enhance = compose(
-  connect(null, {dialogShow}),
+  connect(
+    null,
+    { dialogShow }
+  ),
   withStyles()
-)
+);
 
-export default enhance(RegisterButton)
+export default enhance(RegisterButton);

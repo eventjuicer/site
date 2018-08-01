@@ -1,30 +1,23 @@
-import React from 'react'
-import { withStyles } from 'material-ui/styles'
+import React from 'react';
+import { withStyles } from 'material-ui/styles';
 
-import {
-  getCompanyLogotype
-} from '../helpers'
+import { getCompanyLogotype } from '../helpers';
 
 const styles = {
-
-  root : {
-    marginTop : 30
+  root: {
+    marginTop: 30
   },
 
-  image : {
+  image: {
     maxWidth: 300,
     maxHeight: 200
   }
+};
 
-}
-
-
-const CompanyLogotype = ({company, classes}) => (
-
+const CompanyLogotype = ({ company, classes }) => (
   <div className={classes.root}>
-    <img className={classes.image} src={ getCompanyLogotype(company) } alt="" />
+    <img className={classes.image} src={getCompanyLogotype(company)} alt="" />
   </div>
+);
 
-)
-
-export default withStyles(styles)(CompanyLogotype)
+export default withStyles(styles)(CompanyLogotype);

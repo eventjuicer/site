@@ -1,21 +1,22 @@
 import { SheetsRegistry } from 'react-jss';
-import { createMuiTheme, createGenerateClassName } from '@material-ui/core/styles';
+import {
+  createMuiTheme,
+  createGenerateClassName
+} from '@material-ui/core/styles';
 import red from '@material-ui/core/colors/red';
 import grey from '@material-ui/core/colors/grey';
 
-
 const theme = createMuiTheme({
-
-  typography : {
+  typography: {
     fontFamily: "'Lato', 'Helvetica', 'Arial', sans-serif",
-    button : {
+    button: {
       fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif"
     }
   },
   palette: {
     primary: { main: red[700] },
-    secondary: { main: grey[700] },
-  },
+    secondary: { main: grey[700] }
+  }
 });
 
 function createPageContext() {
@@ -23,7 +24,7 @@ function createPageContext() {
     theme,
     sheetsManager: new Map(),
     sheetsRegistry: new SheetsRegistry(),
-    generateClassName: createGenerateClassName(),
+    generateClassName: createGenerateClassName()
   };
 }
 
@@ -39,5 +40,4 @@ function getMuiContext() {
   return global.__INIT_MATERIAL_UI__;
 }
 
-
-export default getMuiContext
+export default getMuiContext;

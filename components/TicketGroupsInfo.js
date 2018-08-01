@@ -1,69 +1,50 @@
 import React from 'react';
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
 import { withStyles } from 'material-ui/styles';
 import { connect } from 'react-redux';
-import compose from 'recompose/compose'
-
-
+import compose from 'recompose/compose';
 
 //import {translate} from '../i18n'
 
-
 //const BoothInfo = dynamic(import('./BoothInfo'))
 //const Person = dynamic(import('./PersonSlim'))
-const TicketGroup = dynamic(import('./TicketGroup'))
+const TicketGroup = dynamic(import('./TicketGroup'));
 
 import Booth from './Booth';
 
-import {
-  resourceFetchRequest as resourceFetchRequestAction
-} from './redux/actions'
+import { resourceFetchRequest as resourceFetchRequestAction } from './redux/actions';
 
-
-
-const styles = (theme) => ({
-
-
-
-});
-
-
-
+const styles = theme => ({});
 
 class TicketGroupsInfo extends React.PureComponent {
+  componentDidMount() {
+    const { resourceFetchRequest } = this.props;
 
-componentDidMount()
-{
-  const {resourceFetchRequest} = this.props;
+    resourceFetchRequest('ticketgroups', true);
+  }
 
-  resourceFetchRequest("ticketgroups", true);
+  renderTicketGroups() {
+    const { ticketgroups } = this.props;
+
+    return Object.values(ticketgroups).map(tg => <div key={tg.id} />);
+  }
+
+  render() {
+    return <div>{this.renderTicketGroups()}</div>;
+  }
 }
-
-renderTicketGroups()
-{
-  const {ticketgroups} = this.props;
-
-  return Object.values(ticketgroups).map(tg => <div key={tg.id}></div>) ;
-}
-
-
-render()
-{
-  return (<div>{this.renderTicketGroups()}</div>)
-}
-
-}
-
 
 const enhance = compose(
-//  translate,
+  //  translate,
   withStyles(styles),
-  connect(state => ({
-    ticketgroups : state.resources.ticketgroups
-  }), {
-    resourceFetchRequest : resourceFetchRequestAction
-  }
+  connect(
+    state => ({
+      ticketgroups: state.resources.ticketgroups
+    }),
+    {
+      resourceFetchRequest: resourceFetchRequestAction
+    }
   )
-)
+);
 
 export default enhance(TicketGroupsInfo);

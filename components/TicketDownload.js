@@ -1,42 +1,33 @@
-import React from 'react'
-import Button from 'material-ui/Button'
-import { withStyles } from 'material-ui/styles'
-import {translate} from '../i18n'
-import compose from 'recompose/compose'
-
+import React from 'react';
+import Button from 'material-ui/Button';
+import { withStyles } from 'material-ui/styles';
+import { translate } from '../i18n';
+import compose from 'recompose/compose';
 
 const styles = theme => ({
-
-  root : {
+  root: {
     display: 'flex',
-    alignItems : 'center',
-    justifyContent : 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
     marginTop: 20,
-    marginBottom : 20
+    marginBottom: 20
   },
 
-  button : {
-
+  button: {
     [theme.breakpoints.up('sm')]: {
-        fontSize: theme.typography.pxToRem(25),
-        padding: '12px 34px',
-    },
+      fontSize: theme.typography.pxToRem(25),
+      padding: '12px 34px'
+    }
 
     // fontWeight: theme.typography.fontWeightRegular,
     // fontFamily : theme.typography.fontFamily,
     // lineHeight : theme.typography.pxToRem(23),
-
   }
+});
 
-})
-
-
-const TicketDownload = ({code, classes, translate, label}) => {
-
+const TicketDownload = ({ code, classes, translate, label }) => {
   return (
-
     <div className={classes.root}>
-
       <Button
         href={`https://api.eventjuicer.com/v1/services/tickets/${code}`}
         download
@@ -47,22 +38,18 @@ const TicketDownload = ({code, classes, translate, label}) => {
         className={classes.button}
       >
         {translate(label)}
-
-     </Button>
-
+      </Button>
     </div>
-
-  )
-
-}
+  );
+};
 
 TicketDownload.defaultProps = {
-  label : "visitors.tickets.download"
-}
+  label: 'visitors.tickets.download'
+};
 
 const enhance = compose(
   withStyles(styles),
   translate
-)
+);
 
-export default enhance(TicketDownload)
+export default enhance(TicketDownload);

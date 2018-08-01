@@ -1,171 +1,143 @@
+import * as Types from './types';
 
-import * as Types from './types'
+import { parseUrlVals } from '../../helpers';
 
-import {parseUrlVals} from '../../helpers'
-
-export function roleSelect(role)
-{
+export function roleSelect(role) {
   return {
-		type: Types.ROLE_SELECT,
-		role : role
-	}
+    type: Types.ROLE_SELECT,
+    role: role
+  };
 }
 
-export function roleReset()
-{
+export function roleReset() {
   return {
-		type: Types.ROLE_RESET
-  }
+    type: Types.ROLE_RESET
+  };
 }
 
 export function faqToggle(labels = [], state = false) {
   return {
-		type: Types.FAQ_TOGGLE,
-		labels : labels,
-    state : state
-	}
+    type: Types.FAQ_TOGGLE,
+    labels: labels,
+    state: state
+  };
 }
 
 export function faqUrl(url) {
   return {
-		type: Types.FAQ_URL,
-		labels : parseUrlVals(url)
-	}
+    type: Types.FAQ_URL,
+    labels: parseUrlVals(url)
+  };
 }
 
-export function resourceFetchRequest(resource, keyBy = false)
-{
+export function resourceFetchRequest(resource, keyBy = false) {
   return {
-		type: Types.RESOURCE_FETCH_REQUESTED,
-		resource : resource,
-    keyBy : keyBy
-	}
+    type: Types.RESOURCE_FETCH_REQUESTED,
+    resource: resource,
+    keyBy: keyBy
+  };
 }
 
-export function resourceFetchSuccess(resource, data)
-{
+export function resourceFetchSuccess(resource, data) {
   return {
-		type: Types.RESOURCE_FETCH_SUCCESS,
-    resource : resource,
-		data : data
-	}
+    type: Types.RESOURCE_FETCH_SUCCESS,
+    resource: resource,
+    data: data
+  };
 }
 
-export function resourceFetchError(resource, error)
-{
+export function resourceFetchError(resource, error) {
   return {
-		type: Types.RESOURCE_FETCH_ERROR,
-    resource : resource,
-		error : error
-	}
+    type: Types.RESOURCE_FETCH_ERROR,
+    resource: resource,
+    error: error
+  };
 }
 
-export function snackbarShow(payload)
-{
+export function snackbarShow(payload) {
   return {
-		type: Types.SNACKBAR_SHOW,
-		payload : payload
-	}
+    type: Types.SNACKBAR_SHOW,
+    payload: payload
+  };
 }
 
-export function snackbarHide()
-{
+export function snackbarHide() {
   return {
     type: Types.SNACKBAR_HIDE
-  }
+  };
 }
 
-
-
-export function drawerShow()
-{
+export function drawerShow() {
   return {
-		type: Types.DRAWER_SHOW
-	}
+    type: Types.DRAWER_SHOW
+  };
 }
 
-export function drawerHide()
-{
+export function drawerHide() {
   return {
     type: Types.DRAWER_HIDE
-  }
+  };
 }
 
-
-
-export function dialogShow(payload = {})
-{
+export function dialogShow(payload = {}) {
   return {
-		type: Types.DIALOG_SHOW,
-		payload : payload
-	}
+    type: Types.DIALOG_SHOW,
+    payload: payload
+  };
 }
 
-export function dialogModify(name, value)
-{
+export function dialogModify(name, value) {
   return {
-		type: Types.DIALOG_MODIFY,
-		payload : payload
-	}
+    type: Types.DIALOG_MODIFY,
+    payload: payload
+  };
 }
 
-export function dialogHide()
-{
+export function dialogHide() {
   return {
     type: Types.DIALOG_HIDE
-  }
+  };
 }
 
-
-
-
-export function boothSelect(boothId)
-{
+export function boothSelect(boothId) {
   return {
-		type: Types.BOOTH_SELECT,
-		payload : boothId
-	}
+    type: Types.BOOTH_SELECT,
+    payload: boothId
+  };
 }
 
-
-export function boothUnselect(boothId)
-{
+export function boothUnselect(boothId) {
   return {
-		type: Types.BOOTH_UNSELECT,
-		payload : boothId
-	}
+    type: Types.BOOTH_UNSELECT,
+    payload: boothId
+  };
 }
 
-export function boothsReset()
-{
+export function boothsReset() {
   return {
-		type: Types.BOOTHS_RESET
-	}
+    type: Types.BOOTHS_RESET
+  };
 }
 
-
-export function cartItemAdd(ticketId, quantity, formdata = {})
-{
+export function cartItemAdd(ticketId, quantity, formdata = {}) {
   return {
-    type : Types.CART_ITEM_ADD,
-    ticketId : ticketId,
-    quantity : quantity,
-    formdata : formdata
-  }
+    type: Types.CART_ITEM_ADD,
+    ticketId: ticketId,
+    quantity: quantity,
+    formdata: formdata
+  };
 }
 
-export function cartItemRemove(ticketId, formdata)
-{
+export function cartItemRemove(ticketId, formdata) {
   return {
-    type : Types.CART_ITEM_REMOVE,
-    ticketId : ticketId,
-    formdata : formdata
-  }
+    type: Types.CART_ITEM_REMOVE,
+    ticketId: ticketId,
+    formdata: formdata
+  };
 }
 
-export function cartReset()
-{
+export function cartReset() {
   return {
-    type : Types.CART_RESET
-  }
+    type: Types.CART_RESET
+  };
 }

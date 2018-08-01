@@ -1,8 +1,8 @@
 import React from 'react';
-import compose from 'recompose/compose'
+import compose from 'recompose/compose';
 import withWidth from 'material-ui/utils/withWidth';
 import { withStyles } from 'material-ui/styles';
-import translate from '../i18n'
+import translate from '../i18n';
 
 //import GestureSwipeRight from 'mdi-material-ui/GestureSwipeRight'
 
@@ -39,7 +39,6 @@ import translate from '../i18n'
 //
 // export default enhance(WidthAwareInfo);
 
+const Test = () => <div />;
 
-const Test = () => (<div></div>)
-
-export default Test
+export default Test;

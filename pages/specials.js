@@ -1,70 +1,62 @@
-
-import dynamic from 'next/dynamic'
-import {connect} from 'react-redux'
-import Layout from '../layouts/main'
+import dynamic from 'next/dynamic';
+import { connect } from 'react-redux';
+import Layout from '../layouts/main';
 
 import {
   Wrapper,
   ColumnList,
-//  Bookingmap,
-  Gallery,
-} from '../components'
+  //  Bookingmap,
+  Gallery
+} from '../components';
 
-import {
-  MyHead as Head,
-  MyLink as Link
-} from '../next'
+import { MyHead as Head, MyLink as Link } from '../next';
 
+import Visitor from '../roles/Visitor';
 
-import Visitor from '../roles/Visitor'
+import { fetcher } from '../helpers';
 
-import {fetcher} from '../helpers'
-
-const Bookingmap = dynamic(import("../components/Bookingmap"))
-
+const Bookingmap = dynamic(import('../components/Bookingmap'));
 
 class PageSpecials extends React.Component {
+  static async getInitialProps({
+    err,
+    req,
+    res,
+    pathname,
+    query,
+    asPath,
+    isServer,
+    store
+  }) {
+    const results = await fetchers({ exhibitors: false }, store);
 
-  static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
-  {
-
-    const results = await fetchers({exhibitors : false}, store)
-
-    return {  exhibitors : results.getData("exhibitors") }
+    return { exhibitors: results.getData('exhibitors') };
   }
 
-
-  render()
-  {
-
+  render() {
     const { exhibitors, booths, url, userAgent } = this.props;
 
     return (
+      <Layout>
+        <Head />
 
-     <Layout>
+        <Wrapper
+          first
+          label="visitors.register"
+          secondaryTitle="Spotkamy się w gronie ponad 3000 osób!"
+          //   links={[
+          //   <Link key="more" href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
+          // ]}
+        >
+          <Visitor />
+        </Wrapper>
 
-      <Head />
-
-      <Wrapper
-        first
-        label="visitors.register"
-        secondaryTitle="Spotkamy się w gronie ponad 3000 osób!"
-      //   links={[
-      //   <Link key="more" href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
-      // ]}
-      >
-      <Visitor  />
-      </Wrapper>
-
-      <Wrapper label="exhibitors.list_full" color="#ffffff">
-        <ColumnList data={ exhibitors } />
-      </Wrapper>
-
+        <Wrapper label="exhibitors.list_full" color="#ffffff">
+          <ColumnList data={exhibitors} />
+        </Wrapper>
       </Layout>
-
-    )
+    );
   }
-
 }
 
-export default connect()( PageSpecials )
+export default connect()(PageSpecials);

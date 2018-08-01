@@ -1,47 +1,55 @@
-
 import React from 'react';
-import compose from 'recompose/compose'
+import compose from 'recompose/compose';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import withWidth from 'material-ui/utils/withWidth';
-import Animate from './AnimateSlide'
-import {isBigScreen} from '../helpers'
+import Animate from './AnimateSlide';
+import { isBigScreen } from '../helpers';
 
 const styles = theme => ({
-
-  bigScreen : {
-    fontSize : '20vh',
+  bigScreen: {
+    fontSize: '20vh',
     // textTransform: 'uppercase',
-    fontWeight : 700,
+    fontWeight: 700,
     color: 'white'
   },
 
-  smallScreen : {
-    fontSize : '3rem',
+  smallScreen: {
+    fontSize: '3rem',
     textTransform: 'uppercase',
-    fontWeight : 700,
-    color: 'white',
-
+    fontWeight: 700,
+    color: 'white'
   }
-
 });
 
-const ResponsiveText = ({classes, visible, text, width, component, variant, onShow}) => (
+const ResponsiveText = ({
+  classes,
+  visible,
+  text,
+  width,
+  component,
+  variant,
+  onShow
+}) => (
   <Animate visible={visible} onShow={onShow}>
-    <Typography variant={variant} component={component} className={isBigScreen(width) ? classes.bigScreen : classes.smallScreen}>
+    <Typography
+      variant={variant}
+      component={component}
+      className={isBigScreen(width) ? classes.bigScreen : classes.smallScreen}
+    >
       {text}
     </Typography>
   </Animate>
-)
+);
 
 ResponsiveText.defaultProps = {
-  component : 'h1',
-  variant : 'headline'
-}
+  component: 'h1',
+  variant: 'headline'
+};
 
 const enhance = compose(
   withStyles(styles),
   withWidth()
-)
+);
 
-export default enhance(ResponsiveText)
+export default enhance(ResponsiveText);

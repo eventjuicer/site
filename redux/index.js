@@ -1,6 +1,4 @@
-
-if (typeof window === 'undefined')
-{
+if (typeof window === 'undefined') {
   module.exports = require('./store/server');
 } else {
   module.exports = require('./store/client');

@@ -7,32 +7,29 @@ import TextField from 'material-ui/TextField';
 const styles = theme => ({
   container: {
     display: 'flex',
-    flexWrap: 'wrap',
+    flexWrap: 'wrap'
   },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 200,
+    width: 200
   },
   menu: {
-    width: 200,
-  },
+    width: 200
+  }
 });
-
-
-
 
 class TextFields extends React.Component {
   state = {
     name: 'Cat in the Hat',
     age: '',
     multiline: 'Controlled',
-    currency: 'EUR',
+    currency: 'EUR'
   };
 
   handleChange = name => event => {
     this.setState({
-      [name]: event.target.value,
+      [name]: event.target.value
     });
   };
 
@@ -41,7 +38,6 @@ class TextFields extends React.Component {
 
     return (
       <form className={classes.container} noValidate autoComplete="off">
-
         {/* <TextField
           id="select-currency-native"
           select
@@ -68,7 +64,7 @@ class TextFields extends React.Component {
           id="full-width"
           label="Label"
           InputLabelProps={{
-            shrink: true,
+            shrink: true
           }}
           placeholder="Placeholder"
           helperText="Full width!"
@@ -81,7 +77,7 @@ class TextFields extends React.Component {
 }
 
 TextFields.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(TextFields);

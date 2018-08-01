@@ -1,12 +1,10 @@
+import React from 'react';
 
-import React from 'react'
-
-import classNames from 'classnames'
-import { withStyles } from 'material-ui/styles'
+import classNames from 'classnames';
+import { withStyles } from 'material-ui/styles';
 import red from 'material-ui/colors/red';
 
-import { capitalizeFirstLetter } from '../helpers'
-
+import { capitalizeFirstLetter } from '../helpers';
 
 import {
   Linkedin,
@@ -16,46 +14,42 @@ import {
   CalendarRange as Date,
   MapMarker as Location,
   Alarm
-} from 'mdi-material-ui'
+} from 'mdi-material-ui';
 
-const icons = {Linkedin, Facebook, Twitter, Website, Date, Location, Alarm}
-
-
+const icons = { Linkedin, Facebook, Twitter, Website, Date, Location, Alarm };
 
 const styles = theme => ({
-
   leftIcon: {
-    marginRight: theme.spacing.unit,
+    marginRight: theme.spacing.unit
   },
   rightIcon: {
-    marginLeft: theme.spacing.unit,
+    marginLeft: theme.spacing.unit
   },
   small: {
-    fontSize: 20,
+    fontSize: 20
   },
 
-  red : {
-    color : red[500],
-    height : 30,
-    width : 30
+  red: {
+    color: red[500],
+    height: 30,
+    width: 30
   }
+});
 
-})
-
-const Icon = ({name, classes, variant}) => {
-
+const Icon = ({ name, classes, variant }) => {
   const capName = capitalizeFirstLetter(name);
 
-  const IconComponent = icons[capName]
+  const IconComponent = icons[capName];
 
-  const ret = <IconComponent className={classNames(classes.leftIcon, classes[variant] )} />
+  const ret = (
+    <IconComponent className={classNames(classes.leftIcon, classes[variant])} />
+  );
 
-  return React.isValidElement( ret ) ? ret : null
-  
-}
+  return React.isValidElement(ret) ? ret : null;
+};
 
 Icon.defaultProps = {
-  variant : "small"
-}
+  variant: 'small'
+};
 
-export default withStyles(styles)(Icon)
+export default withStyles(styles)(Icon);

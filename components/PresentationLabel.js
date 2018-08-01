@@ -1,40 +1,41 @@
-import React from 'react'
+import React from 'react';
 import { withStyles } from 'material-ui/styles';
 import Chip from 'material-ui/Chip';
 import red from 'material-ui/colors/red';
-import {translate} from '../i18n'
-import compose from 'recompose/compose'
-
+import { translate } from '../i18n';
+import compose from 'recompose/compose';
 
 const styles = theme => ({
-
-  root : {
-      marginBottom : 10
+  root: {
+    marginBottom: 10
   },
 
-  chip : {
-      margin: theme.spacing.unit,
+  chip: {
+    margin: theme.spacing.unit
   },
 
-  venue : {
+  venue: {
     // backgroundColor : red[500],
     // color : '#ffffff'
   }
+});
 
-})
-
-
-const PresentationLabel = ({time, venue, classes, translate}) => <div className={classes.root}>
-  <Chip label={time} className={classes.chip} />
-  <Chip label={`Scena ${venue}`} className={classes.chip} classes={{
-    root : classes.venue
-  }} />
-</div>
-
+const PresentationLabel = ({ time, venue, classes, translate }) => (
+  <div className={classes.root}>
+    <Chip label={time} className={classes.chip} />
+    <Chip
+      label={`Scena ${venue}`}
+      className={classes.chip}
+      classes={{
+        root: classes.venue
+      }}
+    />
+  </div>
+);
 
 const enhance = compose(
   withStyles(styles),
   translate
-)
+);
 
-export default enhance(PresentationLabel)
+export default enhance(PresentationLabel);

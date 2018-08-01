@@ -1,8 +1,6 @@
-
-
 import TextField from 'material-ui/TextField';
 //import compose from 'recompose/compose';
-import {translate} from '../i18n'
+import { translate } from '../i18n';
 
 /*
 dirty : false
@@ -40,47 +38,53 @@ validateOnChange : true
 values : {}
 */
 
-
 export const autoCompleteMappings = {
+  email: 'email',
+  fname: 'given-name',
+  lname: 'family-name',
+  cname2: 'org',
+  position: 'organization-title',
+  phone: 'tel-national'
+};
 
-  email : "email",
-  fname : "given-name",
-  lname : "family-name",
-  cname2 : "org",
-  position : "organization-title",
-  phone : "tel-national"
+const TextInput = props => {
+  const {
+    type,
+    id,
+    label,
+    placeholder,
+    classes,
+    values,
+    touched,
+    errors,
+    handleChange,
+    handleBlur,
+    translate
+  } = props;
 
-}
-
-
-const TextInput = (props) => {
-
-  const {type, id, label, placeholder, classes, values, touched, errors, handleChange, handleBlur, translate} = props;
-
-  const renderError = id in errors
+  const renderError = id in errors;
   const translatedLabel = translate(label);
 
-  return ( <TextField
-          id={id}
-          label={translatedLabel}
-          //className={classes.XXXX}
-          value={id in values ? values[id] : ""}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          margin="normal"
-          error={renderError}
-          helperText={renderError ? errors[id] : ""}
-          placeholder={placeholder ? translate(placeholder) : translatedLabel}
-          autoComplete={id in autoCompleteMappings ? autoCompleteMappings[id] : ""}
-          fullWidth
-        />
-
- )
-
-}
+  return (
+    <TextField
+      id={id}
+      label={translatedLabel}
+      //className={classes.XXXX}
+      value={id in values ? values[id] : ''}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      margin="normal"
+      error={renderError}
+      helperText={renderError ? errors[id] : ''}
+      placeholder={placeholder ? translate(placeholder) : translatedLabel}
+      autoComplete={id in autoCompleteMappings ? autoCompleteMappings[id] : ''}
+      fullWidth
+    />
+  );
+};
 
 TextInput.defaultProps = {
-  type : "text"
-}
+  type: 'text'
+};
 
 export default translate(TextInput);

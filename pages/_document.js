@@ -1,1 +1,1 @@
-export {default} from '../next/_document'
+export { default } from '../next/_document';

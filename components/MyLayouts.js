@@ -1,54 +1,46 @@
-
 import React from 'react';
 import Grid from 'material-ui/Grid';
 import { withStyles } from 'material-ui/styles';
 
 const styles = theme => ({
-
-
-  middle : {
+  middle: {
     display: 'flex',
-    justifyContent: 'center',
-  //  alignItems: 'center',
+    justifyContent: 'center'
+    //  alignItems: 'center',
   }
+});
 
-
-
-})
-
-const Centered = withStyles(styles)((props) => (
-
+const Centered = withStyles(styles)(props => (
   <div className={props.classes.middle}>{props.children}</div>
+));
 
-))
-
-
-const TwoColsLayout = ({left, right, leftCentered, rightCentered, leftSize}) =>  {
-
+const TwoColsLayout = ({
+  left,
+  right,
+  leftCentered,
+  rightCentered,
+  leftSize
+}) => {
   const ls = parseInt(leftSize) ? leftSize : 6;
   const rs = 12 - ls;
 
   return (
-
     <Grid container spacing={16}>
-        <Grid item xs={12} sm={12} md={ls} lg={ls} xl={ls} >
-          {leftCentered ? <Centered>{left}</Centered> : left }
-        </Grid>
+      <Grid item xs={12} sm={12} md={ls} lg={ls} xl={ls}>
+        {leftCentered ? <Centered>{left}</Centered> : left}
+      </Grid>
 
-        <Grid item xs={12} sm={12} md={rs} lg={rs} xl={rs} >
-          {rightCentered ? <Centered>{right}</Centered> : right}
-        </Grid>
+      <Grid item xs={12} sm={12} md={rs} lg={rs} xl={rs}>
+        {rightCentered ? <Centered>{right}</Centered> : right}
+      </Grid>
     </Grid>
-
-  )
-}
-
+  );
+};
 
 TwoColsLayout.defaultProps = {
-  spacing : false,
-  leftCentered : false,
-  rightCentered : false
-}
+  spacing: false,
+  leftCentered: false,
+  rightCentered: false
+};
 
-
-export {TwoColsLayout, Centered}
+export { TwoColsLayout, Centered };

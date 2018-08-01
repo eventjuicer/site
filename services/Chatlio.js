@@ -1,70 +1,59 @@
-
-import {translate} from '../i18n'
+import { translate } from '../i18n';
 import Button from 'material-ui/Button';
 import red from 'material-ui/colors/red';
 
 //https://chatlio.com/docs/api-v1/
 
-
 class Chatlio extends React.PureComponent {
-
-  componentDidMount(){
-
-    if(window.__CHATLIO_CUSTOM_EVENT_SET__)
-    {
+  componentDidMount() {
+    if (window.__CHATLIO_CUSTOM_EVENT_SET__) {
       return;
     }
 
-    document.addEventListener( 'chatlio.firstMessageSent', this.chatlioIdentify );
-    document.addEventListener( 'chatlio.ready', this.chatlioIdentify );
+    document.addEventListener('chatlio.firstMessageSent', this.chatlioIdentify);
+    document.addEventListener('chatlio.ready', this.chatlioIdentify);
     this.chatlioConfigure();
     window.__CHATLIO_CUSTOM_EVENT_SET__ = true;
-
   }
 
   componentWillUnmount() {
-
-    if(!window.__CHATLIO_CUSTOM_EVENT_SET__)
-    {
+    if (!window.__CHATLIO_CUSTOM_EVENT_SET__) {
       return;
     }
 
-    document.removeEventListener( 'chatlio.firstMessageSent', this.chatlioIdentify );
-    document.removeEventListener( 'chatlio.ready', this.chatlioIdentify );
+    document.removeEventListener(
+      'chatlio.firstMessageSent',
+      this.chatlioIdentify
+    );
+    document.removeEventListener('chatlio.ready', this.chatlioIdentify);
   }
 
-  chatlioConfigure(){
+  chatlioConfigure() {
+    const { translate } = this.props;
 
-    const {translate} = this.props;
-
-    if(!window._chatlio)
-    {
+    if (!window._chatlio) {
       return;
     }
 
     window._chatlio.configure({
-        "titleColor": red[500],
+      titleColor: red[500]
     });
   }
 
   chatlioShow = () => {
+    const { hello, translate } = this.props;
 
-    const {hello, translate} = this.props;
-
-    if(!window._chatlio)
-    {
+    if (!window._chatlio) {
       return;
     }
 
     // window._chatlio.fullScreen();
-    window._chatlio.show({expanded: true});
+    window._chatlio.show({ expanded: true });
 
-    if(hello)
-    {
+    if (hello) {
       window._chatlio.send(translate(hello));
     }
-
-  }
+  };
 
   chatlioIdentify = event => {
     // window._chatlio.identify(getUserData('id'), {
@@ -77,25 +66,30 @@ class Chatlio extends React.PureComponent {
   };
 
   render() {
+    const { button, translate } = this.props;
 
-    const {button, translate} = this.props;
-
-    if(!button)
-    {
+    if (!button) {
       return null;
     }
 
-    return <Button variant="raised" onClick={() => this.chatlioShow()} color="primary">{translate("common.chat")}</Button>;
+    return (
+      <Button
+        variant="raised"
+        onClick={() => this.chatlioShow()}
+        color="primary"
+      >
+        {translate('common.chat')}
+      </Button>
+    );
   }
 }
 
 Chatlio.defaultProps = {
-  hello : "services.chatlio.hello",
-  button : true
-}
+  hello: 'services.chatlio.hello',
+  button: true
+};
 
 export default translate(Chatlio);
-
 
 /*
 

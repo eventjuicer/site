@@ -1,186 +1,162 @@
-
 import React from 'react';
-import compose from 'recompose/compose'
+import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
-import classNamesHelper from 'classnames'
+import classNamesHelper from 'classnames';
 
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 
-import {translate} from '../i18n'
-
+import { translate } from '../i18n';
 
 const styles = theme => ({
+  default: {},
 
-  default : {
+  bigListItem: {},
 
-  },
-
-  bigListItem : {
-
-  },
-
-  h2 : {
-    fontSize : '3rem',
+  h2: {
+    fontSize: '3rem',
     textTransform: 'uppercase',
-    fontWeight : 400,
+    fontWeight: 400,
     marginBottom: '3rem',
 
     [theme.breakpoints.down('sm')]: {
-       fontSize : '1.7rem',
-       fontWeight : 600,
-       marginBottom: '2rem',
-    },
+      fontSize: '1.7rem',
+      fontWeight: 600,
+      marginBottom: '2rem'
+    }
 
-  //  textAlign: 'center'
+    //  textAlign: 'center'
   },
 
-  h2fat : {
-    fontSize : '4rem',
+  h2fat: {
+    fontSize: '4rem',
     textTransform: 'uppercase',
-    fontWeight : 300,
+    fontWeight: 300,
     marginBottom: '3rem',
 
     [theme.breakpoints.down('sm')]: {
-       fontSize : '1.7rem',
-       fontWeight : 400,
-       marginBottom: '2rem',
-    },
+      fontSize: '1.7rem',
+      fontWeight: 400,
+      marginBottom: '2rem'
+    }
 
-  //  textAlign: 'center'
+    //  textAlign: 'center'
   },
 
+  h3: {
+    fontSize: '1.8rem',
 
-  h3 : {
-    fontSize : '1.8rem',
-
-    fontWeight : 400,
+    fontWeight: 400,
     marginBottom: '2rem',
 
     [theme.breakpoints.down('sm')]: {
-       fontSize : '1.2rem',
-       fontWeight : 600,
-       marginBottom: '1rem',
-    },
+      fontSize: '1.2rem',
+      fontWeight: 600,
+      marginBottom: '1rem'
+    }
 
-  //  textAlign: 'center'
+    //  textAlign: 'center'
   },
 
-
-
-
-  fatSubtitle : {
-    fontSize : '5rem',
+  fatSubtitle: {
+    fontSize: '5rem',
     textTransform: 'uppercase',
-    fontWeight : 900,
+    fontWeight: 900,
     marginBottom: '3rem',
 
     [theme.breakpoints.down('sm')]: {
-       fontSize : '3rem',
-       marginBottom: '2rem',
-    },
+      fontSize: '3rem',
+      marginBottom: '2rem'
+    }
 
-  //  textAlign: 'center'
+    //  textAlign: 'center'
   },
 
-  centered : {
+  centered: {
     textAlign: 'center'
   },
 
-  bold : {
-    fontWeight : 500,
+  bold: {
+    fontWeight: 500
   },
 
-  section : {
-
-    marginTop : '1rem',
-    marginBottom : '1rem'
-
+  section: {
+    marginTop: '1rem',
+    marginBottom: '1rem'
   },
 
-  mobile : {
+  mobile: {},
 
-  },
-
-  visitor : {
-
+  visitor: {
     width: 'auto',
-    minHeight : 10,
-    margin : 10,
+    minHeight: 10,
+    margin: 10,
 
-    "& span": {
-      fontWeight : 700
+    '& span': {
+      fontWeight: 700
     }
-
   },
 
-  legend : {
-    marginTop : 25,
-    color : 'rgba(0, 0, 0, 0.54)'
+  legend: {
+    marginTop: 25,
+    color: 'rgba(0, 0, 0, 0.54)'
   },
 
-  hero : {
+  hero: {
+    textAlign: 'center',
+    fontSize: '2.3rem',
+    color: '#ffffff',
 
-      textAlign : 'center',
-      fontSize : '2.3rem',
-      color : '#ffffff',
+    fontWeight: 900,
+    textTransform: 'uppercase',
 
-      fontWeight : 900,
-      textTransform : 'uppercase',
+    [theme.breakpoints.only('md')]: {
+      fontSize: '5rem'
+    },
 
-      [theme.breakpoints.only('md')]: {
-         fontSize : '5rem',
-      },
-
-      [theme.breakpoints.up('lg')]: {
-         fontSize : '6rem',
-      },
+    [theme.breakpoints.up('lg')]: {
+      fontSize: '6rem'
+    }
   },
 
-  italic : {
-
-        fontStyle: 'italic',
+  italic: {
+    fontStyle: 'italic'
   },
 
-  info : {
-      fontSize : '1.2rem',
-      color : '#000000',
-      fontWeight : 400,
-      marginTop: '-1.5rem',
-      marginBottom: '1.5rem',
+  info: {
+    fontSize: '1.2rem',
+    color: '#000000',
+    fontWeight: 400,
+    marginTop: '-1.5rem',
+    marginBottom: '1.5rem'
   },
 
-  highlighted : {
-
+  highlighted: {
     fontStyle: 'normal',
     borderRadius: '1em 0 1em 0',
     textShadow: '1px 1px 1px #fff',
-    backgroundImage : ['linear-gradient(-100deg, rgba(255,250,150,0.15), rgba(255,250,150,0.8) 100%, rgba(255,250,150,0.25))']
-
+    backgroundImage: [
+      'linear-gradient(-100deg, rgba(255,250,150,0.15), rgba(255,250,150,0.8) 100%, rgba(255,250,150,0.25))'
+    ]
   },
 
-  alert : {
-
+  alert: {
     border: '1px solid #666666',
-    backgroundColor : '#eaeaea',
-    fontSize : '2rem',
+    backgroundColor: '#eaeaea',
+    fontSize: '2rem',
     textTransform: 'uppercase',
-    fontWeight : 400,
+    fontWeight: 400,
     padding: '1.5rem',
     margin: '3rem 1.5rem'
-
   },
 
-
   presenterBase: {
-
-    color : 'rgba(0, 0, 0, 0.84)',
+    color: 'rgba(0, 0, 0, 0.84)',
     fontSize: '0.875rem',
     fontWeight: 400,
     fontFamily: "'Lato', 'Helvetica', 'Arial', sans-serif",
     lineHeight: '1.4rem'
   },
-
 
   presenter1: {
     fontSize: '1.1rem',
@@ -193,46 +169,34 @@ const styles = theme => ({
     lineHeight: '1.4rem',
 
     [theme.breakpoints.up('sm')]: {
-       fontSize : '1.3rem',
-      lineHeight: '1.7rem',
-    },
-
-
+      fontSize: '1.3rem',
+      lineHeight: '1.7rem'
+    }
   },
 
   presenterText: {
-    marginTop : 10,
+    marginTop: 10
   },
 
-  presenterFade : {
+  presenterFade: {
+    position: 'relative',
+    height: 200,
 
-    position : 'relative',
-    height : 200,
-
-    '&:before' : {
-
-      content : '',
-      width : '100%',
-      height : '100%',
-      position : 'absolute',
-      left : 0,
-      top : 0,
-      backgroundImage : ['linear-gradient(transparent 150px, #ffffff)']
+    '&:before': {
+      content: '',
+      width: '100%',
+      height: '100%',
+      position: 'absolute',
+      left: 0,
+      top: 0,
+      backgroundImage: ['linear-gradient(transparent 150px, #ffffff)']
     }
-
   },
 
-  presentationTitle : {
+  presentationTitle: {},
 
-  },
-
-  presentationDescription : {
-
-  },
-
-
+  presentationDescription: {}
 });
-
 
 /*
 
@@ -252,133 +216,169 @@ const styles = theme => ({
 
 */
 
-
 const templates = {
-
-  default : {
-    variant : "body1", component : "p", classNames : ["default"]
+  default: {
+    variant: 'body1',
+    component: 'p',
+    classNames: ['default']
   },
 
-  H2C : {
-    variant : "headline", component : "h2", classNames : ["h2", "centered"]
+  H2C: {
+    variant: 'headline',
+    component: 'h2',
+    classNames: ['h2', 'centered']
   },
 
-  subtitle : {
-    variant : "subheading", component : "h3", classNames : ["h3"]
+  subtitle: {
+    variant: 'subheading',
+    component: 'h3',
+    classNames: ['h3']
   },
 
-  H2CB : {
-    variant : "headline", component : "h2", classNames : ["h2", "centered", "bold"]
+  H2CB: {
+    variant: 'headline',
+    component: 'h2',
+    classNames: ['h2', 'centered', 'bold']
   },
 
-  LIH3 : {
-      variant : "subheading", component : "h3", classNames : ["bigListItem"]
+  LIH3: {
+    variant: 'subheading',
+    component: 'h3',
+    classNames: ['bigListItem']
   },
-  visitor : {
-      variant : "body2", component : "p", classNames : ["visitor"]
-  },
-
-  legend : {
-      variant : "subheading", component : "legend", classNames : ["legend"]
-  },
-
-  hero : {
-      variant : "headline", component : "h2", classNames : ["hero"]
+  visitor: {
+    variant: 'body2',
+    component: 'p',
+    classNames: ['visitor']
   },
 
-  SUBH2CH : {
-    variant : "body2", component : "p", classNames : ["info", "centered"]
+  legend: {
+    variant: 'subheading',
+    component: 'legend',
+    classNames: ['legend']
   },
 
-  visitor_invite : {
-    variant : "headline", component : "h2", classNames : ["h2fat", "centered"]
+  hero: {
+    variant: 'headline',
+    component: 'h2',
+    classNames: ['hero']
   },
 
-  visitor_invite_join : {
-    variant : "headline", component : "h3", classNames : ["fatSubtitle", "centered"]
+  SUBH2CH: {
+    variant: 'body2',
+    component: 'p',
+    classNames: ['info', 'centered']
   },
 
-  alert : {
-    variant : "headline", component : "h4", classNames : ["alert", "centered"]
+  visitor_invite: {
+    variant: 'headline',
+    component: 'h2',
+    classNames: ['h2fat', 'centered']
   },
 
-  presenter1 : {
-    variant : "subheading", component : "h3", classNames : ["presenterBase","presenter1"]
+  visitor_invite_join: {
+    variant: 'headline',
+    component: 'h3',
+    classNames: ['fatSubtitle', 'centered']
   },
 
-  presenter2 : {
-    variant : "body1", component : "p", classNames : ["presenterBase", "presenterImportant"]
+  alert: {
+    variant: 'headline',
+    component: 'h4',
+    classNames: ['alert', 'centered']
   },
 
-  presenterText : {
-    variant : "body1", component : "p", classNames : ["presenterBase", "presenterText"]
+  presenter1: {
+    variant: 'subheading',
+    component: 'h3',
+    classNames: ['presenterBase', 'presenter1']
   },
 
-  presenterTextFade : {
-    variant : "body1", component : "p", classNames : ["presenterBase", "presenterText", "presenterFade"]
+  presenter2: {
+    variant: 'body1',
+    component: 'p',
+    classNames: ['presenterBase', 'presenterImportant']
   },
 
+  presenterText: {
+    variant: 'body1',
+    component: 'p',
+    classNames: ['presenterBase', 'presenterText']
+  },
 
-}
+  presenterTextFade: {
+    variant: 'body1',
+    component: 'p',
+    classNames: ['presenterBase', 'presenterText', 'presenterFade']
+  }
+};
 
 const hl = (highlight, text, className) => {
+  if (!highlight) return text;
 
-  if(!highlight) return text
+  return <span className={className}>{text}</span>;
+};
 
-  return <span className={className}>{text}</span>
+const MyTypography = props => {
+  const {
+    variant,
+    component,
+    label,
+    translate,
+    children,
+    classNames,
+    classes,
+    icon,
+    iconAfter,
+    highlight
+  } = { ...props, ...templates[props.template] };
 
-}
-
-
-
-const MyTypography = (props) => {
-
-  const {variant, component, label, translate, children, classNames, classes, icon, iconAfter, highlight} = {...props, ...templates[props.template]};
-
-  const cn = classNamesHelper(classNames.map(className => className in classes ? classes[className] : false), {
-
-  })
+  const cn = classNamesHelper(
+    classNames.map(
+      className => (className in classes ? classes[className] : false)
+    ),
+    {}
+  );
 
   let _label = label;
   let _label_params = {};
 
-  if(label && Array.isArray(label) && label.length)
-  {
+  if (label && Array.isArray(label) && label.length) {
     _label = label[0];
     _label_params = label[1];
   }
 
   return (
     <Typography variant={variant} component={component} className={cn}>
-
       {icon}
 
-      {hl(highlight,  label ? translate(_label, _label_params) : children, classes.highlighted ) }
+      {hl(
+        highlight,
+        label ? translate(_label, _label_params) : children,
+        classes.highlighted
+      )}
 
       {iconAfter}
-
     </Typography>
-  )
-}
-
+  );
+};
 
 MyTypography.defaultProps = {
-  template : "default",
-  label : null,
-  classNames : [],
-  icon : null,
-  iconAfter : null,
-  highlight : false,
-  width : "xs"
-}
+  template: 'default',
+  label: null,
+  classNames: [],
+  icon: null,
+  iconAfter: null,
+  highlight: false,
+  width: 'xs'
+};
 
 const enhance = compose(
-  withStyles(styles, {withTheme : true}),
+  withStyles(styles, { withTheme: true }),
   translate
-)
+);
 
 export default enhance(MyTypography);
-
 
 //
 //

@@ -1,9 +1,7 @@
-
-
 import Button from 'material-ui/Button';
 
 //import compose from 'recompose/compose';
-import {translate} from '../i18n'
+import { translate } from '../i18n';
 
 /*
 dirty : false
@@ -41,29 +39,32 @@ validateOnChange : true
 values : {}
 */
 
-const FormButton = (props) => {
+const FormButton = props => {
+  const {
+    label,
+    errors,
+    isValid,
+    translate,
+    isSubmitting,
+    handleSubmit
+  } = props;
 
-  const {label, errors, isValid, translate, isSubmitting, handleSubmit} = props;
-
-//  const renderError = id in touched && id in errors
+  //  const renderError = id in touched && id in errors
 
   return (
-    <div style={{textAlign: 'right'}}>
+    <div style={{ textAlign: 'right' }}>
       <Button
         variant={isValid ? 'raised' : 'raised'}
         color={isValid ? 'primary' : 'secondary'}
         disabled={isSubmitting}
         onClick={handleSubmit}
       >
-      {translate(label)}
+        {translate(label)}
       </Button>
     </div>
-  )
+  );
+};
 
-}
-
-FormButton.defaultProps = {
-
-}
+FormButton.defaultProps = {};
 
 export default translate(FormButton);

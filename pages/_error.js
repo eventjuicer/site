@@ -1,10 +1,8 @@
-import React from 'react'
+import React from 'react';
 
-import {
-  MyHead as Head
-} from '../next'
+import { MyHead as Head } from '../next';
 
-import {connect} from "react-redux";
+import { connect } from 'react-redux';
 
 import {
   Typography,
@@ -14,42 +12,35 @@ import {
   ColumnList
 } from '../components';
 
-import {fetcher} from '../helpers'
+import { fetcher } from '../helpers';
 
 import Layout from '../layouts/main';
-import Visitor from '../roles/Visitor'
-
+import Visitor from '../roles/Visitor';
 
 class PageError extends React.Component {
-
   static async getInitialProps({ res, err, store }) {
-
-    const results = await fetcher({exhibitors : false, presenters : false}, store);
+    const results = await fetcher(
+      { exhibitors: false, presenters: false },
+      store
+    );
 
     const statusCode = res ? res.statusCode : err ? err.statusCode : null;
 
-    return { statusCode, exhibitors : results.getData("exhibitors")  }
-
+    return { statusCode, exhibitors: results.getData('exhibitors') };
   }
 
   render() {
-
-    const {statusCode, exhibitors} = this.props;
+    const { statusCode, exhibitors } = this.props;
 
     return (
-
       <Layout>
-
         <Head />
 
         <Hero />
 
         <Wrapper label="visitors.register">
-
           <Visitor />
-
         </Wrapper>
-
 
         {/* <Wrapper
               label="presenters.schedule"
@@ -62,18 +53,12 @@ class PageError extends React.Component {
               <Schedule    />
         </Wrapper> */}
 
-
-
         <Wrapper label="exhibitors.list_full" color="#ffffff">
-          <ColumnList data={ exhibitors } />
+          <ColumnList data={exhibitors} />
         </Wrapper>
-
-
-
       </Layout>
-
-    )
+    );
   }
 }
 
-export default connect()(PageError)
+export default connect()(PageError);

@@ -1,19 +1,18 @@
-
 import App, { Container } from 'next/app';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import JssProvider from 'react-jss/lib/JssProvider';
-import {getMuiContext} from '../material-ui';
+import { getMuiContext } from '../material-ui';
 
-import {TranslationProvider, CHANGE_LOCALE_MSGS} from '../i18n'
+import { TranslationProvider, CHANGE_LOCALE_MSGS } from '../i18n';
 
-import {Provider} from 'react-redux'
-import createStore from '../redux'
+import { Provider } from 'react-redux';
+import createStore from '../redux';
 
-import withRedux from 'next-redux-wrapper'
-import withReduxSaga from 'next-redux-saga'
+import withRedux from 'next-redux-wrapper';
+import withReduxSaga from 'next-redux-saga';
 
-import fetch from 'isomorphic-unfetch'
+import fetch from 'isomorphic-unfetch';
 
 /*ctx
 
@@ -29,32 +28,31 @@ import fetch from 'isomorphic-unfetch'
 */
 
 class MyApp extends App {
-
-  static async getInitialProps ({ Component, router, ctx}) {
-
-    const {store, isServer, query, res} = ctx
+  static async getInitialProps({ Component, router, ctx }) {
+    const { store, isServer, query, res } = ctx;
 
     let texts;
 
-    if(isServer){
-
-      texts = "texts" in res.locals ? res.locals.texts : {}
-
-    }else{
-
-      const res = await fetch('/_data/texts', {headers: {'Accept': 'application/json'}})
-      texts = await res.json()
+    if (isServer) {
+      texts = 'texts' in res.locals ? res.locals.texts : {};
+    } else {
+      const res = await fetch('/_data/texts', {
+        headers: { Accept: 'application/json' }
+      });
+      texts = await res.json();
     }
 
-    store.dispatch({type : CHANGE_LOCALE_MSGS, messages : texts })
+    store.dispatch({ type: CHANGE_LOCALE_MSGS, messages: texts });
 
-    const componentInitialProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {}
+    const componentInitialProps = Component.getInitialProps
+      ? await Component.getInitialProps(ctx)
+      : {};
 
     return {
-              pageProps: {
-                  // Call page-level getInitialProps
-                  ...componentInitialProps
-              }
+      pageProps: {
+        // Call page-level getInitialProps
+        ...componentInitialProps
+      }
     };
   }
 
@@ -74,7 +72,6 @@ class MyApp extends App {
   }
 
   render() {
-
     const { Component, pageProps, store } = this.props;
 
     return (
@@ -95,12 +92,9 @@ class MyApp extends App {
             {/* Pass pageContext to the _document though the renderPage enhancer
                 to render collected styles on server side. */}
 
-               <Provider store={store}>
-
-                   <Component pageContext={this.pageContext} {...pageProps} />
-
-              </Provider>
-
+            <Provider store={store}>
+              <Component pageContext={this.pageContext} {...pageProps} />
+            </Provider>
           </MuiThemeProvider>
         </JssProvider>
       </Container>
@@ -108,6 +102,4 @@ class MyApp extends App {
   }
 }
 
-export default withRedux(createStore)(
-  withReduxSaga({ async: true })(MyApp)
-)
+export default withRedux(createStore)(withReduxSaga({ async: true })(MyApp));

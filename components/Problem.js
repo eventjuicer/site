@@ -42,7 +42,7 @@ const suggestions = [
   { label: 'Bouvet Island' },
   { label: 'Brazil' },
   { label: 'British Indian Ocean Territory' },
-  { label: 'Brunei Darussalam' },
+  { label: 'Brunei Darussalam' }
 ];
 
 function renderInput(inputProps) {
@@ -53,16 +53,22 @@ function renderInput(inputProps) {
       InputProps={{
         inputRef: ref,
         classes: {
-          root: classes.inputRoot,
+          root: classes.inputRoot
         },
-        ...InputProps,
+        ...InputProps
       }}
       {...other}
     />
   );
 }
 
-function renderSuggestion({ suggestion, index, itemProps, highlightedIndex, selectedItem }) {
+function renderSuggestion({
+  suggestion,
+  index,
+  itemProps,
+  highlightedIndex,
+  selectedItem
+}) {
   const isHighlighted = highlightedIndex === index;
   const isSelected = (selectedItem || '').indexOf(suggestion.label) > -1;
 
@@ -73,7 +79,7 @@ function renderSuggestion({ suggestion, index, itemProps, highlightedIndex, sele
       selected={isHighlighted}
       component="div"
       style={{
-        fontWeight: isSelected ? 500 : 400,
+        fontWeight: isSelected ? 500 : 400
       }}
     >
       {suggestion.label}
@@ -85,7 +91,7 @@ renderSuggestion.propTypes = {
   index: PropTypes.number,
   itemProps: PropTypes.object,
   selectedItem: PropTypes.string,
-  suggestion: PropTypes.shape({ label: PropTypes.string }).isRequired,
+  suggestion: PropTypes.shape({ label: PropTypes.string }).isRequired
 };
 
 function getSuggestions(inputValue) {
@@ -93,7 +99,9 @@ function getSuggestions(inputValue) {
 
   return suggestions.filter(suggestion => {
     const keep =
-      (!inputValue || suggestion.label.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1) &&
+      (!inputValue ||
+        suggestion.label.toLowerCase().indexOf(inputValue.toLowerCase()) !==
+          -1) &&
       count < 5;
 
     if (keep) {
@@ -107,14 +115,18 @@ function getSuggestions(inputValue) {
 class DownshiftMultiple extends React.Component {
   state = {
     inputValue: '',
-    selectedItem: [],
+    selectedItem: []
   };
 
   handleKeyDown = event => {
     const { inputValue, selectedItem } = this.state;
-    if (selectedItem.length && !inputValue.length && keycode(event) === 'backspace') {
+    if (
+      selectedItem.length &&
+      !inputValue.length &&
+      keycode(event) === 'backspace'
+    ) {
       this.setState({
-        selectedItem: selectedItem.slice(0, selectedItem.length - 1),
+        selectedItem: selectedItem.slice(0, selectedItem.length - 1)
       });
     }
   };
@@ -132,7 +144,7 @@ class DownshiftMultiple extends React.Component {
 
     this.setState({
       inputValue: '',
-      selectedItem,
+      selectedItem
     });
   };
 
@@ -148,14 +160,18 @@ class DownshiftMultiple extends React.Component {
     const { inputValue, selectedItem } = this.state;
 
     return (
-      <Downshift inputValue={inputValue} onChange={this.handleChange} selectedItem={selectedItem}>
+      <Downshift
+        inputValue={inputValue}
+        onChange={this.handleChange}
+        selectedItem={selectedItem}
+      >
         {({
           getInputProps,
           getItemProps,
           isOpen,
           inputValue: inputValue2,
           selectedItem: selectedItem2,
-          highlightedIndex,
+          highlightedIndex
         }) => (
           <div className={classes.container}>
             {renderInput({
@@ -174,8 +190,8 @@ class DownshiftMultiple extends React.Component {
                 onChange: this.handleInputChange,
                 onKeyDown: this.handleKeyDown,
                 placeholder: 'Select multiple countries',
-                id: 'integration-downshift-multiple',
-              }),
+                id: 'integration-downshift-multiple'
+              })
             })}
             {isOpen ? (
               <Paper className={classes.paper} square>
@@ -185,8 +201,8 @@ class DownshiftMultiple extends React.Component {
                     index,
                     itemProps: getItemProps({ item: suggestion.label }),
                     highlightedIndex,
-                    selectedItem: selectedItem2,
-                  }),
+                    selectedItem: selectedItem2
+                  })
                 )}
               </Paper>
             ) : null}
@@ -198,31 +214,31 @@ class DownshiftMultiple extends React.Component {
 }
 
 DownshiftMultiple.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    height: 250,
+    height: 250
   },
   container: {
     flexGrow: 1,
-    position: 'relative',
+    position: 'relative'
   },
   paper: {
     position: 'absolute',
     zIndex: 1,
     marginTop: theme.spacing.unit,
     left: 0,
-    right: 0,
+    right: 0
   },
   chip: {
-    margin: `${theme.spacing.unit / 2}px ${theme.spacing.unit / 4}px`,
+    margin: `${theme.spacing.unit / 2}px ${theme.spacing.unit / 4}px`
   },
   inputRoot: {
-    flexWrap: 'wrap',
-  },
+    flexWrap: 'wrap'
+  }
 });
 
 function IntegrationDownshift(props) {
@@ -231,15 +247,22 @@ function IntegrationDownshift(props) {
   return (
     <div className={classes.root}>
       <Downshift>
-        {({ getInputProps, getItemProps, isOpen, inputValue, selectedItem, highlightedIndex }) => (
+        {({
+          getInputProps,
+          getItemProps,
+          isOpen,
+          inputValue,
+          selectedItem,
+          highlightedIndex
+        }) => (
           <div className={classes.container}>
             {renderInput({
               fullWidth: true,
               classes,
               InputProps: getInputProps({
                 placeholder: 'Search a country (start with a)',
-                id: 'integration-downshift-simple',
-              }),
+                id: 'integration-downshift-simple'
+              })
             })}
             {isOpen ? (
               <Paper className={classes.paper} square>
@@ -249,8 +272,8 @@ function IntegrationDownshift(props) {
                     index,
                     itemProps: getItemProps({ item: suggestion.label }),
                     highlightedIndex,
-                    selectedItem,
-                  }),
+                    selectedItem
+                  })
                 )}
               </Paper>
             ) : null}
@@ -263,7 +286,7 @@ function IntegrationDownshift(props) {
 }
 
 IntegrationDownshift.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(IntegrationDownshift);

@@ -1,52 +1,46 @@
+import { MyHead as Head } from '../next';
 
-import {
-  MyHead as Head
-} from '../next'
-
-import {connect} from "react-redux";
+import { connect } from 'react-redux';
 
 import {
   Typography,
   Wrapper,
   WhoIsGonnaBeThere,
   Schedule,
-//  Googlemap,
+  //  Googlemap,
   People
 } from '../components';
 
 import Layout from '../layouts/main';
 
-import Visitor from '../roles/Visitor'
+import Visitor from '../roles/Visitor';
 
-
-import {
-  fetcher
-} from '../helpers'
-
+import { fetcher } from '../helpers';
 
 class PageAgenda extends React.Component {
+  static async getInitialProps({
+    err,
+    req,
+    res,
+    pathname,
+    query,
+    asPath,
+    isServer,
+    store
+  }) {
+    const results = await fetcher(
+      { exhibitors: false, presenters: false },
+      store
+    );
 
-static async getInitialProps({err, req, res, pathname, query, asPath, isServer, store})
-{
-
-  const results = await fetcher({exhibitors : false, presenters : false}, store);
-
-  return {
-
+    return {};
   }
 
-}
+  render() {
+    const { router } = this.props;
 
-render()
-{
-
-  const { router } = this.props;
-
-  return (
-
-
+    return (
       <Layout>
-
         <Head />
 
         {/* <Wrapper
@@ -80,13 +74,12 @@ render()
         </Wrapper> */}
 
         {/* <Googlemap /> */}
-
       </Layout>
-
-)
+    );
+  }
 }
 
-}
-
-
-export default connect(null,null)( PageAgenda )
+export default connect(
+  null,
+  null
+)(PageAgenda);

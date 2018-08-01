@@ -1,1 +1,1 @@
-export {default} from '../next/_app'
+export { default } from '../next/_app';

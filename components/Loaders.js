@@ -1,24 +1,19 @@
-
-
 import React from 'react';
-import ContentLoader from "react-content-loader"
-
+import ContentLoader from 'react-content-loader';
 
 //https://github.com/danilowoz/react-content-loader
 
-
 export const Logotype = () => (
-	<ContentLoader
-		height={200}
-		width={380}
-		speed={2}
-		primaryColor={"#f3f3f3"}
-		secondaryColor={"#ecebeb"}
-	>
-		<rect x="40" y="53.05" rx="0" ry="0" width="300.51" height="86.94" />
-	</ContentLoader>
-)
-
+  <ContentLoader
+    height={200}
+    width={380}
+    speed={2}
+    primaryColor={'#f3f3f3'}
+    secondaryColor={'#ecebeb'}
+  >
+    <rect x="40" y="53.05" rx="0" ry="0" width="300.51" height="86.94" />
+  </ContentLoader>
+);
 
 export const Bookingmap = () => (
   <ContentLoader
@@ -41,4 +36,4 @@ export const Bookingmap = () => (
     <rect x="104" y="348.05" rx="0" ry="0" width="89" height="60" />
     <rect x="207" y="221.05" rx="0" ry="0" width="62" height="59" />
   </ContentLoader>
-)
+);

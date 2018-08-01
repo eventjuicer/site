@@ -1,14 +1,10 @@
+import TextInput from './TextInput';
+import FormButton from './FormButton';
+import withFormik, { filterFields } from './formik';
 
+import { MyTypography as Typography } from '../components';
 
-import TextInput from './TextInput'
-import FormButton from './FormButton'
-import withFormik, {filterFields} from './formik'
-
-
-import {MyTypography as Typography} from '../components'
-
-import FormSuccess from './FormSuccess'
-
+import FormSuccess from './FormSuccess';
 
 /*
 dirty : false
@@ -42,10 +38,7 @@ validateOnChange : true
 values : {}
 */
 
-
-
-const StepForm = (props) => {
-
+const StepForm = props => {
   const {
     values,
     touched,
@@ -65,8 +58,7 @@ const StepForm = (props) => {
 
   const started = Object.keys(touched).length;
 
-  if(status && status === "ok")
-  {
+  if (status && status === 'ok') {
     return <FormSuccess />;
   }
 
@@ -74,42 +66,37 @@ const StepForm = (props) => {
 
   return (
     <form onSubmit={handleSubmit}>
-
       <Typography template="legend" label="visitors.form.intro" />
 
-      {
-        start ? start.map((name, idx) =>
+      {start
+        ? start.map((name, idx) => (
             <TextInput
               key={idx}
               id={name}
               label={`visitors.fields.${name}`}
               {...props}
             />
-        ) : null
-      }
+          ))
+        : null}
 
-      {
-        (started || !start) && filteredFields.length ? filteredFields.map((name, idx) =>
+      {(started || !start) && filteredFields.length
+        ? filteredFields.map((name, idx) => (
             <TextInput
               key={idx}
               id={name}
               label={`visitors.fields.${name}`}
               {...props}
             />
-        ) : null
-      }
+          ))
+        : null}
 
-      <FormButton
-        label="visitors.form.register" {...props}
-      />
-
+      <FormButton label="visitors.form.register" {...props} />
     </form>
   );
 };
 
-
 StepForm.defaultProps = {
-    url : "https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/register"
-}
+  url: 'https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/register'
+};
 
 export default withFormik(StepForm);

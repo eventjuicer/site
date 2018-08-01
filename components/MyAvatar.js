@@ -1,43 +1,36 @@
-
 import React from 'react';
-import { withStyles } from 'material-ui/styles'
-import Avatar from 'material-ui/Avatar'
+import { withStyles } from 'material-ui/styles';
+import Avatar from 'material-ui/Avatar';
 
 const styles = theme => ({
-
-  avatar : {
-
+  avatar: {
     width: 100,
     height: 100,
 
     [theme.breakpoints.up('sm')]: {
       width: 250,
-      height: 250,
-    },
+      height: 250
+    }
   },
 
-  image : {
-     filter: 'grayscale(100%) contrast(115%)',
-  },
-
+  image: {
+    filter: 'grayscale(100%) contrast(115%)'
+  }
 });
 
-
-const MyAvatar = ({classes, src, link}) => (
-
+const MyAvatar = ({ classes, src, link }) => (
   <Avatar
     alt=""
     src={src}
     classes={{
-      root : classes.avatar,
-      img : classes.image
+      root: classes.avatar,
+      img: classes.image
     }}
   />
-
-)
+);
 
 MyAvatar.defaultProps = {
-  src : "",
-}
+  src: ''
+};
 
-export default withStyles( styles )(MyAvatar)
+export default withStyles(styles)(MyAvatar);

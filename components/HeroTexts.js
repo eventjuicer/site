@@ -1,63 +1,54 @@
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
 
-
-import ResponsiveText from './ResponsiveText'
+import ResponsiveText from './ResponsiveText';
 
 const styles = {
-
-  texts : {
+  texts: {
     marginLeft: 20,
-    marginRight : 20
-  },
-
-}
-
+    marginRight: 20
+  }
+};
 
 class HeroTexts extends React.Component {
+  state = {
+    stage: 1
+  };
 
+  setStage = stage => {
+    this.setState({ stage: stage });
+  };
 
-    state = {
-      stage : 1,
-    }
+  isStage(stage) {
+    return stage === this.state.stage;
+  }
 
-    setStage = (stage) =>
-    {
-      this.setState({stage : stage})
-    }
+  roleSelect = () => {};
 
-    isStage(stage)
-    {
-      return stage === this.state.stage
-    }
+  render() {
+    const { classes } = this.props;
+    const { stage } = this.state;
 
-    roleSelect = () => {
-
-    }
-
-render(){
-
-  const {classes} = this.props;
-  const {stage} = this.state;
-
-  return (
-
+    return (
       <div className={classes.texts}>
-        <ResponsiveText visible={true} text="A Ty?" onShow={() => this.setStage(2)} />
-        <ResponsiveText visible={stage > 1 } text="Będziesz na Targach?" onShow={() => this.setStage(3) } />
+        <ResponsiveText
+          visible={true}
+          text="A Ty?"
+          onShow={() => this.setStage(2)}
+        />
+        <ResponsiveText
+          visible={stage > 1}
+          text="Będziesz na Targach?"
+          onShow={() => this.setStage(3)}
+        />
         {/* <Animate visible={ stage > 2 } >
         <RoleSelector roles={["exhibitor", "visitor"]} />
         </Animate> */}
       </div>
-
-  )
+    );
+  }
 }
 
-}
+HeroTexts.defaultProps = {};
 
-HeroTexts.defaultProps = {
-
-}
-
-
-export default withStyles(styles)(HeroTexts)
+export default withStyles(styles)(HeroTexts);

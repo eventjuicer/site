@@ -1,26 +1,25 @@
-import React, {Children} from 'react';
+import React, { Children } from 'react';
 import PropTypes from 'prop-types';
 import Polyglot from 'node-polyglot';
 import { connect } from 'react-redux';
 
-export const Context = React.createContext({translate : key => key });
+export const Context = React.createContext({ translate: key => key });
 
-
-const TranslationProvider = ({locale, messages, children}) => {
-
+const TranslationProvider = ({ locale, messages, children }) => {
   const polyglot = new Polyglot({
-        locale,
-        phrases: locale in messages ? messages[locale] : {}
-        //onMissingKey : () => ()
+    locale,
+    phrases: locale in messages ? messages[locale] : {}
+    //onMissingKey : () => ()
   });
 
   return (
-    <Context.Provider value={{locale : locale, translate : polyglot.t.bind(polyglot) }}>
+    <Context.Provider
+      value={{ locale: locale, translate: polyglot.t.bind(polyglot) }}
+    >
       {children}
     </Context.Provider>
-  )
-
-}
+  );
+};
 
 // TranslationProvider.defaultProps = {
 //   locale : "pl",
@@ -29,7 +28,7 @@ const TranslationProvider = ({locale, messages, children}) => {
 
 const mapStateToProps = state => ({
   locale: state.app.locale,
-  messages : state.app.locale_msgs
+  messages: state.app.locale_msgs
 });
 
-export default connect(mapStateToProps)(TranslationProvider)
+export default connect(mapStateToProps)(TranslationProvider);
