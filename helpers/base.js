@@ -43,10 +43,9 @@ export const isBigScreen = width => {
 };
 
 export const processArrayData = (
-  data = [],
-  { filter = null, limit = null, random = null }
+  data = [], { filter = null, limit = null, random = null }
 ) => {
-  if (!Array.isArray(data) || !data.length) {
+  if (!Array.isArray(data)) {
     return [];
   }
 
@@ -65,8 +64,7 @@ export const processArrayData = (
   return data;
 };
 
-export const chunkArrayData = (data = [], width = 'md', params) => {
-  data = processArrayData(data, params);
+export const chunkArrayData = (data = [], width = 'md') => {
 
   let chunks;
 
