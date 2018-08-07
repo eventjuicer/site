@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-unfetch';
 import keyBy from 'lodash/keyBy';
 import get from 'lodash/get';
-import { resourceFetchSuccess } from '../components/redux';
+import { resourceFetchSuccess, resourceFetchSuccessMeta } from '../components/redux';
 
 const { API_HOST } = process.env;
 
@@ -17,32 +17,29 @@ export const checkFetchStatus = response => {
   }
 };
 
-export const fetcher = async (endpoints, store = null) => {
+export const fetcher = async (endpoints, store) => {
+
+  const resources = get(store.getState(), "resources", {})
+
+  const emptyResources = endpoints.filter(endpoint => endpoint in resources && !resources[endpoint].length)
+
   const results = await Promise.all(
-    Object.keys(endpoints).map(endpoint =>
+    endpoints.map(endpoint =>
       fetch(`${apiUrl}${endpoint}`)
         .then(response => response.json())
-        .then(data => ({ endpoint, data, keyBy: endpoints[endpoint] }))
+        .then(data => ({ endpoint, data }))
     )
-  );
+  )
 
-  if (store) {
-    results.forEach(obj =>
-      store.dispatch(resourceFetchSuccess(obj.endpoint, obj.data.data))
-    );
-  }
+    results.forEach(resource => {
 
-  const keyed = keyBy(results, 'endpoint');
+        store.dispatch(resourceFetchSuccess(resource.endpoint, resource.data.data))
 
-  return {
-    get: function(item) {
-      return item in keyed ? keyed[item].data : null;
-    },
-    getData: function(item) {
-      return item in keyed ? get(keyed[item], 'data.data') : null;
-    },
-    getMeta: function(item) {
-      return item in keyed ? get(keyed[item], 'data.meta') : null;
-    }
-  };
+        if("meta" in resource.data){
+          store.dispatch(resourceFetchSuccessMeta(resource.data.meta))
+        }
+
+    })
+
+
 };
