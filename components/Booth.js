@@ -111,7 +111,7 @@ const Booth = ({
 }) => (
   <li
     onClick={() => onClick(data.id, data.g, data.ti)}
-    className={classNames(classes.booth, {
+    className={classNames(classes.booth, classes[styling], {
       [classes.boothSold]: status === 'sold',
       [classes.boothHold]: status === 'hold',
       [classes.boothSelected]: selected
