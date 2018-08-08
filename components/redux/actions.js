@@ -30,11 +30,10 @@ export function faqUrl(url) {
   };
 }
 
-export function resourceFetchRequest(resource, keyBy = false) {
+export function resourceFetchRequest(resource) {
   return {
     type: Types.RESOURCE_FETCH_REQUESTED,
-    resource: resource,
-    keyBy: keyBy
+    resource: resource
   };
 }
 
@@ -45,6 +44,14 @@ export function resourceFetchSuccess(resource, data) {
     data: data
   };
 }
+
+export function resourceFetchSuccessMeta(meta) {
+  return {
+    type: Types.RESOURCE_FETCH_SUCCESS_META,
+    meta: meta
+  };
+}
+
 
 export function resourceFetchError(resource, error) {
   return {

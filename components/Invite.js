@@ -1,7 +1,7 @@
 import React from 'react';
 import Sharer from './Sharer';
-import { withStyles } from 'material-ui/styles';
-import Grid from 'material-ui/Grid';
+import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import compose from 'recompose/compose';
 import _get from 'lodash/get';
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { MyLink as Link } from '../next';
 import MyTypography from './MyTypography';
 import compose from 'recompose/compose';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 const buildLink = (url, selected) => {
   return `${url.pathname}?${selected.join(',')}`;

@@ -1,13 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import compose from 'recompose/compose';
 import classNames from 'classnames';
 import _get from 'lodash/get';
 
-import Grid from 'material-ui/Grid';
-import { withStyles } from 'material-ui/styles';
+import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
 
-import { chunkArrayData } from '../helpers';
 import { translate } from '../i18n';
 import Typography from './MyTypography';
 
@@ -61,6 +58,7 @@ const Person = ({ translate, person }) => (
 const TranslatedPerson = translate(Person);
 
 class WhoIsGonnaBeThere extends React.PureComponent {
+
   state = {
     page: 1
   };
@@ -73,12 +71,11 @@ class WhoIsGonnaBeThere extends React.PureComponent {
   }
 
   render() {
-    const { visitors, width, filter, limit, random } = this.props;
-    const _data = chunkArrayData(visitors, width, { filter, limit, random });
+    const { data } = this.props;
 
     return (
       <Grid container spacing={24}>
-        {_data.map((chunk, i) => (
+        {data.map((chunk, i) => (
           <Grid key={i} item xs={12} sm={6} md={4} lg={3} xl={3}>
             {chunk.map((person, j) => (
               <TranslatedPerson key={j} person={person} />
@@ -98,17 +95,6 @@ WhoIsGonnaBeThere.defaultProps = {
   random: true
 };
 
-const enhance = compose(
-  withStyles(styles),
-  connect(
-    state => ({
-      width: state.app.width,
-      visitors: state.resources.visitors
-    }),
-    {
-      resourceFetchRequest: resourceFetchRequestAction
-    }
-  )
-);
 
-export default enhance(WhoIsGonnaBeThere);
+
+export default withStyles(styles)(WhoIsGonnaBeThere);

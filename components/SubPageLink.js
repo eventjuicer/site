@@ -1,13 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import compose from 'recompose/compose';
 import classNames from 'classnames';
-import { withStyles } from 'material-ui/styles';
-import withWidth from 'material-ui/utils/withWidth';
+import { withStyles } from '@material-ui/core/styles';
 import { generateLinkParams } from '../helpers';
 
-const styles = {
+const styles = theme => ({
   textLink: {
     textDecoration: 'none',
     color: 'rgba(0, 0, 0, 0.87)'
@@ -19,15 +17,19 @@ const styles = {
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     display: 'block',
-    textIndent: -5000
+    textIndent: -5000,
     //  filter : 'grayscale(100%)'
+
+    [theme.breakpoints.down('sm')]: {
+      maxHeight: 100,
+      backgroundSize: 'contain'
+    }
+
+
   },
 
-  tileMobile: {
-    maxHeight: 100,
-    backgroundSize: 'contain'
-  }
-};
+
+});
 
 const SubPageLink = ({ name, subpage, id, classes, src, width }) => {
   const style = src ? { backgroundImage: `url(${src})` } : {};
@@ -38,7 +40,6 @@ const SubPageLink = ({ name, subpage, id, classes, src, width }) => {
         className={classNames({
           [classes.tile]: src,
           [classes.textLink]: !src,
-          [classes.tileMobile]: src && width === 'xs'
         })}
         style={style}
       >
@@ -61,9 +62,4 @@ SubPageLink.propTypes = {
   src: PropTypes.string
 };
 
-const enhance = compose(
-  withStyles(styles),
-  withWidth()
-);
-
-export default enhance(SubPageLink);
+export default withStyles(styles)(SubPageLink);

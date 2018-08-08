@@ -6,6 +6,7 @@ export const initialState = {
   tickets: [],
   photos: [],
   bookingmap: [],
+  exhibitors : [],
   texts : {}
 };
 
@@ -18,7 +19,7 @@ const reducer = (state = initialState, action) => {
   switch (type) {
     case RESOURCE_FETCH_SUCCESS:
       return { ...state, [resource]: data };
-      break;
+    break;
 
     case CHANGE_LOCALE_MSGS:
         return { ...state, texts: action.messages };

@@ -1,7 +1,7 @@
 import React from 'react';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import Hero from './Hero';
+import FsVideo from './FsVideo';
 import EventInfo from './EventInfo';
 import MyTypography from './MyTypography';
 import compose from 'recompose/compose';
@@ -18,7 +18,7 @@ const styles = {
 };
 
 const HeroCustom = ({ classes }) => (
-  <Hero>
+  <FsVideo>
     <div className={classes.container}>
       <EventInfo
         items={[
@@ -49,7 +49,7 @@ const HeroCustom = ({ classes }) => (
         Cały eHandel w jednym miejscu!
       </MyTypography>
     </div>
-  </Hero>
+  </FsVideo>
 );
 
 export default withStyles(styles)(HeroCustom);

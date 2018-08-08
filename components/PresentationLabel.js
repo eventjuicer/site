@@ -1,7 +1,7 @@
 import React from 'react';
-import { withStyles } from 'material-ui/styles';
-import Chip from 'material-ui/Chip';
-import red from 'material-ui/colors/red';
+import { withStyles } from '@material-ui/core/styles';
+import Chip from '@material-ui/core/Chip';
+import red from '@material-ui/core/colors/red';
 import { translate } from '../i18n';
 import compose from 'recompose/compose';
 

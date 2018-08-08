@@ -1,10 +1,12 @@
 import React from 'react';
 
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 
-import { FormLabel, FormControl, FormGroup } from 'material-ui/Form';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormGroup from '@material-ui/core/FormGroup';
 
 //import {translate} from '../i18n'
 

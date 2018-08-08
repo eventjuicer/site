@@ -1,8 +1,7 @@
 import React from 'react';
 import compose from 'recompose/compose';
-import Grid from 'material-ui/Grid';
-import withWidth from 'material-ui/utils/withWidth';
-import { withStyles } from 'material-ui/styles';
+import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
 
 import EventInfo from './EventInfo';
 import Person from './PersonSlim';

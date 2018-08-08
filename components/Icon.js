@@ -1,8 +1,8 @@
 import React from 'react';
 
 import classNames from 'classnames';
-import { withStyles } from 'material-ui/styles';
-import red from 'material-ui/colors/red';
+import { withStyles } from '@material-ui/core/styles';
+import red from '@material-ui/core/colors/red';
 
 import { capitalizeFirstLetter } from '../helpers';
 

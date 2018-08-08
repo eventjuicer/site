@@ -5,20 +5,20 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import compose from 'recompose/compose';
 
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 
-import MenuIcon from 'material-ui-icons/Menu';
+import MenuIcon from '@material-ui/icons/Menu';
 import classNames from 'classnames';
 
 //const Cart = dynamic(import('./CartButton'))
 
 import Cart from './CartButton';
-import LanguageButton from './LanguageButton';
+import LanguageSelect from './LanguageSelect';
 
 import {
   drawerShow as drawerShowAction,
@@ -61,7 +61,7 @@ function MyAppBar(props) {
         [classes.spaced]: noItems
       })}
     >
-      <AppBar position="fixed" color="default">
+      <AppBar position="fixed" color="inherit">
         <Toolbar>
           <IconButton
             onClick={drawerShow}
@@ -83,7 +83,7 @@ function MyAppBar(props) {
             </Typography>
           </Link>
 
-          <LanguageButton />
+          <LanguageSelect />
 
           {noItems > 0 ? <Cart count={noItems} /> : null}
         </Toolbar>

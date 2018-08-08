@@ -2,9 +2,12 @@ import React from 'react';
 
 import Router from 'next/router';
 
-import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 
-//import {  MenuItem } from 'material-ui/Menu';
+//import {  MenuItem } from '@material-ui/core/Menu';
 
 import { translate } from '../i18n';
 

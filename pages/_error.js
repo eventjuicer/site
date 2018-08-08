@@ -12,25 +12,27 @@ import {
   ColumnList
 } from '../components';
 
-import { fetcher } from '../helpers';
+import {Exhibitors} from '../datasources'
 
 import Layout from '../layouts/main';
+
 import Visitor from '../roles/Visitor';
 
+
 class PageError extends React.Component {
+
   static async getInitialProps({ res, err, store }) {
-    const results = await fetcher(
-      { exhibitors: false, presenters: false },
-      store
-    );
 
     const statusCode = res ? res.statusCode : err ? err.statusCode : null;
 
-    return { statusCode, exhibitors: results.getData('exhibitors') };
+    return {
+      statusCode,
+      preload : ["exhibitors", "presenters"]
+    };
   }
 
   render() {
-    const { statusCode, exhibitors } = this.props;
+    const { statusCode } = this.props;
 
     return (
       <Layout>
@@ -54,7 +56,13 @@ class PageError extends React.Component {
         </Wrapper> */}
 
         <Wrapper label="exhibitors.list_full" color="#ffffff">
-          <ColumnList data={exhibitors} />
+
+
+          <Exhibitors limit={4}>
+            {(exhibitors) =>  <ColumnList data={exhibitors} />}
+          </Exhibitors>
+
+
         </Wrapper>
       </Layout>
     );

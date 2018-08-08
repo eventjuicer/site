@@ -1,32 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import { map, get } from 'lodash';
-
 import Wrapper from './Wrapper';
 import Bookingmap from './Bookingmap';
-
-import { getCompanyProfileInfo, filterCompanyInstances } from '../helpers';
+import { getCompanyProfileInfo } from '../helpers';
 
 const styles = {};
 
-const CompanyBookingmap = ({ company, eventId, label }) => {
+const CompanyBookingmap = ({ company, label }) => {
   const name = getCompanyProfileInfo(company, 'name');
   const purchases = get(company, 'instances');
-  const data = filterCompanyInstances(purchases, eventId);
-  const selectedBoothIds = map(data, 'formdata.id');
-  const selectedBoothNames = map(data, 'formdata.ti');
+  //const data = filterCompanyInstances(purchases, eventId);
+  const selectedBoothIds = map(purchases, 'formdata.id');
+  const selectedBoothNames = map(purchases, 'formdata.ti');
 
   return (
     <Wrapper
-      label={[
-        label,
-        {
+      label={[label, {
           cname2: name,
           loc: selectedBoothNames.join(','),
           smart_count: selectedBoothNames.length
-        }
-      ]}
+        }]}
     >
       <Bookingmap selected={selectedBoothIds} />
     </Wrapper>
@@ -34,7 +29,7 @@ const CompanyBookingmap = ({ company, eventId, label }) => {
 };
 
 CompanyBookingmap.propTypes = {
-  eventId: PropTypes.number.isRequired,
+//  eventId: PropTypes.number.isRequired,
   company: PropTypes.object.isRequired
 };
 

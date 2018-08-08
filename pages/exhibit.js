@@ -17,8 +17,6 @@ import { MyHead as Head, MyLink as Link } from '../next';
 
 import Visitor from '../roles/Visitor';
 
-import { fetcher } from '../helpers';
-
 const Bookingmap = dynamic(import('../components/Bookingmap'));
 
 class PageExhibit extends React.Component {
@@ -32,13 +30,13 @@ class PageExhibit extends React.Component {
     isServer,
     store
   }) {
-    const results = await fetcher({ exhibitors: false }, store);
 
-    return { exhibitors: results.getData('exhibitors') };
+    return { preload : ["exhibitors"] };
   }
 
   render() {
-    const { exhibitors, url } = this.props;
+
+    const { url } = this.props;
 
     return (
       <Layout>

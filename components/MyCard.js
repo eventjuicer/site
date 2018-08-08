@@ -1,11 +1,11 @@
 import React from 'react';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Card, {
   CardActions,
   //  CardContent,
   CardMedia
-} from 'material-ui/Card';
-import Typography from 'material-ui/Typography';
+} from '@material-ui/core/Card';
+import Typography from '@material-ui/core/Typography';
 import { pure, compose } from 'recompose';
 
 const styles = {

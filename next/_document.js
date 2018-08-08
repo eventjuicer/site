@@ -20,6 +20,7 @@ class MyDocument extends Document {
     return (
       <html lang="en" dir="ltr" amp="">
         <Head>
+          
           <script
             async
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}

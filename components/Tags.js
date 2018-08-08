@@ -1,7 +1,7 @@
 import React from 'react';
-import Chip from 'material-ui/Chip';
+import Chip from '@material-ui/core/Chip';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import _get from 'lodash/get';
 import { translate } from '../i18n';
 import compose from 'recompose/compose';

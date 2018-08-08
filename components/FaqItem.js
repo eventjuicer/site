@@ -4,15 +4,15 @@ import compose from 'recompose/compose';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 
-import { withStyles } from 'material-ui/styles';
-import color from 'material-ui/colors/amber';
+import { withStyles } from '@material-ui/core/styles';
+import color from '@material-ui/core/colors/amber';
 
 import ExpansionPanel, {
   ExpansionPanelSummary,
   ExpansionPanelDetails
-} from 'material-ui/ExpansionPanel';
+} from '@material-ui/core/ExpansionPanel';
 
-import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { translate } from '../i18n';
 import { faqToggle } from './redux';

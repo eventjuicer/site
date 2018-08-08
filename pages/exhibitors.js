@@ -8,45 +8,58 @@ import Layout from '../layouts/main';
 import {
   Wrapper,
   Avatarlist,
-  ColumnList,
+  Centered,
   Bookingmap,
   Typography,
   Gallery,
-  resourceFetchSuccess
+  KeywordSelect
 } from '../components';
 
 //const Gallery = dynamic(import('../components/GalleryQuoted'))
 import Visitor from '../roles/Visitor';
 
-import { fetcher } from '../helpers';
+import {Exhibitors} from '../datasources'
 
 class PageExhibitors extends React.Component {
   static async getInitialProps({
-    err,
-    req,
-    res,
-    pathname,
     query,
     asPath,
     isServer,
     store
   }) {
-    const results = await fetcher(
-      { exhibitors: false, bookingmap: false },
-      store
-    );
-    return { exhibitors: results.getData('exhibitors') };
+
+    return {
+      preload : ["exhibitors", "bookingmap"]
+    };
   }
 
   render() {
     const { exhibitors, booths } = this.props;
 
     return (
+
       <Layout>
+
         <Head />
 
         <Wrapper label="exhibitors.list_full" first>
-          <Avatarlist data={exhibitors} limit="200" mobile={false} />
+
+          <Exhibitors mobile={false} random={false}>{
+
+              (exhibitors, keywords) =>   <React.Fragment>
+
+                <Centered>
+                  <KeywordSelect keywords={keywords} />
+                </Centered>
+
+                <Avatarlist data={exhibitors}  />
+
+              </React.Fragment>
+
+            }
+
+          </Exhibitors>
+
         </Wrapper>
 
         <Wrapper

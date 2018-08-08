@@ -5,10 +5,12 @@ import compose from 'recompose/compose';
 
 import { translate } from '../i18n';
 
-import List, { ListSubheader } from 'material-ui/List';
-import { withStyles } from 'material-ui/styles';
-import Drawer from 'material-ui/Drawer';
-//import Divider from 'material-ui/Divider';
+import List from '@material-ui/core/List';
+import ListSubheader from '@material-ui/core/ListSubheader';
+
+import { withStyles } from '@material-ui/core/styles';
+import Drawer from '@material-ui/core/Drawer';
+//import Divider from '@material-ui/core/Divider';
 
 import { drawerHide } from './redux/actions';
 import MenuItemLink from './MenuItemLink';

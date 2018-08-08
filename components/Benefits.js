@@ -2,10 +2,14 @@ import React from 'react';
 import compose from 'recompose/compose';
 
 import classNames from 'classnames';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 
-import Icon from 'material-ui-icons/Done';
-import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import Icon from '@material-ui/icons/Done';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+
 
 import { translate } from '../i18n';
 

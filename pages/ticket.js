@@ -20,30 +20,27 @@ import {
 import Layout from '../layouts/main';
 import Visitor from '../roles/Visitor';
 
-import { fetcher, getInviteOgImage } from '../helpers';
+import { getInviteOgImage } from '../helpers';
 
 const Bookingmap = dynamic(import('../components/Bookingmap'));
 
 class PageTicket extends React.Component {
+
   static async getInitialProps({
-    err,
-    req,
-    res,
-    pathname,
+
     query,
     asPath,
     isServer,
     store
   }) {
+
     const person = `code/${query.hash}`;
 
-    const results = await fetcher({ [person]: false, exhibitors: false });
-
     return {
-      person: results.getData(person),
-      code: query.hash,
-      exhibitors: results.getData('exhibitors'),
-      eventId: _get(results.getMeta(person), 'active_event_id', 0)
+      preload : [
+        person, "exhibitors"
+      ],
+      code: query.hash
     };
   }
 

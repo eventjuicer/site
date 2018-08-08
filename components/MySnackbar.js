@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import { snackbarHide } from './redux/actions';
 
-import Button from 'material-ui/Button';
-import IconButton from 'material-ui/IconButton';
-import Snackbar from 'material-ui/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import Snackbar from '@material-ui/core/Snackbar';
+import CloseIcon from 'mdi-material-ui/Close';
 
 //https://material-ui-next.com/api/snackbar/
 
@@ -24,29 +24,22 @@ class MySnackbar extends React.PureComponent {
         open={open}
         autoHideDuration={6000}
         onClose={snackbarHide}
-        SnackbarContentProps={{
+        ContentProps={{
           'aria-describedby': 'message-id'
         }}
-        message={<span id="message-id">Note archived</span>}
-        action={[
-          <Button
-            key="undo"
-            color="secondary"
-            size="small"
-            onClick={this.handleClose}
-          >
-            UNDO
-          </Button>,
-          <IconButton
-            key="close"
-            aria-label="Close"
-            color="inherit"
-            ///   className={classes.close}
-            onClick={this.handleClose}
-          >
-            {/* <CloseIcon /> */}
-          </IconButton>
-        ]}
+        message={<span id="message-id">{snackbar.title}</span>}
+        // action={[
+        //
+        //   <IconButton
+        //     key="close"
+        //     aria-label="Close"
+        //     color="inherit"
+        //     ///   className={classes.close}
+        //     onClick={this.handleClose}
+        //   >
+        //     <CloseIcon />
+        //   </IconButton>
+        // ]}
       />
     );
   }

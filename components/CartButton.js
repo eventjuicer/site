@@ -2,8 +2,8 @@ import React from 'react';
 import compose from 'recompose/compose';
 import { connect } from 'react-redux';
 
-import Button from 'material-ui/Button';
-import Badge from 'material-ui/Badge';
+import Button from '@material-ui/core/Button';
+import Badge from '@material-ui/core/Badge';
 
 import Cart from './Cart';
 

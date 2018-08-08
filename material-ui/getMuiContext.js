@@ -6,11 +6,31 @@ import {
 import red from '@material-ui/core/colors/red';
 import grey from '@material-ui/core/colors/grey';
 
+
+//https://material-ui.com/customization/default-theme/?expend-path=$.typography
+
+
 const theme = createMuiTheme({
   typography: {
     fontFamily: "'Lato', 'Helvetica', 'Arial', sans-serif",
-    button: {
-      fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif"
+    display4 : {
+      fontFamily: "'Poppins', 'Helvetica', 'Arial', sans-serif",
+    },
+    display4 : {
+      fontFamily: "'Poppins', 'Helvetica', 'Arial', sans-serif",
+    },
+    display3 : {
+      fontFamily: "'Poppins', 'Helvetica', 'Arial', sans-serif",
+    },
+    headline : {
+      fontFamily: "'Poppins', 'Helvetica', 'Arial', sans-serif",
+    },
+    subheading : {
+      fontFamily: "'Poppins', 'Helvetica', 'Arial', sans-serif",
+      fontWeight : 700
+    },
+    title: {
+      fontFamily: "'Poppins', 'Helvetica', 'Arial', sans-serif"
     }
   },
   palette: {

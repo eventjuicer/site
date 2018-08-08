@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import compose from 'recompose/compose';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 //import classNames from 'classnames'
 //import MyTypography from './MyTypography';
 import { translate } from '../i18n';
-import Button from 'material-ui/Button';
+import Button from '@material-ui/core/Button';
 
 const styles = {
   dumb: {},
@@ -27,11 +27,18 @@ const MyLink = ({
   variant,
   color,
   size,
-  icon
+  icon,
+  className,
+  disabled
 }) => {
   return (
     <Link as={as} href={href} prefetch={prefetch}>
-      <Button size={size} variant={variant} color={color}>
+      <Button
+        size={size}
+        variant={variant}
+        color={color}
+        disabled={disabled}
+        className={className}>
         {label ? translate(label) : name}
       </Button>
     </Link>
@@ -44,7 +51,8 @@ MyLink.defaultProps = {
   variant: 'flat',
   size: 'small',
   color: 'default',
-  icon: false
+  icon: false,
+  disabled : false
 };
 
 MyLink.propTypes = {

@@ -27,16 +27,70 @@ import {
   FAQ_TOGGLE
 } from '../../components/redux/types';
 
+
+import {CHANGE_LOCALE} from '../../i18n'
+
 import {
   resourceFetchSuccess,
   resourceFetchError,
+  resourceFetchSuccessMeta,
   boothSelect,
   boothUnselect,
   boothsReset,
   snackbarShow
 } from '../../components/redux/actions';
 
-import * as Selectors from './selectors';
+import * as Selectors from '../selectors';
+
+const apiUrl = `https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/`
+
+let fetchTasks = {};
+
+function* accumulateFetches({resource}) {
+
+  const endpoints = [].concat(resource)
+
+  for(let endpoint of endpoints){
+
+    if(endpoint in fetchTasks) {
+
+       yield cancel( fetchTasks[endpoint] );
+    }
+
+    fetchTasks[endpoint] = yield fork(fetchAccumulatedFetches, endpoint)
+  }
+
+}
+
+function* fetchAccumulatedFetches(endpoint){
+
+  yield call(delay, 50);
+
+  const resources = yield select(Selectors.getResources)
+
+  if(endpoint in resources && resources[endpoint] && resources[endpoint].length){
+
+    delete fetchTasks[endpoint]
+    return
+  }
+
+  const response = yield call(fetch, `${apiUrl}${endpoint}`)
+  const json = yield call([response, response.json])
+
+  if (response.ok && response.status >= 200 && 'data' in json) {
+    yield put(resourceFetchSuccess(endpoint, json.data));
+
+    if("meta" in json){
+      yield put(resourceFetchSuccessMeta(json.meta))
+    }
+
+  } else {
+    yield put(resourceFetchError(endpoint, `${response.status} ${response.statusText}`));
+  }
+
+  delete fetchTasks[endpoint]
+}
+
 
 function* changeUrlWhenFaqsSelected(actionData) {
   const faqs = yield select(Selectors.getFaqs);
@@ -46,25 +100,6 @@ function* changeUrlWhenFaqsSelected(actionData) {
   });
 }
 
-function* handleFetchRequests(actionData) {
-  const url = `https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/${
-    actionData.resource
-  }`;
-  const response = yield call(fetch, url);
-  const data = yield call([response, response.json]);
-
-  if (response.ok && response.status >= 200 && 'data' in data) {
-    if (actionData.keyBy) {
-      yield put(
-        resourceFetchSuccess(actionData.resource, _keyBy(data.data, 'id'))
-      );
-    } else {
-      yield put(resourceFetchSuccess(actionData.resource, data.data));
-    }
-  } else {
-    yield put(resourceFetchError(actionData.resource, response.status));
-  }
-}
 
 function* updateDialogForQuickCheckout(actionData) {
   yield cancel();
@@ -75,6 +110,21 @@ function* selectBoothWhenCartItemAdded(actionData) {
     yield put(boothSelect(actionData.formdata.id));
   }
   yield cancel();
+}
+
+function* setCookieWhenLocaleChanged(actionData) {
+  if (process.browser) {
+
+    const response = yield call(fetch, "/remember", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ locale: actionData.locale })
+    });
+    const data = yield call([response, response.json]);
+    console.log(data)
+  }
 }
 
 function* unSelectBoothWhenCartItemRemoved(actionData) {
@@ -90,22 +140,22 @@ function* unSelectAllBooths() {
 }
 
 function* handleFetchErrors(actionData) {
-  yield put(snackbarShow(actionData.payload));
+  yield put(snackbarShow({title : actionData.error}));
 }
 
 const rootSaga = function* root() {
-  let sagaIndex = [
+
+  yield all([
     //takeEvery(SNACKBAR_SHOW, handleLogoutFn),
+    takeEvery(CHANGE_LOCALE, setCookieWhenLocaleChanged),
     takeEvery(FAQ_TOGGLE, changeUrlWhenFaqsSelected),
     takeEvery(CART_ITEM_ADD, selectBoothWhenCartItemAdded),
     takeEvery(CART_ITEM_ADD, updateDialogForQuickCheckout),
     takeEvery(CART_ITEM_REMOVE, unSelectBoothWhenCartItemRemoved),
     takeEvery(CART_RESET, unSelectAllBooths),
-    takeEvery(RESOURCE_FETCH_REQUESTED, handleFetchRequests),
+    takeEvery(RESOURCE_FETCH_REQUESTED, accumulateFetches),
     takeEvery(RESOURCE_FETCH_ERROR, handleFetchErrors)
-  ];
-
-  yield all(sagaIndex);
+  ]);
 };
 
 export default rootSaga;

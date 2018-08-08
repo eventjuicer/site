@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { withStyles } from 'material-ui/styles';
-import Button from 'material-ui/Button';
-//import {ListItem} from 'material-ui/List';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+//import {ListItem} from '@material-ui/core/List';
 
 import compose from 'recompose/compose';
 import { translate } from '../i18n';

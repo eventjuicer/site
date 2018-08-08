@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 
@@ -12,6 +12,7 @@ import Person from './PersonSlim';
 import Card from './MyCardSlim';
 
 import { resourceFetchRequest as resourceFetchRequestAction } from './redux/actions';
+import {getCompanyLogotype} from '../helpers'
 
 const styles = theme => ({
   root: {}
@@ -40,7 +41,7 @@ class BoothInfo extends React.Component {
                 }}
               />
             }
-            imageSrc={_get(formdata, 'company.profile.logotype')}
+            imageSrc={getCompanyLogotype(formdata.company)}
           />
         ) : null}
 

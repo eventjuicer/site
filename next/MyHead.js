@@ -141,8 +141,11 @@ const MyHead = ({
 
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Lato:100,300,400,500,700"
+        href="https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500"
       />
+
+      <link href="https://fonts.googleapis.com/css?family=Poppins:500,700,800,900" rel="stylesheet" />
+
 
       <meta name="google" content="notranslate" />
 

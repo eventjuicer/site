@@ -10,6 +10,10 @@ export { default as ColumnList } from './ColumnList';
 export { default as Bookingmap } from './Bookingmap';
 export { default as Hero } from './Hero';
 export { default as HeroCustom } from './HeroCustom';
+export { default as HeroTypo } from './HeroTypo';
+
+export { default as FsVideo } from './FsVideo';
+export { default as FsButtons } from './FsButtons';
 
 export { default as Googlemap } from './Googlemap';
 export { default as WhoIsGonnaBeThere } from './WhoIsGonnaBeThere';
@@ -43,6 +47,9 @@ export { default as Invite } from './Invite';
 
 export { default as Tags } from './Tags';
 export { default as Sharer } from './Sharer';
+
+export { default as KeywordSelect } from './KeywordSelect';
+export { default as CompanyLocationMap } from './CompanyLocationMap';
 
 export * from './MyLayouts';
 

@@ -13,41 +13,38 @@ import {
   Gallery,
   //  WidthAwareInfo
   Schedule,
-  HeroCustom as Hero
+  FsButtons as Hero,
   //  Reviews
+  HeroCustom,
+  KeywordSelect,
+  Centered
 } from '../components';
 
-const Bookingmap = dynamic(import('../components/Bookingmap'));
+
+import { Exhibitors, Photos } from '../datasources'
 import Visitor from '../roles/Visitor';
-import { fetcher } from '../helpers';
+const Bookingmap = dynamic(import('../components/Bookingmap'));
+
 
 class PageIndex extends React.Component {
+
   static async getInitialProps({
-    err,
-    req,
-    res,
-    pathname,
     query,
-    asPath,
     isServer,
     store
   }) {
-    const results = await fetcher({ exhibitors: false }, store);
-    return { exhibitors: results.getData('exhibitors') };
-
-    // const results = await fetcher({exhibitors : false, presenters : false}, store);
-    //
-    // return {
-    //   exhibitors : results.getData("exhibitors"),
-    //   presenters : results.getData("presenters")
-    // }
+    return {
+      preload : ["exhibitors"],
+  //    load : ["bookingmap", "formdata", "ticketgroups"]
+    }
   }
 
   render() {
-    const { exhibitors, url } = this.props;
 
     return (
+
       <Layout>
+
         <Head />
 
         <Hero />
@@ -66,9 +63,15 @@ class PageIndex extends React.Component {
 
         <Wrapper
           label="exhibitors.map.title"
-          secondaryTitle="Trwa sprzedaż dla Wystawców poprzedniej edycji"
+          secondaryLabel="exhibitors.map.opensales"
         >
-          <Bookingmap />
+
+        <Bookingmap />
+
+        <Exhibitors>{
+            (exhibitors, keywords) => <Centered><KeywordSelect keywords={keywords} /></Centered>
+        }</Exhibitors>
+
         </Wrapper>
 
         <Wrapper
@@ -84,47 +87,44 @@ class PageIndex extends React.Component {
             />
           ]}
         >
-          {/* <Avatarlist filter={function(item){ return item.featured; }} data={ exhibitors } /> */}
 
-          <Avatarlist data={exhibitors} />
+
+          <Exhibitors filter={(e) => e.featured}>{
+            (exhibitors) => <Avatarlist data={exhibitors} />
+          }</Exhibitors>
+
+
         </Wrapper>
 
-        {/*
+
+      <HeroCustom />
+
+
       <Wrapper
         label="visitors.register"
         secondaryTitle="22 Prezentacje, 150 Wystawców i prawdziwy networking!"
       >
-      <Visitor  />
+        <Visitor  />
       </Wrapper>
 
 
- */}
+      <Photos>{
+        (photos, size) => <Gallery data={photos} size={size} label="event.gallery" />
+      }</Photos>
 
-        {/* <Wrapper label="visitors.register_alt">
-        <Visitor />
-      </Wrapper> */}
-
-        <Gallery label="event.gallery" />
 
         <Wrapper label="exhibitors.list_full" color="#ffffff">
-          <ColumnList data={exhibitors} />
+
+        <Exhibitors columns={true}>
+          {(exhibitors) => <ColumnList data={exhibitors} /> }
+        </Exhibitors>
+
         </Wrapper>
 
-        {/* <Wrapper
-        label="visitors.register"
-        secondaryTitle="Spotkamy się w gronie ponad 3000 osób!"
-      //   links={[
-      //   <Link key="more" href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
-      // ]}
-      >
-      <Visitor  />
-      </Wrapper> */}
+
       </Layout>
     );
   }
 }
 
-export default connect(
-  null,
-  null
-)(PageIndex);
+export default connect(null, null)(PageIndex);

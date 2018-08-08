@@ -6,7 +6,7 @@ import { get } from 'lodash';
 import { TwoColsLayout } from './MyLayouts';
 import CompanyData from './CompanyData';
 import CompanyLogotype from './CompanyLogotype';
-import Tags from './Tags';
+import KeywordSelect from './KeywordSelect';
 
 const Company = ({ company }) => (
   <TwoColsLayout
@@ -14,10 +14,13 @@ const Company = ({ company }) => (
     left={<CompanyLogotype company={company} />}
     leftCentered={true}
     right={
-      <div>
-        <Tags tags={get(company, 'profile.keywords')} />
+
+      <div style={{marginTop: 40}}>
+
+        <KeywordSelect keywords={get(company, 'profile.keywords', [])} />
 
         <CompanyData company={company} />
+
       </div>
     }
   />

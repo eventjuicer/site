@@ -1,16 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import { onlyUpdateForKeys, compose } from 'recompose';
+
+
+
 
 const styles = theme => ({
   booth: {
     position: 'absolute',
     display: 'block',
-    backgroundColor: 'lightgreen',
-    border: '1px solid orange',
-    color: 'red',
+
+   backgroundColor: 'lightgreen',
+   border: '1px solid green',
+   color: 'black',
+
     zIndex: 20,
     borderRadius: 3,
     cursor: 'pointer',
@@ -22,11 +27,42 @@ const styles = theme => ({
     whiteSpace: 'wrap'
   },
 
-  style1: {},
-  style2: {},
-  style3: {},
-  style4: {},
-  style5: {},
+  style1: {
+    backgroundColor: "#5fe85d",
+    color :  "#ffffff",
+    borderColor: "#4bb749",
+  },
+
+  style2: {
+    backgroundColor: "#55cf52",
+    color :  "#ffffff",
+    borderColor: "#409c3e"
+  },
+
+  style3: {
+    backgroundColor: "#4bb749",
+    color :  "#ffffff",
+    borderColor: "#358234"
+  },
+
+  style4: {
+    backgroundColor: "#409c3e",
+    color :  "#ffffff",
+    borderColor: "#004500"
+  },
+
+  style5: {
+    backgroundColor: "#358234",
+    color :  "#ffffff",
+    borderColor: "#004500"
+  },
+
+  style6 : {
+    backgroundColor: "#30bfca",
+    color :  "#ffffff",
+    borderColor: "#1e7980"
+
+  },
 
   boothHold: {
     backgroundColor: 'yellow',
@@ -40,7 +76,7 @@ const styles = theme => ({
   },
 
   boothSelected: {
-    backgroundColor: 'red',
+    backgroundColor: 'blue',
     color: 'white',
     border: '3px solid black'
   },
@@ -61,6 +97,7 @@ const styles = theme => ({
   }
 });
 
+
 const Booth = ({
   status,
   data,
@@ -69,7 +106,8 @@ const Booth = ({
   selected,
   styleId,
   zoom,
-  buyer
+  buyer,
+  styling
 }) => (
   <li
     onClick={() => onClick(data.id, data.g, data.ti)}
@@ -83,7 +121,7 @@ const Booth = ({
       width: data.dw * zoom,
       top: data.dt * zoom,
       left: data.dl * zoom,
-      lineHeight: `${data.dh}px`
+      lineHeight: `${data.dh}px`,
     }}
   >
     <span
@@ -106,7 +144,7 @@ Booth.defaultProps = {
 };
 
 Booth.propTypes = {
-  styleId: PropTypes.number.isRequired,
+  styling: PropTypes.string.isRequired,
   zoom: PropTypes.number,
   selected: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,

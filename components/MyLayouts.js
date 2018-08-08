@@ -1,11 +1,12 @@
 import React from 'react';
-import Grid from 'material-ui/Grid';
-import { withStyles } from 'material-ui/styles';
+import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   middle: {
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    flexWrap : 'wrap'
     //  alignItems: 'center',
   }
 });

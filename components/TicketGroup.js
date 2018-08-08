@@ -1,40 +1,39 @@
 import React from 'react';
-import { withStyles } from 'material-ui/styles';
-// import { connect } from 'react-redux';
-import compose from 'recompose/compose';
-import sortBy from 'lodash/sortBy';
 
-import Table, {
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow
-} from 'material-ui/Table';
+import { withStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+
 
 import _get from 'lodash/get';
-
 import Ticket from './Ticket';
 import BoothInfoHeader from './BoothInfoHeader';
 
-const styles = theme => ({
+import sortBy from 'lodash/sortBy'
+
+const styles = {
   root: {},
   table: {
     //    minWidth: 700,
     marginBottom: 30
   }
-});
+}
 
 const CustomTableCell = withStyles(theme => ({
   // typeHead: {
   //   backgroundColor: theme.palette.common.black,
   //   color: theme.palette.common.white,
   // },
-  typeBody: {
+  numeric: {
     fontSize: 16
   }
 }))(TableCell);
 
 class TicketGroup extends React.PureComponent {
+
   checkIfHasBookableTickets() {
     const { group } = this.props;
     return (group.tickets || []).filter(ticket => ticket && ticket.bookable)
@@ -72,6 +71,7 @@ class TicketGroup extends React.PureComponent {
 }
 
 TicketGroup.defaultProps = {
+  data : [],
   label: 'Bilety',
   noBookableTickets: null
 };

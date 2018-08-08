@@ -15,7 +15,7 @@ const defaultState = {
   cart: {},
   locale: 'pl',
   locale_msgs: {},
-  width: 'sm',
+  width: 'md',
   filterParams: {
     presenters: {}
   }

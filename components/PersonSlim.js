@@ -1,6 +1,6 @@
 import React from 'react';
-import { withStyles } from 'material-ui/styles';
-// import PlayArrowIcon from 'material-ui-icons/PlayArrow';
+import { withStyles } from '@material-ui/core/styles';
+// import PlayArrowIcon from 'material-ui/icons/PlayArrow';
 
 import compose from 'recompose/compose';
 import { translate } from '../i18n';

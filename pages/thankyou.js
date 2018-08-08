@@ -13,27 +13,19 @@ import {
 
 import Layout from '../layouts/main';
 import Visitor from '../roles/Visitor';
-import { fetcher } from '../helpers';
-
+ 
 class ThankyouPage extends React.Component {
   static async getInitialProps({
-    err,
-    req,
-    res,
-    pathname,
     query,
-    asPath,
     isServer,
     store
   }) {
+
     const person = `code/${query.hash}`;
 
-    const results = await fetcher({ [person]: false, exhibitors: false });
-
     return {
-      asPath: asPath,
-      person: results.getData(person),
-      eventId: _get(results.getMeta(person), 'active_event_id', 0)
+      preload : [person, "exhibitors"],
+      asPath: asPath
     };
   }
 

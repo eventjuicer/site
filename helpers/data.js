@@ -7,6 +7,9 @@ export const defaultLocale = 'pl';
 export const getCompanyProfileInfo = (company, key) =>
   _get(company, `profile.${key}`, '');
 
+
+export const getCompanyName = (company) =>  _get(company, 'company.profile.name', _get(company, 'company.slug', ''))
+
 export const getCdnResource = (company, key, scale = true) => {
   const cdn = getCompanyProfileInfo(company, `${key}_cdn`);
   if (cdn && /cloudinary/.test(cdn)) {

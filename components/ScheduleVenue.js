@@ -1,11 +1,11 @@
 import React from 'react';
-import Avatar from 'material-ui/Avatar';
-import { withStyles } from 'material-ui/styles';
+import Avatar from '@material-ui/core/Avatar';
+import { withStyles } from '@material-ui/core/styles';
 
 import _get from 'lodash/get';
 import { getCompanyLogotype } from '../helpers';
 
-import Hidden from 'material-ui/Hidden';
+import Hidden from '@material-ui/core/Hidden';
 
 const styles = theme => ({
   root: {

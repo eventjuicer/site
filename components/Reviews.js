@@ -5,11 +5,15 @@ import _random from 'lodash/random';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import classNames from 'classnames';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 
-import Avatar from 'material-ui/Avatar';
-import Card, { CardHeader, CardContent } from 'material-ui/Card';
-import IconQuote from 'material-ui-icons/FormatQuote';
+import Avatar from '@material-ui/core/Avatar';
+
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+
+import IconQuote from '@material-ui/icons/FormatQuote';
 
 import Typography from './MyTypography';
 

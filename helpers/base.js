@@ -99,3 +99,38 @@ export const chunkArrayData = (data = [], width = 'md') => {
 
   return data;
 };
+
+
+export const getGalleryImageSize = (width) => {
+
+  let c;
+  let h;
+
+  switch (width) {
+    case 'xs':
+      c = 1.5;
+      h = 300;
+      break;
+    case 'sm':
+      c = 1.5;
+      h = 450;
+      break;
+    case 'md':
+      c = 2.5;
+      h = 550;
+      break;
+    case 'lg':
+      c = 2.5;
+      h = 700;
+      break;
+    case 'xl':
+      c = 3.5;
+      h = 800;
+      break;
+    default:
+      c = 3.5;
+      h = 800;
+  }
+
+  return { c, h, width };
+}

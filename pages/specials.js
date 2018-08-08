@@ -13,7 +13,6 @@ import { MyHead as Head, MyLink as Link } from '../next';
 
 import Visitor from '../roles/Visitor';
 
-import { fetcher } from '../helpers';
 
 const Bookingmap = dynamic(import('../components/Bookingmap'));
 
@@ -28,13 +27,12 @@ class PageSpecials extends React.Component {
     isServer,
     store
   }) {
-    const results = await fetchers({ exhibitors: false }, store);
 
-    return { exhibitors: results.getData('exhibitors') };
+    return { preload : ["exhibitors"]  };
   }
 
   render() {
-    const { exhibitors, booths, url, userAgent } = this.props;
+    const { url } = this.props;
 
     return (
       <Layout>

@@ -3,15 +3,19 @@ import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import classNamesHelper from 'classnames';
 
-import Typography from 'material-ui/Typography';
-import { withStyles } from 'material-ui/styles';
+import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
 
 import { translate } from '../i18n';
 
 const styles = theme => ({
   default: {},
 
-  bigListItem: {},
+  bigListItem: {
+    fontFamily : "'Roboto'",
+    fontWeight : 400,
+    lineHeight : '2em'
+  },
 
   h2: {
     fontSize: '3rem',
@@ -103,9 +107,8 @@ const styles = theme => ({
   },
 
   hero: {
-    textAlign: 'center',
     fontSize: '2.3rem',
-    color: '#ffffff',
+    color: '#000000',
 
     fontWeight: 900,
     textTransform: 'uppercase',
@@ -154,7 +157,6 @@ const styles = theme => ({
     color: 'rgba(0, 0, 0, 0.84)',
     fontSize: '0.875rem',
     fontWeight: 400,
-    fontFamily: "'Lato', 'Helvetica', 'Arial', sans-serif",
     lineHeight: '1.4rem'
   },
 
@@ -259,8 +261,8 @@ const templates = {
   },
 
   hero: {
-    variant: 'headline',
-    component: 'h2',
+    variant: 'display4',
+    component: 'h1',
     classNames: ['hero']
   },
 
@@ -374,7 +376,7 @@ MyTypography.defaultProps = {
 };
 
 const enhance = compose(
-  withStyles(styles, { withTheme: true }),
+  withStyles(styles),
   translate
 );
 

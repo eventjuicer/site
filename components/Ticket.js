@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import { translate } from '../i18n';
 import _get from 'lodash/get';
 
-import { TableCell, TableRow } from 'material-ui/Table';
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
 
-//import Checkbox from 'material-ui/Checkbox';
+
+//import Checkbox from '@material-ui/core/Checkbox';
 
 import {
   cartItemAdd as cartItemAddAction,

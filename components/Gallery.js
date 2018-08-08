@@ -1,20 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import compose from 'recompose/compose';
-import { connect } from 'react-redux';
-
-import { withStyles } from 'material-ui/styles';
-import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList';
-// import IconButton from 'material-ui/IconButton';
-// import StarBorderIcon from 'material-ui-icons/StarBorder';
-
+import { withStyles } from '@material-ui/core/styles';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
 import MyTypography from './MyTypography';
-// import WidthAwareInfo from './WidthAwareInfo'
-import { processArrayData } from '../helpers';
-import {
-  // dialogShow as dialogShowAction,
-  resourceFetchRequest as resourceFetchRequestAction
-} from './redux/actions';
+
 
 const styles = theme => ({
   root: {
@@ -40,7 +31,7 @@ const styles = theme => ({
   },
 
   deSaturated: {
-    filter: 'saturate(30%) contrast(115%)'
+    filter: 'url(#svgRedFilter)'
   },
 
   gridListTile: {
@@ -66,111 +57,69 @@ const styles = theme => ({
   }
 });
 
-class Gallery extends React.PureComponent {
-  componentDidMount() {
-    this.props.resourceFetchRequest('photos');
-  }
+const Gallery = ({ data, classes, label, size }) => (
 
-  getSize(ret) {
-    const { width } = this.props;
+  <div className={classes.root}>
 
-    let c;
-    let h;
 
-    switch (width) {
-      case 'xs':
-        c = 1.5;
-        h = 300;
-        break;
-      case 'sm':
-        c = 1.5;
-        h = 450;
-        break;
-      case 'md':
-        c = 2.5;
-        h = 550;
-        break;
-      case 'lg':
-        c = 2.5;
-        h = 700;
-        break;
-      case 'xl':
-        c = 3.5;
-        h = 800;
-        break;
-      default:
-        c = 3.5;
-        h = 800;
-    }
+    <svg style={{display: 'none'}}>
+    <defs>
+      <filter id="svgRedFilter">
+        <feColorMatrix
+          type = "matrix"
+          values="1     0     0     0     0
+                  0     0     0     0     0
+                  0     0     0     0     0
+                  0     0     0     1     0 "/>
+      </filter>
+    </defs>
+    </svg>
 
-    const dims = { c, h, width };
-    // console.log(dims)
-    return dims[ret];
-  }
 
-  render() {
-    const { photos, classes, label, title, width, random, limit } = this.props;
+    {label && <MyTypography label={label} template="H2C" />}
 
-    let data = processArrayData(photos, { random, limit });
+    {/* <WidthAwareInfo /> */}
 
-    return (
-      <div className={classes.root}>
-        {label && <MyTypography label={label} template="H2C" />}
-        {title && <MyTypography template="H2C">{title}</MyTypography>}
-
-        {/* <WidthAwareInfo /> */}
-
-        <GridList
-          className={classes.gridList}
-          cols={this.getSize('c')}
-          cellHeight={this.getSize('h')}
+    <GridList
+      className={classes.gridList}
+      cols={size.c}
+      cellHeight={size.h}
+    >
+      {data.map((tile, idx) => (
+        <GridListTile
+          key={tile.id}
+          classes={{ root: classes.gridListTile }}
         >
-          {data.map((tile, idx) => (
-            <GridListTile
-              key={tile.id}
-              classes={{ root: classes.gridListTile }}
-            >
-              <img src={tile.src} alt="" className={classes.deSaturated} />
-              {/* <GridListTileBar
-               title={tile.id}
-               subtitle={<span>by: {tile.id}</span>}
-                classes={{
-                  root: classes.titleBar,
-                  title: classes.title,
-                }}
-                actionIcon={
-                  <IconButton>
-                    <StarBorderIcon className={classes.title} />
-                  </IconButton>
-                }
-              /> */}
-            </GridListTile>
-          ))}
-        </GridList>
-      </div>
-    );
-  }
-}
+          <img src={tile.src} alt="" className={classes.deSaturated} />
+          {/* <GridListTileBar
+           title={tile.id}
+           subtitle={<span>by: {tile.id}</span>}
+            classes={{
+              root: classes.titleBar,
+              title: classes.title,
+            }}
+            actionIcon={
+              <IconButton>
+                <StarBorderIcon className={classes.title} />
+              </IconButton>
+            }
+          /> */}
+        </GridListTile>
+      ))}
+    </GridList>
+  </div>
+
+)
 
 Gallery.defaultProps = {
-  photos: [],
-  limit: 10,
-  random: true
+  label : "gallery",
+  data: [],
+  size : {c : 1.5, h : 450, width : "sm"}
 };
 
 Gallery.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-const enhance = compose(
-  withStyles(styles, { name: 'Gallery' }),
-  connect(
-    state => ({
-      width: state.app.width,
-      photos: state.resources.photos
-    }),
-    { resourceFetchRequest: resourceFetchRequestAction }
-  )
-);
 
-export default enhance(Gallery);
+export default withStyles(styles)(Gallery);

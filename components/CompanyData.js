@@ -1,14 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Tabs, { Tab } from './MyTabs';
+import { withStyles } from '@material-ui/core/styles';
+
+import Tab from './MyTab';
+import Tabs from '@material-ui/core/Tabs';
+
 import _get from 'lodash/get';
 import { translate } from '../i18n';
 
 import _mapValues from 'lodash/mapValues';
 import _pickBy from 'lodash/pickBy';
 
-import CompanyContacts from './CompanyContacts';
+import CompanyTabContainer from './CompanyTabContainer'
+
 
 const styles = theme => ({
   container: {
@@ -31,57 +35,11 @@ const styles = theme => ({
     margin: '0 auto',
     marginBottom: 10
   },
-  htmlContainer: {
-    fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightRegular,
-    fontFamily: theme.typography.fontFamily,
-    lineHeight: theme.typography.pxToRem(23),
 
-    '& p': {},
-    '& ul': {
-      marginLeft: 0,
-      paddingLeft: 20
-    },
-
-    '& li:before': {
-      content: ' ',
-      backgroundSize: 'cover',
-      backgroundImage: 'url("/static/check.png")',
-      width: theme.typography.pxToRem(15),
-      height: theme.typography.pxToRem(15),
-      position: 'absolute',
-      left: '-2rem'
-    },
-
-    '& blockquote': {
-      borderLeft: '10px solid #e0e0e0',
-      color: 'rgba(0, 0, 0, 0.77)',
-      fontStyle: 'italic',
-      marginLeft: 10,
-      paddingLeft: 10
-    }
-  },
   chip: {}
 });
 
-function TabContainer({ children, data, classes }) {
-  if (new Object(data) === data) {
-    return (
-      <div className={classes.htmlContainer}>
-        <CompanyContacts profile={data} />
-      </div>
-    );
-  }
 
-  return (
-    <div
-      className={classes.htmlContainer}
-      dangerouslySetInnerHTML={{ __html: data }}
-    />
-  );
-}
-
-const StyledTabContainer = withStyles(styles)(TabContainer);
 
 const MyTab = translate(Tab);
 
@@ -92,6 +50,7 @@ class CompanyData extends React.Component {
   };
 
   componentDidMount() {
+
     const { company, tabs } = this.props;
     const profile = _get(company, 'profile');
 
@@ -143,7 +102,7 @@ class CompanyData extends React.Component {
           (name, idx) =>
             tab === name && (
               <div key={idx} className={classes.profile}>
-                <StyledTabContainer data={execTabs[name]} />
+                <CompanyTabContainer data={execTabs[name]} />
               </div>
             )
         )}

@@ -32,16 +32,11 @@ class PageInvite extends React.Component {
   }) {
     const person = `code/${query.id}`;
 
-    const results = await fetcher(
-      { [person]: false, exhibitors: false },
-      store
-    );
-
     return {
+
+      preload : [person, "exhibitors"],
       asPath: asPath,
-      person: results.getData(person),
-      exhibitors: results.getData('exhibitors'),
-      eventId: _get(results.getMeta(person), 'active_event_id', 0)
+ 
     };
   }
 

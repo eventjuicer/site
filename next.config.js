@@ -2,8 +2,14 @@ const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { ANALYZE } = process.env;
 const { IgnorePlugin } = require('webpack');
+//const withOffline = require('next-offline')
+
 
 module.exports = (phase, { defaultConfig }) => ({
+
+
+  //...withOffline(),
+
   webpack: (config, { buildId, dev, isServer, defaultLoaders }) => {
     config.plugins.push(new IgnorePlugin(/^raven$/));
 

@@ -1,5 +1,5 @@
 import _get from 'lodash/get';
-import Divider from 'material-ui/Divider';
+import Divider from '@material-ui/core/Divider';
 
 import { MyHead as Head, MyLink as Link } from '../next';
 

@@ -1,4 +1,4 @@
-import Button from 'material-ui/Button';
+import Button from '@material-ui/core/Button';
 
 //import compose from 'recompose/compose';
 import { translate } from '../i18n';

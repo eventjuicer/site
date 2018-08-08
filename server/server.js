@@ -28,6 +28,10 @@ app
     // const protocol = req.headers['x-forwarded-proto'] || 'http';
     // const baseUrl = req ? `${protocol}://${req.headers.host}` : '';
 
+    server.set('trust proxy', 1)
+
+    server.use(express.json());
+
     server.use(
       cookieSession({
         name: 'eventjuicer-site',
@@ -39,15 +43,17 @@ app
 
     server.use(async function(req, res, next) {
 
+      const {locale} = req.session
 
       const texts = await i18n.getTexts(ssrCache, 'purge' in req.query);
-      const locale = req.session.locale || req.acceptsLanguages('pl','de','en');
+
+      const resolvedLocale = locale || req.acceptsLanguages('pl','de','en') || "en";
 
       res.locals.texts = texts;
-      res.locals.locale = locale
 
-      console.log(locale)
+      res.locals.locale = resolvedLocale
 
+      console.log(locale, req.acceptsLanguages('pl','de','en'))
 
       next(); // <-- important!
     });
@@ -65,6 +71,11 @@ app
     //   req.session.locale = req.params.locale
     //  /// res.redirect('/')
     // })
+
+    server.post('/remember', (req, res) => {
+      req.session = {...(req.session || {}), ...req.body}
+      res.json(req.session);
+    });
 
     server.get('/stage,:stage', (req, res) => {
       renderAndCache(req, res, '/stage', { stage: req.params.stage });
@@ -92,6 +103,14 @@ app
 
     server.get('/:slug,c,:id', (req, res) => {
       renderAndCache(req, res, '/company', { id: req.params.id });
+    });
+
+    server.get('/exhibitors', (req, res) => {
+      renderAndCache(req, res, '/exhibitors', {});
+    });
+
+    server.get('/exhibitors/:keyword', (req, res) => {
+      renderAndCache(req, res, '/exhibitors-by-keyword', { keyword: req.params.keyword });
     });
 
     // Serve the item webpage with next.js as the renderer
@@ -147,7 +166,10 @@ function cacheApiResult(endpoint) {
  * an immediate page change (e.g a locale stored in req.session)
  */
 function getCacheKey(req, res) {
-  return `${res.locals.locale || ""}${req.url}`;
+
+  const {locale} = res.locals
+
+  return `${locale || ""}_${req.url}`;
 }
 
 async function renderAndCache(req, res, pagePath, queryParams) {

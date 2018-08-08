@@ -13,27 +13,18 @@ import {
 import Layout from '../layouts/main';
 import Visitor from '../roles/Visitor';
 
-import { fetcher } from '../helpers';
 
 class PageVisit extends React.Component {
   static async getInitialProps({
-    err,
-    req,
-    res,
-    pathname,
+
     query,
     asPath,
     isServer,
     store
   }) {
-    const results = await fetcher(
-      { exhibitors: false, presenters: false },
-      store
-    );
 
     return {
-      exhibitors: results.getData('exhibitors'),
-      presenters: results.getData('presenters')
+      preload : ["exhibitors", "presenters"]
     };
   }
 

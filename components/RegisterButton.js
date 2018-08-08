@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Button from 'material-ui/Button';
+import Button from '@material-ui/core/Button';
 import compose from 'recompose/compose';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 import { dialogShow } from './redux/actions';
 import RegisterByRole from './RegisterByRole';

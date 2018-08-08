@@ -8,11 +8,13 @@ import { TranslationProvider, CHANGE_LOCALE, CHANGE_LOCALE_MSGS } from '../i18n'
 
 import { Provider } from 'react-redux';
 import createStore from '../redux';
-
 import withRedux from 'next-redux-wrapper';
 import withReduxSaga from 'next-redux-saga';
 
 import fetch from 'isomorphic-unfetch';
+
+import {resourceFetchRequest} from '../components/redux'
+
 
 /*ctx
 
@@ -28,12 +30,15 @@ import fetch from 'isomorphic-unfetch';
 */
 
 class MyApp extends App {
+
   static async getInitialProps({ Component, router, ctx }) {
+
     const { store, isServer, query, res } = ctx;
 
     let texts, locale;
 
     if (isServer) {
+
       texts = 'texts' in res.locals ? res.locals.texts : {};
 
       //validate locale!
@@ -43,9 +48,11 @@ class MyApp extends App {
       }
 
     } else {
+
       const res = await fetch('/_data/texts', {
         headers: { Accept: 'application/json' }
       });
+
       texts = await res.json();
     }
 
@@ -55,11 +62,13 @@ class MyApp extends App {
       ? await Component.getInitialProps(ctx)
       : {};
 
+    if("preload" in componentInitialProps)
+    {
+      store.dispatch(resourceFetchRequest(componentInitialProps.preload))
+    }
+
     return {
-      pageProps: {
-        // Call page-level getInitialProps
-        ...componentInitialProps
-      }
+      pageProps: {...componentInitialProps}
     };
   }
 
@@ -71,11 +80,19 @@ class MyApp extends App {
   pageContext = null;
 
   componentDidMount() {
+
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles && jssStyles.parentNode) {
       jssStyles.parentNode.removeChild(jssStyles);
     }
+
+    const {pageProps, store} = this.props
+
+    // if("load" in pageProps){
+    //  fetcher(pageProps.load, store);
+    // }
+
   }
 
   render() {

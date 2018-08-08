@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import _keyBy from 'lodash/keyBy';
 import _get from 'lodash/get';
 
-import Divider from 'material-ui/Divider';
+import Divider from '@material-ui/core/Divider';
 
 import {
   MyTypography as Typography,
@@ -43,21 +43,17 @@ class PageSpeaker extends React.Component {
     isServer,
     store
   }) {
-    const results = await fetcher(
-      { presenters: false, exhibitors: false },
-      store
-    );
+
 
     return {
+      preload : ["presenters", "exhibitors"],
       asPath: asPath,
-      speakers: results.getData('presenters'),
-      exhibitors: results.getData('exhibitors'),
       speakerId: query.id
     };
   }
 
   render() {
-    const { exhibitors, speakers, speakerId, asPath } = this.props;
+    const { speakerId, asPath } = this.props;
     const keyedSpeakers = _keyBy(speakers, 'id');
     const speaker =
       speakerId in keyedSpeakers ? keyedSpeakers[speakerId] : null;

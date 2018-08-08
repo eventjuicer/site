@@ -32,50 +32,57 @@ import {
   fetcher
 } from '../helpers';
 
+
+import { SingleRecord, Exhibitors, Photos } from "../datasources"
+
 class PageCompany extends React.Component {
+
   static async getInitialProps({
-    err,
-    req,
-    res,
-    pathname,
     query,
     asPath,
     isServer,
     store
   }) {
     const company = `companies/${query.id}`;
-    const results = await fetcher(
-      { [company]: false, exhibitors: false },
-      store
-    );
 
     return {
       asPath: asPath,
-      company: results.getData(company),
-      exhibitors: results.getData('exhibitors'),
-      eventId: get(results.getMeta(company), 'active_event_id')
+      preload : [company, "exhibitors", "bookingmap"],
+      company_id : query.id
     };
   }
 
   render() {
-    const { company, exhibitors, eventId, asPath } = this.props;
+
+    const { company_id, exhibitors, asPath } = this.props;
 
     return (
+
       <Layout>
-        <Head
-          image={getCompanyAltOgImage(company, asPath)}
-          url={asPath}
-          titleLabel={[
-            'companies.opengraph.title',
-            { name: getCompanyProfileInfo(company, 'name') }
-          ]}
-        />
 
-        <Wrapper label="">
-          <Company company={company} />
-        </Wrapper>
+        <SingleRecord endpoint="companies" id={company_id}>
+          {
+          (company) =>
+          <React.Fragment>
+          <Head
+              image={getCompanyAltOgImage(company, asPath)}
+              url={asPath}
+              titleLabel={[
+                'companies.opengraph.title',
+                { name: getCompanyProfileInfo(company, 'name') }
+              ]}
+            />
 
-        <CompanyBookingmap company={company} eventId={eventId} />
+            <Wrapper label="">
+              <Company company={company} />
+            </Wrapper>
+
+            <CompanyBookingmap company={company} />
+            </React.Fragment>
+        }
+        </SingleRecord>
+
+
 
         <Wrapper
           label="visitors.register"
@@ -107,8 +114,10 @@ class PageCompany extends React.Component {
           ]}
         >
           {/* <Avatarlist filter={function(item){ return item.featured; }} data={ exhibitors } /> */}
+          <Exhibitors mobile={8}>{
+            (exhibitors) => <Avatarlist data={exhibitors} />
+          }</Exhibitors>
 
-          <Avatarlist data={exhibitors} />
         </Wrapper>
 
         {/*
@@ -132,7 +141,11 @@ class PageCompany extends React.Component {
     </Wrapper>
  */}
 
-        <Gallery label="event.gallery" />
+
+  <Photos>{
+    (photos, size) => <Gallery data={photos} size={size} label="event.gallery" />
+ }</Photos>
+
 
         {/*
   <Wrapper label="visitors.register_alt" color="#ffffff" links={[

@@ -1,6 +1,12 @@
 import React from 'react';
-import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import { withStyles } from 'material-ui/styles';
+
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+
+
+import { withStyles } from '@material-ui/core/styles';
 import { translate } from '../i18n';
 import compose from 'recompose/compose';
 import classNames from 'classnames';
@@ -11,7 +17,7 @@ const styles = theme => ({
   h: {
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'top',
 
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column'
@@ -28,7 +34,6 @@ const styles = theme => ({
 
   primaryBig: {
     fontSize: '3rem',
-
     [theme.breakpoints.down('md')]: {
       fontSize: '2rem',
       fontWeight: 900
@@ -36,11 +41,14 @@ const styles = theme => ({
   },
 
   secondaryBig: {
-    fontSize: '2rem',
-
+    fontSize: '1.5rem',
     [theme.breakpoints.down('md')]: {
       fontSize: '1.2rem'
     }
+  },
+
+  bigIcon : {
+    fontSize : 50
   },
 
   invert: {
@@ -64,7 +72,9 @@ const EventInfo = ({
           <ListItem key={i}>
             {icon ? (
               <ListItemIcon>
-                <Icon name={icon} variant="red" />
+                <Icon name={icon} variant="red" className={
+                  classNames({[classes.bigIcon] : size === "big"})
+                } />
               </ListItemIcon>
             ) : null}
             <ListItemText
