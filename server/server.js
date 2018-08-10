@@ -35,25 +35,26 @@ app
     server.use(
       cookieSession({
         name: 'eventjuicer-site',
-        keys: ['dumb'],
-        //Cookie Options
-        maxAge: 180 * 24 * 60 * 60 * 1000 // 24 hours
+        keys: ['32441asd','127dfa342'],
+        //Cookie Options,
+        maxAge: 180 * 24 * 60 * 60 * 1000 // 180 days
       })
     );
 
     server.use(async function(req, res, next) {
 
-      const {locale} = req.session
-
       const texts = await i18n.getTexts(ssrCache, 'purge' in req.query);
 
-      const resolvedLocale = locale || req.acceptsLanguages('pl','de','en') || "en";
+      const {locale} = req.session
+
+      const browserLocale = req.acceptsLanguages('pl','de','en')
+      const resolvedLocale = locale || browserLocale || "en";
 
       res.locals.texts = texts;
-
       res.locals.locale = resolvedLocale
 
-      console.log(locale, req.acceptsLanguages('pl','de','en'))
+      console.log("session", locale)
+      console.log("browser", browserLocale)
 
       next(); // <-- important!
     });
@@ -73,7 +74,9 @@ app
     // })
 
     server.post('/remember', (req, res) => {
-      req.session = {...(req.session || {}), ...req.body}
+
+      req.session = {...req.session, ...(req.body || {})}
+      
       res.json(req.session);
     });
 

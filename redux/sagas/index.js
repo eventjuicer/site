@@ -120,10 +120,10 @@ function* setCookieWhenLocaleChanged(actionData) {
       headers: {
         'Content-Type': 'application/json'
       },
+      credentials : 'include',
       body: JSON.stringify({ locale: actionData.locale })
     });
     const data = yield call([response, response.json]);
-    console.log(data)
   }
 }
 
