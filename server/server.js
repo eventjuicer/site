@@ -167,22 +167,22 @@ function cacheApiResult(endpoint) {
  * NB: make sure to modify this to take into account anything that should trigger
  * an immediate page change (e.g a locale stored in req.session)
  */
-function getCacheKey(req, res) {
-
-  const {locale} = res.locals
+function getCacheKey(req, locale) {
 
   return `${req.url}_${(locale || defaultLocale)}`;
 }
 
 async function renderAndCache(req, res, pagePath, queryParams) {
 
-  const key = getCacheKey(req, res);
-
-  const purge = 'purge' in req.query;
-
-  if (purge) {
-    ssrCache.del(key);
+  if ('purge' in req.query) {
+    ["en","pl","de"].forEach(l => ssrCache.del(getCacheKey(req, l)));
   }
+
+  //current request getCacheKey
+
+  const {locale} = res.locals
+
+  const key = getCacheKey(req, locale);
 
   // If we have a page in the cache, let's serve it
   if (ssrCache.has(key)) {
