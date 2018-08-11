@@ -15,6 +15,8 @@ const i18n = require('./i18n');
 
 const apiUrl = 'https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/';
 
+const defaultLocale = "en";
+
 const ssrCache = new LRUCache({
   max: 100,
   maxAge: 1000 * 60 * 60 // 1hour
@@ -48,13 +50,10 @@ app
       const {locale} = req.session
 
       const browserLocale = req.acceptsLanguages('pl','de','en')
-      const resolvedLocale = locale || browserLocale || "en";
+      const resolvedLocale = locale || browserLocale || defaultLocale;
 
       res.locals.texts = texts;
       res.locals.locale = resolvedLocale
-
-      console.log("session", locale)
-      console.log("browser", browserLocale)
 
       next(); // <-- important!
     });
@@ -76,7 +75,7 @@ app
     server.post('/remember', (req, res) => {
 
       req.session = {...req.session, ...(req.body || {})}
-      
+
       res.json(req.session);
     });
 
@@ -172,7 +171,7 @@ function getCacheKey(req, res) {
 
   const {locale} = res.locals
 
-  return `${locale || ""}_${req.url}`;
+  return `${req.url}_${(locale || defaultLocale)}`;
 }
 
 async function renderAndCache(req, res, pagePath, queryParams) {
