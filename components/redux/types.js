@@ -26,6 +26,7 @@ export const CART_ITEM_ADD = 'CART_ITEM_ADD';
 export const CART_ITEM_REMOVE = 'CART_ITEM_REMOVE';
 export const CART_RESET = 'CART_RESET';
 
+export const BOOTH_CHECKED = 'BOOTH_CHECKED';
 export const BOOTH_SELECT = 'BOOTH_SELECT';
 export const BOOTH_UNSELECT = 'BOOTH_UNSELECT';
 export const BOOTHS_RESET = 'BOOTHS_RESET';

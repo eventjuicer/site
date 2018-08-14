@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import { createSelector } from 'reselect'
 
-//import {translate} from '../i18n'
+import {translate} from '../i18n'
 
 import BoothInfo from './BoothInfo';
 import Person from './PersonSlim';
@@ -18,11 +18,12 @@ import {BookingMapSelector} from '../redux/selectors'
 
 
 import {
-  dialogShow, resourceFetchRequest
+  dialogShow,
+  resourceFetchRequest,
+  boothChecked
 } from './redux/actions';
 
 import {getCompanyLogotype, getCompanyName} from '../helpers'
-
 
 
 
@@ -112,7 +113,8 @@ class Bookingmap extends React.PureComponent {
   }
 
   onBoothClick = (boothId, groupId, label) => {
-    const { dialogShow } = this.props;
+
+    const { dialogShow, boothChecked, translate } = this.props;
 
     const boothIsBlocked = this.getStatusShort(boothId);
 
@@ -120,20 +122,21 @@ class Bookingmap extends React.PureComponent {
     let modalContent = '';
     let modalButtons = [];
 
+
     switch (boothIsBlocked) {
       case 'hold':
-        modalTitle = `Stoisko zarezerwowane`;
+        modalTitle = translate("exhibitors.map.booths.hold");
         modalContent = <BoothInfo />;
 
         break;
       case 'sold':
-        modalTitle = `Stoisko wykupione`;
+        modalTitle = translate("exhibitors.map.booths.sold");
         modalContent = <BoothInfo formdata={this.getStatus(boothId)} />;
 
         break;
       default:
         /* THERE IS NOW FORMDATA FOR UNSOLD BOOTHS!!!! */
-        modalTitle = `To stoisko jest wolne`;
+        modalTitle = translate("exhibitors.map.booths.free");
         modalContent = (
           <div>
             <TicketGroup
@@ -152,6 +155,9 @@ class Bookingmap extends React.PureComponent {
       content: modalContent,
       buttons: modalButtons
     });
+
+    boothChecked(label);
+
   };
 
   isBoothSelected(boothId) {
@@ -220,11 +226,11 @@ Bookingmap.defaultProps = {
 };
 
 const enhance = compose(
-  //  translate,
+  translate,
   withStyles(styles),
   connect(
     (state) => BookingMapSelector(state),
-    {dialogShow, resourceFetchRequest}
+    {dialogShow, resourceFetchRequest, boothChecked}
   )
 );
 

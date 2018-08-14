@@ -24,7 +24,8 @@ import {
   CART_RESET,
   RESOURCE_FETCH_REQUESTED,
   RESOURCE_FETCH_ERROR,
-  FAQ_TOGGLE
+  FAQ_TOGGLE,
+  BOOTH_CHECKED
 } from '../../components/redux/types';
 
 
@@ -41,10 +42,26 @@ import {
 } from '../../components/redux/actions';
 
 import * as Selectors from '../selectors';
+import {event} from '../../services/gtag'
+
+
+
 
 const apiUrl = `https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/`
 
 let fetchTasks = {};
+
+
+function* handleBoothCheck({payload}){
+
+  yield call(event, {
+        event : "booth_click",
+        category : "ecommerce",
+        //label,
+        value : payload
+  })
+
+}
 
 function* accumulateFetches({resource}) {
 
@@ -154,7 +171,9 @@ const rootSaga = function* root() {
     takeEvery(CART_ITEM_REMOVE, unSelectBoothWhenCartItemRemoved),
     takeEvery(CART_RESET, unSelectAllBooths),
     takeEvery(RESOURCE_FETCH_REQUESTED, accumulateFetches),
-    takeEvery(RESOURCE_FETCH_ERROR, handleFetchErrors)
+    takeEvery(RESOURCE_FETCH_ERROR, handleFetchErrors),
+    takeEvery(BOOTH_CHECKED, handleBoothCheck)
+
   ]);
 };
 

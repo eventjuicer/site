@@ -106,6 +106,14 @@ export function dialogHide() {
   };
 }
 
+
+export function boothChecked(boothName) {
+  return {
+    type: Types.BOOTH_CHECKED,
+    payload: boothName
+  };
+}
+
 export function boothSelect(boothId) {
   return {
     type: Types.BOOTH_SELECT,
