@@ -40,7 +40,13 @@ class Exhibitors extends React.Component {
 
     const {children, data, keywords, filtered} = this.props
 
-    return children(data, keywords, filtered)
+    if(children){
+
+      return children(data, keywords, filtered)
+
+    }
+
+    return null
   }
 
 }

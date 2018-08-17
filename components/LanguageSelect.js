@@ -39,7 +39,7 @@ const LanguageSelect = ({ label, classes, locale, oldLocale, dialogShow, dialogH
   <Button
     variant="outlined"
     onClick={() => dialogShow({
-        title: label,
+        title: translate(label),
         content: <div style={{marginTop: 40}}>{
           availableLocales.map( loc => {
             return <LanguageButton key={loc} target={loc} />
@@ -57,7 +57,7 @@ const LanguageSelect = ({ label, classes, locale, oldLocale, dialogShow, dialogH
 
 
 LanguageSelect.defaultProps = {
-  label: 'LANGUAGE'
+  label: 'common.language.change'
 };
 
 const enhance = compose(

@@ -44,18 +44,23 @@ const styles = theme => ({
 });
 
 const Benefits = ({ classes, labels, translate }) => (
+
   <div className={classes.container}>
     <List component="ul" className={classes.flexList}>
-      {labels.map((label, i) => (
-        <ListItem className={classes.flexListItem} key={i}>
-          <ListItemIcon>
-            <Icon className={classes.icon} />
-          </ListItemIcon>
+      {labels.map( ({icon, label}) => (
+        <ListItem className={classes.flexListItem} key={label}>
+          {/* <ListItemIcon> */}
+
+            <div> { icon }</div>
+
+             {/* <Icon className={classes.icon} /> */}
+          {/* </ListItemIcon> */}
           <ListItemText primary={translate(label)} />
         </ListItem>
       ))}
     </List>
   </div>
+
 );
 
 Benefits.defaultProps = {

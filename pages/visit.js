@@ -13,8 +13,10 @@ import {
 import Layout from '../layouts/main';
 import Visitor from '../roles/Visitor';
 
+import {Photos} from '../datasources';
 
 class PageVisit extends React.Component {
+
   static async getInitialProps({
 
     query,
@@ -66,7 +68,9 @@ class PageVisit extends React.Component {
         <People limit={16} link={true} random={false} filter={function(item){ return item.bio.length > 10 }}  />
       </Wrapper> */}
 
-        <Gallery />
+      <Photos>{
+        (photos, size) => <Gallery data={photos} size={size} label="event.gallery" />
+      }</Photos>
 
         {/* <Googlemap /> */}
       </Layout>

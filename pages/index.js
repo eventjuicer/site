@@ -9,16 +9,20 @@ import {
   Wrapper,
   Avatarlist,
   ColumnList,
-  //  Bookingmap,
   Gallery,
-  //  WidthAwareInfo
   Schedule,
-  FsButtons as Hero,
-  //  Reviews
-  HeroCustom,
+  FsButtons,
+  GridBenefits,
   KeywordSelect,
   Centered
 } from '../components';
+
+
+import {
+  VideoWithEventInfo,
+  VideoWithReviews
+} from '../compositions';
+
 
 
 import { Exhibitors, Photos } from '../datasources'
@@ -47,7 +51,14 @@ class PageIndex extends React.Component {
 
         <Head />
 
-        <Hero />
+        <VideoWithEventInfo />
+
+        <Wrapper>
+            <GridBenefits  />
+        </Wrapper>
+
+
+        <FsButtons />
 
         {/* <Wrapper
         label="presenters.schedule"
@@ -68,10 +79,6 @@ class PageIndex extends React.Component {
 
         <Bookingmap />
 
-        <Exhibitors>{
-            (exhibitors, keywords) => <Centered><KeywordSelect keywords={keywords} /></Centered>
-        }</Exhibitors>
-
         </Wrapper>
 
         <Wrapper
@@ -90,15 +97,19 @@ class PageIndex extends React.Component {
 
 
           <Exhibitors filter={(e) => e.featured}>{
-            (exhibitors) => <Avatarlist data={exhibitors} />
+            (exhibitors, keywords) =>
+            <React.Fragment>
+              <Avatarlist data={exhibitors} />
+              <Centered><KeywordSelect keywords={keywords} /></Centered>
+
+            </React.Fragment>
           }</Exhibitors>
 
 
         </Wrapper>
 
 
-      <HeroCustom />
-
+      <VideoWithReviews />
 
       <Wrapper
         label="visitors.register"

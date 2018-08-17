@@ -8,9 +8,13 @@ import {
   Typography,
   Wrapper,
   Schedule,
-  HeroCustom as Hero,
   ColumnList
 } from '../components';
+
+
+import {
+  VideoWithEventInfo
+} from '../compositions';
 
 import {Exhibitors} from '../datasources'
 
@@ -38,7 +42,7 @@ class PageError extends React.Component {
       <Layout>
         <Head />
 
-        <Hero />
+        <VideoWithEventInfo />
 
         <Wrapper label="visitors.register">
           <Visitor />
@@ -59,7 +63,7 @@ class PageError extends React.Component {
 
 
           <Exhibitors limit={4}>
-            {(exhibitors) =>  <ColumnList data={exhibitors} />}
+            {/* {(exhibitors) =>  <ColumnList data={exhibitors} />} */}
           </Exhibitors>
 
 

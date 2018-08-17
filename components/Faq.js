@@ -11,11 +11,12 @@ import FaqItem from './FaqItem';
 import { faqUrl } from './redux';
 
 class Faq extends React.Component {
+
   componentDidMount() {
     //parse URL and dispatch actions!
     const { url, faqUrl, selected } = this.props;
 
-    if (url && 'q' in url.query) {
+    if (url && url.query && 'q' in url.query) {
       faqUrl(url.query.q);
     }
   }
@@ -35,7 +36,7 @@ class Faq extends React.Component {
         <MyTypography label={`${baseLabel}.name`} template="SUBH2CH" />
 
         {items.map((item, idx) => (
-          <FaqItem key={idx} {...item} baseLabel={baseLabel} />
+          <FaqItem key={idx} baseLabel={baseLabel} {...item} />
         ))}
       </div>
     );

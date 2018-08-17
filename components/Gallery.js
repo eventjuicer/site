@@ -5,7 +5,7 @@ import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import MyTypography from './MyTypography';
-
+import Red from './svg/Red'
 
 const styles = theme => ({
   root: {
@@ -62,19 +62,7 @@ const Gallery = ({ data, classes, label, size }) => (
   <div className={classes.root}>
 
 
-    <svg style={{display: 'none'}}>
-    <defs>
-      <filter id="svgRedFilter">
-        <feColorMatrix
-          type = "matrix"
-          values="1     0     0     0     0
-                  0     0     0     0     0
-                  0     0     0     0     0
-                  0     0     0     1     0 "/>
-      </filter>
-    </defs>
-    </svg>
-
+    <Red />
 
     {label && <MyTypography label={label} template="H2C" />}
 

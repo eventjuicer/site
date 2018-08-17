@@ -176,6 +176,7 @@ class Bookingmap extends React.PureComponent {
 
     const { bookingmap, classes, zoom, height } = this.props;
     return (
+      <div>
       <div
         className={classes.scrollableContainer}
         style={{
@@ -210,6 +211,7 @@ class Bookingmap extends React.PureComponent {
         ) : (
           <div>...loading</div>
         )}
+      </div>
         <TicketGroupsInfo />
       </div>
     );

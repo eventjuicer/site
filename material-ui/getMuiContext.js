@@ -12,26 +12,36 @@ import grey from '@material-ui/core/colors/grey';
 
 const theme = createMuiTheme({
   typography: {
+
     fontFamily: "'Lato', 'Helvetica', 'Arial', sans-serif",
+
     display4 : {
-      fontFamily: "'Poppins', 'Helvetica', 'Arial', sans-serif",
-    },
-    display4 : {
-      fontFamily: "'Poppins', 'Helvetica', 'Arial', sans-serif",
-    },
-    display3 : {
-      fontFamily: "'Poppins', 'Helvetica', 'Arial', sans-serif",
-    },
-    headline : {
-      fontFamily: "'Poppins', 'Helvetica', 'Arial', sans-serif",
-    },
-    subheading : {
-      fontFamily: "'Poppins', 'Helvetica', 'Arial', sans-serif",
+      fontFamily: "'Montserrat', 'Helvetica', 'Arial', sans-serif",
       fontWeight : 700
     },
-    title: {
-      fontFamily: "'Poppins', 'Helvetica', 'Arial', sans-serif"
-    }
+    display4 : {
+      fontFamily: "'Montserrat', 'Helvetica', 'Arial', sans-serif",
+      fontWeight : 700
+    },
+    display3 : {
+      fontFamily: "'Montserrat', 'Helvetica', 'Arial', sans-serif",
+      fontWeight : 700
+    },
+    display1 : {
+      fontFamily: "'Montserrat', 'Helvetica', 'Arial', sans-serif",
+      fontWeight : 700
+    },
+
+    // headline : {
+    //   fontFamily: "'Montserrat', 'Helvetica', 'Arial', sans-serif",
+    // },
+    // subheading : {
+    //   fontFamily: "'Montserrat', 'Helvetica', 'Arial', sans-serif",
+    //   fontWeight : 700
+    // },
+    // title: {
+    //   fontFamily: "'Montserrat', 'Helvetica', 'Arial', sans-serif"
+    // }
   },
   palette: {
     primary: { main: red[700] },

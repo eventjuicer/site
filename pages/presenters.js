@@ -50,15 +50,11 @@ class PagePresenters extends React.Component {
           <Visitor />
         </Wrapper>
 
-        <Wrapper label="visitors.attendees">
+        {/* <Wrapper label="visitors.attendees">
           <WhoIsGonnaBeThere />
-        </Wrapper>
+        </Wrapper> */}
 
-        <Wrapper label="visitors.register">
-          <Visitor />
-        </Wrapper>
 
-        {/* <Googlemap /> */}
       </Layout>
     );
   }

@@ -12,7 +12,6 @@ const styles = theme => ({
   default: {},
 
   bigListItem: {
-    fontFamily : "'Roboto'",
     fontWeight : 400,
     lineHeight : '2em'
   },
@@ -20,7 +19,7 @@ const styles = theme => ({
   h2: {
     fontSize: '3rem',
     textTransform: 'uppercase',
-    fontWeight: 400,
+    fontWeight: 800,
     marginBottom: '3rem',
 
     [theme.breakpoints.down('sm')]: {
@@ -107,9 +106,9 @@ const styles = theme => ({
   },
 
   hero: {
-    fontSize: '2.3rem',
-    color: '#000000',
 
+    fontSize: '3rem',
+    color: '#ffffff',
     fontWeight: 900,
     textTransform: 'uppercase',
 
@@ -121,6 +120,21 @@ const styles = theme => ({
       fontSize: '6rem'
     }
   },
+
+
+  subhero: {
+
+    fontSize: '1rem',
+    color: '#ffffff',
+    fontWeight: 300,
+  //  textTransform: 'uppercase',
+
+    [theme.breakpoints.up('md')]: {
+      fontSize: '3rem'
+    },
+
+  },
+
 
   italic: {
     fontStyle: 'italic'
@@ -197,7 +211,23 @@ const styles = theme => ({
 
   presentationTitle: {},
 
-  presentationDescription: {}
+  presentationDescription: {},
+
+  benefitsTitle : {
+    fontWeight: 900,
+    fontSize: '2em',
+    marginBottom: 0,
+    color : "black"
+  },
+
+  benefitsText : {
+    fontWeight: 400,
+    fontSize: '1.3em',
+    marginBottom: '.2em'
+  },
+
+
+
 });
 
 /*
@@ -219,6 +249,19 @@ const styles = theme => ({
 */
 
 const templates = {
+
+  benefitsTitle : {
+    variant: 'title',
+    component: 'h3',
+    classNames: ['benefitsTitle']
+  },
+
+  benefitsText: {
+    variant: 'body1',
+    component: 'p',
+    classNames: ['benefitsText']
+  },
+
   default: {
     variant: 'body1',
     component: 'p',
@@ -260,11 +303,20 @@ const templates = {
     classNames: ['legend']
   },
 
+
   hero: {
     variant: 'display4',
     component: 'h1',
     classNames: ['hero']
   },
+
+  subhero: {
+    variant: 'headline',
+    component: 'p',
+    classNames: ['subhero']
+  },
+
+
 
   SUBH2CH: {
     variant: 'body2',

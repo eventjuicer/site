@@ -20,6 +20,9 @@ const styles = theme => ({
     textIndent: -5000,
     //  filter : 'grayscale(100%)'
 
+  //  border : '1px solid rgba(0, 0, 0, 0.23)',
+  //  borderRadius : 4,
+
     [theme.breakpoints.down('sm')]: {
       maxHeight: 100,
       backgroundSize: 'contain'

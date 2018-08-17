@@ -8,6 +8,7 @@ import { isBigScreen } from '../helpers';
 
 const styles = theme => ({
   container: {
+
     backgroundRepeat: 'no-repeat no-repeat',
     backgroundPosition: 'center center',
     backgroundSize: 'cover',
@@ -15,18 +16,33 @@ const styles = theme => ({
     height: '100vh',
     width: '100%',
     position: 'relative',
-    overflow: 'hidden'
+    overflow: 'hidden',
+
+    "&:before" : {
+      content: "''",
+      position: 'absolute',
+      top:0,
+      right:0,
+      left:0,
+      bottom:0,
+      zIndex: 9,
+      background: 'linear-gradient(to right,rgba(230, 0, 0, 0.4), rgba(250, 0, 0, 0.9))',
+      overflow: 'hidden',
+    }
+
   },
 
-  video: {
-    zIndex: -1,
-    bottom: 0,
-    right: 0,
+
+  video : {
+
     minWidth: '100%',
     minHeight: '100%',
     width: 'auto',
     height: 'auto',
-    overflow: 'hidden'
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%,-50%)'
   },
 
   overlay: {
@@ -47,18 +63,24 @@ const styles = theme => ({
 });
 
 const Hero = ({ width, videoSrc, background, classes, children }) => (
-  <section
-    className={classes.container}
+
+  <section className={classes.container}
     style={{ backgroundImage: `url(${background})` }}
-  >
+    >
+
+    <div className={classes.overlay}>{children}</div>
+
     {isBigScreen(width) && videoSrc ? (
+
       <video autoPlay muted loop className={classes.video}>
         <source src={videoSrc} type="video/mp4" />
       </video>
+
     ) : null}
 
-    <div className={classes.overlay}>{children}</div>
+
   </section>
+
 );
 
 Hero.defaultProps = {
@@ -66,10 +88,12 @@ Hero.defaultProps = {
   background:
     'https://res.cloudinary.com/eventjuicer/image/upload/v1523564269/welcome1.jpg',
   videoSrc:
-    'https://s3.eu-central-1.amazonaws.com/eventjuicer-assets/video11_2.mp4',
+    'https://res.cloudinary.com/eventjuicer/video/upload/v1534454501/video_presenter_blak.mp4',
   label: null,
   text: ''
 };
+//  'https://s3.eu-central-1.amazonaws.com/eventjuicer-assets/video11_2.mp4',
+
 
 const enhance = compose(
   connect(state => ({ width: state.app.width })),

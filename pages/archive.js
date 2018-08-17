@@ -11,8 +11,7 @@ import {
   Typography,
   Gallery,
   WidthAwareInfo,
-  People,
-  HeroCustom as Hero
+  People
 } from '../components';
 
 import { MyHead as Head, MyLink as Link } from '../next';

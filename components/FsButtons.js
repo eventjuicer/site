@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import Typography from './MyTypography';
+import Typography from '@material-ui/core/Typography';
 
 
 
@@ -15,10 +15,10 @@ const styles = theme => ({
   },
   image: {
     position: 'relative',
-    height: 200,
+    height: 600,
     [theme.breakpoints.down('xs')]: {
       width: '100% !important', // Overrides inline-style
-      height: 100,
+      height: 300,
     },
     '&:hover, &$focusVisible': {
       zIndex: 1,
@@ -32,6 +32,9 @@ const styles = theme => ({
         border: '4px solid currentColor',
       },
     },
+
+    filter: 'grayscale(100%)'
+
   },
   focusVisible: {},
   imageButton: {
@@ -67,6 +70,7 @@ const styles = theme => ({
   imageTitle: {
     position: 'relative',
     padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 4}px ${theme.spacing.unit + 6}px`,
+    fontSize : 40
   },
   imageMarked: {
     height: 3,
@@ -82,23 +86,19 @@ const styles = theme => ({
 const images = [
   {
     url: 'https://static.eventjuicer.com/photos/12961446_1288640741145929_7684227399478032531_o.jpg',
-    title: 'Breakfast',
-    width: '40%',
+    title: 'Uczestnik',
+    width: '50%',
   },
   {
     url: 'https://static.eventjuicer.com/photos/12967348_1288628734480463_3860331543127036065_o.jpg',
-    title: 'Burgers',
-    width: '30%',
+    title: 'Wystawca',
+    width: '50%',
   },
-  {
-    url: 'https://static.eventjuicer.com/photos/12967399_1288632801146723_3111570362209084697_o.jpg',
-    title: 'Camera',
-    width: '30%',
-  },
+
 ];
 
-function ButtonBases(props) {
-  const { classes } = props;
+function FsButtons(props) {
+  const { classes, buttons } = props;
 
   return (
     <div className={classes.root}>
@@ -111,6 +111,7 @@ function ButtonBases(props) {
           style={{
             width: image.width,
           }}
+          onClick={() => alert("asd")}
         >
           <span
             className={classes.imageSrc}
@@ -136,8 +137,12 @@ function ButtonBases(props) {
   );
 }
 
-ButtonBases.propTypes = {
+FsButtons.defaultProps = {
+  buttons : images
+}
+
+FsButtons.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ButtonBases);
+export default withStyles(styles)(FsButtons);

@@ -15,7 +15,7 @@ const styles = {
 
 }
 
-const KeywordSelect = ({ keywords, selected, classes }) => keywords.map(keyword =>
+const KeywordSelect = ({ keywords, selected, classes }) => keywords && keywords.map(keyword =>
 
   <Link
     key={keyword}
@@ -29,6 +29,10 @@ const KeywordSelect = ({ keywords, selected, classes }) => keywords.map(keyword 
   />
 
 );
+
+KeywordSelect.defaultProps = {
+  keywords : []
+}
 
 KeywordSelect.propTypes = {
   keywords: PropTypes.array.isRequired,

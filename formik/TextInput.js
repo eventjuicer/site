@@ -1,7 +1,8 @@
 import TextField from '@material-ui/core/TextField';
 //import compose from 'recompose/compose';
 import { translate } from '../i18n';
-
+import { withStyles } from '@material-ui/core/styles';
+import compose from 'recompose/compose'
 /*
 dirty : false
 errors : {}
@@ -38,6 +39,21 @@ validateOnChange : true
 values : {}
 */
 
+const styles = theme => ({
+    textField: {
+        width: '90%',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        paddingBottom: 0,
+        marginTop: 0,
+
+    },
+    input: {
+        fontSize: theme.typography.pxToRem(22),
+        fontWeight: 700
+    }
+});
+
 export const autoCompleteMappings = {
   email: 'email',
   fname: 'given-name',
@@ -69,7 +85,10 @@ const TextInput = props => {
     <TextField
       id={id}
       label={translatedLabel}
-      //className={classes.XXXX}
+      InputProps={{
+        classes : {
+          input : classes.input}
+      }}
       value={id in values ? values[id] : ''}
       onChange={handleChange}
       onBlur={handleBlur}
@@ -87,4 +106,9 @@ TextInput.defaultProps = {
   type: 'text'
 };
 
-export default translate(TextInput);
+const enhance = compose(
+  translate,
+  withStyles(styles)
+)
+
+export default enhance(TextInput);

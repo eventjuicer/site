@@ -7,10 +7,9 @@ import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import color from '@material-ui/core/colors/amber';
 
-import ExpansionPanel, {
-  ExpansionPanelSummary,
-  ExpansionPanelDetails
-} from '@material-ui/core/ExpansionPanel';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 

@@ -13,10 +13,13 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
 
+import {translate} from '../i18n'
 
 class ResponsiveDialog extends React.PureComponent {
+
   render() {
-    const { fullScreen, forcefs, dialog, dialogHide } = this.props;
+
+    const { translate, fullScreen, forcefs, dialog, dialogHide } = this.props;
 
     const open = dialog && 'title' in dialog;
 
@@ -46,7 +49,7 @@ class ResponsiveDialog extends React.PureComponent {
             ))}
 
           <Button onClick={dialogHide} color="secondary">
-            Zamknij
+            {translate("common.close")}
           </Button>
         </DialogActions>
       </Dialog>
@@ -69,6 +72,7 @@ ResponsiveDialog.propTypes = {
 
 const enhance = compose(
   withMobileDialog(),
+  translate,
   connect(
     state => ({ dialog: state.dialog }),
     { dialogHide }

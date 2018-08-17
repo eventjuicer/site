@@ -25,7 +25,7 @@ const styles = theme => ({
   },
 
   v: {
-    maxWidth: 400
+  //  maxWidth: 400
   },
 
   small: {},
@@ -53,7 +53,39 @@ const styles = theme => ({
 
   invert: {
     color: '#ffffff'
+  },
+
+  heroPrimary: {
+    color: '#ffffff',
+    fontSize: '3rem',
+    [theme.breakpoints.down('md')]: {
+      fontSize: '2.5rem',
+      fontWeight: 900
+    },
+
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '2rem',
+    }
+  },
+
+  heroSecondary: {
+
+    color: '#eaeaea',
+    fontSize: '2rem',
+
+    [theme.breakpoints.down('md')]: {
+      fontSize: '1.5rem',
+      fontWeight: 900
+    },
+
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '1.2rem',
+    }
   }
+
+
+
+
 });
 
 const EventInfo = ({
@@ -62,12 +94,13 @@ const EventInfo = ({
   translate,
   orientation,
   style,
+  styles,
   size,
   invert
 }) => (
   <div style={{ ...style }}>
     <List component="ul" className={classes[orientation]}>
-      {items.map(({ label, icon, text }, i) => {
+      {items.map(({ primary, icon, secondary }, i) => {
         return (
           <ListItem key={i}>
             {icon ? (
@@ -78,17 +111,11 @@ const EventInfo = ({
               </ListItemIcon>
             ) : null}
             <ListItemText
-              primary={text}
-              secondary={translate(label)}
+              primary={primary}
+              secondary={translate(secondary)}
               classes={{
-                primary: classNames({
-                  [classes.primaryBig]: size === 'big',
-                  [classes.invert]: invert
-                }),
-                secondary: classNames({
-                  [classes.secondaryBig]: size === 'big',
-                  [classes.invert]: invert
-                })
+                primary: classNames((primary && primary in classes ? classes[primary] : "")),
+                secondary: classNames((secondary && secondary in classes ? classes[secondary] : ""))
               }}
             />
           </ListItem>
@@ -103,7 +130,10 @@ EventInfo.defaultProps = {
   orientation: 'v',
   size: 'small',
   invert: false,
-  style: {}
+  style: {},
+  primary : null,
+  secondary : null,
+  icon : null
 };
 
 const enhance = compose(

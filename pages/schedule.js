@@ -16,10 +16,8 @@ import Visitor from '../roles/Visitor';
 
 class PageSchedule extends React.Component {
   static async getInitialProps({
-    err,
-    req,
-    res,
-    pathname,
+
+
     query,
     asPath,
     isServer,
@@ -54,11 +52,6 @@ class PageSchedule extends React.Component {
 
     </Wrapper> */}
 
-        <Wrapper>
-          <Visitor />
-        </Wrapper>
-
-        {/* <Googlemap /> */}
       </Layout>
     );
   }

@@ -10,10 +10,7 @@ import Layout from '../layouts/main';
 
 class PageFaq extends React.Component {
   static async getInitialProps({
-    err,
-    req,
-    res,
-    pathname,
+
     query,
     asPath,
     isServer,

@@ -33,7 +33,14 @@ const styles = theme => ({
     color: red[500],
     height: 30,
     width: 30
+  },
+
+  yellow: {
+    color: "yellow",
+    height: 80,
+    width: 80
   }
+
 });
 
 const Icon = ({ name, classes, variant }) => {

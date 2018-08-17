@@ -14,6 +14,8 @@ import Booth from './Booth';
 
 import { resourceFetchRequest as resourceFetchRequestAction } from './redux/actions';
 
+import {KeyedTicketGroupsSelector} from '../redux/selectors'
+
 const styles = theme => ({});
 
 class TicketGroupsInfo extends React.PureComponent {
@@ -26,21 +28,28 @@ class TicketGroupsInfo extends React.PureComponent {
   renderTicketGroups() {
     const { ticketgroups } = this.props;
 
-    return Object.values(ticketgroups).map(tg => <div key={tg.id} />);
+
+    return ticketgroups.map(tg => <div key={tg.id}>grupa</div>);
   }
 
   render() {
-    return <div>{this.renderTicketGroups()}</div>;
+
+    console.log(this.props)
+
+    return null;// <div>{this.renderTicketGroups()}</div>;
   }
 }
+
+TicketGroupsInfo.defaultProps = {
+
+}
+
 
 const enhance = compose(
   //  translate,
   withStyles(styles),
   connect(
-    state => ({
-      ticketgroups: state.resources.ticketgroups
-    }),
+    state => KeyedTicketGroupsSelector(state),
     {
       resourceFetchRequest: resourceFetchRequestAction
     }

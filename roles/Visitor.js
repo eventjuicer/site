@@ -6,7 +6,15 @@ import { EventInfo, Benefits } from '../components';
 
 import { StepForm } from '../formik';
 
+import GridBenefits from '../components/GridBenefits'
+
+import { GraduationCap as Icon } from 'react-icons/fa';
+
+
 const Visitor = ({ links, width }) => (
+
+  <div>
+
   <Grid container spacing={8} justify="space-between">
     <Grid item xs={12} sm={12} md={6} lg={5} xl={5}>
       <StepForm
@@ -49,17 +57,34 @@ const Visitor = ({ links, width }) => (
       />
     </Grid>
 
-    <Grid item xs={12} sm={6} md={12} lg={4} xl={4}>
+    {/* <Grid item xs={12} sm={6} md={12} lg={4} xl={4}>
       <Benefits
         labels={[
-          'visitors.benefits.free_presentations_entry',
-          'visitors.benefits.free_expo_entry',
-          'visitors.benefits.free_presentations_access'
+
+         {
+      //     icon : <Icon />,
+           label :  'visitors.benefits.free_presentations_entry'
+         },
+
+        {
+  //         icon : <Icon />,
+          label :  'visitors.benefits.free_expo_entry'
+        },
+
+        {
+  //         icon : <Icon />,
+           label : 'visitors.benefits.free_presentations_access'
+        }
+
         ]}
         orientation={width === 'md' ? 'h' : 'v'}
       />
-    </Grid>
+    </Grid> */}
   </Grid>
+
+  <GridBenefits />
+
+  </div>
 );
 
 Visitor.defaultProps = {

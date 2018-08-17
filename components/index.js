@@ -8,9 +8,7 @@ export { default as Avatarlist } from './Avatarlist';
 export { default as ColumnList } from './ColumnList';
 
 export { default as Bookingmap } from './Bookingmap';
-export { default as Hero } from './Hero';
-export { default as HeroCustom } from './HeroCustom';
-export { default as HeroTypo } from './HeroTypo';
+
 
 export { default as FsVideo } from './FsVideo';
 export { default as FsButtons } from './FsButtons';
@@ -20,6 +18,7 @@ export { default as WhoIsGonnaBeThere } from './WhoIsGonnaBeThere';
 export { default as Gallery } from './Gallery';
 
 export { default as EventInfo } from './EventInfo';
+
 export { default as Benefits } from './Benefits';
 export { default as Icon } from './Icon';
 
@@ -41,6 +40,7 @@ export { default as Presenter } from './Presenter';
 export { default as Faq } from './Faq';
 export { default as FaqLink } from './FaqLink';
 export { default as MyAvatar } from './MyAvatar';
+export { default as GridBenefits } from './GridBenefits';
 
 export { default as TicketDownload } from './TicketDownload';
 export { default as Invite } from './Invite';
@@ -52,5 +52,4 @@ export { default as KeywordSelect } from './KeywordSelect';
 export { default as CompanyLocationMap } from './CompanyLocationMap';
 
 export * from './MyLayouts';
-
 export * from './redux';
