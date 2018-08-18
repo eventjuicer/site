@@ -14,6 +14,7 @@ import classNames from 'classnames';
 import Icon from './Icon';
 
 const styles = theme => ({
+
   h: {
     display: 'flex',
     flexDirection: 'row',
@@ -28,62 +29,30 @@ const styles = theme => ({
   //  maxWidth: 400
   },
 
-  small: {},
-
-  medium: {},
-
-  primaryBig: {
-    fontSize: '3rem',
-    [theme.breakpoints.down('md')]: {
-      fontSize: '2rem',
-      fontWeight: 900
-    }
-  },
-
-  secondaryBig: {
-    fontSize: '1.5rem',
-    [theme.breakpoints.down('md')]: {
-      fontSize: '1.2rem'
-    }
-  },
-
-  bigIcon : {
-    fontSize : 50
-  },
-
-  invert: {
-    color: '#ffffff'
-  },
-
   heroPrimary: {
+    fontWeight: 600,
     color: '#ffffff',
     fontSize: '3rem',
     [theme.breakpoints.down('md')]: {
       fontSize: '2.5rem',
-      fontWeight: 900
     },
-
     [theme.breakpoints.down('sm')]: {
         fontSize: '2rem',
     }
   },
 
   heroSecondary: {
-
-    color: '#eaeaea',
+    color: '#ffffff',
     fontSize: '2rem',
-
+    fontWeight: 300,
     [theme.breakpoints.down('md')]: {
       fontSize: '1.5rem',
-      fontWeight: 900
+      fontWeight: 600
     },
-
     [theme.breakpoints.down('sm')]: {
         fontSize: '1.2rem',
     }
-  }
-
-
+  },
 
 
 });
@@ -94,28 +63,28 @@ const EventInfo = ({
   translate,
   orientation,
   style,
-  styles,
   size,
-  invert
+  invert,
+  primaryStyle,
+  secondaryStyle,
+  iconStyle
 }) => (
   <div style={{ ...style }}>
     <List component="ul" className={classes[orientation]}>
-      {items.map(({ primary, icon, secondary }, i) => {
+      {items.map(({ primary, icon, secondary }) => {
         return (
-          <ListItem key={i}>
+          <ListItem key={secondary}>
             {icon ? (
               <ListItemIcon>
-                <Icon name={icon} variant="red" className={
-                  classNames({[classes.bigIcon] : size === "big"})
-                } />
+                <Icon name={icon} variant={iconStyle} />
               </ListItemIcon>
             ) : null}
             <ListItemText
               primary={primary}
               secondary={translate(secondary)}
               classes={{
-                primary: classNames((primary && primary in classes ? classes[primary] : "")),
-                secondary: classNames((secondary && secondary in classes ? classes[secondary] : ""))
+                primary: classNames((primaryStyle && primaryStyle in classes ? classes[primaryStyle] : "")),
+                secondary: classNames((secondaryStyle && secondaryStyle in classes ? classes[secondaryStyle] : ""))
               }}
             />
           </ListItem>
@@ -128,12 +97,10 @@ const EventInfo = ({
 EventInfo.defaultProps = {
   items: [],
   orientation: 'v',
-  size: 'small',
-  invert: false,
   style: {},
-  primary : null,
-  secondary : null,
-  icon : null
+  primaryStyle : null,
+  secondaryStyle : null,
+  iconStyle : "red"
 };
 
 const enhance = compose(

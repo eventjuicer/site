@@ -17,7 +17,9 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    marginLeft : ''
+    marginLeft : '5%',
+    marginRight : '5%',
+
   },
 
   eventinfo : {
@@ -29,7 +31,10 @@ const styles = {
 
 const VideoWithEventInfo = ({ classes, locale }) => (
 
-  <FsVideo>
+  <FsVideo
+    background="https://res.cloudinary.com/eventjuicer/image/upload/v1534542530/poster_presenter_blak.jpg"
+    videoSrc="https://res.cloudinary.com/eventjuicer/video/upload/v1534454501/video_presenter_blak.mp4"
+  >
 
     <div className={classes.container}>
 
@@ -51,10 +56,9 @@ const VideoWithEventInfo = ({ classes, locale }) => (
             primary: locale == "en" ? "November, the 7th 2018" : '7 listopada 2018'
           }
         ]}
-
-        primary="heroPrimary"
-        secondary="heroSecondary"
-        icon="heroIcon"
+        primaryStyle="heroPrimary"
+        secondaryStyle="heroSecondary"
+        iconStyle="heroIcon"
       />
 
       </div>

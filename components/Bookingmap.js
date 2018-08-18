@@ -125,24 +125,24 @@ class Bookingmap extends React.PureComponent {
 
     switch (boothIsBlocked) {
       case 'hold':
-        modalTitle = translate("exhibitors.map.booths.hold");
+        modalTitle = translate("event.sales.booths.hold");
         modalContent = <BoothInfo />;
 
         break;
       case 'sold':
-        modalTitle = translate("exhibitors.map.booths.sold");
+        modalTitle = translate("event.sales.booths.sold");
         modalContent = <BoothInfo formdata={this.getStatus(boothId)} />;
 
         break;
       default:
         /* THERE IS NOW FORMDATA FOR UNSOLD BOOTHS!!!! */
-        modalTitle = translate("exhibitors.map.booths.free");
+        modalTitle = translate("event.sales.booths.free");
         modalContent = (
           <div>
             <TicketGroup
               noBookableTickets={<div />}
               label="Pule sprzedaży"
-              group={this.getTicketsForGroupId(groupId)}
+              groupId={groupId}
               formdata={{ id: boothId, ti: label }}
             />
             <Person title="event.sales.manual" />

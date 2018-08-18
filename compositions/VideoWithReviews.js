@@ -1,33 +1,26 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { connect } from 'react-redux';
-import compose from 'recompose/compose';
-
-import {MyTypography, Reviews, FsVideo } from '../components';
-import {translate} from '../i18n'
-
+import {Reviews, FsVideo } from '../components';
 
 const styles = {
   container: {
     marginTop: -30,
-    // width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center'
   }
 };
 
-const VideoWithReviews = ({ classes, locale }) => (
+const VideoWithReviews = ({ classes }) => (
 
-  <FsVideo videoSrc="https://res.cloudinary.com/eventjuicer/video/upload/v1534461948/video_quicktour1.mp4">
-    <Reviews locale={locale} />
+  <FsVideo
+    videoSrc="https://res.cloudinary.com/eventjuicer/video/upload/v1534461948/video_quicktour1.mp4"
+    background="https://res.cloudinary.com/eventjuicer/image/upload/v1534544020/poster_quicktour1.jpg"
+    >
+
+    <div className={classes.container}>
+    <Reviews />
+    </div>
+
   </FsVideo>
 );
 
-const enhance = compose(
-  translate,
-  withStyles(styles)
-)
 
-export default enhance(VideoWithReviews);
+export default withStyles(styles)(VideoWithReviews);

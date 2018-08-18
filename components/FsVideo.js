@@ -62,7 +62,7 @@ const styles = theme => ({
   h1: {}
 });
 
-const Hero = ({ width, videoSrc, background, classes, children }) => (
+const FsVideo = ({ width, videoSrc, background, classes, children }) => (
 
   <section className={classes.container}
     style={{ backgroundImage: `url(${background})` }}
@@ -72,7 +72,7 @@ const Hero = ({ width, videoSrc, background, classes, children }) => (
 
     {isBigScreen(width) && videoSrc ? (
 
-      <video autoPlay muted loop className={classes.video}>
+      <video autoPlay muted loop className={classes.video} poster={background}>
         <source src={videoSrc} type="video/mp4" />
       </video>
 
@@ -83,16 +83,13 @@ const Hero = ({ width, videoSrc, background, classes, children }) => (
 
 );
 
-Hero.defaultProps = {
+FsVideo.defaultProps = {
   width: 'xs',
-  background:
-    'https://res.cloudinary.com/eventjuicer/image/upload/v1523564269/welcome1.jpg',
-  videoSrc:
-    'https://res.cloudinary.com/eventjuicer/video/upload/v1534454501/video_presenter_blak.mp4',
+  background: "",
+  videoSrc : null,
   label: null,
   text: ''
 };
-//  'https://s3.eu-central-1.amazonaws.com/eventjuicer-assets/video11_2.mp4',
 
 
 const enhance = compose(
@@ -100,4 +97,4 @@ const enhance = compose(
   withStyles(styles)
 );
 
-export default enhance(Hero);
+export default enhance(FsVideo);

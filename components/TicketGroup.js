@@ -5,8 +5,10 @@ import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import _get from 'lodash/get';
 import sortBy from 'lodash/sortBy'
+import { connect } from 'react-redux';
+import compose from 'recompose/compose'
 
-
+import {getTicketsSortedByStart} from '../redux/selectors'
 
 import TicketGroupHeader from './TicketGroupHeader'
 import Ticket from './Ticket';
@@ -23,49 +25,43 @@ const styles = {
 }
 
 
+const TicketGroup = ({tickets, classes, formdata}) => (
 
-class TicketGroup extends React.PureComponent {
+  <div>
 
-  checkIfHasBookableTickets() {
-    const { group } = this.props;
-    return (group.tickets || []).filter(ticket => ticket && ticket.bookable)
-      .length;
-  }
+    <BoothInfoHeader formdata={formdata} />
+    <Table className={classes.table}>
+      <TicketGroupHeader />
+      <TableBody>
+        {tickets.map(ticket => (
+            <Ticket key={ticket.id} ticket={ticket} formdata={formdata} />
+          ))}
+      </TableBody>
+    </Table>
+  </div>
 
-  render() {
-
-    const { group, formdata, label, noBookableTickets, classes } = this.props;
-
-    if(!this.checkIfHasBookableTickets()){
-  //    return noBookableTickets;
-    }
-
-    const sorted = sortBy(group.tickets, ['start']);
-
-
-    return (
-
-      <div>
-
-        <BoothInfoHeader formdata={formdata} group={group} />
-        <Table className={classes.table}>
-          <TicketGroupHeader />
-          <TableBody>
-            {sorted &&
-              sorted.map(ticket => (
-                <Ticket key={ticket.id} ticket={ticket} formdata={formdata} />
-              ))}
-          </TableBody>
-        </Table>
-      </div>
-    );
-  }
-}
+)
 
 TicketGroup.defaultProps = {
-  data : [],
-  label: 'Bilety',
+  formdata : {},
+  tickets : [],
   noBookableTickets: null
 };
 
-export default withStyles(styles)(TicketGroup);
+
+const enhance = compose(
+  connect(
+
+    (state, props) => {
+
+      const mapStateToProps = (state, props) => {
+        return {
+          tickets : getTicketsSortedByStart(state, props)
+        }
+      }
+      return mapStateToProps}
+  ),
+  withStyles(styles)
+)
+
+export default enhance(TicketGroup);

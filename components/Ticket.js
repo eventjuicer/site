@@ -63,7 +63,17 @@ start
 
 */
 
+
+const styles = {
+
+  selected : {
+    backgroundColor : '#55cf52 !important'
+  }
+
+}
+
 class Ticket extends React.PureComponent {
+
   handleChange = name => (event, checked) => {
     const { ticket, cartItemAdd, cartItemRemove, formdata } = this.props;
 
@@ -86,22 +96,28 @@ class Ticket extends React.PureComponent {
   }
 
   getTicketPrice() {
+
     const { ticket, locale, translate } = this.props;
+    const currency = locale === "en" ? "eur" : "pln"
+
 
     return `${_get(ticket, `price.${locale}`)} ${translate(
-      'common.currencies.default'
+      `common.currencies.${currency}`
     )}`;
   }
 
   render() {
-    const { ticket, formdata } = this.props;
+    const { ticket, classes } = this.props;
 
     if (!ticket) {
       return null;
     }
 
     return (
-      <TableRow selected={ticket.bookable ? true : false}>
+      <TableRow
+        selected={ticket.bookable ? true : false}
+        classes={{selected : classes.selected}}
+        >
         <TableCell>{ticket.start.substring(0, 10)}</TableCell>
         <TableCell>{this.getTicketName()}</TableCell>
         <TableCell numeric>{this.getTicketPrice()}</TableCell>
@@ -138,7 +154,7 @@ Ticket.defaultProps = {};
 
 const enhance = compose(
   translate,
-  //withStyles(styles),
+  withStyles(styles),
   connect(
     state => ({
       cart: state.app.cart

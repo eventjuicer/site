@@ -9,6 +9,8 @@ import { withStyles } from '@material-ui/core/styles';
 
 import Avatar from '@material-ui/core/Avatar';
 
+import {translate} from '../i18n'
+
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -103,7 +105,8 @@ const opinions = {
 
 
 
-class Reviews extends React.PureComponent {
+class Reviews extends React.Component {
+
   state = {
     opinion: {}
   };
@@ -171,6 +174,7 @@ Reviews.defaultProps = {
 }
 
 const enhance = compose(
+  translate,
   withStyles(styles),
   connect(state => ({ width: state.app.width }))
 );

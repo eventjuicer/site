@@ -39,11 +39,17 @@ const styles = theme => ({
     color: "yellow",
     height: 80,
     width: 80
-  }
+  },
+
+    heroIcon : {
+      color: red[200],
+      width : 50,
+      height : 50
+    },
 
 });
 
-const Icon = ({ name, classes, variant }) => {
+const Icon = ({ name, classes, variant, className }) => {
   const capName = capitalizeFirstLetter(name);
 
   const IconComponent = icons[capName];
@@ -56,7 +62,8 @@ const Icon = ({ name, classes, variant }) => {
 };
 
 Icon.defaultProps = {
-  variant: 'small'
+  variant: 'small',
+  className : ""
 };
 
 export default withStyles(styles)(Icon);

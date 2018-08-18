@@ -2,6 +2,7 @@ import { createSelector } from 'reselect';
 
 import keyBy from 'lodash/keyBy'
 import sortBy from 'lodash/sortBy';
+import get from 'lodash/get';
 
 import { processArrayData, chunkArrayData, getGalleryImageSize } from '../helpers';
 
@@ -66,7 +67,6 @@ export const getRecord = (state, props) => {
 
 
 
-
 export const SingleRecordSelector = createSelector(
   getRecord,
   data => data
@@ -117,6 +117,24 @@ export const KeyedTicketGroupsSelector = createSelector(
   getTicketGroups,
   (ticketgroups) => keyBy(ticketgroups, "id")
 )
+
+
+export const getTicketsForGroupId = createSelector(
+  KeyedTicketGroupsSelector,
+  (state, props) => props.groupId,
+  (groups, groupId) => get(groups[groupId], "tickets", [])
+)
+
+export const getTicketsPresentAndFuture = createSelector(
+  getTicketsForGroupId,
+  (tickets) => tickets.filter(t => t.errors.indexOf("overdue") === -1)
+)
+
+export const getTicketsSortedByStart = createSelector(
+  getTicketsPresentAndFuture,
+  (tickets) => sortBy(tickets, ['start'])
+)
+
 
 export const BookingMapResourcesSelector = createSelector(
   KeyedFormdataSelector,

@@ -53,6 +53,16 @@ class PageIndex extends React.Component {
 
         <VideoWithEventInfo />
 
+
+        <Wrapper
+          label="visitors.register"
+          secondaryLabel="event.parties"
+        >
+          <Visitor  />
+        </Wrapper>
+
+
+
         <Wrapper>
             <GridBenefits  />
         </Wrapper>
@@ -71,6 +81,11 @@ class PageIndex extends React.Component {
         <Schedule />
         <People limit={8} random={false} link={true}  filter={function(item){ return item.bio.length > 10 }}  />
       </Wrapper> */}
+
+
+
+
+
 
         <Wrapper
           label="exhibitors.map.title"
@@ -111,12 +126,6 @@ class PageIndex extends React.Component {
 
       <VideoWithReviews />
 
-      <Wrapper
-        label="visitors.register"
-        secondaryTitle="22 Prezentacje, 150 Wystawców i prawdziwy networking!"
-      >
-        <Visitor  />
-      </Wrapper>
 
 
       <Photos>{
