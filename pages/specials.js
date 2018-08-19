@@ -14,7 +14,7 @@ import { MyHead as Head, MyLink as Link } from '../next';
 import Visitor from '../roles/Visitor';
 
 
-const Bookingmap = dynamic(import('../components/Bookingmap'));
+const Bookingmap = dynamic(import('../components/Bookingmap/Bookingmap'));
 
 class PageSpecials extends React.Component {
   static async getInitialProps({

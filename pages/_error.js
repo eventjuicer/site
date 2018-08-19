@@ -11,16 +11,15 @@ import {
   ColumnList
 } from '../components';
 
-
 import {
-  VideoWithEventInfo
+  VideoWithEventInfo,
+  Visitor
 } from '../compositions';
+
 
 import {Exhibitors} from '../datasources'
 
 import Layout from '../layouts/main';
-
-import Visitor from '../roles/Visitor';
 
 
 class PageError extends React.Component {

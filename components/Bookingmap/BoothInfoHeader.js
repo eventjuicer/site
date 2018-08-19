@@ -2,11 +2,12 @@ import React from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
 import compose from 'recompose/compose';
-import { translate } from '../i18n';
 import _get from 'lodash/get';
 
 import Avatar from '@material-ui/core/Avatar';
-import Typography from './MyTypography';
+
+import Typography from '../MyTypography';
+import { translate } from '../../i18n';
 
 const styles = theme => ({
   container: {

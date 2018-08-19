@@ -3,6 +3,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import red from '@material-ui/core/colors/red';
+import yellow from '@material-ui/core/colors/yellow';
 
 import { capitalizeFirstLetter } from '../helpers';
 
@@ -42,7 +43,7 @@ const styles = theme => ({
   },
 
     heroIcon : {
-      color: red[200],
+      color: yellow[100],
       width : 50,
       height : 50
     },

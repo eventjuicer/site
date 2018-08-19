@@ -12,29 +12,29 @@ const TicketGroup = dynamic(import('./TicketGroup'));
 
 import Booth from './Booth';
 
-import { resourceFetchRequest as resourceFetchRequestAction } from './redux/actions';
+import { resourceFetchRequest as resourceFetchRequestAction } from '../redux/actions';
 
-import {KeyedTicketGroupsSelector} from '../redux/selectors'
+import {KeyedTicketGroupsSelector} from '../../redux/selectors'
 
 const styles = theme => ({});
 
 class TicketGroupsInfo extends React.PureComponent {
+
   componentDidMount() {
+
     const { resourceFetchRequest } = this.props;
 
     resourceFetchRequest('ticketgroups', true);
   }
 
   renderTicketGroups() {
-    const { ticketgroups } = this.props;
 
+    const { ticketgroups } = this.props;
 
     return ticketgroups.map(tg => <div key={tg.id}>grupa</div>);
   }
 
   render() {
-
-    console.log(this.props)
 
     return null;// <div>{this.renderTicketGroups()}</div>;
   }

@@ -18,7 +18,7 @@ import {
 
 import Layout from '../layouts/main';
 
-const Bookingmap = dynamic(import('../components/Bookingmap'));
+const Bookingmap = dynamic(import('../components/Bookingmap/Bookingmap'));
 
 class PagePremium extends React.Component {
   static async getInitialProps({

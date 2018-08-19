@@ -1,11 +1,11 @@
 import React from 'react'
-import {translate} from '../i18n'
 import { withStyles } from '@material-ui/core/styles';
 
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 
+import {translate} from '../../i18n'
 
 const CustomTableCell = withStyles(theme => ({
   // typeHead: {
@@ -25,6 +25,7 @@ const TicketGroupHeader = ({translate}) => (
       <CustomTableCell>{translate("event.sales.pool.start")}</CustomTableCell>
       <CustomTableCell>{translate("event.sales.pool.name")}</CustomTableCell>
       <CustomTableCell numeric>{translate("event.sales.pool.price")}</CustomTableCell>
+      <CustomTableCell></CustomTableCell>
     </TableRow>
   </TableHead>
 

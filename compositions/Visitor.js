@@ -1,22 +1,28 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import { connect } from 'react-redux';
 
-import { EventInfo, Benefits } from '../components';
+
+import { EventInfo } from '../components';
+import { withStyles } from '@material-ui/core/styles';
 
 import { StepForm } from '../formik';
 
-import GridBenefits from '../components/GridBenefits'
 
-import { GraduationCap as Icon } from 'react-icons/fa';
+const styles = {
 
+  lanyard : {
+    width : "100%"
+  }
 
-const Visitor = ({ links, width }) => (
+}
+
+const Visitor = ({ classes }) => (
 
   <div>
 
   <Grid container spacing={8} justify="space-between">
     <Grid item xs={12} sm={12} md={6} lg={5} xl={5}>
+
       <StepForm
         data={{}}
         ticketId={1355}
@@ -30,9 +36,10 @@ const Visitor = ({ links, width }) => (
         }}
         start={['email', 'fname']}
       />
+
     </Grid>
 
-    <Grid item xs={10} sm={6} md={5} lg={3} xl={3}>
+    {/* <Grid item xs={10} sm={6} md={5} lg={3} xl={3}>
       <EventInfo
         items={[
           {
@@ -55,34 +62,15 @@ const Visitor = ({ links, width }) => (
         ]}
         orientation="v"
       />
-    </Grid>
-
-    {/* <Grid item xs={12} sm={6} md={12} lg={4} xl={4}>
-      <Benefits
-        labels={[
-
-         {
-      //     icon : <Icon />,
-           label :  'visitors.benefits.free_presentations_entry'
-         },
-
-        {
-  //         icon : <Icon />,
-          label :  'visitors.benefits.free_expo_entry'
-        },
-
-        {
-  //         icon : <Icon />,
-           label : 'visitors.benefits.free_presentations_access'
-        }
-
-        ]}
-        orientation={width === 'md' ? 'h' : 'v'}
-      />
     </Grid> */}
+
+    <Grid item xs={12} sm={6} md={12} lg={4} xl={4}>
+
+      <img src="/static/lanyard.jpg" className={classes.lanyard} />
+
+    </Grid>
   </Grid>
 
-  <GridBenefits />
 
   </div>
 );
@@ -91,4 +79,4 @@ Visitor.defaultProps = {
   links: []
 };
 
-export default connect(state => ({ width: state.app.width }))(Visitor);
+export default withStyles(styles)(Visitor);

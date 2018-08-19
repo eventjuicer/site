@@ -1,29 +1,29 @@
 import React from 'react';
-import dynamic from 'next/dynamic';
+
+import compose from 'recompose/compose';
+
 import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import compose from 'recompose/compose';
-import { createSelector } from 'reselect'
+import { translate } from '../../i18n'
 
-import {translate} from '../i18n'
 
 import BoothInfo from './BoothInfo';
-import Person from './PersonSlim';
 import TicketGroup from './TicketGroup';
 import TicketGroupsInfo from './TicketGroupsInfo';
-
 import Booth from './Booth';
 
-import {BookingMapSelector} from '../redux/selectors'
+
+import {BookingMapSelector} from '../../redux/selectors'
+import Person from '../PersonSlim';
 
 
 import {
   dialogShow,
   resourceFetchRequest,
   boothChecked
-} from './redux/actions';
+} from '../redux/actions';
 
-import {getCompanyLogotype, getCompanyName} from '../helpers'
+import {getCompanyLogotype, getCompanyName} from '../../helpers'
 
 
 

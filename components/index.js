@@ -1,5 +1,8 @@
 export { default as Typography } from './MyTypography';
 export { default as Wrapper } from './Wrapper';
+export { default as MyButton } from './MyButton';
+
+
 export { default as Footer } from './Footer';
 export { default as MyAppBar } from './MyAppBar';
 export { default as MyTypography } from './MyTypography';
@@ -7,7 +10,7 @@ export { default as MyTypography } from './MyTypography';
 export { default as Avatarlist } from './Avatarlist';
 export { default as ColumnList } from './ColumnList';
 
-export { default as Bookingmap } from './Bookingmap';
+export { default as Bookingmap } from './Bookingmap/Bookingmap';
 
 
 export { default as FsVideo } from './FsVideo';
@@ -23,7 +26,6 @@ export { default as Benefits } from './Benefits';
 export { default as Icon } from './Icon';
 
 export { default as Company } from './Company';
-export { default as CompanyBookingmap } from './CompanyBookingmap';
 
 export { default as Reviews } from './Reviews';
 

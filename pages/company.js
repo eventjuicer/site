@@ -16,15 +16,14 @@ import {
   Avatarlist
 } from '../components';
 
+import {Visitor} from '../compositions'
+
 import Layout from '../layouts/main';
 
-const CompanyBookingmap = dynamic(import('../components/CompanyBookingmap'));
+const CompanyBookingmap = dynamic(import('../compositions/CompanyBookingmap'));
 const People = dynamic(import('../components/People'));
 const Schedule = dynamic(import('../components/Schedule'));
 
-/*USER REGISTRATION*/
-import Visitor from '../roles/Visitor';
-/*USER REGISTRATION*/
 
 import {
   getCompanyAltOgImage,

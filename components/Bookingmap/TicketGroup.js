@@ -3,13 +3,12 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
-import _get from 'lodash/get';
-import sortBy from 'lodash/sortBy'
 import { connect } from 'react-redux';
 import compose from 'recompose/compose'
 
-import {getTicketsSortedByStart} from '../redux/selectors'
 
+
+import { getTicketsSortedByStart } from '../../redux/selectors'
 import TicketGroupHeader from './TicketGroupHeader'
 import Ticket from './Ticket';
 import BoothInfoHeader from './BoothInfoHeader';

@@ -3,19 +3,22 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
-import { translate } from '../i18n';
 import _get from 'lodash/get';
 
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
+import green from '@material-ui/core/colors/green';
 
+import { MyButton } from '../../components'
+import TicketRemainingInfo from './TicketRemainingInfo'
+import { translate } from '../../i18n';
 
 //import Checkbox from '@material-ui/core/Checkbox';
 
 import {
   cartItemAdd as cartItemAddAction,
   cartItemRemove as cartItemRemoveAction
-} from './redux/actions';
+} from '../redux/actions';
 
 /*
 
@@ -67,12 +70,33 @@ start
 const styles = {
 
   selected : {
-    backgroundColor : '#55cf52 !important'
+    backgroundColor : `${green[50]} !important`
   }
 
 }
 
+//JSON.stringify({ti : booth_id, id : ref.data("id") })
+
+const CustomButton = () => (
+  <MyButton
+    target="_blank"
+    label="buy"
+    variant="contained"
+    color="primary"
+    type="submit"
+   />
+)
+
+
+
 class Ticket extends React.PureComponent {
+
+
+  constructor(props) {
+    super(props);
+    this.postForm = React.createRef();
+  }
+
 
   handleChange = name => (event, checked) => {
     const { ticket, cartItemAdd, cartItemRemove, formdata } = this.props;
@@ -106,22 +130,48 @@ class Ticket extends React.PureComponent {
     )}`;
   }
 
+  getPostEndpointBasedOnLocale() {
+    const {locale} = this.props
+
+    return locale == "en" ? "https://stoiska.targiehandlu.pl/preorder" : "https://stoiska.targiehandlu.pl/preorder";
+  }
+
+  handleSubmitButton = () => {
+  //  this.postForm.submit();
+  }
+
   render() {
-    const { ticket, classes } = this.props;
+    const { ticket, classes, formdata } = this.props;
 
     if (!ticket) {
       return null;
     }
 
     return (
+
       <TableRow
         selected={ticket.bookable ? true : false}
         classes={{selected : classes.selected}}
         >
         <TableCell>{ticket.start.substring(0, 10)}</TableCell>
-        <TableCell>{this.getTicketName()}</TableCell>
+        <TableCell>{this.getTicketName()}
+          {<TicketRemainingInfo isBookable={ticket.bookable} remaining={ticket.remaining} />}
+        </TableCell>
         <TableCell numeric>{this.getTicketPrice()}</TableCell>
+
+        <TableCell>
+
+          {ticket.bookable ?
+          <form action={this.getPostEndpointBasedOnLocale()} method="post" target="_blank">
+          <input type="hidden" name={`tickets[${ticket.id}]`} value="1" />
+          <input type="hidden" name={`ticketdata[${ticket.id}]`} value={JSON.stringify(formdata)} />
+          <CustomButton  />
+          </form> : <span></span>}
+
+        </TableCell>
+
       </TableRow>
+
 
       //
       // <FormGroup>

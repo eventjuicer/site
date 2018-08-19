@@ -15,20 +15,25 @@ const styles = {
 
 }
 
-const KeywordSelect = ({ keywords, selected, classes }) => keywords && keywords.map(keyword =>
+const KeywordSelect = ({ keywords, selected, classes }) => {
 
-  <Link
-    key={keyword}
-    href={`/exhibitors/${keyword}`}
-    label={`common.tags.${keyword}`}
-    variant={keyword === selected ? "contained" : "outlined"}
-    color={keyword === selected ? "primary" : "secondary"}
-    className={classes.spacer}
-    //disabled={keyword === selected}
+   if(!keywords.length) return null
 
-  />
+   return <div>{
 
-);
+     keywords.map(keyword =>
+
+     <Link
+       key={keyword}
+       href={`/exhibitors/${keyword}`}
+       label={`common.tags.${keyword}`}
+       variant={keyword === selected ? "contained" : "outlined"}
+       color={keyword === selected ? "primary" : "secondary"}
+       className={classes.spacer}
+       //disabled={keyword === selected}
+     />)}</div>
+
+}
 
 KeywordSelect.defaultProps = {
   keywords : []

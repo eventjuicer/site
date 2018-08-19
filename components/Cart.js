@@ -10,7 +10,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 
 //import {translate} from '../i18n'
 
-import Ticket from './Ticket';
+import Ticket from './Bookingmap/Ticket';
 
 import {
   cartItemRemove as cartItemRemoveAction,

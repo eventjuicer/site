@@ -5,15 +5,19 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   middle: {
     display: 'flex',
-    justifyContent: 'center',
-    flexWrap : 'wrap'
-    //  alignItems: 'center',
+    alignItems: 'center',
+    flexWrap : 'nowrap',
+    flexDirection : 'column'
   }
 });
 
-const Centered = withStyles(styles)(props => (
-  <div className={props.classes.middle}>{props.children}</div>
+const Centered = withStyles(styles)(({children, classes, style}) => (
+  <div style={style} className={classes.middle}>{children}</div>
 ));
+
+Centered.defaultProps = {
+  style : {}
+}
 
 const TwoColsLayout = ({
   left,

@@ -22,7 +22,7 @@ import Visitor from '../roles/Visitor';
 
 import { getInviteOgImage } from '../helpers';
 
-const Bookingmap = dynamic(import('../components/Bookingmap'));
+const Bookingmap = dynamic(import('../components/Bookingmap/Bookingmap'));
 
 class PageTicket extends React.Component {
 

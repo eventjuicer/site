@@ -7,11 +7,11 @@ import { MyHead as Head, MyLink as Link } from '../next';
 
 import {
   Wrapper,
-  Avatarlist,
   ColumnList,
   Gallery,
   Schedule,
   FsButtons,
+  FsVideo,
   GridBenefits,
   KeywordSelect,
   Centered
@@ -20,14 +20,16 @@ import {
 
 import {
   VideoWithEventInfo,
-  VideoWithReviews
+  VideoWithReviews,
+  Visitor,
+  FeaturedExhibitors
 } from '../compositions';
 
 
 
 import { Exhibitors, Photos } from '../datasources'
-import Visitor from '../roles/Visitor';
-const Bookingmap = dynamic(import('../components/Bookingmap'));
+
+const Bookingmap = dynamic(import('../components/Bookingmap/Bookingmap'));
 
 
 class PageIndex extends React.Component {
@@ -63,7 +65,9 @@ class PageIndex extends React.Component {
 
 
 
-        <Wrapper>
+        <Wrapper
+          label="visitors.benefits.title"
+          >
             <GridBenefits  />
         </Wrapper>
 
@@ -110,16 +114,7 @@ class PageIndex extends React.Component {
           ]}
         >
 
-
-          <Exhibitors filter={(e) => e.featured}>{
-            (exhibitors, keywords) =>
-            <React.Fragment>
-              <Avatarlist data={exhibitors} />
-              <Centered><KeywordSelect keywords={keywords} /></Centered>
-
-            </React.Fragment>
-          }</Exhibitors>
-
+        <FeaturedExhibitors />
 
         </Wrapper>
 
@@ -127,10 +122,10 @@ class PageIndex extends React.Component {
       <VideoWithReviews />
 
 
-
+{/*
       <Photos>{
         (photos, size) => <Gallery data={photos} size={size} label="event.gallery" />
-      }</Photos>
+      }</Photos> */}
 
 
         <Wrapper label="exhibitors.list_full" color="#ffffff">
@@ -140,6 +135,12 @@ class PageIndex extends React.Component {
         </Exhibitors>
 
         </Wrapper>
+
+
+        <FsVideo
+          background="https://res.cloudinary.com/eventjuicer/image/upload/v1534553598/poster_stage1.jpg"
+          videoSrc="https://res.cloudinary.com/eventjuicer/video/upload/v1534553583/video_stage1.mp4" />
+
 
 
       </Layout>

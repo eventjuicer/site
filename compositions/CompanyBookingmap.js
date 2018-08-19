@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { map, get } from 'lodash';
-import Wrapper from './Wrapper';
-import Bookingmap from './Bookingmap';
+import {Wrapper, Bookingmap} from '../components';
 import { getCompanyProfileInfo } from '../helpers';
 
 const styles = {};
