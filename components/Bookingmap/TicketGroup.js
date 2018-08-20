@@ -8,7 +8,7 @@ import compose from 'recompose/compose'
 
 
 
-import { getTicketsSortedByStart } from '../../redux/selectors'
+import { getTicketsSortedByStart, getTicketGroup } from '../../redux/selectors'
 import TicketGroupHeader from './TicketGroupHeader'
 import Ticket from './Ticket';
 import BoothInfoHeader from './BoothInfoHeader';
@@ -24,9 +24,11 @@ const styles = {
 }
 
 
-const TicketGroup = ({tickets, classes, formdata}) => (
+const TicketGroup = ({tickets, classes, formdata, ticketgroup}) => {
 
-  <div>
+  console.log(ticketgroup)
+
+  return (<div>
 
     <BoothInfoHeader formdata={formdata} />
     <Table className={classes.table}>
@@ -37,9 +39,12 @@ const TicketGroup = ({tickets, classes, formdata}) => (
           ))}
       </TableBody>
     </Table>
-  </div>
+  </div>)
+}
 
-)
+
+
+
 
 TicketGroup.defaultProps = {
   formdata : {},
@@ -55,7 +60,8 @@ const enhance = compose(
 
       const mapStateToProps = (state, props) => {
         return {
-          tickets : getTicketsSortedByStart(state, props)
+          tickets : getTicketsSortedByStart(state, props),
+          ticketgroup : getTicketGroup(state, props)
         }
       }
       return mapStateToProps}

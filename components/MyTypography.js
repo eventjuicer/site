@@ -226,7 +226,15 @@ const styles = theme => ({
     marginBottom: '.2em'
   },
 
+  heroOpinion : {
 
+    fontSize: '2rem',
+    color : '#ffffff',
+    [theme.breakpoints.down('md')]: {
+      fontSize: '1.3rem',
+    }
+
+  }
 
 });
 
@@ -316,7 +324,13 @@ const templates = {
     classNames: ['subhero']
   },
 
+  heroOpinion : {
 
+    variant : "body1",
+    component : "p",
+    classNames : ["heroOpinion"]
+
+  },
 
   SUBH2CH: {
     variant: 'body2',

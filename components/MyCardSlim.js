@@ -4,7 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
+import CardHeader from '@material-ui/core/CardHeader';
+import Avatar from '@material-ui/core/Avatar';
 
 import Typography from '@material-ui/core/Typography';
 
@@ -20,18 +21,16 @@ const styles = theme => ({
   content: {
     flex: '1 0 auto'
   },
-  cover: {
-    width: 200,
-    height: 200,
-    backgroundSize: 'contain',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center 15px'
-  },
+
   controls: {
     display: 'flex',
     alignItems: 'center',
     paddingLeft: theme.spacing.unit,
     paddingBottom: theme.spacing.unit
+  },
+  avatar : {
+    width : 150,
+    height : 150
   }
 });
 
@@ -45,7 +44,16 @@ function MyCardSlim(props) {
         raised={primary}
         className={classes.card}
       >
-        <CardMedia className={classes.cover} image={imageSrc} />
+
+        <CardHeader
+          avatar={
+            <Avatar
+            //  alt={opinion.person}
+              src={imageSrc}
+              className={classes.avatar}
+            />
+          }
+        ></CardHeader>
 
         <div className={classes.details}>
           <CardContent className={classes.content}>

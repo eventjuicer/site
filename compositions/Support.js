@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import compose from 'recompose/compose';
 import { translate } from '../i18n';
 
-import Card from './MyCardSlim';
+import {MyCardSlim as Card} from '../components';
 
 import Chatlio from '../services/Chatlio';
 
@@ -19,7 +19,7 @@ const styles = theme => ({
   }
 });
 
-const PersonSlim = ({
+const Support = ({
   classes,
   translate,
   title,
@@ -48,10 +48,10 @@ const PersonSlim = ({
   </div>
 );
 
-PersonSlim.defaultProps = {
+Support.defaultProps = {
   title: 'event.support.hello',
   text: 'event.support.description',
-  name: 'Bartek Meller',
+  name: 'Adam Zygadlewicz',
   avatar: '/static/support.jpg',
   phone: '+48 721 945 134',
   email: 'hello@targiehandlu.pl'
@@ -62,4 +62,4 @@ const enhance = compose(
   translate
 );
 
-export default enhance(PersonSlim);
+export default enhance(Support);

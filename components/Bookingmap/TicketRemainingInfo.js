@@ -1,11 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-//import { withStyles } from '@material-ui/core/styles';
-import green from '@material-ui/core/colors/green';
-
 import { translate } from '../../i18n';
-
-
 
 const TicketRemainingInfo = ({remaining, isBookable, translate}) => {
 
@@ -13,7 +8,7 @@ const TicketRemainingInfo = ({remaining, isBookable, translate}) => {
     return null
   }
 
-  return   <span style={{backgroundColor : green[300], marginTop : 10, padding: 5}}>{`${translate("common.remaining")} ${remaining} ${translate("common.pcs")}`}</span>
+  return   <span>{`${remaining} ${translate("common.pcs")}`}</span>
 
 }
 
@@ -23,7 +18,7 @@ TicketRemainingInfo.defaultProps = {
 }
 
 TicketRemainingInfo.propTypes = {
-  isBookable : PropTypes.bool.isRequired,
+  isBookable : PropTypes.number.isRequired,
   remaining : PropTypes.number.isRequired
 }
 

@@ -12,9 +12,10 @@ import {
   Wrapper,
   Benefits,
   MyTypography as Typography,
-  TwoColsLayout as Section,
-  PersonSlim
+  TwoColsLayout as Section
 } from '../components';
+
+import {Support} from '../compositions'
 
 import Layout from '../layouts/main';
 
@@ -84,7 +85,7 @@ class PagePremium extends React.Component {
                 />
 
                 <div style={{ marginTop: 40 }}>
-                  <PersonSlim
+                  <Support
                     title="exhibitors.premium.contact.title"
                     text="exhibitors.premium.contact.description"
                   />

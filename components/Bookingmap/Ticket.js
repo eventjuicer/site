@@ -80,7 +80,7 @@ const styles = {
 const CustomButton = () => (
   <MyButton
     target="_blank"
-    label="buy"
+    label="common.buy"
     variant="contained"
     color="primary"
     type="submit"
@@ -133,7 +133,7 @@ class Ticket extends React.PureComponent {
   getPostEndpointBasedOnLocale() {
     const {locale} = this.props
 
-    return locale == "en" ? "https://stoiska.targiehandlu.pl/preorder" : "https://stoiska.targiehandlu.pl/preorder";
+    return locale == "en" ? "https://ecommercewarsaw.com/preorder" : "https://stoiska.targiehandlu.pl/preorder";
   }
 
   handleSubmitButton = () => {
@@ -154,9 +154,7 @@ class Ticket extends React.PureComponent {
         classes={{selected : classes.selected}}
         >
         <TableCell>{ticket.start.substring(0, 10)}</TableCell>
-        <TableCell>{this.getTicketName()}
-          {<TicketRemainingInfo isBookable={ticket.bookable} remaining={ticket.remaining} />}
-        </TableCell>
+
         <TableCell numeric>{this.getTicketPrice()}</TableCell>
 
         <TableCell>
@@ -169,6 +167,12 @@ class Ticket extends React.PureComponent {
           </form> : <span></span>}
 
         </TableCell>
+
+
+        <TableCell>
+          {<TicketRemainingInfo isBookable={ticket.bookable} remaining={ticket.remaining} />}
+        </TableCell>
+
 
       </TableRow>
 

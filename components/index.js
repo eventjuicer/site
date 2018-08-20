@@ -12,6 +12,7 @@ export { default as ColumnList } from './ColumnList';
 
 export { default as Bookingmap } from './Bookingmap/Bookingmap';
 
+export { default as MyCardSlim } from './MyCardSlim';
 
 export { default as FsVideo } from './FsVideo';
 export { default as FsButtons } from './FsButtons';
@@ -28,8 +29,6 @@ export { default as Icon } from './Icon';
 export { default as Company } from './Company';
 
 export { default as Reviews } from './Reviews';
-
-export { default as PersonSlim } from './PersonSlim';
 export { default as WidthAwareInfo } from './WidthAwareInfo';
 
 export { default as People } from './People';

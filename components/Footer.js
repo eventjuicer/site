@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 
 import EventInfo from './EventInfo';
-import Person from './PersonSlim';
+import {Support} from '../compositions';
 import Typography from './MyTypography';
 
 import Wrapper from './Wrapper';
@@ -24,7 +24,7 @@ const Footer = ({ links, classes, width }) => (
     <Wrapper dense={true} color="#fafafa">
       <Grid container spacing={8} justify="space-around" alignItems="center">
         <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
-          <Person />
+          <Support />
         </Grid>
 
         <Grid item xs={12} sm={6} md={5} lg={3} xl={3}>

@@ -23,9 +23,9 @@ const TicketGroupHeader = ({translate}) => (
   <TableHead>
     <TableRow>
       <CustomTableCell>{translate("event.sales.pool.start")}</CustomTableCell>
-      <CustomTableCell>{translate("event.sales.pool.name")}</CustomTableCell>
       <CustomTableCell numeric>{translate("event.sales.pool.price")}</CustomTableCell>
       <CustomTableCell></CustomTableCell>
+      <CustomTableCell>{translate("common.remaining")}</CustomTableCell>
     </TableRow>
   </TableHead>
 

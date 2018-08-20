@@ -23,12 +23,19 @@ const styles = theme => ({
     display: 'flex',
     justifyContent: 'center' /*space-around space-between*/,
     alignItems: 'flex-start',
-    flexDirection: 'column',
 
     [theme.breakpoints.only('md')]: {
       marginTop: 10,
       flexDirection: 'row'
     }
+  },
+
+  v : {
+      flexDirection: 'column',
+  },
+
+  h : {
+      flexDirection: 'row',
   },
 
   flexListItem: {
@@ -43,10 +50,10 @@ const styles = theme => ({
   }
 });
 
-const Benefits = ({ classes, labels, translate }) => (
+const Benefits = ({ classes, labels, baseLabel, translate, orientation }) => (
 
   <div className={classes.container}>
-    <List component="ul" className={classes.flexList}>
+    <List component="ul" className={ classNames(classes.flexList, classes[orientation]) }>
       {labels.map( ({icon, label}) => (
         <ListItem className={classes.flexListItem} key={label}>
           {/* <ListItemIcon> */}
@@ -64,12 +71,14 @@ const Benefits = ({ classes, labels, translate }) => (
 );
 
 Benefits.defaultProps = {
-  labels: []
+  labels: [],
+  baseLabel : '',
+  orientation : "v"
 };
 
 const enhance = compose(
   translate,
-  withStyles(styles, { name: 'Benefits' })
+  withStyles(styles)
 );
 
 export default enhance(Benefits);

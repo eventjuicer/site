@@ -7,7 +7,6 @@ import compose from 'recompose/compose';
 //import {translate} from '../i18n'
 
 //const BoothInfo = dynamic(import('./BoothInfo'))
-//const Person = dynamic(import('./PersonSlim'))
 const TicketGroup = dynamic(import('./TicketGroup'));
 
 import Booth from './Booth';

@@ -8,14 +8,11 @@ import { translate } from '../../i18n'
 
 
 import BoothInfo from './BoothInfo';
-import TicketGroup from './TicketGroup';
 import TicketGroupsInfo from './TicketGroupsInfo';
 import Booth from './Booth';
-
+import SalesInfo from './SalesInfo';
 
 import {BookingMapSelector} from '../../redux/selectors'
-import Person from '../PersonSlim';
-
 
 import {
   dialogShow,
@@ -24,7 +21,6 @@ import {
 } from '../redux/actions';
 
 import {getCompanyLogotype, getCompanyName} from '../../helpers'
-
 
 
 const styleMapping = {
@@ -37,8 +33,6 @@ const styleMapping = {
   268 : "style6", //grand
   269 : "style6"
 }
-
-
 
 
 const styles = theme => ({
@@ -137,17 +131,7 @@ class Bookingmap extends React.PureComponent {
       default:
         /* THERE IS NOW FORMDATA FOR UNSOLD BOOTHS!!!! */
         modalTitle = translate("event.sales.booths.free");
-        modalContent = (
-          <div>
-            <TicketGroup
-              noBookableTickets={<div />}
-              label="Pule sprzedaży"
-              groupId={groupId}
-              formdata={{ id: boothId, ti: label }}
-            />
-            <Person title="event.sales.manual" />
-          </div>
-        );
+        modalContent = <SalesInfo groupId={groupId} boothId={boothId} label={label} />
     }
 
     dialogShow({

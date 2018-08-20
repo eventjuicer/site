@@ -74,7 +74,7 @@ class Chatlio extends React.PureComponent {
 
     return (
       <Button
-        variant="raised"
+        variant="outlined"
         onClick={() => this.chatlioShow()}
         color="primary"
       >

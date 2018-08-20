@@ -18,8 +18,9 @@ import {
   Centered
 } from '../components';
 
+import {Visitor} from '../compositions'
+
 //const Gallery = dynamic(import('../components/GalleryQuoted'))
-import Visitor from '../roles/Visitor';
 
 import {Exhibitors} from '../datasources'
 

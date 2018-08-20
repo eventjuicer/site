@@ -9,7 +9,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 
-import Person from '../PersonSlim';
+import {Support} from '../../compositions';
 import Tags from '../Tags'
 
 import {getCompanyLogotype, getCompanyName} from '../../helpers'
@@ -85,7 +85,7 @@ class BoothInfo extends React.Component {
        </CardActions>
      </Card>
 
-      <Person />
+      <Support />
       </div>
     );
   }

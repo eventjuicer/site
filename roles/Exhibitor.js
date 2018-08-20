@@ -2,7 +2,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
-import Person from '../PersonSlim';
+import {Support} from '../compositions';
 import Benefits from '../Benefits';
 import Bookingmap from '../Bookingmap';
 
@@ -18,7 +18,7 @@ const Exhibitor = props => (
   <div>
     <Grid container spacing={8} justify="space-around" alignItems="center">
       <Grid item xs={10} sm={6} md={6} lg={6} xl={6}>
-        <Person />
+        <Support />
       </Grid>
 
       <Grid item xs={10} sm={6} md={6} lg={6} xl={6}>
