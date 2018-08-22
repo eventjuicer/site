@@ -4,3 +4,4 @@ export { default as Visitor } from './Visitor';
 export { default as CompanyBookingmap } from './CompanyBookingmap';
 export { default as FeaturedExhibitors } from './FeaturedExhibitors';
 export { default as Support } from './Support';
+export { default as Company } from './Company';

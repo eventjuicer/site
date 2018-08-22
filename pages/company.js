@@ -1,38 +1,20 @@
 import dynamic from 'next/dynamic';
-
-import { MyHead as Head, MyLink as Link } from '../next';
-
-import { get } from 'lodash';
-
+import { MyLink as Link } from '../next';
 import { connect } from 'react-redux';
 
 import {
-  MyTypography as Typography,
+//  MyTypography as Typography,
   Wrapper,
-  Company,
-  resourceFetchSuccess,
   Gallery,
-  ColumnList,
+//  ColumnList,
   Avatarlist
 } from '../components';
 
-import {Visitor} from '../compositions'
-
+import {Visitor, Company} from '../compositions'
 import Layout from '../layouts/main';
-
-const CompanyBookingmap = dynamic(import('../compositions/CompanyBookingmap'));
+import { Exhibitors, Photos } from "../datasources"
 const People = dynamic(import('../components/People'));
 const Schedule = dynamic(import('../components/Schedule'));
-
-
-import {
-  getCompanyAltOgImage,
-  getCompanyProfileInfo,
-  fetcher
-} from '../helpers';
-
-
-import { SingleRecord, Exhibitors, Photos } from "../datasources"
 
 class PageCompany extends React.Component {
 
@@ -59,33 +41,10 @@ class PageCompany extends React.Component {
 
       <Layout>
 
-        <SingleRecord endpoint="companies" id={company_id}>
-          {
-          (company) =>
-          <React.Fragment>
-          <Head
-              image={getCompanyAltOgImage(company, asPath)}
-              url={asPath}
-              titleLabel={[
-                'companies.opengraph.title',
-                { name: getCompanyProfileInfo(company, 'name') }
-              ]}
-            />
-
-            <Wrapper label="">
-              <Company company={company} />
-            </Wrapper>
-
-            <CompanyBookingmap company={company} />
-            </React.Fragment>
-        }
-        </SingleRecord>
-
-
+        <Company id={company_id} asPath={asPath} />
 
         <Wrapper
           label="visitors.register"
-          color="#fafafa"
           links={[
             <Link
               key="more"

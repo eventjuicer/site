@@ -2,23 +2,25 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 
 
-import { EventInfo } from '../components';
+import { EventInfo, Wrapper } from '../components';
 import { withStyles } from '@material-ui/core/styles';
 
 import { StepForm } from '../formik';
 
 
-const styles = {
+const styles = theme => ({
 
   lanyard : {
     width : "100%"
   }
 
-}
+})
 
-const Visitor = ({ classes }) => (
+const Visitor = ({ classes, ...rest }) => (
 
-  <div>
+
+  <Wrapper {...rest}>
+
 
   <Grid container spacing={8} justify="space-between">
     <Grid item xs={12} sm={12} md={6} lg={5} xl={5}>
@@ -72,11 +74,13 @@ const Visitor = ({ classes }) => (
   </Grid>
 
 
-  </div>
+  </Wrapper>
+
 );
 
 Visitor.defaultProps = {
-  links: []
+  links: [],
+  label : "visitors.register"
 };
 
 export default withStyles(styles)(Visitor);

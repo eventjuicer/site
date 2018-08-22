@@ -54,15 +54,12 @@ class PageIndex extends React.Component {
         <Head />
 
         <VideoWithEventInfo />
+        
 
-
-        <Wrapper
-          label="visitors.register"
-          secondaryLabel="event.parties"
-        >
-          <Visitor  />
-        </Wrapper>
-
+      <Visitor
+            label="visitors.register"
+            secondaryLabel="event.parties"
+      />
 
 
         <Wrapper

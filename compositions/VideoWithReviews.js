@@ -1,6 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import {Reviews, FsVideo } from '../components';
+import items from './reviews'
 
 const styles = {
   container: {
@@ -16,7 +17,7 @@ const VideoWithReviews = ({ classes }) => (
     >
 
     <div className={classes.container}>
-    <Reviews />
+    <Reviews items={items} />
     </div>
 
   </FsVideo>
