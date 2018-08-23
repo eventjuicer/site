@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { Typography, Wrapper, Bookingmap } from '../components';
 import Layout from '../layouts/main';
-import Visitor from '../roles/Visitor';
+import {Visitor} from '../compositions'
 
 class PageMap extends React.Component {
   static async getInitialProps({

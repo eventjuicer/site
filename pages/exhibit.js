@@ -21,10 +21,6 @@ import {
 
 import {Photos} from '../datasources'
 
-import Visitor from '../roles/Visitor';
-
-
-
 const Bookingmap = dynamic(import('../components/Bookingmap/Bookingmap'));
 
 class PageExhibit extends React.Component {

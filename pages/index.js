@@ -8,13 +8,9 @@ import { MyHead as Head, MyLink as Link } from '../next';
 import {
   Wrapper,
   ColumnList,
-  Gallery,
-  Schedule,
-  FsButtons,
-  FsVideo,
-  GridBenefits,
-  KeywordSelect,
-  Centered
+ // Gallery,
+ // Schedule,
+  FsVideo
 } from '../components';
 
 
@@ -22,7 +18,9 @@ import {
   VideoWithEventInfo,
   VideoWithReviews,
   Visitor,
-  FeaturedExhibitors
+  FeaturedExhibitors,
+  VisitorBenefits,
+  RoleButtons
 } from '../compositions';
 
 
@@ -62,14 +60,15 @@ class PageIndex extends React.Component {
       />
 
 
-        <Wrapper
-          label="visitors.benefits.title"
-          >
-            <GridBenefits  />
-        </Wrapper>
+
+      <VisitorBenefits 
+        label="visitors.benefits.title" 
+        first
+      />
+   
 
 
-        <FsButtons />
+      <RoleButtons />
 
         {/* <Wrapper
         label="presenters.schedule"
@@ -89,7 +88,7 @@ class PageIndex extends React.Component {
 
 
         <Wrapper
-          label="exhibitors.map.title"
+          label="exhibitors.map.title2"
           secondaryLabel="exhibitors.map.opensales"
         >
 

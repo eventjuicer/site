@@ -83,40 +83,27 @@ const styles = theme => ({
   },
 });
 
-const images = [
-  {
-    url: 'https://static.eventjuicer.com/photos/12961446_1288640741145929_7684227399478032531_o.jpg',
-    title: 'Uczestnik',
-    width: '50%',
-  },
-  {
-    url: 'https://static.eventjuicer.com/photos/12967348_1288628734480463_3860331543127036065_o.jpg',
-    title: 'Wystawca',
-    width: '50%',
-  },
-
-];
 
 function FsButtons(props) {
-  const { classes, buttons } = props;
+  const { classes, items } = props;
 
   return (
     <div className={classes.root}>
-      {images.map(image => (
+      {items.map(({title, url, width, onClick}) => (
         <ButtonBase
           focusRipple
-          key={image.title}
+          key={title}
           className={classes.image}
           focusVisibleClassName={classes.focusVisible}
           style={{
-            width: image.width,
+            width: width,
           }}
-          onClick={() => alert("asd")}
+          onClick={onClick}
         >
           <span
             className={classes.imageSrc}
             style={{
-              backgroundImage: `url(${image.url})`,
+              backgroundImage: `url(${url})`,
             }}
           />
           <span className={classes.imageBackdrop} />
@@ -127,7 +114,7 @@ function FsButtons(props) {
               color="inherit"
               className={classes.imageTitle}
             >
-              {image.title}
+              {title}
               <span className={classes.imageMarked} />
             </Typography>
           </span>
@@ -138,7 +125,7 @@ function FsButtons(props) {
 }
 
 FsButtons.defaultProps = {
-  buttons : images
+  items : []
 }
 
 FsButtons.propTypes = {

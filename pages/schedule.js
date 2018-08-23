@@ -12,7 +12,7 @@ import {
 
 import Layout from '../layouts/main';
 
-import Visitor from '../roles/Visitor';
+import {Visitor} from '../compositions'
 
 class PageSchedule extends React.Component {
   static async getInitialProps({
@@ -42,9 +42,8 @@ class PageSchedule extends React.Component {
 
     </Wrapper> */}
 
-        <Wrapper label="visitors.register_alt">
-          <Visitor />
-        </Wrapper>
+        <Visitor label="visitors.register_alt" />
+       
 
         {/* <Wrapper label="visitors.attendees">
 

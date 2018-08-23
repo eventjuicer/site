@@ -12,7 +12,7 @@ import {
 
 import Layout from '../layouts/main';
 
-import Visitor from '../roles/Visitor';
+import {Visitor} from '../compositions'
 
 class PagePresenters extends React.Component {
   static async getInitialProps({

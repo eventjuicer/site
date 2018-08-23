@@ -21,8 +21,8 @@ const styles = theme => ({
 
 const Footer = ({ links, classes, width }) => (
   <div className={classes.container}>
-    <Wrapper dense={true} color="#fafafa">
-      <Grid container spacing={8} justify="space-around" alignItems="center">
+    <Wrapper dense={true} color="#fafafa" >
+      <Grid container spacing={8} wrap="nowrap" justify="space-around" alignItems="center">
         <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
           <Support />
         </Grid>
@@ -32,20 +32,20 @@ const Footer = ({ links, classes, width }) => (
             items={[
               {
                 icon: 'location',
-                label: 'event.location',
-                text: 'EXPO XXI Warszawa, Prądzyńskiego 12/14'
+                secondary: 'event.location',
+                primary: 'EXPO XXI Warszawa, Prądzyńskiego 12/14'
               },
 
               {
                 icon: 'date',
-                label: 'event.date',
-                text: '7 listopada 2018'
+                secondary: 'event.date',
+                primary: '7 listopada 2018'
               },
 
               {
                 icon: 'alarm',
-                label: 'event.hours',
-                text: '10:00-17:00'
+                secondary: 'event.hours',
+                primary: '10:00-17:00'
               }
             ]}
             orientation="v"
@@ -58,18 +58,18 @@ const Footer = ({ links, classes, width }) => (
           <EventInfo
             items={[
               {
-                label: 'event.organizer.name',
-                text: 'Infoguru Sp. z o.o. Sp. k.'
+                secondary: 'event.organizer.name',
+                primary: 'Infoguru Sp. z o.o. Sp. k.'
               },
 
               {
-                label: 'event.organizer.address',
-                text: 'POLAND, Poznań, Truskawiecka 13'
+                secondary: 'event.organizer.address',
+                primary: 'POLAND, Poznań, Truskawiecka 13'
               },
 
               {
-                label: 'event.organizer.registration',
-                text: 'VAT ID 7811967834'
+                secondary: 'event.organizer.registration',
+                primary: 'VAT ID 7811967834'
               }
             ]}
             orientation="v"

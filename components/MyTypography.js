@@ -215,15 +215,24 @@ const styles = theme => ({
 
   benefitsTitle : {
     fontWeight: 900,
-    fontSize: '2em',
+    fontSize: '1.4em',
     marginBottom: 0,
-    color : "black"
+    color : "black",
+    [theme.breakpoints.up('md')]: {
+      fontSize: '1.6rem',
+    },
+    [theme.breakpoints.only('xl')]: {
+      fontSize: '1.8rem',
+    }
   },
 
   benefitsText : {
     fontWeight: 400,
-    fontSize: '1.3em',
-    marginBottom: '.2em'
+    fontSize: '1rem',
+    marginTop: '.5em',
+    [theme.breakpoints.up('md')]: {
+      marginTop: '.7em',
+    }
   },
 
   heroOpinion : {

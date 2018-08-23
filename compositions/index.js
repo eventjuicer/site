@@ -5,3 +5,5 @@ export { default as CompanyBookingmap } from './CompanyBookingmap';
 export { default as FeaturedExhibitors } from './FeaturedExhibitors';
 export { default as Support } from './Support';
 export { default as Company } from './Company';
+export { default as VisitorBenefits } from './VisitorBenefits';
+export { default as RoleButtons } from './RoleButtons';

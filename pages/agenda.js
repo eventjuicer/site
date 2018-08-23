@@ -11,9 +11,10 @@ import {
   People
 } from '../components';
 
+import {Visitor} from '../compositions'
+
 import Layout from '../layouts/main';
 
-import Visitor from '../roles/Visitor';
 
 import { fetcher } from '../helpers';
 

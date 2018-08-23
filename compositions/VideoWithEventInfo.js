@@ -11,7 +11,7 @@ import {
 } from '../components';
 
 
-const styles = {
+const styles = theme => ({
   container: {
     display: 'flex',
     flexDirection: 'column',
@@ -19,13 +19,13 @@ const styles = {
     alignItems: 'center',
     marginLeft : '5%',
     marginRight : '5%',
-
+    marginTop : 20
   },
 
   eventinfo : {
-    marginTop : 80
+    marginTop : '5vh',
   }
-};
+});
 
 
 
@@ -59,6 +59,7 @@ const VideoWithEventInfo = ({ classes, locale }) => (
         primaryStyle="heroPrimary"
         secondaryStyle="heroSecondary"
         iconStyle="heroIcon"
+        orientation="v"
       />
 
       </div>

@@ -10,8 +10,13 @@ import {
   Gallery
 } from '../components';
 
+import {
+  VideoWithEventInfo,
+  Visitor,
+  VisitorBenefits,
+} from '../compositions';
+
 import Layout from '../layouts/main';
-import Visitor from '../roles/Visitor';
 
 import {Photos} from '../datasources';
 
@@ -34,12 +39,19 @@ class PageVisit extends React.Component {
     const { url } = this.props;
 
     return (
+      
       <Layout>
+
         <Head />
 
-        <Wrapper label="visitors.register_alt" first>
-          <Visitor />
-        </Wrapper>
+        <Visitor 
+          label="visitors.register_alt" 
+          first 
+        />
+        <VisitorBenefits 
+          label="visitors.benefits.title" 
+        />
+
 
         {/* <Wrapper
         label="presenters.schedule"

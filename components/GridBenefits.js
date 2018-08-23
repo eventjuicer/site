@@ -1,42 +1,27 @@
 
 import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
+//import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import GridBenefitsItem from './GridBenefitsItem'
 
 
-const items = [
-  {
-    icon : "",
-    headline : "aasdasd",
-    text : "sadasdasd"
+const GridBenefits = ({items, baseLabel}) => (
 
-  },
-  {
-    icon : "",
-    headline : "aasdasd",
-    text : "asdasd"
-  },
-  {
-    icon : "",
-    headline : "aasdasd",
-    text : "sdfasd"
-  }
-]
+  <Grid  container spacing={32}>
 
-const GridBenefits = ({items, classes}) => (
-
-  <Grid container spacing={16}>
-
-    {items.map((item, i) => <GridBenefitsItem key={i} {...item} />)}
+    {items.map(({label, icon}) => <GridBenefitsItem key={label} icon={icon} label={`${baseLabel}.${label}`} />)}
 
   </Grid>
 )
 
 
 GridBenefits.defaultProps = {
-  items : items
+  items : [],
+  baseLabel : ""
 }
 
+GridBenefits.propTypes = {
+
+}
 
 export default GridBenefits

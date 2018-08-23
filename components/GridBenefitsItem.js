@@ -2,8 +2,6 @@
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from './MyTypography'
-import School from '@material-ui/icons/School'
-import { FaHandshake as Handshake } from 'react-icons/fa';
 
 
 const styles = theme => ({
@@ -11,7 +9,7 @@ const styles = theme => ({
   container : {
     display: 'flex',
     flexDirection : 'row',
-    justifyContent : 'center'
+  //  alignItems : 'center'
   },
 
   iconContainer : {
@@ -20,13 +18,13 @@ const styles = theme => ({
   },
 
   icon : {
+    marginTop: -12,
+    width : 65,
+    height : 65,
 
-    width : 80,
-    height : 80,
-
-    [theme.breakpoints.down('md')]: {
-      width : 70,
-      height : 70,
+    [theme.breakpoints.up('md')]: {
+      width : 80,
+      height : 80,
     },
 
     color : 'red'
@@ -38,29 +36,37 @@ const styles = theme => ({
 
 })
 
-const GridBenefitsItem = ({classes, icon, headline, text}) => (
+const GridBenefitsItem = ({classes, ...other}) => {
 
-  <Grid item xs={12} sm={6} lg={4} xl={4}>
+    const Icon = other.icon;
 
-    <div className={classes.container}>
+    return (
 
-      <div className={classes.iconContainer}>
-        <Handshake className={classes.icon} />
-      </div>
+      <Grid item xs={12} sm={6} md={6} lg={4} xl={4}>
 
-      <div className={classes.texts}>
-        <Typography template="benefitsTitle" label={headline} />
-        <Typography template="benefitsText" label={text} />
-      </div>
+        <div className={classes.container}>
 
-    </div>
+          <div className={classes.iconContainer}>
+            <Icon className={classes.icon} />
+          </div>
 
-  </Grid>
+          <div className={classes.texts}>
+            <Typography template="benefitsTitle" label={`${other.label}.title`} />
+            <Typography template="benefitsText" label={`${other.label}.description`} />
+          </div>
 
-)
+        </div>
+
+      </Grid>
+
+    )
+
+}
+
 
 GridBenefitsItem.defaultProps = {
-
+  title : "",
+  text : ""
 }
 
 export default withStyles(styles)(GridBenefitsItem)

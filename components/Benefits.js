@@ -4,7 +4,7 @@ import compose from 'recompose/compose';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 
-import Icon from '@material-ui/icons/Done';
+import DefaultIcon from '@material-ui/icons/Done';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -54,17 +54,27 @@ const Benefits = ({ classes, labels, baseLabel, translate, orientation }) => (
 
   <div className={classes.container}>
     <List component="ul" className={ classNames(classes.flexList, classes[orientation]) }>
-      {labels.map( ({icon, label}) => (
-        <ListItem className={classes.flexListItem} key={label}>
-          {/* <ListItemIcon> */}
+      {labels.map( (item) => {
 
-            <div> { icon }</div>
+        let primary, Icon;
 
-             {/* <Icon className={classes.icon} /> */}
-          {/* </ListItemIcon> */}
-          <ListItemText primary={translate(label)} />
-        </ListItem>
-      ))}
+        if(typeof item === 'string' || item instanceof String){
+          primary = item;
+          Icon = DefaultIcon;
+        }else{
+          primary = "primary" in item ? item.primary : "";
+          Icon  = "icon" in item ? item.icon : DefaultIcon;
+        }
+        
+        return (
+          <ListItem className={classes.flexListItem} key={primary}>
+            <ListItemIcon>  
+               <Icon className={classes.icon} />
+            </ListItemIcon>
+            <ListItemText primary={translate(primary)} />
+          </ListItem>
+        )
+      })}
     </List>
   </div>
 

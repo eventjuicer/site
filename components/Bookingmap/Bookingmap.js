@@ -11,6 +11,7 @@ import BoothInfo from './BoothInfo';
 import TicketGroupsInfo from './TicketGroupsInfo';
 import Booth from './Booth';
 import SalesInfo from './SalesInfo';
+import Legend from './Legend'
 
 import {BookingMapSelector} from '../../redux/selectors'
 
@@ -161,6 +162,7 @@ class Bookingmap extends React.PureComponent {
     const { bookingmap, classes, zoom, height } = this.props;
     return (
       <div>
+        <Legend />
       <div
         className={classes.scrollableContainer}
         style={{

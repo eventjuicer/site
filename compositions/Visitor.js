@@ -23,7 +23,7 @@ const Visitor = ({ classes, ...rest }) => (
 
 
   <Grid container spacing={8} justify="space-between">
-    <Grid item xs={12} sm={12} md={6} lg={5} xl={5}>
+    <Grid item xs={12} sm={12} md={7} lg={7} xl={7}>
 
       <StepForm
         data={{}}
@@ -66,7 +66,7 @@ const Visitor = ({ classes, ...rest }) => (
       />
     </Grid> */}
 
-    <Grid item xs={12} sm={6} md={12} lg={4} xl={4}>
+    <Grid item xs={12} sm={12} md={5} lg={5} xl={5}>
 
       <img src="/static/lanyard.jpg" className={classes.lanyard} />
 

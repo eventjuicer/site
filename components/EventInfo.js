@@ -29,28 +29,36 @@ const styles = theme => ({
   //  maxWidth: 400
   },
 
+  defaultPrimary: {
+    color: '#000000',
+  },
+
+  defaultSecondary : {
+    color : '#000000'
+  },
+
   heroPrimary: {
     fontWeight: 600,
     color: '#ffffff',
-    fontSize: '3rem',
+    fontSize: '2.5rem',
     [theme.breakpoints.down('md')]: {
-      fontSize: '2.5rem',
+      fontSize: '2rem',
     },
     [theme.breakpoints.down('sm')]: {
-        fontSize: '2rem',
+        fontSize: '1.8rem',
     }
   },
 
   heroSecondary: {
     color: '#ffffff',
-    fontSize: '2rem',
+    fontSize: '1.5rem',
     fontWeight: 300,
     [theme.breakpoints.down('md')]: {
-      fontSize: '1.5rem',
-      fontWeight: 600
+      fontSize: '1.3rem',
+     // fontWeight: 600
     },
     [theme.breakpoints.down('sm')]: {
-        fontSize: '1.2rem',
+        fontSize: '1.1rem',
     }
   },
 
@@ -83,8 +91,8 @@ const EventInfo = ({
               primary={primary}
               secondary={translate(secondary)}
               classes={{
-                primary: classNames((primaryStyle && primaryStyle in classes ? classes[primaryStyle] : "")),
-                secondary: classNames((secondaryStyle && secondaryStyle in classes ? classes[secondaryStyle] : ""))
+                primary: classNames(classes.defaultPrimary, (primaryStyle && primaryStyle in classes ? classes[primaryStyle] : null)),
+                secondary: classNames(classes.defaultSecondary, (secondaryStyle && secondaryStyle in classes ? classes[secondaryStyle] : null))
               }}
             />
           </ListItem>

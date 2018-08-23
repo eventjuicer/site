@@ -16,7 +16,7 @@ import {
 } from '../components';
 
 //const Gallery = dynamic(import('../components/GalleryQuoted'))
-import Visitor from '../roles/Visitor';
+import {Visitor} from '../compositions'
 
 import {Exhibitors} from '../datasources'
 

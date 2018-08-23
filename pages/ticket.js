@@ -18,7 +18,8 @@ import {
 } from '../components';
 
 import Layout from '../layouts/main';
-import Visitor from '../roles/Visitor';
+
+import {Visitor} from '../compositions'
 
 import { getInviteOgImage } from '../helpers';
 

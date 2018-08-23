@@ -11,7 +11,7 @@ import {
 
 import { MyHead as Head, MyLink as Link } from '../next';
 
-import Visitor from '../roles/Visitor';
+import {Visitor} from '../compositions'
 
 
 const Bookingmap = dynamic(import('../components/Bookingmap/Bookingmap'));

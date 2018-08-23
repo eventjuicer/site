@@ -16,7 +16,7 @@ import {
 
 import { MyHead as Head, MyLink as Link } from '../next';
 
-import Visitor from '../roles/Visitor';
+import {Visitor} from '../compositions'
 
 import { fetcher } from '../helpers';
 

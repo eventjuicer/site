@@ -46,8 +46,8 @@ class BoothInfo extends React.Component {
     const { formdata, classes} = this.props;
     const cname2 = getCompanyName(formdata)
 
-    if(!cname2.length){
-    //  return null
+    if(!formdata || ! "company" in formdata){
+      return <Support />
     }
 
     return (
@@ -63,15 +63,15 @@ class BoothInfo extends React.Component {
          <Typography gutterBottom variant="headline" component="h2">
            {cname2}
          </Typography>
-         <Typography component="p">
-           <div>
+         <Typography component="div">
+            
            <div
              className={classes.htmlContainer}
              dangerouslySetInnerHTML={{
                __html: _get(formdata, 'company.profile.about')
              }}
            />
-           </div>
+           
          </Typography>
        </CardContent>
        <CardActions>
@@ -85,7 +85,8 @@ class BoothInfo extends React.Component {
        </CardActions>
      </Card>
 
-      <Support />
+    <Support />
+      
       </div>
     );
   }
