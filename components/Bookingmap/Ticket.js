@@ -4,108 +4,55 @@ import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import _get from 'lodash/get';
-
-import TableCell from '@material-ui/core/TableCell';
-import TableRow from '@material-ui/core/TableRow';
+import classNames from 'classnames'
+import Grid from '@material-ui/core/Grid'
 import green from '@material-ui/core/colors/green';
 
-import { MyButton } from '../../components'
-import TicketRemainingInfo from './TicketRemainingInfo'
 import { translate } from '../../i18n';
-
-//import Checkbox from '@material-ui/core/Checkbox';
+import TicketRemainingInfo from './TicketRemainingInfo'
+import TicketDate from './TicketDate'
+import TicketPrice from './TicketPrice'
+import TicketBuyButton from './TicketBuyButton'
 
 import {
   cartItemAdd as cartItemAddAction,
   cartItemRemove as cartItemRemoveAction
 } from '../redux/actions';
 
-/*
-
-agg :
-{customers: 6, sold: 6}
-bookable
-:
-0
-end
-:
-"2017-11-26 23:59:59"
-errors
-:
-["overdue"]
-group_id
-:
-248
-id
-:
-1258
-in_dates
-:
-0
-limit
-:
-7
-max_quantity
-:
-1
-names
-:
-{pl: "Przestrzeń 3x2 / Strefa STANDARD / Early Bird", en: "", de: ""}
-price
-:
-{pl: 2899, en: 709, de: 0}
-remaining
-:
-1
-role
-:
-"exhibitor"
-start
-:
-"2017-11-24 12:00:00"
-
-*/
-
 
 const styles = {
 
-  selected : {
-    backgroundColor : `${green[50]} !important`
+  ticket : {
+    padding: 10,
+    fontFamily : "'Lato','Helvetica','Arial', sans-serif",
+    border : '1px solid #cccccc',
+    margin : 2,
+    minHeight : 50,
+    borderRadius : 3
+  },
+
+  bookable : {
+    backgroundColor : green[100],
+  },
+  
+  nonbookable : {
+    color : '#666666'
   }
 
 }
 
 //JSON.stringify({ti : booth_id, id : ref.data("id") })
 
-const CustomButton = () => (
-  <MyButton
-    target="_blank"
-    label="common.buy"
-    variant="contained"
-    color="primary"
-    type="submit"
-   />
-)
-
-
-
 class Ticket extends React.PureComponent {
 
-
-  constructor(props) {
-    super(props);
-    this.postForm = React.createRef();
-  }
-
-
   handleChange = name => (event, checked) => {
-    const { ticket, cartItemAdd, cartItemRemove, formdata } = this.props;
+    // const { ticket, cartItemAdd, cartItemRemove, formdata } = this.props;
 
-    if (this.isSelected()) {
-      cartItemRemove(ticket.id, formdata);
-    } else {
-      cartItemAdd(ticket.id, 1, formdata);
-    }
+    // if (this.isSelected()) {
+    //   cartItemRemove(ticket.id, formdata);
+    // } else {
+    //   cartItemAdd(ticket.id, 1, formdata);
+    // }
   };
 
   isSelected() {
@@ -119,63 +66,54 @@ class Ticket extends React.PureComponent {
     return _get(ticket, `names.${locale}`);
   }
 
-  getTicketPrice() {
-
-    const { ticket, locale, translate } = this.props;
-    const currency = locale === "en" ? "eur" : "pln"
-
-
-    return `${_get(ticket, `price.${locale}`)} ${translate(
-      `common.currencies.${currency}`
-    )}`;
-  }
-
   getPostEndpointBasedOnLocale() {
     const {locale} = this.props
-
     return locale == "en" ? "https://ecommercewarsaw.com/preorder" : "https://stoiska.targiehandlu.pl/preorder";
   }
 
-  handleSubmitButton = () => {
-  //  this.postForm.submit();
-  }
-
   render() {
-    const { ticket, classes, formdata } = this.props;
+    const { ticket, classes, boothId, label } = this.props;
 
     if (!ticket) {
       return null;
     }
 
+    const formdata = {ti: label, id: boothId} 
+
     return (
 
-      <TableRow
-        selected={ticket.bookable ? true : false}
-        classes={{selected : classes.selected}}
-        >
-        <TableCell>{ticket.start.substring(0, 10)}</TableCell>
+      <div className={classNames(
+        classes.ticket,
+        ticket.bookable ? classes.bookable : classes.nonbookable
+        )}>
 
-        <TableCell numeric>{this.getTicketPrice()}</TableCell>
+      <Grid 
+        container
+        spacing={16}
+        alignItems="center"
+      >
+        <Grid item xs={12} sm={12} md={3}>
+          <TicketDate start={ticket.start} end={ticket.end} inDates={ticket.in_dates} />
+        </Grid>
+         
+        <Grid item xs={12} sm={12} md={3}>
+        {<TicketRemainingInfo isBookable={ticket.bookable} remaining={ticket.remaining} />}
+        </Grid>
 
-        <TableCell>
+        <Grid item xs={12} sm={12} md={3}><TicketPrice price={ticket.price} /></Grid>
+
+        <Grid item xs={12} sm={12} md={3}>
 
           {ticket.bookable ?
           <form action={this.getPostEndpointBasedOnLocale()} method="post" target="_blank">
           <input type="hidden" name={`tickets[${ticket.id}]`} value="1" />
           <input type="hidden" name={`ticketdata[${ticket.id}]`} value={JSON.stringify(formdata)} />
-          <CustomButton  />
+          <TicketBuyButton  />
           </form> : <span></span>}
 
-        </TableCell>
-
-
-        <TableCell>
-          {<TicketRemainingInfo isBookable={ticket.bookable} remaining={ticket.remaining} />}
-        </TableCell>
-
-
-      </TableRow>
-
+        </Grid>
+    </Grid>
+    </div>
 
       //
       // <FormGroup>
@@ -201,7 +139,8 @@ class Ticket extends React.PureComponent {
 
 Ticket.propTypes = {
   ticket: PropTypes.object.isRequired,
-  formdata: PropTypes.object.isRequired
+  boothId: PropTypes.string.isRequired,
+  label : PropTypes.string.isRequired
 };
 
 Ticket.defaultProps = {};

@@ -5,6 +5,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
+import CardActions from '@material-ui/core/CardActions';
+
 import Avatar from '@material-ui/core/Avatar';
 
 import Typography from '@material-ui/core/Typography';
@@ -29,8 +31,8 @@ const styles = theme => ({
     paddingBottom: theme.spacing.unit
   },
   avatar : {
-    width : 150,
-    height : 150
+    width : 120,
+    height : 120
   }
 });
 
@@ -38,7 +40,7 @@ function MyCardSlim(props) {
   const { classes, link, title, text, imageSrc, primary } = props;
 
   return (
-    <div>
+   
       <Card
         elevation={primary ? 2 : 0}
         raised={primary}
@@ -61,11 +63,14 @@ function MyCardSlim(props) {
             <Typography variant="subheading" color="textSecondary">
               {text}
             </Typography>
+
+        {link && <CardActions className={classes.controls}>{link}</CardActions>}
+
           </CardContent>
-          {link && <div className={classes.controls}>{link}</div>}
+          
         </div>
       </Card>
-    </div>
+    
   );
 }
 

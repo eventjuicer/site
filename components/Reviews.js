@@ -30,14 +30,7 @@ const styles = {
     backgroundColor: 'transparent'
   },
 
-  icon: {
-    width: 100,
-    height: 100,
-    display: 'inline-block',
-    position: 'relative',
-    top: 30,
-    color: 'rgb(255,255,255,0.6)'
-  },
+
 
   avatar: {
     margin: 10
@@ -87,8 +80,8 @@ class Reviews extends React.Component {
             <CardContent>
               <Typography
                 template="heroOpinion"
-                icon={<IconQuote className={classes.icon} />}
-                //    iconAfter={ <IconQuote className={classes.icon} /> }
+                icon={ IconQuote }
+                iconClassName="heroIcon"
               >
                 {this.isBigScreen() ? opinion.text : opinion.mobileText}
               </Typography>

@@ -21,12 +21,12 @@ const styles = theme => ({
 
   flexList: {
     display: 'flex',
-    justifyContent: 'center' /*space-around space-between*/,
-    alignItems: 'flex-start',
-
-    [theme.breakpoints.only('md')]: {
-      marginTop: 10,
-      flexDirection: 'row'
+    
+    alignItems: 'flex-start', //w pionie
+    flexWrap : 'wrap',
+   
+    [theme.breakpoints.down('sm')]: {
+      
     }
   },
 
@@ -36,17 +36,22 @@ const styles = theme => ({
 
   h : {
       flexDirection: 'row',
+      [theme.breakpoints.down('xs')]: {
+
+        flexDirection: 'column',
+        justifyContent: 'center' /*space-around space-between*/,
+
+      }
   },
 
-  flexListItem: {
-    // display: 'flex',
-    // alignItems: 'flex-start'
+  item: {
+     maxWidth: 350,
   },
 
   icon: {
-    color: '#000000',
-    width: 40,
-    height: 40
+    color: 'rgba(0,0,0,0.6)',
+    width: 30,
+    height: 30
   }
 });
 
@@ -67,11 +72,11 @@ const Benefits = ({ classes, labels, baseLabel, translate, orientation }) => (
         }
         
         return (
-          <ListItem className={classes.flexListItem} key={primary}>
+          <ListItem className={classes.item} key={primary}>
             <ListItemIcon>  
-               <Icon className={classes.icon} />
+               <Icon className={classNames(classes.icon)} />
             </ListItemIcon>
-            <ListItemText primary={translate(primary)} />
+            <ListItemText primary={translate(baseLabel ? `${baseLabel}.${primary}` : primary)} />
           </ListItem>
         )
       })}
@@ -82,7 +87,7 @@ const Benefits = ({ classes, labels, baseLabel, translate, orientation }) => (
 
 Benefits.defaultProps = {
   labels: [],
-  baseLabel : '',
+  baseLabel : "",
   orientation : "v"
 };
 

@@ -8,7 +8,7 @@ const TicketRemainingInfo = ({remaining, isBookable, translate}) => {
     return null
   }
 
-  return   <span>{`${remaining} ${translate("common.pcs")}`}</span>
+  return   <span>{`${translate("common.remaining")} ${remaining} ${translate("common.pcs")}`}</span>
 
 }
 

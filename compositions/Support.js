@@ -16,6 +16,9 @@ const styles = theme => ({
   icon: {
     height: 38,
     width: 38
+  },
+  contactInfo : {
+    fontWeight : 600
   }
 });
 
@@ -35,11 +38,10 @@ const Support = ({
       title={translate(title)}
       text={
         <div>
-          {translate(text, { person: name })}
-          <p>
-            {phone} <br />
-            {email}
-          </p>
+          <p>{translate(text, { person: name })}<br/>
+          <span className={classes.contactInfo}>
+          {email} {phone}  
+          </span></p>
         </div>
       }
       imageSrc={avatar}

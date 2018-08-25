@@ -11,7 +11,7 @@ import BoothInfo from './BoothInfo';
 import TicketGroupsInfo from './TicketGroupsInfo';
 import Booth from './Booth';
 import SalesInfo from './SalesInfo';
-import Legend from './Legend'
+import OrderSteps from './OrderSteps'
 
 import {BookingMapSelector} from '../../redux/selectors'
 
@@ -23,6 +23,12 @@ import {
 
 import {getCompanyLogotype, getCompanyName} from '../../helpers'
 
+const steps = [
+  "choose_booth",
+  "confirm",
+  "pay",
+  "access"
+]
 
 const styleMapping = {
 
@@ -162,7 +168,8 @@ class Bookingmap extends React.PureComponent {
     const { bookingmap, classes, zoom, height } = this.props;
     return (
       <div>
-        <Legend />
+           <OrderSteps items={steps} active={0} />
+
       <div
         className={classes.scrollableContainer}
         style={{

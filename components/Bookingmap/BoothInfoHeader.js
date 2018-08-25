@@ -1,30 +1,87 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import compose from 'recompose/compose';
+import onlyUpdateForKeys from 'recompose/onlyUpdateForKeys';
 import _get from 'lodash/get';
 
-import Avatar from '@material-ui/core/Avatar';
+import { getTicketGroup } from '../../redux/selectors'
+
 
 import Typography from '../MyTypography';
-import { translate } from '../../i18n';
 
 const styles = theme => ({
   container: {
-    marginLeft: 15,
     display: 'flex',
-    flexDirection: 'row',
-    width: '100%',
-    justifyContent: 'flex-start',
-    alignItems: 'center'
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
-  avatar: {
-    width: 70,
+  booth: {
+    display: 'table',
+    width: 105,
     height: 70,
-    marginRight: 40
-  }
+    borderRadius: 3,
+    padding: 0,
+    marginBottom: 20,
+    boxShadow: '1px 1px #555555'
+  },
+
+  boothText: {
+    display: 'table-cell',
+    verticalAlign : 'middle',
+    textAlign : 'center',
+    fontWeight: 900,
+    fontFamily: "'Verdana', 'Arial', sans-serif",
+    fontSize: 15
+  },
+
 });
+
+
+const BoothInfoHeader = ({ 
+  ticketgroup,
+  label,
+  classes
+ }) => {
+  
+  const backgroundColor = _get(ticketgroup, 'map.bgcolor');
+  const border = `1px solid ${_get(ticketgroup, 'map.bordercolor')}`;
+  const color = _get(ticketgroup, 'map.fontcolor');
+
+  return (
+    <div className={classes.container}>
+      <div
+        className={classes.booth}
+        style={{ backgroundColor, border, color }}
+      >
+        <div className={classes.boothText}>{label}</div>
+      </div>
+
+      <Typography>{_get(ticketgroup, 'name')}</Typography>
+    </div>
+  );
+};
+
+
+const enhance = compose(
+  connect(
+    (state, props) => {
+      const mapStateToProps = (state, props) => {
+        return {
+          ticketgroup : getTicketGroup(state, props)
+        }
+      }
+      return mapStateToProps}
+  ),
+  withStyles(styles),
+  onlyUpdateForKeys(["groupId"])
+)
+
+export default enhance(BoothInfoHeader);
+
+
 
 /*
 
@@ -44,31 +101,3 @@ tickets : []
 FORMDATA
 {id: "booth-22-242", ti: "D 1.2"}
 */
-
-const BoothInfoHeader = ({ group, formdata, classes, translate }) => {
-  const poolName = _get(group, 'name');
-  const boothName = _get(formdata, 'ti');
-  const backgroundColor = _get(group, 'map.bgcolor');
-  const border = `1px solid ${_get(group, 'map.bordercolor')}`;
-  const color = _get(group, 'map.fontcolor');
-
-  return (
-    <div className={classes.container}>
-      <Avatar
-        className={classes.avatar}
-        style={{ backgroundColor, border, color }}
-      >
-        {boothName}
-      </Avatar>
-
-      <Typography>{poolName}</Typography>
-    </div>
-  );
-};
-
-const enhance = compose(
-  withStyles(styles)
-  // translate
-);
-
-export default enhance(BoothInfoHeader);

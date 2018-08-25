@@ -235,15 +235,44 @@ const styles = theme => ({
     }
   },
 
+  salesInfoText : {
+    fontWeight: 400,
+    fontSize: '1.1rem',
+    marginBottom: '1em',
+    marginTop: '1em',
+    [theme.breakpoints.up('md')]: {
+      marginTop: '.7em',
+    }
+  },
+
   heroOpinion : {
 
     fontSize: '2rem',
     color : '#ffffff',
     [theme.breakpoints.down('md')]: {
       fontSize: '1.3rem',
-    }
+    },
 
-  }
+
+  },
+
+  heroIcon: {
+    width: 100,
+    height: 100,
+    display: 'inline-block',
+    position: 'relative',
+    top: 30,
+    color: 'rgb(255,255,255,0.6)'
+  },
+
+  icon: {
+    width: 20,
+    height: 20,
+    display: 'inline-block',
+    position: 'relative',
+    top: 30,
+    color: 'rgb(0,0,0,0.6)'
+  },
 
 });
 
@@ -277,6 +306,12 @@ const templates = {
     variant: 'body1',
     component: 'p',
     classNames: ['benefitsText']
+  },
+
+  salesInfo : {
+    variant: 'body1',
+    component: 'p',
+    classNames: ['salesInfoText']
   },
 
   default: {
@@ -338,7 +373,6 @@ const templates = {
     variant : "body1",
     component : "p",
     classNames : ["heroOpinion"]
-
   },
 
   SUBH2CH: {
@@ -407,6 +441,7 @@ const MyTypography = props => {
     classes,
     icon,
     iconAfter,
+    iconClassName,
     highlight
   } = { ...props, ...templates[props.template] };
 
@@ -425,9 +460,13 @@ const MyTypography = props => {
     _label_params = label[1];
   }
 
+  const IconBefore = icon;
+  const IconAfter = iconAfter;
+
   return (
     <Typography variant={variant} component={component} className={cn}>
-      {icon}
+      
+      {icon && <IconBefore style={{marginRight: 10}} className={classes.iconClassName} />}
 
       {hl(
         highlight,
@@ -435,7 +474,7 @@ const MyTypography = props => {
         classes.highlighted
       )}
 
-      {iconAfter}
+      {iconAfter && <IconAfter className={classes.iconClassName} />}
     </Typography>
   );
 };
@@ -446,6 +485,7 @@ MyTypography.defaultProps = {
   classNames: [],
   icon: null,
   iconAfter: null,
+  iconClassName : "icon",
   highlight: false,
   width: 'xs'
 };
