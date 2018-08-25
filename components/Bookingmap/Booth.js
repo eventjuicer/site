@@ -3,64 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import { onlyUpdateForKeys, compose } from 'recompose';
-
-
-
-
-const styles = theme => ({
-  booth: {
-    position: 'absolute',
-    display: 'block',
-
-   backgroundColor: 'lightgreen',
-   border: '1px solid green',
-   color: 'black',
-
-    zIndex: 20,
-    borderRadius: 3,
-    cursor: 'pointer',
-    padding: 0,
-    margin: 0,
-    textAlign: 'center',
-    boxShadow: '1px 1px #555555',
-    overflow: 'hidden',
-    whiteSpace: 'wrap'
-  },
-
-  
-  boothHold: {
-    backgroundColor: 'yellow',
-    color: 'red'
-  },
-
-  boothSold: {
-    backgroundColor: '#D3D3D3',
-    borderColor: '#999',
-    color: '#666'
-  },
-
-  boothSelected: {
-    backgroundColor: 'blue',
-    color: 'white',
-    border: '3px solid black'
-  },
-
-  boothText: {
-    display: 'inline-block',
-    verticalAlign: 'middle',
-    lineHeight: 'normal',
-    fontWeight: 600,
-    fontFamily: 'verdana, arial, sans-serif',
-    fontSize: 9
-  },
-
-  boothLogotype: {},
-
-  cname: {
-    display: 'block'
-  }
-});
-
+import boothStyles, {getStylingName} from './boothStyles'
 
 const Booth = ({
   status,
@@ -68,23 +11,26 @@ const Booth = ({
   classes,
   onClick,
   selected,
-  styleId,
   zoom,
   buyer,
-  styling
+  groupId,
+  legend
 }) => (
   <li
     onClick={() => onClick(data.id, data.g, data.ti)}
-    className={classNames(classes.booth, classes[styling], {
+    className={classNames(
+      classes.booth, 
+      classes[getStylingName(groupId)], {
       [classes.boothSold]: status === 'sold',
       [classes.boothHold]: status === 'hold',
-      [classes.boothSelected]: selected
+      [classes.boothSelected]: selected,
+      [classes.boothOnLegend] : legend
     })}
     style={{
       height: data.dh * zoom,
       width: data.dw * zoom,
-      top: data.dt * zoom,
-      left: data.dl * zoom,
+      top: "dt" in data ? data.dt * zoom : "auto",
+      left: "dl" in data ? data.dl * zoom : "auto",
       lineHeight: `${data.dh}px`,
     }}
   >
@@ -104,22 +50,23 @@ const Booth = ({
 
 Booth.defaultProps = {
   selected: false,
-  zoom: 1
+  zoom: 1,
+  legend : false
 };
 
 Booth.propTypes = {
-  styling: PropTypes.string.isRequired,
+  groupId: PropTypes.number.isRequired,
   zoom: PropTypes.number,
   selected: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
   status: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   data: PropTypes.object.isRequired,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 const enhance = compose(
-  onlyUpdateForKeys(['status', 'selected']),
-  withStyles(styles)
+  onlyUpdateForKeys(['status', 'selected', 'groupId']),
+  withStyles(boothStyles)
 );
 
 export default enhance(Booth);

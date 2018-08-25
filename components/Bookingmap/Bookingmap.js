@@ -8,10 +8,11 @@ import { translate } from '../../i18n'
 
 
 import BoothInfo from './BoothInfo';
-import TicketGroupsInfo from './TicketGroupsInfo';
 import Booth from './Booth';
 import SalesInfo from './SalesInfo';
 import OrderSteps from './OrderSteps'
+import Legend from './Legend'
+import Loader from './Loader'
 
 import {BookingMapSelector} from '../../redux/selectors'
 
@@ -23,6 +24,10 @@ import {
 
 import {getCompanyLogotype, getCompanyName} from '../../helpers'
 
+
+
+
+
 const steps = [
   "choose_booth",
   "confirm",
@@ -30,24 +35,13 @@ const steps = [
   "access"
 ]
 
-const styleMapping = {
-
-  263 : "style1", //light
-  264 : "style2", //standard
-  265 : "style3", //hot
-  266 : "style4", //superhot
-  267 : "style5", //ultra
-  268 : "style6", //grand
-  269 : "style6"
-}
-
 
 const styles = theme => ({
   scrollableContainer: {
     overflowX: 'auto',
     overflowY: 'visible',
     height: 800,
-    whiteSpace: 'nowrap'
+    whiteSpace: 'nowrap',
   },
 
   container: {
@@ -107,12 +101,7 @@ class Bookingmap extends React.PureComponent {
     const { ticketgroups } = this.props;
     return groupId in ticketgroups ? ticketgroups[groupId] : {};
   }
-
-  //temporary solution...normally we should have styling ID in ticket group map data!
-  getStylingName(groupId){
-    return groupId in styleMapping ? styleMapping[groupId] : "style1"
-  }
-
+ 
   onBoothClick = (boothId, groupId, label) => {
 
     const { dialogShow, boothChecked, translate } = this.props;
@@ -168,28 +157,33 @@ class Bookingmap extends React.PureComponent {
     const { bookingmap, classes, zoom, height } = this.props;
     return (
       <div>
+        <div>
            <OrderSteps items={steps} active={0} />
-
+           <Legend />
+        </div>
       <div
         className={classes.scrollableContainer}
         style={{
           height: height * zoom
         }}
       >
-        {bookingmap && 'mapsource' in bookingmap ? (
+       
           <div
             className={classes.container}
             style={{
               width: 1170 * zoom
             }}
           >
+
+           {bookingmap && 'mapsource' in bookingmap ? (
+             <React.Fragment>
             <img src={bookingmap.mapsource} className={classes.bg} />
 
             <ul className={classes.booths}>
               {bookingmap.booths &&
                 bookingmap.booths.map(booth => (
                   <Booth
-                    styling={this.getStylingName(booth.g)}
+                    groupId={ booth.g }
                     zoom={zoom}
                     selected={this.isBoothSelected(booth.id)}
                     onClick={this.onBoothClick}
@@ -200,12 +194,11 @@ class Bookingmap extends React.PureComponent {
                   />
                 ))}
             </ul>
-          </div>
-        ) : (
-          <div>...loading</div>
-        )}
+            </React.Fragment>) : <Loader />
+         } 
+         </div>
       </div>
-        <TicketGroupsInfo />
+        
       </div>
     );
   }

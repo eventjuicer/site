@@ -118,6 +118,12 @@ export const KeyedTicketGroupsSelector = createSelector(
   (ticketgroups) => keyBy(ticketgroups, "id")
 )
 
+export const FilteredTicketGroupsSelector = createSelector(
+  getTicketGroups,
+  (state, props) => props.allowedGroupIds,
+  (ticketgroups, ids) => Array.isArray(ids) ? ticketgroups.filter(tg => ids.includes(tg.id)) : ticketgroups
+)
+
 export const getTicketGroup = createSelector(
   KeyedTicketGroupsSelector,
   (state, props) => props.groupId,
