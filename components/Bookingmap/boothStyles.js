@@ -42,20 +42,21 @@ const styles = {
   },
   
   boothHold: {
-    backgroundColor: '#D3D3D3',
-    color: '#666666'
+    backgroundColor: '#D3D3D3 !important',
+    borderColor: '#999 !important',
+    color: '#666666 !important'
   },
 
   boothSold: {
-    backgroundColor: '#D3D3D3',
-    borderColor: '#999',
-    color: '#666666'
+    backgroundColor: '#D3D3D3 !important',
+    borderColor: '#999 !important',
+    color: '#666666 !important'
   },
 
   boothSelected: {
-    backgroundColor: 'blue',
-    color: 'white',
-    border: '3px solid black'
+    backgroundColor: 'blue !important',
+    color: 'white !important',
+    border: '3px solid black !important'
   },
 
   boothText: {
@@ -64,7 +65,7 @@ const styles = {
     lineHeight: 'normal',
     fontWeight: 600,
     fontFamily: 'verdana, arial, sans-serif',
-    fontSize: 9
+    fontSize: 10
   },
 
   boothLogotype: {},

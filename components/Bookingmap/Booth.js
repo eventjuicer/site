@@ -18,14 +18,17 @@ const Booth = ({
 }) => (
   <li
     onClick={() => onClick(data.id, data.g, data.ti)}
-    className={classNames(
-      classes.booth, 
-      classes[getStylingName(groupId)], {
+    className={
+      classNames(
+      classes.booth,
+      classes[getStylingName(groupId)],
+    {
       [classes.boothSold]: status === 'sold',
       [classes.boothHold]: status === 'hold',
       [classes.boothSelected]: selected,
       [classes.boothOnLegend] : legend
-    })}
+    }
+    )}
     style={{
       height: data.dh * zoom,
       width: data.dw * zoom,
@@ -39,7 +42,7 @@ const Booth = ({
         [classes.boothLogotype]: buyer && 'logotype' in buyer && buyer.logotype
       })}
     >
-      {data.ti}
+      {status === 'hold' ? "R" : data.ti}
 
       {buyer && 'cname2' in buyer && zoom > 1 ? (
         <span className={classes.cname}>{buyer.cname2}</span>
