@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import _get from 'lodash/get';
 import MyTypography from '../MyTypography'
 import {FilteredTicketGroupsSelector} from '../../redux/selectors'
+import PropTypes from 'prop-types'
 
 import Booth from './Booth'
 
@@ -46,20 +47,24 @@ const Legend = ({ticketgroups, classes}) =>  (
   </div>
 )
 
-
-Legend.defaultProps = {
-    ticketgroups : [],
-    allowedGroupIds : [264,265,266,267]
+Legend.propTypes = {
+    allowedGroupIds : PropTypes.array
 }
 
-const mapStateToProps = (state,props) => {
-    const func = (state, props) => ({ticketgroups : FilteredTicketGroupsSelector(state, props)})
-    return func
+Legend.defaultProps = {
+    ticketgroups : []
 }
 
 const enhance = compose(
+    connect( (state,props) => {
+        const mapStateToProps = (state, props) => {
+            return {
+                ticketgroups : FilteredTicketGroupsSelector(state, props),
+            }
+          }
+          return mapStateToProps
+    } ),
     withStyles(styles),
-    connect( mapStateToProps )
   );
   
 export default enhance(Legend);

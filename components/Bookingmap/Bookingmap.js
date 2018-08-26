@@ -159,7 +159,7 @@ class Bookingmap extends React.PureComponent {
       <div>
         <div>
            <OrderSteps items={steps} active={0} />
-           <Legend />
+           <Legend allowedGroupIds={ [264,265,266,267] } />
         </div>
       <div
         className={classes.scrollableContainer}
