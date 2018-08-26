@@ -10,8 +10,6 @@ import { translate } from '../../i18n'
 import BoothInfo from './BoothInfo';
 import Booth from './Booth';
 import SalesInfo from './SalesInfo';
-import OrderSteps from './OrderSteps'
-import Legend from './Legend'
 import Loader from './Loader'
 
 import {BookingMapSelector} from '../../redux/selectors'
@@ -24,16 +22,6 @@ import {
 
 import {getCompanyLogotype, getCompanyName} from '../../helpers'
 
-
-
-
-
-const steps = [
-  "choose_booth",
-  "confirm",
-  "pay",
-  "access"
-]
 
 
 const styles = theme => ({
@@ -156,11 +144,7 @@ class Bookingmap extends React.PureComponent {
 
     const { bookingmap, classes, zoom, height } = this.props;
     return (
-      <div>
-        <div>
-           <OrderSteps items={steps} active={0} />
-           <Legend allowedGroupIds={ [264,265,266,267] } />
-        </div>
+      
       <div
         className={classes.scrollableContainer}
         style={{
@@ -197,8 +181,6 @@ class Bookingmap extends React.PureComponent {
             </React.Fragment>) : <Loader />
          } 
          </div>
-      </div>
-        
       </div>
     );
   }

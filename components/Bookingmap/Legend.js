@@ -20,7 +20,8 @@ const styles = {
     },
 
     description : {
-        marginRight : 10
+        marginRight : 10,
+        maxWidth : 600,
     },
     
     groups : {

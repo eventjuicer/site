@@ -21,7 +21,8 @@ import {
 
 import { Exhibitors, Photos } from '../datasources'
 
-const Bookingmap = dynamic(import('../components/Bookingmap/Bookingmap'));
+import {SalesMap} from '../compositions'
+
 
 class PageExhibit extends React.Component {
   static async getInitialProps({
@@ -75,15 +76,12 @@ class PageExhibit extends React.Component {
 
       </Wrapper>
 
-
-             <Wrapper
-          first
-          label="exhibitors.map.title"
-          secondaryLabel="exhibitors.map.opensales"
-        >
-          {/* <WidthAwareInfo /> */}
-          <Bookingmap />
-        </Wrapper>
+      <SalesMap
+            first
+            label="exhibitors.map.title"
+            secondaryLabel="exhibitors.map.opensales"
+      />
+        
 
         <Wrapper
         label="exhibitors.list_full"

@@ -20,7 +20,8 @@ import {
   Visitor,
   FeaturedExhibitors,
   VisitorBenefits,
-  RoleButtons
+  RoleButtons,
+  SalesMap
 } from '../compositions';
 
 
@@ -83,20 +84,13 @@ class PageIndex extends React.Component {
       </Wrapper> */}
 
 
+      <SalesMap
+      
+        label="exhibitors.map.title2"
+        secondaryLabel="exhibitors.map.opensales"
 
+      />
 
-
-
-        <Wrapper
-          label="exhibitors.map.title2"
-          secondaryLabel="exhibitors.map.opensales"
-        >
-
-        <Bookingmap />
-
-        </Wrapper>
-
-    
         <FeaturedExhibitors
         
         label="exhibitors.list_featured"

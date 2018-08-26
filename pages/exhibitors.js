@@ -52,7 +52,7 @@ class PageExhibitors extends React.Component {
 
         <RoleButtons />
 
-        <Visitor label="visitors.register" />
+        <Visitor label="visitors.are_you_visitor" />
        
       </Layout>
     );

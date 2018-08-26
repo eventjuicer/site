@@ -10,7 +10,7 @@ import {
   Avatarlist
 } from '../components';
 
-import {Visitor, Company, FeaturedExhibitors} from '../compositions'
+import {Visitor, Company, FeaturedExhibitors, SalesMap} from '../compositions'
 import Layout from '../layouts/main';
 import { Exhibitors, Photos } from "../datasources"
 const People = dynamic(import('../components/People'));
@@ -68,6 +68,8 @@ class PageCompany extends React.Component {
       ]}
       />
 
+
+      <SalesMap  label="exhibitors.map.title2" />
 
         {/*
     <Wrapper

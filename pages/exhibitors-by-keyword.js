@@ -18,7 +18,7 @@ import {
   Centered
 } from '../components';
 
-import {Visitor} from '../compositions'
+import {Visitor, SalesMap} from '../compositions'
 
 //const Gallery = dynamic(import('../components/GalleryQuoted'))
 
@@ -48,7 +48,6 @@ class PageExhibitorsByKeyword extends React.Component {
 
         <Wrapper label="exhibitors.list_by_keyword" first>
 
-
           <Exhibitors keyword={keyword}>
             {
               (all, keywords, filtered) =>
@@ -70,13 +69,12 @@ class PageExhibitorsByKeyword extends React.Component {
             }
           </Exhibitors>
 
-
-
         </Wrapper>
 
-        <Wrapper
+
+          <Visitor 
           label="visitors.register"
-          color="#fafafa"
+          color="#ffffff"
           links={[
             <Link
               key="visit"
@@ -86,14 +84,14 @@ class PageExhibitorsByKeyword extends React.Component {
               color="secondary"
             />
           ]}
-        >
-          <Visitor />
-        </Wrapper>
+          />
+ 
 
-        <Wrapper label="exhibitors.map.title">
-          {/* <h1>SCROLL </h1> */}
-          <Bookingmap />
-        </Wrapper>
+        <SalesMap 
+        label="exhibitors.map.title"
+        />
+
+       
       </Layout>
     );
   }
