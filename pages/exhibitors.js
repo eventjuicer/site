@@ -62,21 +62,7 @@ class PageExhibitors extends React.Component {
 
         </Wrapper>
 
-        <Wrapper
-          label="visitors.register"
-          color="#fafafa"
-          links={[
-            <Link
-              key="visit"
-              href="/visit"
-              label="visitors.more_info"
-              variant="flat"
-              color="secondary"
-            />
-          ]}
-        >
-          <Visitor />
-        </Wrapper>
+        <Visitor label="visitors.register" />
 
         <Wrapper label="exhibitors.map.title">
           {/* <h1>SCROLL </h1> */}

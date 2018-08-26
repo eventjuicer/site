@@ -1,17 +1,15 @@
 import { MyHead as Head } from '../next';
-
 import { connect } from 'react-redux';
 
 import {
   Typography,
   Wrapper,
-  WhoIsGonnaBeThere,
+  // WhoIsGonnaBeThere,
   //  Googlemap,
-  Schedule
+  //Schedule
 } from '../components';
 
 import Layout from '../layouts/main';
-
 import {Visitor} from '../compositions'
 
 class PageSchedule extends React.Component {
@@ -33,14 +31,14 @@ class PageSchedule extends React.Component {
       <Layout>
         <Head />
 
-        {/* <Wrapper
+    <Wrapper
       first
-      label="presenters.schedule"
-      secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
+      label="presenters.tba"
+//      secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
     >
-      <Schedule  />
+      {/* <Schedule  /> */}
 
-    </Wrapper> */}
+    </Wrapper>
 
         <Visitor label="visitors.register_alt" />
        

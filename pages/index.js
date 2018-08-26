@@ -25,7 +25,7 @@ import {
 
 
 
-import { Exhibitors, Photos } from '../datasources'
+import { Exhibitors } from '../datasources'
 
 const Bookingmap = dynamic(import('../components/Bookingmap/Bookingmap'));
 

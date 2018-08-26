@@ -19,7 +19,7 @@ import {
   MyLink as Link
 } from '../next';
 
-import {Photos} from '../datasources'
+import { Exhibitors, Photos } from '../datasources'
 
 const Bookingmap = dynamic(import('../components/Bookingmap/Bookingmap'));
 
@@ -43,29 +43,10 @@ class PageExhibit extends React.Component {
       <Layout>
         <Head />
 
-        <Wrapper
-          first
-          label="exhibitors.map.title"
-          secondaryLabel="exhibitors.map.opensales"
-        >
-          {/* <WidthAwareInfo /> */}
-          <Bookingmap />
-        </Wrapper>
-
-        {/* <Wrapper
-        label="exhibitors.list_full"
-
-      //  dense={true}
-      >
-        <Avatarlist  data={ exhibitors } limit={null} />
-      </Wrapper> */}
-
-
-      <Wrapper>
-        <GridBenefits />
-      </Wrapper>
-
-
+     
+    
+      <ExhibitorBenefits label="exhibitors.benefits.title" />
+  
       <Wrapper label="exhibitors.faq.name">
 
         <Faq
@@ -94,6 +75,25 @@ class PageExhibit extends React.Component {
 
       </Wrapper>
 
+
+             <Wrapper
+          first
+          label="exhibitors.map.title"
+          secondaryLabel="exhibitors.map.opensales"
+        >
+          {/* <WidthAwareInfo /> */}
+          <Bookingmap />
+        </Wrapper>
+
+        <Wrapper
+        label="exhibitors.list_full"
+      >
+
+        <Exhibitors>
+          {(exhibitors) => <Avatarlist data={exhibitors} /> }
+        </Exhibitors>
+
+      </Wrapper>
 
 
       <Photos>{
