@@ -1,5 +1,5 @@
 import React from 'react';
-import dynamic from 'next/dynamic';
+//import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -19,6 +19,8 @@ import classNames from 'classnames';
 
 import Cart from './CartButton';
 import LanguageSelect from './LanguageSelect';
+
+import RawTranslatedText from './RawTranslatedText'
 
 import {
   drawerShow as drawerShowAction,
@@ -79,7 +81,9 @@ function MyAppBar(props) {
               color="inherit"
               className={classes.flex}
             >
-              Targi eHandlu
+        
+        <RawTranslatedText pl="Targi eHandlu" en="Ecommerce Warsaw Expo" />
+
             </Typography>
           </Link>
 
@@ -96,9 +100,9 @@ MyAppBar.defaultProps = {
   position: ''
 };
 
-// ButtonAppBar.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
+MyAppBar.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
 const enhance = compose(
   connect(
