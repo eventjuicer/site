@@ -8,7 +8,14 @@ export const getCompanyProfileInfo = (company, key) =>
   _get(company, `profile.${key}`, '');
 
 
-export const getCompanyName = (company) =>  _get(company, 'company.profile.name', _get(company, 'company.slug', ''))
+export const getCompanyName = (company) => {
+  const profileName = getCompanyProfileInfo(company, "name")
+  if(profileName.length > 1)
+  {
+    return profileName
+  }
+  return _get(company, 'slug', '')
+} 
 
 export const getCdnResource = (company, key, scale = true) => {
   const cdn = getCompanyProfileInfo(company, `${key}_cdn`);

@@ -44,11 +44,13 @@ class BoothInfo extends React.Component {
 
   render() {
     const { formdata, classes} = this.props;
-    const cname2 = getCompanyName(formdata)
+
 
     if(!formdata || ! "company" in formdata){
       return <Support />
     }
+
+    const cname2 = getCompanyName(formdata.company)
 
     return (
       <div>
