@@ -10,7 +10,7 @@ import {
   Avatarlist
 } from '../components';
 
-import {Visitor, Company} from '../compositions'
+import {Visitor, Company, FeaturedExhibitors} from '../compositions'
 import Layout from '../layouts/main';
 import { Exhibitors, Photos } from "../datasources"
 const People = dynamic(import('../components/People'));
@@ -43,7 +43,7 @@ class PageCompany extends React.Component {
 
         <Company id={company_id} asPath={asPath} />
 
-        <Wrapper
+        <Visitor   
           label="visitors.register"
           links={[
             <Link
@@ -53,30 +53,21 @@ class PageCompany extends React.Component {
               variant="flat"
               color="secondary"
             />
-          ]}
-        >
-          <Visitor />
-        </Wrapper>
+        ]}/>
+      
+      <FeaturedExhibitors 
+      label="exhibitors.list_featured"
+      links={[
+        <Link
+          key="all"
+          href="/exhibitors"
+          label="common.menu.visitors.exhibitors"
+          variant="flat"
+          color="secondary"
+        />
+      ]}
+      />
 
-        <Wrapper
-          label="exhibitors.list_featured"
-          secondaryTitle=""
-          links={[
-            <Link
-              key="all"
-              href="/exhibitors"
-              label="common.menu.visitors.exhibitors"
-              variant="flat"
-              color="secondary"
-            />
-          ]}
-        >
-          {/* <Avatarlist filter={function(item){ return item.featured; }} data={ exhibitors } /> */}
-          <Exhibitors mobile={8}>{
-            (exhibitors) => <Avatarlist data={exhibitors} />
-          }</Exhibitors>
-
-        </Wrapper>
 
         {/*
     <Wrapper

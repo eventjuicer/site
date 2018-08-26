@@ -96,23 +96,23 @@ class PageIndex extends React.Component {
 
         </Wrapper>
 
-        <Wrapper
-          label="exhibitors.list_featured"
-          secondaryTitle=""
-          links={[
-            <Link
-              key="all"
-              href="/exhibitors"
-              label="common.menu.visitors.exhibitors"
-              variant="flat"
-              color="secondary"
-            />
-          ]}
-        >
+    
+        <FeaturedExhibitors
+        
+        label="exhibitors.list_featured"
+        secondaryTitle=""
+        links={[
+          <Link
+            key="all"
+            href="/exhibitors"
+            label="common.menu.visitors.exhibitors"
+            variant="flat"
+            color="secondary"
+          />
+        ]}
+        
+        />
 
-        <FeaturedExhibitors />
-
-        </Wrapper>
 
 
       <VideoWithReviews />

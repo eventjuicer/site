@@ -3,6 +3,7 @@ export { default as VideoWithReviews } from './VideoWithReviews';
 export { default as Visitor } from './Visitor';
 export { default as CompanyBookingmap } from './CompanyBookingmap';
 export { default as FeaturedExhibitors } from './FeaturedExhibitors';
+export { default as AllExhibitorsAvatarlist } from './AllExhibitorsAvatarlist';
 export { default as Support } from './Support';
 export { default as Company } from './Company';
 export { default as VisitorBenefits } from './VisitorBenefits';

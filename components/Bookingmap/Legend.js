@@ -11,15 +11,19 @@ import Booth from './Booth'
 
 const styles = {
     root : {
+      display: 'flex',
       maxWidth : 1000,
-      margin: '0px auto 10px auto',
+      margin: '10px auto 10px auto',
+      alignItems : 'center',
+      justifyContent : 'center'
     },
 
     description : {
-
+        marginRight : 10
     },
     
     groups : {
+        flexGrow : 8,
         display : 'flex',
         flexDirection : 'row',
         flexWrap : 'wrap'

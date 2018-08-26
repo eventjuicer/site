@@ -10,14 +10,14 @@ import {
 } from '../components';
 
 
-const FeaturedExhibitors = (props) => (
+const AllExhibitorsAvatarlist = (props) => (
 
   <Wrapper {...props}>
-  <Exhibitors filter={(e) => e.featured}>{
+
+  <Exhibitors mobile={false} random={false}>{
     (exhibitors, keywords) =>
 
     <React.Fragment>
-      <Avatarlist data={exhibitors} />
 
       <Centered style={{marginTop: 80}}>
 
@@ -26,9 +26,12 @@ const FeaturedExhibitors = (props) => (
 
       </Centered>
 
+      <Avatarlist data={exhibitors} />
+
     </React.Fragment>
   }</Exhibitors>
+
   </Wrapper>
 
 )
-export default FeaturedExhibitors
+export default AllExhibitorsAvatarlist

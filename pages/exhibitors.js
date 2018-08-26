@@ -7,16 +7,16 @@ import Layout from '../layouts/main';
 
 import {
   Wrapper,
-  Avatarlist,
-  Centered,
   Bookingmap,
   Typography,
-  Gallery,
-  KeywordSelect
+  Gallery
 } from '../components';
 
 //const Gallery = dynamic(import('../components/GalleryQuoted'))
-import {Visitor} from '../compositions'
+import {
+  Visitor, 
+  RoleButtons,
+  AllExhibitorsAvatarlist} from '../compositions'
 
 import {Exhibitors} from '../datasources'
 
@@ -42,32 +42,18 @@ class PageExhibitors extends React.Component {
 
         <Head />
 
-        <Wrapper label="exhibitors.list_full" first>
-
-          <Exhibitors mobile={false} random={false}>{
-
-              (exhibitors, keywords) =>   <React.Fragment>
-
-                <Centered>
-                  <KeywordSelect keywords={keywords} />
-                </Centered>
-
-                <Avatarlist data={exhibitors}  />
-
-              </React.Fragment>
-
-            }
-
-          </Exhibitors>
-
-        </Wrapper>
-
-        <Visitor label="visitors.register" />
+        <AllExhibitorsAvatarlist label="exhibitors.list_full" first />
 
         <Wrapper label="exhibitors.map.title">
           {/* <h1>SCROLL </h1> */}
           <Bookingmap />
         </Wrapper>
+
+
+        <RoleButtons />
+
+        <Visitor label="visitors.register" />
+       
       </Layout>
     );
   }
