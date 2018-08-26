@@ -15,6 +15,7 @@ const styles = theme => ({
     backgroundAttachment: 'fixed',
     height: '100vh',
     width: '100%',
+
     position: 'relative',
     overflow: 'hidden',
 
@@ -56,7 +57,11 @@ const styles = theme => ({
     justifyContent: 'center',
     alignItems: 'center',
     paddingLeft: 10,
-    paddingRight: 10
+    paddingRight: 10,
+    //https://stackoverflow.com/questions/21224411/css-calc-viewport-units-workaround
+    marginTop: -64,
+    paddingTop: 64,
+    boxSizing: 'border-box',
   },
 
   h1: {}

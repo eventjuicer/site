@@ -49,7 +49,7 @@ const styles = () => ({
   related: {
     display: 'flex',
     // alignItems : 'flex-end',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
     marginTop: '2rem'
   }
 });

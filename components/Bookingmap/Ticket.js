@@ -25,7 +25,7 @@ const styles = {
   ticket : {
     padding: 10,
     fontFamily : "'Lato','Helvetica','Arial', sans-serif",
-    border : '1px solid #cccccc',
+//    border : '1px solid #cccccc',
     margin : 2,
     minHeight : 50,
     borderRadius : 3

@@ -1,9 +1,12 @@
 import { translate } from '../../i18n';
+import * as moment from 'moment';
 
 const TicketDate = ({start, end, inDates, translate}) => {
 
+    const diff = moment(end).diff(moment(), "days")
+
     if(inDates) {
-      return `${translate('event.sales.pool.end')} ${end.substring(0, 10)}`
+      return `${translate('event.sales.pool.end')} ${diff} ${translate('common.days')}`
     }
 
     return `${translate('event.sales.pool.start')} ${start.substring(0, 10)}` 

@@ -3,7 +3,6 @@ import compose from 'recompose/compose';
 
 import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import { translate } from '../../i18n'
 import _get from 'lodash/get';
 import MyTypography from '../MyTypography'
 import {FilteredTicketGroupsSelector} from '../../redux/selectors'
@@ -32,10 +31,10 @@ const data = {
     dw : 60,
 }
 
-const Legend = ({ticketgroups, classes, translate}) =>  (
+const Legend = ({ticketgroups, classes}) =>  (
   <div className={classes.root}>
   <div className={classes.description}>
-    <MyTypography label="costam" />
+    <MyTypography label="event.sales.pool.legend" />
   </div>
   <div className={classes.groups}>
   {ticketgroups.map(tg => <Booth key={tg.name} groupId={tg.id} legend={true} styling={"style1"} selected={false} data={{...data, ti : tg.name}} onClick={function(){} } />)}
@@ -55,7 +54,6 @@ const mapStateToProps = (state,props) => {
 }
 
 const enhance = compose(
-    translate,
     withStyles(styles),
     connect( mapStateToProps )
   );

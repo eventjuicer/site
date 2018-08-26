@@ -12,7 +12,7 @@ const buildBooths = (maxW, maxH) => {
 
     while (currentH <= maxH && currentW <= maxW) {
 
-        booths.push(<Booth x={currentW} y={currentH} />)
+        booths.push(<Booth key={`${currentH}_${currentW}`} x={currentW} y={currentH} />)
 
         if(maxW - currentW < 100){
             currentW = 10

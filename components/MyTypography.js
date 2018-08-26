@@ -130,7 +130,7 @@ const styles = theme => ({
   //  textTransform: 'uppercase',
 
     [theme.breakpoints.up('md')]: {
-      fontSize: '3rem'
+      fontSize: '2.2rem'
     },
 
   },

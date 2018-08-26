@@ -14,7 +14,8 @@ import {
   FaSquare as Space,
   FaInfoCircle as Info,
   FaIdCard as Ids,
-  FaBookOpen as Catalogue
+  FaBookOpen as Catalogue,
+  FaCouch as Furniture
 } from 'react-icons/fa';
 
 const styles = theme => ({
@@ -117,7 +118,7 @@ const SalesInfo = ({classes, ...rest}) => (
     primary : "profile"
   },
   {
-    icon : Ids,
+    icon : Furniture,
     primary : "furniture"
   }
 ]} />

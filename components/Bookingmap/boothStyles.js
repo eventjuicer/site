@@ -37,7 +37,8 @@ const styles = {
 
   boothOnLegend : {
     position: 'relative',
-    marginRight : 10
+    marginRight : 7,
+    marginBottom: 7
   },
   
   boothHold: {
