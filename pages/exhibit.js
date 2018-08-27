@@ -21,7 +21,7 @@ import {
 
 import { Exhibitors, Photos } from '../datasources'
 
-import {SalesMap} from '../compositions'
+import {SalesMap, ExhibitorBenefits} from '../compositions'
 
 
 class PageExhibit extends React.Component {
@@ -45,6 +45,11 @@ class PageExhibit extends React.Component {
         <Head />
 
      
+     <SalesMap
+            first
+            label="exhibitors.map.title"
+            secondaryLabel="exhibitors.map.opensales"
+      />
     
       <ExhibitorBenefits label="exhibitors.benefits.title" />
   
@@ -76,11 +81,6 @@ class PageExhibit extends React.Component {
 
       </Wrapper>
 
-      <SalesMap
-            first
-            label="exhibitors.map.title"
-            secondaryLabel="exhibitors.map.opensales"
-      />
         
 
         <Wrapper

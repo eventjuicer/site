@@ -6,11 +6,12 @@ import onlyUpdateForKeys from 'recompose/onlyUpdateForKeys';
 import _get from 'lodash/get';
 
 import { getTicketGroup } from '../../redux/selectors'
-
+import boothStyles, { getStylingName } from './boothStyles'
 
 import Typography from '../MyTypography';
+import classNames from 'classnames'
 
-const styles = theme => ({
+const styles  = {
   container: {
     display: 'flex',
     flexDirection: 'column',
@@ -18,7 +19,7 @@ const styles = theme => ({
     justifyContent: 'center',
   },
 
-  booth: {
+  customBooth: {
     display: 'table',
     width: 105,
     height: 70,
@@ -28,7 +29,7 @@ const styles = theme => ({
     boxShadow: '1px 1px #555555'
   },
 
-  boothText: {
+  customBoothText: {
     display: 'table-cell',
     verticalAlign : 'middle',
     textAlign : 'center',
@@ -37,26 +38,34 @@ const styles = theme => ({
     fontSize: 15
   },
 
-});
+};
+
+const mergedStyles = Object.assign(styles, boothStyles)
 
 
 const BoothInfoHeader = ({ 
   ticketgroup,
+  classes,
+  boothId,
+  groupId,
   label,
-  classes
+  status
  }) => {
   
-  const backgroundColor = _get(ticketgroup, 'map.bgcolor');
-  const border = `1px solid ${_get(ticketgroup, 'map.bordercolor')}`;
-  const color = _get(ticketgroup, 'map.fontcolor');
+  const bookable = (status != "hold" && status != "sold")
 
   return (
     <div className={classes.container}>
       <div
-        className={classes.booth}
-        style={{ backgroundColor, border, color }}
+        className={classNames(
+          classes.customBooth,
+          { 
+            [classes[getStylingName(ticketgroup.id)]] : bookable,
+            [classes.boothSold] : !bookable
+          }
+        )}
       >
-        <div className={classes.boothText}>{label}</div>
+        <div className={classes.customBoothText}>{label}</div>
       </div>
 
       <Typography>{_get(ticketgroup, 'name')}</Typography>
@@ -75,8 +84,8 @@ const enhance = compose(
       }
       return mapStateToProps}
   ),
-  withStyles(styles),
-  onlyUpdateForKeys(["groupId"])
+  withStyles(mergedStyles),
+  onlyUpdateForKeys(["status", "groupId"])
 )
 
 export default enhance(BoothInfoHeader);

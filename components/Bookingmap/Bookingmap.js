@@ -94,28 +94,29 @@ class Bookingmap extends React.PureComponent {
 
     const { dialogShow, boothChecked, translate } = this.props;
 
-    const boothIsBlocked = this.getStatusShort(boothId);
+    const status = this.getStatusShort(boothId);
 
     let modalTitle = '';
     let modalContent = '';
     let modalButtons = [];
 
+    const props = {boothId, groupId, label, status}
 
-    switch (boothIsBlocked) {
+    switch (status) {
       case 'hold':
         modalTitle = translate("event.sales.booths.hold");
-        modalContent = <BoothInfo />;
+        modalContent = <BoothInfo {...props} />;
 
         break;
       case 'sold':
         modalTitle = translate("event.sales.booths.sold");
-        modalContent = <BoothInfo formdata={this.getStatus(boothId)} />;
+        modalContent = <BoothInfo {...props} formdata={this.getStatus(boothId)} />;
 
         break;
       default:
         /* THERE IS NOW FORMDATA FOR UNSOLD BOOTHS!!!! */
         modalTitle = translate("event.sales.booths.free");
-        modalContent = <SalesInfo groupId={groupId} boothId={boothId} label={label} />
+        modalContent = <SalesInfo {...props} />
     }
 
     dialogShow({

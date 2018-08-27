@@ -19,12 +19,12 @@ const styles = theme => ({
 
   icon : {
     marginTop: -12,
-    width : 65,
-    height : 65,
+    width : 50,
+    height : 50,
 
     [theme.breakpoints.up('md')]: {
-      width : 80,
-      height : 80,
+      width : 60,
+      height : 60,
     },
 
     color : 'red'

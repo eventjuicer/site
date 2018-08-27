@@ -45,7 +45,7 @@ const styles = theme => ({
   },
 
   item: {
-     maxWidth: 350,
+     maxWidth: 300,
   },
 
   icon: {

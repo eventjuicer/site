@@ -1,15 +1,10 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { connect } from 'react-redux';
-import compose from 'recompose/compose'
-import _get from 'lodash/get';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardActions from '@material-ui/core/CardActions';
-import Typography from '@material-ui/core/Typography';
 
-import {Support} from '../../compositions';
+import _get from 'lodash/get';
+import Typography from '@material-ui/core/Typography';
+import BoothInfoContainer from './BoothInfoContainer'
+import Legend from './Legend'
 import Tags from '../Tags'
 
 import {getCompanyLogotype, getCompanyName} from '../../helpers'
@@ -34,75 +29,79 @@ const styles = theme => ({
    padding: 10
   },
 
+  logoAndCnameHolder : {
+    display : 'flex',
+    flexWrap : 'wrap',
+  },
+
+  logotype : {
+    width: 300,
+    height : 100,
+    backgroundRepeat : 'no-repeat',
+    backgroundSize : 'contain',
+    backgroundPosition : 'center'
+  },
+
+  cname : {
+    display : 'flex',
+   // alignItems : 'center',
+    justifyContent : 'center',
+    flexDirection : 'column',
+    marginLeft : 20
+  },
+
+  companyKeywords : {
+
+  }
+
 });
 
-class BoothInfo extends React.Component {
-  // componentDidMount()
-  // {
-  //   this.props.resourceFetchRequest("tickets");
-  // }
+const BoothInfo = ({ formdata, classes, ...rest}) => {
 
-  render() {
-    const { formdata, classes} = this.props;
-
-
-    if(!formdata || ! "company" in formdata){
-      return <Support />
+    if(!formdata || !"company" in formdata){
+      return (
+        <BoothInfoContainer 
+        header={
+          <Legend allowedGroupIds={ [264,265,266,267] } />
+        } 
+        {...rest} />
+      )
     }
 
-    const cname2 = getCompanyName(formdata.company)
-
     return (
-      <div>
 
-      <Card raised={false} elevation={0}>
-       <CardMedia
-         className={classes.media}
-         image={ getCompanyLogotype(formdata.company) }
-         title=""
-       />
-       <CardContent>
-         <Typography gutterBottom variant="headline" component="h2">
-           {cname2}
-         </Typography>
-         <Typography component="div">
-            
-           <div
-             className={classes.htmlContainer}
-             dangerouslySetInnerHTML={{
-               __html: _get(formdata, 'company.profile.about')
-             }}
-           />
-           
-         </Typography>
-       </CardContent>
-       <CardActions>
-         <Tags tags={_get(formdata, "company.profile.keywords")} />
-         {/* <Button size="small" color="primary">
-           Share
-         </Button>
-         <Button size="small" color="primary">
-           Learn More
-         </Button> */}
-       </CardActions>
-     </Card>
-
-    <Support />
-      
-      </div>
+      <BoothInfoContainer 
+      header={
+        <Legend allowedGroupIds={ [264,265,266,267] } />
+      }
+      content={
+        <React.Fragment>   
+            <div className={classes.logoAndCnameHolder}>
+              <div className={classes.logotype} style={{
+                backgroundImage : `url(${getCompanyLogotype(formdata.company)})`
+              }} />
+              <div className={classes.cname}>
+                <Typography  variant="headline" component="h2">
+                {getCompanyName(formdata.company)}
+              </Typography>
+                <div className={classes.companyKeywords}>
+                  <Tags tags={_get(formdata, "company.profile.keywords")} />
+                </div>
+              </div>
+            </div>
+            <Typography component="div">
+              <div
+              className={classes.htmlContainer}
+              dangerouslySetInnerHTML={{
+              __html: _get(formdata, 'company.profile.about')
+              }}
+              />
+            </Typography>
+        </React.Fragment>
+      }
+      {...rest} />
     );
-  }
 }
 
-const enhance = compose(
-  //  translate,
-  withStyles(styles),
-  // connect(
-  //   state => ({
-  //     boothsSelected: state.boothsSelected
-  //   }),
-  //   { resourceFetchRequest: resourceFetchRequestAction }
-  // )
-);
 
-export default enhance(BoothInfo);
+export default withStyles(styles)(BoothInfo);

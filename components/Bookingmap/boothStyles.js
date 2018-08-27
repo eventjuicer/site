@@ -18,7 +18,7 @@ const styles = {
 
   booth: {
     position: 'absolute',
-    display: 'block',
+    display: 'table',
 
    backgroundColor: 'lightgreen',
    border: '1px solid green',
@@ -60,7 +60,7 @@ const styles = {
   },
 
   boothText: {
-    display: 'inline-block',
+    display: 'table-cell',
     verticalAlign: 'middle',
     lineHeight: 'normal',
     fontWeight: 600,

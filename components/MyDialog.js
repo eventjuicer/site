@@ -5,6 +5,7 @@ import compose from 'recompose/compose';
 import { dialogHide } from './redux/actions';
 
 import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
 
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -15,11 +16,18 @@ import withMobileDialog from '@material-ui/core/withMobileDialog';
 
 import {translate} from '../i18n'
 
+const styles = {
+  root : {
+    backgroundColor : '#eeeeee'
+  }
+}
+
+
 class ResponsiveDialog extends React.PureComponent {
 
   render() {
 
-    const { translate, fullScreen, forcefs, dialog, dialogHide } = this.props;
+    const { translate, classes, fullScreen, forcefs, dialog, dialogHide } = this.props;
 
     const open = dialog && 'title' in dialog;
 
@@ -31,6 +39,9 @@ class ResponsiveDialog extends React.PureComponent {
         open={open}
         onClose={dialogHide}
         aria-labelledby="responsive-dialog-title"
+        classes={{
+          paper : classes.root
+        }}
       >
         <DialogTitle id="responsive-dialog-title">{dialog.title}</DialogTitle>
         <DialogContent>
@@ -72,6 +83,7 @@ ResponsiveDialog.propTypes = {
 
 const enhance = compose(
   withMobileDialog(),
+  withStyles(styles),
   translate,
   connect(
     state => ({ dialog: state.dialog }),

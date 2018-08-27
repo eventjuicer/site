@@ -2,12 +2,18 @@ import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import { translate } from '../../i18n';
+import { withStyles } from '@material-ui/core/styles';
+import compose from 'recompose/compose'
 
+const styles = {
+    root : {
+        backgroundColor : 'transparent'
+    }
+}
 
+const OrderSteps = ({items, classes, translate, baseLabel, active}) => (
 
-const OrderSteps = ({items, translate, baseLabel, active}) => (
-
-    <Stepper activeStep={active} alternativeLabel>
+    <Stepper classes={{root : classes.root }} activeStep={active} alternativeLabel>
     {items.map(label => {
     return (
         <Step key={label}>
@@ -25,5 +31,8 @@ OrderSteps.defaultProps = {
     active : 0
 }
 
-
-export default translate(OrderSteps)
+const enhance = compose(
+    translate,
+    withStyles(styles)
+)
+export default enhance(OrderSteps)

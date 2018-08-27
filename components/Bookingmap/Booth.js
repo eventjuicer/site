@@ -34,7 +34,7 @@ const Booth = ({
       width: data.dw * zoom,
       top: "dt" in data ? data.dt * zoom : "auto",
       left: "dl" in data ? data.dl * zoom : "auto",
-      lineHeight: `${data.dh}px`,
+    //  lineHeight: `${data.dh}px`,
     }}
   >
     <span

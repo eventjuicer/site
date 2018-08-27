@@ -1,11 +1,8 @@
 
-import { withStyles } from '@material-ui/core/styles';
 import Typography from '../MyTypography';
-
-import {Support} from '../../compositions';
 import TicketGroup from './TicketGroup';
 import Benefits from '../Benefits'
-import BoothInfoHeader from './BoothInfoHeader';
+import BoothInfoContainer from './BoothInfoContainer'
 import OrderSteps from './OrderSteps'
 
 import {
@@ -18,44 +15,7 @@ import {
   FaCouch as Furniture
 } from 'react-icons/fa';
 
-const styles = theme => ({
 
-  root: {
-    
-    marginRight : 20,
-    marginLeft: 20,
-    marginTop : 20,
-
-    display : 'flex',
-    flexDirection : 'row',
-    
-    [theme.breakpoints.down('xs')]: {
-      flexDirection: 'column'
-    }
-  },
-  boothId : {
-    marginRight : 40,
-    marginTop : 50,
-    [theme.breakpoints.down('xs')]: {
-      margin: 0
-    }
-  },
-
-  mainContainer : {
-    flexGrow: 5,
-    marginBottom : 20
-  },
-
-  tickets : {
-
-  },
-
-  info : {
-    marginTop: 40,
-    marginBottom : 10,
-  }
-
-})
 
 const steps = [
   "choose_booth",
@@ -65,31 +25,33 @@ const steps = [
 ]
 
 
-const SalesInfo = ({classes, ...rest}) => (
 
-  <div>
-    
+const SalesInfo = (props) => (
+
+  <BoothInfoContainer {...props} 
+  
+  header={
     <OrderSteps items={steps} active={1} />
+  }
+  
+  content={
+    <React.Fragment>
 
-  <div className={classes.root}>
-  <div className={classes.boothId}>
-  <BoothInfoHeader {...rest} />
- </div>
-
-  <div className={classes.mainContainer}>
-
-  <div className={classes.tickets}>
+      <div >
   
   <Typography template="salesInfo" icon={ Info } label="event.sales.pool.info" />
 
   <TicketGroup
       noBookableTickets={<div />}
-      {...rest}
-    />
+      {...props}
+  />
 
   </div>
 
- <div className={classes.info}>
+ <div style={{
+    marginTop: 40,
+    marginBottom : 10,
+  }}>
 
  <Typography template="salesInfo" icon={ Info } label="exhibitors.standard.info" />
 
@@ -121,21 +83,21 @@ const SalesInfo = ({classes, ...rest}) => (
     icon : Furniture,
     primary : "furniture"
   }
-]} />
+]} 
+/>
 
 </div>
 
-      <Support title="event.sales.support" />
 
- </div>
-</div>
+    </React.Fragment>
+  }
+  
+   />
 
 
-  </div>
- 
 
 )
 
 
 
-export default withStyles(styles)(SalesInfo)
+export default SalesInfo
