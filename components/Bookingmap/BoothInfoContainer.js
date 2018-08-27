@@ -46,7 +46,11 @@ const styles = theme => ({
   },
 
   paper : {
-      padding : 30,
+      paddingRight : 24,
+      paddingLeft : 24,
+      paddingTop : 16,
+      paddingBottom : 16,
+      
       [theme.breakpoints.down('sm')]: {
         padding : 14,
       }

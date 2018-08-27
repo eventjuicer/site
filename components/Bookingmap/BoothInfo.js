@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import BoothInfoContainer from './BoothInfoContainer'
 import Legend from './Legend'
 import Tags from '../Tags'
-
+import MyTypography from '../MyTypography'
 import {getCompanyLogotype, getCompanyName} from '../../helpers'
 
 //import { resourceFetchRequest as resourceFetchRequestAction } from './redux/actions';
@@ -30,12 +30,13 @@ const styles = theme => ({
   },
 
   logoAndCnameHolder : {
+    marginTop : 20,
     display : 'flex',
     flexWrap : 'wrap',
   },
 
   logotype : {
-    width: 300,
+    minWidth : 300,
     height : 100,
     backgroundRepeat : 'no-repeat',
     backgroundSize : 'contain',
@@ -76,6 +77,9 @@ const BoothInfo = ({ formdata, classes, ...rest}) => {
       }
       content={
         <React.Fragment>   
+
+            <MyTypography label="event.sales.booths.owner" template="benefitsTitle" />
+
             <div className={classes.logoAndCnameHolder}>
               <div className={classes.logotype} style={{
                 backgroundImage : `url(${getCompanyLogotype(formdata.company)})`
@@ -84,11 +88,14 @@ const BoothInfo = ({ formdata, classes, ...rest}) => {
                 <Typography  variant="headline" component="h2">
                 {getCompanyName(formdata.company)}
               </Typography>
-                <div className={classes.companyKeywords}>
-                  <Tags tags={_get(formdata, "company.profile.keywords")} />
-                </div>
+               
               </div>
             </div>
+            
+            <div className={classes.companyKeywords}>
+                  <Tags tags={_get(formdata, "company.profile.keywords")} />
+            </div>
+
             <Typography component="div">
               <div
               className={classes.htmlContainer}
