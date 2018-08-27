@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
-
+import RawTranslatedText from './RawTranslatedText'
 
 
 const styles = theme => ({
@@ -89,10 +89,10 @@ function FsButtons(props) {
 
   return (
     <div className={classes.root}>
-      {items.map(({title, url, width, onClick}) => (
+      {items.map(({label, url, width, onClick}) => (
         <ButtonBase
           focusRipple
-          key={title}
+          key={label}
           className={classes.image}
           focusVisibleClassName={classes.focusVisible}
           style={{
@@ -114,7 +114,7 @@ function FsButtons(props) {
               color="inherit"
               className={classes.imageTitle}
             >
-              {title}
+              <RawTranslatedText label={label} />
               <span className={classes.imageMarked} />
             </Typography>
           </span>
