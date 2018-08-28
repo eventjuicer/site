@@ -29,6 +29,7 @@ export const getTicketGroups = state => state.resources.ticketgroups
 export const getBookingmap = state => state.resources.bookingmap
 export const getPhotos = state => state.resources.photos
 export const getExhibitors = (state, props) => state.resources.exhibitors
+export const getPresenters = (state, props) => state.resources.presenters
 
 /*
 RESOURCES
@@ -107,6 +108,18 @@ export const MobileAwareFilteredExhibitors = createSelector(
    return exhibitors
   }
 )
+
+export const KeyedPresentersSelector = createSelector(
+  getPresenters,
+  (presenters) => keyBy(presenters, "id")
+)
+
+export const getPresenterByIdSelector = createSelector(
+  KeyedPresentersSelector,
+  (_, props) => "id" in props ? props.id : null,
+  (keyed, id) => id && id in keyed ? keyed[id] : {}
+)
+
 
 export const KeyedFormdataSelector = createSelector(
   getFormdata,

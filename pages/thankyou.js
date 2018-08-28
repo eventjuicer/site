@@ -6,7 +6,7 @@ import _get from 'lodash/get';
 import {
   Typography,
   Wrapper,
-  WhoIsGonnaBeThere,
+ // WhoIsGonnaBeThere,
   MyTypography,
   Googlemap
 } from '../components';
@@ -17,6 +17,7 @@ import {Visitor} from '../compositions'
 class ThankyouPage extends React.Component {
   static async getInitialProps({
     query,
+    asPath,
     isServer,
     store
   }) {
@@ -53,14 +54,12 @@ class ThankyouPage extends React.Component {
           label={['visitors.thankyou', { name: _get(person, 'fname', '') }]}
         />
 
-        <Wrapper label="visitors.attendees">
+        {/* <Wrapper label="visitors.attendees">
           <WhoIsGonnaBeThere />
-        </Wrapper>
+        </Wrapper> */}
 
-        <Wrapper label="visitors.register_alt">
-          <Visitor />
-        </Wrapper>
-
+        <Visitor label="visitors.register_alt" />
+ 
         {/* <Googlemap /> */}
       </Layout>
     );

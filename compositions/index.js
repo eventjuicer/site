@@ -6,6 +6,7 @@ export { default as FeaturedExhibitors } from './FeaturedExhibitors';
 export { default as AllExhibitorsAvatarlist } from './AllExhibitorsAvatarlist';
 export { default as Support } from './Support';
 export { default as Company } from './Company';
+export { default as Presenter } from './Presenter';
 export { default as VisitorBenefits } from './VisitorBenefits';
 export { default as ExhibitorBenefits } from './ExhibitorBenefits';
 export { default as RoleButtons } from './RoleButtons';

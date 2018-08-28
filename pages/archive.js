@@ -1,5 +1,4 @@
-import dynamic from 'next/dynamic';
-
+ 
 import { connect } from 'react-redux';
 import Layout from '../layouts/main';
 
@@ -18,33 +17,22 @@ import { MyHead as Head, MyLink as Link } from '../next';
 
 import {Visitor} from '../compositions'
 
-import { fetcher } from '../helpers';
-
+ 
 class PageArchive extends React.Component {
   static async getInitialProps({
-    err,
-    req,
-    res,
-    pathname,
+   
+    
     query,
     asPath,
     isServer,
     store
   }) {
+
     const presenters = `presenters?event_id=${query.id}`;
-
-    const results = await fetcher(
-      {
-        events: false,
-        [presenters]: false
-      },
-      store
-    );
-
+    
     return {
-      events: results.getData('events'),
+      preload : ["events", presenters],
       eventId: query.id,
-      presenters: results.getData(presenters)
     };
   }
 

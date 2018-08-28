@@ -5,36 +5,28 @@ import { connect } from 'react-redux';
 import {
   Typography,
   Wrapper,
-  WhoIsGonnaBeThere,
-  Schedule,
-  //  Googlemap,
-  People
+  //WhoIsGonnaBeThere,
+  //Schedule,
+  //Googlemap,
+  //People
 } from '../components';
 
 import {Visitor} from '../compositions'
 
 import Layout from '../layouts/main';
 
-
-import { fetcher } from '../helpers';
-
 class PageAgenda extends React.Component {
   static async getInitialProps({
-    err,
-    req,
-    res,
-    pathname,
+  
     query,
     asPath,
     isServer,
     store
   }) {
-    const results = await fetcher(
-      { exhibitors: false, presenters: false },
-      store
-    );
-
-    return {};
+  
+    return {
+      preload : ["exhibitors", "presenters"]
+    };
   }
 
   render() {
@@ -44,18 +36,16 @@ class PageAgenda extends React.Component {
       <Layout>
         <Head />
 
-        {/* <Wrapper
+         <Wrapper
           label="presenters.schedule"
-          secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
+          secondaryLabel="common.coming_soon"
           first
         >
-          <Schedule  />
-        </Wrapper> */}
+          {/* <Schedule  /> */}
+        </Wrapper> 
 
-        <Wrapper label="visitors.register_alt">
-          <Visitor />
-        </Wrapper>
-
+       <Visitor label="visitors.register_alt" />
+ 
         {/* <Wrapper first
           label="presenters.list_full"
           secondaryTitle="Czołowi Eksperci Handlu Online"

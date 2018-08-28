@@ -1,26 +1,15 @@
 import React from 'react';
-
 import { MyHead as Head } from '../next';
-
 import { connect } from 'react-redux';
 
 import {
-  Typography,
-  Wrapper,
-  Schedule,
-  ColumnList
-} from '../components';
-
-import {
   VideoWithEventInfo,
-  Visitor
+  Visitor, 
+  RoleButtons,
+  AllExhibitorsAvatarlist
 } from '../compositions';
 
-
-import {Exhibitors} from '../datasources'
-
 import Layout from '../layouts/main';
-
 
 class PageError extends React.Component {
 
@@ -39,34 +28,17 @@ class PageError extends React.Component {
 
     return (
       <Layout>
+        
         <Head />
 
         <VideoWithEventInfo />
 
-        <Wrapper label="visitors.register">
-          <Visitor />
-        </Wrapper>
+        <Visitor label="visitors.register" first />
 
-        {/* <Wrapper
-              label="presenters.schedule"
-              secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
+        <RoleButtons />
 
-              // links={[
-              //   <Link href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
-              // ]}
-            >
-              <Schedule    />
-        </Wrapper> */}
+        <AllExhibitorsAvatarlist label="exhibitors.list_full" />
 
-        <Wrapper label="exhibitors.list_full" color="#ffffff">
-
-
-          <Exhibitors limit={4}>
-            {/* {(exhibitors) =>  <ColumnList data={exhibitors} />} */}
-          </Exhibitors>
-
-
-        </Wrapper>
       </Layout>
     );
   }
