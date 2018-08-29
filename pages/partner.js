@@ -2,10 +2,8 @@ import { MyHead as Head } from '../next';
 import { connect } from 'react-redux';
 
 import {
-  Typography,
-  Wrapper,
-  WhoIsGonnaBeThere,
-  Googlemap
+
+//  Googlemap
 } from '../components';
 
 import Layout from '../layouts/main';
@@ -13,10 +11,7 @@ import {Visitor} from '../compositions'
 
 class Partner extends React.Component {
   static async getInitialProps({
-    err,
-    req,
-    res,
-    pathname,
+   
     query,
     asPath,
     isServer,
@@ -30,19 +25,9 @@ class Partner extends React.Component {
       <Layout>
         <Head />
 
-        <Wrapper label="visitors.register_alt">
-          <Visitor />
-        </Wrapper>
+        <Visitor label="visitors.register_alt" />
+        
 
-        <Wrapper label="visitors.attendees">
-          <WhoIsGonnaBeThere />
-        </Wrapper>
-
-        <Wrapper>
-          <Visitor />
-        </Wrapper>
-
-        <Googlemap />
       </Layout>
     );
   }

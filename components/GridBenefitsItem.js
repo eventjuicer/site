@@ -10,6 +10,10 @@ const styles = theme => ({
     display: 'flex',
     flexDirection : 'row',
   //  alignItems : 'center'
+    marginBottom : 30,
+    [theme.breakpoints.up('md')]: {
+      marginBottom : 60,
+    },
   },
 
   iconContainer : {

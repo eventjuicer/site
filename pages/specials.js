@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic';
 import { connect } from 'react-redux';
 import Layout from '../layouts/main';
 
@@ -6,15 +5,13 @@ import {
   Wrapper,
   ColumnList,
   //  Bookingmap,
-  Gallery
+//  Gallery
 } from '../components';
 
 import { MyHead as Head, MyLink as Link } from '../next';
 
 import {Visitor} from '../compositions'
-
-
-const Bookingmap = dynamic(import('../components/Bookingmap/Bookingmap'));
+import {Exhibitors} from '../datasources'
 
 class PageSpecials extends React.Component {
   static async getInitialProps({
@@ -38,20 +35,22 @@ class PageSpecials extends React.Component {
       <Layout>
         <Head />
 
-        <Wrapper
-          first
-          label="visitors.register"
-          secondaryTitle="Spotkamy się w gronie ponad 3000 osób!"
-          //   links={[
-          //   <Link key="more" href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
-          // ]}
-        >
-          <Visitor />
-        </Wrapper>
+       <Visitor 
+           first
+           label="visitors.register"
+           secondaryTitle="Spotkamy się w gronie ponad 3000 osób!"
+          />
 
-        <Wrapper label="exhibitors.list_full" color="#ffffff">
-          <ColumnList data={exhibitors} />
-        </Wrapper>
+   <Wrapper label="exhibitors.list_full" color="#ffffff">
+
+<Exhibitors columns={true}>
+  {(exhibitors) => <ColumnList data={exhibitors} /> }
+</Exhibitors>
+
+</Wrapper>
+
+
+       
       </Layout>
     );
   }

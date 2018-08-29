@@ -1,21 +1,41 @@
 
 import {GridBenefits, Wrapper} from '../components'
 import {
-    FaGraduationCap as Edu,
+    FaWrench as Edu,
     FaHandshake as Handshake,
-    FaComments as Expo 
+    FaLockOpen as Free,
+    FaSearch as Landscape,
+    FaChartLine as Trends,
+    FaPiggyBank as Savings
 } from 'react-icons/fa';
+
+
+
+
+
+
+
 
 const _items = [
 
     {
-        icon : Handshake,
-        label :  'free_expo_entry',
+        icon : Free,
+        label :  'free_entry',
+    },
+
+    {
+        icon : Savings,
+        label : 'special_offers'
+    },
+
+    {
+        icon : Landscape,
+        label : 'insight'
     },
 
     {   
         icon : Edu,
-        label : 'free_presentations_access'
+        label : 'case_studies'
     },
 
     {   
@@ -24,8 +44,8 @@ const _items = [
     },
 
     {   
-        icon : Handshake,
-        label : 'free_presentations_entry'
+        icon : Trends,
+        label : 'future'
     }
 ]
 

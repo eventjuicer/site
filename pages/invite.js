@@ -1,30 +1,26 @@
 import _get from 'lodash/get';
-
 import { MyHead as Head } from '../next';
-
 import { connect } from 'react-redux';
 
 import {
   Typography,
   Wrapper,
-  WhoIsGonnaBeThere,
   Gallery,
-  Schedule,
-  Avatarlist,
   EventInfo
 } from '../components';
 
 import Layout from '../layouts/main';
-import {Visitor} from '../compositions'
+
+import {
+  Visitor, 
+  FeaturedExhibitors
+} from '../compositions'
 
 import { fetcher, getInviteOgImage } from '../helpers';
 
 class PageInvite extends React.Component {
   static async getInitialProps({
-    err,
-    req,
-    res,
-    pathname,
+   
     query,
     asPath,
     isServer,
@@ -99,44 +95,16 @@ class PageInvite extends React.Component {
           />
         </Wrapper>
 
-        <Wrapper
-          first
-          label="presenters.schedule"
-          secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
-        >
-          <Schedule />
-        </Wrapper>
+      
+        <Visitor label="visitors.register" />
+        
+        <FeaturedExhibitors />
 
-        <Wrapper
-          label="visitors.register"
-          secondaryTitle="Spotkamy się w gronie ponad 3000 osób!"
-        >
-          <Visitor />
-        </Wrapper>
+       
 
-        <Gallery label="event.gallery" />
+  
 
-        <Wrapper
-          label="exhibitors.list_featured"
-          secondaryTitle="i ponad 120 innych Wystawców"
-          //  dense={true}
-        >
-          <Avatarlist
-            filter={function(item) {
-              return item.featured;
-            }}
-            data={exhibitors}
-          />
-        </Wrapper>
-
-        <Wrapper label="visitors.attendees">
-          <WhoIsGonnaBeThere />
-        </Wrapper>
-
-        <Wrapper label="visitors.register_alt">
-          <Visitor />
-        </Wrapper>
-
+       
         {/* <Googlemap /> */}
       </Layout>
     );

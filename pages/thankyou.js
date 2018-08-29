@@ -13,7 +13,7 @@ import {
 
 import Layout from '../layouts/main';
 import {Visitor} from '../compositions'
- 
+
 class ThankyouPage extends React.Component {
   static async getInitialProps({
     query,
@@ -37,6 +37,7 @@ class ThankyouPage extends React.Component {
 
     return (
       <Layout>
+
         <Head
           url={asPath}
           titleLabel={[

@@ -59,6 +59,16 @@ const SalesInfo = (props) => (
   orientation="h"
   baseLabel="exhibitors.standard"
   labels={[
+    {
+      icon : Space, 
+      primary : "space"
+    },
+
+    {
+      icon : Furniture,
+      primary : "furniture"
+    },
+    
   {
     icon : Electricity, 
     primary : "electricity"
@@ -67,10 +77,7 @@ const SalesInfo = (props) => (
     icon : Catering, 
     primary : "catering"
   },
-  {
-    icon : Space, 
-    primary : "space"
-  },
+
   {
     icon : Ids,
     primary : "ids"
@@ -78,11 +85,8 @@ const SalesInfo = (props) => (
   {
     icon : Catalogue,
     primary : "profile"
-  },
-  {
-    icon : Furniture,
-    primary : "furniture"
   }
+
 ]} 
 />
 
