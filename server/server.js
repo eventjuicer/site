@@ -1,4 +1,5 @@
 const express = require('express');
+const url = require('url');
 const cookieSession = require('cookie-session');
 const next = require('next');
 const LRUCache = require('lru-cache');
@@ -169,7 +170,9 @@ function cacheApiResult(endpoint) {
  */
 function getCacheKey(req, locale) {
 
-  return `${req.url}_${(locale || defaultLocale)}`;
+  const pathname = url.parse(req.url).pathname
+
+  return `${pathname}_${(locale || defaultLocale)}`;
 }
 
 async function renderAndCache(req, res, pagePath, queryParams) {
