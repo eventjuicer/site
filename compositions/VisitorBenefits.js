@@ -6,12 +6,13 @@ import {
     FaLockOpen as Free,
     FaSearch as Landscape,
     FaChartLine as Trends,
-    FaPiggyBank as Savings
+    FaPiggyBank as Savings,
+    FaDotCircle as Target
 } from 'react-icons/fa';
 
 
 
-
+//target - for whom
 
 
 

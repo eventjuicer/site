@@ -21,7 +21,11 @@ import {
 
 import { Exhibitors, Photos } from '../datasources'
 
-import {SalesMap, ExhibitorBenefits} from '../compositions'
+import {
+  SalesMap, 
+  ExhibitorBenefits, 
+  VideoWithReviews,
+  AllExhibitorsAvatarlist} from '../compositions'
 
 
 class PageExhibit extends React.Component {
@@ -44,15 +48,18 @@ class PageExhibit extends React.Component {
       <Layout>
         <Head />
 
-     
+    
+     <ExhibitorBenefits first label="exhibitors.benefits.title" />
+
      <SalesMap
-            first
+          
             label="exhibitors.map.title"
             secondaryLabel="exhibitors.map.opensales"
       />
     
-      <ExhibitorBenefits label="exhibitors.benefits.title" />
   
+      <VideoWithReviews />
+
       <Wrapper label="exhibitors.faq.name">
 
         <Faq
@@ -81,18 +88,8 @@ class PageExhibit extends React.Component {
 
       </Wrapper>
 
+      <AllExhibitorsAvatarlist label="exhibitors.list_full" />
         
-
-        <Wrapper
-        label="exhibitors.list_full"
-      >
-
-        <Exhibitors>
-          {(exhibitors) => <Avatarlist data={exhibitors} /> }
-        </Exhibitors>
-
-      </Wrapper>
-
 
       <Photos>{
         (photos, size) => <Gallery data={photos} size={size} label="event.gallery" />

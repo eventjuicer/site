@@ -35,8 +35,8 @@ class Faq extends React.Component {
       >
         <MyTypography label={`${baseLabel}.name`} template="SUBH2CH" />
 
-        {items.map((item, idx) => (
-          <FaqItem key={idx} baseLabel={baseLabel} {...item} />
+        {items.map(item => (
+          <FaqItem key={item.label} baseLabel={baseLabel} {...item} />
         ))}
       </div>
     );

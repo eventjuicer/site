@@ -1,38 +1,48 @@
 
 import {GridBenefits, Wrapper} from '../components'
 import {
-    FaGraduationCap as Edu,
     FaHandshake as Handshake,
-    FaComments as Expo 
+    FaComments as Talks,
+    FaSmile as Prooved,
+    FaPiggyBank as Savings,
+    FaLink as Bounds,
+    FaLightbulb as Inspiration
 } from 'react-icons/fa';
+
+
 
 const _items = [
 
     {
         icon : Handshake,
-        label :  'free_expo_entry',
+        label :  'outreach',
     },
-
     {   
-        icon : Edu,
-        label : 'free_presentations_access'
+        icon : Talks,
+        label : 'feedback'
     },
-
     {   
-        icon : Handshake,
-        label : 'networking'
+        icon : Prooved,
+        label : 'organizer'
     },
-
     {   
-        icon : Handshake,
-        label : 'free_presentations_entry'
+        icon : Savings,
+        label : 'all_inclusive'
+    },
+    {
+        icon : Bounds,
+        label : 'meet_clients'
+    },
+    {
+        icon : Inspiration,
+        label : 'inspiration'
     }
 ]
 
 
 const ExhibitorBenefits = ({items, ...rest}) => (
     <Wrapper {...rest}>
-        <GridBenefits baseLabel="visitors.benefits" items={items} />
+        <GridBenefits baseLabel="exhibitors.benefits" items={items} />
     </Wrapper>
 )
 
