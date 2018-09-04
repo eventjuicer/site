@@ -1,10 +1,12 @@
 import App, { Container } from 'next/app';
+import Router from 'next/router';
+
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { getMuiContext } from '../material-ui';
 
-import { TranslationProvider, CHANGE_LOCALE, CHANGE_LOCALE_MSGS } from '../i18n';
+import { CHANGE_LOCALE, CHANGE_LOCALE_MSGS } from '../i18n';
 
 import { Provider } from 'react-redux';
 import createStore from '../redux';
@@ -14,6 +16,10 @@ import withReduxSaga from 'next-redux-saga';
 import fetch from 'isomorphic-unfetch';
 
 import {resourceFetchRequest} from '../components/redux'
+
+
+import * as gtag from '../services/gtag';
+
 
 
 /*ctx
@@ -80,6 +86,10 @@ class MyApp extends App {
   pageContext = null;
 
   componentDidMount() {
+
+    Router.onRouteChangeComplete = url => {
+      gtag.pageview(url);
+    };
 
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
