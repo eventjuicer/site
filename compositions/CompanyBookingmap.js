@@ -14,6 +14,11 @@ const CompanyBookingmap = ({ company, label }) => {
   const selectedBoothIds = map(purchases, 'formdata.id');
   const selectedBoothNames = map(purchases, 'formdata.ti');
 
+  if(!selectedBoothIds.length)
+  {
+    return null
+  }
+
   return (
     <Wrapper
       label={[label, {
