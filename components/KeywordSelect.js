@@ -24,6 +24,7 @@ const KeywordSelect = ({ keywords, selected, classes }) => {
      keywords.map(keyword =>
 
      <Link
+       prefetch={false}
        key={keyword}
        href={`/exhibitors/${keyword}`}
        label={`common.tags.${keyword}`}

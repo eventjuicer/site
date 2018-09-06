@@ -1,22 +1,46 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import compose from 'recompose/compose';
+import { createSelector } from 'reselect';
 import { withStyles } from '@material-ui/core/styles';
-
-import Tab from './MyTab';
 import Tabs from '@material-ui/core/Tabs';
 
-import _get from 'lodash/get';
-import { translate } from '../i18n';
-
-import _mapValues from 'lodash/mapValues';
-import _pickBy from 'lodash/pickBy';
-
+import Tab from './MyTab';
 import CompanyTabContainer from './CompanyTabContainer'
+import { getRecord } from '../redux/selectors'
 
+
+const findSub = (sources, profile) => {
+  return sources.filter(item => item in profile && profile[item].length > 10 ).map(item => ({name : item, value : profile[item]}))
+}
+
+
+const getCompanyProfileSelector = createSelector(
+
+  getRecord,
+
+  data => {
+
+    if(!data.profile){
+      return []
+    }
+
+    const tabs = [
+      {name : "about"},
+      {name : "products"},
+      {name :  "expo"},
+      {name : "contact", sources : ["website", "twitter", "facebook", "linkedin"]}
+    ]
+
+    return tabs.filter(({name, sources}) => (name in data.profile && data.profile[name].length > 50) || (sources && findSub(sources, data.profile))).map(({name, sources}) => ({name, value : sources ? findSub(sources, data.profile) : data.profile[name]}))
+
+  }
+)
 
 const styles = theme => ({
   container: {
-    minHeight: 300
+    minHeight: 100
   },
   root: {
     flexGrow: 1,
@@ -25,7 +49,7 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper
   },
   profile: {
-    minHeight: 200,
+    minHeight: 100,
     maxHeight: 400,
     overflowY: 'scroll',
     padding: 30,
@@ -35,50 +59,24 @@ const styles = theme => ({
     margin: '0 auto',
     marginBottom: 10
   },
-
   chip: {}
 });
 
 
-
-const MyTab = translate(Tab);
-
 class CompanyData extends React.Component {
+
   state = {
-    tab: null,
-    execTabs: {}
+    tab: typeof this.props.tabs[0] !== 'undefined' ? this.props.tabs[0].name : ""
   };
-
-  componentDidMount() {
-
-    const { company, tabs } = this.props;
-    const profile = _get(company, 'profile');
-
-    const execTabs = _pickBy(
-      _mapValues(tabs, value => value(profile)),
-      function(value, key) {
-        if (new Object(value) === value) {
-          return Object.values(value).some(arrval => arrval);
-        }
-        return value;
-      }
-    );
-
-    const names = Object.keys(execTabs);
-    const tab = names.length ? names[0] : null;
-
-    this.setState({ tab, execTabs });
-  }
 
   handleChange = (event, tab) => {
     this.setState({ tab });
   };
 
   render() {
-    const { classes } = this.props;
-    const { execTabs, tab } = this.state;
 
-    const filteredTabs = Object.keys(execTabs);
+    const { classes, tabs } = this.props;
+    const { tab } = this.state;
 
     return (
       <div className={classes.container}>
@@ -90,19 +88,19 @@ class CompanyData extends React.Component {
             textColor="primary"
             fullWidth={true}
             scrollable={true}
-            scrollButtons="auto"
+            scrollButtons="off"
           >
-            {filteredTabs.map((name, idx) => (
-              <Tab key={idx} value={name} label={`companies.profile.${name}`} />
+            {tabs.map(({name}) => (
+              <Tab key={name} value={name} label={`companies.profile.${name}`} />
             ))}
           </Tabs>
         </div>
 
-        {filteredTabs.map(
-          (name, idx) =>
-            tab === name && (
-              <div key={idx} className={classes.profile}>
-                <CompanyTabContainer data={execTabs[name]} />
+        {tabs.map(
+          ({name, value}) =>
+             (
+              <div key={name} className={classes.profile} style={{display : name === tab ? "block" : "none"  }}>
+                <CompanyTabContainer name={name} data={value} />
               </div>
             )
         )}
@@ -111,18 +109,23 @@ class CompanyData extends React.Component {
   }
 }
 
+
+
 CompanyData.defaultProps = {
-  tabs: {
-    about: profile => _get(profile, 'about'),
-    expo: profile => _get(profile, 'expo'),
-    products: profile => _get(profile, 'products'),
-    contact: company => ({
-      website: _get(company, 'website'),
-      twitter: _get(company, 'twitter'),
-      linkedin: _get(company, 'linkedin'),
-      facebook: _get(company, 'facebook')
-    })
-  }
+  tabs: []
 };
 
-export default withStyles(styles)(CompanyData);
+const enhance = compose(
+
+  connect( (state, props) => {
+
+    const mapStateToProps = (state,props) => ({
+      tabs : getCompanyProfileSelector(state, props)
+    })
+    return mapStateToProps;
+
+  }),
+  withStyles(styles)
+)
+
+export default enhance(CompanyData);

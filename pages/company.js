@@ -5,14 +5,20 @@ import { connect } from 'react-redux';
 import {
 //  MyTypography as Typography,
   Wrapper,
-  Gallery,
 //  ColumnList,
   Avatarlist
 } from '../components';
 
-import {Visitor, Company, FeaturedExhibitors, SalesMap} from '../compositions'
+import {
+  VideoWithEventInfo,
+  Visitor, 
+  Company, 
+  FeaturedExhibitors, 
+  SalesMap,
+  RoleButtons
+} from '../compositions'
 import Layout from '../layouts/main';
-import { Exhibitors, Photos } from "../datasources"
+
 const People = dynamic(import('../components/People'));
 const Schedule = dynamic(import('../components/Schedule'));
 
@@ -43,6 +49,8 @@ class PageCompany extends React.Component {
 
         <Company id={company_id} asPath={asPath} />
 
+        <RoleButtons />
+
         <Visitor   
           label="visitors.register"
           links={[
@@ -54,6 +62,9 @@ class PageCompany extends React.Component {
               color="secondary"
             />
         ]}/>
+
+     <SalesMap  label="exhibitors.map.title2" />
+
       
       <FeaturedExhibitors 
       label="exhibitors.list_featured"
@@ -69,7 +80,6 @@ class PageCompany extends React.Component {
       />
 
 
-      <SalesMap  label="exhibitors.map.title2" />
 
         {/*
     <Wrapper
@@ -93,9 +103,7 @@ class PageCompany extends React.Component {
  */}
 
 
-  <Photos>{
-    (photos, size) => <Gallery data={photos} size={size} label="event.gallery" />
- }</Photos>
+  <VideoWithEventInfo />
 
 
         {/*

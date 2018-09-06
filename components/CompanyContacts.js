@@ -22,20 +22,17 @@ const styles = theme => ({
   contactListItem: {}
 });
 
-function CompanyContacts({ profile, allowed, classes }) {
-  const socials = Object.keys(profile).filter(
-    item => allowed.indexOf(item) > -1
-  );
+function CompanyContacts({ profile, classes }) {
 
   return (
     <div className={classes.listContainer}>
       <List component="ul" className={classes.contactList}>
-        {socials.map((name, idx) => (
-          <li key={idx} className={classes.contactListItem}>
+        {profile.map(({name, value}) => (
+          <li key={name} className={classes.contactListItem}>
             <CompanyContactItem
               baseLabel="companies.profile"
               name={name}
-              link={profile[name]}
+              link={value}
             />
           </li>
         ))}
@@ -44,8 +41,5 @@ function CompanyContacts({ profile, allowed, classes }) {
   );
 }
 
-CompanyContacts.defaultProps = {
-  allowed: ['facebook', 'twitter', 'linkedin', 'website']
-};
 
 export default withStyles(styles)(CompanyContacts);

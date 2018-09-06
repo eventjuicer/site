@@ -27,7 +27,8 @@ export { default as EventInfo } from './EventInfo';
 export { default as Benefits } from './Benefits';
 export { default as Icon } from './Icon';
 
-export { default as Company } from './Company';
+export { default as CompanyData } from './CompanyData';
+export { default as CompanyLogotype } from './CompanyLogotype';
 
 export { default as Reviews } from './Reviews';
 export { default as WidthAwareInfo } from './WidthAwareInfo';

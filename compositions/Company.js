@@ -1,4 +1,8 @@
 
+import React from 'react';
+import PropTypes from 'prop-types';
+import { get } from 'lodash';
+
 import dynamic from 'next/dynamic';
 import { MyHead } from '../next';
 
@@ -12,14 +16,15 @@ import {
 import { SingleRecord } from "../datasources"
 
 import {
-//  MyTypography as Typography,
   Wrapper,
-  Company as CompanyProfile,
+  CompanyData,
+  CompanyLogotype,
+  KeywordSelect,
+  TwoColsLayout,
+  Centered
 } from '../components';
 
-
 const Company = ({id, asPath}) => (
-
 
   <SingleRecord endpoint="companies" id={id}>
   {
@@ -35,10 +40,31 @@ const Company = ({id, asPath}) => (
     />
 
     <Wrapper label="">
-      <CompanyProfile company={company} />
+
+    <TwoColsLayout
+      leftSize={5}
+      left={<CompanyLogotype company={company} />}
+      leftCentered={true}
+      right={
+
+      <div style={{marginTop: 50}}>
+
+        <Centered>
+         <KeywordSelect keywords={get(company, 'profile.keywords', [])} />
+        </Centered>
+
+        <div style={{marginTop: 10}}>
+          <CompanyData id={id} endpoint="companies" />
+        </div>
+      
+      </div>  
+    }
+    />
+
     </Wrapper>
 
     <CompanyBookingmap company={company} />
+    
     </React.Fragment>
 }
 </SingleRecord>)

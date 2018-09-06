@@ -41,7 +41,8 @@ const styles = theme => ({
 })
 
 function CompanyTabContainer({ children, data, classes }) {
-  if (new Object(data) === data) {
+
+  if (Array.isArray(data)) {
     return (
       <div className={classes.htmlContainer}>
         <CompanyContacts profile={data} />
