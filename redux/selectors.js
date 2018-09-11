@@ -63,9 +63,8 @@ export const SortedTicketsSelector = createSelector(
 
 export const getRecord = (state, props) => {
   const key = `${props.endpoint}/${props.id}`
-  return key in state.resources ? state.resources[key] : []
+  return key in state.resources ? state.resources[key] : {}
 }
-
 
 
 export const SingleRecordSelector = createSelector(

@@ -42,12 +42,12 @@ class MyDocument extends Document {
 
           <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500"
+        href="https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500&subset=latin,latin-ext"
       />
 
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700,800,900"
+        href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700,800,900&subset=latin,latin-ext"
       />
 
         

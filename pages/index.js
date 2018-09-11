@@ -61,7 +61,8 @@ class PageIndex extends React.Component {
       />
 
 
-
+       <RoleButtons />
+       
       <VisitorBenefits 
         label="visitors.benefits.title" 
         first
@@ -69,7 +70,7 @@ class PageIndex extends React.Component {
    
 
 
-      <RoleButtons />
+     
 
         {/* <Wrapper
         label="presenters.schedule"

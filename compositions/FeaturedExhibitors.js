@@ -13,11 +13,11 @@ import {
 const FeaturedExhibitors = (props) => (
 
   <Wrapper {...props}>
-  <Exhibitors filter={(e) => e.featured}>{
+  <Exhibitors filter={(e) => e.featured} limit="20" mobile="12">{
     (exhibitors, keywords) =>
 
     <React.Fragment>
-      <Avatarlist data={exhibitors} />
+      <Avatarlist data={exhibitors}  />
 
       <Centered style={{marginTop: 80}}>
 

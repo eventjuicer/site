@@ -43,6 +43,7 @@ import {
 
 import * as Selectors from '../selectors';
 import {event} from '../../services/gtag'
+import {track} from '../../services/segment'
 
 
 
@@ -59,6 +60,11 @@ function* handleBoothCheck({payload}){
         category : "ecommerce",
         //label,
         value : payload
+  })
+
+  yield call(track, "booth_click", {
+    category : "ecommerce",
+    value : payload
   })
 
 }
