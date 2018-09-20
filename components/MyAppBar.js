@@ -19,6 +19,7 @@ import classNames from 'classnames';
 
 import Cart from './CartButton';
 import LanguageSelect from './LanguageSelect';
+// import Search from './Search';
 
 import RawTranslatedText from './RawTranslatedText'
 
@@ -86,6 +87,8 @@ function MyAppBar(props) {
 
             </Typography>
           </Link>
+
+          {/* <Search /> */}
 
           <LanguageSelect />
 

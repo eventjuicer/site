@@ -37,6 +37,20 @@ import * as gtag from '../services/gtag';
 
 class MyApp extends App {
 
+
+
+  constructor(props) {
+    super(props);
+    this.pageContext = getMuiContext();
+  }
+  
+  componentDidCatch (error, errorInfo) {
+    console.log('CUSTOM ERROR HANDLING', error)
+    // This is needed to render errors correctly in development / production
+    super.componentDidCatch(error, errorInfo)
+  }
+
+
   static async getInitialProps({ Component, router, ctx }) {
 
     const { store, isServer, query, res } = ctx;
@@ -78,10 +92,6 @@ class MyApp extends App {
     };
   }
 
-  constructor(props) {
-    super(props);
-    this.pageContext = getMuiContext();
-  }
 
   pageContext = null;
 

@@ -37,7 +37,7 @@ const styles = theme => ({
 
 const LanguageSelect = ({ label, classes, locale, oldLocale, dialogShow, dialogHide, changeLocale, translate }) => (
   <Button
-    variant="outlined"
+  //  variant="outlined"
     onClick={() => dialogShow({
         title: translate(label),
         content: <div style={{marginTop: 40}}>{

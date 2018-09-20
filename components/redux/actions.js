@@ -156,3 +156,10 @@ export function cartReset() {
     type: Types.CART_RESET
   };
 }
+
+export function searchStarted(query) {
+  return {
+    type: Types.SEARCH_STARTED,
+    query: query,
+  }
+}

@@ -30,3 +30,5 @@ export const BOOTH_CHECKED = 'BOOTH_CHECKED';
 export const BOOTH_SELECT = 'BOOTH_SELECT';
 export const BOOTH_UNSELECT = 'BOOTH_UNSELECT';
 export const BOOTHS_RESET = 'BOOTHS_RESET';
+
+export const SEARCH_STARTED = 'SEARCH_STARTED';
