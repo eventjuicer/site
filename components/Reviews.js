@@ -64,7 +64,15 @@ class Reviews extends React.Component {
   componentDidMount() {
 
     const { locale, items } = this.props;
-    const opinion = _sample(items[locale]);
+
+    let opinion;
+
+    if(locale in items){
+      opinion = _sample(items[locale]);
+    }else{
+      opinion = _sample(items["en"])
+    }
+
     this.setState({ opinion });
   }
 

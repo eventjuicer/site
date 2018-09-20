@@ -3,9 +3,9 @@ const url = require('url');
 const cookieSession = require('cookie-session');
 const next = require('next');
 const LRUCache = require('lru-cache');
-const querystring = require('query-string');
+//const querystring = require('query-string');
 const fetch = require('isomorphic-unfetch');
-const _keyBy = require('lodash/keyBy');
+//const _keyBy = require('lodash/keyBy');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
@@ -46,12 +46,17 @@ app
 
     server.use(async function(req, res, next) {
 
+      const {lang} = req.query
+
       const texts = await i18n.getTexts(ssrCache, 'purge' in req.query);
 
       const {locale} = req.session
 
       const browserLocale = req.acceptsLanguages('pl','de','en')
-      const resolvedLocale = locale || browserLocale || defaultLocale;
+
+      const resolvedLocale = locale || lang || browserLocale || defaultLocale;
+      
+      console.log("resolved", resolvedLocale)
 
       res.locals.texts = texts;
       res.locals.locale = resolvedLocale
@@ -72,6 +77,9 @@ app
     //   req.session.locale = req.params.locale
     //  /// res.redirect('/')
     // })
+
+ 
+
 
     server.post('/remember', (req, res) => {
 
@@ -128,6 +136,11 @@ app
       res.json(texts);
     });
 
+    
+    // server.get('/:lang([a-z]{2}|)', (req, res) => {
+    //   renderAndCache(req, res, '/', {});
+    // })
+
     server.get('/', (req, res) => {
       renderAndCache(req, res, '/', {});
     });
@@ -164,15 +177,18 @@ function cacheApiResult(endpoint) {
   // then()
 }
 
+function getPathName(req){
+  return url.parse(req.url).pathname
+}
+
 /*
  * NB: make sure to modify this to take into account anything that should trigger
  * an immediate page change (e.g a locale stored in req.session)
  */
 function getCacheKey(req, locale) {
 
-  const pathname = url.parse(req.url).pathname
+  return `${getPathName(req)}_${(locale || defaultLocale)}`;
 
-  return `${pathname}_${(locale || defaultLocale)}`;
 }
 
 async function renderAndCache(req, res, pagePath, queryParams) {
