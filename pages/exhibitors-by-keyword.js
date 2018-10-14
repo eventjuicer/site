@@ -48,7 +48,7 @@ class PageExhibitorsByKeyword extends React.Component {
 
         <Wrapper label="exhibitors.list_by_keyword" first>
 
-          <Exhibitors keyword={keyword}>
+          <Exhibitors keyword={keyword} sort={['profile.name']}>
             {
               (all, keywords, filtered) =>
 

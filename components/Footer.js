@@ -22,7 +22,7 @@ const styles = theme => ({
 const Footer = ({ links, classes, width }) => (
   <div className={classes.container}>
     <Wrapper dense={true} color="#fafafa" >
-      <Grid container spacing={8} wrap="nowrap" justify="space-around" alignItems="center">
+      <Grid container spacing={8} wrap="wrap" justify="space-around" alignItems="center">
         <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
           <Support />
         </Grid>

@@ -13,7 +13,7 @@ import {
 const FeaturedExhibitors = (props) => (
 
   <Wrapper {...props}>
-  <Exhibitors filter={(e) => e.featured} limit="20" mobile="12">{
+  <Exhibitors filter={(e) => e.featured} limit="20" mobile="12" sort={['profile.name']}>{
     (exhibitors, keywords) =>
 
     <React.Fragment>

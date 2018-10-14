@@ -10,6 +10,7 @@ const defaultFilters = {
   random : false,
   limit : false,
   filter : null,
+  sort : false,
   mobile : 4,
   columns : false
 }
@@ -77,6 +78,16 @@ export const FilteredExhibitors = createSelector(
   getExhibitorsProps,
   (exhibitors, props) => processArrayData(exhibitors, props)
 )
+
+export const PromotedExhibitorOffers = createSelector(
+  getExhibitors,
+  (exhibitors) => exhibitors.filter(ex => ex.promo)
+)
+/*
+
+    exhibitor.instances.filter(purchase => purchase.formdata && "id" in purchase.formdata).map(purchase => purchase.formdata.id)
+
+*/
 
 export const MobileAwarePhotosSelector = createSelector(
   getPhotos,

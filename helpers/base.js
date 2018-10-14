@@ -2,6 +2,7 @@ import _chunk from 'lodash/chunk';
 import _shuffle from 'lodash/shuffle';
 import _filter from 'lodash/filter';
 import _uniqBy from 'lodash/uniqBy';
+import _sortBy from 'lodash/sortBy';
 
 export const parseUrlVals = url => _uniqBy(url.split(',')).filter(x => x);
 
@@ -43,7 +44,7 @@ export const isBigScreen = width => {
 };
 
 export const processArrayData = (
-  data = [], { filter = null, limit = null, random = null }
+  data = [], { sort = null, filter = null, limit = null, random = null }
 ) => {
   if (!Array.isArray(data)) {
     return [];
@@ -51,6 +52,10 @@ export const processArrayData = (
 
   if (filter) {
     data = data.filter(row => filter(row));
+  }
+
+  if(sort) {
+    data = _sortBy(data, sort)
   }
 
   if (random) {

@@ -34,7 +34,7 @@ const styles = theme => ({
 
 });
 
-const SubPageLink = ({ name, subpage, id, classes, src, width }) => {
+const SubPageLink = ({ name, subpage, id, classes, src, highlighted}) => {
   const style = src ? { backgroundImage: `url(${src})` } : {};
   const params = generateLinkParams(name, subpage, id);
   return (
@@ -42,11 +42,11 @@ const SubPageLink = ({ name, subpage, id, classes, src, width }) => {
       <a
         className={classNames({
           [classes.tile]: src,
-          [classes.textLink]: !src,
+          [classes.textLink]: !src
         })}
         style={style}
       >
-        {name}
+        {name} {highlighted}
       </a>
     </Link>
   );
@@ -55,7 +55,8 @@ const SubPageLink = ({ name, subpage, id, classes, src, width }) => {
 SubPageLink.defaultProps = {
   src: '',
   name: '',
-  id: 0
+  id: 0,
+  highlighted : null
 };
 
 SubPageLink.propTypes = {

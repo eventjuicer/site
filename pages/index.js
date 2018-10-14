@@ -121,7 +121,7 @@ class PageIndex extends React.Component {
 
         <Wrapper label="exhibitors.list_full" color="#ffffff">
 
-        <Exhibitors columns={true}>
+        <Exhibitors columns={true} sort={['profile.name']}>
           {(exhibitors) => <ColumnList data={exhibitors} /> }
         </Exhibitors>
 
