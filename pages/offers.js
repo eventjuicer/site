@@ -10,15 +10,15 @@ import {
 
 import { MyHead as Head, MyLink as Link } from '../next';
 
-import {Visitor} from '../compositions'
-import {Exhibitors} from '../datasources'
+import {
+  Visitor, 
+  Offers
+} from '../compositions'
+import {Offers as OfferDatasource} from '../datasources'
 
 class PageSpecials extends React.Component {
   static async getInitialProps({
-    err,
-    req,
-    res,
-    pathname,
+
     query,
     asPath,
     isServer,
@@ -35,21 +35,13 @@ class PageSpecials extends React.Component {
       <Layout>
         <Head />
 
-       <Visitor 
+        <Offers />
+
+        <Visitor 
            first
            label="visitors.register"
            secondaryTitle="Spotkamy się w gronie ponad 3000 osób!"
           />
-
-   <Wrapper label="exhibitors.list_full" color="#ffffff">
-
-<Exhibitors columns={true}>
-  {(exhibitors) => <ColumnList data={exhibitors} /> }
-</Exhibitors>
-
-</Wrapper>
-
-
        
       </Layout>
     );

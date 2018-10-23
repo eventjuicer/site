@@ -54,6 +54,7 @@ export { default as Sharer } from './Sharer';
 export { default as KeywordSelect } from './KeywordSelect';
 export { default as CompanyLocationMap } from './CompanyLocationMap';
 export { default as RawTranslatedText } from './RawTranslatedText';
+export { default as Offer } from './Offer';
 
 export * from './MyLayouts';
 export * from './redux';
