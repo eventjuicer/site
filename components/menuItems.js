@@ -12,16 +12,21 @@ const menuItems = [
       //   to: '/schedule'
       //   //    icon : <IconLogistics />
       // },
-      // {
-      //   name: 'presenters',
-      //   to: '/presenters'
-      //   //      icon : <IconPeople />
-      // },
+      {
+        name: 'presenters',
+        to: '/presenters'
+        //      icon : <IconPeople />
+      },
       {
         name: 'exhibitors',
         to: '/exhibitors'
         //      icon : <IconPeople />
-      }
+      },
+      // {
+      //   name: 'offers',
+      //   to: '/offers'
+      //   //      icon : <IconPeople />
+      // }
     ]
   },
   {

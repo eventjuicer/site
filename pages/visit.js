@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import {
   Wrapper,
   WhoIsGonnaBeThere,
-  People,
   Schedule,
   //Googlemap,
   Gallery
@@ -14,6 +13,7 @@ import {
   VideoWithEventInfo,
   Visitor,
   VisitorBenefits,
+  Presenters
 } from '../compositions';
 
 import Layout from '../layouts/main';
@@ -48,6 +48,12 @@ class PageVisit extends React.Component {
           label="visitors.register_alt" 
           first 
         />
+
+
+          <Presenters />
+
+
+
         <VisitorBenefits 
           label="visitors.benefits.title" 
         />
@@ -73,12 +79,7 @@ class PageVisit extends React.Component {
         <Visitor />
       </Wrapper>
 
-      <Wrapper
-        label="presenters.list_featured"
-        secondaryTitle="22 Prezentacje, 2 panele dyskusyjne! Udział bezpłatny."
-      >
-        <People limit={16} link={true} random={false} filter={function(item){ return item.bio.length > 10 }}  />
-      </Wrapper> */}
+ */}
 
       <Photos>{
         (photos, size) => <Gallery data={photos} size={size} label="event.gallery" />

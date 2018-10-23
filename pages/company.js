@@ -15,7 +15,8 @@ import {
   Company, 
   FeaturedExhibitors, 
   SalesMap,
-  RoleButtons
+  RoleButtons,
+  Presenters
 } from '../compositions'
 import Layout from '../layouts/main';
 
@@ -48,7 +49,7 @@ class PageCompany extends React.Component {
       <Layout>
 
         <Company id={company_id} asPath={asPath} />
-
+        
         <RoleButtons />
 
         <Visitor   
@@ -62,6 +63,8 @@ class PageCompany extends React.Component {
               color="secondary"
             />
         ]}/>
+
+      <Presenters />
 
      <SalesMap  label="exhibitors.map.title2" />
 

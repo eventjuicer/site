@@ -10,7 +10,7 @@ import {
 } from '../components';
 
 import Layout from '../layouts/main';
-import {Visitor} from '../compositions'
+import {Visitor, Presenters} from '../compositions'
 
 class PageSchedule extends React.Component {
   static async getInitialProps({
@@ -31,14 +31,7 @@ class PageSchedule extends React.Component {
       <Layout>
         <Head />
 
-    <Wrapper
-      first
-      label="presenters.tba"
-//      secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
-    >
-      {/* <Schedule  /> */}
-
-    </Wrapper>
+     <Presenters />
 
         <Visitor label="visitors.register_alt" />
        

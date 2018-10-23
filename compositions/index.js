@@ -11,3 +11,5 @@ export { default as VisitorBenefits } from './VisitorBenefits';
 export { default as ExhibitorBenefits } from './ExhibitorBenefits';
 export { default as RoleButtons } from './RoleButtons';
 export { default as SalesMap } from './SalesMap';
+export { default as Offers } from './Offers';
+export { default as Presenters } from './Presenters';

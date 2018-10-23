@@ -6,7 +6,8 @@ import Layout from '../layouts/main';
 import {
   Visitor,
   FeaturedExhibitors,
-  Presenter
+  Presenter,
+  Presenters
 } from '../compositions'
 
 
@@ -41,7 +42,8 @@ class PageSpeaker extends React.Component {
        
 
         <Presenter id={speakerId }/>
-       
+
+        <Presenters />
         
         <Visitor 
           label="visitors.register_alt"

@@ -115,11 +115,13 @@ Schedule.defaultProps = {
     '15:30': 'presentation',
     '16:05': 'presentation'
   },
+
   venues: {
-    A: { company_id: 1175 },
-    B: { company_id: 1158 },
-    C: { company_id: 1194 }
+    A: { company_id: 1303 },
+    B: { company_id: 1245 },
+    //C: { company_id: 1194 }
   }
+
 };
 
 export default connect(

@@ -9,8 +9,7 @@ import {
   Wrapper,
   ColumnList,
  // Gallery,
- // Schedule,
-  FsVideo
+  FsVideo,
 } from '../components';
 
 
@@ -21,7 +20,8 @@ import {
   FeaturedExhibitors,
   VisitorBenefits,
   RoleButtons,
-  SalesMap
+  SalesMap,
+  Presenters
 } from '../compositions';
 
 
@@ -54,7 +54,6 @@ class PageIndex extends React.Component {
 
         <VideoWithEventInfo />
         
-
       <Visitor
             label="visitors.register"
             secondaryLabel="event.parties"
@@ -62,28 +61,9 @@ class PageIndex extends React.Component {
 
 
        <RoleButtons />
-       
-      <VisitorBenefits 
-        label="visitors.benefits.title" 
-        first
-      />
+      
    
-
-
-     
-
-        {/* <Wrapper
-        label="presenters.schedule"
-        secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
-        links={[
-          <Link key="all" href="/presenters" label="common.menu.visitors.presenters" variant="flat" color="secondary" />,
-          // <Link key="subjects" href="/schedule" label="common.menu.visitors.schedule" variant="flat" color="secondary" />
-        ]}
-      >
-        <Schedule />
-        <People limit={8} random={false} link={true}  filter={function(item){ return item.bio.length > 10 }}  />
-      </Wrapper> */}
-
+      <Presenters />
 
       <SalesMap
       

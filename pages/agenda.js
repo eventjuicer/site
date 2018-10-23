@@ -11,7 +11,7 @@ import {
   //People
 } from '../components';
 
-import {Visitor} from '../compositions'
+import {Visitor, Presenters} from '../compositions'
 
 import Layout from '../layouts/main';
 
@@ -36,25 +36,11 @@ class PageAgenda extends React.Component {
       <Layout>
         <Head />
 
-         <Wrapper
-          label="presenters.schedule"
-          secondaryLabel="common.coming_soon"
-          first
-        >
-          {/* <Schedule  /> */}
-        </Wrapper> 
+      <Presenters />
 
        <Visitor label="visitors.register_alt" />
  
-        {/* <Wrapper first
-          label="presenters.list_full"
-          secondaryTitle="Czołowi Eksperci Handlu Online"
-        // links={[
-        //   <Link href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
-        // ]}
-        >
-          <People random={false}  link={true}  filter={function(item){ return item.bio && item.bio.length >5; }}   />
-        </Wrapper> */}
+     
 
         {/* <Wrapper label="visitors.attendees">
           <WhoIsGonnaBeThere />
