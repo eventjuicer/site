@@ -56,7 +56,7 @@ app
 
       const resolvedLocale = locale || lang || browserLocale || defaultLocale;
       
-      console.log("resolved", resolvedLocale)
+    //  console.log("resolved", resolvedLocale)
 
       res.locals.texts = texts;
       res.locals.locale = resolvedLocale
@@ -178,6 +178,7 @@ function cacheApiResult(endpoint) {
 }
 
 function getPathName(req){
+
   return url.parse(req.url).pathname
 }
 
@@ -185,23 +186,36 @@ function getPathName(req){
  * NB: make sure to modify this to take into account anything that should trigger
  * an immediate page change (e.g a locale stored in req.session)
  */
-function getCacheKey(req, locale) {
+function getCacheKey(req, locale, utm_content) {
 
-  return `${getPathName(req)}_${(locale || defaultLocale)}`;
+  //handle utm_content to cache separately....
+
+  return `${getPathName(req)}_${(locale || defaultLocale)}_${utm_content || ""}`;
 
 }
 
 async function renderAndCache(req, res, pagePath, queryParams) {
 
+  const utm_content = "utm_content" in req.query ? req.query.utm_content : "";
+
   if ('purge' in req.query) {
-    ["en","pl","de"].forEach(l => ssrCache.del(getCacheKey(req, l)));
+    
+    ["en","pl","de"].forEach(function(l, index, arr){
+
+      if(utm_content){
+        ["logotype,pl", "logotype,en", "opengraph_image"].forEach( v => ssrCache.del(getCacheKey(req, l, utm_content)) )
+      }
+      else{
+        ssrCache.del(getCacheKey(req, l, utm_content))
+      }
+    });
   }
 
   //current request getCacheKey
 
   const {locale} = res.locals
-
-  const key = getCacheKey(req, locale);
+  
+  const key = getCacheKey(req, locale, utm_content);
 
   // If we have a page in the cache, let's serve it
   if (ssrCache.has(key)) {
@@ -229,3 +243,10 @@ async function renderAndCache(req, res, pagePath, queryParams) {
     app.renderError(err, req, res, pagePath, queryParams);
   }
 }
+
+
+//https://targiehandlu.pl/kmc-services-sp.-z-o.o.,c,1302?utm_source=th3rCMiM_1302&utm_medium=link&utm_campaign=teh15c&utm_content=logotype,pl
+
+//https://targiehandlu.pl/kmc-services-sp.-z-o.o.,c,1302?utm_source=th3rCMiM_1302&utm_medium=link&utm_campaign=teh15c&utm_content=logotype,en
+
+//https://targiehandlu.pl/kmc-services-sp.-z-o.o.,c,1302?utm_source=th3rCMiM_1302&utm_medium=link&utm_campaign=teh15c&utm_content=opengraph_image

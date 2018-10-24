@@ -31,7 +31,7 @@ export const getParticipantCdn = (
   what = 'avatar',
   size = 200
 ) => {
-  return `https://res.cloudinary.com/eventjuicer/image/upload/c_fit,e_grayscale,w_${size},h_${size}/p_${participant_id}_${what}.jpg`;
+  return `https://res.cloudinary.com/eventjuicer/image/upload/c_fit,e_grayscale,w_${size},h_${size}/p_${participant_id}_${what}.png`;
 };
 
 export const getInviteOgImage = (text = '') => {
@@ -54,7 +54,7 @@ export const getPresenterOgImage = (
     participant.id
   }_logotype,c_fit`;
 
-  return `https://res.cloudinary.com/eventjuicer/image/upload/${avatarTrans}/${logotypeTrans}/${template}.jpg`;
+  return `https://res.cloudinary.com/eventjuicer/image/upload/${avatarTrans}/${logotypeTrans}/${template}.png`;
 };
 
 export const getCompanyAltOgImage = (company, url) => {
@@ -95,7 +95,7 @@ export const wrapImage = (
   baseImage,
   params = `h_220,w_600,y_30`
 ) => {
-  return `https://res.cloudinary.com/eventjuicer/image/upload/c_fit,l_${overlayImage},${params}/${baseImage}.jpg`;
+  return `https://res.cloudinary.com/eventjuicer/image/upload/c_fit,l_${overlayImage},${params}/${baseImage}.png`;
 };
 
 export const getCompanyOgImage = company => {
