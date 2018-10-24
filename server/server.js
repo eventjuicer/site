@@ -16,7 +16,10 @@ const i18n = require('./i18n');
 
 const apiUrl = 'https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/';
 
+
 const defaultLocale = "en";
+const cachableUtmContent = ["logotype,pl", "logotype,en", "opengraph_image"];
+
 
 const ssrCache = new LRUCache({
   max: 100,
@@ -190,20 +193,20 @@ function getCacheKey(req, locale, utm_content) {
 
   //handle utm_content to cache separately....
 
-  return `${getPathName(req)}_${(locale || defaultLocale)}_${utm_content || ""}`;
+  return `${getPathName(req)}_${(locale || defaultLocale)}_${utm_content}`;
 
 }
 
 async function renderAndCache(req, res, pagePath, queryParams) {
 
-  const utm_content = "utm_content" in req.query ? req.query.utm_content : "";
+  const utm_content = "utm_content" in req.query && cachableUtmContent.indexOf(req.query.utm_content) > -1 ? req.query.utm_content : "";
 
   if ('purge' in req.query) {
     
     ["en","pl","de"].forEach(function(l, index, arr){
 
       if(utm_content){
-        ["logotype,pl", "logotype,en", "opengraph_image"].forEach( v => ssrCache.del(getCacheKey(req, l, utm_content)) )
+        cachableUtmContent.forEach( v => ssrCache.del(getCacheKey(req, l, utm_content)) )
       }
       else{
         ssrCache.del(getCacheKey(req, l, utm_content))
@@ -211,10 +214,7 @@ async function renderAndCache(req, res, pagePath, queryParams) {
     });
   }
 
-  //current request getCacheKey
-
   const {locale} = res.locals
-  
   const key = getCacheKey(req, locale, utm_content);
 
   // If we have a page in the cache, let's serve it

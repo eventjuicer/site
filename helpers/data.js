@@ -113,11 +113,11 @@ export const getCompanyOgImage = (company, url) => {
 
   if('utm_content' in params){
     //temp solution!
-    if(params.utm_content.indexOf("en") > -1){
+    if(params.utm_content.indexOf(",en") > -1){
       companyLang = "en";
     }
 
-    if(params.utm_content.indexOf("pl") > -1){
+    if(params.utm_content.indexOf(",pl") > -1){
       companyLang = "pl"; 
     }
   }
