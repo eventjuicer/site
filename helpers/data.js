@@ -98,15 +98,30 @@ export const wrapImage = (
   return `https://res.cloudinary.com/eventjuicer/image/upload/c_fit,l_${overlayImage},${params}/${baseImage}.png`;
 };
 
-export const getCompanyOgImage = company => {
+export const getCompanyOgImage = (company, url) => {
+
+  const params = getUrlParams(url);
   const cdn = getCdnResource(company, 'logotype', false);
 
   if (!cdn) {
     return getCompanyLogotype(company, true);
   }
 
-  const companyLang = getCompanyProfileInfo(company, 'lang') || defaultLocale;
+  let companyLang = getCompanyProfileInfo(company, 'lang') || defaultLocale;
 
+  //use the lang forced by utm_content!
+
+  if('utm_content' in params){
+    //temp solution!
+    if(params.utm_content.indexOf("en") > -1){
+      companyLang = "en";
+    }
+
+    if(params.utm_content.indexOf("pl") > -1){
+      companyLang = "pl"; 
+    }
+  }
+  
   return wrapImage(`c_${company.id}_logotype`, `template_4_${companyLang}`);
 };
 
