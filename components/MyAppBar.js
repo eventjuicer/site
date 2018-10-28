@@ -83,7 +83,12 @@ function MyAppBar(props) {
               className={classes.flex}
             >
         
-        <RawTranslatedText pl="Targi eHandlu" en="Ecommerce Warsaw Expo" />
+        <RawTranslatedText 
+        
+          pl="Targi eHandlu 8.11.2018" 
+          en="Ecommerce Warsaw Expo" 
+          
+        />
 
             </Typography>
           </Link>
