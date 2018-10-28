@@ -81,7 +81,7 @@ export const FilteredExhibitors = createSelector(
 
 export const ExhbitorsWithOffer = createSelector(
   getExhibitors,
-  (exhibitors) => exhibitors.filter(ex => "expo" in ex.profile && ex.profile.expo.length > 10)
+  (exhibitors) => exhibitors.filter(ex => "expo" in ex.profile && ex.profile.expo.length > 15 && ex.profile.expo.replace(/(<([^>]+)>)/ig,"").length > 10 )
 )
 
 export const PromotedExhibitorOffers = createSelector(
