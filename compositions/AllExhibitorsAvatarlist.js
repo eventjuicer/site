@@ -14,7 +14,7 @@ const AllExhibitorsAvatarlist = (props) => (
 
   <Wrapper {...props}>
 
-  <Exhibitors mobile={false} random={false} sort={['profile.name']}>{
+  <Exhibitors mobile={false} random={false} sort='profile.name'>{
     (exhibitors, keywords) =>
 
     <React.Fragment>

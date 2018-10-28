@@ -2,7 +2,9 @@ import _chunk from 'lodash/chunk';
 import _shuffle from 'lodash/shuffle';
 import _filter from 'lodash/filter';
 import _uniqBy from 'lodash/uniqBy';
-import _sortBy from 'lodash/sortBy';
+import _get from 'lodash/get';
+
+export const collator = new Intl.Collator('pl-PL', {numeric: true, sensitivity: 'base'});
 
 export const parseUrlVals = url => _uniqBy(url.split(',')).filter(x => x);
 
@@ -54,8 +56,8 @@ export const processArrayData = (
     data = data.filter(row => filter(row));
   }
 
-  if(sort) {
-    data = _sortBy(data, sort)
+  if(sort){
+    data.sort((a, b) => collator.compare(_get(a, sort), _get(b, sort)))
   }
 
   if (random) {
