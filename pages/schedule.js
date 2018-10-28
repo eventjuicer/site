@@ -6,11 +6,15 @@ import {
   Wrapper,
   // WhoIsGonnaBeThere,
   //  Googlemap,
-  //Schedule
 } from '../components';
 
 import Layout from '../layouts/main';
-import {Visitor, Presenters} from '../compositions'
+
+import {
+  Visitor, 
+  Presenters, 
+  Schedule
+} from '../compositions'
 
 class PageSchedule extends React.Component {
   static async getInitialProps({
@@ -29,13 +33,15 @@ class PageSchedule extends React.Component {
 
     return (
       <Layout>
+
         <Head />
 
-     <Presenters />
+        <Schedule />
 
         <Visitor label="visitors.register_alt" />
-       
 
+        <Presenters />
+       
         {/* <Wrapper label="visitors.attendees">
 
       <WhoIsGonnaBeThere />

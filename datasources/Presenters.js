@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux'
 
-import { MobileAwareFilteredPresenters } from '../redux/selectors'
+import { MobileAwareFilteredPresenters, getPresenters } from '../redux/selectors'
 import {resourceFetchRequest } from '../components/redux'
 
 // import { getCompanyProfileInfo, filterCompanyInstances } from '../helpers';
@@ -11,29 +11,14 @@ class Presenters extends React.Component {
 
   componentDidMount(){
 
-      const {resourceFetchRequest, data} = this.props
+      const {resourceFetchRequest, filtered} = this.props
 
-      if(!data.length){
+      if(!filtered.length){
         resourceFetchRequest("presenters")
       }
   }
 
-  // shouldComponentUpdate(nextProps){
-  //
-  //   const {data, keyword} = this.props
-  //
-  //   if(keyword !== nextProps.keyword){
-  //     return true
-  //   }
-  //
-  //   //at first 4 are returned...because of MOBILE first :)
-  //
-  //   const ids = data.map(a => a.id)
-  //
-  //   console.log(ids)
-  //
-  //   return false
-  // }
+ 
 
   render(){
 
@@ -51,14 +36,13 @@ class Presenters extends React.Component {
 }
 
 Presenters.propTypes = {
-   data: PropTypes.array.isRequired,
-//   keywords: PropTypes.array.isRequired,
-   record : PropTypes.object.isRequired
+  filtered: PropTypes.array.isRequired,
+  record : PropTypes.object.isRequired
 };
 
 Presenters.defaultProps = {
-   keyed : {},
-   data : [],
+   filtered : [],
+   all : [],
    record : {},
    filter : ""
 };
@@ -71,7 +55,7 @@ export default connect(
       return {
         
         filtered : MobileAwareFilteredPresenters(state, props),
-       
+        all : getPresenters(state, props)
       }
     }
     return mapStateToProps

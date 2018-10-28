@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 
 import _filter from 'lodash/filter';
@@ -10,32 +9,29 @@ import ScheduleItem from './ScheduleItem';
 import ScheduleVenue from './ScheduleVenue';
 import ScheduleBreak from './ScheduleBreak';
 
-import { resourceFetchRequest } from './redux/actions';
+
 import { presenterSelector } from '../redux/reselect';
 
 class Schedule extends React.PureComponent {
-  componentDidMount() {
-    if (!this.props.presenters.length) {
-      this.props.resourceFetchRequest('presenters', false);
-    }
-    if (!this.props.exhibitors.length) {
-      this.props.resourceFetchRequest('exhibitors', false);
-    }
-  }
-
+ 
   getCompany(id) {
     return _find(this.props.exhibitors, { id }, {});
   }
 
   findPresentations(search, first = false) {
     const { presenters, selected } = this.props;
+
+   
+
     return _filter(presenters, search).map((item, i) => (
+      
       <ScheduleItem
         key={item.id}
         selected={item.id == selected}
         first={i === 0}
         data={item}
       />
+
     ));
   }
 
@@ -49,7 +45,9 @@ class Schedule extends React.PureComponent {
 
   renderVenues() {
     const { venues } = this.props;
-    const gridData = { xs: 12, sm: 12, md: 4, lg: 4, xl: 4 };
+
+    const gridData = { xs: 12, sm: 12, md: 6, lg: 6, xl: 6 };
+    //const gridData = { xs: 12, sm: 12, md: 4, lg: 4, xl: 4 };
 
     return Object.keys(venues).map(venue => (
       <Grid key={venue} item {...gridData}>
@@ -62,10 +60,17 @@ class Schedule extends React.PureComponent {
   }
 
   render() {
-    const { presenters, venues, times } = this.props;
-    const gridData = { xs: 12, sm: 12, md: 4, lg: 4, xl: 4 };
 
-    return (
+  
+    const { presenters, venues, times } = this.props;
+
+    const gridData = { xs: 12, sm: 12, md: 6, lg: 6, xl: 6 };
+   // const gridData = { xs: 12, sm: 12, md: 4, lg: 4, xl: 4 };
+    
+   
+   console.log(presenters);
+
+   return (
       <div>
         <Grid
           container
@@ -124,10 +129,4 @@ Schedule.defaultProps = {
 
 };
 
-export default connect(
-  state => ({
-    presenters: presenterSelector(state),
-    exhibitors: state.resources.exhibitors
-  }),
-  { resourceFetchRequest }
-)(Schedule);
+export default Schedule

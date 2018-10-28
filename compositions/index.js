@@ -13,3 +13,4 @@ export { default as RoleButtons } from './RoleButtons';
 export { default as SalesMap } from './SalesMap';
 export { default as Offers } from './Offers';
 export { default as Presenters } from './Presenters';
+export { default as Schedule } from './Schedule';
