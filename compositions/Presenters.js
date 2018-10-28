@@ -1,11 +1,12 @@
-
-
-
 import {
     Wrapper,
     People,
    // Schedule
-  } from '../components';
+} from '../components';
+
+import {
+    Presenters as Datasource
+} from '../datasources';
 
 const Presenters = (props) => (
 
@@ -18,12 +19,20 @@ const Presenters = (props) => (
     ]}
     >
     {/* <Schedule /> */}
-    <People 
-    limit={20}
-    random={false} 
-    link={false} 
-    filter={function(item){ return [77504, 77505, 77508, 77529, 77557, 77773, 78014, 78429].indexOf(item.id) > -1 }}  
-    />
+
+    <Datasource  
+        limit={20}
+        random={false}
+        filter={function(item){ return [77504, 77505, 77508, 77529, 77557, 77773, 78014, 78429].indexOf(item.id) > -1 }}  
+    >{
+        (data) => 
+        <People 
+            data={data}
+            link={false} 
+        />
+
+    }</Datasource>
+    
     </Wrapper> 
 
 

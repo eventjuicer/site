@@ -37,7 +37,7 @@ RESOURCES
 */
 
 
-export const getExhibitorsProps = (state, props) => ({...defaultFilters, ...props})
+export const getFilteringProps = (state, props) => ({...defaultFilters, ...props})
 
 export const getViewPortWidth = (state) => state.app.width || "xs"
 
@@ -75,7 +75,7 @@ export const SingleRecordSelector = createSelector(
 
 export const FilteredExhibitors = createSelector(
   getExhibitors,
-  getExhibitorsProps,
+  getFilteringProps,
   (exhibitors, props) => processArrayData(exhibitors, props)
 )
 
@@ -106,7 +106,7 @@ export const StandardExhibitorOffers = createSelector(
 
 export const MobileAwarePhotosSelector = createSelector(
   getPhotos,
-  getExhibitorsProps,
+  getFilteringProps,
   (photos, props) => processArrayData( photos, props )
 )
 
@@ -118,7 +118,7 @@ export const PhotoSizeSelector = createSelector(
 export const MobileAwareFilteredExhibitors = createSelector(
   FilteredExhibitors,
   getViewPortWidth,
-  getExhibitorsProps,
+  getFilteringProps,
   (exhibitors, width, props) => {
 
     if(props.columns){
@@ -134,6 +134,30 @@ export const MobileAwareFilteredExhibitors = createSelector(
   }
 )
 
+/*
+PRESENTERS - START
+*/
+
+export const FilteredPresenters = createSelector(
+  getPresenters,
+  getFilteringProps,
+  (presenters, props) => processArrayData(presenters, props)
+)
+
+export const MobileAwareFilteredPresenters = createSelector(
+  FilteredPresenters,
+  getViewPortWidth,
+  getFilteringProps,
+  (presenters, width, props) => {
+
+    if ((width === 'xs' || width === 'sm') && "mobile" in props && props.mobile && presenters.length > props.mobile) {
+      presenters = presenters.slice(0, props.mobile);
+    }
+    return presenters
+
+  }
+)
+
 export const KeyedPresentersSelector = createSelector(
   getPresenters,
   (presenters) => keyBy(presenters, "id")
@@ -145,6 +169,9 @@ export const getPresenterByIdSelector = createSelector(
   (keyed, id) => id && id in keyed ? keyed[id] : {}
 )
 
+/*
+PRESENTERS - END
+*/
 
 export const KeyedFormdataSelector = createSelector(
   getFormdata,
@@ -194,7 +221,7 @@ export const BookingMapSelector = createSelector(
 
 export const FilteredByKeywordExhibitors = createSelector(
   FilteredExhibitors,
-  getExhibitorsProps,
+  getFilteringProps,
   (exhibitors, props) => exhibitors.filter(e => "keywords" in e.profile && e.profile.keywords.includes(props.keyword))
 
   //

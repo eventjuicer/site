@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux'
 
-import { KeyedPresentersSelector, getPresenterByIdSelector } from '../redux/selectors'
+import { MobileAwareFilteredPresenters } from '../redux/selectors'
 import {resourceFetchRequest } from '../components/redux'
 
 // import { getCompanyProfileInfo, filterCompanyInstances } from '../helpers';
@@ -37,11 +37,11 @@ class Presenters extends React.Component {
 
   render(){
 
-    const {children, data, keyed, record} = this.props
+    const {children, filtered, all, record} = this.props
 
     if(children){
 
-      return children({data, keyed, record})
+      return children(filtered, all, record)
 
     }
 
@@ -69,9 +69,9 @@ export default connect(
 
     const mapStateToProps = (state, props) => {
       return {
-        data : state.resources.presenters,
-        keyed : KeyedPresentersSelector(state, props),
-        record : getPresenterByIdSelector(state, props)
+        
+        filtered : MobileAwareFilteredPresenters(state, props),
+       
       }
     }
     return mapStateToProps
