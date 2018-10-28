@@ -16,7 +16,7 @@ onClick={() => dialogShow({
 
 const OfferLocationButton = ({dialogShow, translate, name, subpage, id}) => (
     <Link { ...generateLinkParams(name, subpage, id) }>
-     <Button size="small" color="primary">{translate("common.details")}</Button>
+     <Button size="small" color="primary">{translate("common.booth_location")}</Button>
     </Link>
    
 )

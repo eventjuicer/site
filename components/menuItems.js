@@ -34,11 +34,11 @@ const menuItems = [
         to: '/exhibitors'
         //      icon : <IconPeople />
       },
-      // {
-      //   name: 'offers',
-      //   to: '/offers'
-      //   //      icon : <IconPeople />
-      // }
+      {
+        name: 'offers',
+        to: '/offers'
+        //      icon : <IconPeople />
+      }
     ]
   },
   {

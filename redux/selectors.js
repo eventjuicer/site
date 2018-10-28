@@ -79,10 +79,25 @@ export const FilteredExhibitors = createSelector(
   (exhibitors, props) => processArrayData(exhibitors, props)
 )
 
-export const PromotedExhibitorOffers = createSelector(
+export const ExhbitorsWithOffer = createSelector(
   getExhibitors,
-  (exhibitors) => exhibitors.filter(ex => ex.promo)
+  (exhibitors) => exhibitors.filter(ex => "expo" in ex.profile && ex.profile.expo.length > 10)
 )
+
+export const PromotedExhibitorOffers = createSelector(
+  ExhbitorsWithOffer,
+  (exhibitors_with_offer) => exhibitors_with_offer.filter(ex => ex.promo)
+)
+
+export const StandardExhibitorOffers = createSelector(
+  ExhbitorsWithOffer,
+  PromotedExhibitorOffers,
+  (exhibitors_with_offer, promoted) => {
+    const promotedKeys = keyBy(promoted, "id")
+    return exhibitors_with_offer.filter(ex => ! (ex.id in promotedKeys ))
+  }
+)
+
 /*
 
     exhibitor.instances.filter(purchase => purchase.formdata && "id" in purchase.formdata).map(purchase => purchase.formdata.id)

@@ -6,7 +6,6 @@ import get from 'lodash/get'
 import {getCompanyLogotype} from '../helpers'
 
 import {
-  Avatarlist,
   Centered,
   MyTypography,
   Wrapper
@@ -19,7 +18,7 @@ const Offers = (props) => (
 
     <Datasource>{
 
-    (promoted, all) =>
+    (promoted, rest) =>
 
     <React.Fragment>
 
@@ -44,6 +43,14 @@ const Offers = (props) => (
 
     </Centered>
 
+    {rest.map( ex => <Offer 
+        key={ex.id} 
+        id={ex.id}
+        imageSrc={getCompanyLogotype(ex)}
+        text={get(ex, "profile.expo")}
+        name={get(ex, "profile.name")}
+        primary={false}
+    />)}
 
 
     </React.Fragment>
@@ -53,4 +60,5 @@ const Offers = (props) => (
     </Wrapper>
 
 )
+
 export default Offers
