@@ -60,9 +60,12 @@ export const processArrayData = (
     data.sort((a, b) => collator.compare(_get(a, sort), _get(b, sort)))
   }
 
-  if (random) {
-    data = _shuffle(data);
-  }
+
+  //it cannot be used server side and client side!!!
+
+  // if (random) {
+  //   data = _shuffle(data);
+  // }
 
   if (limit && data.length > limit) {
     data = data.slice(0, limit);
