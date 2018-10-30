@@ -72,15 +72,6 @@ class PageVisit extends React.Component {
 
 
         {/* <Wrapper
-        label="presenters.schedule"
-        secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
-        first
-      >
-
-        <Schedule  />
-      </Wrapper> */}
-
-        {/* <Wrapper
         label="visitors.attendees"
         secondaryTitle="oraz 3000 innych osób"
       >

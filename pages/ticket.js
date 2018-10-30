@@ -9,26 +9,26 @@ import {
   TicketDownload,
   Typography,
   Wrapper,
-  ColumnList,
   MyTypography,
-  Schedule,
-  Googlemap,
   EventInfo,
   Invite
 } from '../components';
 
 import Layout from '../layouts/main';
 
-import {Visitor} from '../compositions'
+import {
+  Visitor, 
+  Schedule,
+  AllExhibitorsColumnList,
+  SalesMap
+} from '../compositions'
+
 
 import { getInviteOgImage } from '../helpers';
-
-const Bookingmap = dynamic(import('../components/Bookingmap/Bookingmap'));
 
 class PageTicket extends React.Component {
 
   static async getInitialProps({
-
     query,
     asPath,
     isServer,
@@ -73,20 +73,20 @@ class PageTicket extends React.Component {
             items={[
               {
                 icon: 'location',
-                label: 'event.location',
-                text: 'EXPO XXI Warszawa, Prądzyńskiego 12/14'
+                secondary: 'event.location',
+                primary: 'EXPO XXI Warszawa, Prądzyńskiego 12/14'
               },
 
               {
                 icon: 'date',
-                label: 'event.date',
-                text: '7 listopada 2018'
+                secondary: 'event.date',
+                primary: '7 listopada 2018'
               },
 
               {
                 icon: 'alarm',
-                label: 'event.hours',
-                text: '10:00-17:00'
+                secondary: 'event.hours',
+                primary: '10:00-17:00'
               }
             ]}
             orientation="h"
@@ -94,39 +94,29 @@ class PageTicket extends React.Component {
           />
 
           <Invite person={person} />
+
         </Wrapper>
 
-        <Wrapper
-          first
-          label="presenters.schedule"
-          secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
-        >
-          <Schedule />
-        </Wrapper>
+        <Schedule />
 
-        <Wrapper
-          label="exhibitors.map.title"
-          secondaryTitle="Chcesz się wystawić? Zostało tylko kilka stoisk!"
-        >
-          {/* <WidthAwareInfo /> */}
-          <Bookingmap />
-        </Wrapper>
+      <SalesMap
+      
+        label="exhibitors.map.title2"
+        secondaryLabel="exhibitors.map.opensales"
 
-        <Wrapper label="exhibitors.list_full" color="#ffffff">
-          <ColumnList data={exhibitors} />
-        </Wrapper>
+        />
+              
+        <AllExhibitorsColumnList />
 
-        <Wrapper label="visitors.register_alt">
-          <Visitor />
-        </Wrapper>
+        <Visitor  label="visitors.register_alt" />
 
-        {/* <Googlemap /> */}
       </Layout>
     );
   }
 }
 
+
 export default connect(
-  null,
-  null
-)(PageTicket);
+  (state, props) => ({
+    person : "code" in props && props.code && `code/${props.code}` in state.resources ? state.resources[`code/${props.code}`] : {}
+  }), null)(PageTicket);

@@ -18,7 +18,7 @@ import {
   VideoWithReviews,
   Visitor,
   FeaturedExhibitors,
-
+  AllExhibitorsColumnList,
   RoleButtons,
   SalesMap,
   Presenters
@@ -100,14 +100,7 @@ class PageIndex extends React.Component {
       }</Photos> */}
 
 
-        <Wrapper label="exhibitors.list_full" color="#ffffff">
-
-        <Exhibitors columns={true} sort='profile.name'>
-          {(exhibitors) => <ColumnList data={exhibitors} /> }
-        </Exhibitors>
-
-        </Wrapper>
-
+       <AllExhibitorsColumnList />
 
         <FsVideo
           background="https://res.cloudinary.com/eventjuicer/image/upload/v1534553598/poster_stage1.jpg"

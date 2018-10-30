@@ -13,10 +13,11 @@ import Layout from '../layouts/main';
 
 import {
   Visitor, 
-  FeaturedExhibitors
+  FeaturedExhibitors,
+  Schedule
 } from '../compositions'
 
-import { fetcher, getInviteOgImage } from '../helpers';
+import { getInviteOgImage } from '../helpers';
 
 class PageInvite extends React.Component {
   static async getInitialProps({
@@ -26,17 +27,19 @@ class PageInvite extends React.Component {
     isServer,
     store
   }) {
-    const person = `code/${query.id}`;
+
+    const resource = `code/${query.id}`;
 
     return {
 
-      preload : [person, "exhibitors"],
+      preload : [resource, "exhibitors"],
       asPath: asPath,
- 
+      resource : resource
     };
   }
 
   render() {
+
     const { url, person, exhibitors, asPath } = this.props;
 
     const name = `${_get(person, 'fname', '')} ${_get(person, 'lname', '')}`;
@@ -74,20 +77,20 @@ class PageInvite extends React.Component {
             items={[
               {
                 icon: 'location',
-                label: 'event.location',
-                text: 'EXPO XXI Warszawa, Prądzyńskiego 12/14'
+                secondary: 'event.location',
+                primary: 'EXPO XXI Warszawa, Prądzyńskiego 12/14'
               },
 
               {
                 icon: 'date',
-                label: 'event.date',
-                text: '7 listopada 2018'
+                secondary: 'event.date',
+                primary: '7 listopada 2018'
               },
 
               {
                 icon: 'alarm',
-                label: 'event.hours',
-                text: '10:00-17:00'
+                secondary: 'event.hours',
+                primary: '10:00-17:00'
               }
             ]}
             orientation="h"
@@ -97,18 +100,25 @@ class PageInvite extends React.Component {
 
       
         <Visitor label="visitors.register" />
+
+        <Schedule />
+
+        <FeaturedExhibitors 
         
-        <FeaturedExhibitors />
-
-       
-
-  
-
-       
-        {/* <Googlemap /> */}
+        label="exhibitors.list_featured"
+        secondaryTitle=""
+        />
+      
       </Layout>
     );
   }
 }
 
-export default connect()(PageInvite);
+
+
+
+export default connect(
+  (state, props) => ({
+    person : "resource" in props && props.resource in state.resources ? state.resources[props.resource] : {}
+  }), null)(PageInvite);
+

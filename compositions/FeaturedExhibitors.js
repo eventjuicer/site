@@ -3,9 +3,9 @@ import React from 'react'
 import { Exhibitors } from '../datasources'
 import {
   Avatarlist,
-  KeywordSelect,
-  Centered,
-  MyTypography,
+  // KeywordSelect,
+  // Centered,
+  // MyTypography,
   Wrapper
 } from '../components';
 
@@ -19,16 +19,22 @@ const FeaturedExhibitors = (props) => (
     <React.Fragment>
       <Avatarlist data={exhibitors}  />
 
-      <Centered style={{marginTop: 80}}>
+      {/* <Centered style={{marginTop: 80}}>
 
         <MyTypography label="exhibitors.list.filter_title" template="SUBH2CH" />
         <KeywordSelect keywords={keywords} />
 
-      </Centered>
+      </Centered> */}
 
     </React.Fragment>
   }</Exhibitors>
   </Wrapper>
 
 )
+
+FeaturedExhibitors.defaultProps = {
+  label : "exhibitors.list_featured"
+}
+
+
 export default FeaturedExhibitors
