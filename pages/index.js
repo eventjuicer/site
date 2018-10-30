@@ -18,7 +18,7 @@ import {
   VideoWithReviews,
   Visitor,
   FeaturedExhibitors,
-  VisitorBenefits,
+
   RoleButtons,
   SalesMap,
   Presenters
@@ -90,6 +90,7 @@ class PageIndex extends React.Component {
 
 
 
+
       <VideoWithReviews />
 
 
@@ -110,8 +111,15 @@ class PageIndex extends React.Component {
 
         <FsVideo
           background="https://res.cloudinary.com/eventjuicer/image/upload/v1534553598/poster_stage1.jpg"
-          videoSrc="https://res.cloudinary.com/eventjuicer/video/upload/v1534553583/video_stage1.mp4" />
+          videoSrc="https://res.cloudinary.com/eventjuicer/video/upload/v1534553583/video_stage1.mp4"
+          
+          />
 
+
+          <Visitor
+            label="visitors.register_alt"
+            secondaryLabel="event.parties"
+      />
 
 
       </Layout>

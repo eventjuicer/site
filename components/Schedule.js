@@ -68,8 +68,6 @@ class Schedule extends React.PureComponent {
    // const gridData = { xs: 12, sm: 12, md: 4, lg: 4, xl: 4 };
     
    
-   console.log(presenters);
-
    return (
       <div>
         <Grid
@@ -124,6 +122,7 @@ Schedule.defaultProps = {
   venues: {
     A: { company_id: 1303 },
     B: { company_id: 1245 },
+  //  C: {}
     //C: { company_id: 1194 }
   }
 

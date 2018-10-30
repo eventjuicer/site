@@ -26,12 +26,14 @@ export const getCdnResource = (company, key, scale = true) => {
   return false;
 };
 
-export const getParticipantCdn = (
-  participant_id,
-  what = 'avatar',
-  size = 200
-) => {
-  return `https://res.cloudinary.com/eventjuicer/image/upload/c_fit,e_grayscale,w_${size},h_${size}/p_${participant_id}_${what}.png`;
+export const getParticipantCdn = (url, size = 100) => {
+
+  if (!url || ! /cloudinary/.test(url)) {
+    return '/static/avatar-placeholder.png';
+  }
+
+  return url.replace(/\.svg/, '.png').replace("image/upload/", `image/upload/c_fit,e_grayscale,w_${size},h_${size}/`);
+  //  `https://res.cloudinary.com/eventjuicer/image/upload/c_fit,e_grayscale,w_${size},h_${size}/p_${participant_id}_${what}.png`;
 };
 
 export const getInviteOgImage = (text = '') => {

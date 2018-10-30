@@ -19,11 +19,11 @@ const menuItems = [
         to: '/visit'
         //  icon : <IconSetting />
       },
-      // {
-      //   name: 'schedule',
-      //   to: '/schedule'
-      //   //    icon : <IconLogistics />
-      // },
+      {
+        name: 'schedule',
+        to: '/schedule'
+        //    icon : <IconLogistics />
+      },
       {
         name: 'presenters',
         to: '/presenters'

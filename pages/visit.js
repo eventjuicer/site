@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import {
   Wrapper,
   WhoIsGonnaBeThere,
-  Schedule,
   //Googlemap,
   Gallery
 } from '../components';
@@ -13,7 +12,9 @@ import {
   VideoWithEventInfo,
   Visitor,
   VisitorBenefits,
-  Presenters
+  Presenters,
+  Schedule,
+  AllExhibitorsAvatarlist
 } from '../compositions';
 
 import Layout from '../layouts/main';
@@ -50,13 +51,24 @@ class PageVisit extends React.Component {
         />
 
 
-          <Presenters />
+        <Presenters />
+
+         <VideoWithEventInfo />
 
 
+       <Visitor 
+          label="visitors.register" 
+          first 
+        />
+
+        <Schedule />
 
         <VisitorBenefits 
           label="visitors.benefits.title" 
         />
+
+
+         <AllExhibitorsAvatarlist label="exhibitors.list_full" />
 
 
         {/* <Wrapper
@@ -80,6 +92,13 @@ class PageVisit extends React.Component {
       </Wrapper>
 
  */}
+
+
+        <Visitor 
+          label="visitors.register" 
+          first 
+        />
+
 
       <Photos>{
         (photos, size) => <Gallery data={photos} size={size} label="event.gallery" />

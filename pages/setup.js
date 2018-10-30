@@ -6,7 +6,7 @@ class Api extends Component {
   static async getInitialProps({ req, query }) {
     const isServer = !!req;
 
-    console.log('getInitialProps called:', isServer ? 'server' : 'client');
+  //  console.log('getInitialProps called:', isServer ? 'server' : 'client');
 
     if (isServer) {
       // When being rendered server-side, we have access to our data in query that we put there in routes/item.js,

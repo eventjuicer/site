@@ -12,7 +12,8 @@ import { MyHead as Head, MyLink as Link } from '../next';
 
 import {
   Visitor, 
-  Offers
+  Offers,
+  RoleButtons
 } from '../compositions'
 import {Offers as OfferDatasource} from '../datasources'
 
@@ -35,13 +36,23 @@ class PageSpecials extends React.Component {
       <Layout>
         <Head />
 
-        <Offers />
+        <Offers divider={
+
+          <Visitor 
+          first
+          label="visitors.register_alt"
+          secondaryTitle="Spotkamy się w gronie ponad 3000 osób!"
+          />
+
+        } />
 
         <Visitor 
            first
            label="visitors.register"
            secondaryTitle="Spotkamy się w gronie ponad 3000 osób!"
           />
+
+        <RoleButtons />
        
       </Layout>
     );

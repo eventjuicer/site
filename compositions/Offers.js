@@ -12,9 +12,9 @@ import {
 } from '../components';
 
 
-const Offers = (props) => (
+const Offers = ({divider, ...rest}) => (
 
-    <Wrapper {...props} label="exhibitors.offers.title" first={true}>
+    <Wrapper {...rest} label="exhibitors.offers.title" first={true}>
 
     <Datasource>{
 
@@ -36,6 +36,8 @@ const Offers = (props) => (
         name={get(ex, "profile.name")}
         primary={true}
     />)}
+
+    {divider}
 
     <Centered style={{marginTop: 80}}>
 
@@ -60,5 +62,9 @@ const Offers = (props) => (
     </Wrapper>
 
 )
+
+Offers.defaultProps = {
+    divider : null
+}
 
 export default Offers

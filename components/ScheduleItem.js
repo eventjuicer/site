@@ -62,7 +62,7 @@ const ScheduleItem = ({ data, selected, classes, first, dialogShow }) => {
       <ScheduleItemPresenter
         title={getFullName(data)}
         text={getFullJobInfo(data)}
-        imageSrc={getParticipantCdn(data.id)}
+        imageSrc={getParticipantCdn(data.avatar)}
       />
     </div>
   );

@@ -12,7 +12,7 @@ import {
 
 import Layout from '../layouts/main';
 
-import {Visitor, Presenters} from '../compositions'
+import {Visitor, Presenters, Schedule} from '../compositions'
 
 class PagePresenters extends React.Component {
   static async getInitialProps({
@@ -32,11 +32,13 @@ class PagePresenters extends React.Component {
       <Layout>
         <Head />
 
-       <Presenters />
-
-  
+       <Presenters first />
+       
         <Visitor label="visitors.register_alt" />
         
+        <Schedule />
+
+       <Visitor label="visitors.register" />
 
         {/* <Wrapper label="visitors.attendees">
           <WhoIsGonnaBeThere />
