@@ -14,15 +14,28 @@ onClick={() => dialogShow({
     })}
 */
 
-const OfferLocationButton = ({dialogShow, translate, name, subpage, id}) => (
+const OfferLocationButton = ({dialogShow, translate, name, text, className, subpage, id}) => (
+    <React.Fragment>
+
+     <Button onClick={() => dialogShow({
+         title : name,
+         content :  <div className={className} dangerouslySetInnerHTML={{__html : text}} />
+     })} variant="outlined" size="small" color="primary">{translate("common.details")}</Button>
+
     <Link { ...generateLinkParams(name, subpage, id) }>
-     <Button size="small" color="primary">{translate("common.booth_location")}</Button>
+        <Button size="small" color="primary">{translate("common.booth_location")}</Button>
     </Link>
+
+    </React.Fragment>
+   
    
 )
 
 OfferLocationButton.defaultProps = {
-    subpage : "company"
+    subpage : "company",
+    name : "",
+    text : "",
+    className : ""
 }
 
 const enhance = compose(

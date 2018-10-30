@@ -76,7 +76,7 @@ export const getCompanyAltOgImage = (company, url) => {
         `c_${company.id}_${params.utm_content}`,
         version,
         'template_raw',
-        'h_504,w_960'
+        'c_fit,h_504,w_960'
       );
     }
   }

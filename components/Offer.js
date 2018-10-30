@@ -6,27 +6,75 @@ import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardActions from '@material-ui/core/CardActions';
 import OfferLocationButton from './OfferLocationButton'
+import classNames from 'classnames'
 
 const styles = theme => ({
   card: {
     display: 'flex',
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    marginTop: 10,
+
+    [theme.breakpoints.down('sm')]: {
+      flexDirection : 'column',
+    }
   },
   details: {
     display: 'flex',
     flexDirection: 'column'
   },
-  content: {
-    flex: '1 0 auto'
+  // content: {
+    
+  //   flex: '1 0 auto',
+  //   position: 'relative',
+ 
+
+  // },
+
+  avatarContainer : {
+    textAlign : 'center',
+    width : '100%'
   },
+
   avatar : {
+
     maxWidth : 150,
-   // height : 120
+
+   [theme.breakpoints.down('sm')]: {
+      maxWidth : 100,
+      maxHeight : 100,
+    }
+
   },
-  text : {
+
+
+  baseText : {
+
     fontFamily : theme.typography.fontFamily,
-    fontSize: '1rem',
-    fontWeight: 400
+    fontSize: '1.1rem',
+    fontWeight: 400,
+
+  },
+
+  text : {
+
+    overflowY : "hidden",
+    position: 'relative',
+    maxHeight : 150,
+    fontSize: '0.9rem',
+
+    '&:before': {
+      content: '""',
+      width: '100%',
+      height: '100%',    
+      position: 'absolute',
+      zIndex : 1000,
+      left: 0,
+      top: 0,
+      background: 'linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255, 0.8))',
+      pointerEvents: 'none'
+    }
+
+   
   }
 });
 
@@ -45,13 +93,14 @@ const Offer = ({ id, name, classes, text, imageSrc, primary }) => (
         className={classes.avatar}
     />
     }
+    classes={{avatar : classes.avatarContainer}}
     />
     <div className={classes.details}>
         <CardContent className={classes.content}>
-            <div className={classes.text} dangerouslySetInnerHTML={{__html : text}} />
+            <div className={classNames(classes.baseText, classes.text)} dangerouslySetInnerHTML={{__html : text}} />
         </CardContent>
         <CardActions className={classes.controls}>
-            <OfferLocationButton id={id} name={name} />
+            <OfferLocationButton id={id} name={name} text={text} className={classes.baseText} />
         </CardActions>
     </div>
     </Card>
