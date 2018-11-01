@@ -21,7 +21,8 @@ import {
   AllExhibitorsColumnList,
   RoleButtons,
   SalesMap,
-  Presenters
+  Presenters,
+  Schedule
 } from '../compositions';
 
 
@@ -53,17 +54,25 @@ class PageIndex extends React.Component {
         <Head />
 
         <VideoWithEventInfo />
-        
+
+      <Schedule />
+
       <Visitor
             label="visitors.register"
             secondaryLabel="event.parties"
       />
 
-
        <RoleButtons />
       
    
       <Presenters />
+
+
+       <Visitor
+            label="visitors.register_alt"
+            secondaryLabel="event.parties"
+      />
+
 
       <SalesMap
       
@@ -110,7 +119,7 @@ class PageIndex extends React.Component {
 
 
           <Visitor
-            label="visitors.register_alt"
+            label="visitors.register"
             secondaryLabel="event.parties"
       />
 

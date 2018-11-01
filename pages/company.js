@@ -13,15 +13,13 @@ import {
   VideoWithEventInfo,
   Visitor, 
   Company, 
-  FeaturedExhibitors, 
-  SalesMap,
+  AllExhibitorsColumnList, 
+//  SalesMap,
   RoleButtons,
-  Presenters
+  Presenters,
+  Schedule
 } from '../compositions'
 import Layout from '../layouts/main';
-
-const People = dynamic(import('../components/People'));
-const Schedule = dynamic(import('../components/Schedule'));
 
 class PageCompany extends React.Component {
 
@@ -49,77 +47,19 @@ class PageCompany extends React.Component {
       <Layout>
 
         <Company id={company_id} asPath={asPath} />
-        
+
+        <VideoWithEventInfo />
+
+        <Visitor />
+
+        <Schedule />
+
+        <Visitor />
+
         <RoleButtons />
 
-        <Visitor   
-          label="visitors.register"
-          links={[
-            <Link
-              key="more"
-              href="/visit"
-              label="visitors.more_info"
-              variant="flat"
-              color="secondary"
-            />
-        ]}/>
-
-      <Presenters />
-
-     <SalesMap  label="exhibitors.map.title2" />
-
-      
-      <FeaturedExhibitors 
-      label="exhibitors.list_featured"
-      links={[
-        <Link
-          key="all"
-          href="/exhibitors"
-          label="common.menu.visitors.exhibitors"
-          variant="flat"
-          color="secondary"
-        />
-      ]}
-      />
-
-
-
-        {/*
-    <Wrapper
-      label="presenters.schedule"
-      secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
-      first
-    >
-      <Schedule  />
-    </Wrapper>
- */}
-
-        {/* <Wrapper
-      label="presenters.list_featured"
-      secondaryTitle="Udział bezpłatny. Pełna agenda już wkrótce..."
-      links={[
-        <Link key="more" href="/agenda" label="presenters.list_full" variant="flat" color="secondary" />
-      ]}
-    >
-      <People link={true} limit={8} random={false} filter={function(item){ return [71460, 71462, 71461, 71463, 71703, 71707, 71708, 71709].indexOf(item.id) > -1; }}  />
-    </Wrapper>
- */}
-
-
-  <VideoWithEventInfo />
-
-
-        {/*
-  <Wrapper label="visitors.register_alt" color="#ffffff" links={[
-     <Link key="more" href="/visit" label="visitors.more_info" variant="flat" color="secondary" />
-  ]}>
-    <Visitor  />
-  </Wrapper>
- */}
-
-        {/* <Wrapper label="exhibitors.list_full" color="#ffffff">
-      <ColumnList data={ exhibitors } />
-    </Wrapper> */}
+        <AllExhibitorsColumnList />
+    
       </Layout>
     );
   }

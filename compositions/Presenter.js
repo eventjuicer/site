@@ -30,13 +30,14 @@ const Presenter = ({id, asPath, ...rest}) => (
 
     <Presenters id={id}>{
 
-        ({record}) => {
+        (filtered, all, record) => {
                     
             return (
+
             <React.Fragment>
 
             <Head
-            image={getPresenterOgImage(record, 'template_speaker2')}
+            image={getPresenterOgImage(record, 'template_speaker_teh15')}
             url={asPath}
             titleLabel={['presenters.opengraph.title', { name : getSpeakerName(record) }]}
             descriptionLabel={[
@@ -49,7 +50,7 @@ const Presenter = ({id, asPath, ...rest}) => (
             ]}
             />
 
-            <Wrapper {...rest}>
+            <Wrapper first={true} {...rest}>
             <Section
             leftSize={5}
             left={

@@ -7,11 +7,10 @@ import {
   Visitor,
   FeaturedExhibitors,
   Presenter,
-  Presenters
+  Schedule,
+  RoleButtons,
+  VideoWithEventInfo
 } from '../compositions'
-
-
-
 
 class PageSpeaker extends React.Component {
   static async getInitialProps({
@@ -32,6 +31,7 @@ class PageSpeaker extends React.Component {
   render() {
     const { speakerId, asPath } = this.props;
 
+    console.log(speakerId);
 
     // if (!speaker) {
     //   return <Error statusCode={404} />;
@@ -43,32 +43,19 @@ class PageSpeaker extends React.Component {
 
         <Presenter id={speakerId }/>
 
-        <Presenters />
+        <Schedule />
         
+        <VideoWithEventInfo />
+
         <Visitor 
           label="visitors.register_alt"
-          // links={[
-          //   <Link
-          //     key="more"
-          //     href="/visit"
-          //     label="visitors.more_info"
-          //     variant="flat"
-          //     color="secondary"
-          //   />
-          // ]}
         />
+
+
+        <RoleButtons />
 
         <FeaturedExhibitors label="exhibitors.list_featured" /> 
      
-        {/* <Wrapper
-          label="presenters.schedule"
-          secondaryTitle="Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)"
-          first
-        >
-          <Schedule selected={speaker.id} />
-        </Wrapper> */}
-        
-      
       </Layout>
     );
   }

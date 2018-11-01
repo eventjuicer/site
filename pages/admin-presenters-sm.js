@@ -52,7 +52,7 @@ class PageSpeakerSocial extends React.Component {
               'presentation_description'
             )}`;
 
-            const ogImage = getPresenterOgImage(presenter, 'template_speaker2');
+            const ogImage = getPresenterOgImage(presenter, 'template_speaker_teh15');
             const linkParams = generateLinkParams(
               name,
               'speaker',

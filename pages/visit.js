@@ -50,19 +50,19 @@ class PageVisit extends React.Component {
           first 
         />
 
+        <Schedule />
+
+        <VideoWithEventInfo />
 
         <Presenters />
 
-         <VideoWithEventInfo />
-
-
+       
        <Visitor 
           label="visitors.register" 
           first 
         />
 
-        <Schedule />
-
+       
         <VisitorBenefits 
           label="visitors.benefits.title" 
         />

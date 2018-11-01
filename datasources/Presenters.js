@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux'
 
-import { MobileAwareFilteredPresenters, getPresenters } from '../redux/selectors'
+import { MobileAwareFilteredPresenters, getPresenters, getPresenterByIdSelector } from '../redux/selectors'
 import {resourceFetchRequest } from '../components/redux'
 
 // import { getCompanyProfileInfo, filterCompanyInstances } from '../helpers';
@@ -55,7 +55,8 @@ export default connect(
       return {
         
         filtered : MobileAwareFilteredPresenters(state, props),
-        all : getPresenters(state, props)
+        all : getPresenters(state, props),
+        record : getPresenterByIdSelector(state, props)
       }
     }
     return mapStateToProps

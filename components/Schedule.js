@@ -9,9 +9,6 @@ import ScheduleItem from './ScheduleItem';
 import ScheduleVenue from './ScheduleVenue';
 import ScheduleBreak from './ScheduleBreak';
 
-
-import { presenterSelector } from '../redux/reselect';
-
 class Schedule extends React.PureComponent {
  
   getCompany(id) {
@@ -44,10 +41,10 @@ class Schedule extends React.PureComponent {
   }
 
   renderVenues() {
+    
     const { venues } = this.props;
 
-    const gridData = { xs: 12, sm: 12, md: 6, lg: 6, xl: 6 };
-    //const gridData = { xs: 12, sm: 12, md: 4, lg: 4, xl: 4 };
+    const gridData = this.getColNumber();
 
     return Object.keys(venues).map(venue => (
       <Grid key={venue} item {...gridData}>
@@ -59,15 +56,18 @@ class Schedule extends React.PureComponent {
     ));
   }
 
+  getColNumber(){
+    const {venues} = this.props;
+    const cols = 12 / Object.keys(venues).length;
+    return { xs: 12, sm: 12, md: cols, lg: cols, xl: cols };
+  }
+
+
   render() {
-
   
-    const { presenters, venues, times } = this.props;
+    const { venues, times } = this.props;
+    const gridData = this.getColNumber();
 
-    const gridData = { xs: 12, sm: 12, md: 6, lg: 6, xl: 6 };
-   // const gridData = { xs: 12, sm: 12, md: 4, lg: 4, xl: 4 };
-    
-   
    return (
       <div>
         <Grid
@@ -123,7 +123,7 @@ Schedule.defaultProps = {
     A: { company_id: 1303 },
     B: { company_id: 1245 },
   //  C: {}
-    //C: { company_id: 1194 }
+    C: {  }
   }
 
 };

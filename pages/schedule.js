@@ -12,7 +12,8 @@ import Layout from '../layouts/main';
 import {
   Visitor, 
   Presenters, 
-  Schedule
+  Schedule,
+  VideoWithEventInfo
 } from '../compositions'
 
 class PageSchedule extends React.Component {
@@ -37,7 +38,9 @@ class PageSchedule extends React.Component {
 
         <Visitor label="visitors.register_alt" />
 
-        <Presenters />
+        <VideoWithEventInfo />
+
+        <Presenters filter={null} />
 
         <Visitor label="visitors.register" />
        

@@ -1,7 +1,11 @@
 import { MyHead as Head } from '../next';
 import { connect } from 'react-redux';
 
-import { Typography, Wrapper, People } from '../components';
+import { 
+  Typography 
+} from '../components'
+
+import {Presenters} from '../compositions'
 
 import Layout from '../layouts/main';
 
@@ -13,7 +17,9 @@ class PageAgendaPreview extends React.Component {
     isServer,
     store
   }) {
-    return {};
+    return {
+      preload : ["presenters"]
+    };
   }
 
   render() {
@@ -23,9 +29,8 @@ class PageAgendaPreview extends React.Component {
       <Layout>
         <Head />
 
-        <Wrapper first label="presenters.list_full">
-          <People link={true} />
-        </Wrapper>
+        <Presenters limit={null} filter={null} link={true} />
+    
       </Layout>
     );
   }

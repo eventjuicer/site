@@ -12,7 +12,12 @@ import {
 
 import Layout from '../layouts/main';
 
-import {Visitor, Presenters, Schedule} from '../compositions'
+import {
+  Visitor, 
+  Presenters, 
+  Schedule,
+  VideoWithEventInfo
+} from '../compositions'
 
 class PagePresenters extends React.Component {
   static async getInitialProps({
@@ -30,12 +35,15 @@ class PagePresenters extends React.Component {
 
     return (
       <Layout>
+        
         <Head />
 
-       <Presenters first />
+       <Presenters first filter={null} />
        
         <Visitor label="visitors.register_alt" />
         
+        <VideoWithEventInfo />
+
         <Schedule />
 
        <Visitor label="visitors.register" />

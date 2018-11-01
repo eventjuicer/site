@@ -8,17 +8,14 @@ import {
     Exhibitors
 } from '../datasources';
 
-const WidgetSchedule = (props) => (
+const WidgetSchedule = ({label, secondaryLabel, links, link}) => (
 
     <Wrapper
-    label="presenters.schedule"
-    secondaryLabel="presenters.list_description"
-    links={[
-    // <Link key="all" href="/presenters" label="common.menu.visitors.presenters" variant="flat" color="secondary" />,
-    // <Link key="subjects" href="/schedule" label="common.menu.visitors.schedule" variant="flat" color="secondary" />
-    ]}
+    label={label}
+    secondaryLabel={secondaryLabel}
+    links={links}
     >
-    {/**/}
+   
 
     <Exhibitors>{
         (exhibitors) => (
@@ -33,7 +30,7 @@ const WidgetSchedule = (props) => (
             <Schedule
                 exhibitors={exhibitors}
                 presenters={presenters}
-                link={false} 
+                link={link} 
             />
     
             }</Presenters>
@@ -48,5 +45,18 @@ const WidgetSchedule = (props) => (
 
 )
 
+WidgetSchedule.defaultProps = {
+    label : "presenters.schedule",
+    secondaryLabel : "presenters.list_description",
+    links : [],
+    link : true
+}
+
+/*
+[
+    // <Link key="all" href="/presenters" label="common.menu.visitors.presenters" variant="flat" color="secondary" />,
+    // <Link key="subjects" href="/schedule" label="common.menu.visitors.schedule" variant="flat" color="secondary" />
+]
+*/
 
 export default WidgetSchedule
