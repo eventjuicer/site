@@ -29,9 +29,8 @@ class PageSpeaker extends React.Component {
   }
 
   render() {
-    const { speakerId, asPath } = this.props;
 
-    console.log(speakerId);
+    const { speakerId, asPath } = this.props;
 
     // if (!speaker) {
     //   return <Error statusCode={404} />;
@@ -40,8 +39,7 @@ class PageSpeaker extends React.Component {
     return (
       <Layout>
        
-
-        <Presenter id={speakerId }/>
+        <Presenter id={speakerId } asPath={asPath} />
 
         <Schedule />
         
