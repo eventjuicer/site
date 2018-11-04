@@ -59,6 +59,23 @@ export const getPresenterOgImage = (
   return `https://res.cloudinary.com/eventjuicer/image/upload/${avatarTrans}/${logotypeTrans}/${template}.png`;
 };
 
+
+export const getPresenterFbAd = (
+  participant,
+  template = 'template_speaker_teh15_square'
+) => {
+  const avatarTrans = `g_north,x_-100,y_150,w_450,h_450,l_p_${
+    participant.id
+  }_avatar,c_fit,r_max`;
+  const logotypeTrans = `g_south,x_-100,y_250,w_350,h_250,l_p_${
+    participant.id
+  }_logotype,c_fit`;
+
+  return `https://res.cloudinary.com/eventjuicer/image/upload/${avatarTrans}/${logotypeTrans}/${template}.png`;
+};
+
+
+
 export const getCompanyAltOgImage = (company, url) => {
   const params = getUrlParams(url);
 
