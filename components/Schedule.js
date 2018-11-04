@@ -1,5 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
 
 import _filter from 'lodash/filter';
 import _find from 'lodash/find';
@@ -70,13 +71,17 @@ class Schedule extends React.PureComponent {
 
    return (
       <div>
+    
+        <Hidden implementation="css" smDown={true}>
+
         <Grid
           container
           spacing={40}
-          hidden={{ implementation: 'css', smDown: true }}
         >
           {this.renderVenues()}
         </Grid>
+
+        </Hidden>
 
         {Object.keys(times).map((time, i) => (
           <Grid key={i} container spacing={40}>
