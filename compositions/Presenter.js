@@ -24,7 +24,6 @@ const getSpeakerName = (speaker) => `${_get(speaker, 'fname')} ${_get(speaker, '
 const getSpeakerAvatar = (speaker) => _get(speaker, 'avatar');
 const getSpeakerLogotype = (speaker) =>  _get(speaker, 'logotype');
 
-
 const Presenter = ({id, asPath, ...rest}) => (
 
 
@@ -37,7 +36,7 @@ const Presenter = ({id, asPath, ...rest}) => (
             <React.Fragment>
 
             <Head
-            image={getPresenterOgImage(record, 'template_speaker_teh15')}
+            image={getPresenterOgImage(record, 'template_speaker_teh15_2')}
             url={asPath}
             titleLabel={['presenters.opengraph.title', { name : getSpeakerName(record) }]}
             descriptionLabel={[

@@ -27,7 +27,9 @@ class PagePresenters extends React.Component {
     isServer,
     store
   }) {
-    return {};
+    return {
+      preload : ["presenters"]
+    }
   }
 
   render() {

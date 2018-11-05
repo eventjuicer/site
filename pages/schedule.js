@@ -23,7 +23,9 @@ class PageSchedule extends React.Component {
     isServer,
     store
   }) {
-    return {};
+    return {
+      preload : ["presenters"]
+    }
   }
 
   render() {
