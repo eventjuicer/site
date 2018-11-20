@@ -1,1 +1,3 @@
-export { default } from '../next/_document';
+import { NextDocument } from 'eventjuicer-site-components';
+
+export default NextDocument

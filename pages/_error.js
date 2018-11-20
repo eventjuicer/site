@@ -1,15 +1,16 @@
 import React from 'react';
-import { MyHead as Head } from '../next';
-import { connect } from 'react-redux';
+import { 
 
-import {
+  MyHead as Head,
   VideoWithEventInfo,
   Visitor, 
   RoleButtons,
-  AllExhibitorsAvatarlist
-} from '../compositions';
+  AllExhibitorsAvatarlist,
+  LayoutMain as Layout
+} from 'eventjuicer-site-components';
 
-import Layout from '../layouts/main';
+import { connect } from 'react-redux';
+
 
 class PageError extends React.Component {
 

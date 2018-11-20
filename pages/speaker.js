@@ -6,7 +6,7 @@ import Layout from '../layouts/main';
 import {
   Visitor,
   FeaturedExhibitors,
-  Presenter,
+  ProfilePresenter,
   Schedule,
   RoleButtons,
   VideoWithEventInfo
