@@ -1,30 +1,20 @@
-import dynamic from 'next/dynamic';
-import _get from 'lodash/get';
-
-import { MyHead as Head } from '../next';
-
-import { connect } from 'react-redux';
 
 import {
+  get as _get,
+  MyHead as Head,
+  connect,
+  getInviteOgImage,
+  WidgetVisitor, 
+  WidgetSchedule,
+  WidgetAllExhibitorsColumnList,
+  WidgetSalesMap,
+  LayoutMain as Layout,
   TicketDownload,
-  Typography,
   Wrapper,
-  MyTypography,
   EventInfo,
   Invite
-} from '../components';
+} from 'eventjuicer-site-components'
 
-import Layout from '../layouts/main';
-
-import {
-  Visitor, 
-  Schedule,
-  AllExhibitorsColumnList,
-  SalesMap
-} from '../compositions'
-
-
-import { getInviteOgImage } from '../helpers';
 
 class PageTicket extends React.Component {
 
@@ -97,18 +87,18 @@ class PageTicket extends React.Component {
 
         </Wrapper>
 
-        <Schedule />
+        <WidgetSchedule />
 
-      <SalesMap
+      <WidgetSalesMap
       
         label="exhibitors.map.title2"
         secondaryLabel="exhibitors.map.opensales"
 
         />
               
-        <AllExhibitorsColumnList />
+        <WidgetAllExhibitorsColumnList />
 
-        <Visitor  label="visitors.register_alt" />
+        <WidgetVisitor  label="visitors.register_alt" />
 
       </Layout>
     );

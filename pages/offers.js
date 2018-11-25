@@ -1,44 +1,41 @@
-import { connect } from 'react-redux';
-import Layout from '../layouts/main';
-
+ 
 import {
-  Wrapper,
-  ColumnList,
-  //  Bookingmap,
-//  Gallery
-} from '../components';
+  connect,
+  LayoutMain as Layout,
+  MyHead as Head, 
+ // MyLink as Link,
+  WidgetVisitor, 
+  WidgetOffers,
+  WidgetRoleButtons,
+  // Wrapper,
+  // ColumnList
+} from 'eventjuicer-site-components'
 
-import { MyHead as Head, MyLink as Link } from '../next';
-
-import {
-  Visitor, 
-  Offers,
-  RoleButtons
-} from '../compositions'
-import {Offers as OfferDatasource} from '../datasources'
 
 class PageSpecials extends React.Component {
-  static async getInitialProps({
 
+  static async getInitialProps({
     query,
     asPath,
     isServer,
     store
   }) {
-
     return { preload : ["exhibitors"]  };
   }
 
   render() {
+    
     const { url } = this.props;
 
     return (
-      <Layout>
+    
+    <Layout>
+    
         <Head />
 
-        <Offers divider={
+        <WidgetOffers divider={
 
-          <Visitor 
+          <WidgetVisitor 
           first
           label="visitors.register_alt"
           secondaryTitle="Spotkamy się w gronie ponad 3000 osób!"
@@ -46,13 +43,13 @@ class PageSpecials extends React.Component {
 
         } />
 
-        <Visitor 
+        <WidgetVisitor 
            first
            label="visitors.register"
            secondaryTitle="Spotkamy się w gronie ponad 3000 osób!"
           />
 
-        <RoleButtons />
+        <WidgetRoleButtons />
        
       </Layout>
     );

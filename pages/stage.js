@@ -1,10 +1,13 @@
-import { MyHead as Head } from '../next';
 
-import { connect } from 'react-redux';
 
-import { Typography, Wrapper, Stage } from '../components';
-
-import Layout from '../layouts/main';
+import {
+  connect,
+  MyHead as Head,
+  LayoutMain as Layout,
+  Typography, 
+  Wrapper, 
+  Stage
+} from 'eventjuicer-site-components'
 
 class PageStage extends React.Component {
   static async getInitialProps({

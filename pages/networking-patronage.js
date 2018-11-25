@@ -1,25 +1,24 @@
 import dynamic from 'next/dynamic';
 
-import _get from 'lodash/get';
-
-import { MyHead as Head } from '../next';
-
-import { connect } from 'react-redux';
-
 import {
-  Faq,
-  FaqLink,
+  get as _get,
+  connect,
+  MyHead as Head,
+  LayoutMain as Layout,
+  WidgetSupport, 
+  MyTypography as Typography,
+  // Faq,
+  // FaqLink,
   Wrapper,
   Benefits,
-  MyTypography as Typography,
   TwoColsLayout as Section
-} from '../components';
+} from 'eventjuicer-site-components'
 
-import {Support} from '../compositions'
 
-import Layout from '../layouts/main';
+const Bookingmap = dynamic(
+  import('eventjuicer-site-components/dist/components/Bookingmap/Bookingmap')
+);
 
-const Bookingmap = dynamic(import('../components/Bookingmap/Bookingmap'));
 
 class PagePremium extends React.Component {
   static async getInitialProps({
@@ -85,7 +84,7 @@ class PagePremium extends React.Component {
                 />
 
                 <div style={{ marginTop: 40 }}>
-                  <Support
+                  <WidgetSupport
                     title="exhibitors.premium.contact.title"
                     text="exhibitors.premium.contact.description"
                   />

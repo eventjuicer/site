@@ -1,8 +1,7 @@
-import { Component } from 'react';
-import fetch from 'isomorphic-unfetch';
-import { connect } from 'react-redux';
 
-class Api extends Component {
+import {connect} from 'eventjuicer-site-components'
+
+class Api extends React.Component {
   static async getInitialProps({ req, query }) {
     const isServer = !!req;
 
@@ -15,9 +14,9 @@ class Api extends Component {
       return { texts: query.texts };
     } else {
       // On the client, we should fetch the data remotely
-      const res = await fetch('/_data/texts', {
-        headers: { Accept: 'application/json' }
-      });
+      // const res = await fetch('/_data/texts', {
+      //   headers: { Accept: 'application/json' }
+      //});
       const json = await res.json();
       return { texts: json };
     }

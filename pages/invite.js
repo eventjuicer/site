@@ -1,23 +1,18 @@
-import _get from 'lodash/get';
-import { MyHead as Head } from '../next';
-import { connect } from 'react-redux';
 
-import {
+import { 
+  connect,
+  MyHead as Head,
+  get as _get,
+  getInviteOgImage,
+  LayoutMain as Layout,
+  WidgetVisitor, 
+  WidgetFeaturedExhibitors,
+  WidgetSchedule,
   Typography,
   Wrapper,
   Gallery,
   EventInfo
-} from '../components';
-
-import Layout from '../layouts/main';
-
-import {
-  Visitor, 
-  FeaturedExhibitors,
-  Schedule
-} from '../compositions'
-
-import { getInviteOgImage } from '../helpers';
+} from 'eventjuicer-site-components';
 
 class PageInvite extends React.Component {
   static async getInitialProps({

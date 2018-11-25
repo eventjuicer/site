@@ -1,17 +1,15 @@
-import { MyHead as Head } from '../next';
-import { connect } from 'react-redux';
-
+ 
 import {
+  MyHead as Head,
+  connect,
+  WidgetVisitor,
+  LayoutMain as Layout
+} from 'eventjuicer-site-components'
 
-//  Googlemap
-} from '../components';
 
-import Layout from '../layouts/main';
-import {Visitor} from '../compositions'
-
-class Partner extends React.Component {
+class PagePartner extends React.Component {
+  
   static async getInitialProps({
-   
     query,
     asPath,
     isServer,
@@ -24,13 +22,10 @@ class Partner extends React.Component {
     return (
       <Layout>
         <Head />
-
-        <Visitor label="visitors.register_alt" />
-        
-
+        <WidgetVisitor label="visitors.register_alt" />
       </Layout>
     );
   }
 }
 
-export default connect()(Partner);
+export default connect()(PagePartner);

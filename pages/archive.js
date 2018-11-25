@@ -1,22 +1,19 @@
- 
-import { connect } from 'react-redux';
-import Layout from '../layouts/main';
 
-import Table from '../components/MyTable';
 
 import {
+  connect,
+  LayoutMain as Layout,
+  WidgetVisitor,
+  MyHead as Head, 
+  MyLink as Link,
   Wrapper,
   Avatarlist,
   Typography,
   Gallery,
   WidthAwareInfo,
-  People
-} from '../components';
-
-import { MyHead as Head, MyLink as Link } from '../next';
-
-import {Visitor} from '../compositions'
-
+  People,
+  MyTable as Table
+} from 'eventjuicer-site-components'
  
 class PageArchive extends React.Component {
   static async getInitialProps({

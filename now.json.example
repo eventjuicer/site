@@ -13,8 +13,5 @@
       "max": 3
     }
   },
-  "dotenv": false,
-  "env" : {
-    "API_HOST": "targiehandlu.pl"
-  }
+  "dotenv": false
 }

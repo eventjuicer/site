@@ -1,24 +1,20 @@
-import dynamic from 'next/dynamic';
-import { MyHead as Head, MyLink as Link } from '../next';
-
-import { connect } from 'react-redux';
-
-import Layout from '../layouts/main';
+//import dynamic from 'next/dynamic';
 
 import {
+  connect,
+  MyHead as Head, 
+  MyLink as Link,
+  LayoutMain as Layout,
+  DatasourceExhibitors,
+  WidgetVisitor, 
+  WidgetRoleButtons,
+  WidgetAllExhibitorsAvatarlist,
   Wrapper,
   Bookingmap,
   Typography,
   Gallery
-} from '../components';
+} from 'eventjuicer-site-components'
 
-//const Gallery = dynamic(import('../components/GalleryQuoted'))
-import {
-  Visitor, 
-  RoleButtons,
-  AllExhibitorsAvatarlist} from '../compositions'
-
-import {Exhibitors} from '../datasources'
 
 class PageExhibitors extends React.Component {
   static async getInitialProps({

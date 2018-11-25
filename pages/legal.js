@@ -1,11 +1,16 @@
-import _get from 'lodash/get';
 
-import { MyHead as Head } from '../next';
-import { connect } from 'react-redux';
 
-import { Typography, Faq, FaqLink, Wrapper } from '../components';
+import {
+  connect,
+  get as _get,
+  LayoutMain as Layout,
+  MyHead as Head,
+  // Typography, 
+  // Faq, 
+  // FaqLink, 
+  Wrapper
+} from 'eventjuicer-site-components'
 
-import Layout from '../layouts/main';
 
 class PageFaq extends React.Component {
   static async getInitialProps({

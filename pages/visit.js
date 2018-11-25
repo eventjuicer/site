@@ -1,104 +1,79 @@
-import { MyHead as Head } from '../next';
-import { connect } from 'react-redux';
 
 import {
-  Wrapper,
-  WhoIsGonnaBeThere,
-  //Googlemap,
-  Gallery
-} from '../components';
-
-import {
-  VideoWithEventInfo,
-  Visitor,
-  VisitorBenefits,
-  Presenters,
-  Schedule,
-  AllExhibitorsAvatarlist
-} from '../compositions';
-
-import Layout from '../layouts/main';
-
-import {Photos} from '../datasources';
+connect,
+Gallery,
+MyHead,
+WidgetVideoWithEventInfo,
+WidgetVisitor,
+WidgetVisitorBenefits,
+WidgetPresenters,
+WidgetSchedule,
+WidgetAllExhibitorsAvatarlist,
+LayoutMain as Layout,
+DatasourcePhotos as Photos
+} from 'eventjuicer-site-components'
 
 class PageVisit extends React.Component {
 
-  static async getInitialProps({
+static async getInitialProps({
 
-    query,
-    asPath,
-    isServer,
-    store
-  }) {
+query,
+asPath,
+isServer,
+store
+}) {
 
-    return {
-      preload : ["exhibitors", "presenters"]
-    };
-  }
+return {
+preload : ["exhibitors", "presenters"]
+};
+}
 
-  render() {
-    const { url } = this.props;
+render() {
+const { url } = this.props;
 
-    return (
-      
-      <Layout>
+return (
 
-        <Head />
+<Layout>
 
-        <Visitor 
-          label="visitors.register_alt" 
-          first 
-        />
+<MyHead />
 
-        <Schedule />
+<WidgetVisitor 
+label="visitors.register_alt" 
+first 
+/>
 
-        <VideoWithEventInfo />
+<WidgetSchedule />
 
-        <Presenters />
+<WidgetVideoWithEventInfo />
 
-       
-       <Visitor 
-          label="visitors.register" 
-          first 
-        />
-
-       
-        <VisitorBenefits 
-          label="visitors.benefits.title" 
-        />
+<WidgetPresenters />
 
 
-         <AllExhibitorsAvatarlist label="exhibitors.list_full" />
+<WidgetVisitor 
+label="visitors.register" 
+first 
+/>
 
 
-        {/* <Wrapper
-        label="visitors.attendees"
-        secondaryTitle="oraz 3000 innych osób"
-      >
-        <WhoIsGonnaBeThere />
-      </Wrapper> */}
-
-        {/* <Wrapper label="visitors.register">
-        <Visitor />
-      </Wrapper>
-
- */}
+<WidgetVisitorBenefits 
+label="visitors.benefits.title" 
+/>
 
 
-        <Visitor 
-          label="visitors.register" 
-          first 
-        />
+<WidgetAllExhibitorsAvatarlist label="exhibitors.list_full" />
 
+<WidgetVisitor 
+label="visitors.register" 
+first 
+/>
 
-      <Photos>{
-        (photos, size) => <Gallery data={photos} size={size} label="event.gallery" />
-      }</Photos>
+<Photos>{
+(photos, size) => <Gallery data={photos} size={size} label="event.gallery" />
+}</Photos>
 
-        {/* <Googlemap /> */}
-      </Layout>
-    );
-  }
+</Layout>
+);
+}
 }
 
 export default connect()(PageVisit);

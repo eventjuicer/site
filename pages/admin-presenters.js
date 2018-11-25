@@ -1,13 +1,11 @@
-import { MyHead as Head } from '../next';
-import { connect } from 'react-redux';
 
-import { 
-  Typography 
-} from '../components'
-
-import {Presenters} from '../compositions'
-
-import Layout from '../layouts/main';
+import {
+  connect,
+  MyHead as Head,
+  LayoutMain as Layout,
+  WidgetPresenters,
+  MyTypography,
+} from 'eventjuicer-site-components'
 
 class PageAgendaPreview extends React.Component {
   static async getInitialProps({
@@ -29,7 +27,7 @@ class PageAgendaPreview extends React.Component {
       <Layout>
         <Head />
 
-        <Presenters limit={null} filter={null} link={true} />
+        <WidgetPresenters limit={null} filter={null} link={true} />
     
       </Layout>
     );

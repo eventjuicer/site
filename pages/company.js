@@ -1,25 +1,23 @@
 import dynamic from 'next/dynamic';
-import { MyLink as Link } from '../next';
-import { connect } from 'react-redux';
 
 import {
-//  MyTypography as Typography,
+  connect,
+  MyLink as Link,
+  LayoutMain as Layout,
   Wrapper,
-//  ColumnList,
-  Avatarlist
-} from '../components';
+  Avatarlist,
 
-import {
-  VideoWithEventInfo,
-  Visitor, 
-  Company, 
-  AllExhibitorsColumnList, 
-//  SalesMap,
-  RoleButtons,
-  Presenters,
-  Schedule
-} from '../compositions'
-import Layout from '../layouts/main';
+  WidgetVideoWithEventInfo,
+  WidgetVisitor, 
+  WidgetCompany, 
+  WidgetAllExhibitorsColumnList, 
+  //SalesMap,
+  WidgetRoleButtons,
+  WidgetPresenters,
+  WidgetSchedule
+
+} from 'eventjuicer-site-components'
+
 
 class PageCompany extends React.Component {
 
@@ -46,19 +44,19 @@ class PageCompany extends React.Component {
 
       <Layout>
 
-        <Company id={company_id} asPath={asPath} />
+        <WidgetCompany id={company_id} asPath={asPath} />
 
-        <VideoWithEventInfo />
+        <WidgetVideoWithEventInfo />
 
-        <Visitor />
+        <WidgetVisitor />
 
-        <Schedule />
+        <WidgetSchedule />
 
-        <Visitor />
+        <WidgetVisitor />
 
-        <RoleButtons />
+        <WidgetRoleButtons />
 
-        <AllExhibitorsColumnList />
+        <WidgetAllExhibitorsColumnList />
     
       </Layout>
     );

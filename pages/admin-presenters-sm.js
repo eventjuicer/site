@@ -1,19 +1,18 @@
 
-import { connect } from 'react-redux';
-import _get from 'lodash/get';
-import Divider from '@material-ui/core/Divider';
-
-
-import { MyHead as Head, MyLink as Link } from '../next';
-
 import {
+  connect,
+  getPresenterOgImage, 
+  generateLinkParams,
+  LayoutMain as Layout,
+  MyHead as Head, 
+  MyLink as Link,
   MyTypography as Typography,
   TwoColsLayout as Section,
-  Wrapper
-} from '../components';
+  Wrapper,
+  Divider,
+  get as _get
+} from 'eventjuicer-site-components'
 
-import Layout from '../layouts/main';
-import { getPresenterOgImage, generateLinkParams } from '../helpers';
 
 class PageSpeakerSocial extends React.Component {
   static async getInitialProps({

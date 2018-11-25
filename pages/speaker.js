@@ -1,16 +1,16 @@
-import { connect } from 'react-redux';
-//import Error from './_error';
 
-import Layout from '../layouts/main';
 
 import {
-  Visitor,
-  FeaturedExhibitors,
-  ProfilePresenter,
-  Schedule,
-  RoleButtons,
-  VideoWithEventInfo
-} from '../compositions'
+  connect,
+  LayoutMain as Layout,
+  WidgetVisitor,
+  WidgetFeaturedExhibitors,
+  WidgetPresenter,
+  WidgetSchedule,
+  WidgetRoleButtons,
+  WidgetVideoWithEventInfo
+} from 'eventjuicer-site-components'
+
 
 class PageSpeaker extends React.Component {
   static async getInitialProps({
@@ -39,20 +39,19 @@ class PageSpeaker extends React.Component {
     return (
       <Layout>
        
-        <Presenter id={speakerId } asPath={asPath} />
+        <WidgetPresenter id={speakerId } asPath={asPath} />
 
-        <Schedule />
+        <WidgetSchedule />
         
-        <VideoWithEventInfo />
+        <WidgetVideoWithEventInfo />
 
-        <Visitor 
+        <WidgetVisitor 
           label="visitors.register_alt"
         />
 
+        <WidgetRoleButtons />
 
-        <RoleButtons />
-
-        <FeaturedExhibitors label="exhibitors.list_featured" /> 
+        <WidgetFeaturedExhibitors label="exhibitors.list_featured" /> 
      
       </Layout>
     );

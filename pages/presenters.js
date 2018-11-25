@@ -1,23 +1,17 @@
-import { MyHead as Head } from '../next';
 
-import { connect } from 'react-redux';
 
 import {
-  Typography,
-  Wrapper,
-  //WhoIsGonnaBeThere,
-  //  Googlemap,
- // People
-} from '../components';
+  connect,
+  MyHead as Head,
+  MyLayout as Layout,
+  WidgetVisitor, 
+  WidgetPresenters, 
+  WidgetSchedule,
+  WidgetVideoWithEventInfo,
+  // Typography,
+  // Wrapper
+} from 'eventjuicer-site-components'
 
-import Layout from '../layouts/main';
-
-import {
-  Visitor, 
-  Presenters, 
-  Schedule,
-  VideoWithEventInfo
-} from '../compositions'
 
 class PagePresenters extends React.Component {
   static async getInitialProps({
@@ -40,15 +34,15 @@ class PagePresenters extends React.Component {
         
         <Head />
 
-       <Presenters first filter={null} limit={null} />
+       <WidgetPresenters first filter={null} limit={null} />
        
-        <Visitor label="visitors.register_alt" />
+        <WidgetVisitor label="visitors.register_alt" />
         
-        <VideoWithEventInfo />
+        <WidgetVideoWithEventInfo />
 
-        <Schedule />
+        <WidgetSchedule />
 
-       <Visitor label="visitors.register" />
+       <WidgetVisitor label="visitors.register" />
 
         {/* <Wrapper label="visitors.attendees">
           <WhoIsGonnaBeThere />

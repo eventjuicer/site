@@ -1,9 +1,14 @@
-import { MyHead as Head } from '../next';
-import { connect } from 'react-redux';
 
-import { Typography, Wrapper, Bookingmap } from '../components';
-import Layout from '../layouts/main';
-import {Visitor} from '../compositions'
+
+import {
+  connect,
+  MyHead as Head,
+  Typography, 
+  Wrapper, 
+  Bookingmap,
+  LayoutMain as Layout,
+  //WidgetVisitor
+} from 'eventjuicer-site-components'
 
 class PageMap extends React.Component {
   static async getInitialProps({

@@ -1,11 +1,13 @@
 import dynamic from 'next/dynamic';
-import { MyHead as Head, MyLink as Link } from '../next';
-
-import { connect } from 'react-redux';
-
-import Layout from '../layouts/main';
 
 import {
+  MyHead as Head, 
+  MyLink as Link,
+  connect,
+  LayoutMain as Layout,
+  WidgetVisitor, 
+  WidgetSalesMap,
+  DatasourceExhibitors,
   Wrapper,
   Avatarlist,
   ColumnList,
@@ -16,13 +18,8 @@ import {
   KeywordSelect,
   CompanyLocationMap,
   Centered
-} from '../components';
+} from 'eventjuicer-site-components'
 
-import {Visitor, SalesMap} from '../compositions'
-
-//const Gallery = dynamic(import('../components/GalleryQuoted'))
-
-import {Exhibitors} from '../datasources'
 
 class PageExhibitorsByKeyword extends React.Component {
 
@@ -48,7 +45,7 @@ class PageExhibitorsByKeyword extends React.Component {
 
         <Wrapper label="exhibitors.list_by_keyword" first>
 
-          <Exhibitors keyword={keyword} sort={['profile.name']}>
+          <DatasourceExhibitors keyword={keyword} sort={['profile.name']}>
             {
               (all, keywords, filtered) =>
 
@@ -67,7 +64,7 @@ class PageExhibitorsByKeyword extends React.Component {
               </React.Fragment>
 
             }
-          </Exhibitors>
+          </DatasourceExhibitors>
 
         </Wrapper>
 
@@ -80,7 +77,7 @@ class PageExhibitorsByKeyword extends React.Component {
               key="visit"
               href="/visit"
               label="visitors.more_info"
-              variant="flat"
+              variant="text"
               color="secondary"
             />
           ]}

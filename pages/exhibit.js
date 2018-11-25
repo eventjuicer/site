@@ -1,31 +1,25 @@
 import dynamic from 'next/dynamic';
 
-import { connect } from 'react-redux';
-import Layout from '../layouts/main';
-
 import {
-  Wrapper,
-  Avatarlist,
-  Typography,
-  Gallery,
-  WidthAwareInfo,
-  People,
-  Faq,
-  GridBenefits
-} from '../components';
-
-import {
+  connect,
+  LayoutMain as Layout,
   MyHead as Head,
-  MyLink as Link
-} from '../next';
-
-import { Exhibitors, Photos } from '../datasources'
-
-import {
-  SalesMap, 
-  ExhibitorBenefits, 
-  VideoWithReviews,
-  AllExhibitorsAvatarlist} from '../compositions'
+  MyLink as Link,
+  WidgetSalesMap, 
+  WidgetExhibitorBenefits, 
+  WidgetVideoWithReviews,
+  WidgetAllExhibitorsAvatarlist,
+  //DatasourceExhibitors, 
+  DatasourcePhotos,
+  Wrapper,
+  Gallery,
+  Faq,
+  // Avatarlist,
+  // Typography,
+  // WidthAwareInfo,
+  // People,
+  // GridBenefits
+} from 'eventjuicer-site-components'
 
 
 class PageExhibit extends React.Component {
@@ -49,16 +43,16 @@ class PageExhibit extends React.Component {
         <Head />
 
     
-     <ExhibitorBenefits first label="exhibitors.benefits.title" />
+     <WidgetExhibitorBenefits first label="exhibitors.benefits.title" />
 
-     <SalesMap
+     <WidgetSalesMap
           
             label="exhibitors.map.title"
             secondaryLabel="exhibitors.map.opensales"
       />
     
   
-      <VideoWithReviews />
+      <WidgetVideoWithReviews />
 
       <Wrapper label="exhibitors.faq.name">
 
@@ -88,12 +82,12 @@ class PageExhibit extends React.Component {
 
       </Wrapper>
 
-      <AllExhibitorsAvatarlist label="exhibitors.list_full" />
+      <WidgetAllExhibitorsAvatarlist label="exhibitors.list_full" />
         
 
-      <Photos>{
+      <DatasourcePhotos>{
         (photos, size) => <Gallery data={photos} size={size} label="event.gallery" />
-      }</Photos>
+      }</DatasourcePhotos>
 
       </Layout>
     );

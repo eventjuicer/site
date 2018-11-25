@@ -1,4 +1,4 @@
-const defaultServer = require('eventjuicer-site-components/dist/server/server');
+const server = require('eventjuicer-site-components/dist/server/server').default;
 
+server();
 
-defaultServer.default()

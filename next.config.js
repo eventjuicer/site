@@ -1,18 +1,25 @@
-const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
+require('dotenv').config()
+
+const path = require('path')
+const Dotenv = require('dotenv-webpack')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { ANALYZE } = process.env;
 const { IgnorePlugin } = require('webpack');
-//const withOffline = require('next-offline')
 
-
-module.exports = (phase, { defaultConfig }) => ({
-
-
-  //...withOffline(),
-
+module.exports = {
   webpack: (config, { buildId, dev, isServer, defaultLoaders }) => {
-    config.plugins.push(new IgnorePlugin(/^raven$/));
 
+    config.plugins = config.plugins || []
+
+    //config.plugins.push(new IgnorePlugin(/^raven$/));
+
+    config.plugins.push(
+      new Dotenv({
+        path: path.join(__dirname, dev ? '.env' : '.env.production'),
+        systemvars: true
+      })
+    )
+    
     if (ANALYZE) {
       config.plugins.push(
         new BundleAnalyzerPlugin({
@@ -23,38 +30,7 @@ module.exports = (phase, { defaultConfig }) => ({
       );
     }
 
-    return config;
-  },
 
-  serverRuntimeConfig: {
-    // Will only be available on the server side
-    mySecret: 'secret'
-    // test : process.env.API_HOST
-  },
-  publicRuntimeConfig: {
-    // Will be available on both server and client
-    apiHost: 'targiehandlu.pl'
+    return config
   }
-});
-
-//
-//
-//
-// const isProd = process.env.NODE_ENV === 'production'
-//
-// module.exports =  => {
-//
-//   const { parsed } = require('dotenv').config(
-//     {
-//       path : phase === PHASE_DEVELOPMENT_SERVER ? '.env' : '.env.production'
-//     }
-//   );
-//
-//   return {
-//     serverRuntimeConfig : parsed,
-//     publicRuntimeConfig : parsed,
-// //    assetPrefix: isProd ? '' : ''
-//   }
-//
-//
-// }
+}

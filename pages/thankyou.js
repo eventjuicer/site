@@ -1,18 +1,18 @@
-import { MyHead as Head } from '../next';
 
-import { connect } from 'react-redux';
-import _get from 'lodash/get';
 
 import {
+  connect,
+  MyHead as Head,
+  get as _get,
+  WidgetVisitor,
+  LayoutMain as Layout,
   Typography,
   Wrapper,
  // WhoIsGonnaBeThere,
   MyTypography,
   Googlemap
-} from '../components';
+} from 'eventjuicer-site-components'
 
-import Layout from '../layouts/main';
-import {Visitor} from '../compositions'
 
 class ThankyouPage extends React.Component {
   static async getInitialProps({
@@ -59,7 +59,7 @@ class ThankyouPage extends React.Component {
           <WhoIsGonnaBeThere />
         </Wrapper> */}
 
-        <Visitor label="visitors.register_alt" />
+        <WidgetVisitor label="visitors.register_alt" />
  
         {/* <Googlemap /> */}
       </Layout>
