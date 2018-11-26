@@ -1,30 +1,15 @@
-
 import {
   connect,
   MyHead as Head,
   LayoutMain as Layout,
-  WidgetVisitor, 
+  WidgetVisitor,
   WidgetPresenters,
-  Typography,
-  Wrapper,
-  //WhoIsGonnaBeThere,
-  //Schedule,
-  //Googlemap,
-  //People
-} from 'eventjuicer-site-components'
-
+} from 'eventjuicer-site-components';
 
 class PageAgenda extends React.Component {
-  static async getInitialProps({
-  
-    query,
-    asPath,
-    isServer,
-    store
-  }) {
-  
+  static async getInitialProps({ query, asPath, isServer, store }) {
     return {
-      preload : ["exhibitors", "presenters"]
+      preload: ['exhibitors', 'presenters'],
     };
   }
 
@@ -35,21 +20,9 @@ class PageAgenda extends React.Component {
       <Layout>
         <Head />
 
-      <WidgetPresenters />
+        <WidgetPresenters />
 
-       <WidgetVisitor label="visitors.register_alt" />
- 
-     
-
-        {/* <Wrapper label="visitors.attendees">
-          <WhoIsGonnaBeThere />
-        </Wrapper> */}
-
-        {/* <Wrapper>
-          <Visitor />
-        </Wrapper> */}
-
-        {/* <Googlemap /> */}
+        <WidgetVisitor label="visitors.register_alt" />
       </Layout>
     );
   }
@@ -57,5 +30,5 @@ class PageAgenda extends React.Component {
 
 export default connect(
   null,
-  null
+  null,
 )(PageAgenda);
