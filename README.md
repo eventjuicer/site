@@ -1,5 +1,16 @@
-# next.js site
+# example eventjuicer-site-components site
 
-### params passed to getInitialProps
+### getInitialProps receives a context object with the following properties:
 
-err, req, res, pathname, query, asPath, isServer, store
+* pathname - path section of URL
+* query - query string section of URL parsed as an object
+* asPath - String of the actual path (including the query) shows in the browser
+* req - HTTP request object (server only)
+* res - HTTP response object (server only)
+* jsonPageRes - Fetch Response object (client only)
+* err - Error object if any error is encountered during the 
+
+```jsx
+
+
+```
