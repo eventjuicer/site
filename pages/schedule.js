@@ -36,15 +36,15 @@ class PageSchedule extends React.Component {
 
         <Head />
 
-        <Schedule first />
+        {/* <Schedule first /> */}
 
         <Visitor label="visitors.register_alt" />
 
         <VideoWithEventInfo />
 
-        <Presenters filter={null} />
+        {/* <Presenters filter={null} />
 
-        <Visitor label="visitors.register" />
+        <Visitor label="visitors.register" /> */}
        
         {/* 
         <Wrapper label="visitors.attendees">

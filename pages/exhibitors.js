@@ -42,15 +42,15 @@ class PageExhibitors extends React.Component {
 
         <Head />
 
-        <AllExhibitorsAvatarlist label="exhibitors.list_full" first />
+        {/* <AllExhibitorsAvatarlist label="exhibitors.list_full" first /> */}
 
-        <Wrapper label="exhibitors.map.title">
-          {/* <h1>SCROLL </h1> */}
+        {/* <Wrapper label="exhibitors.map.title">
+    
           <Bookingmap />
-        </Wrapper>
+        </Wrapper> */}
 
 
-        <RoleButtons />
+        {/* <RoleButtons /> */}
 
         <Visitor label="visitors.are_you_visitor" />
        

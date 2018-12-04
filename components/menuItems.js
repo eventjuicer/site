@@ -19,36 +19,36 @@ const menuItems = [
         to: '/visit'
         //  icon : <IconSetting />
       },
-      {
-        name: 'schedule',
-        to: '/schedule'
-        //    icon : <IconLogistics />
-      },
-      {
-        name: 'presenters',
-        to: '/presenters'
-        //      icon : <IconPeople />
-      },
-      {
-        name: 'exhibitors',
-        to: '/exhibitors'
-        //      icon : <IconPeople />
-      },
-      {
-        name: 'offers',
-        to: '/offers'
-        //      icon : <IconPeople />
-      }
+      // {
+      //   name: 'schedule',
+      //   to: '/schedule'
+      //   //    icon : <IconLogistics />
+      // },
+      // {
+      //   name: 'presenters',
+      //   to: '/presenters'
+      //   //      icon : <IconPeople />
+      // },
+      // {
+      //   name: 'exhibitors',
+      //   to: '/exhibitors'
+      //   //      icon : <IconPeople />
+      // },
+      // {
+      //   name: 'offers',
+      //   to: '/offers'
+      //   //      icon : <IconPeople />
+      // }
     ]
   },
   {
     name: 'exhibitors',
     items: [
-      {
-        name: 'exhibitors',
-        to: '/exhibitors'
-        //  icon : <IconSetting />
-      },
+      // {
+      //   name: 'exhibitors',
+      //   to: '/exhibitors'
+      //   //  icon : <IconSetting />
+      // },
       {
         name: 'exhibit',
         to: '/exhibit'

@@ -55,13 +55,16 @@ class PageIndex extends React.Component {
 
         <VideoWithEventInfo />
 
-      <Schedule />
+      {/* <Schedule /> */}
 
       <Visitor
             label="visitors.register"
             secondaryLabel="event.parties"
       />
 
+       {/*
+       
+       
        <RoleButtons />
       
    
@@ -71,7 +74,7 @@ class PageIndex extends React.Component {
        <Visitor
             label="visitors.register_alt"
             secondaryLabel="event.parties"
-      />
+      /> 
 
 
       <SalesMap
@@ -80,6 +83,8 @@ class PageIndex extends React.Component {
         secondaryLabel="exhibitors.map.opensales"
 
       />
+
+    
 
         <FeaturedExhibitors
         
@@ -97,7 +102,7 @@ class PageIndex extends React.Component {
         
         />
 
-
+        */}
 
 
       <VideoWithReviews />
@@ -109,7 +114,7 @@ class PageIndex extends React.Component {
       }</Photos> */}
 
 
-       <AllExhibitorsColumnList />
+       {/* <AllExhibitorsColumnList /> */}
 
         <FsVideo
           background="https://res.cloudinary.com/eventjuicer/image/upload/v1534553598/poster_stage1.jpg"

@@ -33,13 +33,13 @@ const Footer = ({ links, classes, width }) => (
               {
                 icon: 'location',
                 secondary: 'event.location',
-                primary: 'EXPO XXI Warszawa, Prądzyńskiego 12/14'
+                primary: 'EXPO Kraków, Galicyjnska 9'
               },
 
               {
                 icon: 'date',
                 secondary: 'event.date',
-                primary: '7 listopada 2018'
+                primary: '17 kwietnia 2019'
               },
 
               {

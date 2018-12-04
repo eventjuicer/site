@@ -52,13 +52,13 @@ class PageCompany extends React.Component {
 
         <Visitor />
 
-        <Schedule />
+        {/* <Schedule />
 
         <Visitor />
 
         <RoleButtons />
 
-        <AllExhibitorsColumnList />
+        <AllExhibitorsColumnList /> */}
     
       </Layout>
     );

@@ -36,7 +36,7 @@ class PageAgenda extends React.Component {
       <Layout>
         <Head />
 
-      <Presenters />
+      {/* <Presenters /> */}
 
        <Visitor label="visitors.register_alt" />
  

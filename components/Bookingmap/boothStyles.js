@@ -1,13 +1,13 @@
 
 export const styleMapping = {
 
-  263 : "style1", //light
-  264 : "style2", //standard
-  265 : "style3", //hot
-  266 : "style4", //superhot
-  267 : "style5", //ultra
-  268 : "style6", //grand
-  269 : "style6"
+  271 : "style1", //light
+  272 : "style2", //standard
+  273 : "style3", //hot
+  274 : "style4", //superhot
+  275 : "style5", //ultra
+  276 : "style6", //grand
+  277 : "style6"
 }
 
 export const getStylingName = (groupId) => {

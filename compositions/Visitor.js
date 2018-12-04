@@ -27,7 +27,7 @@ const Visitor = ({ classes, ...rest }) => (
 
       <StepForm
         data={{}}
-        ticketId={1355}
+        ticketId={1453}
         fields={{
           email: 1,
           fname: 1,
@@ -47,13 +47,13 @@ const Visitor = ({ classes, ...rest }) => (
           {
             icon: 'location',
             label: 'event.location',
-            text: 'EXPO XXI, Warszawa'
+            text: 'EXPO Kraków, Kraków'
           },
 
           {
             icon: 'date',
             label: 'event.date',
-            text: '7 listopada 2019'
+            text: '17 kwietnia 2019'
           },
 
           {

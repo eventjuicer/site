@@ -50,7 +50,7 @@ class PageVisit extends React.Component {
           first 
         />
 
-        <Schedule />
+        {/* <Schedule />
 
         <VideoWithEventInfo />
 
@@ -60,7 +60,7 @@ class PageVisit extends React.Component {
        <Visitor 
           label="visitors.register" 
           first 
-        />
+        /> */}
 
        
         <VisitorBenefits 
@@ -68,7 +68,7 @@ class PageVisit extends React.Component {
         />
 
 
-         <AllExhibitorsAvatarlist label="exhibitors.list_full" />
+         {/* <AllExhibitorsAvatarlist label="exhibitors.list_full" /> */}
 
 
         {/* <Wrapper
@@ -85,10 +85,10 @@ class PageVisit extends React.Component {
  */}
 
 
-        <Visitor 
+        {/* <Visitor 
           label="visitors.register" 
           first 
-        />
+        /> */}
 
 
       <Photos>{
