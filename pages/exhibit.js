@@ -49,15 +49,18 @@ class PageExhibit extends React.Component {
         <Head />
 
     
+    <SalesMap
+          
+          label="exhibitors.map.title"
+          secondaryLabel="exhibitors.map.opensales"
+          disabled={true}
+    />
+  
+
+
      <ExhibitorBenefits first label="exhibitors.benefits.title" />
 
-     {/* <SalesMap
-          
-            label="exhibitors.map.title"
-            secondaryLabel="exhibitors.map.opensales"
-      />
-    
-   */}
+   
       <VideoWithReviews />
 
       <Wrapper label="exhibitors.faq.name">

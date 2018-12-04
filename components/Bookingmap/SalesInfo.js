@@ -26,7 +26,7 @@ const steps = [
 
 
 
-const SalesInfo = (props) => (
+const SalesInfo = ({disabled, ...props}) => (
 
   <BoothInfoContainer {...props} 
   
@@ -42,6 +42,7 @@ const SalesInfo = (props) => (
   <Typography template="salesInfo" icon={ Info } label="event.sales.pool.info" />
 
   <TicketGroup
+      disabled={disabled}
       noBookableTickets={<div />}
       {...props}
   />
@@ -102,6 +103,8 @@ const SalesInfo = (props) => (
 
 )
 
-
+SalesInfo.defaultProps = {
+  disabled : false
+}
 
 export default SalesInfo

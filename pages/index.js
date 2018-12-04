@@ -62,6 +62,16 @@ class PageIndex extends React.Component {
             secondaryLabel="event.parties"
       />
 
+
+        <SalesMap
+      
+      label="exhibitors.map.title2"
+      secondaryLabel="exhibitors.map.opensales"
+      disabled={true}
+
+    />
+
+
        {/*
        
        
@@ -77,13 +87,7 @@ class PageIndex extends React.Component {
       /> 
 
 
-      <SalesMap
-      
-        label="exhibitors.map.title2"
-        secondaryLabel="exhibitors.map.opensales"
-
-      />
-
+    
     
 
         <FeaturedExhibitors

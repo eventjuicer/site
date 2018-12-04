@@ -52,9 +52,10 @@ class PageExhibit extends React.Component {
           
           label="exhibitors.map.title"
           secondaryLabel="exhibitors.map.opensales"
+          disabled={false}
     />
   
-  
+
      <ExhibitorBenefits first label="exhibitors.benefits.title" />
 
     

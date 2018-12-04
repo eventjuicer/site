@@ -92,7 +92,7 @@ class Bookingmap extends React.PureComponent {
  
   onBoothClick = (boothId, groupId, label) => {
 
-    const { dialogShow, boothChecked, translate } = this.props;
+    const { dialogShow, boothChecked, translate, disabled } = this.props;
 
     const status = this.getStatusShort(boothId);
 
@@ -114,9 +114,11 @@ class Bookingmap extends React.PureComponent {
 
         break;
       default:
-        /* THERE IS NOW FORMDATA FOR UNSOLD BOOTHS!!!! */
+
         modalTitle = translate("event.sales.booths.free");
-        modalContent = <SalesInfo {...props} />
+        modalContent = <SalesInfo disabled={disabled} {...props} />
+
+      
     }
 
     dialogShow({
@@ -193,7 +195,8 @@ Bookingmap.defaultProps = {
   boothsSelected : [],
   formdata : {},
   ticketgroups : {},
-  bookingmap : []
+  bookingmap : [],
+  disabled : false
 };
 
 const enhance = compose(
