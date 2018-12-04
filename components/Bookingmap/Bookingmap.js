@@ -61,10 +61,19 @@ const styles = theme => ({
 
 class Bookingmap extends React.PureComponent {
 
-
   componentDidMount(){
-    const {resourceFetchRequest} = this.props
+
+    const {resourceFetchRequest, autorefresh} = this.props
+
     resourceFetchRequest(["bookingmap", "ticketgroups", "formdata"])
+
+    if(parseInt(autorefresh, 10) > 5 ){
+      this.interval = setInterval(() => resourceFetchRequest(["formdata"]), autorefresh * 1000);
+    }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   getStatus(boothId) {
@@ -196,7 +205,8 @@ Bookingmap.defaultProps = {
   formdata : {},
   ticketgroups : {},
   bookingmap : [],
-  disabled : false
+  disabled : false,
+  autorefresh : 15
 };
 
 const enhance = compose(
