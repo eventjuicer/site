@@ -109,7 +109,7 @@ class Ticket extends React.PureComponent {
           <input type="hidden" name={`tickets[${ticket.id}]`} value="1" />
           <input type="hidden" name={`ticketdata[${ticket.id}]`} value={JSON.stringify(formdata)} />
           <TicketBuyButton  />
-          </form> : <span></span>}
+          </form> : <span>brak dostępnych stoisk w tej kategorii lub sprzedaż jeszcze nieczynna</span>}
 
         </Grid>
     </Grid>

@@ -20,9 +20,9 @@ const styles = {
     position: 'absolute',
     display: 'table',
 
-   backgroundColor: 'lightgreen',
-   border: '1px solid green',
-   color: 'black',
+    backgroundColor: 'lightgreen',
+    border: '1px solid green',
+    color: 'black',
 
     zIndex: 20,
     borderRadius: 3,
@@ -32,7 +32,7 @@ const styles = {
     textAlign: 'center',
     boxShadow: '1px 1px #555555',
     overflow: 'hidden',
-    whiteSpace: 'wrap'
+   whiteSpace: 'nowrap'
   },
 
   boothOnLegend : {
@@ -65,7 +65,8 @@ const styles = {
     lineHeight: 'normal',
     fontWeight: 600,
     fontFamily: 'verdana, arial, sans-serif',
-    fontSize: 10
+    fontSize: 8,
+    cursor: 'inherit'
   },
 
   boothLogotype: {},

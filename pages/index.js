@@ -67,7 +67,7 @@ class PageIndex extends React.Component {
       
       label="exhibitors.map.title2"
       secondaryLabel="exhibitors.map.opensales"
-      disabled={true}
+      // disabled={true}
 
     />
 
@@ -87,8 +87,6 @@ class PageIndex extends React.Component {
       /> 
 
 
-    
-    
 
         <FeaturedExhibitors
         
