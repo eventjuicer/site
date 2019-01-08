@@ -22,7 +22,8 @@ import {
   RoleButtons,
   SalesMap,
   Presenters,
-  Schedule
+  Schedule,
+  AllExhibitorsAvatarlist
 } from '../compositions';
 
 
@@ -57,19 +58,21 @@ class PageIndex extends React.Component {
 
       {/* <Schedule /> */}
 
-      <Visitor
-            label="visitors.register"
-            secondaryLabel="event.parties"
-      />
-
-
-        <SalesMap
+   <SalesMap
       
       label="exhibitors.map.title2"
       secondaryLabel="exhibitors.map.opensales"
       // disabled={true}
 
     />
+
+      <Visitor
+            label="visitors.register"
+            secondaryLabel="event.parties"
+      />
+
+<AllExhibitorsAvatarlist label="exhibitors.list_full"  />
+     
 
 
        {/*
@@ -104,31 +107,28 @@ class PageIndex extends React.Component {
         
         />
 
+
+           <AllExhibitorsColumnList />
         */}
 
 
       <VideoWithReviews />
 
 
-{/*
-      <Photos>{
-        (photos, size) => <Gallery data={photos} size={size} label="event.gallery" />
-      }</Photos> */}
+    
 
-
-       {/* <AllExhibitorsColumnList /> */}
-
-        <FsVideo
-          background="https://res.cloudinary.com/eventjuicer/image/upload/v1534553598/poster_stage1.jpg"
-          videoSrc="https://res.cloudinary.com/eventjuicer/video/upload/v1534553583/video_stage1.mp4"
-          
-          />
-
+      
 
           <Visitor
             label="visitors.register"
             secondaryLabel="event.parties"
       />
+
+          <FsVideo
+          background="https://res.cloudinary.com/eventjuicer/image/upload/v1534553598/poster_stage1.jpg"
+          videoSrc="https://res.cloudinary.com/eventjuicer/video/upload/v1534553583/video_stage1.mp4"
+          
+          />
 
 
       </Layout>

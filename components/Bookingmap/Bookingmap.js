@@ -28,7 +28,7 @@ const styles = theme => ({
   scrollableContainer: {
     overflowX: 'auto',
     overflowY: 'visible',
-    height: 800,
+    height: 500,
     whiteSpace: 'nowrap',
   },
 
@@ -200,7 +200,7 @@ class Bookingmap extends React.PureComponent {
 
 Bookingmap.defaultProps = {
   zoom: 1,
-  height: 750,
+  height: 500,
   boothsSelected : [],
   formdata : {},
   ticketgroups : {},

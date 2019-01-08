@@ -16,6 +16,7 @@ import {
 import {
   Visitor, 
   RoleButtons,
+  SalesMap,
   AllExhibitorsAvatarlist} from '../compositions'
 
 import {Exhibitors} from '../datasources'
@@ -42,14 +43,17 @@ class PageExhibitors extends React.Component {
 
         <Head />
 
-        {/* <AllExhibitorsAvatarlist label="exhibitors.list_full" first /> */}
+        <AllExhibitorsAvatarlist label="exhibitors.list_full" first />
 
-        {/* <Wrapper label="exhibitors.map.title">
-    
-          <Bookingmap />
-        </Wrapper> */}
+    <SalesMap
+      
+      label="exhibitors.map.title2"
+      secondaryLabel="exhibitors.map.opensales"
+      // disabled={true}
 
+    />
 
+       
         {/* <RoleButtons /> */}
 
         <Visitor label="visitors.are_you_visitor" />

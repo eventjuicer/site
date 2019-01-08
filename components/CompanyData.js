@@ -66,8 +66,20 @@ const styles = theme => ({
 class CompanyData extends React.Component {
 
   state = {
-    tab: typeof this.props.tabs[0] !== 'undefined' ? this.props.tabs[0].name : ""
+    tab: ""
   };
+
+  static getDerivedStateFromProps(props, state){
+
+    const {tab} = state;
+    const {tabs} = props;
+
+    if(!tab && tabs.length && "name" in tabs[0]){
+      return {tab : tabs[0].name}
+    }
+
+    return null;
+  }
 
   handleChange = (event, tab) => {
     this.setState({ tab });
