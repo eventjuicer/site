@@ -13,7 +13,8 @@ const styles = theme => ({
 
   tile: {
     height: 170,
-    width: '50%',
+    marginLeft: '20%',
+    marginRight: '20%',
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',

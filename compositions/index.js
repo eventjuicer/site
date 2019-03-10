@@ -15,3 +15,5 @@ export { default as SalesMap } from './SalesMap';
 export { default as Offers } from './Offers';
 export { default as Presenters } from './Presenters';
 export { default as Schedule } from './Schedule';
+export { default as Speaking } from './Speaking';
+export { default as SpeakerBenefits } from './SpeakerBenefits';

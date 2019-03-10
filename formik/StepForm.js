@@ -53,7 +53,8 @@ const StepForm = props => {
     isSubmitting,
     success,
     fields,
-    start
+    start,
+    baseLabel
   } = props;
 
   const started = Object.keys(touched).length;
@@ -66,14 +67,14 @@ const StepForm = props => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Typography template="legend" label="visitors.form.intro" />
+      <Typography template="legend" label={`${baseLabel}.form.intro`} />
 
       {start
         ? start.map((name, idx) => (
             <TextInput
               key={idx}
               id={name}
-              label={`visitors.fields.${name}`}
+              label={`${baseLabel}.fields.${name}`}
               {...props}
             />
           ))
@@ -84,19 +85,20 @@ const StepForm = props => {
             <TextInput
               key={idx}
               id={name}
-              label={`visitors.fields.${name}`}
+              label={`${baseLabel}.fields.${name}`}
               {...props}
             />
           ))
         : null}
 
-      <FormButton label="visitors.form.register" {...props} />
+      <FormButton label={`${baseLabel}.form.register`} {...props} />
     </form>
   );
 };
 
 StepForm.defaultProps = {
-  url: 'https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/register'
+  url: 'https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/register',
+  baseLabel : "visitors"
 };
 
 export default withFormik(StepForm);
