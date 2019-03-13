@@ -6,6 +6,11 @@ import { MyTypography as Typography } from '../components';
 
 import FormSuccess from './FormSuccess';
 
+import {translate} from '../i18n';
+import compose from 'recompose/compose';
+
+
+
 /*
 dirty : false
 errors : {}
@@ -39,6 +44,7 @@ values : {}
 */
 
 const StepForm = props => {
+  
   const {
     values,
     touched,
@@ -60,13 +66,14 @@ const StepForm = props => {
   const started = Object.keys(touched).length;
 
   if (status && status === 'ok') {
-    return <FormSuccess />;
+    return <FormSuccess baseLabel={baseLabel} />;
   }
 
   const filteredFields = filterFields(fields, start);
 
   return (
     <form onSubmit={handleSubmit}>
+
       <Typography template="legend" label={`${baseLabel}.form.intro`} />
 
       {start
@@ -91,14 +98,21 @@ const StepForm = props => {
           ))
         : null}
 
-      <FormButton label={`${baseLabel}.form.register`} {...props} />
+      <FormButton label={`${baseLabel}.form.submit`} {...props} />
     </form>
   );
 };
 
 StepForm.defaultProps = {
   url: 'https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/register',
-  baseLabel : "visitors"
+  baseLabel : "visitors",
+  template : "pl-presenters-application",
+  cc : ""
 };
 
-export default withFormik(StepForm);
+const enhance = compose(
+  translate,
+  withFormik
+)
+
+export default enhance(StepForm);

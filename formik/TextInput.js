@@ -78,12 +78,13 @@ const TextInput = props => {
     translate
   } = props;
 
-  const renderError = id in errors;
+  const renderError = (id in errors);
   const translatedLabel = translate(label);
 
   return (
     <TextField
       id={id}
+    //  variant="outlined"
       label={translatedLabel}
       InputProps={{
         classes : {
@@ -93,8 +94,11 @@ const TextInput = props => {
       onChange={handleChange}
       onBlur={handleBlur}
       margin="normal"
+      multiline={ id.indexOf("description") > -1 }
+      rows="4"
+      rowsMax="10"
       error={renderError}
-      helperText={renderError ? errors[id] : ''}
+      helperText={renderError ? translate(errors[id]) : ''}
       placeholder={placeholder ? translate(placeholder) : translatedLabel}
       autoComplete={id in autoCompleteMappings ? autoCompleteMappings[id] : ''}
       fullWidth
