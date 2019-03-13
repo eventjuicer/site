@@ -2,12 +2,8 @@
 import {GridBenefits, Wrapper} from '../components'
 import {
     FaWrench as Edu,
-    FaHandshake as Handshake,
-    FaLockOpen as Free,
-    FaSearch as Landscape,
-    FaChartLine as Trends,
-    FaPiggyBank as Savings,
-    FaDotCircle as Target
+    FaLockOpen as Start,
+    FaChalkboardTeacher as Presentation,
 } from 'react-icons/fa';
 
 //target - for whom
@@ -15,45 +11,31 @@ import {
 const _items = [
 
     {
-        icon : Free,
-        label :  'free_entry',
+        icon : Start,
+        label :  'start',
     },
 
     {
-        icon : Savings,
-        label : 'special_offers'
-    },
-
-    {
-        icon : Landscape,
-        label : 'insight'
-    },
-
-    {   
         icon : Edu,
-        label : 'case_studies'
+        label : 'mentoring'
     },
 
-    {   
-        icon : Handshake,
-        label : 'networking'
-    },
-
-    {   
-        icon : Trends,
-        label : 'future'
+    {
+        icon : Presentation,
+        label : 'presentation'
     }
+
 ]
 
 
-const VisitorBenefits = ({items, ...rest}) => (
+const SpeakerBenefits = ({items, ...rest}) => (
     <Wrapper {...rest}>
-        <GridBenefits baseLabel="visitors.benefits" items={items} />
+        <GridBenefits baseLabel="presenters.steps" items={items} />
     </Wrapper>
 )
 
-VisitorBenefits.defaultProps = {
+SpeakerBenefits.defaultProps = {
     items : _items
 }
 
-export default VisitorBenefits
+export default SpeakerBenefits

@@ -34,15 +34,19 @@ const Speaking = ({ classes, ...rest }) => (
           fname: 1,
           lname: 1,
           cname2: 1,
-          position: 1,
           phone: 1,
-          presentation_title : 1
+          presenter : 1,
+          presentation_title : 1,
+          presentation_description : 1
         }}
         start={[
-          'email', 
+          'presenter',
           'presentation_title', 
-          'presenter'
+          'presentation_description',
+          'cname2'
         ]}
+        template="pl-presenters-application"
+        cc="prezentacje@targiehandlu.com.pl"
       />
 
     </Grid>

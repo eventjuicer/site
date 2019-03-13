@@ -2,26 +2,20 @@ import { MyHead as Head } from '../next';
 import { connect } from 'react-redux';
 
 import {
-  Wrapper,
-  WhoIsGonnaBeThere,
-  //Googlemap,
   Gallery
 } from '../components';
 
 import {
   VideoWithEventInfo,
   Speaking,
-  VisitorBenefits,
-  Presenters,
-  Schedule,
-  AllExhibitorsAvatarlist
+  SpeakerBenefits
 } from '../compositions';
 
 import Layout from '../layouts/main';
 
 import {Photos} from '../datasources';
 
-class PageVisit extends React.Component {
+class PageSpeaking extends React.Component {
 
   static async getInitialProps({
 
@@ -32,7 +26,7 @@ class PageVisit extends React.Component {
   }) {
 
     return {
-      preload : ["exhibitors", "presenters"]
+  //    preload : ["exhibitors", "presenters"]
     };
   }
 
@@ -49,46 +43,28 @@ class PageVisit extends React.Component {
           first 
         />
 
-    
-        <VideoWithEventInfo />
-        
-       
-        <VisitorBenefits 
-          label="visitors.benefits.title" 
+
+        <SpeakerBenefits 
+          label="presenters.steps.title" 
         />
 
-
-         {/* <AllExhibitorsAvatarlist label="exhibitors.list_full" /> */}
-
-
-        {/* <Wrapper
-        label="visitors.attendees"
-        secondaryTitle="oraz 3000 innych osób"
-      >
-        <WhoIsGonnaBeThere />
-      </Wrapper> */}
-
-        {/* <Wrapper label="visitors.register">
-        <Visitor />
-      </Wrapper>
-
- */}
-
-
-        {/* <Visitor 
-          label="visitors.register" 
-          first 
-        /> */}
+        <VideoWithEventInfo 
+        //  background="https://res.cloudinary.com/eventjuicer/image/upload/v1552428524/teh_presenters_video.png" 
+        //  showEventDetails={false}
+        //  videoSrc="https://res.cloudinary.com/eventjuicer/video/upload/v1552428525/teh_presenters_video.mp4" 
+          title="presenters.claim.title"
+          subtitle="presenters.claim.description"
+        />
 
 
       <Photos>{
         (photos, size) => <Gallery data={photos} size={size} label="event.gallery" />
       }</Photos>
 
-        {/* <Googlemap /> */}
+      
       </Layout>
     );
   }
 }
 
-export default connect()(PageVisit);
+export default connect()(PageSpeaking);
