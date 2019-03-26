@@ -40,7 +40,7 @@ class PagePresenters extends React.Component {
         
         <Head />
 
-       {/* <Presenters first filter={null} limit={null} /> */}
+        <Presenters first filter={null} limit={null}  />
        
         <Visitor label="visitors.register_alt" />
         

@@ -52,6 +52,8 @@ class PageCompany extends React.Component {
 
         <Visitor />
 
+        <Presenters filter={ function(item){ return item.bio.length > 20} } limit={16} mobile={4} />
+
         {/* <Schedule />
 
         <Visitor />

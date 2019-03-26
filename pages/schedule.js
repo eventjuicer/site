@@ -42,10 +42,11 @@ class PageSchedule extends React.Component {
 
         <VideoWithEventInfo />
 
-        {/* <Presenters filter={null} />
+        <Presenters filter={ function(item){ return item.bio.length > 20} } limit={16} mobile={4}  />
+     
+        <Visitor label="visitors.register" />
 
-        <Visitor label="visitors.register" /> */}
-       
+     
         {/* 
         <Wrapper label="visitors.attendees">
           <WhoIsGonnaBeThere />

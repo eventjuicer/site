@@ -13,7 +13,7 @@ import {
 } from '../components';
 
 import Layout from '../layouts/main';
-import { getPresenterOgImage, generateLinkParams } from '../helpers';
+import { getPresenterOgImage, getSpeakerName, generateLinkParams } from '../helpers';
 
 class PageSpeakerSocial extends React.Component {
   static async getInitialProps({
@@ -36,11 +36,8 @@ class PageSpeakerSocial extends React.Component {
         <Head url={asPath} />
 
         <Wrapper first label="">
-          {presenters.map((presenter, idx) => {
-            const name = `${_get(presenter, 'fname')} ${_get(
-              presenter,
-              'lname'
-            )}`;
+          {presenters.map(presenter => {
+            const name = getSpeakerName(presenter);
             const job = `${_get(presenter, 'position')} ${_get(
               presenter,
               'cname2'
@@ -52,7 +49,7 @@ class PageSpeakerSocial extends React.Component {
               'presentation_description'
             )}`;
 
-            const ogImage = getPresenterOgImage(presenter, 'template_speaker_teh15');
+            const ogImage = getPresenterOgImage(presenter);
             const linkParams = generateLinkParams(
               name,
               'speaker',

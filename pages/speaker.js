@@ -41,7 +41,7 @@ class PageSpeaker extends React.Component {
        
         <Presenter id={speakerId } asPath={asPath} />
 
-        <Schedule />
+        {/* <Schedule /> */}
         
         <VideoWithEventInfo />
 

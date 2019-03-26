@@ -36,21 +36,14 @@ class PageAgenda extends React.Component {
       <Layout>
         <Head />
 
-      {/* <Presenters /> */}
+      
+      
+        <Presenters filter={ function(item){ return item.bio.length > 20} } limit={16} mobile={4}  />
+
 
        <Visitor label="visitors.register_alt" />
  
-     
-
-        {/* <Wrapper label="visitors.attendees">
-          <WhoIsGonnaBeThere />
-        </Wrapper> */}
-
-        {/* <Wrapper>
-          <Visitor />
-        </Wrapper> */}
-
-        {/* <Googlemap /> */}
+    
       </Layout>
     );
   }

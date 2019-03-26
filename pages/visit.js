@@ -2,19 +2,19 @@ import { MyHead as Head } from '../next';
 import { connect } from 'react-redux';
 
 import {
-  Wrapper,
-  WhoIsGonnaBeThere,
-  //Googlemap,
-  Gallery
+Wrapper,
+WhoIsGonnaBeThere,
+//Googlemap,
+Gallery
 } from '../components';
 
 import {
-  VideoWithEventInfo,
-  Visitor,
-  VisitorBenefits,
-  Presenters,
-  Schedule,
-  AllExhibitorsAvatarlist
+VideoWithEventInfo,
+Visitor,
+VisitorBenefits,
+Presenters,
+Schedule,
+AllExhibitorsAvatarlist
 } from '../compositions';
 
 import Layout from '../layouts/main';
@@ -23,82 +23,69 @@ import {Photos} from '../datasources';
 
 class PageVisit extends React.Component {
 
-  static async getInitialProps({
+static async getInitialProps({
 
-    query,
-    asPath,
-    isServer,
-    store
-  }) {
+query,
+asPath,
+isServer,
+store
+}) {
 
-    return {
-      preload : ["exhibitors", "presenters"]
-    };
-  }
+return {
+preload : ["exhibitors", "presenters"]
+};
+}
 
-  render() {
-    const { url } = this.props;
+render() {
+const { url } = this.props;
 
-    return (
-      
-      <Layout>
+return (
 
-        <Head />
+<Layout>
 
-        <Visitor 
-          label="visitors.register_alt" 
-          first 
-        />
+<Head />
 
-        {/* <Schedule />
+<Visitor 
+label="visitors.register_alt" 
+first 
+/>  
 
-        <VideoWithEventInfo />
+<VideoWithEventInfo />
 
-        <Presenters />
+<VisitorBenefits 
+label="visitors.benefits.title" 
+/>
 
-       
-       <Visitor 
-          label="visitors.register" 
-          first 
-        /> */}
-
-       
-        <VisitorBenefits 
-          label="visitors.benefits.title" 
-        />
+<Presenters filter={ function(item){ return item.bio.length > 20} } limit={16} mobile={4}  />
 
 
-         {/* <AllExhibitorsAvatarlist label="exhibitors.list_full" /> */}
+{/* <Schedule /> */}
 
 
-        {/* <Wrapper
-        label="visitors.attendees"
-        secondaryTitle="oraz 3000 innych osób"
-      >
-        <WhoIsGonnaBeThere />
-      </Wrapper> */}
+<Visitor 
+label="visitors.register" 
+first 
+/>
 
-        {/* <Wrapper label="visitors.register">
-        <Visitor />
-      </Wrapper>
-
- */}
+<AllExhibitorsAvatarlist label="exhibitors.list_full" />
 
 
-        {/* <Visitor 
-          label="visitors.register" 
-          first 
-        /> */}
 
 
-      <Photos>{
-        (photos, size) => <Gallery data={photos} size={size} label="event.gallery" />
-      }</Photos>
 
-        {/* <Googlemap /> */}
-      </Layout>
-    );
-  }
+
+
+{/* <Visitor 
+label="visitors.register" 
+first 
+/> */}
+
+
+
+
+</Layout>
+);
+}
 }
 
 export default connect()(PageVisit);
