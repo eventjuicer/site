@@ -1,6 +1,5 @@
 
 import { MyHead as Head } from '../next';
-import { getPresenterOgImage } from '../helpers';
 import Divider from '@material-ui/core/Divider';
 import _get from 'lodash/get';
 
@@ -18,11 +17,14 @@ import {
 
 import {Presenters} from '../datasources'
 
+import { 
+    getPresenterOgImage, 
+    getSpeakerName,
+    getSpeakerAvatar,
+    getSpeakerLogotype
+ } from '../helpers';
 
-  
-const getSpeakerName = (speaker) => `${_get(speaker, 'fname')} ${_get(speaker, 'lname')}`;
-const getSpeakerAvatar = (speaker) => _get(speaker, 'avatar');
-const getSpeakerLogotype = (speaker) =>  _get(speaker, 'logotype');
+
 
 const Presenter = ({id, asPath, ...rest}) => (
 
@@ -36,7 +38,7 @@ const Presenter = ({id, asPath, ...rest}) => (
             <React.Fragment>
 
             <Head
-            image={getPresenterOgImage(record, 'template_speaker_teh15_2')}
+            image={getPresenterOgImage(record)}
             url={asPath}
             titleLabel={['presenters.opengraph.title', { name : getSpeakerName(record) }]}
             descriptionLabel={[
@@ -62,10 +64,10 @@ const Presenter = ({id, asPath, ...rest}) => (
             marginBottom: 20
             }}
             >
-            <Avatar src={getSpeakerAvatar(record)} minimal={false} />
+            <Avatar src={getSpeakerAvatar(record, [])} minimal={false} grayscale={false} />
 
             <img
-            src={getSpeakerLogotype(record)}
+            src={getSpeakerLogotype(record, [])}
             alt=""
             style={{ maxWidth: 300, maxHeight: 200, marginTop: 30 }}
             />

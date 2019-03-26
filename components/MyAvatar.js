@@ -18,19 +18,20 @@ const styles = theme => ({
   }
 });
 
-const MyAvatar = ({ classes, src, link }) => (
+const MyAvatar = ({ classes, src, link, grayscale }) => (
   <Avatar
     alt=""
     src={src}
     classes={{
-      root: classes.avatar,
-      img: classes.image
+      ...{root: classes.avatar},
+      ...(grayscale && {img: classes.image})
     }}
   />
 );
 
 MyAvatar.defaultProps = {
-  src: ''
+  src: '',
+  grayscale : false
 };
 
 export default withStyles(styles)(MyAvatar);

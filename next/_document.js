@@ -170,22 +170,28 @@ class MyDocument extends Document {
 }
 
 MyDocument.getInitialProps = ({ renderPage }) => {
+  
   // Resolution order
   //
   // On the server:
-  // 1. page.getInitialProps
-  // 2. document.getInitialProps
-  // 3. page.render
-  // 4. document.render
+  // 1. app.getInitialProps
+  // 2. page.getInitialProps
+  // 3. document.getInitialProps
+  // 4. app.render
+  // 5. page.render
+  // 6. document.render
   //
   // On the server with error:
-  // 2. document.getInitialProps
+  // 1. document.getInitialProps
+  // 2. app.render
   // 3. page.render
   // 4. document.render
   //
   // On the client
-  // 1. page.getInitialProps
-  // 3. page.render
+  // 1. app.getInitialProps
+  // 2. page.getInitialProps
+  // 3. app.render
+  // 4. page.render
 
   // Get the context of the page to collected side effects.
 

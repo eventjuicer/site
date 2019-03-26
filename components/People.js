@@ -5,7 +5,11 @@ import Grid from '@material-ui/core/Grid';
 import _get from 'lodash/get';
 import Person from './Person';
 
-import { changeLimitForScreen } from '../helpers';
+import { 
+//  changeLimitForScreen, 
+  getSpeakerName,
+  getSpeakerAvatar
+} from '../helpers';
 
 
 const FullJobInfo = ({ company, job }) => (
@@ -27,15 +31,15 @@ const People = ({data, link}) => {
         <Person
           key={_get(item, 'id')}
           id={_get(item, 'id')}
-          avatar={_get(item, 'avatar')}
-          title={`${_get(item, 'fname')} ${_get(item, 'lname')}`}
+          avatar={ getSpeakerAvatar(item) }
+          title={ getSpeakerName(item) }
           subtitle={
             <FullJobInfo
               company={_get(item, 'cname2')}
               job={_get(item, 'position')}
             />
           }
-          text={_get(item, 'bio')}
+          text={`${_get(item, 'bio', "").substring(0, 350)}...`}
           link={link}
         />
       </Grid>

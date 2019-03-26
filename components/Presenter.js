@@ -10,6 +10,8 @@ import Tags from './Tags';
 
 const styles = {};
 
+import { getSpeakerName } from '../helpers'
+
 const Presenter = ({ showBio, data }) => {
   const {
     bio,
@@ -25,7 +27,8 @@ const Presenter = ({ showBio, data }) => {
 
   return (
     <div style={{ marginTop: 30 }}>
-      <Typography template="presenter1">{`${fname} ${lname}`}</Typography>
+
+      <Typography template="presenter1">{getSpeakerName(data)}</Typography>
 
       <Typography template="presenter2">{`${position} ${cname2}`}</Typography>
 

@@ -29,20 +29,19 @@ const styles = theme => ({
 
 
 
-const VideoWithEventInfo = ({ classes, locale }) => (
+const VideoWithEventInfo = ({ classes, locale, background, videoSrc, showEventDetails, title, subtitle, location}) => (
 
   <FsVideo
-    background="https://res.cloudinary.com/eventjuicer/image/upload/v1534542530/poster_presenter_blak.jpg"
-    videoSrc="https://res.cloudinary.com/eventjuicer/video/upload/v1534454501/video_presenter_blak.mp4"
+    background={background}
+    videoSrc={videoSrc}
   >
 
     <div className={classes.container}>
 
-      <MyTypography template="hero" label="event.claim" />
+      <MyTypography template="hero" label={title} />
+      <MyTypography template="subhero" label={subtitle} />
 
-      <MyTypography template="subhero" label="event.description" />
-
-      <div className={classes.eventinfo}>
+      {showEventDetails && <div className={classes.eventinfo}>
 
       <EventInfo
         items={[
@@ -62,11 +61,21 @@ const VideoWithEventInfo = ({ classes, locale }) => (
         orientation="v"
       />
 
-      </div>
+      </div>}
+
     </div>
 
   </FsVideo>
 );
+
+VideoWithEventInfo.defaultProps = {
+  showEventDetails : true,
+  title : "event.claim",
+  subtitle : "event.description",
+  background : "https://res.cloudinary.com/eventjuicer/image/upload/v1534542530/poster_presenter_blak.jpg",
+  videoSrc : "https://res.cloudinary.com/eventjuicer/video/upload/v1534454501/video_presenter_blak.mp4",
+} 
+
 
 const enhance = compose(
   withStyles(styles),
