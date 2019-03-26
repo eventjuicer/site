@@ -44,7 +44,7 @@ const Presenter = ({id, asPath, ...rest}) => (
             descriptionLabel={[
             'presenters.opengraph.description',
             {
-                fname: _get(record, 'fname'),
+                name: getSpeakerName(record),
                 cname2: _get(record, 'cname2'),
                 presentation_title: _get(record, 'presentation_title')
             }

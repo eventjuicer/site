@@ -28,7 +28,7 @@ export const getPresenterOgImage = (
     const templateTrans = `g_center,u_${template},x_200,y_-25`;
     const logotypeTrans = `c_fit,g_center,l_${logotype},w_300,h_200,x_175,y_25`;
 
-    return `https://res.cloudinary.com/eventjuicer/image/upload/${avatarTrans}/${templateTrans}/${logotypeTrans}/${avatar}.jpg`;
+    return `https://res.cloudinary.com/eventjuicer/image/upload/${avatarTrans}/${templateTrans}/${logotypeTrans}/${avatar}.png`;
     
 };
 
@@ -46,7 +46,7 @@ export const getPresenterFbAd = (
     const templateTrans = `g_center,u_${template},x_0,y_200`;
     const logotypeTrans = `c_fit,g_center,l_${logotype},w_400,h_250,x_0,y_250`;
 
-    return `https://res.cloudinary.com/eventjuicer/image/upload/${avatarTrans}/${templateTrans}/${logotypeTrans}/${avatar}.jpg`;
+    return `https://res.cloudinary.com/eventjuicer/image/upload/${avatarTrans}/${templateTrans}/${logotypeTrans}/${avatar}.png`;
     
 };
 
