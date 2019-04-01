@@ -6,6 +6,7 @@ const LRUCache = require('lru-cache');
 //const querystring = require('query-string');
 const fetch = require('isomorphic-unfetch');
 //const _keyBy = require('lodash/keyBy');
+const path = require('path');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
@@ -139,7 +140,10 @@ app
       res.json(texts);
     });
 
-    
+    server.get('/robots.txt', (req, res) => {
+      res.sendFile(path.join(__dirname, '../static', 'robots.txt'))
+    })
+
     // server.get('/:lang([a-z]{2}|)', (req, res) => {
     //   renderAndCache(req, res, '/', {});
     // })
