@@ -6,7 +6,7 @@ export const CLOUDINARY_REGEX = /^.+\.cloudinary\.com\/(?:[^\/]+\/)(?:(image|vid
 
 export const getCloudinaryAsset = (url, skipVersion = false) => {
 
-    const segments = CLOUDINARY_REGEX.exec(url)
+    const segments = CLOUDINARY_REGEX.exec(url.trim())
 
     if(!segments){
         return null;
@@ -16,9 +16,11 @@ export const getCloudinaryAsset = (url, skipVersion = false) => {
   
 } 
 
+//template_tehkrk_presenter_pl
+
 export const getPresenterOgImage = (
     participant,
-    template = 'template_tehkrk_presenter_pl'
+    template = 'template_tehkrk_generic_pl'
   ) => {
     
     const avatar = getCloudinaryAsset(_get(participant, "avatar"));

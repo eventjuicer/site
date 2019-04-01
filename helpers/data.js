@@ -50,8 +50,9 @@ export const getParticipantCdn = (url, size = 100, add = ['e_grayscale']) => {
 
   const additional_params = add.length ? add.join(",")+"," : "";
 
-  return url.replace(/\.svg/, '.png').replace("image/upload/", `image/upload/c_fit,${additional_params}w_${size},h_${size}/`);
-  //  `https://res.cloudinary.com/eventjuicer/image/upload/c_fit,e_grayscale,w_${size},h_${size}/p_${participant_id}_${what}.png`;
+  //`https://res.cloudinary.com/eventjuicer/image/upload/c_fit,e_grayscale,w_${size},h_${size}/p_${participant_id}_${what}.png`;
+
+  return url.trim().replace(/\.svg/, '.png').replace("image/upload/", `image/upload/c_fit,${additional_params}w_${size},h_${size}/`);
 };
 
 export const getInviteOgImage = (text = '') => {
