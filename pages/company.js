@@ -52,7 +52,11 @@ class PageCompany extends React.Component {
 
         <Visitor />
 
-        <Presenters filter={ function(item){ return item.bio.length > 20} } limit={16} mobile={4} />
+        <Presenters filter={ function(item){ 
+          
+          return item.presentation_title.length > 20 && item.avatar.length > 10 && item.logotype.length > 10
+
+        } } limit={16} mobile={4} />
 
         {/* <Schedule />
 

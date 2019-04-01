@@ -13,7 +13,7 @@ import {
 } from '../components';
 
 import Layout from '../layouts/main';
-import { getPresenterFbAd, getSpeakerName, generateLinkParams } from '../helpers';
+import { getPresenterOgImage, getPresenterFbAd, getSpeakerName, generateLinkParams } from '../helpers';
 
 class PageSpeakerSocial extends React.Component {
   static async getInitialProps({
@@ -49,7 +49,9 @@ class PageSpeakerSocial extends React.Component {
               'presentation_description'
             )}`;
 
-            const ogImage = getPresenterFbAd(presenter);
+            const ogImage = getPresenterOgImage(presenter); 
+            const fbImage = getPresenterFbAd(presenter);
+
             const linkParams = generateLinkParams(
               name,
               'speaker',
@@ -86,11 +88,23 @@ class PageSpeakerSocial extends React.Component {
                   }
                   leftCentered={false}
                   right={
-                    <img
+                    
+                    <div style={{ marginTop: 10, marginLeft: 20}}>
+
+                     <img
                       src={ogImage}
                       alt=""
-                      style={{ marginTop: 10, marginLeft: 20, maxWidth: 770 }}
+                      style={{ maxWidth: 500 }}
                     />
+
+                     <img
+                      src={fbImage}
+                      alt=""
+                      style={{ marginTop: 10, maxWidth: 500 }}
+                    />
+
+                    </div>
+                   
                   }
                 />
 

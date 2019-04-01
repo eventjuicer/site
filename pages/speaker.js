@@ -7,9 +7,11 @@ import {
   Visitor,
   FeaturedExhibitors,
   Presenter,
-  Schedule,
+ // Schedule,
   RoleButtons,
-  VideoWithEventInfo
+  VideoWithEventInfo,
+  Presenters,
+  AllExhibitorsColumnList
 } from '../compositions'
 
 class PageSpeaker extends React.Component {
@@ -42,17 +44,33 @@ class PageSpeaker extends React.Component {
         <Presenter id={speakerId } asPath={asPath} />
 
         {/* <Schedule /> */}
+
+
+      <Presenters filter={ function(item){ 
+            
+            return item.presentation_title.length > 20 && item.avatar.length > 10 && item.logotype.length > 10
+          
+          } } limit={24} mobile={4} 
+          />
+
         
+        <RoleButtons />
+
+
         <VideoWithEventInfo />
 
         <Visitor 
           label="visitors.register_alt"
         />
 
-
-        <RoleButtons />
-
         <FeaturedExhibitors label="exhibitors.list_featured" /> 
+        
+         <Visitor 
+          label="visitors.register"
+        />
+
+        <AllExhibitorsColumnList />
+
      
       </Layout>
     );
