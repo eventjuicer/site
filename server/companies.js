@@ -11,17 +11,11 @@ function slug(str = '', replacement = '-'){
 
 async function companies() {
 
-    const data = await fetch("https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/exhibitors").then(response => response.json());
+    const data = await fetch("https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/allexhibitors").then(response => response.json());
     
     if("data" in data && Array.isArray(data.data)){
 
-      return data.data.map(item => {
-
-        const name = item.profile.name.length > 2 ? item.profile.name : item.slug
-
-        return `/${slug(name)},c,${item.id}`
-
-      })
+      return data.data.filter(item => "name" in item.profile && item.profile.name.length > 2).map(item =>  `/${slug(item.profile.name)},c,${item.id}`)
 
     }
 
