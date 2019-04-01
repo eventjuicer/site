@@ -6,7 +6,7 @@ const LRUCache = require('lru-cache');
 //const querystring = require('query-string');
 const fetch = require('isomorphic-unfetch');
 //const _keyBy = require('lodash/keyBy');
-const path = require('path');
+const sitemap = require('./sitemap')
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
@@ -67,6 +67,10 @@ app
 
       next(); // <-- important!
     });
+
+
+    sitemap({ server })
+
 
     //  server.get('/c,:id,:creative', (req, res) => {
     //    const queryParams = { id: req.params.id, creative : req.params.creative }
@@ -139,10 +143,6 @@ app
       const texts = await i18n.getTexts(ssrCache);
       res.json(texts);
     });
-
-    server.get('/robots.txt', (req, res) => {
-      res.sendFile(path.join(__dirname, '../static', 'robots.txt'))
-    })
 
     // server.get('/:lang([a-z]{2}|)', (req, res) => {
     //   renderAndCache(req, res, '/', {});
