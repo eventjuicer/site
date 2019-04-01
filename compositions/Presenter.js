@@ -40,13 +40,12 @@ const Presenter = ({id, asPath, ...rest}) => (
             <Head
             image={getPresenterOgImage(record)}
             url={asPath}
-            titleLabel={['presenters.opengraph.title', { name : getSpeakerName(record) }]}
+            titleLabel={['presenters.opengraph.title', { presentation_title : _get(record, 'presentation_title') }]}
             descriptionLabel={[
             'presenters.opengraph.description',
             {
                 name: getSpeakerName(record),
-                cname2: _get(record, 'cname2'),
-                presentation_title: _get(record, 'presentation_title')
+                cname2: _get(record, 'cname2')
             }
             ]}
             />
