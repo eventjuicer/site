@@ -15,17 +15,3 @@ export const event = ({ action, category, label, value }) => {
     value: value
   });
 };
-
-export const conversion = ({ label }) => {
-
-  const callback = function () {
-    if (typeof(url) != 'undefined') {
-      window.location = url;
-    }
-  };
-
-  window.gtag('event', 'conversion', {
-    'send_to': 'AW-842805719/twaXCK3M0nMQ1-PwkQM',
-    'event_callback': callback
-  });
-};

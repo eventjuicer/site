@@ -43,19 +43,15 @@ import {
 } from '../../components/redux/actions';
 
 import * as Selectors from '../selectors';
-import {event, conversion} from '../../services/gtag'
+import {event} from '../../services/gtag'
 
 
 function* handleFormSubmit({payload}){
 
-  yield call(conversion, {
-    label : '...'
-  })
-
   yield call(event, {
     action : "registration_success", 
     category : "visitors", 
-    label : "method",
+    label : "registration_success",
     value : ""
   })
   
@@ -74,7 +70,7 @@ function* handleBoothCheck({payload}){
   yield call(event, {
         event : "booth_click",
         category : "ecommerce",
-        //label,
+        label : "booth_click",
         value : payload
   })
 
