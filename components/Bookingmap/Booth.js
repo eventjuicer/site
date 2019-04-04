@@ -58,7 +58,7 @@ Booth.defaultProps = {
 };
 
 Booth.propTypes = {
-  groupId: PropTypes.number.isRequired,
+  groupId: PropTypes.node.isRequired,
   zoom: PropTypes.number,
   selected: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,

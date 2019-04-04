@@ -28,6 +28,7 @@ import {
   BOOTH_CHECKED
 } from '../../components/redux/types';
 
+import {FORM_ACTION_FINISHED} from '../../formik/redux/types'
 
 import {CHANGE_LOCALE} from '../../i18n'
 
@@ -42,15 +43,30 @@ import {
 } from '../../components/redux/actions';
 
 import * as Selectors from '../selectors';
-import {event} from '../../services/gtag'
-import {track} from '../../services/segment'
+import {event, conversion} from '../../services/gtag'
 
 
+function* handleFormSubmit({payload}){
+
+  yield call(conversion, {
+    label : '...'
+  })
+
+  yield call(event, {
+    action : "registration_success", 
+    category : "visitors", 
+    label : "method",
+    value : ""
+  })
+  
+}
 
 
 const apiUrl = `https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/`
 
 let fetchTasks = {};
+
+
 
 
 function* handleBoothCheck({payload}){
@@ -62,10 +78,7 @@ function* handleBoothCheck({payload}){
         value : payload
   })
 
-  yield call(track, "booth_click", {
-    category : "ecommerce",
-    value : payload
-  })
+ 
 
 }
 
@@ -170,6 +183,7 @@ const rootSaga = function* root() {
 
   yield all([
     //takeEvery(SNACKBAR_SHOW, handleLogoutFn),
+    takeEvery(FORM_ACTION_FINISHED, handleFormSubmit),
     takeEvery(CHANGE_LOCALE, setCookieWhenLocaleChanged),
     takeEvery(FAQ_TOGGLE, changeUrlWhenFaqsSelected),
     takeEvery(CART_ITEM_ADD, selectBoothWhenCartItemAdded),
