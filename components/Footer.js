@@ -33,7 +33,7 @@ const Footer = ({ links, classes, width }) => (
               {
                 icon: 'location',
                 secondary: 'event.location',
-                primary: 'EXPO Kraków, Galicyjnska 9'
+                primary: 'EXPO Kraków, Galicyjska 9'
               },
 
               {

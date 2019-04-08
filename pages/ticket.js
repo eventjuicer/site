@@ -74,7 +74,7 @@ class PageTicket extends React.Component {
               {
                 icon: 'location',
                 secondary: 'event.location',
-                primary: 'EXPO Kraków, Galicyjnska 9'
+                primary: 'EXPO Kraków, Galicyjska 9'
               },
 
               {
