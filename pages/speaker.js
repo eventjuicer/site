@@ -7,7 +7,7 @@ import {
   Visitor,
   FeaturedExhibitors,
   Presenter,
- // Schedule,
+  Schedule,
   RoleButtons,
   VideoWithEventInfo,
   Presenters,
@@ -43,7 +43,7 @@ class PageSpeaker extends React.Component {
        
         <Presenter id={speakerId } asPath={asPath} />
 
-        {/* <Schedule /> */}
+        <Schedule />
 
 
       <Presenters filter={ function(item){ 

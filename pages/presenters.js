@@ -46,9 +46,9 @@ class PagePresenters extends React.Component {
         
         <VideoWithEventInfo />
 
-        {/* <Schedule />
+        <Schedule />
 
-       <Visitor label="visitors.register" /> */}
+       <Visitor label="visitors.register" />
 
         {/* <Wrapper label="visitors.attendees">
           <WhoIsGonnaBeThere />

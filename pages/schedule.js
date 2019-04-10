@@ -36,7 +36,7 @@ class PageSchedule extends React.Component {
 
         <Head />
 
-        {/* <Schedule first /> */}
+        <Schedule first />
 
         <Visitor label="visitors.register_alt" />
 

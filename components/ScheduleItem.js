@@ -8,7 +8,13 @@ import Presenter from './Presenter';
 import PresentationLabel from './PresentationLabel';
 
 import { dialogShow } from './redux/actions';
-import { getParticipantCdn } from '../helpers';
+
+import { 
+    //changeLimitForScreen, 
+    getSpeakerName,
+    //getSpeakerAvatar,
+    getParticipantCdn
+  } from '../helpers';
 
 import ScheduleItemPresenter from './ScheduleItemPresenter';
 
@@ -18,7 +24,7 @@ const styles = theme => ({
   }
 });
 
-const getFullName = data => `${data.fname} ${data.lname}`;
+//const getFullName = data => `${data.fname} ${data.lname}`;
 const getFullJobInfo = data => `${data.position} @ ${data.cname2}`;
 
 const ScheduleItem = ({ data, selected, classes, first, dialogShow }) => {
@@ -54,13 +60,13 @@ const ScheduleItem = ({ data, selected, classes, first, dialogShow }) => {
       {first && (
         <Presentation
           title={data.presentation_title}
-          description={data.presentation_description}
+          description={`${data.presentation_description.substr(0, 200)}...`}
           hideDescriptionOnMobile={true}
         />
       )}
 
       <ScheduleItemPresenter
-        title={getFullName(data)}
+        title={getSpeakerName(data)}
         text={getFullJobInfo(data)}
         imageSrc={getParticipantCdn(data.avatar)}
       />

@@ -53,11 +53,13 @@ const ScheduleVenue = ({ name, company, classes }) => (
         <Avatar className={classes.avatar}>{name}</Avatar>
       </div>
       <div>
-        <img
+       
+       {company &&  <img
           src={getCompanyLogotype(company)}
           className={classes.logotype}
           alt=""
-        />
+        />}
+
       </div>
     </div>
   </Hidden>

@@ -6,7 +6,7 @@ import {
   Typography,
   Wrapper,
   //WhoIsGonnaBeThere,
-  //Schedule,
+  Schedule,
   //Googlemap,
   //People
 } from '../components';
@@ -36,7 +36,7 @@ class PageAgenda extends React.Component {
       <Layout>
         <Head />
 
-      
+        <Schedule first />
       
         <Presenters filter={ function(item){ return item.bio.length > 20} } limit={16} mobile={4}  />
 

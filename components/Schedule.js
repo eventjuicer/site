@@ -111,6 +111,7 @@ Schedule.defaultProps = {
   presenters: [],
   exhibitors: [],
   times: {
+    '10:40': 'presentation',
     '11:15': 'presentation',
     '11:50': 'presentation',
     '12:10': 'break_30',
@@ -125,10 +126,10 @@ Schedule.defaultProps = {
   },
 
   venues: {
-    A: { company_id: 1303 },
-    B: { company_id: 1245 },
-  //  C: {}
-    C: {  }
+    A: {  },
+    B: {  },
+    C: { company_id: 1245 },
+    D: {  }
   }
 
 };
