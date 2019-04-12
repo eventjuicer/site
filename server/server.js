@@ -100,6 +100,10 @@ app
       renderAndCache(req, res, '/stage', { stage: req.params.stage });
     });
 
+    server.get('/admin-stage,:stage', (req, res) => {
+      renderAndCache(req, res, '/admin-stage', { stage: req.params.stage });
+    });
+
     server.get('/ticket,:hash', (req, res) => {
       renderAndCache(req, res, '/ticket', { hash: req.params.hash });
     });

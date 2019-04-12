@@ -7,6 +7,8 @@ import _find from 'lodash/find';
 import _get from 'lodash/get';
 
 import ScheduleItem from './ScheduleItem';
+import ScheduleItemLarge from './ScheduleItemLarge';
+
 import ScheduleVenue from './ScheduleVenue';
 import ScheduleBreak from './ScheduleBreak';
 
@@ -28,15 +30,24 @@ class Stage extends React.PureComponent {
   }
 
   findPresentations(search, first = false) {
-    const { presenters, selected } = this.props;
-    return _filter(presenters, search).map((item, i) => (
-      <ScheduleItem
+    const { presenters, selected, enlarge } = this.props;
+    return _filter(presenters, search).map((item, i) => {
+
+      return  enlarge ? <ScheduleItemLarge 
+      
+      key={item.id}
+      selected={item.id == selected}
+      first={i === 0}
+      data={item}
+
+      /> : <ScheduleItem
         key={item.id}
         selected={item.id == selected}
         first={i === 0}
         data={item}
       />
-    ));
+
+    });
   }
 
   renderBreak(label) {
@@ -101,7 +112,9 @@ Stage.defaultProps = {
   selected: 0,
   presenters: [],
   exhibitors: [],
+
   times: {
+    '10:40': 'presentation',
     '11:15': 'presentation',
     '11:50': 'presentation',
     '12:10': 'break_30',
@@ -114,11 +127,15 @@ Stage.defaultProps = {
     '15:30': 'presentation',
     '16:05': 'presentation'
   },
+
   venues: {
-    A: { company_id: 1175 },
-    B: { company_id: 1158 },
-    C: { company_id: 1194 }
-  }
+    A: {  },
+    B: {  },
+    C: { company_id: 1245 },
+    D: {  }
+  },
+
+  enlarge : false
 };
 
 export default connect(

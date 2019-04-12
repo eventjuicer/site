@@ -28,7 +28,8 @@ const Presentation = ({
   classes,
   title,
   description,
-  hideDescriptionOnMobile
+  hideDescriptionOnMobile,
+  enlarge
 }) => {
   return (
     <div className={classes.root}>
@@ -44,7 +45,8 @@ const Presentation = ({
 Presentation.defaultProps = {
   title: '',
   description: '',
-  hideDescriptionOnMobile: false
+  hideDescriptionOnMobile: false,
+  enlarge : false
 };
 
 export default withStyles(styles)(Presentation);

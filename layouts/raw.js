@@ -4,7 +4,7 @@ import { MyHead as Head } from '../next';
 
 import { TranslationProvider } from '../i18n';
 import { connect } from 'react-redux';
-import customMessages from 'eventjuicer-site-translations';
+ 
 
 Router.onRouteChangeComplete = () => {
   if (window.gtag) {
@@ -17,7 +17,7 @@ Router.onRouteChangeComplete = () => {
 };
 
 const Layout = props => (
-  <TranslationProvider locale="pl" messages={customMessages}>
+  <TranslationProvider>
     <div>
       <Head />
       {props.children}
