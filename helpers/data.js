@@ -61,12 +61,8 @@ export const getInviteOgImage = (text = '') => {
 
   return `https://res.cloudinary.com/eventjuicer/image/upload/w_0.9,c_scale,fl_relative,l_text:Helvetica_300_bold:${encodeURIComponent(
     text
-  )},g_north,y_40,co_rgb:FFFF00/v1524447135/template_visitor2.jpg`;
+  )},g_north,y_40,co_rgb:FFFF00/v1555070256/template_visitor4.jpg`;
 };
-
-
-
-
 
 
 export const getCompanyAltOgImage = (company, url) => {
