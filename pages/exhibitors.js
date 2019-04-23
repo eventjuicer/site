@@ -17,7 +17,8 @@ import {
   Visitor, 
   RoleButtons,
   SalesMap,
-  AllExhibitorsAvatarlist} from '../compositions'
+  AllPastExhibitorsAvatarlist
+} from '../compositions'
 
 import {Exhibitors} from '../datasources'
 
@@ -30,7 +31,7 @@ class PageExhibitors extends React.Component {
   }) {
 
     return {
-      preload : ["exhibitors", "bookingmap"]
+      preload : ["allexhibitors", "bookingmap"]
     };
   }
 
@@ -43,15 +44,15 @@ class PageExhibitors extends React.Component {
 
         <Head />
 
-        <AllExhibitorsAvatarlist label="exhibitors.list_full" first />
+        <AllPastExhibitorsAvatarlist label="exhibitors.list_full" first />
 
-    <SalesMap
+    {/* <SalesMap
       
       label="exhibitors.map.title2"
       secondaryLabel="exhibitors.map.opensales"
       // disabled={true}
 
-    />
+    /> */}
 
        
         {/* <RoleButtons /> */}

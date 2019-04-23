@@ -49,13 +49,13 @@ class PageExhibit extends React.Component {
         <Head />
 
     
-    <SalesMap
+    {/* <SalesMap
           
           label="exhibitors.map.title"
           secondaryLabel="exhibitors.map.opensales"
           // disabled={true}
     />
-  
+   */}
 
 
      <ExhibitorBenefits first label="exhibitors.benefits.title" />

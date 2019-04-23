@@ -43,15 +43,15 @@ class PageSpeaker extends React.Component {
        
         <Presenter id={speakerId } asPath={asPath} />
 
-        <Schedule />
+        {/* <Schedule /> */}
 
 
-      <Presenters filter={ function(item){ 
+      {/* <Presenters filter={ function(item){ 
             
             return item.presentation_title.length > 20 && item.avatar.length > 10 && item.logotype.length > 10
           
           } } limit={24} mobile={4} 
-          />
+          /> */}
 
         
         <RoleButtons />

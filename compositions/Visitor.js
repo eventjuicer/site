@@ -27,7 +27,7 @@ const Visitor = ({ classes, ...rest }) => (
 
       <StepForm
         data={{}}
-        ticketId={1453}
+        ticketId={1558}
         fields={{
           email: 1,
           fname: 1,
@@ -37,6 +37,7 @@ const Visitor = ({ classes, ...rest }) => (
           phone: 1
         }}
         start={['email', 'fname']}
+        url='https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/register'
       />
 
     </Grid>
@@ -47,13 +48,13 @@ const Visitor = ({ classes, ...rest }) => (
           {
             icon: 'location',
             label: 'event.location',
-            text: 'EXPO Kraków, Kraków'
+            text: 'EXPO XXI, Warszawa'
           },
 
           {
             icon: 'date',
             label: 'event.date',
-            text: '17 kwietnia 2019'
+            text: '22 października 2019'
           },
 
           {

@@ -106,7 +106,7 @@
         "event": {
             "gallery": "Expo from the inside",
             "opengraph": {
-                "name": "XVI E-commerce Expo | Cracow | Apr 17, 2019",
+                "name": "17th E-commerce Warsaw Expo | Oct 22, 2019",
                 "description": "Entire e-commerce world in one place"
             },
             "date": "Event date",
@@ -147,7 +147,7 @@
             },
             "claim": "Join over 4000 participants",
             "description": "Expo & Conference. The biggest event for online sellers in Central Europe.",
-            "parties": "130 exhibitors, 18 speakers and networking among 4000 participants"
+            "parties": "140 exhibitors, 34 speakers and networking among 4000 participants"
         },
         "exhibitors": {
             "map": {
@@ -337,6 +337,17 @@
                     "other": "Other expo offers"
                 },
                 "title": "Exhibitors' expo offers"
+            },
+            "account": {
+                "title": "Sign in to mobile app",
+                "form": {
+                    "intro": "Fill in fields below to generate qr code",
+                    "submit": "Generate qr code to sign in"
+                },
+                "fields": {
+                    "email": "E-mail address of company representative",
+                    "password": "Mobile app password"
+                }
             }
         },
         "api": {
@@ -354,13 +365,13 @@
         },
         "speakers": {
             "opengraph": {
-                "title": "%{name} during E-commerce Poland Expo in Cracow",
+                "title": "%{name} during E-commerce Poland Expo in Warsaw",
                 "description": "%{about}"
             }
         },
         "companies": {
             "opengraph": {
-                "title": "%{name} invites you to a meeting at the E-commerce Poland Expo in Cracow",
+                "title": "%{name} invites you to a meeting at the E-commerce Poland Expo in Warsaw",
                 "description": "%{about}"
             },
             "profile": {
@@ -380,7 +391,7 @@
             "schedule": "Presentations Stages Schedule",
             "opengraph": {
                 "title": "%{presentation_title} ",
-                "description": "%{name} from %{cname2} on April 17th in Cracow. Free entry!"
+                "description": "%{name} from %{cname2} on October 22nd in Warsaw. Free entry!"
             },
             "tba": "Speakers list and schedule are to be announced soon",
             "list_description": "Expo starts at 10 am, Presentations start at 11:15am, Entrance is FREE (free registration required)",
@@ -422,17 +433,17 @@
         },
         "visitors": {
             "opengraph": {
-                "title": "%{name} is going to the E-commerce Poland Expo in Cracow | %{location}, %{date}",
+                "title": "%{name} is going to the E-commerce Poland Expo in Warsaw | %{location}, %{date}",
                 "description": "%{description}"
             },
             "invite": {
-                "title": "%{name} from %{cname} is going to the E-commerce Poland Expo in Cracow",
+                "title": "%{name} from %{cname} is going to the E-commerce Poland Expo in Warsaw",
                 "will_you_join": "Do you want a free ticket?",
                 "description": "%{description}"
             },
             "form": {
                 "register": "Register",
-                "intro": "You will find the ticket in in your inbox a few days before the event",
+                "intro": "You will find the ticket in in your inbox right after the registration",
                 "success": "Success! Check your inbox!",
                 "submit": "Register for free"
             },
@@ -602,7 +613,7 @@
         "event": {
             "gallery": "Targi od środka",
             "opengraph": {
-                "name": "16 Targi eHandlu | Kraków | 17/04/2019",
+                "name": "17 Targi eHandlu | Warszawa | 22/10/2019",
                 "description": "Cały eHandel w jednym miejscu"
             },
             "date": "Data wydarzenia",
@@ -643,7 +654,7 @@
             },
             "claim": "Dołącz do ponad 4000 Uczestników",
             "description": "Największe wydarzenie dla sprzedających online w Europie Centralnej.",
-            "parties": "130 Wystawców, 18 Prelegentów, networking pośród 4000 Uczestników"
+            "parties": "140 Wystawców, 34 Prelegentów, networking pośród 4000 Uczestników"
         },
         "exhibitors": {
             "map": {
@@ -833,6 +844,17 @@
                     "other": "Pozostałe oferty"
                 },
                 "title": "Oferty targowe Wystawców"
+            },
+            "account": {
+                "title": "Logowanie w aplikacji mobilnej",
+                "form": {
+                    "intro": "Wypełnij pole poniżej by wygenerować QRcode potrzebny do logowania",
+                    "submit": "Generuj kod do logowania"
+                },
+                "fields": {
+                    "email": "Adres email przedstawiciela Firmy",
+                    "password": "Hasło kanału mobilnego"
+                }
             }
         },
         "api": {
@@ -850,13 +872,13 @@
         },
         "speakers": {
             "opengraph": {
-                "title": "",
-                "description": ""
+                "title": "%{name} podczas Targów eHandlu w Warszawie",
+                "description": "%{about}"
             }
         },
         "companies": {
             "opengraph": {
-                "title": "%{name} na Targach eHandlu w Krakowie | Meet us during E-commerce Cracow Expo",
+                "title": "%{name} na Targach eHandlu w Warszawie | Meet us during E-commerce Warsaw Expo",
                 "description": "%{about}"
             },
             "profile": {
@@ -876,10 +898,10 @@
             "schedule": "Prezentacje Sceny Godziny",
             "opengraph": {
                 "title": "%{presentation_title}",
-                "description": "%{name} z %{cname2} 17 kwietnia w Krakowie. Wstęp bezpłatny!"
+                "description": "%{name} z %{cname2} 22 października w Warszawie. Wstęp bezpłatny!"
             },
             "tba": "Agenda będzie opublikowana wkrótce",
-            "list_description": "Expo start 10:00, Prezentacje start 11:15, Wstęp BEZPŁATNY (wymagana rejestracja)",
+            "list_description": "Expo start 10:00, Prezentacje start 10:40, Wstęp BEZPŁATNY (wymagana rejestracja)",
             "form": {
                 "title": "Zgłoś propozycję wystąpienia",
                 "submit": "Wyślij zgłoszenie",
@@ -928,7 +950,7 @@
             },
             "form": {
                 "register": "Zarejestruj mnie",
-                "intro": "Bilet otrzymasz na podany adres e-mail na kilka dni przed wydarzeniem",
+                "intro": "Bilet otrzymasz na podany adres e-mail od razu po rejestracji",
                 "success": "Udało się! Sprawdź e-mail!",
                 "submit": "Zarejestruj się bezpłatnie"
             },
@@ -1068,8 +1090,8 @@
                     "location": "Veranstaltungsort"
                 },
                 "general": {
-                    "title": "Ogólne",
-                    "home": "Strona główna"
+                    "title": "General",
+                    "home": "Home"
                 }
             },
             "locales": {
@@ -1089,7 +1111,7 @@
             "exhibitor": "Aussteller",
             "coming_soon": "Demnächst",
             "details": "Details",
-            "booth_location": "O firmie i lokalizacja stoiska",
+            "booth_location": "Exhibitor profile",
             "hours": "Std",
             "minutes": "Min",
             "stage-patrons": "Stage Patrons\n",
@@ -1098,7 +1120,7 @@
         "event": {
             "gallery": "Expo von innen",
             "opengraph": {
-                "name": "16. E-commerce Poland Expo | Warschau | 17. April, 2018",
+                "name": "17. E-commerce Poland Expo | Warschau | 22 October 2019",
                 "description": "Ganze E-Commerce-Welt an einem Ort"
             },
             "date": "Datum",
@@ -1329,6 +1351,17 @@
                     "other": "Other expo offers"
                 },
                 "title": "Exhibitors' expo offers"
+            },
+            "account": {
+                "title": "Sign in to mobile app",
+                "form": {
+                    "intro": "Fill in fields below to generate qr code",
+                    "submit": "Generate qr code to sign in"
+                },
+                "fields": {
+                    "email": "E-mail address of company representative",
+                    "password": "Mobile app password"
+                }
             }
         },
         "api": {
@@ -1352,7 +1385,7 @@
         },
         "companies": {
             "opengraph": {
-                "title": "%{name} möchte Dich zu der E-commerce Poland Expo in Krakau einladen",
+                "title": "%{name} möchte Dich zu der E-commerce Poland Expo in Warschau einladen",
                 "description": "%{about}"
             },
             "profile": {
@@ -1371,8 +1404,8 @@
             "list_full": "Referenten",
             "schedule": "Bühnenzeitplan",
             "opengraph": {
-                "title": "% {name} am 17. April in Krakau. Freier Eintritt!",
-                "description": "% {fname} (% {cname2}) hält eine Präsentation auf: % {presentation_title}"
+                "title": "% {name} am 22. Oktober in Warschau. Freier Eintritt!",
+                "description": "%{name} z %{cname2} hält eine Präsentation"
             },
             "tba": "Rednerliste und Zeitplan werden in Kürze bekannt gegeben",
             "list_description": "Expo starts at 10 am, Presentations start at 11:15am, Entrance is FREE (free registration required)",
@@ -1387,7 +1420,7 @@
                 "presentation_title": "Presentation title",
                 "presentation_description": "Short summary of presentation",
                 "presenter": "Presenter's first and last name",
-                "cname2": "Nazwa firmy, którą reprezentuje Prelegent",
+                "cname2": "Company name represented by Presenter",
                 "fname": "Your first name",
                 "lname": "Your last name",
                 "phone": "Your phone number"
@@ -1414,17 +1447,17 @@
         },
         "visitors": {
             "opengraph": {
-                "title": "%{name} nimmt an der E-commerce Poland Expo in Krakau teil | %{location}, %{date}",
+                "title": "%{name} nimmt an der E-commerce Poland Expo in Warschau teil | %{location}, %{date}",
                 "description": "%{description}"
             },
             "invite": {
-                "title": "%{name} aus %{cname} nimmt an der E-commerce Poland Expo in Krakau teil",
+                "title": "%{name} aus %{cname} nimmt an der E-commerce Poland Expo in Warschau teil",
                 "will_you_join": "Willst Du ein kostenloses Ticket?",
                 "description": "%{description}"
             },
             "form": {
                 "register": "Anmeldung",
-                "intro": "Du findest das Ticket einige Tage vor der Veranstaltung in Deinem Posteingang",
+                "intro": "Sie erhalten das Ticket sofort nach der Registrierung an der angegebenen E-Mail-Adresse",
                 "success": "Erfolg! Überprüfe deinen Posteingang!",
                 "submit": "Register for free"
             },

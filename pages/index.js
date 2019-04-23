@@ -18,19 +18,13 @@ VideoWithEventInfo,
 VideoWithReviews,
 Visitor,
 FeaturedExhibitors,
-AllExhibitorsColumnList,
-RoleButtons,
-SalesMap,
-Presenters,
-Schedule,
-AllExhibitorsAvatarlist
+// AllExhibitorsColumnList,
+// RoleButtons,
+// SalesMap,
+// Presenters,
+// Schedule,
+AllPastExhibitorsColumnList
 } from '../compositions';
-
-
-
-import { Exhibitors } from '../datasources'
-
-const Bookingmap = dynamic(import('../components/Bookingmap/Bookingmap'));
 
 
 class PageIndex extends React.Component {
@@ -41,7 +35,7 @@ isServer,
 store
 }) {
 return {
-preload : ["exhibitors"],
+preload : ["allexhibitors"],
 //    load : ["bookingmap", "formdata", "ticketgroups"]
 }
 }
@@ -56,84 +50,71 @@ return (
 
 <VideoWithEventInfo />
 
-{/* <Schedule /> */}
-
 <Visitor
 label="visitors.register"
 secondaryLabel="event.parties"
 />
 
-<RoleButtons />
+{/* <Schedule /> */}
 
-<Presenters filter={ function(item){ 
+{/* <RoleButtons /> */}
+
+{/* <Presenters filter={ function(item){ 
     
     return item.presentation_title.length > 20 && item.avatar.length > 10 && item.logotype.length > 10
 
-} } limit={16} mobile={4}  />
+} } limit={16} mobile={4}  /> */}
 
-<SalesMap
+
+{/* <Visitor
+label="visitors.register"
+secondaryLabel="event.parties"
+/> */}
+
+{/* <SalesMap
 
 label="exhibitors.map.title2"
 secondaryLabel="exhibitors.map.opensales"
-// disabled={true}
+disabled={false}
 
-/>
+/> */}
 
 <FeaturedExhibitors
 
 label="exhibitors.list_featured"
 secondaryTitle=""
 links={[
-<Link
-key="all"
-href="/exhibitors"
-label="common.menu.visitors.exhibitors"
-variant="flat"
-color="secondary"
-/>
+    <Link
+    key="all"
+    href="/exhibitors"
+    label="common.menu.visitors.exhibitors"
+    variant="flat"
+    color="secondary"
+    />
 ]}
 
 />
 
-
 {/*
 
-
-
-
-
 <Presenters />
-
 
 <Visitor
 label="visitors.register_alt"
 secondaryLabel="event.parties"
 /> 
 
-
-
-
-
-
-
 */}
-
 
 <VideoWithReviews />
 
-
-
-
+<AllPastExhibitorsColumnList />
 
 
 <Visitor
-label="visitors.register"
+label="visitors.register_alt"
 secondaryLabel="event.parties"
 />
-
-
-<AllExhibitorsColumnList />
-
 
 
 <FsVideo

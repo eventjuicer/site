@@ -48,11 +48,11 @@ const VideoWithEventInfo = ({ classes, locale, background, videoSrc, showEventDe
           {
             icon: 'location',
             secondary: 'event.location',
-            primary: locale == "en" ? "Cracow, EXPO Kraków" : 'Kraków, EXPO Kraków'
+            primary: locale == "en" ? "Warsaw, EXPO XXI" : 'Warszawa, EXPO XXI'
           },{
             icon: 'date',
             secondary: 'event.date',
-            primary: locale == "en" ? "April, the 17th 2019" : '17 kwietnia 2019'
+            primary: locale == "en" ? "October, the 22nd 2019" : '22 października 2019'
           }
         ]}
         primaryStyle="heroPrimary"

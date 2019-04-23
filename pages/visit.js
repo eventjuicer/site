@@ -53,14 +53,14 @@ first
 <VideoWithEventInfo />
 
 
-<Schedule /> 
+{/* <Schedule />  */}
 
 
 <VisitorBenefits 
 label="visitors.benefits.title" 
 />
 
-<Presenters filter={ function(item){ return item.bio.length > 20} } limit={16} mobile={4}  />
+{/* <Presenters filter={ function(item){ return item.bio.length > 20} } limit={16} mobile={4}  /> */}
 
 
 <Visitor 
