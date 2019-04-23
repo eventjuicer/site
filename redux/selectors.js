@@ -31,6 +31,7 @@ export const getBookingmap = state => state.resources.bookingmap
 export const getPhotos = state => state.resources.photos
 export const getExhibitors = (state, props) => state.resources.exhibitors
 export const getPresenters = (state, props) => state.resources.presenters
+export const getAllExhibitors = (state, props) => state.resources.allexhibitors
 
 /*
 RESOURCES
@@ -40,6 +41,40 @@ RESOURCES
 export const getFilteringProps = (state, props) => ({...defaultFilters, ...props})
 
 export const getViewPortWidth = (state) => state.app.width || "xs"
+
+
+
+
+
+
+
+
+
+export const FilteredAllExhibitors = createSelector(
+  getAllExhibitors,
+  getFilteringProps,
+  (exhibitors, props) => processArrayData(exhibitors, props)
+)
+
+export const MobileAwareFilteredAllExhibitors = createSelector(
+  FilteredAllExhibitors,
+  getViewPortWidth,
+  getFilteringProps,
+  (exhibitors, width, props) => {
+
+    if(props.columns){
+      exhibitors = chunkArrayData(exhibitors, width)
+
+    //  console.log(exhibitors)
+    }
+
+    if ((width === 'xs' || width === 'sm') && "mobile" in props && props.mobile && exhibitors.length > props.mobile) {
+     exhibitors = exhibitors.slice(0, props.mobile);
+   }
+   return exhibitors
+  }
+)
+
 
 
 

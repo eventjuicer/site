@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Exhibitors } from '../datasources'
+import { AllExhibitors } from '../datasources'
 import {
   Avatarlist,
   // KeywordSelect,
@@ -13,7 +13,7 @@ import {
 const FeaturedExhibitors = (props) => (
 
   <Wrapper {...props}>
-  <Exhibitors filter={(e) => e.featured} limit="20" mobile="12" sort={['profile.name']}>{
+  <AllExhibitors filter={(e) => e.featured} limit="20" mobile="12" sort={['profile.name']}>{
     (exhibitors, keywords) =>
 
     <React.Fragment>
@@ -27,7 +27,7 @@ const FeaturedExhibitors = (props) => (
       </Centered> */}
 
     </React.Fragment>
-  }</Exhibitors>
+  }</AllExhibitors>
   </Wrapper>
 
 )
