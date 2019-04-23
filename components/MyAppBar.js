@@ -1,5 +1,5 @@
 import React from 'react';
-//import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -13,13 +13,19 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 
 import MenuIcon from '@material-ui/icons/Menu';
+
 import classNames from 'classnames';
 
 //const Cart = dynamic(import('./CartButton'))
 
 import Cart from './CartButton';
 import LanguageSelect from './LanguageSelect';
+
+
+//import AccountLogin from './AccountLogin';
+//const AccountLogin = dynamic(import('./AccountLogin'))
 // import Search from './Search';
+
 
 import RawTranslatedText from './RawTranslatedText'
 
@@ -84,8 +90,8 @@ function MyAppBar(props) {
             >
         
         <RawTranslatedText 
-          pl="Targi eHandlu 17.04.2019" 
-          en="Ecommerce Cracow Expo" 
+          pl="Targi eHandlu 22.10.2019" 
+          en="Ecommerce Warsaw Expo" 
         />
 
             </Typography>
@@ -93,7 +99,9 @@ function MyAppBar(props) {
 
           {/* <Search /> */}
 
+         
           <LanguageSelect />
+          {/* <AccountLogin /> */}
 
           {noItems > 0 ? <Cart count={noItems} /> : null}
         </Toolbar>

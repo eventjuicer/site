@@ -12,11 +12,6 @@ export const filterFields = (fields, start) => {
   return start ? all.filter(f => start.indexOf(f) === -1) : all;
 };
 
-
-const apiUrl =
-  'https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/register';
-
-
 export default withFormik({
 
   validationSchema: validationSchema,
@@ -32,14 +27,14 @@ export default withFormik({
 
     setSubmitting(true);
 
-    fetch(apiUrl, {
+    fetch(props.url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         fields: payload,
-        tickets: { [props.ticketId]: 1 },
+        tickets: "ticketId" in props ? { [props.ticketId]: 1 } : {},
         template : "template" in props ? props.template : "",
         locale : "locale" in props ? props.locale : "",
         cc : "cc" in props ? props.cc : "" 
@@ -54,15 +49,24 @@ export default withFormik({
 
         setSubmitting(false);
 
-        if ('data' in data && 'token' in data.data) {
-          addToken(data.data.token);
-          setStatus('ok');
+         //error?
+        if ('error' in data) {
+          setStatus(data);
         }
 
-        //error?
-        if ('error' in data) {
-          setStatus('error');
+        if ('data' in data) {
+
+          if('token' in data.data){
+            addToken(data.data.token);
+          }
+
+          if('qrcode' in data.data){
+            return setStatus(data.data);
+          }
         }
+
+        setStatus('ok');
+       
       });
   },
 

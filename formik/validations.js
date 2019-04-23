@@ -45,7 +45,12 @@ export const validations = {
       .min(100, 'common.errors.too_short')
       .max(1000, 'common.errors.too_long')
       .required('common.errors.required'),
-  
+
+      password: Yup.string()
+      .min(3, 'common.errors.too_short')
+      .max(100, 'common.errors.too_long')
+      .required('common.errors.required'),
+
   
   };
 
