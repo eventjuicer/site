@@ -26,7 +26,7 @@ const steps = [
 
 
 
-const SalesInfo = ({disabled, ...props}) => (
+const SalesInfo = ({disabled, disabledTicketIds, ...props}) => (
 
   <BoothInfoContainer {...props} 
   
@@ -43,6 +43,7 @@ const SalesInfo = ({disabled, ...props}) => (
 
   <TicketGroup
       disabled={disabled}
+      disabledTicketIds={disabledTicketIds}
       noBookableTickets={<div />}
       {...props}
   />
@@ -104,7 +105,8 @@ const SalesInfo = ({disabled, ...props}) => (
 )
 
 SalesInfo.defaultProps = {
-  disabled : false
+  disabled : false,
+  disabledTicketIds : []
 }
 
 export default SalesInfo

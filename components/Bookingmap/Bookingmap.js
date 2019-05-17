@@ -68,7 +68,7 @@ class Bookingmap extends React.PureComponent {
     resourceFetchRequest(["bookingmap", "ticketgroups", "formdata"])
 
     if(parseInt(autorefresh, 10) > 5 ){
-      this.interval = setInterval(() => resourceFetchRequest(["formdata"]), autorefresh * 1000);
+      this.interval = setInterval(() => resourceFetchRequest(["formdata", "ticketgroups"]), autorefresh * 1000);
     }
   }
 
@@ -101,7 +101,9 @@ class Bookingmap extends React.PureComponent {
  
   onBoothClick = (boothId, groupId, label) => {
 
-    const { dialogShow, boothChecked, translate, disabled } = this.props;
+    const { dialogShow, boothChecked, translate, disabled, disabledTicketIds, resourceFetchRequest } = this.props;
+    
+    resourceFetchRequest(["formdata", "ticketgroups"]);
 
     const status = this.getStatusShort(boothId);
 
@@ -125,9 +127,8 @@ class Bookingmap extends React.PureComponent {
       default:
 
         modalTitle = translate("event.sales.booths.free");
-        modalContent = <SalesInfo disabled={disabled} {...props} />
+        modalContent = <SalesInfo disabled={disabled} disabledTicketIds={disabledTicketIds} {...props} />
 
-      
     }
 
     dialogShow({
@@ -206,7 +207,8 @@ Bookingmap.defaultProps = {
   ticketgroups : {},
   bookingmap : [],
   disabled : false,
-  autorefresh : 15
+  autorefresh : 60,
+  disabledTicketIds : []
 };
 
 const enhance = compose(

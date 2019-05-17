@@ -12,7 +12,7 @@ const steps = [
   ]
 
   
-const SalesMap = ({disabled, ...rest}) => (
+const SalesMap = ({disabled, disabledTicketIds, ...rest}) => (
 
     <Wrapper {...rest}>
     <div>
@@ -21,7 +21,7 @@ const SalesMap = ({disabled, ...rest}) => (
             <Legend allowedGroupIds={ [264,265,266,267] } />
         </div>
  
-        <Bookingmap disabled={disabled} />
+        <Bookingmap disabled={disabled} disabledTicketIds={disabledTicketIds} />
 
     </div>
     </Wrapper>
@@ -29,7 +29,8 @@ const SalesMap = ({disabled, ...rest}) => (
 )
 
 SalesMap.defaultProps = {
-    disabled : false
+    disabled : false,
+    disabledTicketIds : []
 }
 
 export default SalesMap
