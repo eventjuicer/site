@@ -89,6 +89,8 @@ class PageExhibitorsByKeyword extends React.Component {
 
         <SalesMap 
         label="exhibitors.map.title"
+        disabledTicketIds={[1562,1566,1557,1570,1574,1578,1563,1567,1571,1579,1575,1581]}
+
         />
 
        
