@@ -148,6 +148,13 @@ app
       res.json(texts);
     });
 
+
+    server.get('/_linkedin', async(req, res) => {
+      
+      const data = await fetch();
+
+    });
+
     // server.get('/:lang([a-z]{2}|)', (req, res) => {
     //   renderAndCache(req, res, '/', {});
     // })

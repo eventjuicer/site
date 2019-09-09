@@ -2,6 +2,14 @@ import * as Types from './types';
 
 import { parseUrlVals } from '../../helpers';
 
+
+export function linkedInTokenReceive(token) {
+  return {
+    type: Types.LINKEDIN_TOKEN_SUCCESS,
+    token: token
+  };
+}
+
 export function roleSelect(role) {
   return {
     type: Types.ROLE_SELECT,

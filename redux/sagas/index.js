@@ -25,7 +25,8 @@ import {
   RESOURCE_FETCH_REQUESTED,
   RESOURCE_FETCH_ERROR,
   FAQ_TOGGLE,
-  BOOTH_CHECKED
+  BOOTH_CHECKED,
+  LINKEDIN_TOKEN_SUCCESS
 } from '../../components/redux/types';
 
 import {FORM_ACTION_FINISHED} from '../../formik/redux/types'
@@ -44,6 +45,7 @@ import {
 
 import * as Selectors from '../selectors';
 import {event} from '../../services/gtag'
+import {getLinkedInProfile} from '../../services/linkedin'
 
 
 function* handleFormSubmit({payload}){
@@ -144,6 +146,15 @@ function* selectBoothWhenCartItemAdded(actionData) {
   yield cancel();
 }
 
+function* handleLinkedInProfileFetch(actionData){
+
+
+    const response = yield call(getLinkedInProfile, "77rfvyg8pukpbm", actionData.token);
+
+    console.log(response);
+
+}
+
 function* setCookieWhenLocaleChanged(actionData) {
   if (process.browser) {
 
@@ -188,7 +199,8 @@ const rootSaga = function* root() {
     takeEvery(CART_RESET, unSelectAllBooths),
     takeEvery(RESOURCE_FETCH_REQUESTED, accumulateFetches),
     takeEvery(RESOURCE_FETCH_ERROR, handleFetchErrors),
-    takeEvery(BOOTH_CHECKED, handleBoothCheck)
+    takeEvery(BOOTH_CHECKED, handleBoothCheck),
+    takeEvery(LINKEDIN_TOKEN_SUCCESS, handleLinkedInProfileFetch)
 
   ]);
 };

@@ -5,7 +5,8 @@ import {
   ROLE_RESET,
   CART_ITEM_ADD,
   CART_ITEM_REMOVE,
-  CART_RESET
+  CART_RESET,
+  LINKEDIN_TOKEN_SUCCESS
 } from '../../components/redux';
 
 import { CHANGE_LOCALE } from '../../i18n';
@@ -16,6 +17,7 @@ const defaultState = {
   locale: 'pl',
   locale_msgs: {},
   width: 'md',
+  linkedin : null,
   filterParams: {
     presenters: {}
   }
@@ -67,6 +69,10 @@ const reducer = (state = defaultState, action) => {
     case CART_RESET:
       return { ...state, cart: {} };
       break;
+
+
+    case LINKEDIN_TOKEN_SUCCESS:
+      return {...state, linkedin : action.token};
 
     default:
       return state;

@@ -56,5 +56,7 @@ export { default as CompanyLocationMap } from './CompanyLocationMap';
 export { default as RawTranslatedText } from './RawTranslatedText';
 export { default as Offer } from './Offer';
 
+export { default as VoteWithLinkedIn } from './VoteWithLinkedIn';
+
 export * from './MyLayouts';
 export * from './redux';
