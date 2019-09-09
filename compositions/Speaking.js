@@ -47,6 +47,7 @@ const Speaking = ({ classes, ...rest }) => (
         ]}
         template="pl-presenters-application"
         cc="prezentacje@targiehandlu.com.pl"
+        url='https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/register'
       />
 
     </Grid>

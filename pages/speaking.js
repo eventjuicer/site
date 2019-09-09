@@ -2,13 +2,15 @@ import { MyHead as Head } from '../next';
 import { connect } from 'react-redux';
 
 import {
-  Gallery
+  Gallery,
+  Wrapper
 } from '../components';
 
 import {
   VideoWithEventInfo,
   Speaking,
-  SpeakerBenefits
+  SpeakerBenefits,
+  SalesMap
 } from '../compositions';
 
 import Layout from '../layouts/main';
@@ -39,14 +41,30 @@ class PageSpeaking extends React.Component {
 
         <Head />
 
-        <Speaking 
-          first 
+    
+      <Wrapper first label="presenters.competition.title">
+
+          <img src="https://res.cloudinary.com/eventjuicer/image/upload/v1567590145/cfp.png" style={{width: '100%', maxWidth : 1600}} />
+  
+      </Wrapper>
+      
+      <Speaking 
+           
         />
+
+<SalesMap
+ label="exhibitors.map.title3"
+ secondaryLabel="exhibitors.map.opensales"
+ disabled={false}
+ disabledTicketIds={[1562,1566,1557,1570,1574,1578,1563,1567,1571,1579,1575,1581]}
+/>
 
 
         <SpeakerBenefits 
           label="presenters.steps.title" 
         />
+
+
 
         <VideoWithEventInfo 
         //  background="https://res.cloudinary.com/eventjuicer/image/upload/v1552428524/teh_presenters_video.png" 
