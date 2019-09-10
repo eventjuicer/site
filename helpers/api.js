@@ -3,9 +3,7 @@ import keyBy from 'lodash/keyBy';
 import get from 'lodash/get';
 import { resourceFetchSuccess, resourceFetchSuccessMeta } from '../components/redux';
 
-const { API_HOST } = process.env;
-
-export const apiUrl = `https://api.eventjuicer.com/v1/public/hosts/${API_HOST}/`;
+export const apiUrl = `https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/`;
 
 export const checkFetchStatus = response => {
   if (response.ok) {

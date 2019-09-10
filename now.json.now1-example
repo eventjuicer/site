@@ -3,7 +3,7 @@
   "alias": "targiehandlu.pl",
   "type": "npm",
   "public": false,
-  "version" : 2,
+  "version" : 1,
   "scale": {
     "bru1": {
       "min": 2,

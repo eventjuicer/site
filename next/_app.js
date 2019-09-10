@@ -1,4 +1,4 @@
-import App, { Container } from 'next/app';
+import App from 'next/app';
 import Router from 'next/router';
 
 import { MuiThemeProvider } from '@material-ui/core/styles';
@@ -119,12 +119,13 @@ class MyApp extends App {
     const { Component, pageProps, store } = this.props;
 
     return (
-      <Container>
-        {/* Wrap every page in Jss and Theme providers */}
+     
+     
         <JssProvider
           registry={this.pageContext.sheetsRegistry}
           generateClassName={this.pageContext.generateClassName}
         >
+           {/* Wrap every page in Jss and Theme providers */}
           {/* MuiThemeProvider makes the theme available down the React
               tree thanks to React context. */}
           <MuiThemeProvider
@@ -141,7 +142,7 @@ class MyApp extends App {
             </Provider>
           </MuiThemeProvider>
         </JssProvider>
-      </Container>
+  
     );
   }
 }

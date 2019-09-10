@@ -45,7 +45,6 @@ import {
 
 import * as Selectors from '../selectors';
 import {event} from '../../services/gtag'
-import {getLinkedInProfile} from '../../services/linkedin'
 
 
 function* handleFormSubmit({payload}){
@@ -148,10 +147,6 @@ function* selectBoothWhenCartItemAdded(actionData) {
 
 function* handleLinkedInProfileFetch(actionData){
 
-
-    const response = yield call(getLinkedInProfile, "77rfvyg8pukpbm", actionData.token);
-
-    console.log(response);
 
 }
 

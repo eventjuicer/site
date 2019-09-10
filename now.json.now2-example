@@ -1,0 +1,16 @@
+{
+  "name": "eventjuicer-site",
+  "alias": "now2.targiehandlu.pl",
+  "version" : 2,
+  "public": false,
+  "routes": [
+    {
+      "src": "/(?!,c,)(?<slug>.+),c,(?<id>[0-9]+)",
+      "dest" : "company?id=$id"
+    },
+    {
+      "src": "/(?!,s,)(?<slug>.+),s,(?<id>[0-9]+)",
+      "dest" : "speaker?id=$id"
+    }
+  ]
+}
