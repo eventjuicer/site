@@ -44,7 +44,7 @@ class PageSpeaking extends React.Component {
     
       <Wrapper first label="presenters.competition.title">
 
-          <img src="https://res.cloudinary.com/eventjuicer/image/upload/v1568588373/cfp.png" style={{width: '100%', maxWidth : 1600}} />
+          <img src="https://res.cloudinary.com/eventjuicer/image/upload/v1568797650/cfp.png" style={{width: '100%', maxWidth : 1600}} />
   
       </Wrapper>
       
@@ -56,7 +56,6 @@ class PageSpeaking extends React.Component {
  label="exhibitors.map.title3"
  secondaryLabel="exhibitors.map.opensales"
  disabled={false}
- disabledTicketIds={[1562,1566,1557,1570,1574,1578,1563,1567,1571,1579,1575,1581]}
 />
 
 

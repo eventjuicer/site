@@ -29,7 +29,7 @@ class PageAgendaPreview extends React.Component {
       <Layout>
         <Head />
 
-        <Presenters limit={null} filter={null} link={true} />
+        <Presenters limit={null} filter={null} />
     
       </Layout>
     );

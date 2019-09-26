@@ -1,17 +1,15 @@
-import dynamic from 'next/dynamic';
-
 import { connect } from 'react-redux';
 import Layout from '../layouts/main';
 
 import {
   Wrapper,
-  Avatarlist,
-  Typography,
+//  Avatarlist,
+//  Typography,
   Gallery,
-  WidthAwareInfo,
-  People,
+//  WidthAwareInfo,
+//  People,
   Faq,
-  GridBenefits
+ // GridBenefits
 } from '../components';
 
 import {
@@ -19,13 +17,15 @@ import {
   MyLink as Link
 } from '../next';
 
-import { Exhibitors, Photos } from '../datasources'
+import { Photos } from '../datasources'
 
 import {
   SalesMap, 
   ExhibitorBenefits, 
   VideoWithReviews,
-  AllExhibitorsAvatarlist} from '../compositions'
+  FeaturedExhibitors,
+//  AllExhibitorsAvatarlist
+} from '../compositions'
 
 
 class PageExhibit extends React.Component {
@@ -50,14 +50,29 @@ class PageExhibit extends React.Component {
 
     
     <SalesMap
-          
+          first
           label="exhibitors.map.title"
           secondaryLabel="exhibitors.map.opensales"
           // disabled={true}
-          disabledTicketIds={[1562,1566,1557,1570,1574,1578,1563,1567,1571,1579,1575,1581]}
 
     />
   
+
+  <FeaturedExhibitors
+
+label="exhibitors.list_featured"
+secondaryTitle=""
+links={[
+    <Link
+    key="all"
+    href="/exhibitors"
+    label="common.menu.visitors.exhibitors"
+    variant="flat"
+    color="secondary"
+    />
+]}
+
+/>
 
 
      <ExhibitorBenefits first label="exhibitors.benefits.title" />
@@ -99,6 +114,16 @@ class PageExhibit extends React.Component {
       <Photos>{
         (photos, size) => <Gallery data={photos} size={size} label="event.gallery" />
       }</Photos>
+
+
+  <SalesMap
+          
+          label="exhibitors.map.title"
+          secondaryLabel="exhibitors.map.opensales"
+          // disabled={true}
+
+    />
+
 
       </Layout>
     );

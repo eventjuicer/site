@@ -8,8 +8,8 @@ const styles = theme => ({
     height: 100,
 
     [theme.breakpoints.up('sm')]: {
-      width: 250,
-      height: 250
+      width: 240,
+      height: 240
     }
   },
 

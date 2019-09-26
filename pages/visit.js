@@ -12,8 +12,8 @@ import {
 VideoWithEventInfo,
 Visitor,
 VisitorBenefits,
-Presenters,
-Schedule,
+PresentersFeatured,
+//Schedule,
 AllExhibitorsAvatarlist
 } from '../compositions';
 
@@ -49,6 +49,8 @@ return (
 label="visitors.register_alt" 
 first 
 />  
+
+<PresentersFeatured  />
 
 <VideoWithEventInfo />
 

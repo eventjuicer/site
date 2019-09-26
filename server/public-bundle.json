@@ -37,7 +37,11 @@
                     "c": "Stage C",
                     "d": "Stage D"
                 },
-                "infrastructure": "Infrastructure"
+                "infrastructure": "Infrastructure",
+                "other": "Other",
+                "conversion": "Conversion Optimization",
+                "strategy": "Strategy",
+                "itsolutions": "IT / infrastructure"
             },
             "more": "more",
             "errors": {
@@ -101,7 +105,13 @@
             "hours": "hour(s)",
             "minutes": "minutes",
             "stage-patrons": "Stage Patrons\n",
-            "stage": "Stage"
+            "stage": "Stage",
+            "vote_now": "Vote Now!",
+            "vote_with_linkedin": "Sign In with LinkedIn and Vote!",
+            "vote_error": "Please Re-Sign In with LinkedIn ",
+            "vote_disabled": "You cannot vote :(",
+            "votes_used": "No more votes! Sorry!",
+            "vote_voted": "Voted!"
         },
         "event": {
             "gallery": "Expo from the inside",
@@ -153,7 +163,8 @@
             "map": {
                 "title": "Book a stand",
                 "opensales": "Buy exhibition space and show your offer to visitors.",
-                "title2": "Become an Exhibitor"
+                "title2": "Become an Exhibitor",
+                "title3": "Layout of the expo hall"
             },
             "list_featured": "You can meet them at the Expo",
             "booth_location": "Booth %{loc} |||| Booth %{loc}",
@@ -429,6 +440,9 @@
             "claim": {
                 "title": "4 stages of E-commerce Lovers",
                 "description": "Present yourself as an Expert in front of an auditorium looking for effective solutions supporting online trading!"
+            },
+            "competition": {
+                "title": "Enter the competition and win a place in Agenda"
             }
         },
         "visitors": {
@@ -443,7 +457,7 @@
             },
             "form": {
                 "register": "Register",
-                "intro": "You will find the ticket in in your inbox right after the registration",
+                "intro": "You will receive the ticket a week before the event",
                 "success": "Success! Check your inbox!",
                 "submit": "Register for free"
             },
@@ -504,6 +518,16 @@
             "break_40": "40-minute break",
             "break_45": "45-minute break",
             "break_50": "50-minute break"
+        },
+        "callforpapers": {
+            "list": {
+                "title": "Vote For Future Presentation Agenda",
+                "description": "Voting starts 19th of September. LinkedIn account required."
+            },
+            "opengraph": {
+                "title": "Vote for presentation %{presentation_title} ",
+                "description": "Vote now! %{name} from %{cname2} may present on October 22nd in Warsaw. Free entry!"
+            }
         }
     },
     "pl": {
@@ -544,7 +568,11 @@
                     "c": "Scena C",
                     "d": "Scena D"
                 },
-                "infrastructure": "Infrastruktura"
+                "infrastructure": "Infrastruktura",
+                "other": "Pozostałe",
+                "conversion": "Optymalizacja konwersji",
+                "strategy": "Strategia",
+                "itsolutions": "Rozwiązania IT"
             },
             "more": "więcej",
             "errors": {
@@ -608,7 +636,13 @@
             "hours": "godziny",
             "minutes": "minut",
             "stage-patrons": "Kuratorzy Scen",
-            "stage": "Scena"
+            "stage": "Scena",
+            "vote_now": "Zagłosuj teraz!",
+            "vote_with_linkedin": "Głosuj via LinkedIn",
+            "vote_error": "Połącz się z LinkedInem ponownie",
+            "vote_disabled": "Nie możesz już zagłosować",
+            "votes_used": "Brak głosów :/ Wszystkie wykorzystane.",
+            "vote_voted": "Głos oddany!"
         },
         "event": {
             "gallery": "Targi od środka",
@@ -660,7 +694,8 @@
             "map": {
                 "title": "Zarezerwuj stoisko",
                 "opensales": "Zakup stoisko i pokaż swoją ofertę zwiedzającym.",
-                "title2": "Zostań Wystawcą"
+                "title2": "Zostań Wystawcą",
+                "title3": "Układ hali targowej"
             },
             "list_featured": "Spotkasz ich na Expo",
             "booth_location": "Stoisko %{loc} |||| Stoiska %{loc}",
@@ -873,7 +908,7 @@
         "speakers": {
             "opengraph": {
                 "title": "%{name} podczas Targów eHandlu w Warszawie",
-                "description": "%{about}"
+                "description": ""
             }
         },
         "companies": {
@@ -936,6 +971,9 @@
             "claim": {
                 "title": "4 sceny, 32 Prelegentów",
                 "description": "Zaprezentuj się w roli Eksperta przed audytorium poszukującym skutecznych rozwiązań wspomagających handel online"
+            },
+            "competition": {
+                "title": "Weź udział w konkursie i wygraj miejsce w Agendzie"
             }
         },
         "visitors": {
@@ -950,7 +988,7 @@
             },
             "form": {
                 "register": "Zarejestruj mnie",
-                "intro": "Bilet otrzymasz na podany adres e-mail od razu po rejestracji",
+                "intro": "Bilet otrzymasz na podany adres e-mail na tydzień przed wydarzeniem",
                 "success": "Udało się! Sprawdź e-mail!",
                 "submit": "Zarejestruj się bezpłatnie"
             },
@@ -1011,6 +1049,16 @@
             "break_40": "Przerwa 40 minut",
             "break_45": "Przerwa 45 minut",
             "break_50": "Przerwa 50 minut"
+        },
+        "callforpapers": {
+            "list": {
+                "title": "Zbuduj Agendę 17 Targów eHandlu",
+                "description": "Start głosowania 19 września 2019. Do oddania głosu wymagane jest konto na LinkedIn."
+            },
+            "opengraph": {
+                "title": "%{presentation_title} - chcesz o tym posłuchać?",
+                "description": "Zagłosuj! %{name} z %{cname2} może być prelegentem na nadchodzących Targach eHandlu w Warszawie (Wstęp FREE)"
+            }
         }
     },
     "de": {
@@ -1051,7 +1099,11 @@
                     "c": "Stage C",
                     "d": "Stage D"
                 },
-                "infrastructure": "Infrastruktur"
+                "infrastructure": "Infrastruktur",
+                "other": "Pozostałe",
+                "conversion": "Optymalizacja konwersji",
+                "strategy": "Strategia",
+                "itsolutions": "Rozwiązania IT"
             },
             "more": "mehr",
             "errors": {
@@ -1090,8 +1142,8 @@
                     "location": "Veranstaltungsort"
                 },
                 "general": {
-                    "title": "General",
-                    "home": "Home"
+                    "title": "Ogólne",
+                    "home": "Strona główna"
                 }
             },
             "locales": {
@@ -1111,11 +1163,17 @@
             "exhibitor": "Aussteller",
             "coming_soon": "Demnächst",
             "details": "Details",
-            "booth_location": "Exhibitor profile",
+            "booth_location": "O firmie i lokalizacja stoiska",
             "hours": "Std",
             "minutes": "Min",
             "stage-patrons": "Stage Patrons\n",
-            "stage": "Bühne"
+            "stage": "Bühne",
+            "vote_now": "Zagłosuj teraz!",
+            "vote_with_linkedin": "Głosuj via LinkedIn",
+            "vote_error": "Połącz się z LinkedInem ponownie",
+            "vote_disabled": "Nie możesz już zagłosować",
+            "votes_used": "Brak głosów :/ Wszystkie wykorzystane.",
+            "vote_voted": "Głos oddany!"
         },
         "event": {
             "gallery": "Expo von innen",
@@ -1167,7 +1225,8 @@
             "map": {
                 "title": "Buche einen Stand",
                 "opensales": "Kaufe die Ausstellungsfläche und zeige Dein Angebot den Besuchern.",
-                "title2": "Aussteller werden"
+                "title2": "Aussteller werden",
+                "title3": "Układ hali targowej"
             },
             "list_featured": "Wem triffst Du bei der Expo",
             "booth_location": "Stand %{loc} |||| Stand %{loc}",
@@ -1353,14 +1412,14 @@
                 "title": "Exhibitors' expo offers"
             },
             "account": {
-                "title": "Sign in to mobile app",
+                "title": "Logowanie w aplikacji mobilnej",
                 "form": {
-                    "intro": "Fill in fields below to generate qr code",
-                    "submit": "Generate qr code to sign in"
+                    "intro": "Wypełnij pole poniżej by wygenerować QRcode potrzebny do logowania",
+                    "submit": "Generuj kod do logowania"
                 },
                 "fields": {
-                    "email": "E-mail address of company representative",
-                    "password": "Mobile app password"
+                    "email": "Adres email przedstawiciela Firmy",
+                    "password": "Hasło kanału mobilnego"
                 }
             }
         },
@@ -1420,7 +1479,7 @@
                 "presentation_title": "Presentation title",
                 "presentation_description": "Short summary of presentation",
                 "presenter": "Presenter's first and last name",
-                "cname2": "Company name represented by Presenter",
+                "cname2": "Nazwa firmy, którą reprezentuje Prelegent",
                 "fname": "Your first name",
                 "lname": "Your last name",
                 "phone": "Your phone number"
@@ -1443,6 +1502,9 @@
             "claim": {
                 "title": "4 stages of E-commerce Lovers",
                 "description": "Present yourself as an Expert in front of an auditorium looking for effective solutions supporting online trading!"
+            },
+            "competition": {
+                "title": "Weź udział w konkursie i wygraj miejsce w Agendzie"
             }
         },
         "visitors": {
@@ -1457,7 +1519,7 @@
             },
             "form": {
                 "register": "Anmeldung",
-                "intro": "Sie erhalten das Ticket sofort nach der Registrierung an der angegebenen E-Mail-Adresse",
+                "intro": "Sie erhalten eine Woche vor der Veranstaltung ein Ticket an die angegebene E-Mail-Adresse",
                 "success": "Erfolg! Überprüfe deinen Posteingang!",
                 "submit": "Register for free"
             },
@@ -1518,6 +1580,16 @@
             "break_40": "40-minütige Pause",
             "break_45": "45-minütige Pause",
             "break_50": "50-minütige Pause"
+        },
+        "callforpapers": {
+            "list": {
+                "title": "Zbuduj Agendę 17 Targów eHandlu",
+                "description": "Start głosowania 19 września 2019. Do oddania głosu wymagane jest konto na LinkedIn."
+            },
+            "opengraph": {
+                "title": "%{presentation_title} - chcesz o tym posłuchać?",
+                "description": "Zagłosuj! %{name} z %{cname2} może być prelegentem na nadchodzących Targach eHandlu w Warszawie (Wstęp FREE)"
+            }
         }
     }
 }

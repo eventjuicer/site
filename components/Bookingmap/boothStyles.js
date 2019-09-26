@@ -7,7 +7,8 @@ export const styleMapping = {
   297 : "style4", //superhot
   298 : "style5", //ultra
   299 : "style6", //grand
-  296 : "style6"
+  296 : "style6",
+  307 : "style1"
 }
 
 export const getStylingName = (groupId) => {

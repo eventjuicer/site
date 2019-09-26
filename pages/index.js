@@ -21,7 +21,7 @@ FeaturedExhibitors,
 // AllExhibitorsColumnList,
 // RoleButtons,
 SalesMap,
-// Presenters,
+PresentersFeatured, 
 // Schedule,
 AllPastExhibitorsColumnList
 } from '../compositions';
@@ -35,7 +35,7 @@ isServer,
 store
 }) {
 return {
-preload : ["allexhibitors"],
+    preload : ["allexhibitors"],
 //    load : ["bookingmap", "formdata", "ticketgroups"]
 }
 }
@@ -59,11 +59,10 @@ secondaryLabel="event.parties"
 
 {/* <RoleButtons /> */}
 
-{/* <Presenters filter={ function(item){ 
-    
-    return item.presentation_title.length > 20 && item.avatar.length > 10 && item.logotype.length > 10
 
-} } limit={16} mobile={4}  /> */}
+
+
+<PresentersFeatured  />
 
 
 {/* <Visitor
@@ -76,7 +75,6 @@ secondaryLabel="event.parties"
  label="exhibitors.map.title2"
  secondaryLabel="exhibitors.map.opensales"
  disabled={false}
- disabledTicketIds={[1562,1566,1557,1570,1574,1578,1563,1567,1571,1579,1575,1581]}
 />
 
 <FeaturedExhibitors
