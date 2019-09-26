@@ -136,6 +136,15 @@ app
       renderAndCache(req, res, '/exhibitors-by-keyword', { keyword: req.params.keyword });
     });
 
+    server.get('/vote', (req, res) => {
+      renderAndCache(req, res, '/vote', {});
+    });
+
+    server.get('/vote/:id', (req, res) => {
+      const params = isNaN(req.params.id) ? { keyword: req.params.id } : { id: req.params.id }
+      renderAndCache(req, res, '/vote', params);
+    });
+
     // Serve the item webpage with next.js as the renderer
     server.get('/setup', async (req, res) => {
       const texts = await i18n.getTexts(ssrCache, 'purge' in req.query);
@@ -177,23 +186,8 @@ app
     process.exit(1);
   });
 
-async function fetchFromApiEndpoint(endpoint) {
-  const _res = await fetch(`${apiUrl}${endpoint}`);
-  const res = await _res.json();
-  return res;
-}
 
-function cacheApiResult(endpoint) {
-  if (ssrCache.has(endpoint)) {
-    res.setHeader('x-api-cache', 'HIT');
-    res.send(ssrCache.get(key));
-    return;
-  }
 
-  // fetchFromApiEndpoint(endpoint).
-  // then(data => data.data).
-  // then()
-}
 
 function getPathName(req){
 

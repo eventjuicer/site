@@ -2,13 +2,70 @@ import * as Types from './types';
 
 import { parseUrlVals } from '../../helpers';
 
+export function linkedUidReset(){
+  return {
+    type : Types.LINKEDIN_TOKEN_RESET
+  }
+}
 
-export function linkedInTokenReceive(token) {
+export function linkedUidReceived(uid) {
   return {
     type: Types.LINKEDIN_TOKEN_SUCCESS,
-    token: token
+    uid: uid
   };
 }
+
+export function linkedVoteRequest(service, id) {
+  return {
+    type: Types.LINKEDIN_VOTE_REQUESTED,
+    service : service,
+    id: id
+  };
+}
+
+// export function linkedVoteRequestAfterOauth(service, id) {
+//   return {
+//     type: Types.LINKEDIN_AUTOVOTE_REQUESTED,
+//     service : service,
+//     id: id
+//   };
+// }
+
+export function linkedVoteSuccess(data) {
+  return {
+    type: Types.LINKEDIN_VOTE_SUCCESS,
+    data : data
+  };
+}
+
+export function linkedVoteError(error) {
+  return {
+    type: Types.LINKEDIN_VOTE_ERROR,
+    ...error
+  };
+}
+
+export function votingStatus(service) {
+  return {
+    type: Types.VOTE_STATUS_CHECK,
+    service : service
+  };
+}
+
+export function votingStatusSuccess(data) {
+  return {
+    type: Types.VOTE_STATUS_SUCCESS,
+    data : data
+  };
+}
+
+export function votingStatusError(error) {
+  return {
+    type: Types.VOTE_STATUS_ERROR,
+    ...error
+  };
+}
+
 
 export function roleSelect(role) {
   return {
@@ -38,10 +95,11 @@ export function faqUrl(url) {
   };
 }
 
-export function resourceFetchRequest(resource) {
+export function resourceFetchRequest(resource, reload = false) {
   return {
     type: Types.RESOURCE_FETCH_REQUESTED,
-    resource: resource
+    resource: resource,
+    reload : reload
   };
 }
 

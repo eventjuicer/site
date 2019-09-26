@@ -15,6 +15,7 @@ const defaultFilters = {
   columns : false
 }
 
+export const getLinkedInToken = state => state.app.linkedin;
 export const getCart = state => state.app.cart;
 export const getResources = state => state.resources;
 export const getFaqs = state => state.visuals.faqs;
@@ -31,7 +32,10 @@ export const getBookingmap = state => state.resources.bookingmap
 export const getPhotos = state => state.resources.photos
 export const getExhibitors = (state, props) => state.resources.exhibitors
 export const getPresenters = (state, props) => state.resources.presenters
+export const getPresentersAll = (state, props) => state.resources.presenters_all
 export const getAllExhibitors = (state, props) => state.resources.allexhibitors
+export const getCallForPapers = (state, props) => state.resources.callforpapers
+export const getVotes = (state, props) => state.resources.votes
 
 /*
 RESOURCES
@@ -41,7 +45,6 @@ RESOURCES
 export const getFilteringProps = (state, props) => ({...defaultFilters, ...props})
 
 export const getViewPortWidth = (state) => state.app.width || "xs"
-
 
 
 

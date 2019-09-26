@@ -10,9 +10,11 @@ import drawer from './drawer';
 import app from './app';
 import visuals from './visuals';
 import services from './services';
+import transactions from './transactions';
 
 export default {
   app,
+  transactions,
   visuals,
   dialog,
   snackbar,

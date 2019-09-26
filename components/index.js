@@ -57,6 +57,7 @@ export { default as RawTranslatedText } from './RawTranslatedText';
 export { default as Offer } from './Offer';
 
 export { default as VoteWithLinkedIn } from './VoteWithLinkedIn';
+export { default as VoteStatus } from './VoteStatus';
 
 export * from './MyLayouts';
 export * from './redux';

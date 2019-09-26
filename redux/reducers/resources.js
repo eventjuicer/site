@@ -1,4 +1,4 @@
-import { RESOURCE_FETCH_SUCCESS } from '../../components/redux/types';
+import { RESOURCE_FETCH_SUCCESS, VOTE_STATUS_SUCCESS } from '../../components/redux/types';
 
 export const initialState = {
   formdata: [],
@@ -7,6 +7,7 @@ export const initialState = {
   photos: [],
   bookingmap: [],
   exhibitors : [],
+  callforpapers : [],
   texts : {}
 };
 
@@ -17,6 +18,11 @@ const reducer = (state = initialState, action) => {
   const { type, resource, data } = action;
 
   switch (type) {
+
+    case VOTE_STATUS_SUCCESS:
+      return { ...state, "votes" : data};
+    break;
+    
     case RESOURCE_FETCH_SUCCESS:
       return { ...state, [resource]: data };
     break;

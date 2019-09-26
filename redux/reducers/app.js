@@ -6,7 +6,8 @@ import {
   CART_ITEM_ADD,
   CART_ITEM_REMOVE,
   CART_RESET,
-  LINKEDIN_TOKEN_SUCCESS
+  LINKEDIN_TOKEN_SUCCESS,
+  LINKEDIN_TOKEN_RESET
 } from '../../components/redux';
 
 import { CHANGE_LOCALE } from '../../i18n';
@@ -72,7 +73,12 @@ const reducer = (state = defaultState, action) => {
 
 
     case LINKEDIN_TOKEN_SUCCESS:
-      return {...state, linkedin : action.token};
+      return {...state, linkedin : action.uid};
+    break;
+
+    case LINKEDIN_TOKEN_RESET:
+      return {...state, linkedin : null};
+    break;
 
     default:
       return state;
