@@ -20,7 +20,7 @@ export const getCompanyName = (company) => {
   
 export const getSpeakerName = (speaker) => {
 
-  if("presenter" in speaker && speaker.presenter.length > 3){
+  if(speaker && "presenter" in speaker && speaker.presenter.length > 2){
       return speaker.presenter
   }
 
@@ -28,9 +28,9 @@ export const getSpeakerName = (speaker) => {
 
 }
 
-export const getSpeakerAvatar = (speaker, params) => getParticipantCdn(_get(speaker, 'avatar'), 250, params);
+export const getSpeakerAvatar = (speaker, params, size = 250) => getParticipantCdn(_get(speaker, 'avatar_cdn'), size, params) || getParticipantCdn(_get(speaker, 'avatar'), size, params) || '/static/avatar-placeholder.png';
 
-export const getSpeakerLogotype = (speaker, params) =>  getParticipantCdn(_get(speaker, 'logotype'), 300, params);
+export const getSpeakerLogotype = (speaker, params, size = 300) =>  getParticipantCdn(_get(speaker, 'logotype_cdn'), size, params) || getParticipantCdn(_get(speaker, 'logotype'), size, params) || '/static/avatar-placeholder.png';
 
 
 export const getCdnResource = (company, key, scale = true) => {
@@ -45,7 +45,7 @@ export const getCdnResource = (company, key, scale = true) => {
 export const getParticipantCdn = (url, size = 100, add = ['e_grayscale']) => {
 
   if (!url || ! /cloudinary/.test(url)) {
-    return '/static/avatar-placeholder.png';
+    return false;
   }
 
   const additional_params = add.length ? add.join(",")+"," : "";
@@ -121,7 +121,7 @@ export const wrapImage = (
   http://res.cloudinary.com/demo/image/upload/w_90,g_center/u_coffee_cup,w_400,h_250,c_fill,g_south/fl_layer_apply/nice_couple.jpg
   */
 
-  return `http://res.cloudinary.com/eventjuicer/image/upload/${params}/u_${baseImage},${baseImageParams}/${overlayImageVersion}/${overlayImage}.png`; 
+  return `https://res.cloudinary.com/eventjuicer/image/upload/${params}/u_${baseImage},${baseImageParams}/${overlayImageVersion}/${overlayImage}.png`; 
 
   //return `https://res.cloudinary.com/eventjuicer/image/upload/c_fit,l_${overlayImage},${params}/${overlayImageVersion}/${baseImage}.png`;
 };
@@ -154,7 +154,7 @@ export const getCompanyOgImage = (company, url) => {
   return wrapImage(
     `c_${company.id}_logotype`, 
     version,
-    `template_tehkrk_${companyLang}`,
+    `template_teh19_exhibitor_${companyLang}`,
     undefined,
     'y_-30'
     );

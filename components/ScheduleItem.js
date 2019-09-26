@@ -13,7 +13,7 @@ import {
     //changeLimitForScreen, 
     getSpeakerName,
     //getSpeakerAvatar,
-    getParticipantCdn
+    getSpeakerAvatar
   } from '../helpers';
 
 import ScheduleItemPresenter from './ScheduleItemPresenter';
@@ -68,7 +68,7 @@ const ScheduleItem = ({ data, selected, classes, first, dialogShow }) => {
       <ScheduleItemPresenter
         title={getSpeakerName(data)}
         text={getFullJobInfo(data)}
-        imageSrc={getParticipantCdn(data.avatar)}
+        imageSrc={getSpeakerAvatar(data, [], 100)}
       />
     </div>
   );

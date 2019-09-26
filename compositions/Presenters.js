@@ -35,8 +35,10 @@ Presenters.defaultProps = {
     links : [],
     limit : 20,
     random : false,
-    filter : function(item){ return [77504, 77505, 77508, 77529, 77557, 77773, 78014, 78429].indexOf(item.id) > -1 },
-    link : true
+    filter : function(item){ 
+        return item.presentation_title.length > 10 && item.bio.length > 10 && item.avatar.length > 10 && item.logotype.length > 10 
+    },
+   // link : true
 }
 
 

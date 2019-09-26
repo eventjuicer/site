@@ -4,7 +4,7 @@ import _get from 'lodash/get'
 
 export const CLOUDINARY_REGEX = /^.+\.cloudinary\.com\/(?:[^\/]+\/)(?:(image|video)\/)?(?:(upload|fetch)\/)?(?:(?:[^_/]+_[^,/]+,?)*\/)?(?:v(\d+|\w{1,2})\/)?([^\.^\s]+)(?:\.(.+))?$/;
 
-export const getCloudinaryAsset = (url, skipVersion = false) => {
+export const getCloudinaryAsset = (url = "", skipVersion = false) => {
 
     const segments = CLOUDINARY_REGEX.exec(url.trim())
 
@@ -16,15 +16,13 @@ export const getCloudinaryAsset = (url, skipVersion = false) => {
   
 } 
 
-//template_tehkrk_presenter_pl
-
 export const getPresenterOgImage = (
     participant,
-    template = 'template_tehkrk_generic_pl'
+    template = 'template_teh19_presenter_pl'
   ) => {
     
-    const avatar = getCloudinaryAsset(_get(participant, "avatar"));
-    const logotype = getCloudinaryAsset(_get(participant, "logotype"), true)
+    const avatar = getCloudinaryAsset(_get(participant, "avatar_cdn")) || getCloudinaryAsset(_get(participant, "avatar"));
+    const logotype = getCloudinaryAsset(_get(participant, "logotype_cdn"), true) || getCloudinaryAsset(_get(participant, "logotype"), true)
 
     const avatarTrans = `c_fit,h_200,q_90,r_max,w_200`;
     const templateTrans = `g_center,u_${template},x_200,y_-25`;
@@ -34,15 +32,18 @@ export const getPresenterOgImage = (
     
 };
 
-
-
+export const getCallForPapersOgImage = (
+    participant,
+    template = 'template_teh19_callforpapers_pl'
+  ) => getPresenterOgImage(participant, template);
+    
 export const getPresenterFbAd = (
     participant,
-    template = 'template_tehkrk_presenter_pl_square'
+    template = 'template_teh19_presenter_pl_square'
   ) => {
     
-    const avatar = getCloudinaryAsset(_get(participant, "avatar"));
-    const logotype = getCloudinaryAsset(_get(participant, "logotype"), true)
+    const avatar = getCloudinaryAsset(_get(participant, "avatar_cdn")) || getCloudinaryAsset(_get(participant, "avatar"));
+    const logotype = getCloudinaryAsset(_get(participant, "logotype_cdn"), true) || getCloudinaryAsset(_get(participant, "logotype"), true)
 
     const avatarTrans = `c_fit,h_500,q_90,r_max,w_500,e_grayscale`;
     const templateTrans = `g_center,u_${template},x_0,y_200`;

@@ -31,8 +31,13 @@ const MyLink = ({
   className,
   disabled
 }) => {
+
+  if(!href){
+    return null
+  }
+
   return (
-    <Link as={as} href={href} prefetch={prefetch}>
+    <Link as={as} href={href}>
       <Button
         size={size}
         variant={variant}
@@ -46,6 +51,8 @@ const MyLink = ({
 };
 
 MyLink.defaultProps = {
+  as : "",
+  href : "",
   prefetch: true,
   name: 'Link',
   variant: 'flat',

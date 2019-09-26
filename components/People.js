@@ -8,7 +8,8 @@ import Person from './Person';
 import { 
 //  changeLimitForScreen, 
   getSpeakerName,
-  getSpeakerAvatar
+  getSpeakerAvatar,
+  generateLinkParams
 } from '../helpers';
 
 
@@ -19,9 +20,7 @@ const FullJobInfo = ({ company, job }) => (
 );
 
 
-const People = ({data, link}) => {
-
-  const gridData = { xs: 6, sm: 6, md: 4, lg: 3, xl: 3 };
+const People = ({data, gridData, link, title, subtitle, text, voted, moreLabel}) => {
 
   return (
 
@@ -32,15 +31,12 @@ const People = ({data, link}) => {
           key={_get(item, 'id')}
           id={_get(item, 'id')}
           avatar={ getSpeakerAvatar(item) }
-          title={ getSpeakerName(item) }
-          subtitle={
-            <FullJobInfo
-              company={_get(item, 'cname2')}
-              job={_get(item, 'position')}
-            />
-          }
-          text={`${_get(item, 'bio', "").substring(0, 350)}...`}
+          title={ title(item) }
+          subtitle={ subtitle(item) }
+          text={ text(item) }
           link={link}
+          mark={_get(item, "id") in voted}
+          moreLabel={moreLabel}
         />
       </Grid>
     ))}
@@ -52,8 +48,14 @@ const People = ({data, link}) => {
 
 
 People.defaultProps = {
+  gridData : { xs: 6, sm: 6, md: 4, lg: 3, xl: 3 },
   data: [],
-  link: false
+  title : (item) => getSpeakerName(item),
+  link: (item) => generateLinkParams( getSpeakerName(item), 'speaker', item.id), 
+  subtitle : (item) => <FullJobInfo company={_get(item, 'cname2')} job={_get(item, 'position')} />,
+  text : (item) => `${_get(item, 'bio', "").substring(0, 350)}...`,
+  voted : {},
+  moreLabel : "common.more"
 };
 
 // People.propTypes = {

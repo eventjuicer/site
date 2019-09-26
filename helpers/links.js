@@ -15,10 +15,18 @@ export const getUrlParams = (search = '') => {
   }, {});
 };
 
-export const generateLinkParams = (name, subpage, id) => ({
-  as: `/${slug(name)},${subpage.charAt(0)},${id}`,
-  href: `/${subpage}?id=${id}`
-});
+export const generateLinkParams = (name, subpage, id) => {
+
+//  console.log(slug(name))
+
+  return {
+    as: `/${slug(name)},${subpage.charAt(0)},${id}`,
+    href: `/${subpage}?id=${id}`
+  };
+
+}
+
+
 
 export const fullUrl = subpage => {
   const prefix = 'https://targiehandlu.pl';

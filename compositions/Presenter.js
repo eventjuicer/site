@@ -99,5 +99,9 @@ const Presenter = ({id, asPath, ...rest}) => (
    
 )
 
+Presenter.defaultProps = {
+    label : "common.do_you_want_to_hear_about_it"
+}
+
 export default Presenter
 

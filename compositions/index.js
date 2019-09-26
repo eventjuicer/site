@@ -12,12 +12,18 @@ export { default as AllPastExhibitorsColumnList } from './AllPastExhibitorsColum
 export { default as Support } from './Support';
 export { default as Company } from './Company';
 export { default as Presenter } from './Presenter';
+export { default as Votable } from './Votable';
+
 export { default as VisitorBenefits } from './VisitorBenefits';
 export { default as ExhibitorBenefits } from './ExhibitorBenefits';
 export { default as RoleButtons } from './RoleButtons';
 export { default as SalesMap } from './SalesMap';
 export { default as Offers } from './Offers';
 export { default as Presenters } from './Presenters';
+export { default as PresentersFeatured } from './PresentersFeatured';
+
 export { default as Schedule } from './Schedule';
 export { default as Speaking } from './Speaking';
 export { default as SpeakerBenefits } from './SpeakerBenefits';
+export { default as CallForPapers } from './CallForPapers';
+export { default as VoteStatus } from './VoteStatus';

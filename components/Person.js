@@ -20,13 +20,17 @@ import { generateLinkParams } from '../helpers';
 
 import onlyUpdateForKeys from 'recompose/onlyUpdateForKeys';
 import compose from 'recompose/compose';
+import isFunction from 'lodash/isFunction';
 
 const styles = {
   avatarContainer: {
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 
+  avatar : {
+    marginRight : 0
+  },
   card: {
     width: '100%',
     maxWidth: 400
@@ -43,25 +47,35 @@ const styles = {
   }
 };
 
-const Person = ({
-  classes,
-  avatar,
-  title,
-  subtitle,
-  text,
-  minimal,
-  link,
-  id
-}) => {
-  const linkParams = generateLinkParams(title, 'speaker', id);
+const Person = (props) => {
+
+  const {
+    classes,
+    avatar,
+    title,
+    subtitle,
+    text,
+    minimal,
+    link,
+    id,
+    data,
+    mark,
+    moreLabel
+  } = props;
+  
+  const linkParams = isFunction(link) ? link(props) : {}
+  const {as, href} = linkParams
 
   return (
-    <Card className={classes.card} elevation={0}>
+    <Card className={classes.card} elevation={mark ? 2 : 0}>
       <CardHeader
-        avatar={<Avatar alt="" src={avatar} link={linkParams.as} />}
+        avatar={<Avatar alt="" src={avatar} link={as} />}
         // title="test"
         // subheader="srest"
-        className={classes.avatarContainer}
+        classes={{
+          ...{root : classes.avatarContainer},
+          ...{avatar : classes.avatar}
+        }}
       />
 
       <CardContent>
@@ -69,14 +83,18 @@ const Person = ({
 
         {subtitle && <Typography template="presenter2">{subtitle}</Typography>}
 
-        <Hidden smDown implementation="css">
-          {text && <Typography template="presenterText">{text}</Typography>}
-        </Hidden>
+       
+          {text && 
+           <Hidden smDown implementation="css">
+           <Typography template="presenterText">{text}</Typography>
+           </Hidden>
+          }
+        
       </CardContent>
 
-      {link && (
+      {linkParams && (
         <CardActions>
-          <MyLink {...linkParams} label="common.more" />
+          <MyLink {...linkParams} label={moreLabel} />
         </CardActions>
       )}
     </Card>
@@ -86,7 +104,9 @@ const Person = ({
 Person.defaultProps = {
   width: 'md',
   minimal: true,
-  link: false
+  link: false,
+  mark : false,
+  moreLabel : "common.more"
 };
 
 Person.propTypes = {
@@ -98,7 +118,7 @@ Person.propTypes = {
 };
 
 const enhance = compose(
-  onlyUpdateForKeys(['id']),
+  onlyUpdateForKeys(['id', 'mark']),
   withStyles(styles)
 );
 
