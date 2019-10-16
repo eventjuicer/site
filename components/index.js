@@ -59,5 +59,8 @@ export { default as Offer } from './Offer';
 export { default as VoteWithLinkedIn } from './VoteWithLinkedIn';
 export { default as VoteStatus } from './VoteStatus';
 
+export { default as MeetupsButton } from './Meetups/Button';
+
+
 export * from './MyLayouts';
 export * from './redux';
