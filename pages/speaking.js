@@ -52,11 +52,11 @@ class PageSpeaking extends React.Component {
            
         />
 
-<SalesMap
+{/* <SalesMap
  label="exhibitors.map.title3"
  secondaryLabel="exhibitors.map.opensales"
  disabled={false}
-/>
+/> */}
 
 
         <SpeakerBenefits 

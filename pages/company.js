@@ -6,18 +6,21 @@ import {
 //  MyTypography as Typography,
   Wrapper,
 //  ColumnList,
-  Avatarlist
+  Avatarlist,
+  //MeetupsButton
 } from '../components';
 
 import {
   VideoWithEventInfo,
   Visitor, 
   Company, 
-  AllExhibitorsColumnList, 
-  SalesMap,
+ // AllExhibitorsColumnList, 
+ // SalesMap,
   RoleButtons,
-  Presenters,
-  Schedule
+ // Presenters,
+  Schedule,
+//VisitorStepForm,
+  PresentersFeatured
 } from '../compositions'
 import Layout from '../layouts/main';
 
@@ -46,23 +49,35 @@ class PageCompany extends React.Component {
 
       <Layout>
 
+        {/* <MeetupsButton 
+          company_id={company_id} 
+          register={ <VisitorStepForm /> }
+          /> */}
+
         <Company id={company_id} asPath={asPath} />
 
+     <Visitor />
 
-          <SalesMap
+   {/* <Schedule /> */}
+
+          {/* <SalesMap
           
-          label="exhibitors.map.title"
+          label="exhibitors.map.exhibitor_location"
           secondaryLabel="exhibitors.map.opensales"
           // disabled={true}
            />
-  
+   */}
 
+      {/* <Visitor /> */}
 
-        <VideoWithEventInfo />
+  <VideoWithEventInfo />
 
+        <RoleButtons />
+    
+      {/* <PresentersFeatured /> */}
 
+        {/* <Visitor /> */}
 
-        <Visitor />
 
         {/* <Presenters filter={ function(item){ 
           
@@ -70,9 +85,8 @@ class PageCompany extends React.Component {
 
         } } limit={16} mobile={4} /> */}
 
-        {/* <Schedule />
-
-        <Visitor />
+        {/* 
+      
 
         <RoleButtons />
 

@@ -48,6 +48,7 @@ static async getInitialProps(props) {
         asPath : asPath
     };
 }
+ // <VoteWithLinkedIn id={id} />
 
 render() {
 
@@ -64,7 +65,7 @@ return (
     id={ id } 
     asPath={asPath} 
     vote={
-        <VoteWithLinkedIn id={id} />
+       null
     } 
     status={
         <VoteStatus />
@@ -84,11 +85,11 @@ return (
 
 <RoleButtons />
 
-<SalesMap
+{/* <SalesMap
  label="exhibitors.map.title2"
  secondaryLabel="exhibitors.map.opensales"
  disabled={false}
-/>
+/> */}
 
 <Visitor />
 

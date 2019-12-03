@@ -22,7 +22,7 @@ import Cart from './CartButton';
 import LanguageSelect from './LanguageSelect';
 
 
-//import AccountLogin from './AccountLogin';
+import AccountLogin from './AccountLogin';
 //const AccountLogin = dynamic(import('./AccountLogin'))
 // import Search from './Search';
 
@@ -90,8 +90,8 @@ function MyAppBar(props) {
             >
         
         <RawTranslatedText 
-          pl="Targi eHandlu 22.10.2019" 
-          en="Ecommerce Warsaw Expo" 
+          pl="Targi eHandlu 22.04.2020" 
+          en="Ecommerce Cracow Expo" 
         />
 
             </Typography>

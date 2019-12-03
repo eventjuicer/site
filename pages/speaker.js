@@ -43,7 +43,13 @@ class PageSpeaker extends React.Component {
        
         <Presenter id={speakerId } asPath={asPath} />
 
+        <Visitor 
+          label="visitors.register_alt"
+        />
+
         {/* <Schedule /> */}
+
+     <VideoWithEventInfo />
 
 
       {/* <Presenters filter={ function(item){ 
@@ -56,22 +62,20 @@ class PageSpeaker extends React.Component {
         
         <RoleButtons />
 
-
-        <VideoWithEventInfo />
-
-        <Visitor 
-          label="visitors.register_alt"
+             <Visitor 
+          label="visitors.register"
         />
 
         <FeaturedExhibitors label="exhibitors.list_featured" /> 
         
-         <Visitor 
-          label="visitors.register"
-        />
+      
 
         <AllExhibitorsColumnList />
 
-     
+        <Visitor 
+          label="visitors.register"
+        />
+        
       </Layout>
     );
   }

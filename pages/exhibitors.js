@@ -46,13 +46,13 @@ class PageExhibitors extends React.Component {
 
         <AllPastExhibitorsAvatarlist label="exhibitors.list_full" first />
 
-    <SalesMap
+    {/* <SalesMap
       
       label="exhibitors.map.title2"
       secondaryLabel="exhibitors.map.opensales"
       // disabled={true}
 
-    />
+    /> */}
 
        
         {/* <RoleButtons /> */}

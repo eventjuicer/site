@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 
 import {
 Wrapper,
-WhoIsGonnaBeThere,
-//Googlemap,
+//WhoIsGonnaBeThere,
 Gallery
 } from '../components';
 
@@ -13,7 +12,7 @@ VideoWithEventInfo,
 Visitor,
 VisitorBenefits,
 PresentersFeatured,
-//Schedule,
+Schedule,
 AllExhibitorsAvatarlist
 } from '../compositions';
 
@@ -45,44 +44,25 @@ return (
 
 <Head />
 
-<Visitor 
-label="visitors.register_alt" 
-first 
-/>  
-
-<PresentersFeatured  />
-
-<VideoWithEventInfo />
-
+<Visitor label="visitors.register_alt" first />  
 
 {/* <Schedule />  */}
 
+<VideoWithEventInfo />
 
-<VisitorBenefits 
-label="visitors.benefits.title" 
-/>
+{/* <PresentersFeatured  /> */}
 
-{/* <Presenters filter={ function(item){ return item.bio.length > 20} } limit={16} mobile={4}  /> */}
+<VisitorBenefits label="visitors.benefits.title" />
 
-
-<Visitor 
-label="visitors.register" 
-first 
-/>
+<Visitor label="visitors.register" />
 
 <AllExhibitorsAvatarlist label="exhibitors.list_full" />
 
-
-{/* <Visitor 
-label="visitors.register" 
-first 
-/> */}
-
-
-
+<Visitor  label="visitors.register_alt"  /> 
 
 </Layout>
 );
+
 }
 }
 

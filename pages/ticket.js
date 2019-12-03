@@ -20,7 +20,8 @@ import {
   Visitor, 
   Schedule,
   AllExhibitorsColumnList,
-  SalesMap
+  SalesMap,
+  PresentersFeatured
 } from '../compositions'
 
 
@@ -59,7 +60,7 @@ class PageTicket extends React.Component {
           )}
           titleLabel={[
             'visitors.opengraph.title',
-            { name: name, location: 'Warszawa', date: '22 października 2019' }
+            { name: name, location: 'Kraków', date: '22 kwietnia 2020' }
           ]}
         />
 
@@ -74,13 +75,13 @@ class PageTicket extends React.Component {
               {
                 icon: 'location',
                 secondary: 'event.location',
-                primary: 'Warszawa - EXPO XXI, ul. Prądzyńskiego 12/14'
+                primary: 'EXPO Kraków, Galicyjska 9'
               },
 
               {
                 icon: 'date',
                 secondary: 'event.date',
-                primary: '22 października 2019'
+                primary: '22 kwietnia 2020'
               },
 
               {
@@ -99,12 +100,15 @@ class PageTicket extends React.Component {
 
         <Schedule />
 
-      <SalesMap
+
+      <PresentersFeatured  />
+
+      {/* <SalesMap
       
         label="exhibitors.map.title2"
         secondaryLabel="exhibitors.map.opensales"
 
-        />
+        /> */}
               
         <AllExhibitorsColumnList />
 

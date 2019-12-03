@@ -128,7 +128,7 @@ Schedule.defaultProps = {
   venues: {
     A: {  },
     B: {  },
-    C: { company_id: 1245 },
+    C: {  },
     D: {  }
   }
 

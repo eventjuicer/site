@@ -57,8 +57,8 @@ class PageInvite extends React.Component {
             {
               name: name,
               cname: cname,
-              location: 'Warszawa',
-              date: '22 października 2019'
+              location: 'Kraków',
+              date: '22 kwietnia 2020'
             }
           ]}
         />
@@ -66,7 +66,7 @@ class PageInvite extends React.Component {
         <Wrapper
           first
           label={['visitors.invite.title', { name, cname }]}
-          secondaryTitle="22 Prezentacje, 130 Wystawców i prawdziwy networking!"
+          secondaryTitle="34 Prezentacje, 140 Wystawców i prawdziwy networking!"
         >
           <Typography
             template="visitor_invite_join"
@@ -78,13 +78,13 @@ class PageInvite extends React.Component {
               {
                 icon: 'location',
                 secondary: 'event.location',
-                primary: 'Warszawa - EXPO XXI, Prądzyńskiego 12/14'
+                primary: 'EXPO Kraków, Galicyjska 9'
               },
 
               {
                 icon: 'date',
                 secondary: 'event.date',
-                primary: '22 października 2019'
+                primary: '22 kwietnia 2020'
               },
 
               {

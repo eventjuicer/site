@@ -22,7 +22,7 @@ FeaturedExhibitors,
 // RoleButtons,
 SalesMap,
 PresentersFeatured, 
-// Schedule,
+Schedule,
 AllPastExhibitorsColumnList
 } from '../compositions';
 
@@ -55,27 +55,18 @@ label="visitors.register"
 secondaryLabel="event.parties"
 />
 
+
+{/* <PresentersFeatured  /> */}
+
 {/* <Schedule /> */}
 
 {/* <RoleButtons /> */}
 
-
-
-
-<PresentersFeatured  />
-
-
-{/* <Visitor
-label="visitors.register"
-secondaryLabel="event.parties"
-/> */}
-
-
-<SalesMap
+{/* <SalesMap
  label="exhibitors.map.title2"
  secondaryLabel="exhibitors.map.opensales"
  disabled={false}
-/>
+/> */}
 
 <FeaturedExhibitors
 
@@ -93,27 +84,19 @@ links={[
 
 />
 
-{/*
-
-<Presenters />
-
 <Visitor
-label="visitors.register_alt"
-secondaryLabel="event.parties"
-/> 
-
-*/}
-
-<VideoWithReviews />
-
-<AllPastExhibitorsColumnList />
-
-
-<Visitor
-label="visitors.register_alt"
+label="visitors.register"
 secondaryLabel="event.parties"
 />
 
+{/* <Presenters /> */}
+
+{/* <Visitor
+label="visitors.register_alt"
+secondaryLabel="event.parties"
+/>  */}
+
+<AllPastExhibitorsColumnList />
 
 <FsVideo
 background="https://res.cloudinary.com/eventjuicer/image/upload/v1534553598/poster_stage1.jpg"
@@ -121,6 +104,10 @@ videoSrc="https://res.cloudinary.com/eventjuicer/video/upload/v1534553583/video_
 
 />
 
+<Visitor
+label="visitors.register_alt"
+secondaryLabel="event.parties"
+/>
 
 </Layout>
 );

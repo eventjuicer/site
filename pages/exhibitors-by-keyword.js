@@ -87,10 +87,10 @@ class PageExhibitorsByKeyword extends React.Component {
           />
  
 
-        <SalesMap 
+        {/* <SalesMap 
         label="exhibitors.map.title"
 
-        />
+        /> */}
 
        
       </Layout>

@@ -38,11 +38,10 @@ class PageAgenda extends React.Component {
 
         {/* <Schedule first /> */}
       
-        {/* <Presenters filter={ function(item){ return item.bio.length > 20} } limit={16} mobile={4}  /> */}
-
+        {/* <Presenters limit={34} mobile={34}  /> */}
 
        <Visitor label="visitors.register_alt" />
- 
+
     
       </Layout>
     );

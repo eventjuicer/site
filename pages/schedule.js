@@ -40,9 +40,10 @@ class PageSchedule extends React.Component {
 
         <Visitor label="visitors.register_alt" />
 
-        <VideoWithEventInfo />
+      
+        {/* <Presenters /> */}
 
-        {/* <Presenters filter={ function(item){ return item.bio.length > 20} } limit={16} mobile={4}  /> */}
+         <VideoWithEventInfo />
      
         <Visitor label="visitors.register" />
 

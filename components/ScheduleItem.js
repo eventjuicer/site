@@ -60,7 +60,7 @@ const ScheduleItem = ({ data, selected, classes, first, dialogShow }) => {
       {first && (
         <Presentation
           title={data.presentation_title}
-          description={`${data.presentation_description.substr(0, 200)}...`}
+          description={`${data.presentation_description.substr(0, 100)}...`}
           hideDescriptionOnMobile={true}
         />
       )}

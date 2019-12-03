@@ -70,7 +70,8 @@
                     "exhibitors": "List of exhibitors",
                     "specials": "Special offers",
                     "location": "Location",
-                    "offers": "Exhibitors' offers"
+                    "offers": "Exhibitors' offers",
+                    "vote": "Vote for presentations!"
                 },
                 "exhibitors": {
                     "title": "Exhibitor",
@@ -111,12 +112,14 @@
             "vote_error": "Please Re-Sign In with LinkedIn ",
             "vote_disabled": "You cannot vote :(",
             "votes_used": "No more votes! Sorry!",
-            "vote_voted": "Voted!"
+            "vote_voted": "Voted!",
+            "vote_details": "Details and voting",
+            "do_you_want_to_hear_about_it": "Do you want to hear about it? Join Free"
         },
         "event": {
             "gallery": "Expo from the inside",
             "opengraph": {
-                "name": "17th E-commerce Warsaw Expo | Oct 22, 2019",
+                "name": "18th E-commerce Cracow Expo | April 22, 2020",
                 "description": "Entire e-commerce world in one place"
             },
             "date": "Event date",
@@ -164,7 +167,8 @@
                 "title": "Book a stand",
                 "opensales": "Buy exhibition space and show your offer to visitors.",
                 "title2": "Become an Exhibitor",
-                "title3": "Layout of the expo hall"
+                "title3": "Layout of the expo hall",
+                "exhibitor_location": "Locate this exhibitor "
             },
             "list_featured": "You can meet them at the Expo",
             "booth_location": "Booth %{loc} |||| Booth %{loc}",
@@ -191,7 +195,7 @@
                     "name": "Before the Fair",
                     "representatives": {
                         "q": "What is the maximum number of company representatives on the stand?",
-                        "a": "The number of representatives at your booth is arbitrary, but remember that in the package you have includes only 4 vouchers for lunch (unless you have bought additional vouchers)."
+                        "a": "The number of representatives at your booth is arbitrary. \nRemember that the number of lunch vouchers is equal to the number of representatives. However, no more than 4, unless additional vouchers have been purchased."
                     },
                     "additional_paid_services": {
                         "q": "Are there any upgrade options or additional services one can order?",
@@ -203,7 +207,7 @@
                     },
                     "standard_offering": {
                         "q": "What is the size of my stand and what is included in the package?",
-                        "a": "In addition to the Grand and Super-Grand stands (6m x 4m), all stand stands sizes are 3m x 2m. If you have not ordered additional services, the package includes 2 stools, 1 table, 4 lunch vouchers, access to power (300W)."
+                        "a": "In addition to the Grand and Super-Grand stands (6m x 4m), all stand stands sizes are 3m x 2m. If you have not ordered additional services, the package includes 2 stools, 1 table, up to 4 lunch vouchers, access to power (300W)."
                     },
                     "how_to_promote": {
                         "q": "How to plan participation in the Fair to get as many new customers as possible?",
@@ -211,7 +215,7 @@
                     },
                     "promo_benefits": {
                         "q": "What are the benefits of promotion of my participation?",
-                        "a": "In addition to the obvious advantages like establishing business relationships and concluding new deals, you have the chance to win some interesting prizes. Familiarize yourself with the details in your Exhibitor Panel in the 'Awards' tab. The main prize is the ability to conduct a presentation at the event!"
+                        "a": "In addition to the obvious advantages like establishing business relationships and concluding new deals, you have the chance to win some interesting prizes. Familiarize yourself with the details in your Exhibitor Panel in the 'Awards' tab. "
                     },
                     "public_profile": {
                         "q": "How to benefit from public Exhibitors' Profile?",
@@ -226,7 +230,7 @@
                     },
                     "welcoming": {
                         "q": "Where should I go after entering the hall?",
-                        "a": "When you get there, go to the Info point for Exhibitors located near registration. You will get all the necessary instructions on how to proceed. Our staff will take you straight to your stand."
+                        "a": "When you get there, go to the Info point for Exhibitors. You will get all the necessary instructions on how to proceed. Our staff will take you straight to your stand."
                     },
                     "after_party": {
                         "q": "Will there be an after party?",
@@ -238,11 +242,11 @@
                     },
                     "catering": {
                         "q": "Where can I collect lunch vouchers?",
-                        "a": "They lunch vouchers will be waiting for you in the starter pack, which you will find at your booth on the day of the event."
+                        "a": "The lunch vouchers will be waiting for you in the starter pack, which you will find at the Info Point on the day of the event."
                     },
                     "badges": {
                         "q": "Do I have to print the badges?",
-                        "a": "There is no need for that. The badges of your company's representatives will be waiting for you in the starter pack at your stand."
+                        "a": "There is no need for that. The badges of your company's representatives will be waiting for you in the starter pack at the Info Point."
                     },
                     "parking_setupday": {
                         "q": "Will it be possible to enter the parking lot on the assembly day?",
@@ -258,7 +262,7 @@
                     },
                     "problems_services": {
                         "q": "What to do in case of any other problems?",
-                        "a": "In the starter pack at your stand, you will find a list of the most important contact numbers. Our staff will help you with a solution to your problem."
+                        "a": "In the starter pack, you will find a list of the most important contact numbers. Our staff will help you with a solution to your problem."
                     },
                     "badge_scanner": {
                         "q": "How do I get access to the visitor badge scanner?",
@@ -376,13 +380,13 @@
         },
         "speakers": {
             "opengraph": {
-                "title": "%{name} during E-commerce Poland Expo in Warsaw",
+                "title": "%{name} during E-commerce Poland Expo in Cracow",
                 "description": "%{about}"
             }
         },
         "companies": {
             "opengraph": {
-                "title": "%{name} invites you to a meeting at the E-commerce Poland Expo in Warsaw",
+                "title": "%{name} invites you to a meeting at the E-commerce Poland Expo in Cracow",
                 "description": "%{about}"
             },
             "profile": {
@@ -402,7 +406,7 @@
             "schedule": "Presentations Stages Schedule",
             "opengraph": {
                 "title": "%{presentation_title} ",
-                "description": "%{name} from %{cname2} on October 22nd in Warsaw. Free entry!"
+                "description": "%{name} from %{cname2} on April 22nd in Cracow. Free entry!"
             },
             "tba": "Speakers list and schedule are to be announced soon",
             "list_description": "Expo starts at 10 am, Presentations start at 11:15am, Entrance is FREE (free registration required)",
@@ -447,17 +451,17 @@
         },
         "visitors": {
             "opengraph": {
-                "title": "%{name} is going to the E-commerce Poland Expo in Warsaw | %{location}, %{date}",
+                "title": "%{name} is going to the E-commerce Poland Expo in Cracow | %{location}, %{date}",
                 "description": "%{description}"
             },
             "invite": {
-                "title": "%{name} from %{cname} is going to the E-commerce Poland Expo in Warsaw",
+                "title": "%{name} from %{cname} is going to the E-commerce Poland Expo in Cracow",
                 "will_you_join": "Do you want a free ticket?",
                 "description": "%{description}"
             },
             "form": {
                 "register": "Register",
-                "intro": "You will receive the ticket a week before the event",
+                "intro": "You will receive the ticket with email registration confirmation.",
                 "success": "Success! Check your inbox!",
                 "submit": "Register for free"
             },
@@ -522,11 +526,11 @@
         "callforpapers": {
             "list": {
                 "title": "Vote For Future Presentation Agenda",
-                "description": "Voting starts 19th of September. LinkedIn account required."
+                "description": "You need LinkedIn account to vote. Voting ends 30th of September."
             },
             "opengraph": {
                 "title": "Vote for presentation %{presentation_title} ",
-                "description": "Vote now! %{name} from %{cname2} may present on October 22nd in Warsaw. Free entry!"
+                "description": "Vote now! %{name} from %{cname2} may present on April 22nd in Cracow. Free entry!"
             }
         }
     },
@@ -601,7 +605,8 @@
                     "exhibitors": "Lista Wystawców",
                     "specials": "Oferty specjalne",
                     "location": "Lokalizacja",
-                    "offers": "Oferty specjalne Wystawców"
+                    "offers": "Oferty specjalne Wystawców",
+                    "vote": "Głosuj na prezentacje!"
                 },
                 "exhibitors": {
                     "title": "Wystawca",
@@ -642,12 +647,14 @@
             "vote_error": "Połącz się z LinkedInem ponownie",
             "vote_disabled": "Nie możesz już zagłosować",
             "votes_used": "Brak głosów :/ Wszystkie wykorzystane.",
-            "vote_voted": "Głos oddany!"
+            "vote_voted": "Głos oddany!",
+            "vote_details": "Szczegóły i głosowanie",
+            "do_you_want_to_hear_about_it": "Czy chcesz o tym posłuchać? Wstęp FREE"
         },
         "event": {
             "gallery": "Targi od środka",
             "opengraph": {
-                "name": "17 Targi eHandlu | Warszawa | 22/10/2019",
+                "name": "18 Targi eHandlu | Kraków | 22/04/2020",
                 "description": "Cały eHandel w jednym miejscu"
             },
             "date": "Data wydarzenia",
@@ -694,8 +701,9 @@
             "map": {
                 "title": "Zarezerwuj stoisko",
                 "opensales": "Zakup stoisko i pokaż swoją ofertę zwiedzającym.",
-                "title2": "Zostań Wystawcą",
-                "title3": "Układ hali targowej"
+                "title2": "Zostań wystawcą",
+                "title3": "Układ hali targowej",
+                "exhibitor_location": "Lokalizacja tego Wystawcy"
             },
             "list_featured": "Spotkasz ich na Expo",
             "booth_location": "Stoisko %{loc} |||| Stoiska %{loc}",
@@ -722,11 +730,11 @@
                     "name": "Przed Targami",
                     "representatives": {
                         "q": "Jaka jest maksymalna liczba przedstawicieli firmy na stoisku?",
-                        "a": "Liczba przedstawicieli na Twoim stoisku jest dowolna, jednak pamiętaj, że w pakiecie masz jedynie 4 vouchery na lunch (o ile nie dokupione zostały dodatkowe vouchery)."
+                        "a": "Liczba przedstawicieli na Twoim stoisku jest dowolna. \nPamiętaj, że liczba voucherów obiadowych jest równa liczbie przedstawicieli. Jednak nie więcej niż 4, o ile nie dokupione zostały dodatkowe vouchery."
                     },
                     "additional_paid_services": {
                         "q": "Czy są jakieś usługi dodatkowe?",
-                        "a": "Dodatkowe usługi to zwiększenie mocy przyłącza prądowego (nawet do 6kW), większa liczba welcome packów dla Przedstawicieli Wystawcy, wykładzina na podłogę, większa liczba mebli lub kompleksowa aranżacją przestrzeni wystawienniczej."
+                        "a": "Dodatkowe usługi to zwiększenie mocy przyłącza prądowego (nawet do 6kW), większa liczba welcome packów dla Przedstawicieli Wystawcy, wykładzina na podłogę, większa liczba mebli lub kompleksowa aranżacja przestrzeni wystawienniczej."
                     },
                     "shipping_of_materials": {
                         "q": "Czy mogę wysłać materiały na Targi?",
@@ -734,7 +742,7 @@
                     },
                     "standard_offering": {
                         "q": "Jakie wymiary ma moje stoisko i co znajduje się w pakiecie?",
-                        "a": "Oprócz stoisk Grand i Super-Grand (6m x 4m), wyszystkie stoiska mają wymiary 3m x 2m. Jeżeli nie dokonałeś zamówienia dodatkowych usług, w pakiecie znajdują się: 2 hockery, 1 stół, 4 vouchery na lunch, dostęp prądu (300W)."
+                        "a": "Oprócz stoisk Grand i Super-Grand (6m x 4m), wyszystkie stoiska mają wymiary 3m x 2m. Jeżeli nie dokonałeś zamówienia dodatkowych usług, w pakiecie znajdują się: 2 hockery, 1 stół, do 4 voucherów na lunch, dostęp prądu (300W)."
                     },
                     "how_to_promote": {
                         "q": "Jak zaplanować udział w Targach, by pozyskać jak najwięcej nowych klientów?",
@@ -742,7 +750,7 @@
                     },
                     "promo_benefits": {
                         "q": "Jakie korzyści odniosę z promocji swojego udziału?",
-                        "a": "Poza oczywistymi benefitami jakimi są nawiązanie relacji biznesowych i zawarcie nowych konkraktów, możesz zdobyć również ciekawe nagrody. Zapoznaj się ze szczegółami w swoim Panelu Wystawcy w zakładce 'Nagrody'. Główną nagrodą jest możliwość przeprowadzenia prezentacji podczas wydarzenia!"
+                        "a": "Poza oczywistymi benefitami jakimi są nawiązanie relacji biznesowych i zawarcie nowych konkraktów, możesz zdobyć również ciekawe nagrody. Zapoznaj się ze szczegółami w swoim Panelu Wystawcy w zakładce 'Nagrody'. "
                     },
                     "public_profile": {
                         "q": "Jak wykorzystać swój Profil Wystawcy?",
@@ -757,7 +765,7 @@
                     },
                     "welcoming": {
                         "q": "Gdzie mam się udać po wejściu na halę?",
-                        "a": "Gdy dotrzesz na miejsce podejdź do punktu Info dla Wystawców znajdującego się koło rejestracji. Osoba, która będzie tam obecna, udzieli Ci niezbędnych wskazówek dotyczących Twojego dalszego postępowania. Następnie jeden z członków zespołu obsługującego wydarzenie zaprowadzi Cię prosto do Twojego stoiska."
+                        "a": "Gdy dotrzesz na miejsce podejdź do Punktu Info dla Wystawców. Osoba, która będzie tam obecna, udzieli Ci niezbędnych wskazówek dotyczących Twojego dalszego postępowania. Następnie jeden z członków zespołu obsługującego wydarzenie zaprowadzi Cię prosto do Twojego stoiska."
                     },
                     "after_party": {
                         "q": "Czy po wydarzeniu odbędzie się after party?",
@@ -769,11 +777,11 @@
                     },
                     "catering": {
                         "q": "Gdzie mogę odebrać vouchery na lunch?",
-                        "a": "Będą one na Was czekać w pakiecie startowym, który znajdziesz na swoim stoisku w dniu wydarzenia."
+                        "a": "Będą one na Was czekać w pakiecie startowym, który w odbierzecie w Punkcie Info w dniu wydarzenia."
                     },
                     "badges": {
                         "q": "Czy muszę drukować identyfikatory?",
-                        "a": "Nie ma takiej potrzeby. Identyfikatory dla przedstawicieli Twojej firmy będą na Was czekać w pakiecie startowym na Waszym stoisku."
+                        "a": "Nie ma takiej potrzeby. Identyfikatory dla przedstawicieli Twojej firmy będą na Was czekać w pakiecie startowym w Punkcie Info."
                     },
                     "parking_setupday": {
                         "q": "Czy będzie można wjechać na parking w dzień montażowy?",
@@ -789,7 +797,7 @@
                     },
                     "problems_services": {
                         "q": "Co zrobić w przypadku jakichkolwiek innych problemów?",
-                        "a": "W pakiecie startowym na Twoim stoisku znajdziesz listę najważniejszych numerów kontaktowych, pod którymi z pewnością uzyskasz rozwiązanie Twojego problemu."
+                        "a": "W pakiecie startowym znajdziesz listę najważniejszych numerów kontaktowych, pod którymi z pewnością uzyskasz rozwiązanie Twojego problemu."
                     },
                     "badge_scanner": {
                         "q": "Jak uzyskać dostęp do skanera identyfikatorów Zwiedzających?",
@@ -907,13 +915,13 @@
         },
         "speakers": {
             "opengraph": {
-                "title": "%{name} podczas Targów eHandlu w Warszawie",
+                "title": "%{name} podczas Targów eHandlu w Krakowie",
                 "description": ""
             }
         },
         "companies": {
             "opengraph": {
-                "title": "%{name} na Targach eHandlu w Warszawie | Meet us during E-commerce Warsaw Expo",
+                "title": "%{name} na Targach eHandlu w Krakowie | Meet us during E-commerce Cracow Expo",
                 "description": "%{about}"
             },
             "profile": {
@@ -933,7 +941,7 @@
             "schedule": "Prezentacje Sceny Godziny",
             "opengraph": {
                 "title": "%{presentation_title}",
-                "description": "%{name} z %{cname2} 22 października w Warszawie. Wstęp bezpłatny!"
+                "description": "%{name} z %{cname2} 22 kwietnia w Krakowie. Wstęp bezpłatny!"
             },
             "tba": "Agenda będzie opublikowana wkrótce",
             "list_description": "Expo start 10:00, Prezentacje start 10:40, Wstęp BEZPŁATNY (wymagana rejestracja)",
@@ -978,7 +986,7 @@
         },
         "visitors": {
             "opengraph": {
-                "title": "%{name} wybiera się Targi eHandlu | %{location}, %{date}",
+                "title": "%{location} %{date}.  %{name} wybiera się Targi eHandlu!  #targiehandlu",
                 "description": "%{description}"
             },
             "invite": {
@@ -988,7 +996,7 @@
             },
             "form": {
                 "register": "Zarejestruj mnie",
-                "intro": "Bilet otrzymasz na podany adres e-mail na tydzień przed wydarzeniem",
+                "intro": "Link do pobrania biletu (PDF) otrzymasz w potwierdzeniu rejestracji.",
                 "success": "Udało się! Sprawdź e-mail!",
                 "submit": "Zarejestruj się bezpłatnie"
             },
@@ -1000,9 +1008,9 @@
                 "phone": "Numer telefonu",
                 "email": "Adres e-mail"
             },
-            "register": "Zarejestruj się bezpłatnie",
-            "register_alt": "Pobierz bezpłatny bilet",
-            "register_alt2": "Pobierz bezpłatny bilet",
+            "register": "Bezpłatne wejście na prezentacje i expo",
+            "register_alt": "Bezpłatny bilet na prezentacje i expo",
+            "register_alt2": "Bezpłatny bilet na prezentacje i expo",
             "more_info": "więcej informacji",
             "attendees": "Zobacz kto będzie",
             "thankyou": "%{name}! Super, że się zobaczymy!",
@@ -1053,11 +1061,11 @@
         "callforpapers": {
             "list": {
                 "title": "Zbuduj Agendę 17 Targów eHandlu",
-                "description": "Start głosowania 19 września 2019. Do oddania głosu wymagane jest konto na LinkedIn."
+                "description": "Do oddania głosu wymagane jest konto na LinkedIn (nie używamy go bez Twojej zgody do niczego poza autentykacją). Głosowanie potrwa do 30 września."
             },
             "opengraph": {
                 "title": "%{presentation_title} - chcesz o tym posłuchać?",
-                "description": "Zagłosuj! %{name} z %{cname2} może być prelegentem na nadchodzących Targach eHandlu w Warszawie (Wstęp FREE)"
+                "description": "Zagłosuj! %{name} z %{cname2} może być prelegentem na nadchodzących Targach eHandlu w Krakowie (Wstęp FREE)"
             }
         }
     },
@@ -1132,7 +1140,8 @@
                     "exhibitors": "Liste der Aussteller",
                     "specials": "Sonderangebote",
                     "location": "Veranstaltungsort",
-                    "offers": "Exhibitors' offers"
+                    "offers": "Exhibitors' offers",
+                    "vote": "Głosuj na prezentacje!"
                 },
                 "exhibitors": {
                     "title": "Aussteller",
@@ -1173,12 +1182,14 @@
             "vote_error": "Połącz się z LinkedInem ponownie",
             "vote_disabled": "Nie możesz już zagłosować",
             "votes_used": "Brak głosów :/ Wszystkie wykorzystane.",
-            "vote_voted": "Głos oddany!"
+            "vote_voted": "Głos oddany!",
+            "vote_details": "Szczegóły i głosowanie",
+            "do_you_want_to_hear_about_it": "Czy chcesz o tym posłuchać? Wstęp FREE"
         },
         "event": {
             "gallery": "Expo von innen",
             "opengraph": {
-                "name": "17. E-commerce Poland Expo | Warschau | 22 October 2019",
+                "name": "18. E-commerce Poland Expo | Cracow | 22 April 2020",
                 "description": "Ganze E-Commerce-Welt an einem Ort"
             },
             "date": "Datum",
@@ -1226,7 +1237,8 @@
                 "title": "Buche einen Stand",
                 "opensales": "Kaufe die Ausstellungsfläche und zeige Dein Angebot den Besuchern.",
                 "title2": "Aussteller werden",
-                "title3": "Układ hali targowej"
+                "title3": "Układ hali targowej",
+                "exhibitor_location": "Lokalizacja tego Wystawcy"
             },
             "list_featured": "Wem triffst Du bei der Expo",
             "booth_location": "Stand %{loc} |||| Stand %{loc}",
@@ -1273,7 +1285,7 @@
                     },
                     "promo_benefits": {
                         "q": "Was sind die Vorteile der Bewerbung meiner Teilnahme?",
-                        "a": "Neben den offensichtlichen Vorteilen wie neue Geschäftsbeziehungen und Deals, Du hast die Möglichkeit, interessante Preise zu gewinnen. Mache Dich mit den Informationen unter \"Awards\"-Tab in Deinem Ausstellerprofil vertraut. Der Hauptpreis ist die Möglichkeit, einen Vortrag auf der Veranstaltung zu halten!"
+                        "a": "Neben den offensichtlichen Vorteilen wie neue Geschäftsbeziehungen und Deals, Du hast die Möglichkeit, interessante Preise zu gewinnen. Mache Dich mit den Informationen unter \"Awards\"-Tab in Deinem Ausstellerprofil vertraut. "
                     },
                     "public_profile": {
                         "q": "Wie kann ich vom öffentlichen Ausstellerprofil profitieren?",
@@ -1288,7 +1300,7 @@
                     },
                     "welcoming": {
                         "q": "Wohin soll ich gehen, nachdem ich die Halle betreten habe?",
-                        "a": "Wenn Du dort ankommst, gehe zum Info-Punkt für Aussteller in der Nähe der Registrierung. Du erhältst alle notwendigen Anweisungen zum weiteren Vorgehen. Unsere Mitarbeiter bringen Dich direkt zu Deinem Stand."
+                        "a": "Wenn Du dort ankommst, gehe zum Info-Punkt für Aussteller. Du erhältst alle notwendigen Anweisungen zum weiteren Vorgehen. Unsere Mitarbeiter bringen Dich direkt zu Deinem Stand."
                     },
                     "after_party": {
                         "q": "Wird es eine Afterparty geben?",
@@ -1300,11 +1312,11 @@
                     },
                     "catering": {
                         "q": "Wo erhalte ich Essensgutscheine?",
-                        "a": "Die Essensgutscheine warten im Starterpaket direkt an Deinem Stand am Expotag."
+                        "a": "Die Essensgutscheine warten im Starterpaket an Info-Point am Expotag."
                     },
                     "badges": {
                         "q": "Muss ich die Badges ausdrucken?",
-                        "a": "Das ist nicht nötig. Die Badges Deiner Unternehmensvertreter warten auf Euch im Starterpaket an Eurem Stand."
+                        "a": "Das ist nicht nötig. Die Badges Deiner Unternehmensvertreter warten auf Euch im Starterpaket an Info-Punkt."
                     },
                     "parking_setupday": {
                         "q": "Wird es möglich sein, am Tag der Expo den Parkplatz zu nutzen?",
@@ -1320,7 +1332,7 @@
                     },
                     "problems_services": {
                         "q": "Was soll ich bei anderen Problemen tun?",
-                        "a": "Im Starterpaket an Deinem Stand findest Du eine Liste der wichtigsten Kontaktnummern. Unsere Mitarbeiter helfen Dir gerne bei der Lösung Deines Problems."
+                        "a": "Im Starterpaket findest Du eine Liste der wichtigsten Kontaktnummern. Unsere Mitarbeiter helfen Dir gerne bei der Lösung Deines Problems."
                     },
                     "badge_scanner": {
                         "q": "Wie kann ich auf den Besucherbadges-Scanner zugreifen?",
@@ -1438,13 +1450,13 @@
         },
         "speakers": {
             "opengraph": {
-                "title": "%{name} während der E-commerce Poland Expo in Warschau",
+                "title": "%{name} während der E-commerce Poland Expo in Cracow",
                 "description": "%{about}"
             }
         },
         "companies": {
             "opengraph": {
-                "title": "%{name} möchte Dich zu der E-commerce Poland Expo in Warschau einladen",
+                "title": "%{name} möchte Dich zu der E-commerce Poland Expo in Cracow einladen",
                 "description": "%{about}"
             },
             "profile": {
@@ -1509,11 +1521,11 @@
         },
         "visitors": {
             "opengraph": {
-                "title": "%{name} nimmt an der E-commerce Poland Expo in Warschau teil | %{location}, %{date}",
+                "title": "%{name} nimmt an der E-commerce Poland Expo in Cracow teil | %{location}, %{date}",
                 "description": "%{description}"
             },
             "invite": {
-                "title": "%{name} aus %{cname} nimmt an der E-commerce Poland Expo in Warschau teil",
+                "title": "%{name} aus %{cname} nimmt an der E-commerce Poland Expo in Cracow teil",
                 "will_you_join": "Willst Du ein kostenloses Ticket?",
                 "description": "%{description}"
             },
@@ -1584,11 +1596,11 @@
         "callforpapers": {
             "list": {
                 "title": "Zbuduj Agendę 17 Targów eHandlu",
-                "description": "Start głosowania 19 września 2019. Do oddania głosu wymagane jest konto na LinkedIn."
+                "description": "Do oddania głosu wymagane jest konto na LinkedIn (nie używamy go bez Twojej zgody do niczego poza autentykacją). Głosowanie potrwa do 30 września."
             },
             "opengraph": {
                 "title": "%{presentation_title} - chcesz o tym posłuchać?",
-                "description": "Zagłosuj! %{name} z %{cname2} może być prelegentem na nadchodzących Targach eHandlu w Warszawie (Wstęp FREE)"
+                "description": "Zagłosuj! %{name} z %{cname2} może być prelegentem na nadchodzących Targach eHandlu w Krakowie (Wstęp FREE)"
             }
         }
     }

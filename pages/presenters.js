@@ -40,13 +40,13 @@ class PagePresenters extends React.Component {
         
         <Head />
 
-        <Presenters first limit={null}  />
+        {/* <Presenters first limit={null}  /> */}
        
         <Visitor label="visitors.register_alt" />
         
-        <VideoWithEventInfo />
-
         {/* <Schedule /> */}
+
+        <VideoWithEventInfo />
 
        <Visitor label="visitors.register" />
 
