@@ -5,9 +5,9 @@
   "main": "pages/index.js",
   "scripts": {
     "precommit": "lint-staged",
-    "dev": "node server/server.js",
-    "build": "next build",
-    "start": "NODE_ENV=production node server/server.js",
+    "dev": "API_HOST=targiehandlu.pl node server/server.js",
+    "build": "API_HOST=targiehandlu.pl next build",
+    "start": "API_HOST=targiehandlu.pl NODE_ENV=production node server/server.js",
     "analyze": "cross-env ANALYZE=1 next build"
   },
   "repository": {
@@ -65,7 +65,7 @@
     "react-redux": "^5.0.7",
     "recompose": "^0.30.0",
     "redux": "^4.0.0",
-    "redux-devtools-extension": "^2.13.5",
+    "redux-devtools-extension": "^2.13.8",
     "redux-persist": "^5.9.1",
     "redux-saga": "^0.16.0",
     "reselect": "^3.0.1",

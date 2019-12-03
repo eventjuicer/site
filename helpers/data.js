@@ -60,10 +60,9 @@ export const getInviteOgImage = (text = '') => {
   text = text.replace('/', ' ');
 
   return `https://res.cloudinary.com/eventjuicer/image/upload/w_0.9,c_scale,fl_relative,l_text:Helvetica_300_bold:${encodeURIComponent(
-    text
-  )},g_north,y_40,co_rgb:FFFF00/v1555070256/template_visitor4.jpg`;
+    text.toUpperCase()
+  )},g_north,y_30,co_rgb:FFFFFF/v1571215365/teh17_visitor_bg.jpg`;
 };
-
 
 export const getCompanyAltOgImage = (company, url) => {
   const params = getUrlParams(url);
