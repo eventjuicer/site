@@ -61,6 +61,7 @@ export { default as VoteStatus } from './VoteStatus';
 
 export { default as MeetupsButton } from './Meetups/Button';
 
+export { default as Markdown } from './Markdown';
 
 export * from './MyLayouts';
 export * from './redux';
