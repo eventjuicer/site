@@ -15,7 +15,7 @@ import {
   Visitor, 
   Company, 
  // AllExhibitorsColumnList, 
- // SalesMap,
+  SalesMap,
   RoleButtons,
  // Presenters,
   Schedule,
@@ -60,13 +60,13 @@ class PageCompany extends React.Component {
 
    {/* <Schedule /> */}
 
-          {/* <SalesMap
-          
-          label="exhibitors.map.exhibitor_location"
-          secondaryLabel="exhibitors.map.opensales"
-          // disabled={true}
-           />
-   */}
+<SalesMap
+
+label="exhibitors.map.title"
+secondaryLabel="exhibitors.map.opensales"
+// disabled={true}
+/>
+  
 
       {/* <Visitor /> */}
 

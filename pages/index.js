@@ -50,6 +50,14 @@ return (
 
 <VideoWithEventInfo />
 
+
+<SalesMap
+  label="exhibitors.map.title2"
+  secondaryLabel="exhibitors.map.opensales"
+  disabled={false}
+/>
+
+
 <Visitor
 label="visitors.register"
 secondaryLabel="event.parties"
@@ -62,11 +70,7 @@ secondaryLabel="event.parties"
 
 {/* <RoleButtons /> */}
 
-{/* <SalesMap
- label="exhibitors.map.title2"
- secondaryLabel="exhibitors.map.opensales"
- disabled={false}
-/> */}
+
 
 <FeaturedExhibitors
 
