@@ -4,6 +4,12 @@ import _filter from 'lodash/filter';
 import _uniqBy from 'lodash/uniqBy';
 import _get from 'lodash/get';
 
+export const uuidv4 = () => {
+  return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+  );
+}
+
 export const collator = new Intl.Collator('pl-PL', {numeric: true, sensitivity: 'base'});
 
 export const parseUrlVals = url => _uniqBy(url.split(',')).filter(x => x);

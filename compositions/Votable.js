@@ -15,7 +15,8 @@ import {
     Sharer,
     MyAvatar as Avatar,
    // Speaker
-   KeywordSelect
+   KeywordSelect,
+   VoteWithLinkedIn
   } from '../components';
 
 
@@ -106,9 +107,10 @@ const Votable = ({id, vote, status, asPath, classes, ...rest}) => (
 
                 <React.Fragment>
 
-                <Typography template="presenter1">
+                {/* <Typography template="presenter1">
                 Liczba głosów: {record.votes}
-                </Typography>
+                </Typography> */}
+
 
                 <Typography template="benefitsText" label="callforpapers.list.description" />
               

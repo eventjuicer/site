@@ -17,8 +17,8 @@ import {
 
 import { getLinkedInToken } from '../redux/selectors'
 import { KeyedVotesSelector } from '../datasources/redux/votes'
-
-
+import { lsSet, lsGet, uuidv4 } from '../helpers'
+ 
 const styles = theme => ({
     buttonContainer : {
         marginBottom: 50,
@@ -50,8 +50,10 @@ class VoteWithLinkedIn extends Component {
         } = this.props;
 
         const uid = extractUrlValue("uid", router.asPath);
-      
-        if(uid && uid.length > 3){
+        const session = extractUrlValue("session", router.asPath);
+        const savedSession = lsGet("oauth_session");
+
+        if(uid && uid.length > 3 && session == savedSession){
             
             linkedUidReceived(uid);
             linkedVoteRequest(service, id);
@@ -105,19 +107,31 @@ class VoteWithLinkedIn extends Component {
 
     }
 
-    handleOAuth(){
+    createSession = (e) => {
 
         const {
-           
-            labelGuest,
             oAuthUrl, 
             id, 
-            translate, 
-            classes,
             url
         } = this.props;
 
-        return   (<Button href={`${oAuthUrl}?service=linkedin&from=${ encodeURIComponent(`${url}/${id}`) }`} variant="contained" size="large" color="primary">
+        const uuid = uuidv4();
+
+        lsSet("oauth_session", uuid);
+           
+        window.location.href = `${oAuthUrl}?service=linkedin&from=${ encodeURIComponent(`${url}/${id}`) }&session=${uuid}`
+
+    }
+
+    handleOAuth(){
+
+        const {
+            labelGuest,
+            translate, 
+            classes,
+        } = this.props;
+
+        return   (<Button onClick={ this.createSession } variant="contained" size="large" color="primary">
         <Linkedin className={classes.leftIcon} />{translate(labelGuest)}</Button>)
     }
 
@@ -126,10 +140,16 @@ class VoteWithLinkedIn extends Component {
         const {
             id, 
             votes,
+            disabled,
             max_votes,
             labelAlreadyVoted,
-            labelVotesUsed
+            labelVotesUsed,
+            labelDisabled
         } = this.props;
+
+        if(disabled){
+            return labelDisabled
+        }
 
         if(votes && id in votes){
             return labelAlreadyVoted;
@@ -155,19 +175,21 @@ class VoteWithLinkedIn extends Component {
             service
         } = this.props;
 
+        const savedSession = process.browser ? lsGet("oauth_session") : false;
+
         //should the button be disabled?
 
-        return (<div className={classes.buttonContainer}>{
+        if(this.isDisabled() !== false){
+            return (
+            <Button variant="contained" disabled={true} size="large" color="primary">
+            <Linkedin className={classes.leftIcon} />
+            { translate( this.isDisabled() ) }
+            </Button>
+            )
+        }
 
-            linkedin ? (
-                <Button variant="contained" disabled={this.isDisabled() !== false } size="large" color="primary" onClick={() => linkedVoteRequest(service, id) }>
-                <Linkedin className={classes.leftIcon} />
-                {translate(this.isDisabled() ? this.isDisabled() : labelLoggedIn)}
-                </Button>
-            ) : 
-            
-            this.handleOAuth()
-          
+        return (<div className={classes.buttonContainer}>{ 
+            linkedin && savedSession ? (<Button variant="contained" size="large" color="primary" onClick={() => linkedVoteRequest(service, id) }><Linkedin className={classes.leftIcon} />{translate(labelLoggedIn)}</Button>) : this.handleOAuth() 
         }</div>)
        
     }
@@ -177,7 +199,7 @@ class VoteWithLinkedIn extends Component {
 VoteWithLinkedIn.defaultProps = {
     service : "linkedin",
     votes : {},
-    max_votes : 3,
+    max_votes : 10,
     transaction : {},
     
     labelLoggedIn : "common.vote_now",
@@ -187,8 +209,8 @@ VoteWithLinkedIn.defaultProps = {
     labelVotesUsed : "common.votes_used",
 
     disabled : false,
-    url : 'https://targiehandlu.pl/vote',
-    oAuthUrl : 'https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/ssr'
+    url : `https://${process.env.API_HOST}/vote`,
+    oAuthUrl : `https://api.eventjuicer.com/v1/public/hosts/${process.env.API_HOST}/ssr`
 }
 
 VoteWithLinkedIn.propTypes = {

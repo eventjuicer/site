@@ -25,8 +25,6 @@ const CallForPapers = ({intro, limit, random, filter, link, keyword, keyword_sou
             >{({all, filtered, keywords}) => (
 
                
-
-               
                 <VotesDatasource>{(votesData) => (
                 
                 <React.Fragment>
