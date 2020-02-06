@@ -69,7 +69,7 @@ const Person = (props) => {
   return (
     <Card className={classes.card} elevation={mark ? 2 : 0}>
       <CardHeader
-        avatar={<Avatar alt="" src={avatar} link={as} />}
+        avatar={<Avatar key={id} alt="" src={avatar} link={as} />}
         // title="test"
         // subheader="srest"
         classes={{
