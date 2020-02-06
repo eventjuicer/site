@@ -7,9 +7,9 @@ const _escape = str => encodeURIComponent(str);
 const shareLink = (service, link, title = '', description = '') => {
   switch (service) {
     case 'linkedin':
-      link = `https://www.linkedin.com/shareArticle?mini=true&url=${_escape(
+      link = `https://www.linkedin.com/sharing/share-offsite/?url=${_escape(
         link
-      )}&title=${_escape(title)}&summary=${_escape(description)}`;
+      )}`;
       break;
 
     case 'facebook':
