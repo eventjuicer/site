@@ -209,8 +209,8 @@ VoteWithLinkedIn.defaultProps = {
     labelVotesUsed : "common.votes_used",
 
     disabled : false,
-    url : `https://${process.env.API_HOST}/vote`,
-    oAuthUrl : `https://api.eventjuicer.com/v1/public/hosts/${process.env.API_HOST}/ssr`
+    url : `https://targiehandlu.pl/vote`,
+    oAuthUrl : `https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/ssr`
 }
 
 VoteWithLinkedIn.propTypes = {
