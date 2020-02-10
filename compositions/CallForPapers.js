@@ -11,7 +11,7 @@ import {
     Votes as VotesDatasource
 } from '../datasources';
 
-const CallForPapers = ({intro, limit, random, filter, link, keyword, keyword_source, sort, ...wrapperProps}) => (
+const CallForPapers = ({intro, limit, random, filter, link, keyword, keyword_source, sort, show_votes, ...wrapperProps}) => (
 
     <Wrapper {...wrapperProps}>
             
@@ -40,7 +40,7 @@ const CallForPapers = ({intro, limit, random, filter, link, keyword, keyword_sou
                     link={link} 
                     title={item => <React.Fragment>{`${item.presenter}, ${item.position}`} <strong>{item.cname2}</strong> </React.Fragment> }
                     subtitle={item => item.presentation_title}
-                    text={item => ""}
+                    text={item => show_votes ? `/Głosów: ${item.votes}/` : null}
                     voted={votesData.keyed}
                     moreLabel="common.vote_details"
                 />
@@ -70,7 +70,8 @@ CallForPapers.defaultProps = {
     link : function(item){
         return {as : `/vote/${item.id}`, href : `/vote?id=${item.id}`}
     },
-    intro : null
+    intro : null,
+    show_votes : false
 }
 
 

@@ -20,11 +20,11 @@ const menuItems = [
         //  icon : <IconSetting />
       },
 
-      // {
-      //   name: 'vote',
-      //   to: '/vote'
-      //   //  icon : <IconSetting />
-      // },
+      {
+        name: 'vote',
+        to: '/vote'
+        //  icon : <IconSetting />
+      },
 
       // {
       //   name: 'schedule',

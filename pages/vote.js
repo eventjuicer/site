@@ -81,6 +81,7 @@ return (
     filter={item => item.custom_admin_1 == 1 && item.avatar.indexOf("http")>-1 && item.logotype.indexOf("http")>-1}
     keyword_source="cfp_category"
     keyword={keyword}
+    show_votes={true}
 />
 
 <RoleButtons />

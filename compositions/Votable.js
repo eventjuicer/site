@@ -1,4 +1,3 @@
-
 import { MyHead as Head } from '../next';
 import Divider from '@material-ui/core/Divider';
 import _get from 'lodash/get';
@@ -15,12 +14,11 @@ import {
     Sharer,
     MyAvatar as Avatar,
    // Speaker
-   KeywordSelect,
-   VoteWithLinkedIn
+   KeywordSelect
   } from '../components';
 
 
-import {CallForPapers} from '../datasources'
+import CallForPapers from '../datasources/CallForPapers'
 
 import { 
     getCallForPapersOgImage, 
@@ -40,6 +38,10 @@ const styles = theme => ({
     voteInfo : {
         marginLeft : 10,
         marginTop: 5
+    },
+    status : {
+        marginTop: 10,
+        marginBottom: 10
     }
 
 })
@@ -86,10 +88,10 @@ const Votable = ({id, vote, status, asPath, classes, ...rest}) => (
             marginBottom: 20
             }}
             >
-            <Avatar src={getSpeakerAvatar(record, [])} minimal={false} grayscale={false} />
+            <Avatar src={getSpeakerAvatar(record)} minimal={false} grayscale={false} />
 
             <img
-            src={getSpeakerLogotype(record, [])}
+            src={getSpeakerLogotype(record)}
             alt=""
             style={{ maxWidth: 300, maxHeight: 200, marginTop: 30 }}
             />
@@ -102,15 +104,22 @@ const Votable = ({id, vote, status, asPath, classes, ...rest}) => (
             <div className={classes.voteButtonContainer}>
             <div>
                {vote}
+
+              {/* <div className={classes.status}>{status}</div> */}
+
             </div>
+
+         
+
             <div className={classes.voteInfo}>
 
                 <React.Fragment>
 
-                {/* <Typography template="presenter1">
-                Liczba głosów: {record.votes}
-                </Typography> */}
+                <Typography template="presenter1">
+                Głosów: {record.votes}
+                </Typography>
 
+              
 
                 <Typography template="benefitsText" label="callforpapers.list.description" />
               
@@ -118,14 +127,13 @@ const Votable = ({id, vote, status, asPath, classes, ...rest}) => (
 
             </div>
             </div>
-
-            {status}
-
-            { <Presentation
+            
+            <div style={{marginTop: 20}}>
+            
+            <Presentation
             title={record.presentation_title}
             description={record.presentation_description}
             />
-            }
             
             <KeywordSelect  href="/vote" as="/vote" keywords={[].concat( _get(record, 'cfp_category', "") )} />
             
@@ -136,6 +144,11 @@ const Votable = ({id, vote, status, asPath, classes, ...rest}) => (
             <Divider />
 
             <PresenterName data={record} />
+
+
+            </div>
+            
+
 
             </div>
             }
