@@ -74,9 +74,10 @@ secondaryLabel="exhibitors.map.opensales"
 
         <RoleButtons />
     
-      {/* <PresentersFeatured /> */}
+        <PresentersFeatured filter={() => true} text={() => null} limit={16} /> 
 
-        {/* <Visitor /> */}
+
+        <Visitor />
 
 
         {/* <Presenters filter={ function(item){ 

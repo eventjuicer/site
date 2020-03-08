@@ -46,7 +46,7 @@ class PageSpeaking extends React.Component {
       <Speaking first />
 
       <Wrapper  label="presenters.competition.title">
-        <img src="https://res.cloudinary.com/eventjuicer/image/upload/v1579031148/cfp_TEH18.jpg" style={{width: '100%', maxWidth : 1600}} />
+        <img src="https://res.cloudinary.com/eventjuicer/image/upload/c_fit,w_1600,f_auto/v1583705310/cfp_TEH18_2tura_extended.jpg" style={{width: '100%', maxWidth : 1600}} />
       </Wrapper>
 
       <Wrapper  label="presenters.competition.rules.title">

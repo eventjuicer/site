@@ -19,7 +19,7 @@ VideoWithReviews,
 Visitor,
 FeaturedExhibitors,
 // AllExhibitorsColumnList,
-// RoleButtons,
+RoleButtons,
 SalesMap,
 PresentersFeatured, 
 Schedule,
@@ -64,12 +64,9 @@ secondaryLabel="event.parties"
 />
 
 
-{/* <PresentersFeatured  /> */}
+<PresentersFeatured filter={() => true} text={() => null} limit={16} /> 
 
 {/* <Schedule /> */}
-
-{/* <RoleButtons /> */}
-
 
 
 <FeaturedExhibitors
@@ -87,6 +84,9 @@ links={[
 ]}
 
 />
+
+<RoleButtons />
+
 
 <Visitor
 label="visitors.register"

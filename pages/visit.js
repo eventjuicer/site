@@ -50,7 +50,7 @@ return (
 
 <VideoWithEventInfo />
 
-{/* <PresentersFeatured  /> */}
+<PresentersFeatured filter={() => true} text={() => null} limit={16} /> 
 
 <VisitorBenefits label="visitors.benefits.title" />
 
