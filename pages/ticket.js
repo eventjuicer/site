@@ -60,7 +60,7 @@ class PageTicket extends React.Component {
           )}
           titleLabel={[
             'visitors.opengraph.title',
-            { name: name, location: 'Kraków', date: '22 kwietnia 2020' }
+            { name: name, location: 'Warszawa', date: '23 października 2020' }
           ]}
         />
 
@@ -75,13 +75,13 @@ class PageTicket extends React.Component {
               {
                 icon: 'location',
                 secondary: 'event.location',
-                primary: 'EXPO Kraków, Galicyjska 9'
+                primary: 'EXPO XXI, Prądzyńskiego 12/14'
               },
 
               {
                 icon: 'date',
                 secondary: 'event.date',
-                primary: '22 kwietnia 2020'
+                primary: '23 października 2020'
               },
 
               {

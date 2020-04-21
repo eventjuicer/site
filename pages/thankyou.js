@@ -44,8 +44,8 @@ class ThankyouPage extends React.Component {
             'visitors.opengraph.title',
             {
               name: name,
-              location: 'Kraków',
-              date: '22 kwietnia 2020'
+              location: 'Warszawa',
+              date: '23 października 2020'
             }
           ]}
         />

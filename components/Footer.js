@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import EventInfo from './EventInfo';
 import {Support} from '../compositions';
 import Typography from './MyTypography';
+import Link from '../next/MyLink'
 
 import Wrapper from './Wrapper';
 
@@ -33,13 +34,13 @@ const Footer = ({ links, classes, width }) => (
               {
                 icon: 'location',
                 secondary: 'event.location',
-                primary: 'EXPO Kraków, Galicyjska 9'
+                primary: 'EXPO XXI, Prądzyńskiego 12/14'
               },
 
               {
                 icon: 'date',
                 secondary: 'event.date',
-                primary: '22 kwietnia 2020'
+                primary: '23 października 2020'
               },
 
               {
@@ -76,12 +77,21 @@ const Footer = ({ links, classes, width }) => (
           />
         </Grid>
       </Grid>
+
+
+         <div style={{marginTop: 30, marginBottom : 30}}>
+            <Grid container spacing={8} wrap="wrap" justify="space-around" alignItems="center">
+            {links.map(({label, href}) => (<Grid item key={label}><Link prefetch={false} href={href} label={label} /></Grid>))}        
+            </Grid>
+        </div>
+
+
     </Wrapper>
   </div>
 );
 
 Footer.defaultProps = {
-  links: []
+  links: [{label: "exhibitors.agreement.title", href : '/legal'}]
 };
 
 const enhance = compose(withStyles(styles));

@@ -64,9 +64,9 @@ return (
 {id &&  <Votable 
     id={ id } 
     asPath={asPath} 
-    vote={
-        <VoteWithLinkedIn id={id} />
-    } 
+    // vote={
+    //     <VoteWithLinkedIn id={id} />
+    // } 
     status={
         <VoteStatus />
     } /> 
@@ -78,7 +78,7 @@ return (
     <VoteStatus />
 } 
     limit={200} 
-    filter={item => item.custom_admin_1 == 1 && item.avatar.indexOf("http")>-1 && item.logotype.indexOf("http")>-1}
+    filter={item => item.custom_admin_1 > 0 && item.avatar.indexOf("http")>-1 && item.logotype.indexOf("http")>-1}
     keyword_source="cfp_category"
     keyword={keyword}
     show_votes={true}

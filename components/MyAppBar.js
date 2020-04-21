@@ -90,8 +90,8 @@ function MyAppBar(props) {
             >
         
         <RawTranslatedText 
-          pl="Targi eHandlu 22.04.2020" 
-          en="Ecommerce Cracow Expo" 
+          pl="Targi eHandlu 23.10.2020" 
+          en="Ecommerce Warsaw Expo" 
         />
 
             </Typography>

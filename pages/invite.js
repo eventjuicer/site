@@ -57,8 +57,8 @@ class PageInvite extends React.Component {
             {
               name: name,
               cname: cname,
-              location: 'Kraków',
-              date: '22 kwietnia 2020'
+              location: 'Warszawa',
+              date: '23 października 2020'
             }
           ]}
         />
@@ -78,13 +78,13 @@ class PageInvite extends React.Component {
               {
                 icon: 'location',
                 secondary: 'event.location',
-                primary: 'EXPO Kraków, Galicyjska 9'
+                primary: 'EXPO XXI Warszawa, Prądzyńskiego 12/14'
               },
 
               {
                 icon: 'date',
                 secondary: 'event.date',
-                primary: '22 kwietnia 2020'
+                primary: '23 października 2020'
               },
 
               {

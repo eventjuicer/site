@@ -87,7 +87,10 @@ app
     // })
 
  
-
+    server.get('/robots.txt', (req, res)=>{
+      res.type('text/plain');
+      res.send("User-agent: ia_archiver\nDisallow: /");
+    });
 
     server.post('/remember', (req, res) => {
 
