@@ -29,8 +29,8 @@ class PageFaq extends React.Component {
         <Wrapper label="exhibitors.agreement.title">
      
           <Markdown>{`
+          
 
-Poprzednia wersja regulaminu (dotycząca Targów eHandlu Kraków 22 kwietnia 2020 roku) znajduje się pod adresem [targiehandlu.pl/legal-20191023](https://targiehandlu.pl/legal-20191023).
 
 # 1. Postanowienia ogólne, definicje.
 
@@ -40,13 +40,13 @@ Poprzednia wersja regulaminu (dotycząca Targów eHandlu Kraków 22 kwietnia 202
 
 1.2.1. Organizator ​– Infoguru sp. z o.o. Sp.k. z siedzibą w Poznaniu (kod pocztowy 60­-478), ul. Truskawiecka 13, wpisana do rejestru przedsiębiorców pod numerem KRS 0000721810, której akta rejestrowe przechowywane są przez Sąd Rejonowy Poznań­ Nowe Miasto i Wilda w Poznaniu, VIII Wydział Gospodarczy Krajowego Rejestru Sądowego, posługująca się nadanym jej numerem identyfikacji podatkowej 7811967834 oraz numerem REGON 369698530; Adres e-mail: hello@targiehandlu.pl,
 
-1.2.2. Targi ​– organizowane przez Organizatora 18 Targi eHandlu, które odbędą się w Warszawie na terenie Warszawskiego Centrum EXPO XXI, w dniu 23 października 2020 roku;
+1.2.2. Targi ​– organizowane przez Organizatora 18 Targi eHandlu, które odbędą się w Krakowie na terenie Międzynarodowego Centrum Targowo - Kongresowego EXPO Kraków, w dniu 22 kwietnia 2020 roku;
 
 1.2.3. Regulamin ​– niniejszy dokument stanowiący ogólne warunki Umowy;
 
 1.2.4. Wystawca ​– osoba fizyczna, osoba prawna lub jednostka organizacyjna nieposiadająca osobowości prawnej, która prowadzi działalność gospodarczą: związaną z handlem elektronicznym, w tym w szczególności świadczy usługi elektroniczne, której oferta skierowana jest do podmiotów prowadzących sklepy internetowe lub która w ramach prowadzonej przez siebie działalności gospodarczej zamierza rozpocząć prowadzenie sklepu internetowego lub kierowanie oferty do podmiotów prowadzących taką działalność;
 
-1.2.5. Hala – Przestrzeń na terenie Warszawskiego Centrum EXPO XXI, w której odbędą się Targi;
+1.2.5. Hala – Przestrzeń na terenie Międzynarodowego Centrum Targowo - Kongresowego EXPO Kraków, w której odbędą się Targi;
 
 1.2.6. Stoisko​ – przestrzeń wystawiennicza umieszczona w Hali;
 
@@ -60,15 +60,15 @@ Poprzednia wersja regulaminu (dotycząca Targów eHandlu Kraków 22 kwietnia 202
 
 # 2. Świadczenia organizatora.
 
-2.1. Organizator udostępnia Wystawcom, na zasadach określonych w Regulaminie, Pakiety wystawiennicze w kategorii wybranej przez Wystawcę, na zasadach określonych Regulaminem. Organizator oferuje następujące kategorie Pakietów wystawienniczych: Pakiet „Standard”, Pakiet „Hot”, Pakiet "Super-HOT", Pakiet „Ultra”, Pakiet "Grand".
+2.1. Organizator udostępnia Wystawcom, na zasadach określonych w Regulaminie, Stoiska w kategorii wybranej przez Wystawcę, na zasadach określonych Regulaminem. Organizator oferuje następujące kategorie Stoisk: Stoisko „Light”, Stoisko „Standard”, Stoisko „Hot”, Stoisko "Super-HOT" Stoisko „Ultra”, Stoisko "Grand".
 
-2.2. W ramach Pakietów „Standard”, „Hot”, "Super-Hot" oraz „Ultra”, Organizator na czas trwania Targów umożliwia Wystawcy korzystanie ze Stoiska, które obejmuje:
+2.2. W ramach Stoisk „Light”, „Standard”, „Hot”, "Super-Hot" oraz „Ultra”, Organizator na czas trwania Targów umożliwia Wystawcy korzystanie z:
 
-2.2.1. 6m2 (sześć metrów kwadratowych) powierzchni podłogi Hali (o wymiarach 3 m x 2 m),
+2.2.1. 6m2 (sześciu metrów kwadratowych) powierzchni podłogi Hali (o wymiarach 3 m x 2 m),
 
 2.2.2. umieszczonego na powierzchni o jakiej mowa w pkt 2.2.1. jednego stołu o średnicy min. 70 cm,
 
-2.2.3. 2 (dwóch) krzeseł,
+2.2.3. 2 (dwa) krzesła,
 
 2.2.4. możliwości umieszczenia na powierzchni o jakiej mowa w pkt. 2.2.1.1. przygotowanych przez Wystawcę rollup’ów lub ścianki reklamowej o szerokości podstawy nie większej niż 3 m (trzy metry), wysokość zabudowy stoiska nie może przekraczać 2.5 m (dwa i pół metra). Stoisko może być zabudowane - w przypadku braku odmiennej, wyrażonej na piśmie zgody Organizatora - wyłącznie z jednej strony powierzchni, o jakiej mowa w pkt 2.2.1. 
 
@@ -76,11 +76,11 @@ Poprzednia wersja regulaminu (dotycząca Targów eHandlu Kraków 22 kwietnia 202
 
 2.2.6. dostępu do Internetu na terenie Hali za pośrednictwem sieć WIFI.
 
-2.3. W ramach Pakietu „Grand” Organizator na czas trwania Targów umożliwia Wystawcy korzystanie ze Stoiska, które obejmuje:
+2.3. W ramach Stoiska „Grand” Organizator na czas trwania Targów umożliwia Wystawcy korzystanie z:
 
-2.3.1. powierzchnię podłogi Hali  (o wymiarach 4 m x 6 m),
+2.3.1. powierzchni podłogi Hali  ( o wymiarach 4 m x 6 m),
 
-2.3.2. umieszczonych na powierzchni o jakiej mowa w pkt. 2.3.1. dwóch stołów o średnicy min. 70 cm,
+2.3.2. umieszczonego na powierzchni o jakiej mowa w pkt. 2.3.1. dwóch stołów o średnicy min. 70 cm,
 
 2.3.3. 4 (czterech) krzeseł,
 
@@ -90,13 +90,11 @@ Poprzednia wersja regulaminu (dotycząca Targów eHandlu Kraków 22 kwietnia 202
 
 2.3.6. Innych materiałów promocyjnych lub mebli stanowiących wyposażenie stoiska. Dostarczenie i przygotowanie tych materiałów leży po stronie Wystawcy
 
-2.4. Organizator, do 7 dni przed rozpoczęciem Targów, zastrzega sobie prawo do modyfikacji planu rozmieszczenia Stoisk w ramach Hali  - w szczególności  przenosin poszczególnych Stoisk oraz zmiany numeracji Stoisk, jeżeli taka zmiana podyktowana jest względami komfortu Zwiedzających bądź względami bezpieczeństwa. Modyfikacje, o których mowa w pkt 2.4 nie będą wiązały się ze zmianą kategorii Pakietów Wystawienniczych.
+2.4. Organizator, do 7 dni przed rozpoczęciem Targów, zastrzega sobie prawo do modyfikacji planu rozmieszczenia Stoisk w ramach Hali  - w szczególności  przenosin poszczególnych Stoisk oraz zmiany numeracji Stoisk, jeżeli taka zmiana podyktowana jest względami komfortu Zwiedzających bądź względami bezpieczeństwa. Modyfikacje, o których mowa w pkt 2.4 nie będą wiązały się ze zmianą kategorii Stoisk.
 
 2.4.1. Organizator dołoży starań, aby modyfikacja, o której mowa w pkt 2.4. powyżej nie miała wpływu na ekspozycję Stoiska Wystawcy i nie osłabiała jego efektu promocyjnego i marketingowego, co oceni Organizator.
 
 2.4.2. W przypadku modyfikacji wskazanej w pkt 2.4 Wystawcy nie przysługuje roszczenie o zwrot jakiejkolwiek części zapłaconego wynagrodzenia.
-
-2.5. W ramach Pakietów Wystawienniczych Organizator od dnia zawarcia umowy do dnia 23 października 2020 umożliwia Wystawcy korzystanie z usług przedstawionych w pkt 10.
 
 3. Zawarcie Umowy z organizatorem
 
@@ -104,45 +102,43 @@ Poprzednia wersja regulaminu (dotycząca Targów eHandlu Kraków 22 kwietnia 202
 
 3.2. Warunkiem zawarcia Umowy, o jakie mowa w ust. 3.1. jest:
 
-3.2.1. Wybór przez Wystawcę przynajmniej jednego Pakietu Wystawienniczego lub Prezentacji, przy czym wyboru Pakietu Wystawienniczego lub Prezentacji Wystawca dokonuje przy pomocy udostępnionej przez Organizatora w ramach Strony Targów funkcjonalności,
+3.2.1. Wybór przez Wystawcę przynajmniej jednego Stoiska lub Prezentacji, przy czym wyboru Stoiska lub Prezentacji Wystawca dokonuje przy pomocy udostępnionej przez Organizatora w ramach Strony Targów funkcjonalności,
 
 3.2.2. wypełnienie formularza rejestracyjnego,
 
-3.3. Do zawarcia Umowy dochodzi z chwilą potwierdzenia przez Organizatora rezerwacji Pakietu Wystawienniczego lub możliwości przeprowadzenia Prezentacji. 
+3.3. Do zawarcia Umowy dochodzi z chwilą potwierdzenia przez Organizatora rezerwacji Stoiska lub możliwości przeprowadzenia Prezentacji. 
 Potwierdzenie następuje poprzez wysłanie na adres e-mail Wystawcy wskazany przy rejestracji, 
-informacji potwierdzającej przyjęcie rezerwacji Pakietu wystawienniczego lub możliwości przeprowadzenia Prezentacji.
+informacji potwierdzającej przyjęcie rezerwacji Stoiska lub możliwości przeprowadzenia Rezerwacji.
 
 # 4. Wynagrodzenie
 
-4.1. Z chwilą zawarcia Umowy Wystawca zobowiązany jest do zapłaty Organizatorowi wynagrodzenia stanowiącego sumę iloczynów liczby wybranych przez Wystawcę Pakietów Wystawienniczych lub Prezentacji oraz przypisanych do nich stawek, określonych w aktualnym na dzień zawierania Umowy cenniku dostępnym w ramach Strony Targów.
+4.1. Z chwilą zawarcia Umowy Wystawca zobowiązany jest do zapłaty Organizatorowi wynagrodzenia stanowiącego sumę iloczynów liczby wybranych przez Wystawcę Stoisk lub Prezentacji oraz przypisanych do nich stawek, określonych w aktualnym na dzień zawierania Umowy cenniku dostępnym w ramach Strony Targów.
 
-4.2. Wystawca informuje, że ceny Pakietów Wystawienniczych oraz Prezentacji zależne są od transzy cenowej, w ramach której Wystawca zawiera Umowę, zgodnie z zasadą, że im później Umowa zostanie zawarta, tym wyższa jest cena. Wystawca przewiduje minimum 4 (cztery) transze cenowe. Zmiany cen nie dotyczą umów zawartych przed ogłoszeniem zmian cennika na Stronie Targów.
+4.2. Wystawca informuje, że ceny Stoisk oraz Prezentacji zależne są od transzy cenowej, w ramach której Wystawca zawiera Umowę, zgodnie z zasadą, że im później Umowa zostanie zawarta, tym wyższa jest cena. Wystawca przewiduje minimum 4 (cztery) transze cenowe. Zmiany cen nie dotyczą umów zawartych przed ogłoszeniem zmian cennika na Stronie Targów.
 
-4.3. Całkowite wynagrodzenie składa się z opłaty za powierzchnię wystawienniczą i opłaty stałej w wysokości 1250 PLN netto za reklamę, marketing, usługi account managera, rejestrację oraz usługi dodatkowe.
+4.3. Z chwilą zawarcia Umowy, Organizator prześle na adres email Wystawcy podany podczas rejestracji fakturę proforma.
 
-4.4. Z chwilą zawarcia Umowy, Organizator prześle na adres email Wystawcy podany podczas rejestracji fakturę proforma.
+4.4. Wystawca zobowiązany jest do dokonania zapłaty wynagrodzenia na rachunek Organizatora podany na fakturze proforma w terminie 3 (trzech) dni od dnia zawarcia Umowy.
 
-4.5. Wystawca zobowiązany jest do dokonania zapłaty wynagrodzenia na rachunek Organizatora podany na fakturze proforma w terminie 3 (trzech) dni od dnia zawarcia Umowy.
+4.5. W przypadku braku zapłaty całości należnego Organizatorowi wynagrodzenia w terminie, o jakim mowa w pkt 4.4. Organizator ma prawo wypowiedzieć umowę przy jednoczesnym poinformowaniu Wystawcy drogą mailową. Wystawcy nie przysługują żadne roszczenia z tego tytułu.
 
-4.6. W przypadku braku zapłaty całości należnego Organizatorowi wynagrodzenia w terminie, o jakim mowa w pkt 4.5. Organizator ma prawo wypowiedzieć umowę przy jednoczesnym poinformowaniu Wystawcy drogą mailową. Wystawcy nie przysługują żadne roszczenia z tego tytułu.
+4.6. Za dzień zapłaty uznaje się dzień uznania rachunku bankowego Organizatora.
 
-4.7. Za dzień zapłaty uznaje się dzień uznania rachunku bankowego Organizatora.
+4.7. Wystawca upoważnia Organizatora do sporządzania faktur VAT oraz faktury proforma w formie elektronicznej i przesyłania ich, jako plik w formacie pdf, na adres e-mail Wystawcy podany podczas rejestracji w ramach Strony Targów.
 
-4.8. Wystawca upoważnia Organizatora do sporządzania faktur VAT oraz faktury proforma w formie elektronicznej i przesyłania ich, jako plik w formacie pdf, na adres e-mail Wystawcy podany podczas rejestracji w ramach Strony Targów.
-
-4.9. Wystawca, który nie dokonał terminowej płatności całości należnego Organizatorowi wynagrodzenia, jest uprawniony do ponownego zawarcia Umowy z Organizatorem, jednakże wyłącznie w kolejnych transzach cenowych. Jednakże jeżeli Umowę zawarł w ostatniej transzy cenowej, jest uprawniony do ponownego jej zawarcia w tej samej transzy.
+4.8. Wystawca, który nie dokonał terminowej płatności całości należnego Organizatorowi wynagrodzenia, jest uprawniony do ponownego zawarcia Umowy z Organizatorem, jednakże wyłącznie w kolejnych transzach cenowych. Jednakże jeżeli Umowę zawarł w ostatniej transzy cenowej, jest uprawniony do ponownego jej zawarcia w tej samej transzy.
 
 # 5. Rozwiązanie Umowy.
 
 5.1. Każdy Wystawca może, bez podania przyczyny, rozwiązać Umowę, na piśmie, bez zachowania okresu wypowiedzenia.
 
-5.2. W przypadku rozwiązania przez Wystawcę Umowy do dnia 23 kwietnia 2020 roku Organizator zwróci Wystawcy całość płatności dokonanej jako wynagrodzenie za powierzchnię wystawienniczą. Płatność za usługi świadczone w ramach opłaty stałej (w tym częściowo wykonane) nie podlega zwrotowi.
+5.2. W przypadku rozwiązania przez Wystawcę Umowy do dnia 22 stycznia 2020 roku Organizator zwróci Wystawcy całość zapłaconego wynagrodzenia.
 
-5.3. W przypadku rozwiązania przez Wystawcę Umowy w okresie od dnia 24 kwietnia 2020 roku do dnia 23 sierpnia 2020 roku Organizator zwróci Wystawcy 50% (pięćdziesiąt procent) płatności dokonanej jako wynagrodzenie za powierzchnię wystawienniczą, zachowując pozostałe 50% (pięćdziesiąt procent) jako opłata manipulacyjna. Płatność za usługi świadczone w ramach opłaty stałej (w tym częściowo wykonane) nie podlega zwrotowi.
+5.3. W przypadku rozwiązania przez Wystawcę Umowy w okresie od dnia 23 stycznia 2020 roku do dnia 22 lutego 2020 roku Organizator zwróci Wystawcy 50% (pięćdziesiąt procent) zapłaconego wynagrodzenia, pozostałe 50% (pięćdziesiąt procent) zatrzyma tytułem opłaty za udostępnienie profilu Wystawcy w ramach Strony Targów.
 
-5.4. W przypadku rozwiązania przez Wystawcę Umowy w okresie od dnia 24 sierpnia 2020 roku do dnia 23 września 2020 roku Organizator zwraca 25% (dwadzieścia pięć procent) płatności dokonanej jako wynagrodzenie za powierzchnię wystawienniczą, zachowując pozostałe 50% (pięćdziesiąt procent) jako opłata manipulacyjna. Płatność za usługi świadczone w ramach opłaty stałej (w tym częściowo wykonane) nie podlega zwrotowi.
+5.4. W przypadku rozwiązania przez Wystawcę Umowy w okresie od dnia 23 lutego 2020 roku do dnia 22 marca 2020 roku Organizator zwraca 25% (dwadzieścia pięć procent) wynagrodzenia, zatrzymując 75% (siedemdziesiąt pięć procent) zapłaconej kwoty tytułem opłaty za udostępnienie profilu Wystawcy w ramach Strony Targów.
 
-5.5. W przypadku rozwiązania przez Wystawcę Umowy w okresie po dniu 24 września 2020 roku Organizator nie zwraca kwoty wpłaconej jako wynagrodzenie za powierzchnię wystawienniczą, zachowując 100% (sto procent) wpłaconej kwoty jako opłata manipulacyjna. Płatność za usługi świadczone w ramach opłaty stałej (w tym częściowo wykonane) nie podlega zwrotowi.
+5.5. W przypadku rozwiązania przez Wystawcę Umowy w okresie po dniu 23 marca 2020 roku Organizator nie zwraca wynagrodzenia, zatrzymując 100% (sto procent) zapłaconej kwoty tytułem opłaty za udostępnienie profilu Wystawcy w ramach Strony Targów.
 
 5.6. Organizator zastrzega sobie prawo do odwołania Targów ze względu na zbyt małą liczbę uczestników. 
 
@@ -152,7 +148,7 @@ W przypadku zmiany terminu Targów, nowy termin zostanie wyznaczony nie późnie
 
 5.8. O odwołaniu lub zmianie terminu Targów Wystawca zostanie powiadomiony poprzez przesłanie wiadomości e-mail na adres podany przez Wystawcę w związku z rejestracją za pośrednictwem Strony Targów.
 
-5.9. W przypadku odwołania Targów, Umowa ulega automatycznemu rozwiązaniu, a Wystawcy przysługuje roszczenie o zwrot zapłaconego wynagrodzenia za powierzchnię wystawienniczą w całości	– z zastrzeżeniem postanowień pkt. 5.10. Płatność za usługi świadczone w ramach opłaty stałej (w tym częściowo wykonane) nie podlega zwrotowi.
+5.9. W przypadku odwołania Targów, Umowa ulega automatycznemu rozwiązaniu, a Wystawcy przysługuje roszczenie o zwrot zapłaconego wynagrodzenia w całości	– z zastrzeżeniem postanowień pkt. 5.10.
 
 5.10.	W przypadku odwołania lub przełożenie terminu Targów z przyczyn podanych w pkt. 5.7. Organizator nie zwraca wynagrodzenia, zatrzymując 100% (sto procent) zapłaconej kwoty. 
 Tym samym wyłączona jest odpowiedzialność Organizatora, wynikająca z art. 495 §1 i §2 Kodeksu cywilnego.
@@ -175,15 +171,15 @@ W takim przypadku Organizator poinformuje Wystawcę o rozwiązaniu Umowy wysyła
 
 # 7. Warunki korzystania ze Stoiska
 
-7.1. Wystawca nie może korzystać ze Stoiska w sposób niezgodny z jego przeznaczeniem, w tym w szczególności nie może: korzystać w ramach Stoiska jednocześnie z urządzeń o łącznym poborze mocy większym niż moc przyłącza elektroenergetycznego udostępnionego w ramach Stoiska, umieszczać w ramach Stoiska rollup’u lub ścianki reklamowej o wymiarach większych niż określone dla danej kategorii Pakaietu Wystawienniczego. 
+7.1. Wystawca nie może korzystać ze Stoiska w sposób niezgodny z jego przeznaczeniem, w tym w szczególności nie może: korzystać w ramach Stoiska jednocześnie z urządzeń o łącznym poborze mocy większym niż moc przyłącza elektroenergetycznego udostępnionego w ramach Stoiska, umieszczać w ramach Stoiska rollup’u lub ścianki reklamowej o wymiarach większych niż określone dla danej kategorii Stoiska. 
 
 7.2. W celu aranżacji Stoiska Organizator udostępni Wystawcy Stoisko od godziny 16:00 w dzień poprzedzający Targi.
 
 7.3. Wystawca nie może przystąpić do demontażu stoiska przed godz. 17:00 w dzień Targów.
 
-7.4. Wystawca może korzystać z dowolnej liczby Pakietów wystawienniczych Standard, Light, Hot, Super-Hot i Ultra.
+7.4. Wystawca może korzystać z dowolnej liczby Stoisk Standard, Light, Hot, Super-Hot i Ultra.
 
-7.5. Wystawca może korzystać z jednego Pakietu Wystawienniczego wyłącznie w celu promowania jednego produktu (towaru lub usługi), przy czym przez promowanie rozumieć należy prezentowanie oferty handlowej dotyczącej towaru lub usługi; przez jeden produkt lub usługę rozumieć należy także grupę produktów lub usług oferowanych przez Wystawcę pod jedną marką (znakiem towarowym stanowiącym oznaczenie odróżniające).
+7.5. Wystawca może korzystać z jednego Stoiska wyłącznie w celu promowania jednego produktu (towaru lub usługi), przy czym przez promowanie rozumieć należy prezentowanie oferty handlowej dotyczącej towaru lub usługi; przez jeden produkt lub usługę rozumieć należy także grupę produktów lub usług oferowanych przez Wystawcę pod jedną marką (znakiem towarowym stanowiącym oznaczenie odróżniające).
 
 7.6. Po zakończeniu Targów Wystawca zobowiązany jest usunąć ze Stoiska oraz Hali , w dniu Targów, do godziny 20:00, wszelkie rzeczy wniesione do Hali  przez niego lub osoby przez niego upoważnione.
 
@@ -193,13 +189,13 @@ W takim przypadku Organizator poinformuje Wystawcę o rozwiązaniu Umowy wysyła
 
 7.9. Po zakończeniu Targów Wystawca zobowiązany jest zwrócić wszelkie przedmioty składające się na wyposażenie Stoiska w stanie niepogorszonym ponad zużycie wynikające z prawidłowego użytkowania.
 
-# 8. Warunki dotyczące przeprowadzenia Prezentacji
+8. Warunki dotyczące przeprowadzenia Prezentacji
 
 8.1. Wystawca, lub inna osoba fizyczna bądź prawna, która zawarła z Organizatorem Umowę, której przedmiotem jest umożliwienie przeprowadzanie Prezentacji, zobowiązana jest:
 
-8.1.1 w terminie do dnia 11 października 2020 roku, do godz. 20:00, przesyłając wiadomość na adres email, o jakim mowa w pkt. 1.2.1., poinformować Organizatora o ostatecznym temacie Prezentacji, pod rygorem utraty prawa do jej przeprowadzenia.
+8.1.1 w terminie do dnia 10 kwietnia 2020 roku, do godz. 20:00, przesyłając wiadomość na adres email, o jakim mowa w pkt. 1.2.1., poinformować Organizatora o ostatecznym temacie Prezentacji, pod rygorem utraty prawa do jej przeprowadzenia.
 
-8.1.2 w terminie do dnia 18 października 2020 roku do godz. 12:00, przesłać Organizatorowi, w formie załącznika do wiadomości e-mail wysłanej na adres, o jakim mowa w pkt. 1.2.1., slajdy Prezentacji (wyłącznie w formacie pdf lub keynote​), pod rygorem utraty prawa do jej przeprowadzenia.
+8.1.2 w terminie do dnia 17 kwietnia 2020 roku do godz. 12:00, przesłać Organizatorowi, w formie załącznika do wiadomości e-mail wysłanej na adres, o jakim mowa w pkt. 1.2.1., slajdy Prezentacji (wyłącznie w formacie pdf lub keynote​), pod rygorem utraty prawa do jej przeprowadzenia.
 
 8.2. Temat Prezentacji musi być związany z handlem elektronicznym, pod rygorem utraty prawa do jej przeprowadzenia bez zwrotu wynagrodzenia. Prezentacja może być związana z promocją działalności gospodarczej prowadzonej przez Wystawcę, o ile w jej treści elementy autopromocyjne stanowić będą maksymalnie 5% zawartości .
 
@@ -217,7 +213,7 @@ W takim przypadku Organizator poinformuje Wystawcę o rozwiązaniu Umowy wysyła
 
 8.6. Organizator nie ponosi odpowiedzialności za treści przedstawione przez Wystawcę w ramach Prezentacji.
 
-# 9. Kary umowne.
+9. Kary umowne.
 
 9.1. W przypadku naruszenia przez Wystawcę postanowień pkt. 7.1. Wystawca zapłaci Organizatorowi, na jego pierwsze wezwanie, karę umowną w wysokości 50% wynagrodzenia należnego Organizatorowi z tytułu Umowy, za każde naruszenie.
 
@@ -231,23 +227,17 @@ W takim przypadku Organizator poinformuje Wystawcę o rozwiązaniu Umowy wysyła
 
 9.6. Organizator zastrzega sobie prawo do dochodzenia odszkodowania w wysokości przenoszącej wysokość kar umownych.
 
-# 10. Reklama, marketing, usługi account managera, rejestracja oraz usługi dodatkowe.
+# 10. Profil Wystawcy w ramach Wirtualnego Katalogu Wystawców
 
-10.1. Organizator w ramach opłaty stałej po zawarciu umowy niezwłocznie rejestruje Wystawcę w systemie EXPO CRM.
+10.1. Organizator, w ramach wynagrodzenia o jakim mowa w pkt. 4, udostępnia Wystawcy w ramach Strony Targów profil Wystawcy dostępny dla użytkowników strony.
 
-10.2. Po zawarciu Umowy Organizator udziela Wystawcy, w ramach opłaty stałej, nieograniczonej terytorialnie licencji na okres od daty zawarcia Umowy do 23 października 2020 r. Na używanie znaku towarowego „Targów eHandlu” w celu promowania udziału Wystawcy w Targach, we wszystkich mediach, w szczególności w prasie, radiu, telewizji, w transmisjach skierowanych do ogółu użytkowników Internetu za pomocą dowolnych środków komunikacji w sieci, w wiadomościach e-mail.
+10.2. Wystawca zobowiązuje się uzupełnić profil wszystkimi danymi wymaganymi przez Organizatora, w tym w szczególności umieścić w ramach profilu logo, informację o prowadzonej działalności, a także przygotować i umieścić w ramach profilu informację o ofercie specjalnej dla Zwiedzających.
 
-10.3. Organizator, w ramach opłaty stałej, udostępnia Wystawcy w ramach Strony Targów profil Wystawcy dostępny dla użytkowników strony.
+10.3. Organizator zastrzega sobie prawo do nieudostępnienia profilu Wystawcy użytkownikom Strony Targów, jeżeli Wystawca nie wykona któregokolwiek z obowiązków określonych w pkt. 10.2.
 
-10.4. Wystawca zobowiązuje się uzupełnić profil wszystkimi danymi wymaganymi przez Organizatora, w tym w szczególności umieścić w ramach profilu logo, informację o prowadzonej działalności, a także przygotować i umieścić w ramach profilu informację o ofercie specjalnej dla Zwiedzających.
+10.4. Dane umieszczone przez Wystawcę w ramach profilu, tj. nazwa, logo oraz opis działalności, prezentowane będą przez Organizatora w Wirtualnym Katalogu Wystawców dostępnym w ramach Strony Targów.
 
-10.5. Organizator zastrzega sobie prawo do nieudostępnienia profilu Wystawcy użytkownikom Strony Targów, jeżeli Wystawca nie wykona któregokolwiek z obowiązków określonych w pkt. 10.2.
-
-10.6. Dane umieszczone przez Wystawcę w ramach profilu, tj. nazwa, logo oraz opis działalności, prezentowane będą przez Organizatora w Wirtualnym Katalogu Wystawców dostępnym w ramach Strony Targów.
-
-10.7. Wystawca z chwilą zawarcia Umowy udziela Organizatorowi nieodpłatnej, nieograniczonej terytorialnie licencji na czas od dnia zawarcia Umowy do dnia 23 października 2025 roku, na korzystanie z materiałów umieszczonych w ramach profilu Wystawcy w celu promocji Targów, w tym kolejnych ich edycji, w środkach masowego przekazu, w tym w szczególności w prasie, radio, telewizji, w ramach Strony Targów, w przekazach kierowanych do ogółu użytkowników sieci Internet za pomocą dowolnych środków przekazu w ramach tej sieci, w wiadomościach e-mail, a także w celu promocji działalności Organizatora w opisanym wyżej zakresie.
-
-10.8. W każdej sprawie związanej z Umową lub Targami Wystawca może skontaktować się z account managerem, który udzieli wszelkich potrzebnych informacji lub wsparcia.
+10.5. Wystawca z chwilą zawarcia Umowy udziela Organizatorowi nieodpłatnej, nieograniczonej terytorialnie licencji na czas od dnia zawarcia Umowy do dnia 22 kwietnia 2025 roku, na korzystanie z materiałów umieszczonych w ramach profilu Wystawcy w celu promocji Targów, w tym kolejnych ich edycji, w środkach masowego przekazu, w tym w szczególności w prasie, radio, telewizji, w ramach Strony Targów, w przekazach kierowanych do ogółu użytkowników sieci Internet za pomocą dowolnych środków przekazu w ramach tej sieci, w wiadomościach e-mail, a także w celu promocji działalności Organizatora w opisanym wyżej zakresie.
 
 # 11. Działalność osób trzecich
 
@@ -279,7 +269,7 @@ Wszelkie spory pomiędzy Wystawcami, a Organizatorem rozwiązywane będą ugodow
 
 # 14. Wejście w życie i zmiany Regulaminu.
 
-14.1. Regulamin wchodzi w życie z dniem 24 marca 2020 roku.
+14.1. Regulamin wchodzi w życie z dniem 23 października 2019 roku.
 
 14.2. Organizator zastrzega sobie prawo do zmian Regulaminu, przy czym zmieniony Regulamin będzie miał zastosowanie do Umów zawartych przed wejściem w życie zmian o ile Wystawca wyrazi na to zgodę.
 
