@@ -1,34 +1,18 @@
-import _get from 'lodash/get';
+import {
+  Wrapper, 
+  Markdown, 
+  connect, 
+  reduxWrapper, 
+  configure
+} from 'eventjuicer-site-components'
 
-import { MyHead as Head } from '../next';
-import { connect } from 'react-redux';
+import settings from '../settings'
 
-import { Typography, Faq, FaqLink, Wrapper, Markdown } from '../components';
+const PageFaq = () => (
 
-import Layout from '../layouts/main';
-
-class PageFaq extends React.Component {
-  static async getInitialProps({
-    err,
-    req,
-    res,
-    pathname,
-    query,
-    asPath,
-    isServer,
-    store
-  }) {
-    return {};
-  }
-
-  render() {
-    const { url } = this.props;
-
-    return (
-      <Layout>
-        <Wrapper label="exhibitors.agreement.title">
+  <Wrapper label="exhibitors.agreement.title">
      
-          <Markdown>{`
+  <Markdown>{`
 
 Poprzednia wersja regulaminu (dotycząca Targów eHandlu Kraków 22 kwietnia 2020 roku) znajduje się pod adresem [targiehandlu.pl/legal-20191023](https://targiehandlu.pl/legal-20191023).
 
@@ -285,13 +269,21 @@ Wszelkie spory pomiędzy Wystawcami, a Organizatorem rozwiązywane będą ugodow
 
 14.3. Zmiany Regulaminu wchodzą w życie z dniem ogłoszenia ich na Stronie Targów.
 
-          
+  
 
-          `}</Markdown>
-        </Wrapper>
-      </Layout>
-    );
-  }
-}
+  `}</Markdown>
+</Wrapper>
+
+)
+
+
+export const getStaticProps = reduxWrapper.getStaticProps(async ({ store }) => {
+  
+  await configure(store, {
+    settings: settings,
+    preload: []
+  })
+  
+})
 
 export default connect()(PageFaq);

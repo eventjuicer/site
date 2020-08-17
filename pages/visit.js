@@ -1,69 +1,69 @@
-import { MyHead as Head } from '../next';
-import { connect } from 'react-redux';
-
 import {
-Wrapper,
-//WhoIsGonnaBeThere,
-Gallery
-} from '../components';
-
-import {
-VideoWithEventInfo,
-Visitor,
-VisitorBenefits,
-PresentersFeatured,
-Schedule,
-AllExhibitorsAvatarlist
-} from '../compositions';
-
-import Layout from '../layouts/main';
-
-import {Photos} from '../datasources';
-
-class PageVisit extends React.Component {
-
-static async getInitialProps({
-
-query,
-asPath,
-isServer,
-store
-}) {
-
-return {
-preload : ["exhibitors", "presenters"]
-};
-}
-
-render() {
-const { url } = this.props;
-
-return (
-
-<Layout>
-
-<Head />
-
-<Visitor label="visitors.register_alt" first />  
-
-{/* <Schedule />  */}
-
-<VideoWithEventInfo />
-
-<PresentersFeatured filter={() => true} text={() => null} limit={16} /> 
-
-<VisitorBenefits label="visitors.benefits.title" />
-
-<Visitor label="visitors.register" />
-
-<AllExhibitorsAvatarlist label="exhibitors.list_full" />
-
-<Visitor  label="visitors.register_alt"  /> 
-
-</Layout>
-);
-
-}
-}
-
-export default connect()(PageVisit);
+    connect,
+    //Gallery,
+  
+    WidgetVideoWithEventInfo,
+    WidgetVisitor,
+    WidgetVisitorBenefits,
+    // WidgetPresenters,
+    // WidgetSchedule,
+    // WidgetAllExhibitorsAvatarlist,
+    DatasourcePhotos as Photos,
+   
+    WidgetVips,
+    reduxWrapper,
+    configure
+  } from 'eventjuicer-site-components';
+  
+  //import FeaturedPresenters from '../src/FeaturedPresenters';
+  
+  import settings from '../settings'
+  
+  const PageVisit = () => (
+  
+          <div>
+        
+  
+          <WidgetVisitor label="visitors.register_alt" first />
+  
+          {/* <WidgetSchedule /> */}
+  
+          {/* <FeaturedPresenters bio={false} /> */}
+  
+          {/* <WidgetVips limit={12} mobile={4} /> */}
+  
+          <WidgetVideoWithEventInfo />
+  
+          {/* <WidgetPresenters /> */}
+  
+          <WidgetVisitorBenefits label="visitors.benefits.title" />
+  
+          <WidgetVisitor label="visitors.register" first />
+  
+          {/* <WidgetAllExhibitorsAvatarlist label="exhibitors.list_full" /> */}
+  
+          {/* <WidgetVisitor label="visitors.register" first /> */}
+  
+          {/* <Photos>
+            {(photos, size) => (
+              <Gallery data={photos} size={size} label="event.gallery" />
+            )}
+          </Photos> */}
+    
+          </div>
+  
+  )
+  
+  
+  export const getStaticProps = reduxWrapper.getStaticProps(async ({ store, params = {}}) => {
+  
+    await configure(store, {
+      settings : settings,
+      preload : ["exhibitors", 'presenters']
+    })
+  
+  })
+  
+   
+  export default connect()(PageVisit);
+  

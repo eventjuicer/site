@@ -1,1 +1,3 @@
-export { default } from '../next/_app';
+import { NextApp } from 'eventjuicer-site-components';
+
+export default NextApp
