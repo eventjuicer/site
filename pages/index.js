@@ -5,7 +5,7 @@ import {
     WidgetFeaturedCompanies,
     WidgetAllExhibitorsColumnList,
     WidgetRoleButtons,
-    WidgetPartners,
+    WidgetSalesMap,
     reduxWrapper,
     configure
   } from 'eventjuicer-site-components';
@@ -22,6 +22,12 @@ import {
     <React.Fragment>
   
     <WidgetVideoWithEventInfo />
+
+     <WidgetSalesMap
+      label="exhibitors.map.title"
+      // secondaryLabel="exhibitors.map.opensales"
+      // first
+    />
   
     {/* <WidgetSchedule /> */}
   

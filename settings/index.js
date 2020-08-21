@@ -164,24 +164,24 @@ const settings =  {
     },
 
     bookingmap : {
-        height : 2600,
+        height : 400,
         steps : [
             "choose_booth",
             "confirm",
             "pay",
             "access"
         ],
-        allowedGroupIds : [322, 323, 324, 325, 329],
-        disabledTicketIds : [1821, 1822, 1819, 1820, 1836],
+        allowedGroupIds : [309, 310, 311, 312, 313, 314, 315],
+        disabledTicketIds : [],
         styles : {
             light : null,
-            standard : 322,
-            hot : 323,
-            superhot : 324,
-            ultra : null,
-            grand : 325,
-            stage : 328,
-            networking : 326
+            standard : 310,
+            hot : 311,
+            superhot : 312,
+            ultra : 313,
+            grand : 314,
+            stage : 315,
+            networking : 316
         },
         api : "https://stoiska.targiehandlu.pl/preorder"
     },
@@ -242,30 +242,30 @@ const settings =  {
               name: 'general',
               items: [
                 {name: 'home', to: '/'},
-                // {name: 'about', to: '/about'},
+            
               ]
             },
-            // {
-            //   name: 'visitors',
-            //   items: [
-            //     {name: 'visit', to: '/visit'},
-            //     // {name: 'schedule', to: '/schedule'},
-            //     // {name: 'presenters', to: '/presenters'},
-            //     // {name: 'exhibitors', to: '/exhibitors'},
-            //     // {name: 'offers', to: '/offers'}
-            //   ]
-            // },
-            // {
-            //   name: 'exhibitors',
-            //   items: [
-            //     {name: 'exhibit', to: '/exhibit'},
-            //     {name: 'sample-visitors', to: '/sample-visitors'},
-            //     {name: 'exhibitors', to: '/exhibitors'},
-            //     {name: 'premium-services', to: '/premium'},
-            //     {name: 'faq', to: '/faq'},
+            {
+              name: 'visitors',
+              items: [
+                {name: 'visit', to: '/visit'},
+                // {name: 'schedule', to: '/schedule'},
+                // {name: 'presenters', to: '/presenters'},
+                // {name: 'exhibitors', to: '/exhibitors'},
+                // {name: 'offers', to: '/offers'}
+              ]
+            },
+            {
+              name: 'exhibitors',
+              items: [
+                {name: 'exhibit', to: '/exhibit'},
+                // {name: 'sample-visitors', to: '/sample-visitors'},
+                // {name: 'exhibitors', to: '/exhibitors'},
+                // {name: 'premium-services', to: '/premium'},
+                // {name: 'faq', to: '/faq'},
               
-            //   ]
-            // }
+              ]
+            }
         ]
     },
 
@@ -386,7 +386,7 @@ const settings =  {
                 name: 'Karolina Michalak',
                 position : 'Relationship Manager',
                 langs : ["pl","en"],
-                avatar: '',
+                avatar: 'https://res.cloudinary.com/eventjuicer/image/upload/v1598009850/targiehandlu_people_km.jpg',
                 phone: '+48 721 945 134',
                 email: 'karolina.michalak@targiehandlu.pl',
                 chatlio : true
