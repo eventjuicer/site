@@ -422,7 +422,7 @@ const settings =  {
     footer : {
         iconStyle : "black",
         links : [
-            {label: "exhibitors.agreement.title", href : "/legal"},
+            {label: "exhibitors.agreement.title", href : "/legal-20200324"},
         ]
     },
 };

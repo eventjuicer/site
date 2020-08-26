@@ -80,6 +80,10 @@ import {
       settings: settings,
       preload: ['allexhibitors', 'companies', 'presenters_all']
     })
+
+    return {props: {
+      
+    }, revalidate: 10}
     
   })
   

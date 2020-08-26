@@ -41,6 +41,10 @@ import {
      // preload : ['exhibitors', 'allexhibitors', 'bookingmap']
     })
   
+    return {props: {
+      
+    }, revalidate: 3}
+
   })
   
   

@@ -19,11 +19,8 @@ import {
     // WidthAwareInfo,
     // People,
     // GridBenefits
-    LayoutMain as Layout,
-    resourceFetchRequest,
-    END,
     reduxWrapper,
-    setSettings
+    configure
      
   } from 'eventjuicer-site-components';
   
@@ -87,10 +84,13 @@ import {
   
   export const getStaticProps = reduxWrapper.getStaticProps(async ({ store }) => {
   
-    store.dispatch(setSettings(settings))
-    store.dispatch(resourceFetchRequest(['allexhibitors', 'exhibitors']))
-    store.dispatch(END)
-    await store.sagaTask.toPromise()
+    await configure(store, {
+      settings : settings,
+      preload : ['exhibitors', 'allexhibitors']
+    })
+  
+
+    return {props: {}, revalidate: 1}
   
   })
   

@@ -61,6 +61,11 @@ import {
       settings : settings,
       preload : ["exhibitors", 'presenters']
     })
+
+    return {
+      props: {}, 
+      revalidate: 1
+    }
   
   })
   
