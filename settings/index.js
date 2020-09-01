@@ -425,7 +425,48 @@ const settings =  {
             {label: "exhibitors.agreement.title", href : "/legal-20200324"},
         ]
     },
+
+    cfpphotostream : {
+
+        wrapperProps: {
+            label : "cfp.gallery.title"
+        },
+
+        cols: 12,
+
+        items : [
+            {src: "https://res.cloudinary.com/eventjuicer/image/upload/v1598999866/www/speaking/witold_wrodarczyk.jpg", cols: 3},
+            {src: "https://res.cloudinary.com/eventjuicer/image/upload/v1598999863/www/speaking/robert_stolarczyk.jpg", cols: 3},
+            {src: "https://res.cloudinary.com/eventjuicer/image/upload/v1598999861/www/speaking/sempai.jpg", cols: 3},
+            {src: "https://res.cloudinary.com/eventjuicer/image/upload/v1598999860/www/speaking/jakub_gierszynski.jpg", cols: 3},
+            {src: "https://res.cloudinary.com/eventjuicer/image/upload/v1598999860/www/speaking/dominik_cison.jpg", cols: 3},
+            {src: "https://res.cloudinary.com/eventjuicer/image/upload/v1598999860/www/speaking/felix_hubner.jpg", cols: 3},
+            {src: "https://res.cloudinary.com/eventjuicer/image/upload/v1598999857/www/speaking/ireneusz_klimczak.jpg", cols: 3},
+            {src: "https://res.cloudinary.com/eventjuicer/image/upload/v1598999855/www/speaking/freshworks.jpg", cols: 3},
+            {src: "https://res.cloudinary.com/eventjuicer/image/upload/v1598999855/www/speaking/openstage.jpg", cols: 3},
+            {src: "https://res.cloudinary.com/eventjuicer/image/upload/v1598999854/www/speaking/lead360.jpg", cols: 3},
+            {src: "https://res.cloudinary.com/eventjuicer/image/upload/v1598999852/www/speaking/damian_wiszowaty.jpg", cols: 3},
+            {src: "https://res.cloudinary.com/eventjuicer/image/upload/v1598999851/www/speaking/artur_jablonski.jpg", cols: 3}
+        ]
+    },
+
+    cfptimeline: {
+
+        baseLabel: "cfp.timeline",
+
+        items : [
+            {date: "2020-09-01", name: "submissions", icon:  "NoteAdd", dotColor: 'primary', active: true },
+            {date: "2020-09-17", name: "qualification", icon:  "Assessment" },
+            {date: "2020-09-21", name: "public-voting", icon:  "Public" },
+            // {date: "2020-10-26", name: "jury-voting", icon:  "HowToVote" },
+            {date: "2020-10-05", name: "results", icon:  "Mic", active: false },
+            {date: "2020-10-06", name: "formal", icon:  "Settings", active: false }
+
+        ]
+
+    }
 };
 
+        
 
  export default settings
