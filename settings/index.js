@@ -192,17 +192,17 @@ const settings =  {
 
             {
                 icon : "FaSearch",
-                label :  'assessment',
+                label :  'start',
             },
         
             {
                 icon : "FaPoll",
-                label : 'contest'
+                label : 'mentoring'
             },
         
             {
                 icon : "FaTrophy",
-                label : 'speaker'
+                label : 'presentation'
             }
 
         ]
@@ -431,6 +431,8 @@ const settings =  {
         wrapperProps: {
             label : "cfp.gallery.title"
         },
+
+        overlay: "red",
 
         cols: 12,
 
