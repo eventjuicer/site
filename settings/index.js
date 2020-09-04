@@ -458,7 +458,7 @@ const settings =  {
 
         items : [
             {date: "2020-09-01", name: "submissions", icon:  "NoteAdd", dotColor: 'primary', active: true },
-            {date: "2020-09-17", name: "qualification", icon:  "Assessment" },
+            {date: "2020-09-16", name: "qualification", icon:  "Assessment" },
             {date: "2020-09-21", name: "public-voting", icon:  "Public" },
             // {date: "2020-10-26", name: "jury-voting", icon:  "HowToVote" },
             {date: "2020-10-05", name: "results", icon:  "Mic", active: false },
