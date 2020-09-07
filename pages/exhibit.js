@@ -5,7 +5,7 @@ import {
     MyHead as Head,
     MyLink as Link,
     WidgetSalesMap,
-    WidgetExhibitorBenefits,
+    WidgetIconGrid,
     //WidgetVideoWithReviews,
     WidgetAllExhibitorsAvatarlist,
     //DatasourceExhibitors,
@@ -37,7 +37,7 @@ import {
       first
     />
   
-    <WidgetExhibitorBenefits label="exhibitors.benefits.title" />
+    <WidgetIconGrid setting="exhibitors.benefits" />
   
     {/* <WidgetVideoWithReviews /> */}
   

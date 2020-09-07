@@ -5,12 +5,20 @@ import {
   WidgetPresenters, 
   connect,
   reduxWrapper, 
-  configure
+  configure,
+  ActionButton
 } from 'eventjuicer-site-components'
 
 import settings from '../../../settings'
 
-const AdminPresentersCurrent = () =>  <WidgetPresenters limit={null} filter={null} />
+const AdminPresentersCurrent = () =>  (
+
+<>
+
+<WidgetPresenters first={true} limit={null} filter={null} />
+<ActionButton />
+
+</>)
 
 export const getStaticProps = reduxWrapper.getStaticProps(async ({ store }) => {
   

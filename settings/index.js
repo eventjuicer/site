@@ -51,7 +51,7 @@ const settings =  {
                     start : ['referral', 'email', 'fname'],
                     first : true
                 }},
-                {name : "WidgetVipVisitorBenefits", props : {
+                {name : "WidgetIconGrid", props : {
                     label : "vips.benefits.title" 
                 }},
                 {name : "WidgetVips", props : {
@@ -76,7 +76,7 @@ const settings =  {
                     start : ['referral','email', 'cname2'],
                     // first : true
                 }},
-                {name : "WidgetVisitorBenefits"},
+                {name : "WidgetIconGrid"},
                 // {name : "WidgetPresenters", props : {
                 //     disableTemps : true,
                 //     label : "presenters.list_featured",
@@ -186,49 +186,59 @@ const settings =  {
         api : "https://stoiska.targiehandlu.pl/preorder"
     },
 
+
     speakers : {
 
-        benefits : [
+        benefits : {
 
-            {
-                icon : "FaSearch",
-                label :  'start',
-            },
-        
-            {
-                icon : "FaPoll",
-                label : 'mentoring'
-            },
-        
-            {
-                icon : "FaTrophy",
-                label : 'presentation'
-            }
+            label: "presenters.steps.title",
+            baseLabel: "presenters.steps",
 
-        ]
+            items: [
+
+                {
+                    icon : "FaSearch",
+                    label :  'start',
+                },
+            
+                {
+                    icon : "FaPoll",
+                    label : 'mentoring'
+                },
+            
+                {
+                    icon : "FaTrophy",
+                    label : 'presentation'
+                }
+    
+            ]
+        }, 
     },
 
     vips : {
 
-        label : "vips.benefits.title",
-        baseLabel : "vips.benefits",
-        items : [
+       benefits: {
+            label : "vips.benefits.title",
+            baseLabel : "vips.benefits",
+            items : [
 
-            {   
-                icon : "FaFastForward",
-                label : 'fastentry'
-            },
-        
-            {   
-                icon : "FaChair",
-                label : 'seats'
-            },
-        
-            {   
-                icon : "FaHandshake",
-                label : 'vipzone'
-            }
-        ]
+                {   
+                    icon : "FaFastForward",
+                    label : 'fastentry'
+                },
+            
+                {   
+                    icon : "FaChair",
+                    label : 'seats'
+                },
+            
+                {   
+                    icon : "FaHandshake",
+                    label : 'vipzone'
+                }
+            ]
+            
+       }
     },
 
     reviews : {
@@ -276,35 +286,42 @@ const settings =  {
     },
 
     exhibitors : {
-        benefits : [
-            {
-                icon : "FaHandshake",
-                label :  'outreach',
-            },
-            {   
-                icon : "FaComments",
-                label : 'feedback'
-            },
-            {   
-                icon : "FaSmile",
-                label : 'organizer'
-            },
-            {   
-                icon : "FaPiggyBank",
-                label : 'all_inclusive'
-            },
-            {
-                icon : "FaLink",
-                label : 'meet_clients'
-            },
-            {
-                icon : "FaLightbulb",
-                label : 'inspiration'
-            }
-        ]
+        benefits : {
+            baseLabel: "exhibitors.benefits",
+            items: [
+                {
+                    icon : "FaHandshake",
+                    label :  'outreach',
+                },
+                {   
+                    icon : "FaComments",
+                    label : 'feedback'
+                },
+                {   
+                    icon : "FaSmile",
+                    label : 'organizer'
+                },
+                {   
+                    icon : "FaPiggyBank",
+                    label : 'all_inclusive'
+                },
+                {
+                    icon : "FaLink",
+                    label : 'meet_clients'
+                },
+                {
+                    icon : "FaLightbulb",
+                    label : 'inspiration'
+                }
+            ]
+        }
     },
     visitor : {
-        benefits : [
+        benefits : {
+
+            baseLabel: "visitors.benefits",
+
+            items: [
 
                 {
                     icon : "FaLockOpen",
@@ -335,7 +352,8 @@ const settings =  {
                     icon : "FaChartLine",
                     label : 'future'
                 }
-        ],
+        ]
+        },
         default_ticket_id : 1730,
         default_email_template : "pl-visitors-registration",
         background : "/lanyard.jpg",
@@ -426,6 +444,12 @@ const settings =  {
         ]
     },
 
+    appbar : {
+        links: [
+            {label: "covid19.link", color: "primary",  href: "/covid19", as: "/covid19", variant: "contained"}
+        ],
+    },
+
     cfpphotostream : {
 
         wrapperProps: {
@@ -466,7 +490,98 @@ const settings =  {
 
         ]
 
-    }
+    },
+
+    covid19 : {
+
+        visitors : {
+
+            label: "covid19.visitors.title",
+            secondaryLabel: "covid19.visitors.description",
+            baseLabel: "covid19.visitors.rules",
+            typography: "subtitle",
+            dense: true,
+
+            items: [
+
+                {
+                    icon : "Accepted",
+                    label :  'accepted',
+                },
+            
+                {
+                    icon : "Invited",
+                    label : 'invited'
+                },
+            
+                {
+                    icon : "Digital",
+                    label : 'no-on-site-regdesk'
+                }
+    
+            ]
+        }, 
+
+        exhibitors : {
+
+            label: "covid19.exhibitors.title",
+            secondaryLabel: "covid19.exhibitors.description",
+            baseLabel: "covid19.exhibitors.rules",
+            typography: "subtitle",
+            dense: true,
+
+            items: [
+
+                {
+                    icon : "Reps",
+                    label :  'reps',
+                },
+            
+                {
+                    icon : "Banned",
+                    label : 'noleaflets'
+                },
+            
+                {
+                    icon : "People",
+                    label : 'exclusive'
+                }
+
+            ]
+        },
+        
+        presenters : {
+
+            label: "covid19.presenters.title",
+            secondaryLabel: "covid19.presenters.description",
+            baseLabel: "covid19.presenters.rules",
+            typography: "subtitle",
+            dense: true,
+            
+            items: [
+
+                {
+                    icon: "Audience",
+                    label: 'audience-limit',
+                },
+            
+                {
+                    icon: "Live",
+                    label: 'streaming'
+                },
+            
+                // {
+                //     icon: "FaTrophy",
+                //     label: 'presentation'
+                // }
+
+            ]
+        }
+
+}
+
+
+    
 };
 
         

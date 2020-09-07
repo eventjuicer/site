@@ -6,7 +6,7 @@ import {
   WidgetRoleButtons,
   Markdown,
   WidgetPresentersAll,
-  WidgetSpeakerBenefits,
+  WidgetIconGrid,
   WidgetFaq,
   WidgetJurors,
   reduxWrapper,
@@ -17,12 +17,17 @@ import {
   MyTypography
 } from 'eventjuicer-site-components';
 
-import NoteAdd from '@material-ui/icons/NoteAdd'
-import Settings from '@material-ui/icons/Settings'
-import Public from '@material-ui/icons/Public'
-import Mic from '@material-ui/icons/Mic'
-import Assessment from '@material-ui/icons/Assessment'
 
+import {
+  NoteAdd, 
+  Settings,
+  Public,
+  Mic,
+  Assessment,
+  FaSearch,
+  FaPoll,
+  FaTrophy
+} from '../components/icons'
 
 
 import settings from '../settings';
@@ -141,7 +146,12 @@ New Developments in E-commerce
 
 
       
-        <WidgetSpeakerBenefits label="presenters.steps.title" />
+        <WidgetIconGrid setting="speakers.benefits" icons={{
+            FaSearch: FaSearch, 
+            FaPoll: FaPoll, 
+            FaTrophy: FaTrophy
+        }} />
+
 
         <WidgetPresentersAll 
           filter={(item)=> parseInt(item.featured_cfp) } limit="24" 
