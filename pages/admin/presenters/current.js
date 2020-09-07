@@ -25,5 +25,4 @@ export const getStaticProps = reduxWrapper.getStaticProps(async ({ store }) => {
 
 })
 
-
 export default connect()(AdminPresentersCurrent);
