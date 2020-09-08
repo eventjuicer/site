@@ -328,6 +328,27 @@ const settings =  {
         }
     },
     visitor : {
+
+        register: {
+
+            label : "visitors.register",
+            fields : [
+              {name: "email", required: true},
+              {name: "fname", required: true},
+              {name: "lname", required: true},
+              {name: "cname2", required: true},
+              {name: "position", required: true},
+              {name: "nip", required: false},
+              {name: "phone", required: true}
+            ],
+
+            start : ['email', 'fname'],
+            ticket_id : 1730,
+            email_template : "pl-visitors-registration",
+            background : "/lanyard.jpg",
+
+        },
+
         benefits : {
 
             baseLabel: "visitors.benefits",
@@ -365,9 +386,7 @@ const settings =  {
                 }
         ]
         },
-        default_ticket_id : 1730,
-        default_email_template : "pl-visitors-registration",
-        background : "/lanyard.jpg",
+      
         api : "https://api.eventjuicer.com/v1/public/hosts/targiehandlu.pl/register"
     },
     
