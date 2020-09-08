@@ -174,14 +174,25 @@ const settings =  {
         allowedGroupIds : [309, 310, 311, 312, 313, 314, 315],
         disabledTicketIds : [],
         styles : {
-            light : null,
-            standard : 310,
-            hot : 311,
-            superhot : 312,
-            ultra : 313,
-            grand : 314,
-            stage : 315,
-            networking : 316
+            // light : null,
+            // standard : 310,
+            // hot : 311,
+            // superhot : 312,
+            // ultra : 313,
+            // grand : 314,
+            // stage : 315,
+            // networking : 316
+        },
+        boothStyleMapping: {
+            309: "light",
+            310: "standard",
+            311: "hot",
+            312: "superHot",
+            313: "ultra",
+            314: "grand",
+            315: "stage",
+            316: "networking",
+            321: "boothSold"
         },
         api : "https://stoiska.targiehandlu.pl/preorder"
     },
