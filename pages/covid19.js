@@ -4,7 +4,8 @@ import {
   connect, 
   reduxWrapper, 
   configure,
-  WidgetIconGrid
+  WidgetIconGrid,
+  TwoColsLayout as Section
 } from 'eventjuicer-site-components'
 
 import settings from '../settings'
@@ -32,8 +33,11 @@ const PageCovid19 = () => (
 
   }} setting="covid19.presenters" />
 
+  <Section 
 
-  <Markdown>{`
+  left={
+
+<Markdown>{`
 
 # ZAPEWNIENIE BEZPIECZEŃSTWA NA TARGACH EHANDLU W ZWIĄZKU Z COVID - obowiązujące na dzień 12.08.2020
 
@@ -129,7 +133,17 @@ Zamieszczenie w widocznych miejscach materiałów edukacyjnych (w postaci plakat
 Uruchomienie alarmowego numeru telefonu, dostępnego w czasie wydarzeń targowych, oznakowanie w widocznych miejscach informacji o tym numerze i zasadach korzystania.
 
 
-  `}</Markdown>
+      `}</Markdown>
+    
+  }
+
+  right={
+
+    <img src="https://res.cloudinary.com/eventjuicer/image/upload/w_800,c_fit/v1599598132/expoxxi_covid19.png" alt="" />
+
+  } />
+
+
 </Wrapper>
 
 )
