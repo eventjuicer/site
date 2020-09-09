@@ -139,7 +139,7 @@ Uruchomienie alarmowego numeru telefonu, dostępnego w czasie wydarzeń targowyc
 
   right={
 
-    <img src="https://res.cloudinary.com/eventjuicer/image/upload/w_800,c_fit/v1599598132/expoxxi_covid19.png" alt="" />
+    <img src="https://res.cloudinary.com/eventjuicer/image/upload/w_800,c_fit/v1599598132/expoxxi_covid19.png" alt="" style={{width: "95%"}} />
 
   } />
 
