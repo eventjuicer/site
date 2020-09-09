@@ -124,7 +124,7 @@ informacji potwierdzającej przyjęcie rezerwacji Pakietu wystawienniczego lub m
 
 5.3. W przypadku rozwiązania przez Wystawcę Umowy w okresie od dnia 24 kwietnia 2020 roku do dnia 23 sierpnia 2020 roku Organizator zwróci Wystawcy 50% (pięćdziesiąt procent) płatności dokonanej jako wynagrodzenie za powierzchnię wystawienniczą, zachowując pozostałe 50% (pięćdziesiąt procent) jako opłata manipulacyjna. Płatność za usługi świadczone w ramach opłaty stałej (w tym częściowo wykonane) nie podlega zwrotowi.
 
-5.4. W przypadku rozwiązania przez Wystawcę Umowy w okresie od dnia 24 sierpnia 2020 roku do dnia 23 września 2020 roku Organizator zwraca 25% (dwadzieścia pięć procent) płatności dokonanej jako wynagrodzenie za powierzchnię wystawienniczą, zachowując pozostałe 50% (pięćdziesiąt procent) jako opłata manipulacyjna. Płatność za usługi świadczone w ramach opłaty stałej (w tym częściowo wykonane) nie podlega zwrotowi.
+5.4. W przypadku rozwiązania przez Wystawcę Umowy w okresie od dnia 24 sierpnia 2020 roku do dnia 23 września 2020 roku Organizator zwraca 25% (dwadzieścia pięć procent) płatności dokonanej jako wynagrodzenie za powierzchnię wystawienniczą, zachowując pozostałe 75% (pięćdziesiąt procent) jako opłata manipulacyjna. Płatność za usługi świadczone w ramach opłaty stałej (w tym częściowo wykonane) nie podlega zwrotowi.
 
 5.5. W przypadku rozwiązania przez Wystawcę Umowy w okresie po dniu 24 września 2020 roku Organizator nie zwraca kwoty wpłaconej jako wynagrodzenie za powierzchnię wystawienniczą, zachowując 100% (sto procent) wpłaconej kwoty jako opłata manipulacyjna. Płatność za usługi świadczone w ramach opłaty stałej (w tym częściowo wykonane) nie podlega zwrotowi.
 
