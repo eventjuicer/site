@@ -73,14 +73,16 @@ const PageSpeaking = () => (
   <WidgetPhotostream setting="cfpphotostream" />
 
   <WidgetSpeaking
-        categories={[
+       options={{
+        "categories": [
           'conversion',
           'marketing',
           'logistics',
           'payments',
           'it',
           'trends',
-        ]}
+        ]
+       }} 
 
       right={
         <>
