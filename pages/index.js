@@ -81,7 +81,7 @@ import {
   
     await configure(store, {
       settings: settings,
-      preload: ['allexhibitors', 'companies', 'presenters_all']
+      preload: ['allexhibitors', 'companies', 'presenters']
     })
 
     return {props: {
