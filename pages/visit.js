@@ -12,7 +12,8 @@ import {
    
     WidgetVips,
     reduxWrapper,
-    configure
+    configure,
+    WidgetFeaturedPresenters
   } from 'eventjuicer-site-components';
   
   //import FeaturedPresenters from '../src/FeaturedPresenters';
@@ -28,7 +29,7 @@ import {
   
           {/* <WidgetSchedule /> */}
   
-          {/* <FeaturedPresenters bio={false} /> */}
+          <WidgetFeaturedPresenters />
   
           {/* <WidgetVips limit={12} mobile={4} /> */}
   

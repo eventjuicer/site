@@ -7,7 +7,8 @@ import {
     WidgetRoleButtons,
     WidgetSalesMap,
     reduxWrapper,
-    configure
+    configure,
+    WidgetFeaturedPresenters
   } from 'eventjuicer-site-components';
   
   // import FeaturedExhibitors from '../src/FeaturedExhibitors';
@@ -30,6 +31,8 @@ import {
     />
   
     {/* <WidgetSchedule /> */}
+
+    <WidgetFeaturedPresenters />
   
     <WidgetVisitor
       label="visitors.register"

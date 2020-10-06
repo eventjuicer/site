@@ -13,9 +13,11 @@ import {
     configure,
     reduxWrapper,
     fetch,
-    MyHead as Head
+    HeadCompany
   } from 'eventjuicer-site-components';
   
+  import Head from 'next/head'
+
   import settings from '../../settings';
 
   const PageCompany = ({slug, dispatch}) => {
@@ -24,8 +26,9 @@ import {
     <div>
 
      
+      <HeadCompany slug={slug} ogTemplate="template_teh19_exhibitor_">{(data) => <Head>{data}</Head>}</HeadCompany> 
  
-      <WidgetCompany id={slug} />
+      <WidgetCompany slug={slug} />
   
       <WidgetVideoWithEventInfo />
 
@@ -66,7 +69,7 @@ import {
       return
     }
 
-
+    //precache only featured?
     const filtered = slugs.data.filter(item => item.featured)
 
     return {
@@ -94,8 +97,7 @@ import {
 
     return {
         props : {
-            slug :slug,
-            resource: resource
+            slug :slug
         },
         revalidate : 1
     }
@@ -103,27 +105,7 @@ import {
   })
   
 
-  // export const getServerSideProps = reduxWrapper.getServerSideProps(async ({ store, context }) => {
-  
-  //   const {params, req, res, query} = context;
-  //   const {slug} = params;
 
-  //   const resource = `companies/${slug}`;
-
-  //   await configure(store, {
-  //     settings : settings,
-  //     preload : [resource]
-  //   })
-
-  //   return {
-  //       props : {
-  //           slug :slug,
-  //           resource: resource
-  //       },
-  //       revalidate : 10
-  //   }
-  
-  // })
 
   
   export default connect()(PageCompany);
