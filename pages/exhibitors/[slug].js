@@ -26,7 +26,7 @@ import {
     <div>
 
      
-      <HeadCompany slug={slug} ogTemplate="template_teh19_exhibitor_">{(data) => <Head>{data}</Head>}</HeadCompany> 
+      <HeadCompany slug={slug} ogTemplate="template_teh19_exhibitor_" defaultLang="pl">{(data) => <Head>{data}</Head>}</HeadCompany> 
  
       <WidgetCompany slug={slug} />
   
@@ -62,22 +62,23 @@ import {
 
   export async function getStaticPaths() {
   
-    const request = await fetch(`${settings.system.api}/company-slugs`)
-    const slugs = await request.json();
+    // const request = await fetch(`${settings.system.api}/company-slugs`)
+    // const slugs = await request.json();
 
-    if(!"data" in slugs){
-      return
-    }
+    // if(!"data" in slugs){
+    //   return
+    // }
 
-    //precache only featured?
-    const filtered = slugs.data.filter(item => item.featured)
+    // //precache only featured?
+    // const filtered = slugs.data.filter(item => item.featured)
 
     return {
-      paths: filtered.map(row => ({ 
-          params: {
-            slug : row.slug
-          }
-        })),
+      // paths: filtered.map(row => ({ 
+      //     params: {
+      //       slug : row.slug
+      //     }
+      //   })),
+      paths: [],
       fallback: true //do not throw 404 when not cached....
     };
      

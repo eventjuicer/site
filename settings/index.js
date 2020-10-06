@@ -147,6 +147,7 @@ const settings =  {
     },
 
     system : {
+        ogTemplate: "",
         passwords : {
             'admin': '1751bfe48d5ad21fd9d'
         },
@@ -333,6 +334,7 @@ const settings =  {
     },
 
     exhibitors : {
+        ogTemplate: "template_teh19_exhibitor_",
         benefits : {
             baseLabel: "exhibitors.benefits",
             items: [
