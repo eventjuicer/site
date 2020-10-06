@@ -5,4 +5,4 @@ const MyCustomApp = (props) => <NextApp {...props} head={
     <MyHead url="/">{(data) => <Head>{data}</Head>}</MyHead> 
 } />
 
-export default reduxWrapper.withRedux(MyCustomApp)
+export default MyCustomApp
