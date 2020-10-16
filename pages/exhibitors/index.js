@@ -19,15 +19,15 @@ import {
       first 
     />
   
-    <WidgetSalesMap
+    {/* <WidgetSalesMap
       label="exhibitors.map.title"
-    />
+    /> */}
   
     <WidgetRoleButtons />
   
-    <WidgetVisitor 
+    {/* <WidgetVisitor 
       label="visitors.are_you_visitor" 
-    />
+    /> */}
   
     </>
   

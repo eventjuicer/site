@@ -12,7 +12,7 @@ import {
     WidgetRoleButtons,
     configure,
     reduxWrapper,
-    fetch,
+    MeetupButton,
     HeadCompany
   } from 'eventjuicer-site-components';
   
@@ -26,20 +26,22 @@ import {
     <div>
 
      
-      <HeadCompany slug={slug} ogTemplate="template_teh19_exhibitor_" defaultLang="pl">{(data) => <Head>{data}</Head>}</HeadCompany> 
+      <HeadCompany slug={slug}>{(data) => <Head>{data}</Head>}</HeadCompany> 
  
       <WidgetCompany slug={slug} />
-  
+
+      <MeetupButton />
+
       <WidgetVideoWithEventInfo />
 
-       <WidgetSalesMap
+       {/* <WidgetSalesMap
         label="exhibitors.map.title2"
         secondaryLabel="exhibitors.map.opensales"
-      /> 
+      />  */}
       
       <WidgetRoleButtons />
       
-      <WidgetVisitor secondaryLabel="event.parties" />
+      {/* <WidgetVisitor secondaryLabel="event.parties" /> */}
   
       {/* <WidgetPresenters /> */}
   

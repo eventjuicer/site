@@ -19,7 +19,7 @@ import {
   RoleButtons,
  // Presenters,
   Schedule,
-//VisitorStepForm,
+ 
   PresentersFeatured
 } from '../compositions'
 import Layout from '../layouts/main';
@@ -49,10 +49,6 @@ class PageCompany extends React.Component {
 
       <Layout>
 
-        {/* <MeetupsButton 
-          company_id={company_id} 
-          register={ <VisitorStepForm /> }
-          /> */}
 
         <Company id={company_id} asPath={asPath} />
 

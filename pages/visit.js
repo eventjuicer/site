@@ -25,7 +25,7 @@ import {
           <div>
         
   
-          <WidgetVisitor label="visitors.register_alt" first />
+          {/* <WidgetVisitor label="visitors.register_alt" first /> */}
   
           {/* <WidgetSchedule /> */}
   
@@ -39,7 +39,7 @@ import {
   
           <WidgetIconGrid setting="visitor.benefits" />
   
-          <WidgetVisitor label="visitors.register" />
+          {/* <WidgetVisitor label="visitors.register" /> */}
   
           {/* <WidgetAllExhibitorsAvatarlist label="exhibitors.list_full" /> */}
   

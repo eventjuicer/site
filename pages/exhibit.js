@@ -30,12 +30,12 @@ import {
   
    <>
   
-    <WidgetSalesMap
+    {/* <WidgetSalesMap
       label="exhibitors.map.title"
       secondaryLabel="exhibitors.map.opensales"
    
       first
-    />
+    /> */}
   
     <WidgetIconGrid setting="exhibitors.benefits" />
   

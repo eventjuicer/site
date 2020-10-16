@@ -58,7 +58,7 @@ class PageInvite extends React.Component {
               name: name,
               cname: cname,
               location: 'Warszawa',
-              date: '23 października 2020'
+              date: '2021'
             }
           ]}
         />
@@ -84,7 +84,7 @@ class PageInvite extends React.Component {
               {
                 icon: 'date',
                 secondary: 'event.date',
-                primary: '23 października 2020'
+                primary: '2021'
               },
 
               {

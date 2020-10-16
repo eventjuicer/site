@@ -19,7 +19,7 @@ import {
       <>
         <WidgetExhibitorsByKeyword keyword={keyword} />
   
-        <WidgetVisitor
+        {/* <WidgetVisitor
           label="visitors.register"
           color="#ffffff"
           links={[
@@ -36,7 +36,7 @@ import {
         <WidgetSalesMap
           label="exhibitors.map.title"
    
-        />
+        /> */}
        </>
     );
   

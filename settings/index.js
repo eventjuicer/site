@@ -303,27 +303,27 @@ const settings =  {
             
               ]
             },
-            {
-              name: 'visitors',
-              items: [
-                {name: 'visit', to: '/visit'},
-                // {name: 'schedule', to: '/schedule'},
-                // {name: 'presenters', to: '/presenters'},
-                // {name: 'exhibitors', to: '/exhibitors'},
-                // {name: 'offers', to: '/offers'}
-              ]
-            },
-            {
-              name: 'exhibitors',
-              items: [
-                {name: 'exhibit', to: '/exhibit'},
-                // {name: 'sample-visitors', to: '/sample-visitors'},
-                // {name: 'exhibitors', to: '/exhibitors'},
-                // {name: 'premium-services', to: '/premium'},
-                // {name: 'faq', to: '/faq'},
+            // {
+            //   name: 'visitors',
+            //   items: [
+            //     {name: 'visit', to: '/visit'},
+            //     // {name: 'schedule', to: '/schedule'},
+            //     // {name: 'presenters', to: '/presenters'},
+            //     // {name: 'exhibitors', to: '/exhibitors'},
+            //     // {name: 'offers', to: '/offers'}
+            //   ]
+            // },
+            // {
+            //   name: 'exhibitors',
+            //   items: [
+            //     {name: 'exhibit', to: '/exhibit'},
+            //     // {name: 'sample-visitors', to: '/sample-visitors'},
+            //     // {name: 'exhibitors', to: '/exhibitors'},
+            //     // {name: 'premium-services', to: '/premium'},
+            //     // {name: 'faq', to: '/faq'},
               
-              ]
-            }
+            //   ]
+            // }
         ]
     },
 
@@ -369,7 +369,9 @@ const settings =  {
 
         register: {
 
-            label : "visitors.register",
+            wrapperProps: {
+                label : "visitors.register",
+            },
             fields : [
               {name: "email", required: true},
               {name: "fname", required: true},
@@ -379,7 +381,6 @@ const settings =  {
               {name: "nip", required: false},
               {name: "phone", required: true}
             ],
-
             start : ['email', 'fname'],
             ticket_id : 1730,
             email_template : "pl-visitors-registration",
@@ -435,7 +436,7 @@ const settings =  {
         organizer_regno : 'VAT ID 7811967834',
         event_name : 'Targi eHandlu',
         event_location : 'EXPO XXI Warszawa, Prądzyńskiego 12/14',
-        event_date : '23 października 2020',
+        event_date : '2021',
         event_hours : '10:00-17:00',
 
     },

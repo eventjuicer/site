@@ -24,20 +24,20 @@ import {
   
     <WidgetVideoWithEventInfo />
 
-     <WidgetSalesMap
+     {/* <WidgetSalesMap
       label="exhibitors.map.title"
       // secondaryLabel="exhibitors.map.opensales"
       // first
-    />
+    /> */}
   
     {/* <WidgetSchedule /> */}
 
-    <WidgetFeaturedPresenters />
+    {/* <WidgetFeaturedPresenters /> */}
   
-    <WidgetVisitor
+    {/* <WidgetVisitor
       label="visitors.register"
       secondaryLabel="event.parties"
-    />
+    /> */}
   
     <WidgetFeaturedCompanies />
   
@@ -48,7 +48,7 @@ import {
   
     {/* <WidgetPresentersAll /> */}
   
-    <WidgetRoleButtons first={true} />
+    {/* <WidgetRoleButtons first={true} /> */}
   
     {/* <FeaturedExhibitors /> */}
   
@@ -66,10 +66,10 @@ import {
       videoSrc="https://res.cloudinary.com/eventjuicer/video/upload/v1534553583/video_stage1.mp4"
     /> */}
   
-    <WidgetVisitor
+    {/* <WidgetVisitor
       label="visitors.register"
       secondaryLabel="event.parties"
-    />
+    /> */}
   
    
    

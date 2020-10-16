@@ -60,7 +60,7 @@ class PageTicket extends React.Component {
           )}
           titleLabel={[
             'visitors.opengraph.title',
-            { name: name, location: 'Warszawa', date: '23 października 2020' }
+            { name: name, location: 'Warszawa', date: '2021' }
           ]}
         />
 
@@ -81,7 +81,7 @@ class PageTicket extends React.Component {
               {
                 icon: 'date',
                 secondary: 'event.date',
-                primary: '23 października 2020'
+                primary: '2021'
               },
 
               {

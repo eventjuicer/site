@@ -45,7 +45,7 @@ class ThankyouPage extends React.Component {
             {
               name: name,
               location: 'Warszawa',
-              date: '23 października 2020'
+              date: '2021'
             }
           ]}
         />
