@@ -30,7 +30,7 @@ import {
  
       <WidgetCompany slug={slug} />
 
-      <MeetupButton />
+      {/* <MeetupButton /> */}
 
       <WidgetVideoWithEventInfo />
 
