@@ -515,7 +515,7 @@ const settings =  {
 
     appbar : {
         links: [
-            {label: "covid19.link", color: "primary",  href: "/covid19", as: "/covid19", variant: "contained"}
+            // {label: "covid19.link", color: "primary",  href: "/covid19", as: "/covid19", variant: "contained"}
         ],
     },
 
