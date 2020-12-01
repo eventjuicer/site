@@ -26,14 +26,22 @@
   },
   "homepage": "https://github.com/targiehandlu/site#readme",
   "dependencies": {
-    "eventjuicer-site-components": "2.4.7",
-    "next": "^9.5.4",
+    "eventjuicer-site-components": "3.0.1",
+    "next": "^10.0.3",
+    "next-transpile-modules": "^5.0.0",
     "now": "^19.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-icons": "^3.10.0"
+    "react-icons": "^4.1.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^7.14.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.5.2",
+    "prettier": "^2.2.1"
+  },
   "browserslist": [
     ">0.2%",
     "not dead",
