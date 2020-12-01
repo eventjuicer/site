@@ -54,11 +54,11 @@ const PageSpeaking = () => (
           <WidgetVerticalTimeline 
           setting="cfptimeline" 
           icons={{
-            NoteAdd: <NoteAdd />,
-            Settings: <Settings />,
-            Public: <Public />,
-            Mic: <Mic />,
-            Assessment: <Assessment />
+            NoteAdd,
+            Settings,
+            Public,
+            Mic,
+            Assessment
           }} />
         }
 
