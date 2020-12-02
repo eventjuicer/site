@@ -11,10 +11,10 @@ const withTM = require('next-transpile-modules')(['eventjuicer-site-components']
 
     i18n: {
       locales: ['en','pl'],
-      defaultLocale: 'pl',    
-    },
+      defaultLocale: 'pl',  
 
-    domains: [{
+      domains: [
+      {
         domain: 'targiehandlu.pl',
         defaultLocale: 'pl',
       },
@@ -22,6 +22,7 @@ const withTM = require('next-transpile-modules')(['eventjuicer-site-components']
         domain: 'ecommercewarsaw.com',
         defaultLocale: 'en',
       }],
+    },
 
   
   });
