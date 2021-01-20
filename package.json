@@ -26,8 +26,8 @@
   },
   "homepage": "https://github.com/targiehandlu/site#readme",
   "dependencies": {
-    "eventjuicer-site-components": "3.0.1",
-    "next": "^10.0.3",
+    "eventjuicer-site-components": "3.0.4",
+    "next": "^10.0.5",
     "next-transpile-modules": "^5.0.0",
     "now": "^19.2.0",
     "react": "^16.13.1",
