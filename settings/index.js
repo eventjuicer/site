@@ -435,7 +435,7 @@ const settings =  {
         organizer_regno : 'VAT ID 7811967834',
         event_name : 'Targi eHandlu',
         event_location : 'EXPO XXI Warszawa, Prądzyńskiego 12/14',
-        event_date : '2021',
+        event_date : '10 czerwca  2021',
         event_hours : '10:00-17:00',
 
     },
