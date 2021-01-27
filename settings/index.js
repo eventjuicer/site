@@ -483,26 +483,20 @@ const settings =  {
 
     schedule : {
         times : {
-            '10:30': 'presentation',
-            '11:10': 'presentation',
-            '11:50': 'presentation',
-            '12:30': 'presentation',
-            '13:00': 'break_20',
-            '13:20': 'presentation',
-            '14:00': 'presentation',
-            '14:40': 'presentation',
-            '15:20': 'presentation',
-            '15:50': 'presentation'
+            '11:00': 'presentation',
+            '11:24': 'presentation',
+            '12:01': 'presentation',
+            '12:18': 'presentation',
+            '12:55': 'presentation',
           },    
           venues : {
             A: { company_id: 0 },
             B: { company_id: 0 },
             C: { company_id: 0 },
             D: { company_id: 0 },
-            E: { company_id: 0 }
           },
         //   minimized : ["A", "C"],
-          venueStyle : "gold",
+          venueStyle : "red",
     },
 
     footer : {

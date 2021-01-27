@@ -8,7 +8,8 @@ import {
     WidgetSalesMap,
     reduxWrapper,
     configure,
-    WidgetFeaturedPresenters
+    WidgetFeaturedPresenters,
+    WidgetSchedule
   } from 'eventjuicer-site-components';
   
   // import FeaturedExhibitors from '../src/FeaturedExhibitors';
@@ -30,7 +31,7 @@ import {
       // first
     /> */}
   
-    {/* <WidgetSchedule /> */}
+    <WidgetSchedule />
 
     {/* <WidgetFeaturedPresenters /> */}
   
