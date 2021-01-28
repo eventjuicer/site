@@ -485,6 +485,7 @@ const settings =  {
         times : {
             '11:00': 'presentation',
             '11:24': 'presentation',
+            '11:44': 'presentation',
             '12:01': 'presentation',
             '12:18': 'presentation',
             '12:55': 'presentation',
@@ -508,7 +509,7 @@ const settings =  {
 
     appbar : {
         links: [
-            // {label: "covid19.link", color: "primary",  href: "/covid19", as: "/covid19", variant: "contained"}
+            {label: "ehandel.com.pl", color: "secondary",  href: "https://ehandel.com.pl", as: "https://ehandel.com.pl", variant: "contained"}
         ],
     },
 
