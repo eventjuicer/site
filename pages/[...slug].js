@@ -1,3 +1,4 @@
+import React from 'react'
 
 import {
     connect,
@@ -15,23 +16,38 @@ import {
 
     const {slug} = params
     const matches = /[^,]+,c,(?<id>[0-9]+)/g.exec(slug)
-    const {id} = matches.groups;
+
+    if(!matches){
+      return {
+        redirect: {
+          permanent: false,
+          destination: "/"
+        },
+        props: {}
+      }
+    }
+
+    const {groups: {id}} = matches;
     const resource = `companies/${id}`;
     const request = await fetch(`${settings.system.api}/${resource}`)
     const {data} = await request.json();
 
-    // res.statusCode = 302
-    // res.setHeader('Location', `/`) // Replace <link> with your url link
-    // res.end();
-
+    if(!data || !("slug" in data)){
+      return {
+        redirect: {
+          permanent: false,
+          destination: "/"
+        },
+        props: {}
+      }
+    }
+  
     return {
       redirect: {
         permanent: true,
         destination: `/exhibitors/${data.slug}`,
       },
-      props: {
-
-      }
+      props: {}
     }
 
 })
