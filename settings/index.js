@@ -433,7 +433,7 @@ const settings =  {
         organizer_name : 'Infoguru Sp. z o.o. Sp. k.',
         organizer_address : 'POLAND, Poznań, Truskawiecka 13',
         organizer_regno : 'VAT ID 7811967834',
-        event_name : 'Targi eHandlu',
+        event_name : 'TARGI EHANDLU',
         event_location : 'EXPO XXI Warszawa, Prądzyńskiego 12/14',
         event_date : '10 czerwca  2021',
         event_hours : '10:00-17:00',
@@ -509,7 +509,7 @@ const settings =  {
 
     appbar : {
         links: [
-            {label: "ehandel.com.pl", color: "secondary",  href: "https://ehandel.com.pl", as: "https://ehandel.com.pl", variant: "contained"}
+            {label: "ehandel.com.pl", color: "secondary",  href: "https://ehandel.com.pl", as: "https://ehandel.com.pl", variant: "text"}
         ],
     },
 
