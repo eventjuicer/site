@@ -14,7 +14,7 @@ import {useRouter} from 'next/router'
 
   import settings from '../../settings';
   
-  const Recall = ({token}) => {
+  const Recall = ({token, goto}) => {
 
     const router = useRouter();
     const dispatch = useDispatch();
@@ -23,7 +23,7 @@ import {useRouter} from 'next/router'
     
         if(token){
             dispatch(setUserToken(token))
-            router.push("/stages/a")
+            router.push(goto)
         }
     })
 
@@ -43,7 +43,7 @@ Recall.disableLayout = true;
 
 export const getServerSideProps = reduxWrapper.getServerSideProps(async (props) => {
 
-    const {query: {token}} = props;
+    const {query: {token, goto}} = props;
 
     const user = await getUserByToken(settings.system.service_api, token)
 
@@ -52,7 +52,8 @@ export const getServerSideProps = reduxWrapper.getServerSideProps(async (props) 
     })
     return {
         props: {
-            token: token+""
+            token: token+"",
+            goto: goto+""
         },
     }  
 })
