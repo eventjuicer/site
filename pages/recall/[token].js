@@ -14,7 +14,7 @@ import {useRouter} from 'next/router'
 
   import settings from '../../settings';
   
-  const Recall = ({token, goto}) => {
+  const Recall = ({token = "", goto = "/stages/a"}) => {
 
     const router = useRouter();
     const dispatch = useDispatch();
@@ -35,10 +35,6 @@ import {useRouter} from 'next/router'
 
   }
 
-Recall.defaultProps = {
-    token: ""
-}
-
 Recall.disableLayout = true;
 
 export const getServerSideProps = reduxWrapper.getServerSideProps(async (props) => {
@@ -46,6 +42,8 @@ export const getServerSideProps = reduxWrapper.getServerSideProps(async (props) 
     const {query: {token, goto}} = props;
 
     const user = await getUserByToken(settings.system.service_api, token)
+
+    //action when userrrrr is bad?
 
     await configure(props, {
         settings: settings

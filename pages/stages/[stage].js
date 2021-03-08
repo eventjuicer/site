@@ -9,47 +9,31 @@ import {
   
   const settings = require('../../settings').default;
 
-
   const PageStage = ({stage}) => (
 
     <>
-
-
     <WidgetStage stage={stage} />
     <WidgetSchedule />
-  
-  </>
+    </>
   )
 
   export async function getStaticPaths() {
   
-    // const request = await fetch(`${settings.system.api}/company-slugs`)
-    // const slugs = await request.json();
-
-    // if(!"data" in slugs){
-    //   return
-    // }
-
-    // //precache only featured?
-    // const filtered = slugs.data.filter(item => item.featured)
-
     return {
-      // paths: filtered.map(row => ({ 
-      //     params: {
-      //       slug : row.slug
-      //     }
-      //   })),
-      paths: [],
+      paths: [
+        { params: { stage: "A"} },
+        { params: { stage: "B"} },
+        { params: { stage: "C"} },
+        { params: { stage: "D"} }
+      ],
       fallback: "blocking" 
     };
      
   }
   
 export const getStaticProps = reduxWrapper.getStaticProps(async (props) => {
-
-    console.log(props);
     
-    const {stage} = props.params;
+    const {params: {stage}} = props;
 
     await configure(props, {
       settings : settings,
@@ -58,16 +42,10 @@ export const getStaticProps = reduxWrapper.getStaticProps(async (props) => {
 
     return {
       props : {
-        stage :stage
+        stage: stage
       },
       revalidate : 10
     }
-  
   })
   
-  
 export default connect()(PageStage);
-  
-
-
-

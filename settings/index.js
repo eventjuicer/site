@@ -367,6 +367,9 @@ const settings =  {
     },
     visitor : {
 
+
+        
+
         register: {
 
             wrapperProps: {
@@ -481,6 +484,66 @@ const settings =  {
           ]
     },
 
+    stages : {
+        regform: "streaming_registration",
+        api: "https://proxy.eventjuicer.com/api/schedule",
+        discordProps: {
+            avatars: false,
+            join: "https://discord.gg/u3Fv9VJGU5",
+            title: "streaming.chat.title"
+        },
+        A: {
+            stream: "https://www.youtube.com/watch?v=ymEGfpxk8CA",
+            discord: "803790592768212992",
+            restricted: true,
+            sponsor: null,
+            placeholder: "https://res.cloudinary.com/eventjuicer/image/upload/f_auto/v1614810311/stillphoto.jpg"
+        },
+        B: {
+            stream: "https://www.youtube.com/watch?v=ymEGfpxk8CA",
+            discord : "803790612171718667",
+            restricted: true,
+            sponsor: null,
+            placeholder: "https://res.cloudinary.com/eventjuicer/image/upload/f_auto/v1614810311/stillphoto.jpg"
+        },
+        C: {
+            stream: "https://www.youtube.com/watch?v=ymEGfpxk8CA",
+            discord: "803790872390926366",
+            restricted: true,
+            sponsor: null,
+            placeholder: "https://res.cloudinary.com/eventjuicer/image/upload/f_auto/v1614810311/stillphoto.jpg"
+        },
+        D: {
+            stream: "https://www.youtube.com/watch?v=ymEGfpxk8CA",
+            discord: "803934176075841597",
+            restricted: true,
+            sponsor: null,
+            placeholder: "https://res.cloudinary.com/eventjuicer/image/upload/f_auto/v1614810311/stillphoto.jpg"
+        }
+    },
+
+    streaming_registration: {
+
+        wrapperProps: {
+            label : null,
+            secondaryLabel: null,
+            dense: true,
+            first: false
+        },
+        legend: "streaming.restricted",
+        fields : [
+          {name: "email", required: true},
+          {name: "fname", required: true},
+          {name: "lname", required: true},
+          {name: "cname2", required: true},
+          {name: "position", required: true},
+        ],
+        start : ['email', 'fname'],
+        ticket_id : 1888,
+        email_template : "pl-livestream-registration",
+        right: null
+    },
+
     schedule : {
         times : {
             '11:00': 'presentation',
@@ -508,8 +571,9 @@ const settings =  {
     },
 
     appbar : {
+        profile: ["logout"],
         links: [
-            {label: "ehandel.com.pl", color: "secondary",  href: "https://ehandel.com.pl", as: "https://ehandel.com.pl", variant: "text"}
+            // {label: "ehandel.com.pl", color: "secondary",  href: "https://ehandel.com.pl", as: "https://ehandel.com.pl", variant: "text"}
         ],
     },
 

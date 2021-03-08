@@ -5,9 +5,9 @@
   "main": "pages/index.js",
   "scripts": {
     "precommit": "lint-staged",
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS=--max_old_space_size=8192 next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_OPTIONS=--max_old_space_size=8192 next start"
   },
   "repository": {
     "type": "git",
@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/targiehandlu/site#readme",
   "dependencies": {
-    "eventjuicer-site-components": "3.1.8",
+    "eventjuicer-site-components": "3.1.10",
     "next": "10.0.6",
     "next-transpile-modules": "^6.3.0",
     "react": "^17.0.1",
