@@ -4,7 +4,9 @@ import {
     connect,
     reduxWrapper
   } from 'eventjuicer-site-components';
-  
+
+const Redirect = () => null
+
 export const getServerSideProps = reduxWrapper.getServerSideProps(async (props) => {
   
     return {
