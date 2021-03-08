@@ -493,7 +493,7 @@ const settings =  {
             title: "streaming.chat.title"
         },
         A: {
-            stream: "https://www.youtube.com/watch?v=ymEGfpxk8CA",
+            stream: "https://www.youtube.com/embed/WMh2yoaedyo",
             discord: "803790592768212992",
             restricted: true,
             sponsor: null,
