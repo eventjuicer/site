@@ -493,28 +493,28 @@ const settings =  {
             title: "streaming.chat.title"
         },
         A: {
-            stream: "https://www.youtube.com/embed/WMh2yoaedyo",
+            stream: "https://youtu.be/pxRMgHXYg-M",
             discord: "803790592768212992",
             restricted: true,
             sponsor: null,
             placeholder: "https://res.cloudinary.com/eventjuicer/image/upload/f_auto/v1614810311/stillphoto.jpg"
         },
         B: {
-            stream: "https://www.youtube.com/watch?v=ymEGfpxk8CA",
+            stream: "https://youtu.be/g9p2ujU72dU",
             discord : "803790612171718667",
             restricted: true,
             sponsor: null,
             placeholder: "https://res.cloudinary.com/eventjuicer/image/upload/f_auto/v1614810311/stillphoto.jpg"
         },
         C: {
-            stream: "https://www.youtube.com/watch?v=ymEGfpxk8CA",
+            stream: "https://youtu.be/2BTwXU3jdOY",
             discord: "803790872390926366",
             restricted: true,
             sponsor: null,
             placeholder: "https://res.cloudinary.com/eventjuicer/image/upload/f_auto/v1614810311/stillphoto.jpg"
         },
         D: {
-            stream: "https://www.youtube.com/watch?v=ymEGfpxk8CA",
+            stream: "https://youtu.be/i_ierICqE60",
             discord: "803934176075841597",
             restricted: true,
             sponsor: null,
