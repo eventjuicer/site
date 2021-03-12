@@ -37,10 +37,10 @@ import {
    <WidgetRegForm
       setting="streaming_registration"
       wrapperProps={{ 
-        label:"asd.register",
-        secondaryLabel:"evedsant.parties"
+        label:"virtual.register.title",
+        secondaryLabel: null
       }}
-      legend="nieeee"
+      legend="streaming.how_to_register"
     />
   
     <WidgetSchedule 

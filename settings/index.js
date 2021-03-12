@@ -19,8 +19,8 @@ const settings =  {
 
     featured_presenters: {
         wrapperProps:{
-            label: "asd",
-            secondaryLabel: "dsa"
+            label: "virtual.presenters.title",
+            secondaryLabel: "virtual.presenters.description"
         },
         filter: [["featured", 1]],
         link: false
