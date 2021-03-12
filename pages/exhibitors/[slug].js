@@ -32,7 +32,7 @@ import {
 
       {/* <MeetupButton /> */}
 
-      <WidgetVideoWithEventInfo />
+      <WidgetVideoWithEventInfo setting="heroExpo" />
 
        {/* <WidgetSalesMap
         label="exhibitors.map.title2"

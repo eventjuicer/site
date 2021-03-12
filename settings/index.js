@@ -210,7 +210,13 @@ const settings =  {
     speakers : {
 
         callforpapers: {
+
+            wrapperProps: {
+                label: "presenters.form.title",
+                // secondaryLabel: ""
+            },
             
+            baseLabel: "presenters",
             fields: [
                 {name: "email", required: true},
                 {name: "fname", required: true},

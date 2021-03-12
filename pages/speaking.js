@@ -75,7 +75,8 @@ const PageSpeaking = () => (
   <WidgetPhotostream setting="cfpphotostream" />
 
   <WidgetRegForm
-       options={{
+      setting="speakers.callforpapers"
+      options={{
         "categories": [
           'conversion',
           'marketing',
@@ -165,9 +166,7 @@ New Developments in E-commerce
 
 
         <WidgetVideoWithEventInfo
-          //  background="https://res.cloudinary.com/eventjuicer/image/upload/v1552428524/teh_presenters_video.png"
-          //  showEventDetails={false}
-          //  videoSrc="https://res.cloudinary.com/eventjuicer/video/upload/v1552428525/teh_presenters_video.mp4"
+          setting="heroExpo"
           title="presenters.claim.title"
           subtitle="presenters.claim.description"
         />
