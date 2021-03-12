@@ -2,26 +2,17 @@ import React from 'react'
 
 import {
     connect,
-    MyHead as Head,
-    MyLink as Link,
+    reduxWrapper,
+    configure,
+
     WidgetSalesMap,
     WidgetIconGrid,
-    //WidgetVideoWithReviews,
-    WidgetAllExhibitorsAvatarlist,
-    //DatasourceExhibitors,
-    WidgetVips,
-    DatasourcePhotos,
+    WidgetVideoWithEventInfo,
+    //WidgetAllExhibitorsAvatarlist,
+    WidgetFeaturedCompanies,
+    WidgetAllExhibitorsColumnList,
     Wrapper,
-    Gallery,
-    Faq,
-    // Avatarlist,
-    // Typography,
-    // WidthAwareInfo,
-    // People,
-    // GridBenefits
-    reduxWrapper,
-    configure
-     
+    Faq
   } from 'eventjuicer-site-components';
   
   import settings from '../settings'
@@ -29,19 +20,17 @@ import {
   const PageExhibit = () => (
   
    <>
-  
-    {/* <WidgetSalesMap
+
+    <WidgetVideoWithEventInfo setting="heroExpo" />
+
+    <WidgetSalesMap
       label="exhibitors.map.title"
       secondaryLabel="exhibitors.map.opensales"
-   
-      first
-    /> */}
-  
+    />
+
+    <WidgetFeaturedCompanies />
+
     <WidgetIconGrid setting="exhibitors.benefits" />
-  
-    {/* <WidgetVideoWithReviews /> */}
-  
-    {/* <WidgetVips limit={12} mobile={4} /> */}
   
     <Wrapper label="exhibitors.faq.name">
       <Faq
@@ -68,31 +57,21 @@ import {
       />
     </Wrapper>
   
-    <WidgetAllExhibitorsAvatarlist label="exhibitors.list_full" />
+    {/* <WidgetAllExhibitorsAvatarlist label="exhibitors.list_full" /> */}
   
-    {/* <DatasourcePhotos>
-      {(photos, size) => (
-        <Gallery data={photos} size={size} label="event.gallery" />
-      )}
-    </DatasourcePhotos> */}
+    <WidgetAllExhibitorsColumnList />
   
   </>
   
   )
   
+  export const getStaticProps = reduxWrapper.getStaticProps(async (props) => {
   
-  
-  export const getStaticProps = reduxWrapper.getStaticProps(async ({ store }) => {
-  
-    await configure(store, {
+    return await configure(props, {
       settings : settings,
       preload : ['exhibitors', 'allexhibitors']
     })
   
-
-    return {props: {}, revalidate: 1}
-  
   })
   
   export default connect()(PageExhibit);
-  

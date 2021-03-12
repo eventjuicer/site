@@ -3,19 +3,19 @@ import React from 'react'
 import {
     connect,
     WidgetVideoWithEventInfo,
-    WidgetVisitor,
-    WidgetFeaturedCompanies,
-    WidgetAllExhibitorsColumnList,
+    // WidgetFeaturedCompanies,
+    // WidgetAllExhibitorsColumnList,
     WidgetRoleButtons,
-    WidgetSalesMap,
+    WidgetRegForm,
     reduxWrapper,
     configure,
     WidgetFeaturedPresenters,
-    WidgetSchedule
+    WidgetSchedule,
+    MyHead
   } from 'eventjuicer-site-components';
   
-  // import FeaturedExhibitors from '../src/FeaturedExhibitors';
-  //import FeaturedPresenters from '../src/FeaturedPresenters';
+  import Head from 'next/head'
+
   
   import settings from '../settings'
   
@@ -25,71 +25,49 @@ import {
      
     <React.Fragment>
   
-    <WidgetVideoWithEventInfo />
+    <MyHead 
+      image="https://res.cloudinary.com/eventjuicer/image/upload/f_auto/v1615494821/tehonline.jpg" 
+      titleLabel="virtual.opengraph.name" 
+      descriptionLabel="virtual.opengraph.description"
+    >{(data)=><Head>{data}</Head>}</MyHead>
 
-     {/* <WidgetSalesMap
-      label="exhibitors.map.title"
-      // secondaryLabel="exhibitors.map.opensales"
-      // first
-    /> */}
-  
-    <WidgetSchedule />
+    <WidgetVideoWithEventInfo setting="heroStreaming" />
 
-    {/* <WidgetFeaturedPresenters /> */}
+
+   <WidgetRegForm
+      setting="streaming_registration"
+      wrapperProps={{ 
+        label:"asd.register",
+        secondaryLabel:"evedsant.parties"
+      }}
+      legend="nieeee"
+    />
   
-    {/* <WidgetVisitor
-      label="visitors.register"
-      secondaryLabel="event.parties"
-    /> */}
+    <WidgetSchedule 
+      wrapperProps={{
+        label: "virtual.schedule.title", 
+        secondaryLabel: "virtual.schedule.description"
+      }}
+    />
+
+    <WidgetFeaturedPresenters 
+      setting="featured_presenters" 
+    />
   
-    <WidgetFeaturedCompanies />
-  
-    {/* <WidgetSalesMap
-      label="exhibitors.map.title2"
-      secondaryLabel="exhibitors.map.opensales"
-    /> */}
-  
-    {/* <WidgetPresentersAll /> */}
-  
-    {/* <WidgetRoleButtons first={true} /> */}
-  
-    {/* <FeaturedExhibitors /> */}
-  
-    {/* <WidgetVisitor
-      label="visitors.register_alt"
-      secondaryLabel="event.parties"
-    /> */}
-  
-    {/* <WidgetVideoWithReviews overlay="black" /> */}
-  
-    <WidgetAllExhibitorsColumnList />
-  
-    {/* <FsVideo
-      background="https://res.cloudinary.com/eventjuicer/image/upload/v1534553598/poster_stage1.jpg"
-      videoSrc="https://res.cloudinary.com/eventjuicer/video/upload/v1534553583/video_stage1.mp4"
-    /> */}
-  
-    {/* <WidgetVisitor
-      label="visitors.register"
-      secondaryLabel="event.parties"
-    /> */}
-  
-   
-   
+    <WidgetRoleButtons 
+      setting="rolebuttonsVirtual" 
+    />
+
     </React.Fragment>
    
   ) 
   
-  export const getStaticProps = reduxWrapper.getStaticProps(async ({ store }) => {
+  export const getStaticProps = reduxWrapper.getStaticProps(async (props) => {
   
-    await configure(store, {
+    return await configure(props, {
       settings: settings,
       preload: ['allexhibitors', 'companies', 'presenters']
     })
-
-    return {props: {
-      
-    }, revalidate: 10}
     
   })
   

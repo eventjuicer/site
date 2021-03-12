@@ -2,20 +2,9 @@ import React from 'react'
 
 import {
     connect,
-    //Gallery,
-  
-    WidgetVideoWithEventInfo,
-    WidgetVisitor,
-    WidgetIconGrid,
-    // WidgetPresenters,
-    // WidgetSchedule,
-    // WidgetAllExhibitorsAvatarlist,
-    DatasourcePhotos as Photos,
-   
-    WidgetVips,
     reduxWrapper,
     configure,
-    WidgetFeaturedPresenters
+    WidgetVideoWithEventInfo
   } from 'eventjuicer-site-components';
   
   //import FeaturedPresenters from '../src/FeaturedPresenters';
@@ -26,49 +15,39 @@ import {
   
           <div>
         
-  
+         <WidgetVideoWithEventInfo setting="heroExpo" />
+
           {/* <WidgetVisitor label="visitors.register_alt" first /> */}
   
           {/* <WidgetSchedule /> */}
   
-          <WidgetFeaturedPresenters />
+          {/* <WidgetFeaturedPresenters /> */}
   
           {/* <WidgetVips limit={12} mobile={4} /> */}
-  
-          <WidgetVideoWithEventInfo />
+
   
           {/* <WidgetPresenters /> */}
   
-          <WidgetIconGrid setting="visitor.benefits" />
+          {/* <WidgetIconGrid setting="visitor.benefits" /> */}
   
           {/* <WidgetVisitor label="visitors.register" /> */}
   
           {/* <WidgetAllExhibitorsAvatarlist label="exhibitors.list_full" /> */}
   
           {/* <WidgetVisitor label="visitors.register" first /> */}
-  
-          {/* <Photos>
-            {(photos, size) => (
-              <Gallery data={photos} size={size} label="event.gallery" />
-            )}
-          </Photos> */}
+
     
           </div>
   
   )
   
   
-  export const getStaticProps = reduxWrapper.getStaticProps(async ({ store, params = {}}) => {
+  export const getStaticProps = reduxWrapper.getStaticProps(async (props) => {
   
-    await configure(store, {
+    return await configure(props, {
       settings : settings,
       preload : ["exhibitors", 'presenters']
     })
-
-    return {
-      props: {}, 
-      revalidate: 1
-    }
   
   })
   

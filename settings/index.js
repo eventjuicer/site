@@ -2,150 +2,7 @@
 
 const settings =  {
     
-    globals : {
-        filterPresenterWithBio : {
-            type : "condition", 
-            required : ["avatar", "logotype", "bio"]
-        },
-        featuredPresenters : {
-            type : "condition",
-            required : ["avatar", "logotype", "bio", "featured"]
-        },
-        anotherTestGlobal : {type : "widget"},
-        vipVisitor : {
-            type : "props",
-            data : {
-
-            }
-        }
-    },
-
-    pages : {
-
-        speaking : {
-
-            title : "",
-            opengraph : "",
-            widgets : [
-
-            ]
-
-
-
-
-        },
-
-        vip : {
-            title : "",
-            opengraph : "",
-            widgets : [
-                {name : "WidgetVisitor", props : {
-                    data : { important: 1 },
-                    template : "ecommerceberlin-vip-registration",
-                    label : "vips.register.title",
-                    fields : [
-                        {name: "referral", required: true},
-                        {name: "email", required: true},
-                        {name: "fname", required: true},
-                        {name: "lname", required: true},
-                        {name: "cname2", required: true},
-                        {name: "position", required: true},
-                        {name: "phone", required: true}
-                      ],
-                    start : ['referral', 'email', 'fname'],
-                    first : true
-                }},
-                {name : "WidgetIconGrid", props : {
-                    label : "vips.benefits.title" 
-                }},
-                {name : "WidgetVips", props : {
-                    limit: 12,
-                    mobile: 4
-                }},
-                // {name : "WidgetSchedule", props : { } },
-                {name : "WidgetVideoWithEventInfo"},
-                {name : "WidgetVisitor", props : {
-                    data : { important: 1 },
-                    template : "ecommerceberlin-vip-registration",
-                    label : "vips.register.title",
-                    fields : [
-                        {name: "referral", required: true},
-                        {name: "email", required: true},
-                        {name: "fname", required: true},
-                        {name: "lname", required: true},
-                        {name: "cname2", required: true},
-                        {name: "position", required: true},
-                        {name: "phone", required: true}
-                      ],
-                    start : ['referral','email', 'cname2'],
-                    // first : true
-                }},
-                {name : "WidgetIconGrid"},
-                // {name : "WidgetPresenters", props : {
-                //     disableTemps : true,
-                //     label : "presenters.list_featured",
-                //     limit : null,
-                //     bio : true,
-                //     filter : "@featuredPresenters"
-                // }},
-                // {name : "WidgetVisitor", props : {
-                //     data : { important: 1 },
-                //     template : "ecommerceberlin-vip-registration",
-                //     label : "vips.register.title",
-                //     fields : [
-                //         {name: "referral", required: true},
-                //         {name: "email", required: true},
-                //         {name: "fname", required: true},
-                //         {name: "lname", required: true},
-                //         {name: "cname2", required: true},
-                //         {name: "position", required: true},
-                //         {name: "phone", required: true}
-                //       ],
-                //     start : ['referral', 'email', 'cname2'],
-                //     // first : true
-                // }},
-            
-            ],
-        },
-
-        presenters : {
-            title : "",
-            opengraph : "",
-            widgets : [
-                // {name : "WidgetPresenters", props : {
-                //     first : true,
-                //     disableTemps : true,
-                //     label : "presenters.list_all",
-                //     limit : null,
-                //     bio : true,
-                //     filter : "@filterPresenterWithBio"
-                // }},
-                {name : "WidgetVisitor", props : {label : "visitors.register_alt"} },
-                {name : "WidgetVideoWithEventInfo"},
-                // {name : "WidgetSchedule", props : { } },
-                // {name : "WidgetVisitor", props : {label : "visitors.register"} },
-            ]
-        },
-
-        schedule : {
-            title : "",
-            opengraph : "",
-            widgets : [
-                // {name : "WidgetSchedule", props : {first : true} },
-                {name : "WidgetVisitor", props : {label : "visitors.register_alt"} },
-                {name : "WidgetVideoWithEventInfo"},
-                // {name : "WidgetPresenters", props : {
-                //     disableTemps : true,
-                //     label : "presenters.list_all",
-                //     limit : null,
-                //     bio : true,
-                //     filter : "@filterPresenterWithBio"
-                // }}
-            ]   
-        }
-
-    },
-
+  
     system : {
         ogTemplate: "",
         passwords : {
@@ -158,14 +15,161 @@ const settings =  {
         og_image : "https://res.cloudinary.com/ecommerceberlin/image/upload/c_limit,w_1024/v1546943854/ebe_og_home.jpg",
     
     },
-    hero : {
+
+
+    featured_presenters: {
+        wrapperProps:{
+            label: "asd",
+            secondaryLabel: "dsa"
+        },
+        filter: [["featured", 1]],
+        link: false
+    },
+
+    stages : {
+        regform: "streaming_registration",
+        api: "https://proxy.eventjuicer.com/api/schedule",
+        discordProps: {
+            avatars: false,
+            join: "https://discord.gg/u3Fv9VJGU5",
+            title: "streaming.chat.title"
+        },
+        A: {
+            stream: "https://youtu.be/pxRMgHXYg-M",
+            discord: "803790592768212992",
+            restricted: true,
+            sponsor: null,
+            placeholder: "https://res.cloudinary.com/eventjuicer/image/upload/f_auto/v1614810311/stillphoto.jpg"
+        },
+        B: {
+            stream: "https://youtu.be/g9p2ujU72dU",
+            discord : "803790612171718667",
+            restricted: true,
+            sponsor: null,
+            placeholder: "https://res.cloudinary.com/eventjuicer/image/upload/f_auto/v1614810311/stillphoto.jpg"
+        },
+        C: {
+            stream: "https://youtu.be/2BTwXU3jdOY",
+            discord: "803790872390926366",
+            restricted: true,
+            sponsor: null,
+            placeholder: "https://res.cloudinary.com/eventjuicer/image/upload/f_auto/v1614810311/stillphoto.jpg"
+        },
+        D: {
+            stream: "https://youtu.be/i_ierICqE60",
+            discord: "803934176075841597",
+            restricted: true,
+            sponsor: null,
+            placeholder: "https://res.cloudinary.com/eventjuicer/image/upload/f_auto/v1614810311/stillphoto.jpg"
+        }
+    },
+
+    streaming_registration: {
+
+        wrapperProps: {
+            label : null,
+            secondaryLabel: null,
+            dense: true,
+            first: false
+        },
+        legend: "streaming.restricted",
+        fields : [
+          {name: "email", required: true},
+          {name: "fname", required: true},
+          {name: "lname", required: true},
+          {name: "cname2", required: true},
+          {name: "position", required: true},
+        ],
+        start : ['email', 'fname'],
+        ticket_id : 1888,
+        email_template : "pl-livestream-registration",
+        right: "https://res.cloudinary.com/eventjuicer/image/upload/f_auto/v1615497181/tehonline_reg.jpg"
+    },
+
+    schedule: {
+        times : {
+            '11:00': 'presentation',
+            '11:25': 'presentation',
+            '11:46': 'presentation',
+            '12:04': 'presentation',
+            '12:22': 'presentation',
+            '13:00': 'presentation',
+          },    
+          venues : {
+            A: { company_id: 0 },
+            B: { company_id: 0 },
+            C: { company_id: 0 },
+            D: { company_id: 0 },
+          },
+        //   minimized : ["A", "C"],
+          venueStyle : "red",
+    },
+
+
+    heroStreaming : {
+
+        videoSrc : "https://res.cloudinary.com/eventjuicer/video/upload/v1615494822/tehonline.mp4",
+        background : "https://res.cloudinary.com/eventjuicer/image/upload/f_auto/v1615494821/tehonline.jpg",
+        overlay : "black",
+        template : "heroGold",
+        heading : "virtual.event.claim",
+        subheading : "virtual.event.description",
+        showable: ["date"],
+        orientation : "v",
+        primaryStyle: "heroPrimary",
+        secondaryStyle: "heroSecondary",
+        iconStyle: "heroIcon",
+
+        event_name : 'TARGI EHANDLU',
+        event_date : '24 marca  2021',
+        event_hours : '11:00',
+
+    },
+
+    rolebuttonsVirtual : {
+        accent : "gold",
+        items : [
+        {
+          url: 'https://res.cloudinary.com/eventjuicer/image/upload/w_768,c_fit,f_auto/v1579000835/exhibit.jpg',
+          label: 'common.whats_next',
+        //   width: '50%',
+          target : "/exhibit"
+        },
+        ]
+    },
+
+    heroExpo : {
 
         videoSrc : "https://res.cloudinary.com/eventjuicer/video/upload/v1534454501/video_presenter_blak.mp4",
         background : "https://res.cloudinary.com/eventjuicer/image/upload/v1534542530/poster_presenter_blak.jpg",
         overlay : "red",
         template : "heroGold",
         heading : "event.claim",
-        subheading : "event.description"
+        subheading : "event.description",
+        showable: ["date", "location"],
+        orientation : "v",
+        primaryStyle: "heroPrimary",
+        secondaryStyle: "heroSecondary",
+        iconStyle: "heroIcon"
+
+    },
+
+    rolebuttonsExpo : {
+        accent : "gold",
+        items : [
+        {
+          url: 'https://res.cloudinary.com/eventjuicer/image/upload/w_768,c_fit,f_auto/v1579000835/visit.jpg',
+          label: 'common.visitor',
+          width: '50%',
+          target : "/visit"
+        },
+        {
+          url: 'https://res.cloudinary.com/eventjuicer/image/upload/w_768,c_fit,f_auto/v1579000835/exhibit.jpg',
+          label: 'common.exhibitor',
+          width: '50%',
+          target : "/exhibit"
+        },
+        ]
     },
 
     bookingmap : {
@@ -289,9 +293,7 @@ const settings =  {
        }
     },
 
-    reviews : {
-
-    },
+    
 
     ui : {
 
@@ -300,7 +302,6 @@ const settings =  {
               name: 'general',
               items: [
                 {name: 'home', to: '/'},
-            
               ]
             },
             // {
@@ -313,17 +314,16 @@ const settings =  {
             //     // {name: 'offers', to: '/offers'}
             //   ]
             // },
-            // {
-            //   name: 'exhibitors',
-            //   items: [
-            //     {name: 'exhibit', to: '/exhibit'},
-            //     // {name: 'sample-visitors', to: '/sample-visitors'},
-            //     // {name: 'exhibitors', to: '/exhibitors'},
-            //     // {name: 'premium-services', to: '/premium'},
-            //     // {name: 'faq', to: '/faq'},
-              
-            //   ]
-            // }
+            {
+              name: 'exhibitors',
+              items: [
+                {name: 'exhibit', to: '/exhibit'},
+                // {name: 'sample-visitors', to: '/sample-visitors'},
+                // {name: 'exhibitors', to: '/exhibitors'},
+                // {name: 'premium-services', to: '/premium'},
+                // {name: 'faq', to: '/faq'},
+              ]
+            }
         ]
     },
 
@@ -365,10 +365,8 @@ const settings =  {
             ]
         }
     },
+
     visitor : {
-
-
-        
 
         register: {
 
@@ -443,27 +441,6 @@ const settings =  {
 
     },
 
-    rolebuttons : {
-        accent : "gold",
-        items : [
-        {
-          url: 'https://res.cloudinary.com/eventjuicer/image/upload/w_768,c_fit,f_auto/v1579000835/visit.jpg',
-          label: 'common.visitor',
-          width: '50%',
-          target : "/visit"
-        },
-        {
-          url: 'https://res.cloudinary.com/eventjuicer/image/upload/w_768,c_fit,f_auto/v1579000835/exhibit.jpg',
-          label: 'common.exhibitor',
-          width: '50%',
-          target : "/exhibit"
-        },
-        ]
-    },
-
-    customer_support : {
-
-    },
 
     sales_support : {
 
@@ -484,87 +461,12 @@ const settings =  {
           ]
     },
 
-    stages : {
-        regform: "streaming_registration",
-        api: "https://proxy.eventjuicer.com/api/schedule",
-        discordProps: {
-            avatars: false,
-            join: "https://discord.gg/u3Fv9VJGU5",
-            title: "streaming.chat.title"
-        },
-        A: {
-            stream: "https://youtu.be/pxRMgHXYg-M",
-            discord: "803790592768212992",
-            restricted: true,
-            sponsor: null,
-            placeholder: "https://res.cloudinary.com/eventjuicer/image/upload/f_auto/v1614810311/stillphoto.jpg"
-        },
-        B: {
-            stream: "https://youtu.be/g9p2ujU72dU",
-            discord : "803790612171718667",
-            restricted: true,
-            sponsor: null,
-            placeholder: "https://res.cloudinary.com/eventjuicer/image/upload/f_auto/v1614810311/stillphoto.jpg"
-        },
-        C: {
-            stream: "https://youtu.be/2BTwXU3jdOY",
-            discord: "803790872390926366",
-            restricted: true,
-            sponsor: null,
-            placeholder: "https://res.cloudinary.com/eventjuicer/image/upload/f_auto/v1614810311/stillphoto.jpg"
-        },
-        D: {
-            stream: "https://youtu.be/i_ierICqE60",
-            discord: "803934176075841597",
-            restricted: true,
-            sponsor: null,
-            placeholder: "https://res.cloudinary.com/eventjuicer/image/upload/f_auto/v1614810311/stillphoto.jpg"
-        }
-    },
-
-    streaming_registration: {
-
-        wrapperProps: {
-            label : null,
-            secondaryLabel: null,
-            dense: true,
-            first: false
-        },
-        legend: "streaming.restricted",
-        fields : [
-          {name: "email", required: true},
-          {name: "fname", required: true},
-          {name: "lname", required: true},
-          {name: "cname2", required: true},
-          {name: "position", required: true},
-        ],
-        start : ['email', 'fname'],
-        ticket_id : 1888,
-        email_template : "pl-livestream-registration",
-        right: null
-    },
-
-    schedule : {
-        times : {
-            '11:00': 'presentation',
-            '11:24': 'presentation',
-            '11:44': 'presentation',
-            '12:01': 'presentation',
-            '12:18': 'presentation',
-            '12:55': 'presentation',
-          },    
-          venues : {
-            A: { company_id: 0 },
-            B: { company_id: 0 },
-            C: { company_id: 0 },
-            D: { company_id: 0 },
-          },
-        //   minimized : ["A", "C"],
-          venueStyle : "red",
-    },
-
+   
     footer : {
         iconStyle : "black",
+        primaryStyle: null,
+        secondaryStyle: null,
+      //  iconStyle: "heroIcon",
         links : [
             {label: "exhibitors.agreement.title", href : "/legal-20200324"},
         ]

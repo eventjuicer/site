@@ -4,7 +4,7 @@ import {
   connect,
   Wrapper,
   WidgetVideoWithEventInfo,
-  WidgetSpeaking,
+  WidgetRegForm,
   WidgetRoleButtons,
   Markdown,
   WidgetPresentersAll,
@@ -74,7 +74,7 @@ const PageSpeaking = () => (
 
   <WidgetPhotostream setting="cfpphotostream" />
 
-  <WidgetSpeaking
+  <WidgetRegForm
        options={{
         "categories": [
           'conversion',
